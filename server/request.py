@@ -35,9 +35,25 @@ def create_device_id():
 if not os.path.exists(cache_dir):
   os.makedirs(cache_dir, 755)
 
+# Language-aware doc selection. ComfyUI's 'Comfy.Locale' setting (sent by the
+# frontend as the `lang` query/body param) decides which file to serve: zh*
+# keeps the original Chinese source, every other locale gets the parallel
+# *_en.md translation. A missing/empty lang defaults to Chinese for backward
+# compatibility with callers that predate the lang param (zero regression).
+def _is_chinese(lang):
+  return (not lang) or lang.lower().startswith('zh')
+
+def _doc_basename(node_name, lang):
+  return node_name if _is_chinese(lang) else node_name + '_en'
+
 # 获取节点文档内容
-def get_node_doc_file_content(node_name):
-  file_path = os.path.join(docs_dir, node_name + '.md')
+def get_node_doc_file_content(node_name, lang='zh'):
+  base = _doc_basename(node_name, lang)
+  file_path = os.path.join(docs_dir, base + '.md')
+  # Fall back to the Chinese source when no translation exists yet (translation
+  # coverage is partial), so every node stays documented instead of going blank.
+  if not os.path.exists(file_path):
+    file_path = os.path.join(docs_dir, node_name + '.md')
   if os.path.exists(file_path):
     with open(file_path, 'r', encoding='utf-8') as file:
       return file.read()
@@ -45,8 +61,8 @@ def get_node_doc_file_content(node_name):
     return ""
 
 # 获取节点缓存文档
-def get_node_cache_file_content(node_name):
-  file_path = os.path.join(cache_dir, node_name + '.md')
+def get_node_cache_file_content(node_name, lang='zh'):
+  file_path = os.path.join(cache_dir, _doc_basename(node_name, lang) + '.md')
   if os.path.exists(file_path):
     with open(file_path, 'r', encoding='utf-8') as file:
       return file.read()
@@ -54,8 +70,8 @@ def get_node_cache_file_content(node_name):
     return ""
 
 # 写入缓存文件
-def write_cache_file(node_name, content):
-  file_path = os.path.join(cache_dir, node_name + '.md')
+def write_cache_file(node_name, content, lang='zh'):
+  file_path = os.path.join(cache_dir, _doc_basename(node_name, lang) + '.md')
   print(file_path)
   with open(file_path, 'w', encoding='utf-8') as file:
     file.write(content)
@@ -101,17 +117,18 @@ async def fetch_customnode_node_info(request):
   try:
     node_name = request.rel_url.query["nodeName"]
     node_name = replace_ignore_rules(node_name)
+    lang = request.rel_url.query.get("lang", "")
 
     print(node_name)
     if not node_name:
       return web.json_response({"content": ""})
 
-    cache_content = get_node_cache_file_content(node_name)
+    cache_content = get_node_cache_file_content(node_name, lang)
 
     if len(cache_content) > 0 :
       return web.json_response({"content": cache_content})
 
-    content = get_node_doc_file_content(node_name)
+    content = get_node_doc_file_content(node_name, lang)
     return web.json_response({"content": content})
   except Exception as e:
     return web.json_response({"content": ""})
@@ -122,15 +139,16 @@ async def cache_customnode_node_info(request):
   try:
     node_name = request.rel_url.query["nodeName"]
     node_name = replace_ignore_rules(node_name)
+    lang = request.rel_url.query.get("lang", "")
 
     if not node_name:
       return web.json_response({"success": False, "content": ""})
 
     print('cache start')
-    if not os.path.exists(os.path.join(cache_dir, node_name + '.md')):
+    if not os.path.exists(os.path.join(cache_dir, _doc_basename(node_name, lang) + '.md')):
       print('cache file not exists')
-      content = get_node_doc_file_content(node_name)
-      write_cache_file(node_name, content)
+      content = get_node_doc_file_content(node_name, lang)
+      write_cache_file(node_name, content, lang)
       print('cache success')
       return web.json_response({"success": True, "content": content})
     return web.json_response({"success": True, "content": ''})
@@ -148,15 +166,18 @@ async def update_customnode_node_info(request):
     node_name = replace_ignore_rules(node_name)
     # node_name = request.rel_url.query["nodeName"]
     content = json_data["content"]
+    lang = json_data.get("lang", "")
 
     if not node_name:
       return web.json_response({"success": False})
 
     node_name = replace_ignore_rules(node_name)
-    write_cache_file(node_name, content)
+    write_cache_file(node_name, content, lang)
 
     contribute = get_setting_item('contribute')
-    if contribute == True:
+    # Only co-build the Chinese source upstream; don't pollute the shared
+    # Chinese co-build DB with machine-translated English edits.
+    if contribute == True and _is_chinese(lang):
       print('send doc to cloud')
       asyncio.create_task(send_doc_to_cloud(node_name, content))
 

@@ -1,0 +1,107 @@
+# Documentation
+- Class name: ChatGPTNode
+- Category: ♾️Mixlab/GPT
+- Output node: False
+- Repo Ref: https://github.com/shadowcz007/comfyui-mixlab-nodes.git
+
+The ChatGPTNode class is designed to generate context-aware text using large language models provided by OpenAI. It manages conversation history to maintain dialogue flow, enabling more coherent and relevant responses. The node excels at integrating with various models and APIs, ensuring flexibility and adaptability across different application scenarios.
+
+# Input types
+## Required
+- api_key
+    - The API key is essential for authenticating and authorizing access to the language model service. It plays a central role in ensuring secure communication with the API, enabling the node to fetch and process language model responses.
+    - Comfy dtype: KEY
+    - Python dtype: str
+- api_url
+    - The API URL specifies the endpoint of the language model service. It is critical for directing the node's requests to the correct service, affecting the node's interaction with the language model and its ability to retrieve data from it.
+    - Comfy dtype: URL
+    - Python dtype: str
+- prompt
+    - The prompt is the input query or statement used by the language model to generate a response. It is a key element of the node's operation, as it directly influences the content and direction of the generated text.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- system_content
+    - System content provides the language model with system-level instructions or context, which can influence the style and tone of the generated response. It is an optional parameter that can be used to customize the node's behavior.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- model
+    - The model parameter selects the specific language model used by the node. It determines the complexity and capability of the language model interaction, affecting the quality and type of responses generated.
+    - Comfy dtype: COMBO[gpt-3.5-turbo, gpt-35-turbo, gpt-3.5-turbo-16k, gpt-3.5-turbo-16k-0613, gpt-4-0613, gpt-4-1106-preview, glm-4]
+    - Python dtype: str
+- seed
+    - The seed provides a starting point for random number generation used in the language model. It can be used to produce repeatable results by ensuring a consistent initial state for the model's stochastic processes.
+    - Comfy dtype: INT
+    - Python dtype: int
+- context_size
+    - Context size determines the number of previous exchanges the node will consider when generating a response. It affects the depth of dialogue context and the relevance of the generated text.
+    - Comfy dtype: INT
+    - Python dtype: int
+- unique_id
+    - The unique ID is an optional identifier that can be used to track or reference a specific interaction with the language model. It does not affect the node's execution but may be useful for logging or debugging purposes.
+    - Comfy dtype: UNIQUE_ID
+    - Python dtype: str
+- extra_pnginfo
+    - Additional PNG information is an optional parameter that can provide extra context or data to the language model. Its use is specific to certain applications and can enhance the node's ability to generate more detailed or specific responses.
+    - Comfy dtype: EXTRA_PNGINFO
+    - Python dtype: str
+
+# Output types
+- text
+    - The text output represents the language model's response to the input prompt. It is the primary result of the node's operation, reflecting the node's ability to generate coherent and contextually relevant text.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- messages
+    - The message output is a JSON-formatted string containing the conversation history up to the current response. It includes system instructions, user prompts, and assistant replies, providing a comprehensive view of the interaction.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- session_history
+    - The session history output is a JSON-formatted string that records the entire dialogue session with the language model. It serves as a record of the conversation and can be used for analysis or maintaining context across multiple interactions.
+    - Comfy dtype: STRING
+    - Python dtype: str
+
+# Usage tips
+- Infra type: CPU
+
+# Source code
+```
+class ChatGPTNode:
+
+    def __init__(self):
+        self.session_history = []
+        self.system_content = 'You are ChatGPT, a large language model trained by OpenAI. Answer as concisely as possible.'
+
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {'required': {'api_key': ('KEY', {'default': '', 'multiline': True, 'dynamicPrompts': False}), 'api_url': ('URL', {'default': '', 'multiline': True, 'dynamicPrompts': False}), 'prompt': ('STRING', {'multiline': True, 'dynamicPrompts': False}), 'system_content': ('STRING', {'default': 'You are ChatGPT, a large language model trained by OpenAI. Answer as concisely as possible.', 'multiline': True, 'dynamicPrompts': False}), 'model': (['gpt-3.5-turbo', 'gpt-35-turbo', 'gpt-3.5-turbo-16k', 'gpt-3.5-turbo-16k-0613', 'gpt-4-0613', 'gpt-4-1106-preview', 'glm-4'], {'default': 'gpt-3.5-turbo'}), 'seed': ('INT', {'default': 0, 'min': 0, 'max': 18446744073709551615, 'step': 1}), 'context_size': ('INT', {'default': 1, 'min': 0, 'max': 30, 'step': 1})}, 'hidden': {'unique_id': 'UNIQUE_ID', 'extra_pnginfo': 'EXTRA_PNGINFO'}}
+    RETURN_TYPES = ('STRING', 'STRING', 'STRING')
+    RETURN_NAMES = ('text', 'messages', 'session_history')
+    FUNCTION = 'generate_contextual_text'
+    CATEGORY = '♾️Mixlab/GPT'
+    INPUT_IS_LIST = False
+    OUTPUT_IS_LIST = (False, False, False)
+
+    def generate_contextual_text(self, api_key, api_url, prompt, system_content, model, seed, context_size, unique_id=None, extra_pnginfo=None):
+        if system_content:
+            self.system_content = system_content
+        if is_azure_url(api_url):
+            client = azure_client(api_key, api_url)
+        elif model == 'glm-4':
+            client = ZhipuAI_client(api_key)
+            print('using Zhipuai interface')
+        else:
+            client = openai_client(api_key, api_url)
+            print('using ChatGPT interface')
+
+        def crop_list_tail(lst, size):
+            if size >= len(lst):
+                return lst
+            elif size == 0:
+                return []
+            else:
+                return lst[-size:]
+        session_history = crop_list_tail(self.session_history, context_size)
+        messages = [{'role': 'system', 'content': self.system_content}] + session_history + [{'role': 'user', 'content': prompt}]
+        response_content = chat(client, model, messages)
+        self.session_history = self.session_history + [{'role': 'user', 'content': prompt}] + [{'role': 'assistant', 'content': response_content}]
+        return (response_content, json.dumps(messages, indent=4), json.dumps(self.session_history, indent=4))
+```

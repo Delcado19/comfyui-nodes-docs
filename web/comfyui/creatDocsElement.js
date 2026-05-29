@@ -1,4 +1,5 @@
 import { marked } from './marked.js'
+import { app } from "../../scripts/app.js"
 
 /**
  * {
@@ -20,15 +21,32 @@ export const hideActiveDocs = function() {
 }
 
 
-// 缓存到本地
-const fetchCacheDNodeDoc = async function(nodeName) {
-    const res = await fetch('/customnode/cacheNodeInfo?nodeName=' + nodeName)
+// ComfyUI exposes the chosen UI language via the 'Comfy.Locale' setting
+// (default: navigator.language's primary subtag, e.g. 'en'/'zh'/'de'). We
+// follow it so docs match the rest of the UI: zh* serves the Chinese source,
+// every other locale serves the *_en translation (the server falls back to the
+// source when a translation is missing). Defensive fallbacks keep this working
+// even if the setting API is unavailable.
+const getDocLang = function() {
+    try {
+      const fromSetting = app?.ui?.settings?.getSettingValue?.('Comfy.Locale')
+      // Guard against stores that return the raw defaultValue *function* when no
+      // explicit locale was chosen: only trust a real string, else fall back to
+      // navigator.language (what ComfyUI's own default evaluates to anyway).
+      if (typeof fromSetting === 'string' && fromSetting) return fromSetting
+    } catch (e) { /* fall through to navigator-based default */ }
+    return (navigator.language || '').split('-')[0] || 'en'
+  }
+
+  // 缓存到本地
+  const fetchCacheDNodeDoc = async function(nodeName, lang) {
+    const res = await fetch('/customnode/cacheNodeInfo?nodeName=' + nodeName + '&lang=' + encodeURIComponent(lang))
     const jsonData = await res.json()
     return jsonData
   }
-  
+
   // 保存文档到本地
-  const saveNodeDoc = async function(nodeName, content) {
+  const saveNodeDoc = async function(nodeName, content, lang) {
     const res = await fetch('/customnode/updateNodeInfo', {
       method: 'POST',
       headers: {
@@ -36,10 +54,11 @@ const fetchCacheDNodeDoc = async function(nodeName) {
       },
       body: JSON.stringify({
         nodeName,
-        content
+        content,
+        lang
       })
     })
-  
+
     return await res.json()
   }
 
@@ -80,6 +99,12 @@ function closeDragElement() {
  * @returns
  */
 export const showNodeDocs = async function(node) {
+    const lang = getDocLang()
+    const isZh = String(lang).toLowerCase().startsWith('zh')
+    // UI labels follow the same locale rule as the docs themselves.
+    const t = isZh
+      ? { empty: '暂无文档', close: '关闭', edit: '编辑', save: '保存', cancel: '取消' }
+      : { empty: 'No documentation yet', close: 'Close', edit: 'Edit', save: 'Save', cancel: 'Cancel' }
     const ele = nodeDocsEleMap.get(node.id)
     // const [nLeft, nTop, nWidth, nHeight] = node.getBounding()
     if(ele) {
@@ -146,11 +171,11 @@ export const showNodeDocs = async function(node) {
     divWrap.appendChild(divContentWrap)
   
   
-    const res = await fetch('/customnode/getNodeInfo?nodeName=' + node.type)
+    const res = await fetch('/customnode/getNodeInfo?nodeName=' + node.type + '&lang=' + encodeURIComponent(lang))
     const jsonData = await res.json()
     const html = marked.parse(jsonData.content);
-  
-    divContentWrap.innerHTML = html || node.description || '暂无文档'
+
+    divContentWrap.innerHTML = html || node.description || t.empty
   
     // 编辑框
     const editWrap = document.createElement('div')
@@ -183,7 +208,7 @@ export const showNodeDocs = async function(node) {
     buttonWrap.style.padding = '20px'
 
     const closeButton = document.createElement('button')
-    closeButton.innerText = '关闭'
+    closeButton.innerText = t.close
     closeButton.style.backgroundColor = 'var(--comfy-input-bg)'
     closeButton.style.color = 'white'
     closeButton.style.padding = '5px 10px'
@@ -192,7 +217,7 @@ export const showNodeDocs = async function(node) {
     closeButton.style.borderRadius = '5px'
   
     const editButton = document.createElement('button')
-    editButton.innerText = '编辑'
+    editButton.innerText = t.edit
     editButton.style.backgroundColor = 'var(--theme-color)'
     editButton.style.color = 'white'
     editButton.style.padding = '5px 10px'
@@ -201,7 +226,7 @@ export const showNodeDocs = async function(node) {
     editButton.style.borderRadius = '5px'
   
     const cancelEditButton = document.createElement('button')
-    cancelEditButton.innerText = '取消'
+    cancelEditButton.innerText = t.cancel
     cancelEditButton.style.backgroundColor = 'var(--comfy-input-bg)'
     cancelEditButton.style.color = 'white'
     cancelEditButton.style.padding = '5px 10px'
@@ -214,26 +239,26 @@ export const showNodeDocs = async function(node) {
     cancelEditButton.onclick = function() {
       editWrap.style.display = 'none'
       divContentWrap.style.display = 'block'
-      editButton.innerText = '编辑'
+      editButton.innerText = t.edit
       closeButton.style.display = 'block'
       cancelEditButton.style.display = 'none'
     }
   
     editButton.onclick = function() {
       if(editWrap.style.display === 'none') {
-        fetchCacheDNodeDoc(node.type)
+        fetchCacheDNodeDoc(node.type, lang)
         editWrap.style.display = 'block'
         divContentWrap.style.display = 'none'
-        editButton.innerText = '保存'
+        editButton.innerText = t.save
         cancelEditButton.style.display = 'block'
         closeButton.style.display = 'none'
       } else {
-        saveNodeDoc(node.type, editInput.value).then(res => {
+        saveNodeDoc(node.type, editInput.value, lang).then(res => {
           if (res.success) {
             divContentWrap.innerHTML = marked.parse(editInput.value)
             editWrap.style.display = 'none'
             divContentWrap.style.display = 'block'
-            editButton.innerText = '编辑'
+            editButton.innerText = t.edit
             cancelEditButton.style.display = 'none'
             closeButton.style.display = 'block'
           }
