@@ -1,4 +1,12 @@
 #!/usr/bin/env node
+// Batch-translates the Chinese node docs (docs/<node>.md) into English
+// (docs/<node>_en.md) via any OpenAI-compatible chat endpoint, configured by
+// the OPENAI_BASE_URL / OPENAI_API_KEY / OPENAI_MODEL(S) env vars. The prompt
+// preserves code blocks, the leading metadata bullets (Class name, Repo Ref,
+// Comfy/Python dtype, ...) and the structural headings below verbatim so only
+// prose is translated. Progress is journaled to .cache so interrupted runs
+// resume; file selection is driven solely by whether a current _en.md exists,
+// making reruns self-healing. See README_en.md "Translation workflow".
 const fs = require('fs');
 const path = require('path');
 
