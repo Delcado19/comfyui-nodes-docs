@@ -27,21 +27,6 @@ The `subtract_masks` method of the WAS_Mask_Subtract node performs element-wise 
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Mask_Subtract:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'masks_a': ('MASK',), 'masks_b': ('MASK',)}}
-    CATEGORY = 'WAS Suite/Image/Masking'
-    RETURN_TYPES = ('MASK',)
-    RETURN_NAMES = ('MASKS',)
-    FUNCTION = 'subtract_masks'
-
-    def subtract_masks(self, masks_a, masks_b):
-        subtracted_masks = torch.clamp(masks_a - masks_b, 0, 255)
-        return (subtracted_masks,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

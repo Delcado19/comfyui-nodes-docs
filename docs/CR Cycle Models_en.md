@@ -60,35 +60,6 @@ The CR_CycleModels node is designed to manage and cycle through a list of models
 - Infra type: CPU
 
 # Source code
-```
-class CR_CycleModels:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        modes = ['Off', 'Sequential']
-        return {'required': {'mode': (modes,), 'model': ('MODEL',), 'clip': ('CLIP',), 'model_list': ('MODEL_LIST',), 'frame_interval': ('INT', {'default': 30, 'min': 0, 'max': 999, 'step': 1}), 'loops': ('INT', {'default': 1, 'min': 1, 'max': 1000}), 'current_frame': ('INT', {'default': 0.0, 'min': 0.0, 'max': 9999.0, 'step': 1.0})}}
-    RETURN_TYPES = ('MODEL', 'CLIP', 'VAE', 'STRING')
-    RETURN_NAMES = ('MODEL', 'CLIP', 'VAE', 'show_help')
-    FUNCTION = 'cycle_models'
-    CATEGORY = icons.get('Comfyroll/Animation/Legacy')
-
-    def cycle_models(self, mode, model, clip, model_list, frame_interval, loops, current_frame):
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Cycler-Nodes#cr-cycle-models'
-        model_params = list()
-        if model_list:
-            for _ in range(loops):
-                model_params.extend(model_list)
-        if mode == 'Off':
-            return (model, clip, show_help)
-        elif mode == 'Sequential':
-            if current_frame == 0:
-                return (model, clip, show_help)
-            else:
-                current_model_index = current_frame // frame_interval % len(model_params)
-                current_model_params = model_params[current_model_index]
-                (model_alias, ckpt_name) = current_model_params
-                print(f'[Info] CR Cycle Models: Current model is {ckpt_name}')
-                ckpt_path = folder_paths.get_full_path('checkpoints', ckpt_name)
-                out = comfy.sd.load_checkpoint_guess_config(ckpt_path, output_vae=True, output_clip=True, embedding_directory=folder_paths.get_folder_paths('embeddings'))
-                return (out, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -27,19 +27,6 @@ The CR_CurrentFrame node is designed to facilitate recording and displaying the 
 - Infra type: CPU
 
 # Source code
-```
-class CR_CurrentFrame:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'index': ('INT', {'default': 1, 'min': -10000, 'max': 10000}), 'print_to_console': (['Yes', 'No'],)}}
-    RETURN_TYPES = ('INT',)
-    RETURN_NAMES = ('index',)
-    FUNCTION = 'to_console'
-    CATEGORY = icons.get('Comfyroll/Animation/Utils')
-
-    def to_console(self, index, print_to_console):
-        if print_to_console == 'Yes':
-            print(f'[Info] CR Current Frame:{index}')
-        return (index,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

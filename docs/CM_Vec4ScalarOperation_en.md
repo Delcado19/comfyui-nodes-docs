@@ -31,16 +31,6 @@ The Vec4ScalarOperation node performs scalar operations on four-dimensional vect
 - Infra type: CPU
 
 # Source code
-```
-class Vec4ScalarOperation:
+[View source repository on GitHub](https://github.com/evanspearman/ComfyMath)
 
-    @classmethod
-    def INPUT_TYPES(cls) -> Mapping[str, Any]:
-        return {'required': {'op': (list(VEC_SCALAR_OPERATION.keys()),), 'a': DEFAULT_VEC4, 'b': ('FLOAT',)}}
-    RETURN_TYPES = ('VEC4',)
-    FUNCTION = 'op'
-    CATEGORY = 'math/vec4'
-
-    def op(self, op: str, a: Vec4, b: float) -> tuple[Vec4]:
-        return (_vec4_from_numpy(VEC_SCALAR_OPERATION[op](numpy.array(a), b)),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

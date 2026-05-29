@@ -43,23 +43,6 @@ The WAS_Image_Size_To_Number node aims to extract the size of an image and conve
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Image_Size_To_Number:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'image': ('IMAGE',)}}
-    RETURN_TYPES = ('NUMBER', 'NUMBER', 'FLOAT', 'FLOAT', 'INT', 'INT')
-    RETURN_NAMES = ('width_num', 'height_num', 'width_float', 'height_float', 'width_int', 'height_int')
-    FUNCTION = 'image_width_height'
-    CATEGORY = 'WAS Suite/Number/Operations'
-
-    def image_width_height(self, image):
-        image = tensor2pil(image)
-        if image.size:
-            return (image.size[0], image.size[1], float(image.size[0]), float(image.size[1]), image.size[0], image.size[1])
-        return (0, 0, 0, 0, 0, 0)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

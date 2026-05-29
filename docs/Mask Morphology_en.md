@@ -31,39 +31,6 @@ The MaskMorphologyNode class is designed to perform morphological operations on 
 - Infra type: GPU
 
 # Source code
-```
-class MaskMorphologyNode:
+[View source repository on GitHub](https://github.com/BadCafeCode/masquerade-nodes-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'image': ('IMAGE',), 'distance': ('INT', {'default': 5, 'min': 0, 'max': 128, 'step': 1}), 'op': (['dilate', 'erode', 'open', 'close'],)}}
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'morph'
-    CATEGORY = 'Masquerade Nodes'
-
-    def morph(self, image, distance, op):
-        image = tensor2mask(image)
-        if op == 'dilate':
-            image = self.dilate(image, distance)
-        elif op == 'erode':
-            image = self.erode(image, distance)
-        elif op == 'open':
-            image = self.erode(image, distance)
-            image = self.dilate(image, distance)
-        elif op == 'close':
-            image = self.dilate(image, distance)
-            image = self.erode(image, distance)
-        return (image,)
-
-    def erode(self, image, distance):
-        return 1.0 - self.dilate(1.0 - image, distance)
-
-    def dilate(self, image, distance):
-        kernel_size = 1 + distance * 2
-        image = image.unsqueeze(1)
-        out = torchfn.max_pool2d(image, kernel_size=kernel_size, stride=1, padding=kernel_size // 2).squeeze(1)
-        return out
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

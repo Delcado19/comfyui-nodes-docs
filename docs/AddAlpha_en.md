@@ -34,35 +34,7 @@ The AddAlpha node is designed to add an alpha channel to an RGB image, thereby e
 - Infra type: `GPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class AddAlpha:
-    method = ["default", "invert"]
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {
-            "required": {
-                "rgb_image": ("IMAGE",),
-            },
-            "optional": {
-                "alpha": ("IMAGE",),
-                "method": (s.method, {"default": s.method[0]}),
-            }
-        }
-
-    RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "add_alpha"
-    CATEGORY = "Bmad/image"
-
-    def add_alpha(self, rgb_image, alpha=None, method=None):
-        rgb_image = tensor2opencv(rgb_image, 3)
-        rgba = cv.cvtColor(rgb_image, cv.COLOR_RGB2RGBA)
-        if alpha is not None:
-            alpha = tensor2opencv(alpha, 1)
-            rgba[:, :, 3] = alpha if method == self.method[0] else 255 - alpha
-        rgba = opencv2tensor(rgba)
-        return (rgba,)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

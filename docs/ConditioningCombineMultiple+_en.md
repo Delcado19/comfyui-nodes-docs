@@ -27,36 +27,7 @@ This node aims to combine multiple condition inputs into a single condition outp
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class ConditioningCombineMultiple:
-    @classmethod
-    def INPUT_TYPES(s):
-        return {
-            "required": {
-                "conditioning_1": ("CONDITIONING",),
-                "conditioning_2": ("CONDITIONING",),
-            }, "optional": {
-                "conditioning_3": ("CONDITIONING",),
-                "conditioning_4": ("CONDITIONING",),
-                "conditioning_5": ("CONDITIONING",),
-            },
-        }
-    RETURN_TYPES = ("CONDITIONING",)
-    FUNCTION = "execute"
-    CATEGORY = "essentials"
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    def execute(self, conditioning_1, conditioning_2, conditioning_3=None, conditioning_4=None, conditioning_5=None):
-        c = conditioning_1 + conditioning_2
-
-        if conditioning_3 is not None:
-            c += conditioning_3
-        if conditioning_4 is not None:
-            c += conditioning_4
-        if conditioning_5 is not None:
-            c += conditioning_5
-        
-        return (c,)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

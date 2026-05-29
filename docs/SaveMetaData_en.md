@@ -44,33 +44,6 @@ The `save_metadata` method is designed to organize and store metadata associated
 - Infra type: CPU
 
 # Source code
-```
-class SaveMetaData:
+[View source repository on GitHub](https://github.com/bash-j/mikey_nodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'image': ('IMAGE',), 'filename_prefix': ('STRING', {'default': ''}), 'timestamp_prefix': (['true', 'false'], {'default': 'true'}), 'counter': (['true', 'false'], {'default': 'true'})}, 'hidden': {'prompt': 'PROMPT', 'extra_pnginfo': 'EXTRA_PNGINFO'}}
-    RETURN_TYPES = ()
-    FUNCTION = 'save_metadata'
-    CATEGORY = 'Mikey/Meta'
-    OUTPUT_NODE = True
-
-    def save_metadata(self, image, filename_prefix, timestamp_prefix, counter, prompt=None, extra_pnginfo=None):
-        filename_prefix = search_and_replace(filename_prefix, extra_pnginfo, prompt)
-        (full_output_folder, filename, counter, subfolder, filename_prefix) = folder_paths.get_save_image_path(filename_prefix, folder_paths.get_output_directory(), 1, 1)
-        ts_str = datetime.datetime.now().strftime('%y%m%d%H%M')
-        filen = ''
-        if timestamp_prefix == 'true':
-            filen += ts_str + '_'
-        filen = filen + filename_prefix
-        if counter == 'true':
-            filen += '_' + str(counter)
-        filename = filen + '.txt'
-        file_path = os.path.join(full_output_folder, filename)
-        with open(file_path, 'w') as file:
-            for (key, value) in extra_pnginfo.items():
-                file.write(f'{key}: {value}\n')
-            for (key, value) in prompt.items():
-                file.write(f'{key}: {value}\n')
-        return {'save_metadata': {'filename': filename, 'subfolder': subfolder}}
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

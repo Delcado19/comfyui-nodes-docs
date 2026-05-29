@@ -28,20 +28,6 @@ The CR_LatentBatchSize node is designed to handle and manage the batch size of l
 - Infra type: CPU
 
 # Source code
-```
-class CR_LatentBatchSize:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'latent': ('LATENT',), 'batch_size': ('INT', {'default': 2, 'min': 1, 'max': 999, 'step': 1})}}
-    RETURN_TYPES = ('LATENT',)
-    FUNCTION = 'batchsize'
-    CATEGORY = icons.get('Comfyroll/Essential/Core')
-
-    def batchsize(self, latent: tg.Sequence[tg.Mapping[tg.Text, torch.Tensor]], batch_size: int):
-        samples = latent['samples']
-        shape = samples.shape
-        sample_list = [samples] + [torch.clone(samples) for _ in range(batch_size - 1)]
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Core-Nodes#cr-latent-batch-size'
-        return ({'samples': torch.cat(sample_list)},)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

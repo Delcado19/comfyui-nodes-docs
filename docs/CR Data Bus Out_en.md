@@ -43,19 +43,6 @@ CR_DataBusOut is a node designed for seamlessly outputting data through the pipe
 - Infra type: CPU
 
 # Source code
-```
-class CR_DataBusOut:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'pipe': ('PIPE_LINE',)}}
-    RETURN_TYPES = ('PIPE_LINE', any_type, any_type, any_type, any_type, 'STRING')
-    RETURN_NAMES = ('pipe', 'any1', 'any2', 'any3', 'any4', 'show_help')
-    FUNCTION = 'data_out'
-    CATEGORY = icons.get('Comfyroll/Pipe/Bus')
-
-    def data_out(self, any1=None, any2=None, any3=None, any4=None, pipe=None):
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Pipe-Nodes#cr-data-bus-out'
-        (new_any1, new_any2, new_any3, new_any4) = pipe
-        return (pipe, new_any1, new_any2, new_any3, new_any4, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

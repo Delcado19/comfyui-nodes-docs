@@ -59,30 +59,6 @@ The SeargeInput2 node is designed to handle the initial input for image processi
 - Infra type: CPU
 
 # Source code
-```
-class SeargeInput2:
+[View source repository on GitHub](https://github.com/jobunk/SeargeSDXL)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'seed': ('INT', {'default': 0, 'min': 0, 'max': 18446744073709551615}), 'image_width': ('INT', {'default': 1024, 'min': 0, 'max': nodes.MAX_RESOLUTION, 'step': 8}), 'image_height': ('INT', {'default': 1024, 'min': 0, 'max': nodes.MAX_RESOLUTION, 'step': 8}), 'steps': ('INT', {'default': 20, 'min': 0, 'max': 200}), 'cfg': ('FLOAT', {'default': 7.0, 'min': 0.0, 'max': 30.0, 'step': 0.5}), 'sampler_name': (comfy.samplers.KSampler.SAMPLERS, {'default': 'ddim'}), 'scheduler': (comfy.samplers.KSampler.SCHEDULERS, {'default': 'ddim_uniform'}), 'save_image': (SeargeParameterProcessor.STATES, {'default': SeargeParameterProcessor.STATES[1]}), 'save_directory': (SeargeParameterProcessor.SAVE_TO, {'default': SeargeParameterProcessor.SAVE_TO[0]})}, 'optional': {'inputs': ('PARAMETER_INPUTS',)}}
-    RETURN_TYPES = ('PARAMETER_INPUTS',)
-    RETURN_NAMES = ('inputs',)
-    FUNCTION = 'mux'
-    CATEGORY = 'Searge/_deprecated_/UI/Inputs'
-
-    def mux(self, seed, image_width, image_height, steps, cfg, sampler_name, scheduler, save_image, save_directory, inputs=None):
-        if inputs is None:
-            parameters = {}
-        else:
-            parameters = inputs
-        parameters['seed'] = seed
-        parameters['image_width'] = image_width
-        parameters['image_height'] = image_height
-        parameters['steps'] = steps
-        parameters['cfg'] = cfg
-        parameters['sampler_name'] = sampler_name
-        parameters['scheduler'] = scheduler
-        parameters['save_image'] = save_image
-        parameters['save_directory'] = save_directory
-        return (parameters,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

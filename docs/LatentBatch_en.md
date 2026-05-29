@@ -27,24 +27,6 @@ The `batch` method of the LatentBatch class aims to efficiently merge two sets o
 - Infra type: CPU
 
 # Source code
-```
-class LatentBatch:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'samples1': ('LATENT',), 'samples2': ('LATENT',)}}
-    RETURN_TYPES = ('LATENT',)
-    FUNCTION = 'batch'
-    CATEGORY = 'latent/batch'
-
-    def batch(self, samples1, samples2):
-        samples_out = samples1.copy()
-        s1 = samples1['samples']
-        s2 = samples2['samples']
-        if s1.shape[1:] != s2.shape[1:]:
-            s2 = comfy.utils.common_upscale(s2, s1.shape[3], s1.shape[2], 'bilinear', 'center')
-        s = torch.cat((s1, s2), dim=0)
-        samples_out['samples'] = s
-        samples_out['batch_index'] = samples1.get('batch_index', [x for x in range(0, s1.shape[0])]) + samples2.get('batch_index', [x for x in range(0, s2.shape[0])])
-        return (samples_out,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

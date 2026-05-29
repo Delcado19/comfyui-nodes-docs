@@ -56,24 +56,7 @@ The "Unpack SDXL Tuple" node is designed to decompose complex tuple structures i
     - [TonemapNoiseWithRescaleCFG](../../ComfyUI_experiments/Nodes/TonemapNoiseWithRescaleCFG.md)
     - [FreeU_V2](../../Comfy/Nodes/FreeU_V2.md)
 
-
-
 ## Source code
-```python
-class TSC_Unpack_SDXL_Tuple:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {"required": {"sdxl_tuple": ("SDXL_TUPLE",)},}
-
-    RETURN_TYPES = ("MODEL", "CLIP", "CONDITIONING","CONDITIONING", "MODEL", "CLIP", "CONDITIONING", "CONDITIONING",)
-    RETURN_NAMES = ("BASE_MODEL", "BASE_CLIP", "BASE_CONDITIONING+", "BASE_CONDITIONING-",
-                    "REFINER_MODEL", "REFINER_CLIP","REFINER_CONDITIONING+","REFINER_CONDITIONING-",)
-    FUNCTION = "unpack_sdxl_tuple"
-    CATEGORY = "Efficiency Nodes/Misc"
-
-    def unpack_sdxl_tuple(self, sdxl_tuple):
-        return (sdxl_tuple[0], sdxl_tuple[1],sdxl_tuple[2],sdxl_tuple[3],
-                sdxl_tuple[4],sdxl_tuple[5],sdxl_tuple[6],sdxl_tuple[7],)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

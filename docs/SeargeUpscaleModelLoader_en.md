@@ -23,19 +23,6 @@ The SeargeUpscaleModelLoader node simplifies the loading of upscaler models in i
 - Infra type: CPU
 
 # Source code
-```
-class SeargeUpscaleModelLoader:
+[View source repository on GitHub](https://github.com/jobunk/SeargeSDXL)
 
-    def __init__(self):
-        self.upscale_model_loader = comfy_extras.nodes_upscale_model.UpscaleModelLoader()
-
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'upscaler_name': ('UPSCALER_NAME',)}}
-    RETURN_TYPES = ('UPSCALE_MODEL',)
-    FUNCTION = 'load_upscaler'
-    CATEGORY = 'Searge/_deprecated_/Files'
-
-    def load_upscaler(self, upscaler_name):
-        return self.upscale_model_loader.load_model(upscaler_name)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

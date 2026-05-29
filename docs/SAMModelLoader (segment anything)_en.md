@@ -23,17 +23,6 @@ The SAMModelLoader node is responsible for loading and preparing the Segment Any
 - Infra type: GPU
 
 # Source code
-```
-class SAMModelLoader:
+[View source repository on GitHub](https://github.com/storyicon/comfyui_segment_anything)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'model_name': (list_sam_model(),)}}
-    CATEGORY = 'segment_anything'
-    FUNCTION = 'main'
-    RETURN_TYPES = ('SAM_MODEL',)
-
-    def main(self, model_name):
-        sam_model = load_sam_model(model_name)
-        return (sam_model,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -23,16 +23,6 @@ The IPAdapterInsightFaceLoader node is designed to facilitate loading and prepar
 - Infra type: CPU
 
 # Source code
-```
-class IPAdapterInsightFaceLoader:
+[View source repository on GitHub](https://github.com/cubiq/ComfyUI_IPAdapter_plus)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'provider': (['CPU', 'CUDA', 'ROCM'],)}}
-    RETURN_TYPES = ('INSIGHTFACE',)
-    FUNCTION = 'load_insightface'
-    CATEGORY = 'ipadapter/loaders'
-
-    def load_insightface(self, provider):
-        return (insightface_loader(provider),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

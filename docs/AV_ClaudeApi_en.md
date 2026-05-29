@@ -33,31 +33,7 @@ The AV_ClaudeApi node is used to create an API interface for interacting with th
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class ClaudeApiNode:
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {
-            "required": {
-                "claude_api_key": ("STRING", {"multiline": False}),
-                "endpoint": ("STRING", {"multiline": False, "default": "https://api.anthropic.com/v1"}),
-                "version": (["2023-06-01"], {"default": "2023-06-01"}),
-            },
-        }
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    RETURN_TYPES = ("LLM_API",)
-    RETURN_NAMES = ("llm_api",)
-    FUNCTION = "create_api"
-    CATEGORY = "ArtVenture/LLM"
-
-    def create_api(self, claude_api_key, endpoint, version):
-        if not claude_api_key or claude_api_key == "":
-            claude_api_key = os.environ.get("CLAUDE_API_KEY")
-        if not claude_api_key:
-            raise Exception("Claude API key is required.")
-
-        return (ClaudeApi(api_key=claude_api_key, endpoint=endpoint, version=version),)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

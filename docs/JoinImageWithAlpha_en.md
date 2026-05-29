@@ -27,22 +27,6 @@ The JoinImageWithAlpha node is designed to seamlessly integrate an alpha mask wi
 - Infra type: GPU
 
 # Source code
-```
-class JoinImageWithAlpha:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'image': ('IMAGE',), 'alpha': ('MASK',)}}
-    CATEGORY = 'mask/compositing'
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'join_image_with_alpha'
-
-    def join_image_with_alpha(self, image: torch.Tensor, alpha: torch.Tensor):
-        batch_size = min(len(image), len(alpha))
-        out_images = []
-        alpha = 1.0 - resize_mask(alpha, image.shape[1:])
-        for i in range(batch_size):
-            out_images.append(torch.cat((image[i][:, :, :3], alpha[i].unsqueeze(2)), dim=2))
-        result = (torch.stack(out_images),)
-        return result
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

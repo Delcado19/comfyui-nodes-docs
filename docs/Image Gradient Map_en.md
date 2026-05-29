@@ -32,23 +32,6 @@ The WAS_Image_Gradient_Map node applies a gradient map to the input image, enabl
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Image_Gradient_Map:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'image': ('IMAGE',), 'gradient_image': ('IMAGE',), 'flip_left_right': (['false', 'true'],)}}
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'image_gradient_map'
-    CATEGORY = 'WAS Suite/Image/Filter'
-
-    def image_gradient_map(self, image, gradient_image, flip_left_right='false'):
-        image = tensor2pil(image)
-        gradient_image = tensor2pil(gradient_image)
-        WTools = WAS_Tools_Class()
-        image = WTools.gradient_map(image, gradient_image, True if flip_left_right == 'true' else False)
-        return (pil2tensor(image),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

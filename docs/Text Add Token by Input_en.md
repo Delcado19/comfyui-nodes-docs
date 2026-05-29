@@ -36,32 +36,6 @@ The WAS_Text_Add_Token_Input node is designed to manage and manipulate custom to
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Text_Add_Token_Input:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'token_name': (TEXT_TYPE, {'forceInput': True if TEXT_TYPE == 'STRING' else False}), 'token_value': (TEXT_TYPE, {'forceInput': True if TEXT_TYPE == 'STRING' else False}), 'print_current_tokens': (['false', 'true'],)}}
-    RETURN_TYPES = ()
-    FUNCTION = 'text_add_token'
-    OUTPUT_NODE = True
-    CATEGORY = 'WAS Suite/Text/Tokens'
-
-    def text_add_token(self, token_name, token_value, print_current_tokens='false'):
-        if token_name.strip() == '':
-            cstr(f'A `token_name` is required for a token; token name provided is empty.').error.print()
-            pass
-        tk = TextTokens()
-        tk.addToken(token_name, token_value)
-        if print_current_tokens == 'true':
-            cstr(f'Current Custom Tokens:').msg.print()
-            print(json.dumps(tk.custom_tokens, indent=4))
-        return (token_name, token_value)
-
-    @classmethod
-    def IS_CHANGED(cls, **kwargs):
-        return float('NaN')
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

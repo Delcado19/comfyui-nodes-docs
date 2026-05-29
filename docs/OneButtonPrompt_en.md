@@ -48,24 +48,6 @@ This node aims to generate dynamic prompts based on various input parameters, de
 - Infra type: CPU
 
 # Source code
-```
-class OneButtonPrompt:
+[View source repository on GitHub](https://github.com/AIrjen/OneButtonPrompt)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'insanitylevel': ('INT', {'default': 5, 'min': 1, 'max': 10, 'step': 1})}, 'optional': {'artist': (artists, {'default': 'all'}), 'imagetype': (imagetypes, {'default': 'all'}), 'imagemodechance': ('INT', {'default': 20, 'min': 1, 'max': 100, 'step': 1}), 'subject': (subjects, {'default': 'all'}), 'custom_subject': ('STRING', {'multiline': False, 'default': ''}), 'custom_outfit': ('STRING', {'multiline': False, 'default': ''}), 'subject_subtype_objects': (subjectsubtypesobject, {'default': 'all'}), 'subject_subtypes_humanoids': (subjectsubtypeshumanoid, {'default': 'all'}), 'humanoids_gender': (genders, {'default': 'all'}), 'subject_subtypes_concepts': (subjectsubtypesconcept, {'default': 'all'}), 'emojis': (emojis, {'default': False}), 'seed': ('INT', {'default': 0, 'min': 0, 'max': 18446744073709551615})}}
-    RETURN_TYPES = ('STRING', 'STRING', 'STRING')
-    RETURN_NAMES = ('prompt', 'prompt_g', 'prompt_l')
-    FUNCTION = 'Comfy_OBP'
-    CATEGORY = 'OneButtonPrompt'
-
-    def Comfy_OBP(self, insanitylevel, custom_subject, seed, artist, imagetype, subject, imagemodechance, humanoids_gender, subject_subtype_objects, subject_subtypes_humanoids, subject_subtypes_concepts, emojis, custom_outfit):
-        generatedpromptlist = build_dynamic_prompt(insanitylevel, subject, artist, imagetype, False, '', '', '', 1, '', custom_subject, True, '', imagemodechance, humanoids_gender, subject_subtype_objects, subject_subtypes_humanoids, subject_subtypes_concepts, False, emojis, seed, custom_outfit, True)
-        generatedprompt = generatedpromptlist[0]
-        prompt_g = generatedpromptlist[1]
-        prompt_l = generatedpromptlist[2]
-        return (generatedprompt, prompt_g, prompt_l)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

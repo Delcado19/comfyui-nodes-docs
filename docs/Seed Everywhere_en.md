@@ -28,15 +28,6 @@ The SeedEverywhere node aims to ensure the reproducibility of random operations 
 - Infra type: CPU
 
 # Source code
-```
-class SeedEverywhere(Base):
+[View source repository on GitHub](https://github.com/chrisgoringe/cg-use-everywhere)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'seed': ('INT', {'default': 0, 'min': 0, 'max': 18446744073709551615})}, 'hidden': {'id': 'UNIQUE_ID'}}
-    RETURN_TYPES = ('INT',)
-
-    def func(self, seed, id):
-        message(id, seed)
-        return (seed,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -67,20 +67,6 @@ This node configures and generates settings for power fractal noise, a procedura
 - Infra type: CPU
 
 # Source code
-```
-class PPFNoiseSettings:
+[View source repository on GitHub](https://github.com/WASasquatch/PowerNoiseSuite)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'X': ('FLOAT', {'default': 0, 'max': 99999999, 'min': -99999999, 'step': 0.01}), 'Y': ('FLOAT', {'default': 0, 'max': 99999999, 'min': -99999999, 'step': 0.01}), 'Z': ('FLOAT', {'default': 0, 'max': 99999999, 'min': -99999999, 'step': 0.01}), 'evolution': ('FLOAT', {'default': 0.0, 'max': 1.0, 'min': 0.0, 'step': 0.01}), 'frame': ('INT', {'default': 0, 'max': 99999999, 'min': 0, 'step': 1}), 'scale': ('FLOAT', {'default': 5, 'max': 2048, 'min': 2, 'step': 0.01}), 'octaves': ('INT', {'default': 8, 'max': 8, 'min': 1, 'step': 1}), 'persistence': ('FLOAT', {'default': 1.5, 'max': 23.0, 'min': 0.01, 'step': 0.01}), 'lacunarity': ('FLOAT', {'default': 2.0, 'max': 99.0, 'min': 0.01, 'step': 0.01}), 'exponent': ('FLOAT', {'default': 4.0, 'max': 38.0, 'min': 0.01, 'step': 0.01}), 'brightness': ('FLOAT', {'default': 0.0, 'max': 1.0, 'min': -1.0, 'step': 0.01}), 'contrast': ('FLOAT', {'default': 0.0, 'max': 1.0, 'min': -1.0, 'step': 0.01})}}
-    RETURN_TYPES = ('PPF_SETTINGS',)
-    RETURN_NAMES = ('ppf_settings',)
-    FUNCTION = 'power_fractal_settings'
-    CATEGORY = 'Power Noise Suite/Sampling/Settings'
-
-    def power_fractal_settings(self, X, Y, Z, evolution, frame, scale, octaves, persistence, lacunarity, exponent, brightness, contrast):
-        return ({'X': X, 'Y': Y, 'Z': Z, 'evolution': evolution, 'frame': frame, 'scale': scale, 'octaves': octaves, 'persistence': persistence, 'lacunarity': lacunarity, 'exponent': exponent, 'brightness': brightness, 'contrast': contrast},)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

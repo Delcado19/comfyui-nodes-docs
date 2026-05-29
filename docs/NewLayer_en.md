@@ -59,28 +59,6 @@ The NewLayer node is designed to manipulate and combine image layers based on sp
 - Infra type: CPU
 
 # Source code
-```
-class NewLayer:
+[View source repository on GitHub](https://github.com/shadowcz007/comfyui-mixlab-nodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'x': ('INT', {'default': 0, 'min': -1024, 'max': 8192, 'step': 1, 'display': 'number'}), 'y': ('INT', {'default': 0, 'min': -1024, 'max': 8192, 'step': 1, 'display': 'number'}), 'width': ('INT', {'default': 512, 'min': 1, 'max': 8192, 'step': 1, 'display': 'number'}), 'height': ('INT', {'default': 512, 'min': 1, 'max': 8192, 'step': 1, 'display': 'number'}), 'z_index': ('INT', {'default': 0, 'min': 0, 'max': 100, 'step': 1, 'display': 'number'}), 'scale_option': (['width', 'height', 'overall'],), 'image': ('IMAGE',)}, 'optional': {'mask': ('MASK', {'default': None}), 'layers': ('LAYER', {'default': None}), 'canvas': ('IMAGE', {'default': None})}}
-    RETURN_TYPES = ('LAYER',)
-    RETURN_NAMES = ('layers',)
-    FUNCTION = 'run'
-    CATEGORY = '♾️Mixlab/Layer'
-    INPUT_IS_LIST = True
-    OUTPUT_IS_LIST = (True,)
-
-    def run(self, x, y, width, height, z_index, scale_option, image, mask=None, layers=None, canvas=None):
-        if mask == None:
-            im = tensor2pil(image[0])
-            mask = im.convert('L')
-            mask = pil2tensor(mask)
-        else:
-            mask = mask[0]
-        layer_n = [{'x': x[0], 'y': y[0], 'width': width[0], 'height': height[0], 'z_index': z_index[0], 'scale_option': scale_option[0], 'image': image[0], 'mask': mask}]
-        if layers != None:
-            layer_n = layer_n + layers
-        return (layer_n,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

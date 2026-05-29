@@ -23,16 +23,6 @@ This node extracts the amplitude from the sinusoidal curve, providing a measure 
 - Infra type: CPU
 
 # Source code
-```
-class KfSinusoidalGetAmplitude:
-    CATEGORY = CATEGORY
-    FUNCTION = 'main'
-    RETURN_TYPES = ('FLOAT',)
+[View source repository on GitHub](https://github.com/dmarx/ComfyUI-Keyframed)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'curve': ('SINUSOIDAL_CURVE', {'forceInput': True})}}
-
-    def main(self, curve):
-        return (curve.amplitude,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -63,19 +63,6 @@ CR_ModuleInput is a node for processing and handling module input data. It plays
 - Infra type: CPU
 
 # Source code
-```
-class CR_ModuleInput:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'pipe': ('PIPE_LINE',)}}
-    RETURN_TYPES = ('PIPE_LINE', 'MODEL', 'CONDITIONING', 'CONDITIONING', 'LATENT', 'VAE', 'CLIP', 'CONTROL_NET', 'IMAGE', 'INT', 'STRING')
-    RETURN_NAMES = ('pipe', 'model', 'pos', 'neg', 'latent', 'vae', 'clip', 'controlnet', 'image', 'seed', 'show_help')
-    FUNCTION = 'flush'
-    CATEGORY = icons.get('Comfyroll/Pipe/Module')
-
-    def flush(self, pipe):
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Pipe-Nodes#cr-module-input'
-        (model, pos, neg, latent, vae, clip, controlnet, image, seed) = pipe
-        return (pipe, model, pos, neg, latent, vae, clip, controlnet, image, seed, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

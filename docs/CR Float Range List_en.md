@@ -59,48 +59,6 @@ The CR_FloatRangeList node is designed to generate a list of floating-point numb
 - Infra type: CPU
 
 # Source code
-```
-class CR_FloatRangeList:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        operations = ['none', 'sin', 'cos', 'tan']
-        return {'required': {'start': ('FLOAT', {'default': 0.0, 'min': -99999.99, 'max': 99999.99, 'step': 0.01}), 'end': ('FLOAT', {'default': 1.0, 'min': -99999.99, 'max': 99999.99, 'step': 0.01}), 'step': ('FLOAT', {'default': 1.0, 'min': -99999.99, 'max': 99999.99, 'step': 0.01}), 'operation': (operations,), 'decimal_places': ('INT', {'default': 2, 'min': 0, 'max': 10}), 'ignore_first_value': ('BOOLEAN', {'default': True}), 'max_values_per_loop': ('INT', {'default': 128, 'min': 1, 'max': 99999}), 'loops': ('INT', {'default': 1, 'min': 1, 'max': 999}), 'ping_pong': ('BOOLEAN', {'default': False})}}
-    RETURN_TYPES = ('FLOAT', 'STRING')
-    RETURN_NAMES = ('FLOAT', 'show_help')
-    OUTPUT_IS_LIST = (True, False)
-    FUNCTION = 'make_range'
-    CATEGORY = icons.get('Comfyroll/List')
-
-    def make_range(self, start, end, step, max_values_per_loop, operation, decimal_places, ignore_first_value, loops, ping_pong):
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/List-Nodes#cr-float-range-list'
-        range_values = list()
-        for i in range(loops):
-            if end < start and step > 0:
-                step = -step
-            current_range = list(np.arange(start, end + step, step))
-            if operation == 'sin':
-                current_range = [math.sin(value) for value in current_range]
-            elif operation == 'cos':
-                current_range = [math.cos(value) for value in current_range]
-            elif operation == 'tan':
-                current_range = [math.tan(value) for value in current_range]
-            current_range = [round(value, decimal_places) for value in current_range]
-            if ping_pong:
-                if i % 2 == 1:
-                    if ignore_first_value:
-                        current_range = current_range[:-1]
-                    current_range = current_range[:max_values_per_loop]
-                    range_values += reversed(current_range)
-                else:
-                    if ignore_first_value:
-                        current_range = current_range[1:]
-                    current_range = current_range[:max_values_per_loop]
-                    range_values += current_range
-            else:
-                if ignore_first_value:
-                    current_range = current_range[1:]
-                current_range = current_range[:max_values_per_loop]
-                range_values += current_range
-        return (range_values, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

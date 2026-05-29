@@ -27,34 +27,6 @@ The `image_to_mask` method is designed to extract specific color channels from a
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Image_To_Mask:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'images': ('IMAGE',), 'channel': (['alpha', 'red', 'green', 'blue'],)}}
-    CATEGORY = 'WAS Suite/Image/Masking'
-    RETURN_TYPES = ('MASK',)
-    RETURN_NAMES = ('MASKS',)
-    FUNCTION = 'image_to_mask'
-
-    def image_to_mask(self, images, channel):
-        mask_images = []
-        for image in images:
-            image = tensor2pil(image).convert('RGBA')
-            (r, g, b, a) = image.split()
-            if channel == 'red':
-                channel_image = r
-            elif channel == 'green':
-                channel_image = g
-            elif channel == 'blue':
-                channel_image = b
-            elif channel == 'alpha':
-                channel_image = a
-            mask = torch.from_numpy(np.array(channel_image.convert('L')).astype(np.float32) / 255.0)
-            mask_images.append(mask)
-        return (torch.cat(mask_images, dim=0),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

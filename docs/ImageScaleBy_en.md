@@ -31,22 +31,6 @@ The ImageScaleBy node aims to improve the resolution of an input image by applyi
 - Infra type: CPU
 
 # Source code
-```
-class ImageScaleBy:
-    upscale_methods = ['nearest-exact', 'bilinear', 'area', 'bicubic', 'lanczos']
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'image': ('IMAGE',), 'upscale_method': (s.upscale_methods,), 'scale_by': ('FLOAT', {'default': 1.0, 'min': 0.01, 'max': 8.0, 'step': 0.01})}}
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'upscale'
-    CATEGORY = 'image/upscaling'
-
-    def upscale(self, image, upscale_method, scale_by):
-        samples = image.movedim(-1, 1)
-        width = round(samples.shape[3] * scale_by)
-        height = round(samples.shape[2] * scale_by)
-        s = comfy.utils.common_upscale(samples, width, height, upscale_method, 'disabled')
-        s = s.movedim(1, -1)
-        return (s,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -28,49 +28,6 @@ This node is designed to extract and process text prompts from a specified file,
 - Infra type: CPU
 
 # Source code
-```
-class LoadSinglePromptFromFile:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Inspire-Pack)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        global prompts_path
-        try:
-            prompt_files = []
-            for (root, dirs, files) in os.walk(prompts_path):
-                for file in files:
-                    if file.endswith('.txt'):
-                        file_path = os.path.join(root, file)
-                        rel_path = os.path.relpath(file_path, prompts_path)
-                        prompt_files.append(rel_path)
-        except Exception:
-            prompt_files = []
-        return {'required': {'prompt_file': (prompt_files,), 'index': ('INT', {'default': 0, 'min': 0, 'max': 18446744073709551615})}}
-    RETURN_TYPES = ('ZIPPED_PROMPT',)
-    OUTPUT_IS_LIST = (True,)
-    FUNCTION = 'doit'
-    CATEGORY = 'InspirePack/Prompt'
-
-    def doit(self, prompt_file, index):
-        prompt_path = os.path.join(prompts_path, prompt_file)
-        prompts = []
-        try:
-            with open(prompt_path, 'r', encoding='utf-8') as file:
-                prompt_data = file.read()
-                prompt_list = re.split('\\n\\s*-+\\s*\\n', prompt_data)
-                try:
-                    prompt = prompt_list[index]
-                except Exception:
-                    prompt = prompt_list[-1]
-                pattern = 'positive:(.*?)(?:\\n*|$)negative:(.*)'
-                matches = re.search(pattern, prompt, re.DOTALL)
-                if matches:
-                    positive_text = matches.group(1).strip()
-                    negative_text = matches.group(2).strip()
-                    result_tuple = (positive_text, negative_text, prompt_file)
-                    prompts.append(result_tuple)
-                else:
-                    print(f"[WARN] LoadPromptsFromFile: invalid prompt format in '{prompt_file}'")
-        except Exception as e:
-            print(f"[ERROR] LoadPromptsFromFile: an error occurred while processing '{prompt_file}': {str(e)}")
-        return (prompts,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

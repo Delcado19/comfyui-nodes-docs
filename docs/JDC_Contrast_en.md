@@ -32,28 +32,6 @@ This node aims to enhance visual appeal by adjusting image contrast and brightne
 - Infra type: CPU
 
 # Source code
-```
-class ImageContrast:
+[View source repository on GitHub](https://github.com/Jordach/comfy-plasma)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'IMAGE': ('IMAGE',), 'contrast': ('FLOAT', {'default': 1, 'min': 0, 'max': 10, 'step': 0.01}), 'brightness': ('FLOAT', {'default': 1, 'min': 0, 'max': 10, 'step': 0.01})}}
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'process_image'
-    CATEGORY = 'image/postprocessing'
-
-    def process_image(self, IMAGE, contrast, brightness):
-        cimg = conv_tensor_pil(IMAGE)
-        (w, h) = cimg.size
-        pbar = comfy.utils.ProgressBar(2)
-        step = 0
-        cnt = ImageEnhance.Contrast(cimg)
-        cimg = cnt.enhance(contrast)
-        step += 1
-        pbar.update_absolute(step, h)
-        brt = ImageEnhance.Brightness(cimg)
-        cimg = brt.enhance(brightness)
-        step += 1
-        pbar.update_absolute(step, h)
-        return conv_pil_tensor(cimg)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

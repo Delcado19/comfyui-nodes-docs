@@ -28,21 +28,7 @@ The Scheduler Selector node aims to simplify the process of selecting from a pre
     - [KSampler](../../Comfy/Nodes/KSampler.md)
     - [KSamplerAdvanced](../../Comfy/Nodes/KSamplerAdvanced.md)
 
-
-
 ## Source code
-```python
-class SchedulerSelector:
-    CATEGORY = 'ImageSaverTools/utils'
-    RETURN_TYPES = (comfy.samplers.KSampler.SCHEDULERS,)
-    RETURN_NAMES = ("scheduler",)
-    FUNCTION = "get_names"
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {"required": {"scheduler": (comfy.samplers.KSampler.SCHEDULERS,)}}
-
-    def get_names(self, scheduler):
-        return (scheduler,)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

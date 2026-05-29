@@ -28,25 +28,6 @@ WAS_Image_Threshold node is designed to process images by applying a threshold, 
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Image_Threshold:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'image': ('IMAGE',), 'threshold': ('FLOAT', {'default': 0.5, 'min': 0.0, 'max': 1.0, 'step': 0.01})}}
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'image_threshold'
-    CATEGORY = 'WAS Suite/Image/Process'
-
-    def image_threshold(self, image, threshold=0.5):
-        return (pil2tensor(self.apply_threshold(tensor2pil(image), threshold)),)
-
-    def apply_threshold(self, input_image, threshold=0.5):
-        grayscale_image = input_image.convert('L')
-        threshold_value = int(threshold * 255)
-        thresholded_image = grayscale_image.point(lambda x: 255 if x >= threshold_value else 0, mode='L')
-        return thresholded_image
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

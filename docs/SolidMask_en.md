@@ -31,17 +31,6 @@ The SolidMask node generates a solid mask with a uniform value across all dimens
 - Infra type: CPU
 
 # Source code
-```
-class SolidMask:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'value': ('FLOAT', {'default': 1.0, 'min': 0.0, 'max': 1.0, 'step': 0.01}), 'width': ('INT', {'default': 512, 'min': 1, 'max': MAX_RESOLUTION, 'step': 1}), 'height': ('INT', {'default': 512, 'min': 1, 'max': MAX_RESOLUTION, 'step': 1})}}
-    CATEGORY = 'mask'
-    RETURN_TYPES = ('MASK',)
-    FUNCTION = 'solid'
-
-    def solid(self, value, width, height):
-        out = torch.full((1, height, width), value, dtype=torch.float32, device='cpu')
-        return (out,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

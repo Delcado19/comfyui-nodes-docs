@@ -37,28 +37,7 @@ The DepthAnythingPreprocessor node is designed to preprocess images for depth es
     - [ControlNetApplyAdvanced](../../Comfy/Nodes/ControlNetApplyAdvanced.md)
     - [ACN_AdvancedControlNetApply](../../ComfyUI-Advanced-ControlNet/Nodes/ACN_AdvancedControlNetApply.md)
 
-
-
 ## Source code
-```python
-class Depth_Anything_Preprocessor:
-    @classmethod
-    def INPUT_TYPES(s):
-        return create_node_input_types(
-            ckpt_name=(["depth_anything_vitl14.pth", "depth_anything_vitb14.pth", "depth_anything_vits14.pth"], {"default": "depth_anything_vitl14.pth"})
-        )
+[View source repository on GitHub](https://github.com/isl-org/DPT)
 
-    RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "execute"
-
-    CATEGORY = "ControlNet Preprocessors/Normal and Depth Estimators"
-
-    def execute(self, image, ckpt_name, resolution=512, **kwargs):
-        from controlnet_aux.depth_anything import DepthAnythingDetector
-
-        model = DepthAnythingDetector.from_pretrained(filename=ckpt_name).to(model_management.get_torch_device())
-        out = common_annotator_call(model, image, resolution=resolution)
-        del model
-        return (out, )
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

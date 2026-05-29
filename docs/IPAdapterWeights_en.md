@@ -40,49 +40,6 @@ The `weights` method of the IPAdapterWeights node is designed to process and int
 - Infra type: CPU
 
 # Source code
-```
-class IPAdapterWeights:
+[View source repository on GitHub](https://github.com/cubiq/ComfyUI_IPAdapter_plus)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'weights': ('STRING', {'default': '1.0', 'multiline': True}), 'timing': (['custom', 'linear', 'ease_in_out', 'ease_in', 'ease_out', 'reverse_in_out', 'random'],), 'frames': ('INT', {'default': 0, 'min': 0, 'max': 9999, 'step': 1}), 'start_frame': ('INT', {'default': 0, 'min': 0, 'max': 9999, 'step': 1}), 'end_frame': ('INT', {'default': 9999, 'min': 0, 'max': 9999, 'step': 1})}}
-    RETURN_TYPES = ('FLOAT',)
-    FUNCTION = 'weights'
-    CATEGORY = 'ipadapter/utils'
-
-    def weights(self, weights, timing, frames, start_frame, end_frame):
-        import random
-        weights = weights.replace('\n', ',')
-        weights = [float(weight) for weight in weights.split(',') if weight.strip() != '']
-        if timing != 'custom':
-            start = 0.0
-            end = 1.0
-            if len(weights) > 0:
-                start = weights[0]
-                end = weights[-1]
-            weights = []
-            end_frame = min(end_frame, frames)
-            duration = end_frame - start_frame
-            if start_frame > 0:
-                weights.extend([start] * start_frame)
-            for i in range(duration):
-                n = duration - 1
-                if timing == 'linear':
-                    weights.append(start + (end - start) * i / n)
-                elif timing == 'ease_in_out':
-                    weights.append(start + (end - start) * (1 - math.cos(i / n * math.pi)) / 2)
-                elif timing == 'ease_in':
-                    weights.append(start + (end - start) * math.sin(i / n * math.pi / 2))
-                elif timing == 'ease_out':
-                    weights.append(start + (end - start) * (1 - math.cos(i / n * math.pi / 2)))
-                elif timing == 'reverse_in_out':
-                    weights.append(start + (end - start) * (1 - math.sin((1 - i / n) * math.pi / 2)))
-                elif timing == 'random':
-                    weights.append(random.uniform(start, end))
-            weights[-1] = end if timing != 'random' else weights[-1]
-            if end_frame < frames:
-                weights.extend([end] * (frames - end_frame))
-        if len(weights) == 0:
-            weights = [0.0]
-        return (weights,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

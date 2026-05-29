@@ -36,22 +36,6 @@ The 'create_options' method of the ViewAsContextOptionsNode class is designed to
 - Infra type: CPU
 
 # Source code
-```
-class ViewAsContextOptionsNode:
+[View source repository on GitHub](https://github.com/Kosinkadink/ComfyUI-AnimateDiff-Evolved)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'view_opts_req': ('VIEW_OPTS',)}, 'optional': {'start_percent': ('FLOAT', {'default': 0.0, 'min': 0.0, 'max': 1.0, 'step': 0.001}), 'guarantee_steps': ('INT', {'default': 1, 'min': 0, 'max': BIGMAX}), 'prev_context': ('CONTEXT_OPTIONS',)}}
-    RETURN_TYPES = ('CONTEXT_OPTIONS',)
-    RETURN_NAMES = ('CONTEXT_OPTS',)
-    CATEGORY = 'Animate Diff 🎭🅐🅓/context opts'
-    FUNCTION = 'create_options'
-
-    def create_options(self, view_opts_req: ContextOptions, start_percent: float=0.0, guarantee_steps: int=1, prev_context: ContextOptionsGroup=None):
-        if prev_context is None:
-            prev_context = ContextOptionsGroup()
-        prev_context = prev_context.clone()
-        context_options = ContextOptions(context_schedule=ContextSchedules.VIEW_AS_CONTEXT, start_percent=start_percent, guarantee_steps=guarantee_steps, view_options=view_opts_req, use_on_equal_length=True)
-        prev_context.add(context_options)
-        return (prev_context,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

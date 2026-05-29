@@ -36,24 +36,6 @@ The CR_BatchProcessSwitch node is designed to provide a mechanism for switching 
 - Infra type: CPU
 
 # Source code
-```
-class CR_BatchProcessSwitch:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'Input': (['image', 'image batch'],)}, 'optional': {'image': ('IMAGE',), 'image_batch': ('IMAGE',)}}
-    RETURN_TYPES = ('IMAGE', 'STRING')
-    RETURN_NAMES = ('IMAGE', 'show_help')
-    FUNCTION = 'switch'
-    CATEGORY = icons.get('Comfyroll/Utils/Process')
-
-    def switch(self, Input, image=None, image_batch=None):
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Process-Nodes#cr-batch-process-switch'
-        if Input == 'image':
-            return (image, show_help)
-        else:
-            return (image_batch, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

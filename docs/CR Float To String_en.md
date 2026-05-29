@@ -27,18 +27,6 @@ The CR_FloatToString node converts a floating-point number to its string represe
 - Infra type: CPU
 
 # Source code
-```
-class CR_FloatToString:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'float_': ('FLOAT', {'default': 0.0, 'min': 0.0, 'max': 1000000.0, 'forceInput': True})}}
-    RETURN_TYPES = ('STRING', 'STRING')
-    RETURN_NAMES = ('STRING', 'show_help')
-    FUNCTION = 'convert'
-    CATEGORY = icons.get('Comfyroll/Utils/Conversion')
-
-    def convert(self, float_):
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Conversion-Nodes#cr-float-to-string'
-        return (f'{float_}', show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

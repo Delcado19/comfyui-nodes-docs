@@ -36,21 +36,6 @@ The SweetspotStretchPENode class is designed to adjust the peak effect (PE) of a
 - Infra type: CPU
 
 # Source code
-```
-class SweetspotStretchPENode:
+[View source repository on GitHub](https://github.com/Kosinkadink/ComfyUI-AnimateDiff-Evolved)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'sweetspot': ('INT', {'default': 16, 'min': 0, 'max': BIGMAX}), 'new_sweetspot': ('INT', {'default': 16, 'min': 0, 'max': BIGMAX}), 'print_adjustment': ('BOOLEAN', {'default': False})}, 'optional': {'prev_pe_adjust': ('PE_ADJUST',)}}
-    RETURN_TYPES = ('PE_ADJUST',)
-    CATEGORY = 'Animate Diff 🎭🅐🅓/ad settings/pe adjust'
-    FUNCTION = 'get_pe_adjust'
-
-    def get_pe_adjust(self, sweetspot: int, new_sweetspot: int, print_adjustment: bool, prev_pe_adjust: AdjustGroup=None):
-        if prev_pe_adjust is None:
-            prev_pe_adjust = AdjustGroup()
-        prev_pe_adjust = prev_pe_adjust.clone()
-        adjust = AdjustPE(cap_initial_pe_length=sweetspot, interpolate_pe_to_length=new_sweetspot, print_adjustment=print_adjustment)
-        prev_pe_adjust.add(adjust)
-        return (prev_pe_adjust,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

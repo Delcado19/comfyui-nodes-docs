@@ -23,19 +23,6 @@ WAS_Boolean node is a basic component in logical operations, designed to process
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Boolean:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'boolean_number': ('FLOAT', {'default': 1, 'min': 0, 'max': 1, 'step': 1})}}
-    RETURN_TYPES = ('NUMBER', 'INT')
-    FUNCTION = 'return_boolean'
-    CATEGORY = 'WAS Suite/Logic'
-
-    def return_boolean(self, boolean_number=True):
-        return (int(round(boolean_number)), int(round(boolean_number)))
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

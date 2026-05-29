@@ -27,22 +27,6 @@ The ImageSize node is designed to extract and provide the dimensions of an input
 - Infra type: CPU
 
 # Source code
-```
-class ImageSize:
+[View source repository on GitHub](https://github.com/Ryuukeisyou/comfyui_face_parsing)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'image': ('IMAGE', {})}}
-    RETURN_TYPES = ('INT', 'INT')
-    RETURN_NAMES = ('width', 'height')
-    FUNCTION = 'main'
-    CATEGORY = 'face_parsing'
-
-    def main(self, image: Tensor):
-        w = image.shape[2]
-        h = image.shape[1]
-        return (w, h)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

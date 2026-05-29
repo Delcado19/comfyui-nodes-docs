@@ -27,39 +27,6 @@ This node class is designed to process images and compute the greatest common di
 - Infra type: CPU
 
 # Source code
-```
-class imageRatio:
+[View source repository on GitHub](https://github.com/yolain/ComfyUI-Easy-Use)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'image': ('IMAGE',)}}
-    RETURN_TYPES = ('INT', 'INT', 'FLOAT', 'FLOAT')
-    RETURN_NAMES = ('width_ratio_int', 'height_ratio_int', 'width_ratio_float', 'height_ratio_float')
-    OUTPUT_NODE = True
-    FUNCTION = 'image_ratio'
-    CATEGORY = 'EasyUse/Image'
-
-    def gcf(self, a, b):
-        while b:
-            (a, b) = (b, a % b)
-        return a
-
-    def image_ratio(self, image):
-        (_, raw_H, raw_W, _) = image.shape
-        width = raw_W
-        height = raw_H
-        ratio = self.gcf(width, height)
-        if width is not None and height is not None:
-            width_ratio = width // ratio
-            height_ratio = height // ratio
-            result = (width_ratio, height_ratio, width_ratio, height_ratio)
-        else:
-            width_ratio = 0
-            height_ratio = 0
-            result = (0, 0, 0.0, 0.0)
-        text = f'Image Ratio is {str(width_ratio)}:{str(height_ratio)}'
-        return {'ui': {'text': text}, 'result': result}
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

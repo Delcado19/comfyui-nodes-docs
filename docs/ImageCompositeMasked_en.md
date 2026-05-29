@@ -44,18 +44,6 @@ The 'composite' method of the ImageCompositeMasked node is designed to seamlessl
 - Infra type: GPU
 
 # Source code
-```
-class ImageCompositeMasked:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'destination': ('IMAGE',), 'source': ('IMAGE',), 'x': ('INT', {'default': 0, 'min': 0, 'max': MAX_RESOLUTION, 'step': 1}), 'y': ('INT', {'default': 0, 'min': 0, 'max': MAX_RESOLUTION, 'step': 1}), 'resize_source': ('BOOLEAN', {'default': False})}, 'optional': {'mask': ('MASK',)}}
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'composite'
-    CATEGORY = 'image'
-
-    def composite(self, destination, source, x, y, resize_source, mask=None):
-        destination = destination.clone().movedim(-1, 1)
-        output = composite(destination, source.movedim(-1, 1), x, y, mask, 1, resize_source).movedim(1, -1)
-        return (output,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

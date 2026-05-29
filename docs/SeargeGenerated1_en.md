@@ -35,20 +35,6 @@ This node acts as a multiplexer, routing input parameters to specific operations
 - Infra type: CPU
 
 # Source code
-```
-class SeargeGenerated1:
+[View source repository on GitHub](https://github.com/jobunk/SeargeSDXL)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'parameters': ('PARAMETERS',)}}
-    RETURN_TYPES = ('PARAMETERS', 'INT', 'INT', 'INT')
-    RETURN_NAMES = ('parameters', 'operation_selector', 'prompt_style_selector', 'prompt_style_group')
-    FUNCTION = 'demux'
-    CATEGORY = 'Searge/_deprecated_/UI/Generated'
-
-    def demux(self, parameters):
-        operation_selector = parameters['operation_selector']
-        prompt_style_selector = parameters['prompt_style_selector']
-        prompt_style_group = parameters['prompt_style_group']
-        return (parameters, operation_selector, prompt_style_selector, prompt_style_group)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -23,23 +23,6 @@ The 'RemoveImageFromSEGS' node is designed to process segmented data by removing
 - Infra type: CPU
 
 # Source code
-```
-class RemoveImageFromSEGS:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'segs': ('SEGS',)}}
-    RETURN_TYPES = ('SEGS',)
-    FUNCTION = 'doit'
-    CATEGORY = 'ImpactPack/Util'
-
-    def doit(self, segs):
-        results = []
-        if len(segs[1]) > 0:
-            for seg in segs[1]:
-                new_seg = SEG(None, seg.cropped_mask, seg.confidence, seg.crop_region, seg.bbox, seg.label, seg.control_net_wrapper)
-                results.append(new_seg)
-            return ((segs[0], results),)
-        else:
-            return (segs,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

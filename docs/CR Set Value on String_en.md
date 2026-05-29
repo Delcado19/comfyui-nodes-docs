@@ -44,24 +44,6 @@ CR_SetValueOnString is a node that replaces parts of a string based on the prese
 - Infra type: CPU
 
 # Source code
-```
-class CR_SetValueOnString:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'text': ('STRING', {'multiline': False, 'default': '', 'forceInput': True})}, 'optional': {'test_string': ('STRING', {'multiline': False, 'default': ''}), 'value_if_true': ('STRING', {'multiline': False, 'default': ''}), 'value_if_false': ('STRING', {'multiline': False, 'default': ''})}}
-    RETURN_TYPES = (any_type, 'BOOLEAN', 'STRING')
-    RETURN_NAMES = ('STRING', 'BOOLEAN', 'show_help')
-    FUNCTION = 'replace_text'
-    CATEGORY = icons.get('Comfyroll/Utils/Conditional')
-
-    def replace_text(self, text, test_string, value_if_true, value_if_false):
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/List-Nodes#cr-set-value-on-string'
-        if test_string in text:
-            text_out = value_if_true
-            bool_out = True
-        else:
-            text_out = value_if_false
-            bool_out = False
-        return (text_out, bool_out, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

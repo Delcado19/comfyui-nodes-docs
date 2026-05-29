@@ -68,44 +68,6 @@ This node integrates the process of combining text inputs with latent representa
 - Infra type: GPU
 
 # Source code
-```
-class latentCompositeMaskedWithCond:
+[View source repository on GitHub](https://github.com/yolain/ComfyUI-Easy-Use)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'pipe': ('PIPE_LINE',), 'text_combine': ('LIST',), 'source_latent': ('LATENT',), 'source_mask': ('MASK',), 'destination_mask': ('MASK',), 'text_combine_mode': (['add', 'replace', 'cover'], {'default': 'add'}), 'replace_text': ('STRING', {'default': ''})}, 'hidden': {'prompt': 'PROMPT', 'extra_pnginfo': 'EXTRA_PNGINFO', 'my_unique_id': 'UNIQUE_ID'}}
-    OUTPUT_IS_LIST = (False, False, True)
-    RETURN_TYPES = ('PIPE_LINE', 'LATENT', 'CONDITIONING')
-    RETURN_NAMES = ('pipe', 'latent', 'conditioning')
-    FUNCTION = 'run'
-    OUTPUT_NODE = True
-    CATEGORY = 'EasyUse/Latent'
-
-    def run(self, pipe, text_combine, source_latent, source_mask, destination_mask, text_combine_mode, replace_text, prompt=None, extra_pnginfo=None, my_unique_id=None):
-        positive = None
-        clip = pipe['clip']
-        destination_latent = pipe['samples']
-        conds = []
-        for text in text_combine:
-            if text_combine_mode == 'cover':
-                positive = text
-            elif text_combine_mode == 'replace' and replace_text != '':
-                positive = pipe['loader_settings']['positive'].replace(replace_text, text)
-            else:
-                positive = pipe['loader_settings']['positive'] + ',' + text
-            positive_token_normalization = pipe['loader_settings']['positive_token_normalization']
-            positive_weight_interpretation = pipe['loader_settings']['positive_weight_interpretation']
-            a1111_prompt_style = pipe['loader_settings']['a1111_prompt_style']
-            positive_cond = pipe['positive']
-            log_node_warn('正在处理提示词编码...')
-            steps = pipe['loader_settings']['steps'] if 'steps' in pipe['loader_settings'] else 1
-            positive_embeddings_final = advanced_encode(clip, positive, positive_token_normalization, positive_weight_interpretation, w_max=1.0, apply_to_pooled='enable', a1111_prompt_style=a1111_prompt_style, steps=steps)
-            (cond_1,) = ConditioningSetMask().append(positive_cond, source_mask, 'default', 1)
-            (cond_2,) = ConditioningSetMask().append(positive_embeddings_final, destination_mask, 'default', 1)
-            positive_cond = cond_1 + cond_2
-            conds.append(positive_cond)
-        (samples,) = LatentCompositeMasked().composite(destination_latent, source_latent, 0, 0, False)
-        new_pipe = {**pipe, 'samples': samples, 'loader_settings': {**pipe['loader_settings'], 'positive': positive}}
-        del pipe
-        return (new_pipe, samples, conds)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

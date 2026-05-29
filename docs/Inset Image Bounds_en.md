@@ -39,28 +39,6 @@ WAS_Inset_Image_Bounds node aims to adjust image bounds by inserting values, ens
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Inset_Image_Bounds:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(self):
-        return {'required': {'image_bounds': ('IMAGE_BOUNDS',), 'inset_left': ('INT', {'default': 64, 'min': 0, 'max': 18446744073709551615}), 'inset_right': ('INT', {'default': 64, 'min': 0, 'max': 18446744073709551615}), 'inset_top': ('INT', {'default': 64, 'min': 0, 'max': 18446744073709551615}), 'inset_bottom': ('INT', {'default': 64, 'min': 0, 'max': 18446744073709551615})}}
-    RETURN_TYPES = ('IMAGE_BOUNDS',)
-    FUNCTION = 'inset_image_bounds'
-    CATEGORY = 'WAS Suite/Image/Bound'
-
-    def inset_image_bounds(self, image_bounds, inset_left, inset_right, inset_top, inset_bottom):
-        inset_bounds = []
-        for (rmin, rmax, cmin, cmax) in image_bounds:
-            rmin += inset_top
-            rmax -= inset_bottom
-            cmin += inset_left
-            cmax -= inset_right
-            if rmin > rmax or cmin > cmax:
-                raise ValueError('Invalid insets provided. Please make sure the insets do not exceed the image bounds.')
-            inset_bounds.append((rmin, rmax, cmin, cmax))
-        return (inset_bounds,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

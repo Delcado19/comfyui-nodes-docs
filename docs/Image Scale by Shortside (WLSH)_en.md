@@ -39,28 +39,6 @@ The 'upscale' method of the WLSH_Image_Scale_By_Shortside node is designed to re
 - Infra type: CPU
 
 # Source code
-```
-class WLSH_Image_Scale_By_Shortside:
-    upscale_methods = ['nearest-exact', 'bilinear', 'area']
+[View source repository on GitHub](https://github.com/wallish77/wlsh_nodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'original': ('IMAGE',), 'upscale_method': (s.upscale_methods,), 'shortside': ('INT', {'default': 512, 'min': 32, 'max': 4096, 'step': 32})}}
-    RETURN_TYPES = ('IMAGE', 'INT', 'INT')
-    RETURN_NAMES = ('IMAGE', 'width', 'height')
-    FUNCTION = 'upscale'
-    CATEGORY = 'WLSH Nodes/upscaling'
-
-    def upscale(self, original, upscale_method, shortside):
-        old_width = original.shape[2]
-        old_height = original.shape[1]
-        old_shortside = min(old_width, old_height)
-        factor = shortside / max(1, old_shortside)
-        new_width = int(old_width * factor)
-        new_height = int(old_height * factor)
-        print('Processing image with shape: ', old_width, 'x', old_height, 'to ', new_width, 'x', new_height)
-        samples = original.movedim(-1, 1)
-        s = comfy.utils.common_upscale(samples, new_width, new_height, upscale_method, crop='disabled')
-        s = s.movedim(1, -1)
-        return (s, new_width, new_height)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

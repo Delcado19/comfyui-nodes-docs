@@ -31,27 +31,6 @@ The Blur node applies Gaussian blur to images, effectively reducing noise and sm
 - Infra type: CPU
 
 # Source code
-```
-class Blur:
+[View source repository on GitHub](https://github.com/EllangoK/ComfyUI-post-processing-nodes)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'image': ('IMAGE',), 'blur_radius': ('INT', {'default': 1, 'min': 1, 'max': 15, 'step': 1}), 'sigma': ('FLOAT', {'default': 1.0, 'min': 0.1, 'max': 10.0, 'step': 0.1})}}
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'blur'
-    CATEGORY = 'postprocessing/Filters'
-
-    def blur(self, image: torch.Tensor, blur_radius: int, sigma: float):
-        if blur_radius == 0:
-            return (image,)
-        (batch_size, height, width, channels) = image.shape
-        kernel_size = blur_radius * 2 + 1
-        kernel = gaussian_kernel(kernel_size, sigma).repeat(channels, 1, 1).unsqueeze(1)
-        image = image.permute(0, 3, 1, 2)
-        blurred = F.conv2d(image, kernel, padding=kernel_size // 2, groups=channels)
-        blurred = blurred.permute(0, 2, 3, 1)
-        return (blurred,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

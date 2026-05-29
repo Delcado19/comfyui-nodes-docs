@@ -72,50 +72,6 @@ CR_Polygons is a node for generating geometric patterns composed of hexagons or 
 - Infra type: CPU
 
 # Source code
-```
-class CR_Polygons:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        modes = ['hexagons', 'triangles']
-        return {'required': {'mode': (modes,), 'width': ('INT', {'default': 512, 'min': 64, 'max': 4096}), 'height': ('INT', {'default': 512, 'min': 64, 'max': 4096}), 'rows': ('INT', {'default': 5, 'min': 1, 'max': 512}), 'columns': ('INT', {'default': 5, 'min': 1, 'max': 512}), 'face_color': (COLORS,), 'background_color': (COLORS,), 'line_color': (COLORS,), 'line_width': ('INT', {'default': 2, 'min': 0, 'max': 512})}, 'optional': {'face_color_hex': ('STRING', {'multiline': False, 'default': '#000000'}), 'bg_color_hex': ('STRING', {'multiline': False, 'default': '#000000'}), 'line_color_hex': ('STRING', {'multiline': False, 'default': '#000000'})}}
-    RETURN_TYPES = ('IMAGE', 'STRING')
-    RETURN_NAMES = ('IMAGE', 'show_help')
-    FUNCTION = 'draw'
-    CATEGORY = icons.get('Comfyroll/Graphics/Pattern')
-
-    def draw(self, mode, width, height, rows, columns, face_color, background_color, line_color, line_width, face_color_hex='#000000', bg_color_hex='#000000', line_color_hex='#000000'):
-        if face_color == 'custom':
-            face_color = face_color_hex
-        if line_color == 'custom':
-            line_color = line_color_hex
-        if background_color == 'custom':
-            background_color = bg_color_hex
-        (fig, ax) = plt.subplots(figsize=(width / 100, height / 100))
-        fig.set_facecolor(background_color)
-        plt.xlim(0, width / 100)
-        plt.ylim(0, height / 100)
-        plt.axis('off')
-        plt.tight_layout(pad=0, w_pad=0, h_pad=0)
-        plt.autoscale(False)
-        if mode == 'hexagons':
-            vertices = 6
-        elif mode == 'triangles':
-            vertices = 3
-        cell_width = width / 100 / columns
-        cell_height = width / height * np.sqrt(3) * (height / 100) / (2 * columns)
-        for row in range(rows + 2):
-            for col in range(columns + 2):
-                x = col * cell_width
-                y = row * cell_height
-                if row % 2 == 1:
-                    x += cell_width / 2
-                hexagon = RegularPolygon((x, y), numVertices=vertices, radius=cell_width / 1.732, edgecolor=line_color, linewidth=line_width, facecolor=face_color)
-                ax.add_patch(hexagon)
-        img_buf = io.BytesIO()
-        plt.savefig(img_buf, format='png')
-        img = Image.open(img_buf)
-        image_out = pil2tensor(img.convert('RGB'))
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Pattern-Nodes#cr-polygons'
-        return (image_out, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

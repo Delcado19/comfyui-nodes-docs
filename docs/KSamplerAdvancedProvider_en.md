@@ -44,18 +44,6 @@ The KSamplerAdvancedProvider node is designed to generate advanced sampling tech
 - Infra type: GPU
 
 # Source code
-```
-class KSamplerAdvancedProvider:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'cfg': ('FLOAT', {'default': 8.0, 'min': 0.0, 'max': 100.0}), 'sampler_name': (comfy.samplers.KSampler.SAMPLERS,), 'scheduler': (comfy.samplers.KSampler.SCHEDULERS,), 'sigma_factor': ('FLOAT', {'default': 1.0, 'min': 0.0, 'max': 10.0, 'step': 0.01}), 'basic_pipe': ('BASIC_PIPE',)}, 'optional': {'sampler_opt': ('SAMPLER',)}}
-    RETURN_TYPES = ('KSAMPLER_ADVANCED',)
-    FUNCTION = 'doit'
-    CATEGORY = 'ImpactPack/Sampler'
-
-    def doit(self, cfg, sampler_name, scheduler, basic_pipe, sigma_factor=1.0, sampler_opt=None):
-        (model, _, _, positive, negative) = basic_pipe
-        sampler = KSamplerAdvancedWrapper(model, cfg, sampler_name, scheduler, positive, negative, sampler_opt=sampler_opt, sigma_factor=sigma_factor)
-        return (sampler,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

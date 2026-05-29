@@ -32,20 +32,6 @@ The 'merge' method of the ModelSubtract node aims to combine two models by subtr
 - Infra type: CPU
 
 # Source code
-```
-class ModelSubtract:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'model1': ('MODEL',), 'model2': ('MODEL',), 'multiplier': ('FLOAT', {'default': 1.0, 'min': -10.0, 'max': 10.0, 'step': 0.01})}}
-    RETURN_TYPES = ('MODEL',)
-    FUNCTION = 'merge'
-    CATEGORY = 'advanced/model_merging'
-
-    def merge(self, model1, model2, multiplier):
-        m = model1.clone()
-        kp = model2.get_key_patches('diffusion_model.')
-        for k in kp:
-            m.add_patches({k: kp[k]}, -multiplier, multiplier)
-        return (m,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

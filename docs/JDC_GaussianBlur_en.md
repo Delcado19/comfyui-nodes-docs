@@ -28,17 +28,6 @@ This node applies Gaussian blur to the image, often used to reduce noise or crea
 - Infra type: CPU
 
 # Source code
-```
-class GaussianBlur:
+[View source repository on GitHub](https://github.com/Jordach/comfy-plasma)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'IMAGE': ('IMAGE',), 'blur_radius': ('FLOAT', {'default': 1, 'min': 1, 'max': 1024, 'step': 0.01})}}
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'process_image'
-    CATEGORY = 'image/postprocessing'
-
-    def process_image(self, IMAGE, blur_radius):
-        img = conv_tensor_pil(IMAGE)
-        return conv_pil_tensor(img.filter(ImageFilter.GaussianBlur(blur_radius)))
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

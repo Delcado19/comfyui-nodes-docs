@@ -37,23 +37,6 @@ This node is specifically used to register a model as a LoRA hook, focusing on m
 - Common nodes: unknown
 
 ## Source code
-```python
-class MaskableSDModelLoaderModelOnly(MaskableSDModelLoader):
-    @classmethod
-    def INPUT_TYPES(s):
-        return {
-            "required": {
-                "model": ("MODEL",),
-                "ckpt_name": (folder_paths.get_filename_list("checkpoints"), ),
-                "strength_model": ("FLOAT", {"default": 1.0, "min": -20.0, "max": 20.0, "step": 0.01}),
-            }
-        }
-    
-    RETURN_TYPES = ("MODEL", "LORA_HOOK")
-    CATEGORY = "Animate Diff 🎭🅐🅓/conditioning/register lora hooks"
-    FUNCTION = "load_model_as_lora_model_only"
+[View source repository on GitHub](https://github.com/Kosinkadink/ComfyUI-AnimateDiff-Evolved)
 
-    def load_model_as_lora_model_only(self, model: ModelPatcher, ckpt_name: str, strength_model: float):
-        model_lora, clip_lora, lora_hook = self.load_model_as_lora(model=model, clip=None, ckpt_name=ckpt_name,
-                                                                   strength_model=strength_model, strength_clip=0)
-        return (model_lora, lora_hook)
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

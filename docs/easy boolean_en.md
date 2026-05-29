@@ -23,17 +23,6 @@ This node class encapsulates the logic for processing boolean values, enabling b
 - Infra type: CPU
 
 # Source code
-```
-class Boolean:
+[View source repository on GitHub](https://github.com/yolain/ComfyUI-Easy-Use)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'value': ('BOOLEAN', {'default': False})}}
-    RETURN_TYPES = ('BOOLEAN',)
-    RETURN_NAMES = ('boolean',)
-    FUNCTION = 'execute'
-    CATEGORY = 'EasyUse/Logic/Type'
-
-    def execute(self, value):
-        return (value,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

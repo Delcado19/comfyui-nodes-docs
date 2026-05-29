@@ -23,20 +23,6 @@ This node facilitates transferring latent data to the CPU environment, ensuring 
 - Infra type: CPU
 
 # Source code
-```
-class PPFNLatentToCPU:
+[View source repository on GitHub](https://github.com/WASasquatch/PowerNoiseSuite)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'latents': ('LATENT',)}}
-    RETURN_TYPES = ('LATENT',)
-    RETURN_NAMES = ('latents',)
-    FUNCTION = 'latent_to_cpu'
-    CATEGORY = 'Power Noise Suite/Latent/Util'
-
-    def latent_to_cpu(self, latents):
-        return ({'samples': latents['samples'].to(device='cpu')},)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

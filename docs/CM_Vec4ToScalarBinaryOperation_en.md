@@ -31,16 +31,6 @@ Vec4ToScalarBinaryOperation node is designed to perform a binary operation on tw
 - Infra type: CPU
 
 # Source code
-```
-class Vec4ToScalarBinaryOperation:
+[View source repository on GitHub](https://github.com/evanspearman/ComfyMath)
 
-    @classmethod
-    def INPUT_TYPES(cls) -> Mapping[str, Any]:
-        return {'required': {'op': (list(VEC_TO_SCALAR_BINARY_OPERATION.keys()),), 'a': DEFAULT_VEC4, 'b': DEFAULT_VEC4}}
-    RETURN_TYPES = ('FLOAT',)
-    FUNCTION = 'op'
-    CATEGORY = 'math/vec4'
-
-    def op(self, op: str, a: Vec4, b: Vec4) -> tuple[float]:
-        return (VEC_TO_SCALAR_BINARY_OPERATION[op](numpy.array(a), numpy.array(b)),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

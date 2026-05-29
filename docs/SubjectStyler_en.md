@@ -41,8 +41,7 @@ SubjectStyler node is used to dynamically apply theme styles to text prompts bas
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-# Could not find class definition, unable to automatically detect source code
-```
+[View source repository on GitHub](https://github.com/alyssaxvo/ComfyUI-Custom-Nodes)
+
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

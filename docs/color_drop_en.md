@@ -28,22 +28,6 @@ This node class processes image data by applying a color discard effect, enhanci
 - Infra type: CPU
 
 # Source code
-```
-class color_drop:
-    """
-    This node provides a simple interface to apply PixelSort blur to the output image.
-    """
+[View source repository on GitHub](https://github.com/jags111/ComfyUI_Jags_VectorMagic)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        """
-        Input Types
-        """
-        return {'required': {'images': ('IMAGE',)}, 'optional': {'number_of_colors': ('INT', {'default': 2, 'min': 1, 'max': 4000, 'step': 1})}}
-    RETURN_TYPES = ('IMAGE',)
-    RETURN_NAMES = ('Image',)
-    FUNCTION = 'flatten'
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

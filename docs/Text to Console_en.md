@@ -28,24 +28,6 @@ The WAS_Text_to_Console node is designed to output text to the console, optional
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Text_to_Console:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'text': (TEXT_TYPE, {'forceInput': True if TEXT_TYPE == 'STRING' else False}), 'label': ('STRING', {'default': f'Text Output', 'multiline': False})}}
-    RETURN_TYPES = (TEXT_TYPE,)
-    OUTPUT_NODE = True
-    FUNCTION = 'text_to_console'
-    CATEGORY = 'WAS Suite/Debug'
-
-    def text_to_console(self, text, label):
-        if label.strip() != '':
-            cstr(f'\x1b[33m{label}\x1b[0m:\n{text}\n').msg.print()
-        else:
-            cstr(f'\x1b[33mText to Console\x1b[0m:\n{text}\n').msg.print()
-        return (text,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

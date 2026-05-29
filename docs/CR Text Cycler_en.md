@@ -32,25 +32,6 @@ The CR_TextCycler node is designed to duplicate text lines a specified number of
 - Infra type: CPU
 
 # Source code
-```
-class CR_TextCycler:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'text': ('STRING', {'multiline': True, 'default': ''}), 'repeats': ('INT', {'default': 1, 'min': 1, 'max': 99999}), 'loops': ('INT', {'default': 1, 'min': 1, 'max': 99999})}}
-    RETURN_TYPES = (any_type, 'STRING')
-    RETURN_NAMES = ('STRING', 'show_text')
-    OUTPUT_IS_LIST = (True, False)
-    FUNCTION = 'cycle'
-    CATEGORY = icons.get('Comfyroll/List')
-
-    def cycle(self, text, repeats, loops=1):
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/List-Nodes#cr-text-cycler'
-        lines = text.split('\n')
-        list_out = []
-        for i in range(loops):
-            for text_item in lines:
-                for _ in range(repeats):
-                    list_out.append(text_item)
-        return (list_out, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

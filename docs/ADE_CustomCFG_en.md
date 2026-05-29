@@ -23,19 +23,6 @@ CustomCFGNode is a node for creating custom control flow graphs (CFG) for animat
 - Infra type: CPU
 
 # Source code
-```
-class CustomCFGNode:
+[View source repository on GitHub](https://github.com/Kosinkadink/ComfyUI-AnimateDiff-Evolved)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'cfg_multival': ('MULTIVAL',)}}
-    RETURN_TYPES = ('CUSTOM_CFG',)
-    CATEGORY = 'Animate Diff 🎭🅐🅓/sample settings'
-    FUNCTION = 'create_custom_cfg'
-
-    def create_custom_cfg(self, cfg_multival: Union[float, Tensor]):
-        keyframe = CustomCFGKeyframe(cfg_multival=cfg_multival)
-        cfg_custom = CustomCFGKeyframeGroup()
-        cfg_custom.add(keyframe)
-        return (cfg_custom,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -31,25 +31,6 @@ The RgbSparseCtrlPreprocessor node is designed to prepare image data for process
 - Infra type: GPU
 
 # Source code
-```
-class RgbSparseCtrlPreprocessor:
+[View source repository on GitHub](https://github.com/Kosinkadink/ComfyUI-Advanced-ControlNet)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'image': ('IMAGE',), 'vae': ('VAE',), 'latent_size': ('LATENT',)}}
-    RETURN_TYPES = ('IMAGE',)
-    RETURN_NAMES = ('proc_IMAGE',)
-    FUNCTION = 'preprocess_images'
-    CATEGORY = 'Adv-ControlNet 🛂🅐🅒🅝/SparseCtrl/preprocess'
-
-    def preprocess_images(self, vae: VAE, image: Tensor, latent_size: Tensor):
-        image = image.movedim(-1, 1)
-        image = comfy.utils.common_upscale(image, latent_size['samples'].shape[3] * 8, latent_size['samples'].shape[2] * 8, 'nearest-exact', 'center')
-        image = image.movedim(1, -1)
-        try:
-            image = vae.vae_encode_crop_pixels(image)
-        except Exception:
-            image = VAEEncode.vae_encode_crop_pixels(image)
-        encoded = vae.encode(image[:, :, :, :3])
-        return (PreprocSparseRGBWrapper(condhint=encoded),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

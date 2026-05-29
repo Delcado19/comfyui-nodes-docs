@@ -44,28 +44,6 @@ CR_TextInputSwitch4way is a utility node designed to conditionally output text b
 - Infra type: CPU
 
 # Source code
-```
-class CR_TextInputSwitch4way:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'Input': ('INT', {'default': 1, 'min': 1, 'max': 4})}, 'optional': {'text1': ('STRING', {'forceInput': True}), 'text2': ('STRING', {'forceInput': True}), 'text3': ('STRING', {'forceInput': True}), 'text4': ('STRING', {'forceInput': True})}}
-    RETURN_TYPES = ('STRING', 'STRING')
-    RETURN_NAMES = ('STRING', 'show_help')
-    FUNCTION = 'switch'
-    CATEGORY = icons.get('Comfyroll/Utils/Logic')
-
-    def switch(self, Input, text1=None, text2=None, text3=None, text4=None):
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Logic-Nodes#cr-text-input-switch-4-way'
-        if Input == 1:
-            return (text1, show_help)
-        elif Input == 2:
-            return (text2, show_help)
-        elif Input == 3:
-            return (text3, show_help)
-        else:
-            return (text4, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

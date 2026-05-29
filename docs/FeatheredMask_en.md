@@ -31,41 +31,6 @@ The FeatheredMask node processes and enhances mask images by applying a featheri
 - Infra type: CPU
 
 # Source code
-```
-class FeatheredMask:
+[View source repository on GitHub](https://github.com/shadowcz007/comfyui-mixlab-nodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'mask': ('MASK',), 'start_offset': ('INT', {'default': 1, 'min': -150, 'max': 150, 'step': 1, 'display': 'slider'}), 'feathering_weight': ('FLOAT', {'default': 0.1, 'min': 0.0, 'max': 1, 'step': 0.1, 'display': 'slider'})}}
-    RETURN_TYPES = ('MASK',)
-    FUNCTION = 'run'
-    CATEGORY = '♾️Mixlab/Mask'
-    OUTPUT_IS_LIST = (True,)
-
-    def run(self, mask, start_offset, feathering_weight):
-        (num, _, _) = mask.size()
-        masks = []
-        for i in range(num):
-            mm = mask[i]
-            image = tensor2pil(mm)
-            image = image.convert('L')
-            if start_offset > 0:
-                image = ImageOps.invert(image)
-            image_np = np.array(image)
-            edges = cv2.Canny(image_np, 30, 150)
-            for i in range(0, abs(start_offset)):
-                a = int(abs(start_offset) * 0.1 * i)
-                kernel = np.ones((a, a), np.uint8)
-                dilated_edges = cv2.dilate(edges, kernel, iterations=1)
-                smoothed_edges = cv2.GaussianBlur(dilated_edges, (5, 5), 0)
-                feathering_weight = max(0, min(feathering_weight, 1))
-                image_np = cv2.addWeighted(image_np, 1, smoothed_edges, feathering_weight, feathering_weight)
-            result_image = Image.fromarray(np.uint8(image_np))
-            result_image = result_image.convert('L')
-            if start_offset > 0:
-                result_image = ImageOps.invert(result_image)
-            result_image = result_image.convert('L')
-            mt = pil2tensor(result_image)
-            masks.append(mt)
-        return (masks,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

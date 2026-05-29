@@ -33,33 +33,7 @@ The Math_Multiply_INT_FLOAT node is specifically designed to perform multiplicat
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class Math_Multiply_INT_FLOAT:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    def init(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {
-            "required": {
-                "int_a": ("INT", {"default": 1,}),
-                "float_b": ("FLOAT", {"default": 1,}),
-            }
-        }
-
-    RETURN_TYPES = ("INT","FLOAT")
-    RETURN_NAMES = ("int_multiply","float_multiply")
-    FUNCTION = "get_multiply_int_float"
-
-    CATEGORY="JPS Nodes/Math"
-
-    def get_multiply_int_float(self,int_a,float_b):
-        int_multiply = int(int_a) * float(float_b)
-        float_multiply = int(int_a) * float(float_b)
-
-        return(int(int_multiply),float(float_multiply))
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

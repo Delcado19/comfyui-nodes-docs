@@ -28,31 +28,6 @@ This node is designed to process and collect image data, converting it into a fo
 - Infra type: CPU
 
 # Source code
-```
-class Send_To_Editor:
+[View source repository on GitHub](https://github.com/Lerc/canvas_tab)
 
-    def __init__(self):
-        self.updateTick = 1
-        pass
-
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {}, 'hidden': {'unique_id': 'UNIQUE_ID'}, 'optional': {'images': ('IMAGE',)}}
-    RETURN_TYPES = ()
-    FUNCTION = 'collect_images'
-    OUTPUT_NODE = True
-    CATEGORY = 'image'
-
-    def IS_CHANGED(self, unique_id, images):
-        self.updateTick += 1
-        return hex(self.updateTick)
-
-    def collect_images(self, unique_id, images=None):
-        collected_images = list()
-        if images is not None:
-            for image in images:
-                i = 255.0 * image.cpu().numpy()
-                img = Image.fromarray(np.clip(i, 0, 255).astype(np.uint8))
-                collected_images.append(image_to_data_url(img))
-        return {'ui': {'collected_images': collected_images}}
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -60,21 +60,6 @@ This node processes conditional inputs cumulatively, enhancing the overall condi
 - Infra type: CPU
 
 # Source code
-```
-class KfConditioningAddx10:
-    CATEGORY = CATEGORY
-    FUNCTION = 'main'
-    RETURN_TYPES = ('CONDITIONING',)
+[View source repository on GitHub](https://github.com/dmarx/ComfyUI-Keyframed)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'cond_0': ('CONDITIONING', {'forceInput': True})}, 'optional': {'cond_1': ('CONDITIONING', {'forceInput': True, 'default': 0}), 'cond_2': ('CONDITIONING', {'forceInput': True, 'default': 0}), 'cond_3': ('CONDITIONING', {'forceInput': True, 'default': 0}), 'cond_4': ('CONDITIONING', {'forceInput': True, 'default': 0}), 'cond_5': ('CONDITIONING', {'forceInput': True, 'default': 0}), 'cond_6': ('CONDITIONING', {'forceInput': True, 'default': 0}), 'cond_7': ('CONDITIONING', {'forceInput': True, 'default': 0}), 'cond_8': ('CONDITIONING', {'forceInput': True, 'default': 0}), 'cond_9': ('CONDITIONING', {'forceInput': True, 'default': 0})}}
-
-    def main(self, cond_0, **kwargs):
-        ((cond_t_out, cond_d_out),) = deepcopy(cond_0)
-        for ((cond_t, cond_d),) in kwargs.values():
-            (cond_t, cond_d) = (deepcopy(cond_t), deepcopy(cond_d))
-            cond_t_out = cond_t_out + cond_t
-            cond_d_out['pooled_output'] = cond_d_out['pooled_output'] + cond_d['pooled_output']
-        return [((cond_t_out, cond_d_out),)]
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

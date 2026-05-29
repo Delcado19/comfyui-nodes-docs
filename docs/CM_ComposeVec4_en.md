@@ -35,16 +35,6 @@ The ComposeVec4 node combines four separate float values into a Vec4 object. It 
 - Infra type: CPU
 
 # Source code
-```
-class ComposeVec4:
+[View source repository on GitHub](https://github.com/evanspearman/ComfyMath)
 
-    @classmethod
-    def INPUT_TYPES(cls) -> Mapping[str, Any]:
-        return {'required': {'x': ('FLOAT', {'default': 0.0}), 'y': ('FLOAT', {'default': 0.0}), 'z': ('FLOAT', {'default': 0.0}), 'w': ('FLOAT', {'default': 0.0})}}
-    RETURN_TYPES = ('VEC4',)
-    FUNCTION = 'op'
-    CATEGORY = 'math/conversion'
-
-    def op(self, x: float, y: float, z: float, w: float) -> tuple[Vec4]:
-        return ((x, y, z, w),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

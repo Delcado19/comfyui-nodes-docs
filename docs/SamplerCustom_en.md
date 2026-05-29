@@ -60,37 +60,6 @@ The SamplerCustom node facilitates the sampling process in generative models. It
 - Infra type: GPU
 
 # Source code
-```
-class SamplerCustom:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'model': ('MODEL',), 'add_noise': ('BOOLEAN', {'default': True}), 'noise_seed': ('INT', {'default': 0, 'min': 0, 'max': 18446744073709551615}), 'cfg': ('FLOAT', {'default': 8.0, 'min': 0.0, 'max': 100.0, 'step': 0.1, 'round': 0.01}), 'positive': ('CONDITIONING',), 'negative': ('CONDITIONING',), 'sampler': ('SAMPLER',), 'sigmas': ('SIGMAS',), 'latent_image': ('LATENT',)}}
-    RETURN_TYPES = ('LATENT', 'LATENT')
-    RETURN_NAMES = ('output', 'denoised_output')
-    FUNCTION = 'sample'
-    CATEGORY = 'sampling/custom_sampling'
-
-    def sample(self, model, add_noise, noise_seed, cfg, positive, negative, sampler, sigmas, latent_image):
-        latent = latent_image
-        latent_image = latent['samples']
-        if not add_noise:
-            noise = Noise_EmptyNoise().generate_noise(latent)
-        else:
-            noise = Noise_RandomNoise(noise_seed).generate_noise(latent)
-        noise_mask = None
-        if 'noise_mask' in latent:
-            noise_mask = latent['noise_mask']
-        x0_output = {}
-        callback = latent_preview.prepare_callback(model, sigmas.shape[-1] - 1, x0_output)
-        disable_pbar = not comfy.utils.PROGRESS_BAR_ENABLED
-        samples = comfy.sample.sample_custom(model, noise, cfg, sampler, sigmas, positive, negative, latent_image, noise_mask=noise_mask, callback=callback, disable_pbar=disable_pbar, seed=noise_seed)
-        out = latent.copy()
-        out['samples'] = samples
-        if 'x0' in x0_output:
-            out_denoised = latent.copy()
-            out_denoised['samples'] = model.model.process_latent_out(x0_output['x0'].cpu())
-        else:
-            out_denoised = out
-        return (out, out_denoised)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

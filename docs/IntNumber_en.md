@@ -35,22 +35,6 @@ This node classifies and limits the numeric input, ensuring that the output fall
 - Infra type: CPU
 
 # Source code
-```
-class IntNumber:
+[View source repository on GitHub](https://github.com/shadowcz007/comfyui-mixlab-nodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'number': ('INT', {'default': 0, 'min': -1, 'max': 18446744073709551615, 'step': 1, 'display': 'number'}), 'min_value': ('INT', {'default': 0, 'min': -18446744073709551615, 'max': 18446744073709551615, 'step': 1, 'display': 'number'}), 'max_value': ('INT', {'default': 1, 'min': -18446744073709551615, 'max': 18446744073709551615, 'step': 1, 'display': 'number'}), 'step': ('INT', {'default': 1, 'min': -18446744073709551615, 'max': 18446744073709551615, 'step': 1, 'display': 'number'})}}
-    RETURN_TYPES = ('INT',)
-    FUNCTION = 'run'
-    CATEGORY = '♾️Mixlab/Utils'
-    INPUT_IS_LIST = False
-    OUTPUT_IS_LIST = (False,)
-
-    def run(self, number, min_value, max_value, step):
-        if number < min_value:
-            number = min_value
-        elif number > max_value:
-            number = max_value
-        return (number,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

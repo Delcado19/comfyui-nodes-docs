@@ -43,29 +43,6 @@ The WAS_Search_and_Replace_Input node performs search and replace operations on 
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Search_and_Replace_Input:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'text': (TEXT_TYPE, {'forceInput': True if TEXT_TYPE == 'STRING' else False}), 'find': (TEXT_TYPE, {'forceInput': True if TEXT_TYPE == 'STRING' else False}), 'replace': (TEXT_TYPE, {'forceInput': True if TEXT_TYPE == 'STRING' else False})}}
-    RETURN_TYPES = (TEXT_TYPE, 'NUMBER', 'FLOAT', 'INT')
-    RETURN_NAMES = ('result_text', 'replacement_count_number', 'replacement_count_float', 'replacement_count_int')
-    FUNCTION = 'text_search_and_replace'
-    CATEGORY = 'WAS Suite/Text/Search'
-
-    def text_search_and_replace(self, text, find, replace):
-        count = 0
-        new_text = text
-        while find in new_text:
-            new_text = new_text.replace(find, replace, 1)
-            count += 1
-        return (new_text, count, float(count), int(count))
-
-    @classmethod
-    def IS_CHANGED(cls, **kwargs):
-        return float('NaN')
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

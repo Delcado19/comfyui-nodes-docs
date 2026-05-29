@@ -32,19 +32,6 @@ This node aims to extract and apply prompts from a predefined schedule based on 
 - Infra type: CPU
 
 # Source code
-```
-class PCPromptFromSchedule:
+[View source repository on GitHub](https://github.com/asagi4/comfyui-prompt-control)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'prompt_schedule': ('PROMPT_SCHEDULE',), 'at': ('FLOAT', {'min': 0.0, 'max': 1.0, 'step': 0.01})}, 'optional': {'tags': ('STRING', {'default': ''})}}
-    RETURN_TYPES = ('STRING',)
-    CATEGORY = 'promptcontrol'
-    FUNCTION = 'apply'
-
-    def apply(self, prompt_schedule, at, tags=''):
-        p = prompt_schedule.with_filters(tags, start=at, end=at).parsed_prompt[-1][1]
-        log.info('Prompt at %s:\n%s', at, p['prompt'])
-        log.info('LoRAs: %s', p['loras'])
-        return (p['prompt'],)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

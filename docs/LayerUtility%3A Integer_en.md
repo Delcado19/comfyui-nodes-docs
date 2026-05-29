@@ -27,21 +27,6 @@ Output an integer.
 - Infra type: CPU
 
 # Source code
-```
-class IntegerNode:
-    def __init__(self):
-        pass
-    @classmethod
-    def INPUT_TYPES(self):
-        return {"required": {
-                "int_value":("INT", {"default": 0, "min": -99999999999999999999, "max": 99999999999999999999, "step": 1}),
-            },}
+[View source repository on GitHub](https://github.com/chflame163/ComfyUI_LayerStyle)
 
-    RETURN_TYPES = ("INT",)
-    RETURN_NAMES = ("int",)
-    FUNCTION = 'integer_node'
-    CATEGORY = '😺dzNodes/LayerUtility/Data'
-
-    def integer_node(self, int_value):
-        return (int_value,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

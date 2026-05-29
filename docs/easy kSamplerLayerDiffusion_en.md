@@ -64,24 +64,6 @@ This node simplifies the sampling process in hierarchical diffusion models, focu
 - Infra type: GPU
 
 # Source code
-```
-class samplerSimpleLayerDiffusion:
+[View source repository on GitHub](https://github.com/yolain/ComfyUI-Easy-Use)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'pipe': ('PIPE_LINE',), 'image_output': (['Hide', 'Preview', 'Save', 'Hide/Save', 'Sender', 'Sender/Save'], {'default': 'Preview'}), 'link_id': ('INT', {'default': 0, 'min': 0, 'max': sys.maxsize, 'step': 1}), 'save_prefix': ('STRING', {'default': 'ComfyUI'})}, 'optional': {'model': ('MODEL',)}, 'hidden': {'prompt': 'PROMPT', 'extra_pnginfo': 'EXTRA_PNGINFO', 'my_unique_id': 'UNIQUE_ID', 'embeddingsList': (folder_paths.get_filename_list('embeddings'),)}}
-    RETURN_TYPES = ('PIPE_LINE', 'IMAGE', 'IMAGE', 'MASK')
-    RETURN_NAMES = ('pipe', 'final_image', 'original_image', 'alpha')
-    OUTPUT_NODE = True
-    OUTPUT_IS_LIST = (False, False, False, True)
-    FUNCTION = 'run'
-    CATEGORY = 'EasyUse/Sampler'
-
-    def run(self, pipe, image_output='preview', link_id=0, save_prefix='ComfyUI', model=None, prompt=None, extra_pnginfo=None, my_unique_id=None, force_full_denoise=False, disable_noise=False):
-        result = samplerFull().run(pipe, None, None, None, None, None, image_output, link_id, save_prefix, None, model, None, None, None, None, None, None, None, prompt, extra_pnginfo, my_unique_id, force_full_denoise, disable_noise)
-        pipe = result['result'][0] if 'result' in result else None
-        return {'ui': result['ui'], 'result': (pipe, pipe['images'], pipe['samp_images'], pipe['alpha'])}
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

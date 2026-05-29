@@ -23,17 +23,6 @@ The InvertMask node is designed to invert the values of a binary mask. It plays 
 - Infra type: CPU
 
 # Source code
-```
-class InvertMask:
+[View source repository on GitHub](https://github.com/storyicon/comfyui_segment_anything)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'mask': ('MASK',)}}
-    CATEGORY = 'segment_anything'
-    FUNCTION = 'main'
-    RETURN_TYPES = ('MASK',)
-
-    def main(self, mask):
-        out = 1.0 - mask
-        return (out,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

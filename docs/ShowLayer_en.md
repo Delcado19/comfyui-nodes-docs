@@ -48,18 +48,6 @@ The ShowLayer class is designed to manage and display visual elements in a compo
 - Infra type: CPU
 
 # Source code
-```
-class ShowLayer:
+[View source repository on GitHub](https://github.com/shadowcz007/comfyui-mixlab-nodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'edit': ('EDIT',), 'x': ('INT', {'default': 0, 'min': -100, 'max': 8192, 'step': 1, 'display': 'number'}), 'y': ('INT', {'default': 0, 'min': 0, 'max': 8192, 'step': 1, 'display': 'number'}), 'width': ('INT', {'default': 512, 'min': 1, 'max': 8192, 'step': 1, 'display': 'number'}), 'height': ('INT', {'default': 512, 'min': 1, 'max': 8192, 'step': 1, 'display': 'number'}), 'z_index': ('INT', {'default': 0, 'min': 0, 'max': 100, 'step': 1, 'display': 'number'}), 'scale_option': (['width', 'height', 'overall'],)}, 'optional': {'layers': ('LAYER', {'default': None})}}
-    RETURN_TYPES = ()
-    RETURN_NAMES = ()
-    FUNCTION = 'run'
-    CATEGORY = '♾️Mixlab/Layer'
-    INPUT_IS_LIST = True
-
-    def run(self, edit, x, y, width, height, z_index, scale_option, layers):
-        return ()
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

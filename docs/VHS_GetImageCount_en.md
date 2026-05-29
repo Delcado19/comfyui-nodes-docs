@@ -23,17 +23,6 @@ The GetImageCount node is designed to efficiently determine the total number of 
 - Infra type: CPU
 
 # Source code
-```
-class GetImageCount:
+[View source repository on GitHub](https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'images': ('IMAGE',)}}
-    CATEGORY = 'Video Helper Suite 🎥🅥🅗🅢/image'
-    RETURN_TYPES = ('INT',)
-    RETURN_NAMES = ('count',)
-    FUNCTION = 'count_input'
-
-    def count_input(self, images: Tensor):
-        return (images.size(0),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

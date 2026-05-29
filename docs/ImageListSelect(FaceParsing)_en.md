@@ -27,24 +27,6 @@ The ImageListSelect node can select a specific image from a list of images based
 - Infra type: CPU
 
 # Source code
-```
-class ImageListSelect:
+[View source repository on GitHub](https://github.com/Ryuukeisyou/comfyui_face_parsing)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'images': ('IMAGE', {}), 'index': ('INT', {'default': 0, 'min': 0, 'step': 1})}}
-    INPUT_IS_LIST = True
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'main'
-    CATEGORY = 'face_parsing'
-
-    def main(self, images, index):
-        index = index[0]
-        if images is Tensor:
-            return (images[index].unsqueeze(0),)
-        else:
-            return (images[index],)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

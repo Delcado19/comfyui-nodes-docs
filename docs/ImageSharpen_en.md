@@ -36,32 +36,6 @@ The Sharpen node is designed to enhance image details by applying a sharpening f
 - Infra type: CPU
 
 # Source code
-```
-class Sharpen:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'image': ('IMAGE',), 'sharpen_radius': ('INT', {'default': 1, 'min': 1, 'max': 31, 'step': 1}), 'sigma': ('FLOAT', {'default': 1.0, 'min': 0.1, 'max': 10.0, 'step': 0.01}), 'alpha': ('FLOAT', {'default': 1.0, 'min': 0.0, 'max': 5.0, 'step': 0.01})}}
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'sharpen'
-    CATEGORY = 'image/postprocessing'
-
-    def sharpen(self, image: torch.Tensor, sharpen_radius: int, sigma: float, alpha: float):
-        if sharpen_radius == 0:
-            return (image,)
-        (batch_size, height, width, channels) = image.shape
-        kernel_size = sharpen_radius * 2 + 1
-        kernel = gaussian_kernel(kernel_size, sigma, device=image.device) * -(alpha * 10)
-        center = kernel_size // 2
-        kernel[center, center] = kernel[center, center] - kernel.sum() + 1.0
-        kernel = kernel.repeat(channels, 1, 1).unsqueeze(1)
-        tensor_image = image.permute(0, 3, 1, 2)
-        tensor_image = F.pad(tensor_image, (sharpen_radius, sharpen_radius, sharpen_radius, sharpen_radius), 'reflect')
-        sharpened = F.conv2d(tensor_image, kernel, padding=center, groups=channels)[:, :, sharpen_radius:-sharpen_radius, sharpen_radius:-sharpen_radius]
-        sharpened = sharpened.permute(0, 2, 3, 1)
-        result = torch.clamp(sharpened, 0, 1)
-        return (result,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

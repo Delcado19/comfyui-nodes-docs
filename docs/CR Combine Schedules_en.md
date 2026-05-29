@@ -39,33 +39,6 @@ The CR_CombineSchedules node is designed to merge multiple animation schedules i
 - Infra type: CPU
 
 # Source code
-```
-class CR_CombineSchedules:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {}, 'optional': {'schedule_1': ('SCHEDULE',), 'schedule_2': ('SCHEDULE',), 'schedule_3': ('SCHEDULE',), 'schedule_4': ('SCHEDULE',)}}
-    RETURN_TYPES = ('SCHEDULE', 'STRING')
-    RETURN_NAMES = ('SCHEDULE', 'show_text')
-    FUNCTION = 'combine'
-    CATEGORY = icons.get('Comfyroll/Animation/Schedule')
-
-    def combine(self, schedule_1=None, schedule_2=None, schedule_3=None, schedule_4=None):
-        schedules = list()
-        schedule_text = list()
-        if schedule_1 is not None:
-            (schedules.extend([l for l in schedule_1]),)
-            (schedule_text.extend(schedule_1),)
-        if schedule_2 is not None:
-            (schedules.extend([l for l in schedule_2]),)
-            (schedule_text.extend(schedule_2),)
-        if schedule_3 is not None:
-            (schedules.extend([l for l in schedule_3]),)
-            (schedule_text.extend(schedule_3),)
-        if schedule_4 is not None:
-            (schedules.extend([l for l in schedule_4]),)
-            (schedule_text.extend(schedule_4),)
-        print(f'[Debug] CR Combine Schedules: {schedules}')
-        show_text = ''.join(str(schedule_text))
-        return (schedules, show_text)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

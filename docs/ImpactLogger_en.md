@@ -32,22 +32,6 @@ The ImpactLogger node is designed to provide logging functionality for capturing
 - Infra type: CPU
 
 # Source code
-```
-class ImpactLogger:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'data': (any_typ, '')}, 'hidden': {'prompt': 'PROMPT', 'extra_pnginfo': 'EXTRA_PNGINFO'}}
-    CATEGORY = 'ImpactPack/Debug'
-    OUTPUT_NODE = True
-    RETURN_TYPES = ()
-    FUNCTION = 'doit'
-
-    def doit(self, data, prompt, extra_pnginfo):
-        shape = ''
-        if hasattr(data, 'shape'):
-            shape = f'{data.shape} / '
-        print(f'[IMPACT LOGGER]: {shape}{data}')
-        print(f'         PROMPT: {prompt}')
-        return {}
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -52,34 +52,6 @@ The BatchUnsampler class aims to reverse engineer the noise schedule applied to 
 - Infra type: CPU
 
 # Source code
-```
-class BatchUnsampler:
-    """
-    Unsample a latent step by step back to the start of the noise schedule.
-    """
+[View source repository on GitHub](https://github.com/ttulttul/ComfyUI-Iterative-Mixer)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'model': ('MODEL',), 'sampler_name': (comfy.samplers.KSampler.SAMPLERS,), 'scheduler': (comfy.samplers.KSampler.SCHEDULERS,), 'steps': ('INT', {'default': 10000, 'min': 0, 'max': 10000}), 'start_at_step': ('INT', {'default': 0, 'min': 0, 'max': 10000}), 'end_at_step': ('INT', {'default': 10000, 'min': 1, 'max': 10000}), 'latent_image': ('LATENT',), 'normalize': ('BOOLEAN', {'default': False})}}
-    RETURN_TYPES = ('LATENT',)
-    RETURN_NAMES = ('latent_batch',)
-    FUNCTION = 'unsampler'
-    CATEGORY = 'tests'
-
-    @torch.no_grad()
-    def unsampler(self, model, sampler_name, scheduler, steps, start_at_step, end_at_step, latent_image, normalize=False):
-        """
-        Generate a batch of latents representing each z[i] in the
-        progressively noised sequence of latents stemming from the
-        source latent_image, using the model's noising schedule (sigma)
-        in reverse and applying normal noise at each step in the manner
-        prescribed by the original latent diffusion paper.
-        """
-        latent = latent_image
-        latent_image = latent['samples']
-        sigmas = calc_sigmas(model, sampler_name, scheduler, steps, start_at_step, end_at_step)
-        sigmas = sigmas.flip(0)
-        z = generate_noised_latents(latent_image, sigmas, normalize=normalize)
-        out = {'samples': z}
-        return (out,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

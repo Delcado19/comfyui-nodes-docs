@@ -39,22 +39,6 @@ The CR_XYIndex node is designed to calculate the corresponding x and y coordinat
 - Infra type: CPU
 
 # Source code
-```
-class CR_XYIndex:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        gradient_profiles = ['Lerp']
-        return {'required': {'x_columns': ('INT', {'default': 5.0, 'min': 0.0, 'max': 9999.0, 'step': 1.0}), 'y_rows': ('INT', {'default': 5.0, 'min': 0.0, 'max': 9999.0, 'step': 1.0}), 'index': ('INT', {'default': 0.0, 'min': 0.0, 'max': 9999.0, 'step': 1.0})}}
-    RETURN_TYPES = ('INT', 'INT', 'STRING')
-    RETURN_NAMES = ('x', 'y', 'show_help')
-    FUNCTION = 'index'
-    CATEGORY = icons.get('Comfyroll/XY Grid')
-
-    def index(self, x_columns, y_rows, index):
-        index -= 1
-        x = index % x_columns
-        y = int(index / x_columns)
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/XY-Grid-Nodes#cr-xy-index'
-        return (x, y, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

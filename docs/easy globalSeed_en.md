@@ -36,17 +36,6 @@ This encapsulates the functionality for generating and managing random seeds for
 - Infra type: CPU
 
 # Source code
-```
-class globalSeed:
+[View source repository on GitHub](https://github.com/yolain/ComfyUI-Easy-Use)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'value': ('INT', {'default': 0, 'min': 0, 'max': MAX_SEED_NUM}), 'mode': ('BOOLEAN', {'default': True, 'label_on': 'control_before_generate', 'label_off': 'control_after_generate'}), 'action': (['fixed', 'increment', 'decrement', 'randomize', 'increment for each node', 'decrement for each node', 'randomize for each node'],), 'last_seed': ('STRING', {'default': ''})}}
-    RETURN_TYPES = ()
-    FUNCTION = 'doit'
-    CATEGORY = 'EasyUse/Seed'
-    OUTPUT_NODE = True
-
-    def doit(self, **kwargs):
-        return {}
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

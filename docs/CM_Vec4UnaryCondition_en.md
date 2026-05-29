@@ -27,16 +27,6 @@ The Vec4UnaryCondition node performs a unary operation on a four‑dimensional v
 - Infra type: CPU
 
 # Source code
-```
-class Vec4UnaryCondition:
+[View source repository on GitHub](https://github.com/evanspearman/ComfyMath)
 
-    @classmethod
-    def INPUT_TYPES(cls) -> Mapping[str, Any]:
-        return {'required': {'op': (list(VEC_UNARY_CONDITIONS.keys()),), 'a': DEFAULT_VEC4}}
-    RETURN_TYPES = ('BOOL',)
-    FUNCTION = 'op'
-    CATEGORY = 'math/vec4'
-
-    def op(self, op: str, a: Vec4) -> tuple[bool]:
-        return (VEC_UNARY_CONDITIONS[op](numpy.array(a)),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

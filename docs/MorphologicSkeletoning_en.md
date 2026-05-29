@@ -25,28 +25,7 @@ The MorphologicSkeletoning node computes the morphological skeleton of an image.
 - Infra type: `GPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class MorphologicSkeletoning:
-    @classmethod
-    def INPUT_TYPES(s):
-        return {
-            "required": {
-                "src": ("IMAGE",)
-            },
-        }
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "compute"
-    CATEGORY = "Bmad/CV/Morphology"
-
-    def compute(self, src):
-        from skimage.morphology import skeletonize
-        img = tensor2opencv(src, 1)
-        _, img = cv.threshold(img, 127, 1, cv.THRESH_BINARY)  # ensure it is binary and set max value to 1.
-        skel = skeletonize(img) * 255
-        img = opencv2tensor(skel)
-        return (img,)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

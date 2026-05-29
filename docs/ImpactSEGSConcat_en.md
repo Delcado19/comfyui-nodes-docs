@@ -23,32 +23,6 @@ The SEGSConcat node is designed to merge multiple segmentations (SEGS) into a si
 - Infra type: CPU
 
 # Source code
-```
-class SEGSConcat:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'segs1': ('SEGS',)}}
-    RETURN_TYPES = ('SEGS',)
-    FUNCTION = 'doit'
-    CATEGORY = 'ImpactPack/Util'
-
-    def doit(self, **kwargs):
-        dim = None
-        res = None
-        for (k, v) in list(kwargs.items()):
-            if v[0] == (0, 0) or len(v[1]) == 0:
-                continue
-            if dim is None:
-                dim = v[0]
-                res = v[1]
-            elif v[0] == dim:
-                res = res + v[1]
-            else:
-                print(f"ERROR: source shape of 'segs1'{dim} and '{k}'{v[0]} are different. '{k}' will be ignored")
-        if dim is None:
-            empty_segs = ((0, 0), [])
-            return (empty_segs,)
-        else:
-            return ((dim, res),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

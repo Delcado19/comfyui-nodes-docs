@@ -121,49 +121,7 @@ KSampler Adv. (Efficient)节点专门用于高级采样技术,以高效的方式
     - [VHS_VideoCombine](../../ComfyUI-VideoHelperSuite/Nodes/VHS_VideoCombine.md)
     - [VAEDecode](../../Comfy/Nodes/VAEDecode.md)
 
-
-
 ## Source code
-```python
-class TSC_KSamplerAdvanced(TSC_KSampler):
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {"required":
-                    {"model": ("MODEL",),
-                     "add_noise": (["enable", "disable"],),
-                     "noise_seed": ("INT", {"default": 0, "min": 0, "max": 0xffffffffffffffff}),
-                     "steps": ("INT", {"default": 20, "min": 1, "max": 10000}),
-                     "cfg": ("FLOAT", {"default": 7.0, "min": 0.0, "max": 100.0}),
-                     "sampler_name": (comfy.samplers.KSampler.SAMPLERS,),
-                     "scheduler": (comfy.samplers.KSampler.SCHEDULERS,),
-                     "positive": ("CONDITIONING",),
-                     "negative": ("CONDITIONING",),
-                     "latent_image": ("LATENT",),
-                     "start_at_step": ("INT", {"default": 0, "min": 0, "max": 10000}),
-                     "end_at_step": ("INT", {"default": 10000, "min": 0, "max": 10000}),
-                     "return_with_leftover_noise": (["disable", "enable"],),
-                     "preview_method": (["auto", "latent2rgb", "taesd", "none"],),
-                     "vae_decode": (["true", "true (tiled)", "false", "output only", "output only (tiled)"],),
-                     },
-                "optional": {"optional_vae": ("VAE",),
-                             "script": ("SCRIPT",), },
-                "hidden": {"prompt": "PROMPT", "extra_pnginfo": "EXTRA_PNGINFO", "my_unique_id": "UNIQUE_ID", },
-                }
-
-    RETURN_TYPES = ("MODEL", "CONDITIONING", "CONDITIONING", "LATENT", "VAE", "IMAGE",)
-    RETURN_NAMES = ("MODEL", "CONDITIONING+", "CONDITIONING-", "LATENT", "VAE", "IMAGE",)
-    OUTPUT_NODE = True
-    FUNCTION = "sample_adv"
-    CATEGORY = "Efficiency Nodes/Sampling"
-
-    def sample_adv(self, model, add_noise, noise_seed, steps, cfg, sampler_name, scheduler, positive, negative,
-               latent_image, start_at_step, end_at_step, return_with_leftover_noise, preview_method, vae_decode,
-               prompt=None, extra_pnginfo=None, my_unique_id=None, optional_vae=(None,), script=None):
-
-        return super().sample(model, noise_seed, steps, cfg, sampler_name, scheduler, positive, negative,
-               latent_image, preview_method, vae_decode, denoise=1.0, prompt=prompt, extra_pnginfo=extra_pnginfo, my_unique_id=my_unique_id,
-               optional_vae=optional_vae, script=script, add_noise=add_noise, start_at_step=start_at_step,end_at_step=end_at_step,
-                       return_with_leftover_noise=return_with_leftover_noise,sampler_type="advanced")
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

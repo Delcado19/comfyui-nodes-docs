@@ -31,26 +31,6 @@ The WAS_Image_RGB_Merge node is designed to merge separate color channels into a
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Image_RGB_Merge:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'red_channel': ('IMAGE',), 'green_channel': ('IMAGE',), 'blue_channel': ('IMAGE',)}}
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'merge_channels'
-    CATEGORY = 'WAS Suite/Image/Process'
-
-    def merge_channels(self, red_channel, green_channel, blue_channel):
-        image = self.mix_rgb_channels(tensor2pil(red_channel).convert('L'), tensor2pil(green_channel).convert('L'), tensor2pil(blue_channel).convert('L'))
-        return (pil2tensor(image),)
-
-    def mix_rgb_channels(self, red, green, blue):
-        (width, height) = red.size
-        merged_img = Image.new('RGB', (width, height))
-        merged_img = Image.merge('RGB', (red, green, blue))
-        return merged_img
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

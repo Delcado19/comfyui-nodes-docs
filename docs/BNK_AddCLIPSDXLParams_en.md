@@ -48,26 +48,6 @@ The AddCLIPSDXLParams node is designed to handle advanced encoding tasks and enh
 - Infra type: CPU
 
 # Source code
-```
-class AddCLIPSDXLParams:
+[View source repository on GitHub](https://github.com/BlenderNeko/ComfyUI_ADV_CLIP_emb)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'conditioning': ('CONDITIONING',), 'width': ('INT', {'default': 1024.0, 'min': 0, 'max': MAX_RESOLUTION}), 'height': ('INT', {'default': 1024.0, 'min': 0, 'max': MAX_RESOLUTION}), 'crop_w': ('INT', {'default': 0, 'min': 0, 'max': MAX_RESOLUTION}), 'crop_h': ('INT', {'default': 0, 'min': 0, 'max': MAX_RESOLUTION}), 'target_width': ('INT', {'default': 1024.0, 'min': 0, 'max': MAX_RESOLUTION}), 'target_height': ('INT', {'default': 1024.0, 'min': 0, 'max': MAX_RESOLUTION})}}
-    RETURN_TYPES = ('CONDITIONING',)
-    FUNCTION = 'encode'
-    CATEGORY = 'conditioning/advanced'
-
-    def encode(self, conditioning, width, height, crop_w, crop_h, target_width, target_height):
-        c = []
-        for t in conditioning:
-            n = [t[0], t[1].copy()]
-            n[1]['width'] = width
-            n[1]['height'] = height
-            n[1]['crop_w'] = crop_w
-            n[1]['crop_h'] = crop_h
-            n[1]['target_width'] = target_width
-            n[1]['target_height'] = target_height
-            c.append(n)
-        return (c,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

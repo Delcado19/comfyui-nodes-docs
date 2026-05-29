@@ -37,31 +37,7 @@ The LoadInstancePositionNetModel node is used to load the PositionNet model, whi
 - Infra type: `GPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class LoadInstancePositionNetNode:
-    @classmethod
-    def INPUT_TYPES(s):
-        return {"required": {
-            "model_filename": (get_model_list(constants.INSTANCE_POSITIONNET_DIR),),
-            "use_segs": ("BOOLEAN", {"default": True}),
-        }}
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    RETURN_TYPES = ("POSITIONNET", "FUSERS", "SCALEU",)
-    FUNCTION = "load_model"
-
-    CATEGORY = "instance/loaders"
-
-    def load_model(self, model_filename: str, use_segs: bool):
-        checkpoint = load_checkpoint(
-            constants.INSTANCE_POSITIONNET_DIR, model_filename)
-        params = get_positionnet_default_params()
-        params["use_segs"] = use_segs
-        model = prepare_positionnet(checkpoint, params)
-        positionnet = {
-            'model': model,
-        }
-        return (positionnet,)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

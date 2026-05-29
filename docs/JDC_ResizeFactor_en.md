@@ -32,19 +32,6 @@ The ResizeFactor node is designed to resize images, scaling up or down by a spec
 - Infra type: CPU
 
 # Source code
-```
-class ResizeFactor:
+[View source repository on GitHub](https://github.com/Jordach/comfy-plasma)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'IMAGE': ('IMAGE',), 'factor': ('FLOAT', {'default': 2, 'min': 0.01, 'max': 10, 'step': 0.01}), 'resampler': (['nearest', 'box', 'bilinear', 'bicubic', 'hamming', 'lanczos'],)}}
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'process_image'
-    CATEGORY = 'image/postprocessing'
-
-    def process_image(self, IMAGE, factor, resampler):
-        cimg = conv_tensor_pil(IMAGE)
-        (w, h) = (int(cimg.width * factor), int(cimg.height * factor))
-        sampler = get_pil_resampler(resampler)
-        return conv_pil_tensor(cimg.resize((w, h), resample=sampler))
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

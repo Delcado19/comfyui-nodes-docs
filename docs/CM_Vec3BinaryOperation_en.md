@@ -31,16 +31,6 @@ The Vec3BinaryOperation node is designed to perform binary operations on two thr
 - Infra type: CPU
 
 # Source code
-```
-class Vec3BinaryOperation:
+[View source repository on GitHub](https://github.com/evanspearman/ComfyMath)
 
-    @classmethod
-    def INPUT_TYPES(cls) -> Mapping[str, Any]:
-        return {'required': {'op': (list(VEC_BINARY_OPERATIONS.keys()),), 'a': DEFAULT_VEC3, 'b': DEFAULT_VEC3}}
-    RETURN_TYPES = ('VEC3',)
-    FUNCTION = 'op'
-    CATEGORY = 'math/vec3'
-
-    def op(self, op: str, a: Vec3, b: Vec3) -> tuple[Vec3]:
-        return (_vec3_from_numpy(VEC_BINARY_OPERATIONS[op](numpy.array(a), numpy.array(b))),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

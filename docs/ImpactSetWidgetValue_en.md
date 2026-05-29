@@ -48,35 +48,6 @@ The `doit` method of the ImpactSetWidgetValue node is designed to handle assigni
 - Infra type: CPU
 
 # Source code
-```
-class ImpactSetWidgetValue:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'signal': (any_typ,), 'node_id': ('INT', {'default': 0, 'min': 0, 'max': 18446744073709551615}), 'widget_name': ('STRING', {'multiline': False})}, 'optional': {'boolean_value': ('BOOLEAN', {'forceInput': True}), 'int_value': ('INT', {'forceInput': True}), 'float_value': ('FLOAT', {'forceInput': True}), 'string_value': ('STRING', {'forceInput': True})}}
-    FUNCTION = 'doit'
-    CATEGORY = 'ImpactPack/Logic/_for_test'
-    RETURN_TYPES = (any_typ,)
-    RETURN_NAMES = ('signal_opt',)
-    OUTPUT_NODE = True
-
-    def doit(self, signal, node_id, widget_name, boolean_value=None, int_value=None, float_value=None, string_value=None):
-        kind = None
-        if boolean_value is not None:
-            value = boolean_value
-            kind = 'BOOLEAN'
-        elif int_value is not None:
-            value = int_value
-            kind = 'INT'
-        elif float_value is not None:
-            value = float_value
-            kind = 'FLOAT'
-        elif string_value is not None:
-            value = string_value
-            kind = 'STRING'
-        else:
-            value = None
-        if value is not None:
-            PromptServer.instance.send_sync('impact-node-feedback', {'node_id': node_id, 'widget_name': widget_name, 'type': kind, 'value': value})
-        return (signal,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

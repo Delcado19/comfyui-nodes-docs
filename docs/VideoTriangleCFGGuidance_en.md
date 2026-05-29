@@ -27,28 +27,6 @@ The VideoTriangleCFGGuidance node aims to enhance the controllability of video m
 - Infra type: CPU
 
 # Source code
-```
-class VideoTriangleCFGGuidance:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'model': ('MODEL',), 'min_cfg': ('FLOAT', {'default': 1.0, 'min': 0.0, 'max': 100.0, 'step': 0.5, 'round': 0.01})}}
-    RETURN_TYPES = ('MODEL',)
-    FUNCTION = 'patch'
-    CATEGORY = 'sampling/video_models'
-
-    def patch(self, model, min_cfg):
-
-        def linear_cfg(args):
-            cond = args['cond']
-            uncond = args['uncond']
-            cond_scale = args['cond_scale']
-            period = 1.0
-            values = torch.linspace(0, 1, cond.shape[0], device=cond.device)
-            values = 2 * (values / period - torch.floor(values / period + 0.5)).abs()
-            scale = (values * (cond_scale - min_cfg) + min_cfg).reshape((cond.shape[0], 1, 1, 1))
-            return uncond + scale * (cond - uncond)
-        m = model.clone()
-        m.set_model_sampler_cfg_function(linear_cfg)
-        return (m,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

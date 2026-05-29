@@ -32,36 +32,6 @@ The WAS_Text_Load_From_File node loads text data from a specified file path into
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Text_Load_From_File:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'file_path': ('STRING', {'default': '', 'multiline': False}), 'dictionary_name': ('STRING', {'default': '[filename]', 'multiline': False})}}
-    RETURN_TYPES = (TEXT_TYPE, 'DICT')
-    FUNCTION = 'load_file'
-    CATEGORY = 'WAS Suite/IO'
-
-    def load_file(self, file_path='', dictionary_name='[filename]]'):
-        filename = os.path.basename(file_path).split('.', 1)[0] if '.' in os.path.basename(file_path) else os.path.basename(file_path)
-        if dictionary_name != '[filename]':
-            filename = dictionary_name
-        if not os.path.exists(file_path):
-            cstr(f'The path `{file_path}` specified cannot be found.').error.print()
-            return ('', {filename: []})
-        with open(file_path, 'r', encoding='utf-8', newline='\n') as file:
-            text = file.read()
-        update_history_text_files(file_path)
-        import io
-        lines = []
-        for line in io.StringIO(text):
-            if not line.strip().startswith('#'):
-                if not line.strip().startswith('\n') or not line.strip().startswith('\r') or (not line.strip().startswith('\r\n')):
-                    line = line.replace('\n', '').replace('\r', '').replace('\r\n', '')
-                lines.append(line.replace('\n', '').replace('\r', '').replace('\r\n', ''))
-        dictionary = {filename: lines}
-        return ('\n'.join(lines), dictionary)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

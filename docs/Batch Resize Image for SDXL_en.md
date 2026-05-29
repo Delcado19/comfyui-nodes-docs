@@ -31,29 +31,6 @@ The BatchResizeImageSDXL node is designed to batch process images based on speci
 - Infra type: CPU
 
 # Source code
-```
-class BatchResizeImageSDXL(ResizeImageSDXL):
-    crop_methods = ['disabled', 'center']
-    upscale_methods = ['nearest-exact', 'bilinear', 'area', 'bicubic']
+[View source repository on GitHub](https://github.com/bash-j/mikey_nodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'image_directory': ('STRING', {'multiline': False, 'placeholder': 'Image Directory'}), 'upscale_method': (s.upscale_methods,), 'crop': (s.crop_methods,)}}
-    RETURN_TYPES = ('IMAGE',)
-    RETURN_NAMES = ('image',)
-    FUNCTION = 'batch'
-    CATEGORY = 'Mikey/Image'
-    OUTPUT_IS_LIST = (True,)
-
-    def batch(self, image_directory, upscale_method, crop):
-        if not os.path.exists(image_directory):
-            raise Exception(f'Image directory {image_directory} does not exist')
-        images = []
-        for file in os.listdir(image_directory):
-            if file.endswith('.png') or file.endswith('.jpg') or file.endswith('.jpeg') or file.endswith('.webp') or file.endswith('.bmp') or file.endswith('.gif'):
-                img = Image.open(os.path.join(image_directory, file))
-                img = pil2tensor(img)
-                img = self.resize(img, upscale_method, crop)[0]
-                images.append(img)
-        return (images,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

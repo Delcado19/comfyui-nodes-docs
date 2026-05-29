@@ -48,25 +48,6 @@ This node integrates text information into a keyframe-based framework, enabling 
 - Infra type: GPU
 
 # Source code
-```
-class KfKeyframedConditionWithText(KfKeyframedCondition):
-    """
-    Attaches a condition to a keyframe
-    """
-    CATEGORY = CATEGORY
-    FUNCTION = 'main'
-    RETURN_TYPES = ('KEYFRAMED_CONDITION', 'CONDITIONING', 'SCHEDULE')
+[View source repository on GitHub](https://github.com/dmarx/ComfyUI-Keyframed)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'clip': ('CLIP',), 'text': ('STRING', {'multiline': True, 'default': ''}), 'time': ('FLOAT', {'default': 0, 'step': 1}), 'interpolation_method': (list(kf.interpolation.EASINGS.keys()), {'default': 'linear'})}, 'optional': {'schedule': ('SCHEDULE', {})}}
-
-    def main(self, clip, text, time, interpolation_method, schedule=None):
-        tokens = clip.tokenize(text)
-        (cond, pooled) = clip.encode_from_tokens(tokens, return_pooled=True)
-        conditioning = [[cond, {'pooled_output': pooled}]]
-        keyframed_condition = super().main(conditioning, time, interpolation_method)[0]
-        keyframed_condition['kf_cond_t'].label = text
-        schedule = set_keyframed_condition(keyframed_condition, schedule)
-        return (keyframed_condition, conditioning, schedule)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

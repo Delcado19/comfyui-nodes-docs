@@ -43,34 +43,6 @@ Combine multiple paragraphs into one.
 - Infra type: CPU
 
 # Source code
-```
-class TextJoin:
+[View source repository on GitHub](https://github.com/chflame163/ComfyUI_LayerStyle)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {
-            "required": {
-                "text_1": ("STRING", {"multiline": False}),
-
-            },
-            "optional": {
-                "text_2": ("STRING", {"multiline": False}),
-                "text_3": ("STRING", {"multiline": False}),
-                "text_4": ("STRING", {"multiline": False}),
-            }
-        }
-
-    RETURN_TYPES = ("STRING",)
-    RETURN_NAMES = ("text",)
-    FUNCTION = "text_join"
-    CATEGORY = '😺dzNodes/LayerUtility/Data'
-
-    def text_join(self, **kwargs):
-
-        texts = [kwargs[key] for key in kwargs if key.startswith('text')]
-        combined_text = ', '.join(texts)
-        return (combined_text,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

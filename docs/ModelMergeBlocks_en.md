@@ -40,28 +40,6 @@ The 'merge' function of the ModelMergeBlocks node aims to fuse two different mod
 - Infra type: CPU
 
 # Source code
-```
-class ModelMergeBlocks:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'model1': ('MODEL',), 'model2': ('MODEL',), 'input': ('FLOAT', {'default': 1.0, 'min': 0.0, 'max': 1.0, 'step': 0.01}), 'middle': ('FLOAT', {'default': 1.0, 'min': 0.0, 'max': 1.0, 'step': 0.01}), 'out': ('FLOAT', {'default': 1.0, 'min': 0.0, 'max': 1.0, 'step': 0.01})}}
-    RETURN_TYPES = ('MODEL',)
-    FUNCTION = 'merge'
-    CATEGORY = 'advanced/model_merging'
-
-    def merge(self, model1, model2, **kwargs):
-        m = model1.clone()
-        kp = model2.get_key_patches('diffusion_model.')
-        default_ratio = next(iter(kwargs.values()))
-        for k in kp:
-            ratio = default_ratio
-            k_unet = k[len('diffusion_model.'):]
-            last_arg_size = 0
-            for arg in kwargs:
-                if k_unet.startswith(arg) and last_arg_size < len(arg):
-                    ratio = kwargs[arg]
-                    last_arg_size = len(arg)
-            m.add_patches({k: kp[k]}, 1.0 - ratio, ratio)
-        return (m,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

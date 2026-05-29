@@ -44,17 +44,6 @@ The AdvancedCLIPTextEncodeSDXL node processes and encodes text input into a form
 - Infra type: CPU
 
 # Source code
-```
-class AdvancedCLIPTextEncodeSDXL:
+[View source repository on GitHub](https://github.com/BlenderNeko/ComfyUI_ADV_CLIP_emb)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'text_l': ('STRING', {'multiline': True}), 'text_g': ('STRING', {'multiline': True}), 'clip': ('CLIP',), 'token_normalization': (['none', 'mean', 'length', 'length+mean'],), 'weight_interpretation': (['comfy', 'A1111', 'compel', 'comfy++', 'down_weight'],), 'balance': ('FLOAT', {'default': 0.5, 'min': 0.0, 'max': 1.0, 'step': 0.01})}}
-    RETURN_TYPES = ('CONDITIONING',)
-    FUNCTION = 'encode'
-    CATEGORY = 'conditioning/advanced'
-
-    def encode(self, clip, text_l, text_g, token_normalization, weight_interpretation, balance, affect_pooled='disable'):
-        (embeddings_final, pooled) = advanced_encode_XL(clip, text_l, text_g, token_normalization, weight_interpretation, w_max=1.0, clip_balance=balance, apply_to_pooled=affect_pooled == 'enable')
-        return ([[embeddings_final, {'pooled_output': pooled}]],)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

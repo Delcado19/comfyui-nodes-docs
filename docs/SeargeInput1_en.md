@@ -51,28 +51,6 @@ The SeargeInput1 node serves as the input interface for the Searge system, used 
 - Infra type: CPU
 
 # Source code
-```
-class SeargeInput1:
+[View source repository on GitHub](https://github.com/jobunk/SeargeSDXL)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'main_prompt': ('STRING', {'multiline': True, 'default': ''}), 'secondary_prompt': ('STRING', {'multiline': True, 'default': ''}), 'style_prompt': ('STRING', {'multiline': True, 'default': ''}), 'negative_prompt': ('STRING', {'multiline': True, 'default': ''}), 'negative_style': ('STRING', {'multiline': True, 'default': ''})}, 'optional': {'inputs': ('PARAMETER_INPUTS',), 'image': ('IMAGE',), 'mask': ('MASK',)}}
-    RETURN_TYPES = ('PARAMETER_INPUTS',)
-    RETURN_NAMES = ('inputs',)
-    FUNCTION = 'mux'
-    CATEGORY = 'Searge/_deprecated_/UI/Inputs'
-
-    def mux(self, main_prompt, secondary_prompt, style_prompt, negative_prompt, negative_style, inputs=None, image=None, mask=None):
-        if inputs is None:
-            parameters = {}
-        else:
-            parameters = inputs
-        parameters['main_prompt'] = main_prompt
-        parameters['secondary_prompt'] = secondary_prompt
-        parameters['style_prompt'] = style_prompt
-        parameters['negative_prompt'] = negative_prompt
-        parameters['negative_style'] = negative_style
-        parameters['image'] = image
-        parameters['mask'] = mask
-        return (parameters,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

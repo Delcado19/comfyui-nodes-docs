@@ -56,31 +56,6 @@ The 'add_style' method of the StyleConditionerBaseOnly node aims to integrate us
 - Infra type: CPU
 
 # Source code
-```
-class StyleConditionerBaseOnly:
+[View source repository on GitHub](https://github.com/bash-j/mikey_nodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        (s.styles, s.pos_style, s.neg_style) = read_styles()
-        return {'required': {'style': (s.styles,), 'strength': ('FLOAT', {'default': 0.5, 'min': 0.0, 'max': 1.0, 'step': 0.01}), 'positive_cond_base': ('CONDITIONING',), 'negative_cond_base': ('CONDITIONING',), 'base_clip': ('CLIP',), 'use_seed': (['true', 'false'], {'default': 'false'}), 'seed': ('INT', {'default': 0, 'min': 0, 'max': 18446744073709551615})}}
-    RETURN_TYPES = ('CONDITIONING', 'CONDITIONING', 'STRING')
-    RETURN_NAMES = ('base_pos_cond', 'base_neg_cond', 'style_str')
-    FUNCTION = 'add_style'
-    CATEGORY = 'Mikey/Conditioning'
-
-    def add_style(self, style, strength, positive_cond_base, negative_cond_base, base_clip, use_seed, seed):
-        if use_seed == 'true' and len(self.styles) > 0:
-            offset = seed % len(self.styles)
-            style = self.styles[offset]
-        pos_prompt = self.pos_style[style]
-        neg_prompt = self.neg_style[style]
-        pos_prompt = pos_prompt.replace('{prompt}', '')
-        neg_prompt = neg_prompt.replace('{prompt}', '')
-        if style == 'none':
-            return (positive_cond_base, negative_cond_base, style)
-        positive_cond_base_new = CLIPTextEncodeSDXL.encode(self, base_clip, 1024, 1024, 0, 0, 1024, 1024, pos_prompt, pos_prompt)[0]
-        negative_cond_base_new = CLIPTextEncodeSDXL.encode(self, base_clip, 1024, 1024, 0, 0, 1024, 1024, neg_prompt, neg_prompt)[0]
-        positive_cond_base = ConditioningAverage.addWeighted(self, positive_cond_base_new, positive_cond_base, strength)[0]
-        negative_cond_base = ConditioningAverage.addWeighted(self, negative_cond_base_new, negative_cond_base, strength)[0]
-        return (positive_cond_base, negative_cond_base, style)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

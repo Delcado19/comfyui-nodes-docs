@@ -32,21 +32,6 @@ The FullStretchPENode class is designed to modify character genital properties i
 - Infra type: CPU
 
 # Source code
-```
-class FullStretchPENode:
+[View source repository on GitHub](https://github.com/Kosinkadink/ComfyUI-AnimateDiff-Evolved)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'pe_stretch': ('INT', {'default': 0, 'min': 0, 'max': BIGMAX}), 'print_adjustment': ('BOOLEAN', {'default': False})}, 'optional': {'prev_pe_adjust': ('PE_ADJUST',)}}
-    RETURN_TYPES = ('PE_ADJUST',)
-    CATEGORY = 'Animate Diff 🎭🅐🅓/ad settings/pe adjust'
-    FUNCTION = 'get_pe_adjust'
-
-    def get_pe_adjust(self, pe_stretch: int, print_adjustment: bool, prev_pe_adjust: AdjustGroup=None):
-        if prev_pe_adjust is None:
-            prev_pe_adjust = AdjustGroup()
-        prev_pe_adjust = prev_pe_adjust.clone()
-        adjust = AdjustPE(motion_pe_stretch=pe_stretch, print_adjustment=print_adjustment)
-        prev_pe_adjust.add(adjust)
-        return (prev_pe_adjust,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -28,34 +28,6 @@ The WAS_Text_Add_Tokens node is designed to process and manipulate text tokens. 
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Text_Add_Tokens:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'tokens': ('STRING', {'default': '[hello]: world', 'multiline': True}), 'print_current_tokens': (['false', 'true'],)}}
-    RETURN_TYPES = ()
-    FUNCTION = 'text_add_tokens'
-    OUTPUT_NODE = True
-    CATEGORY = 'WAS Suite/Text/Tokens'
-
-    def text_add_tokens(self, tokens, print_current_tokens='false'):
-        import io
-        tk = TextTokens()
-        for line in io.StringIO(tokens):
-            parts = line.split(':')
-            token = parts[0].strip()
-            token_value = parts[1].strip()
-            tk.addToken(token, token_value)
-        if print_current_tokens == 'true':
-            cstr(f'Current Custom Tokens:').msg.print()
-            print(json.dumps(tk.custom_tokens, indent=4))
-        return tokens
-
-    @classmethod
-    def IS_CHANGED(cls, **kwargs):
-        return float('NaN')
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

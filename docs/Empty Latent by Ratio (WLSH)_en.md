@@ -44,34 +44,6 @@ The 'generate' method of the WLSH_Empty_Latent_Image_By_Ratio node creates an em
 - Infra type: CPU
 
 # Source code
-```
-class WLSH_Empty_Latent_Image_By_Ratio:
-    aspects = ['1:1', '6:5', '5:4', '4:3', '3:2', '16:10', '16:9', '19:9', '21:9', '2:1', '3:1', '4:1']
-    direction = ['landscape', 'portrait']
+[View source repository on GitHub](https://github.com/wallish77/wlsh_nodes)
 
-    def __init__(self, device='cpu'):
-        self.device = device
-
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'aspect': (s.aspects,), 'direction': (s.direction,), 'shortside': ('INT', {'default': 512, 'min': 64, 'max': MAX_RESOLUTION, 'step': 64}), 'batch_size': ('INT', {'default': 1, 'min': 1, 'max': 64})}}
-    RETURN_TYPES = ('LATENT', 'INT', 'INT')
-    RETURN_NAMES = ('latent', 'width', 'height')
-    FUNCTION = 'generate'
-    CATEGORY = 'WLSH Nodes/latent'
-
-    def generate(self, aspect, direction, shortside, batch_size=1):
-        (x, y) = aspect.split(':')
-        x = int(x)
-        y = int(y)
-        ratio = x / y
-        width = int(shortside * ratio)
-        width = width + 63 & -64
-        height = shortside
-        if direction == 'portrait':
-            (width, height) = (height, width)
-        adj_width = width // 8
-        adj_height = height // 8
-        latent = torch.zeros([batch_size, 4, adj_height, adj_width])
-        return ({'samples': latent}, adj_width * 8, adj_height * 8)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

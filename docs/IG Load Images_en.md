@@ -46,37 +46,7 @@ IG Load Images node is designed to efficiently load multiple images from a speci
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class IG_LoadImagesFromFolder:
-    @classmethod
-    def INPUT_TYPES(s):
-        return {
-            "required": {
-                "folder": ("STRING", {"forceInput": True}),
-            },
-            "optional": {
-                "image_load_cap": ("INT", {"default": 0, "min": 0, "step": 1}),
-                "skip_first_images": ("INT", {"default": 0, "min": 0, "step": 1}),
-                "select_every_nth": ("INT", {"default": 1, "min": 1, "step": 1}),
-            }
-        }
-    
-    RETURN_TYPES = ("IMAGE", "MASK", "INT")
-    FUNCTION = "main"
+[View source repository on GitHub](https://github.com/goyalayush0610/ComfyUI-Image-Generator)
 
-    CATEGORY = TREE_IO
-
-    def main(self, folder: str, **kwargs):
-        return load_images(folder, **kwargs)
-    
-    @classmethod
-    def IS_CHANGED(s, folder: str, **kwargs):
-        return is_changed_load_images(folder, **kwargs)
-
-    # @classmethod
-    # def VALIDATE_INPUTS(s, folder: str, **kwargs):
-    #     return validate_load_images(folder, **kwargs)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

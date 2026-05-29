@@ -66,29 +66,7 @@ The Fooocus_KSampler node enhances the sampling process in art generation by int
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class KSamplerWithSharpness(KSampler):
-    @classmethod
-    def INPUT_TYPES(cls):
-        inputs = KSampler.INPUT_TYPES()
-        inputs["optional"] = {
-            "sharpness": (
-                "FLOAT",
-                {"default": 2.0, "min": 0.0, "max": 100.0, "step": 0.01},
-            )
-        }
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-        return inputs
-
-    CATEGORY = "Art Venture/Sampling"
-
-    def sample(self, *args, sharpness=2.0, **kwargs):
-        patch.sharpness = sharpness
-        patch_all()
-        results = super().sample(*args, **kwargs)
-        unpatch_all()
-        return results
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

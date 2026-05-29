@@ -23,17 +23,6 @@ The TilePreprocessor_Provider_for_SEGS class aims to improve the accuracy of ima
 - Infra type: CPU
 
 # Source code
-```
-class TilePreprocessor_Provider_for_SEGS:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Inspire-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'pyrUp_iters': ('INT', {'default': 3, 'min': 1, 'max': 10, 'step': 1})}}
-    RETURN_TYPES = ('SEGS_PREPROCESSOR',)
-    FUNCTION = 'doit'
-    CATEGORY = 'InspirePack/SEGS/ControlNet'
-
-    def doit(self, pyrUp_iters):
-        obj = TilePreprocessor_wrapper(pyrUp_iters)
-        return (obj,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

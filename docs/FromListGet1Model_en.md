@@ -29,9 +29,7 @@ The FromListGet1Model node is designed to extract a single model from a model li
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class FromListGet1Model(metaclass=GetSingleFromListMeta):  TYPE = "MODEL"
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

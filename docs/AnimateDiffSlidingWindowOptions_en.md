@@ -39,17 +39,6 @@ This node class encapsulates the configuration options required to set up a slid
 - Infra type: CPU
 
 # Source code
-```
-class AnimateDiffSlidingWindowOptions:
+[View source repository on GitHub](https://github.com/ArtVentureX/comfyui-animatediff)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'context_length': ('INT', {'default': SLIDING_CONTEXT_LENGTH, 'min': 2, 'max': 32}), 'context_stride': ('INT', {'default': 1, 'min': 1, 'max': 32}), 'context_overlap': ('INT', {'default': 4, 'min': 0, 'max': 32}), 'context_schedule': (ContextSchedules.CONTEXT_SCHEDULE_LIST, {'default': ContextSchedules.UNIFORM}), 'closed_loop': ('BOOLEAN', {'default': False})}}
-    RETURN_TYPES = ('SLIDING_WINDOW_OPTS',)
-    FUNCTION = 'init_options'
-    CATEGORY = 'Animate Diff'
-
-    def init_options(self, context_length, context_stride, context_overlap, context_schedule, closed_loop):
-        ctx = SlidingContext(context_length=context_length, context_stride=context_stride, context_overlap=context_overlap, context_schedule=context_schedule, closed_loop=closed_loop)
-        return (ctx,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

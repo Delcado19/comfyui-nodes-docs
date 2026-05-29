@@ -27,18 +27,6 @@ The CR_IntegerToString node is designed to seamlessly convert integer values int
 - Infra type: CPU
 
 # Source code
-```
-class CR_IntegerToString:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'int_': ('INT', {'default': 0, 'min': 0, 'max': 18446744073709551615, 'forceInput': True})}}
-    RETURN_TYPES = ('STRING', 'STRING')
-    RETURN_NAMES = ('STRING', 'show_help')
-    FUNCTION = 'convert'
-    CATEGORY = icons.get('Comfyroll/Utils/Conversion')
-
-    def convert(self, int_):
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Conversion-Nodes#cr-integer-to-string'
-        return (f'{int_}', show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

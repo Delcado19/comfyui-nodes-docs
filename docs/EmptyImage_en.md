@@ -36,22 +36,6 @@ The EmptyImage node is designed to generate blank images with specified dimensio
 - Infra type: CPU
 
 # Source code
-```
-class EmptyImage:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    def __init__(self, device='cpu'):
-        self.device = device
-
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'width': ('INT', {'default': 512, 'min': 1, 'max': MAX_RESOLUTION, 'step': 1}), 'height': ('INT', {'default': 512, 'min': 1, 'max': MAX_RESOLUTION, 'step': 1}), 'batch_size': ('INT', {'default': 1, 'min': 1, 'max': 4096}), 'color': ('INT', {'default': 0, 'min': 0, 'max': 16777215, 'step': 1, 'display': 'color'})}}
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'generate'
-    CATEGORY = 'image'
-
-    def generate(self, width, height, batch_size=1, color=0):
-        r = torch.full([batch_size, height, width, 1], (color >> 16 & 255) / 255)
-        g = torch.full([batch_size, height, width, 1], (color >> 8 & 255) / 255)
-        b = torch.full([batch_size, height, width, 1], (color & 255) / 255)
-        return (torch.cat((r, g, b), dim=-1),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

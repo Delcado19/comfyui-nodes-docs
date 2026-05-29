@@ -28,18 +28,6 @@ This node allows assigning a descriptive label to the curve, enhancing the trace
 - Infra type: CPU
 
 # Source code
-```
-class KfSetCurveLabel:
-    CATEGORY = CATEGORY
-    FUNCTION = 'main'
-    RETURN_TYPES = ('KEYFRAMED_CURVE',)
+[View source repository on GitHub](https://github.com/dmarx/ComfyUI-Keyframed)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'curve': ('KEYFRAMED_CURVE', {'forceInput': True}), 'label': ('STRING', {'multiline': False, 'default': '~curve~'})}}
-
-    def main(self, curve, label):
-        curve = deepcopy(curve)
-        curve.label = label
-        return (curve,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

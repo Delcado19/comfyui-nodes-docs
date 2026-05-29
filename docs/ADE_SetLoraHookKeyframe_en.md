@@ -29,22 +29,6 @@ This node is used to assign a set of LoRA hook keyframes to a specific LoRA hook
 - Common nodes: unknown
 
 ## Source code
-```python
-class SetLoraHookKeyframes:
-    @classmethod
-    def INPUT_TYPES(s):
-        return {
-            "required": {
-                "lora_hook": ("LORA_HOOK",), 
-                "hook_kf": ("LORA_HOOK_KEYFRAMES",),
-            }
-        }
-    
-    RETURN_TYPES = ("LORA_HOOK",)
-    CATEGORY = "Animate Diff 🎭🅐🅓/conditioning"
-    FUNCTION = "set_hook_keyframes"
+[View source repository on GitHub](https://github.com/Kosinkadink/ComfyUI-AnimateDiff-Evolved)
 
-    def set_hook_keyframes(self, lora_hook: LoraHookGroup, hook_kf: LoraHookKeyframeGroup):
-        new_lora_hook = lora_hook.clone()
-        new_lora_hook.set_keyframes_on_hooks(hook_kf=hook_kf)
-        return (new_lora_hook,)
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

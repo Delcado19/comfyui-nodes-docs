@@ -60,17 +60,6 @@ This node facilitates the multiplication of multiple curves, enhancing the abili
 - Infra type: CPU
 
 # Source code
-```
-class KfCurvesMultiplyx10:
-    CATEGORY = CATEGORY
-    FUNCTION = 'main'
-    RETURN_TYPES = ('KEYFRAMED_CURVE',)
+[View source repository on GitHub](https://github.com/dmarx/ComfyUI-Keyframed)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'curve_0': ('KEYFRAMED_CURVE', {'forceInput': True})}, 'optional': {'curve_1': ('KEYFRAMED_CURVE', {'forceInput': True, 'default': 1}), 'curve_2': ('KEYFRAMED_CURVE', {'forceInput': True, 'default': 1}), 'curve_3': ('KEYFRAMED_CURVE', {'forceInput': True, 'default': 1}), 'curve_4': ('KEYFRAMED_CURVE', {'forceInput': True, 'default': 1}), 'curve_5': ('KEYFRAMED_CURVE', {'forceInput': True, 'default': 1}), 'curve_6': ('KEYFRAMED_CURVE', {'forceInput': True, 'default': 1}), 'curve_7': ('KEYFRAMED_CURVE', {'forceInput': True, 'default': 1}), 'curve_8': ('KEYFRAMED_CURVE', {'forceInput': True, 'default': 1}), 'curve_9': ('KEYFRAMED_CURVE', {'forceInput': True, 'default': 1})}}
-
-    def main(self, curve_0, curve_1, curve_2, curve_3, curve_4, curve_5, curve_6, curve_7, curve_8, curve_9):
-        curve_out = curve_0 * curve_1 * curve_2 * curve_3 * curve_4 * curve_5 * curve_6 * curve_7 * curve_8 * curve_9
-        return (curve_out,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

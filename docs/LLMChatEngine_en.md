@@ -34,34 +34,7 @@ The LLMChatEngine node supports interactive chat sessions using a language model
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class LLMChatEngine:
-        def __init__(self):
-            self.chat_engine = None
-            
-        @classmethod
-        def INPUT_TYPES(cls):
-            return {
-                "required": {
-                    "llm_index": ("LLM_INDEX",),
-                    "query": ("STRING", {"multiline": True, "dynamicPrompts": False, "placeholder": "Ask a question"}),
-                },
-                "optional": {
-                    "reset_engine": ("BOOLEAN", {"default": False})
-                }
-            }
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-        RETURN_TYPES = ("STRING",)
-        FUNCTION = "chat"
-        CATEGORY = f"{MENU_NAME}/{SUB_MENU_NAME}/Querying"
-
-        def chat(self, llm_index, query:str, reset_engine:bool = False) -> str:
-            if not self.chat_engine or reset_engine:
-                self.chat_engine = llm_index.as_chat_engine()
-            response = self.chat_engine.chat(query)
-            pprint(response, indent=4)
-            return (response.response,)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

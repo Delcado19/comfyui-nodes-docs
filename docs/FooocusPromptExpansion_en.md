@@ -28,25 +28,6 @@ This node aims to expand and generate new text based on input text and a seed va
 - Infra type: CPU
 
 # Source code
-```
-class FooocusPromptExpansion:
+[View source repository on GitHub](https://github.com/esheep/esheep_custom_nodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'text': ('STRING', {'multiline': True}), 'seed': ('INT', {'default': 0, 'min': 0, 'max': 18446744073709551615})}}
-    RETURN_TYPES = ('STRING',)
-    FUNCTION = 'main'
-    CATEGORY = 'prompt'
-    OUTPUT_IS_LIST = (True,)
-    OUTPUT_NODE = True
-
-    @staticmethod
-    def scale_seed(seed):
-        return seed % (2 ** 32 - 1)
-
-    def main(self, text, seed):
-        seed = FooocusPromptExpansion.scale_seed(seed)
-        res = do_expansion(text, seed)
-        logger.info(f'[FooocusPromptExpansion] (seed={seed}) expand |{text}| to |{res}|')
-        return {'ui': {'result': [res]}, 'result': ([res],)}
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

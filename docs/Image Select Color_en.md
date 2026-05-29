@@ -40,32 +40,6 @@ The WAS_Image_Select_Color node is designed to process images by selecting pixel
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Image_Select_Color:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'image': ('IMAGE',), 'red': ('INT', {'default': 255.0, 'min': 0.0, 'max': 255.0, 'step': 0.1}), 'green': ('INT', {'default': 255.0, 'min': 0.0, 'max': 255.0, 'step': 0.1}), 'blue': ('INT', {'default': 255.0, 'min': 0.0, 'max': 255.0, 'step': 0.1}), 'variance': ('INT', {'default': 10, 'min': 0, 'max': 255, 'step': 1})}}
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'select_color'
-    CATEGORY = 'WAS Suite/Image/Process'
-
-    def select_color(self, image, red=255, green=255, blue=255, variance=10):
-        image = self.color_pick(tensor2pil(image), red, green, blue, variance)
-        return (pil2tensor(image),)
-
-    def color_pick(self, image, red=255, green=255, blue=255, variance=10):
-        image = image.convert('RGB')
-        selected_color = Image.new('RGB', image.size, (0, 0, 0))
-        (width, height) = image.size
-        for x in range(width):
-            for y in range(height):
-                pixel = image.getpixel((x, y))
-                (r, g, b) = pixel
-                if r >= red - variance and r <= red + variance and (g >= green - variance) and (g <= green + variance) and (b >= blue - variance) and (b <= blue + variance):
-                    selected_color.putpixel((x, y), (r, g, b))
-        return selected_color
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

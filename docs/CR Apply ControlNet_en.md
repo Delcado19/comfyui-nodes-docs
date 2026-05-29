@@ -43,29 +43,6 @@ CR_ApplyControlNet node integrates a control network into the image generation p
 - Infra type: CPU
 
 # Source code
-```
-class CR_ApplyControlNet:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'conditioning': ('CONDITIONING',), 'control_net': ('CONTROL_NET',), 'image': ('IMAGE',), 'switch': (['On', 'Off'],), 'strength': ('FLOAT', {'default': 1.0, 'min': 0.0, 'max': 10.0, 'step': 0.01})}}
-    RETURN_TYPES = ('CONDITIONING', 'STRING')
-    RETURN_NAMES = ('CONDITIONING', 'show_help')
-    FUNCTION = 'apply_controlnet'
-    CATEGORY = icons.get('Comfyroll/ControlNet')
-
-    def apply_controlnet(self, conditioning, control_net, image, switch, strength):
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/ControlNet-Nodes#cr-apply-controlnet'
-        if strength == 0 or switch == 'Off':
-            return (conditioning, show_help)
-        c = []
-        control_hint = image.movedim(-1, 1)
-        for t in conditioning:
-            n = [t[0], t[1].copy()]
-            c_net = control_net.copy().set_cond_hint(control_hint, strength)
-            if 'control' in t[1]:
-                c_net.set_previous_controlnet(t[1]['control'])
-            n[1]['control'] = c_net
-            c.append(n)
-        return (c, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

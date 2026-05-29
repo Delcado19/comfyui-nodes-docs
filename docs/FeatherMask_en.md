@@ -40,33 +40,6 @@ The FeatherMask node aims to smoothly blend the edges of a given mask with its s
 - Infra type: CPU
 
 # Source code
-```
-class FeatherMask:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'mask': ('MASK',), 'left': ('INT', {'default': 0, 'min': 0, 'max': MAX_RESOLUTION, 'step': 1}), 'top': ('INT', {'default': 0, 'min': 0, 'max': MAX_RESOLUTION, 'step': 1}), 'right': ('INT', {'default': 0, 'min': 0, 'max': MAX_RESOLUTION, 'step': 1}), 'bottom': ('INT', {'default': 0, 'min': 0, 'max': MAX_RESOLUTION, 'step': 1})}}
-    CATEGORY = 'mask'
-    RETURN_TYPES = ('MASK',)
-    FUNCTION = 'feather'
-
-    def feather(self, mask, left, top, right, bottom):
-        output = mask.reshape((-1, mask.shape[-2], mask.shape[-1])).clone()
-        left = min(left, output.shape[-1])
-        right = min(right, output.shape[-1])
-        top = min(top, output.shape[-2])
-        bottom = min(bottom, output.shape[-2])
-        for x in range(left):
-            feather_rate = (x + 1.0) / left
-            output[:, :, x] *= feather_rate
-        for x in range(right):
-            feather_rate = (x + 1) / right
-            output[:, :, -x] *= feather_rate
-        for y in range(top):
-            feather_rate = (y + 1) / top
-            output[:, y, :] *= feather_rate
-        for y in range(bottom):
-            feather_rate = (y + 1) / bottom
-            output[:, -y, :] *= feather_rate
-        return (output,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

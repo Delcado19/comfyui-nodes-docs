@@ -23,16 +23,6 @@ The 'doit' method of the ImpactFloat node serves as a fundamental processing uni
 - Infra type: CPU
 
 # Source code
-```
-class ImpactFloat:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'value': ('FLOAT', {'default': 1.0, 'min': -3.402823466e+38, 'max': 3.402823466e+38})}}
-    FUNCTION = 'doit'
-    CATEGORY = 'ImpactPack/Logic'
-    RETURN_TYPES = ('FLOAT',)
-
-    def doit(self, value):
-        return (value,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

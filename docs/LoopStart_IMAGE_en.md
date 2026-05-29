@@ -28,24 +28,6 @@ This node facilitates the initiation of loop structures, enabling iterative proc
 - Infra type: CPU
 
 # Source code
-```
-class LoopStart_IMAGE:
+[View source repository on GitHub](https://github.com/chaojie/ComfyUI-DragNUWA)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'first_loop': ('IMAGE',), 'loop': ('LOOP',)}}
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'run'
-    CATEGORY = 'DragNUWA'
-
-    def run(self, first_loop, loop):
-        if hasattr(loop, 'next'):
-            return (loop.next,)
-        return (first_loop,)
-
-    @classmethod
-    def IS_CHANGED(s, first_loop, loop):
-        if hasattr(loop, 'next'):
-            return id(loop.next)
-        return float('NaN')
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

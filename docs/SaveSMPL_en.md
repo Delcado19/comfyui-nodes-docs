@@ -26,37 +26,7 @@ The node has no output type.
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class SaveSMPL:
-    def __init__(self):
-        self.output_dir = folder_paths.get_output_directory()
-        self.type = "output"
-        self.prefix_append = "_smpl"
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {
-            "required": {
-                "smpl": ("SMPL", ),
-                "filename_prefix": ("STRING", {"default": "motiondiff_pt"})
-            }
-        }
-
-    RETURN_TYPES = ()
-    FUNCTION = "save_smpl"
-
-    OUTPUT_NODE = True
-
-    CATEGORY = "MotionDiff/smpl"
-
-    def save_smpl(self, smpl, filename_prefix):
-        _, thetas, meta = smpl
-        filename_prefix += self.prefix_append
-        full_output_folder, filename, counter, subfolder, filename_prefix = folder_paths.get_save_image_path(filename_prefix, self.output_dir, 196, 24)
-        file = f"{filename}_{counter:05}_.pt"
-        torch.save({ "thetas": thetas, "meta": meta }, os.path.join(full_output_folder, file))
-        return {}
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

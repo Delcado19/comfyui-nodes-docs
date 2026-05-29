@@ -56,34 +56,6 @@ CR_RandomShapePattern is a node that generates pattern images composed of random
 - Infra type: CPU
 
 # Source code
-```
-class CR_RandomShapePattern:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        shapes = ['circle', 'oval', 'square', 'diamond', 'triangle', 'hexagon', 'octagon', 'half circle', 'quarter circle', 'starburst', 'star', 'cross']
-        return {'required': {'width': ('INT', {'default': 512, 'min': 64, 'max': 4096}), 'height': ('INT', {'default': 512, 'min': 64, 'max': 4096}), 'num_rows': ('INT', {'default': 5, 'min': 1, 'max': 128}), 'num_cols': ('INT', {'default': 5, 'min': 1, 'max': 128}), 'color1': (COLORS,), 'color2': (COLORS,)}, 'optional': {'color1_hex': ('STRING', {'multiline': False, 'default': '#000000'}), 'color2_hex': ('STRING', {'multiline': False, 'default': '#000000'})}}
-    RETURN_TYPES = ('IMAGE', 'STRING')
-    RETURN_NAMES = ('IMAGE', 'show_help')
-    FUNCTION = 'plot_random_shapes'
-    CATEGORY = icons.get('Comfyroll/Graphics/Shape')
-
-    def plot_random_shapes(self, num_rows, num_cols, width, height, color1, color2, color1_hex='#000000', color2_hex='#000000'):
-        color1 = get_color_values(color1, color1_hex, color_mapping)
-        color2 = get_color_values(color2, color2_hex, color_mapping)
-        image = Image.new('RGB', (width, height), color='white')
-        draw = ImageDraw.Draw(image)
-        shape_functions = [draw_circle, draw_oval, draw_diamond, draw_square, draw_triangle, draw_hexagon, draw_octagon, draw_half_circle, draw_quarter_circle, draw_starburst, draw_star, draw_cross]
-        for row in range(num_rows):
-            for col in range(num_cols):
-                shape_function = random.choice(shape_functions)
-                color = random.choice([color1, color2])
-                size = random.uniform(20, min(width, height) / 2)
-                aspect_ratio = random.uniform(0.5, 2.0)
-                center_x = col * (width / num_cols) + width / num_cols / 2
-                center_y = row * (height / num_rows) + height / num_rows / 2
-                shape_function(draw, center_x, center_y, size, aspect_ratio, color)
-        image_out = pil2tensor(image)
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Pattern-Nodes-2#cr-random-shape-pattern'
-        return (image_out, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

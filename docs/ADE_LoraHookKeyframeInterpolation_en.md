@@ -55,48 +55,6 @@ This node is used to create interpolated LoRA hook keyframes, enabling dynamic a
 - Common nodes: unknown
 
 ## Source code
-```python
-class CreateLoraHookKeyframeInterpolation:
-    @classmethod
-    def INPUT_TYPES(s):
-        return {
-            "required": {
-                "start_percent": ("FLOAT", {"default": 0.0, "min": 0.0, "max": 1.0, "step": 0.001}),
-                "end_percent": ("FLOAT", {"default": 1.0, "min": 0.0, "max": 1.0, "step": 0.001}),
-                "strength_start": ("FLOAT", {"default": 1.0, "min": 0.0, "max": 10.0, "step": 0.001}, ),
-                "strength_end": ("FLOAT", {"default": 1.0, "min": 0.0, "max": 10.0, "step": 0.001}, ),
-                "interpolation": (InterpolationMethod._LIST, ),
-                "intervals": ("INT", {"default": 5, "min": 2, "max": 100, "step": 1}),
-                "print_keyframes": ("BOOLEAN", {"default": False}),
-            },
-            "optional": {
-                "prev_hook_kf": ("LORA_HOOK_KEYFRAMES",),
-            }
-        }
-    
-    RETURN_TYPES = ("LORA_HOOK_KEYFRAMES",)
-    RETURN_NAMES = ("HOOK_KF",)
-    CATEGORY = "Animate Diff 🎭🅐🅓/conditioning/schedule lora hooks"
-    FUNCTION = "create_hook_keyframes"
+[View source repository on GitHub](https://github.com/Kosinkadink/ComfyUI-AnimateDiff-Evolved)
 
-    def create_hook_keyframes(self,
-                              start_percent: float, end_percent: float,
-                              strength_start: float, strength_end: float, interpolation: str, intervals: int,
-                              prev_hook_kf: LoraHookKeyframeGroup=None, print_keyframes=False):
-        if prev_hook_kf:
-            prev_hook_kf = prev_hook_kf.clone()
-        else:
-            prev_hook_kf = LoraHookKeyframeGroup()
-        percents = InterpolationMethod.get_weights(num_from=start_percent, num_to=end_percent, length=intervals, method=interpolation)
-        strengths = InterpolationMethod.get_weights(num_from=strength_start, num_to=strength_end, length=intervals, method=interpolation)
-        
-        is_first = True
-        for percent, strength in zip(percents, strengths):
-            guarantee_steps = 0
-            if is_first:
-                guarantee_steps = 1
-                is_first = False
-            prev_hook_kf.add(LoraHookKeyframe(strength=strength, start_percent=percent, guarantee_steps=guarantee_steps))
-            if print_keyframes:
-                logger.info(f"LoraHookKeyframe - start_percent:{percent} = {strength}")
-        return (prev_hook_kf,)
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

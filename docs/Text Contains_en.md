@@ -32,22 +32,6 @@
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Text_Contains:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'text': ('STRING', {'default': '', 'multiline': False}), 'sub_text': ('STRING', {'default': '', 'multiline': False})}, 'optional': {'case_insensitive': ('BOOLEAN', {'default': True})}}
-    RETURN_TYPES = ('BOOLEAN',)
-    FUNCTION = 'text_contains'
-    CATEGORY = 'WAS Suite/Logic'
-
-    def text_contains(self, text, sub_text, case_insensitive):
-        if case_insensitive:
-            sub_text = sub_text.lower()
-            text = text.lower()
-        return (sub_text in text,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -27,17 +27,6 @@ The DecomposeSEGS node aims to decompose complex SEGS data into more manageable 
 - Infra type: CPU
 
 # Source code
-```
-class DecomposeSEGS:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'segs': ('SEGS',)}}
-    RETURN_TYPES = ('SEGS_HEADER', 'SEG_ELT')
-    OUTPUT_IS_LIST = (False, True)
-    FUNCTION = 'doit'
-    CATEGORY = 'ImpactPack/Util'
-
-    def doit(self, segs):
-        return segs
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

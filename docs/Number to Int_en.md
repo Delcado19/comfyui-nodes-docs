@@ -23,19 +23,6 @@ The 'number_to_int' method of the WAS_Number_To_Int node is designed to convert 
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Number_To_Int:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'number': ('NUMBER',)}}
-    RETURN_TYPES = ('INT',)
-    FUNCTION = 'number_to_int'
-    CATEGORY = 'WAS Suite/Number/Operations'
-
-    def number_to_int(self, number):
-        return (int(number),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

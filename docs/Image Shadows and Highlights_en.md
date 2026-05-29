@@ -60,23 +60,6 @@ The WAS_Shadow_And_Highlight_Adjustment node is designed to modify the contrast 
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Shadow_And_Highlight_Adjustment:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'image': ('IMAGE',), 'shadow_threshold': ('FLOAT', {'default': 75, 'min': 0.0, 'max': 255.0, 'step': 0.1}), 'shadow_factor': ('FLOAT', {'default': 1.5, 'min': -12.0, 'max': 12.0, 'step': 0.1}), 'shadow_smoothing': ('FLOAT', {'default': 0.25, 'min': -255.0, 'max': 255.0, 'step': 0.1}), 'highlight_threshold': ('FLOAT', {'default': 175, 'min': 0.0, 'max': 255.0, 'step': 0.1}), 'highlight_factor': ('FLOAT', {'default': 0.5, 'min': -12.0, 'max': 12.0, 'step': 0.1}), 'highlight_smoothing': ('FLOAT', {'default': 0.25, 'min': -255.0, 'max': 255.0, 'step': 0.1}), 'simplify_isolation': ('FLOAT', {'default': 0, 'min': -255.0, 'max': 255.0, 'step': 0.1})}}
-    RETURN_TYPES = ('IMAGE', 'IMAGE', 'IMAGE')
-    RETURN_NAMES = ('image', 'shadow_map', 'highlight_map')
-    FUNCTION = 'apply_shadow_and_highlight'
-    CATEGORY = 'WAS Suite/Image/Adjustment'
-
-    def apply_shadow_and_highlight(self, image, shadow_threshold=30, highlight_threshold=220, shadow_factor=1.5, highlight_factor=0.5, shadow_smoothing=0, highlight_smoothing=0, simplify_isolation=0):
-        WTools = WAS_Tools_Class()
-        (result, shadows, highlights) = WTools.shadows_and_highlights(tensor2pil(image), shadow_threshold, highlight_threshold, shadow_factor, highlight_factor, shadow_smoothing, highlight_smoothing, simplify_isolation)
-        (result, shadows, highlights) = WTools.shadows_and_highlights(tensor2pil(image), shadow_threshold, highlight_threshold, shadow_factor, highlight_factor, shadow_smoothing, highlight_smoothing, simplify_isolation)
-        return (pil2tensor(result), pil2tensor(shadows), pil2tensor(highlights))
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

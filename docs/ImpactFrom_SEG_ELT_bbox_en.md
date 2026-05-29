@@ -35,17 +35,6 @@ The 'doit' method of the From_SEG_ELT_bbox node is designed to process and retur
 - Infra type: CPU
 
 # Source code
-```
-class From_SEG_ELT_bbox:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'bbox': ('SEG_ELT_bbox',)}}
-    RETURN_TYPES = ('INT', 'INT', 'INT', 'INT')
-    RETURN_NAMES = ('left', 'top', 'right', 'bottom')
-    FUNCTION = 'doit'
-    CATEGORY = 'ImpactPack/Util'
-
-    def doit(self, bbox):
-        return bbox
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

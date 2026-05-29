@@ -44,29 +44,6 @@ The CR_SetSwitchFromString node is designed to evaluate a given text input again
 - Infra type: CPU
 
 # Source code
-```
-class CR_SetSwitchFromString:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        methods = ['Fit', 'Crop']
-        return {'required': {'text': ('STRING', {'multiline': False, 'default': '', 'forceInput': True})}, 'optional': {'switch_1': ('STRING', {'multiline': False, 'default': ''}), 'switch_2': ('STRING', {'multiline': False, 'default': ''}), 'switch_3': ('STRING', {'multiline': False, 'default': ''}), 'switch_4': ('STRING', {'multiline': False, 'default': ''})}}
-    RETURN_TYPES = ('INT', 'STRING')
-    RETURN_NAMES = ('switch', 'show_help')
-    FUNCTION = 'set_switch'
-    CATEGORY = icons.get('Comfyroll/Utils/Conditional')
-
-    def set_switch(self, text, switch_1='', switch_2='', switch_3='', switch_4=''):
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Other-Nodes#cr-set-switch-from-string'
-        if text == switch_1:
-            switch = 1
-        elif text == switch_2:
-            switch = 2
-        elif text == switch_3:
-            switch = 3
-        elif text == switch_4:
-            switch = 4
-        else:
-            pass
-        return (switch, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

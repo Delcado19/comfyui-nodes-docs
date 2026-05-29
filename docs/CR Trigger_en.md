@@ -35,18 +35,6 @@ The CR_Trigger node is designed to perform condition checks, determining whether
 - Infra type: CPU
 
 # Source code
-```
-class CR_Trigger:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'index': ('INT', {'default': 0.0, 'min': 0.0, 'max': 9999.0, 'step': 1.0}), 'trigger_value': ('INT', {'default': 1, 'min': 0, 'max': 10000})}}
-    RETURN_TYPES = ('INT', 'BOOLEAN', 'STRING')
-    RETURN_NAMES = ('index', 'trigger', 'show_help')
-    FUNCTION = 'trigger'
-    CATEGORY = icons.get('Comfyroll/Utils/Index')
-
-    def trigger(self, index, trigger_value):
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Index-Nodes#cr-trigger'
-        return (index, index == trigger_value, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

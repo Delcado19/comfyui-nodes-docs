@@ -27,25 +27,6 @@ output_image is the result of the channel conversion process. It is important be
 - Infra type: CPU
 
 # Source code
-```
-class ChangeChannelCount:
+[View source repository on GitHub](https://github.com/BadCafeCode/masquerade-nodes-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'image': ('IMAGE',), 'kind': (['mask', 'RGB', 'RGBA'],)}}
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'change_channels'
-    CATEGORY = 'Masquerade Nodes'
-
-    def change_channels(self, image, kind):
-        image_size = image.size()
-        if kind == 'mask':
-            return (tensor2mask(image),)
-        elif kind == 'RGBA':
-            return (tensor2rgba(image),)
-        else:
-            return (tensor2rgb(image),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

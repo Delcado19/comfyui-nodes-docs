@@ -40,21 +40,6 @@ CR_ColorPanel is a node for generating solid color panels. It allows users to sp
 - Infra type: CPU
 
 # Source code
-```
-class CR_ColorPanel:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'panel_width': ('INT', {'default': 512, 'min': 8, 'max': 4096}), 'panel_height': ('INT', {'default': 512, 'min': 8, 'max': 4096}), 'fill_color': (COLORS,)}, 'optional': {'fill_color_hex': ('STRING', {'multiline': False, 'default': '#000000'})}}
-    RETURN_TYPES = ('IMAGE', 'STRING')
-    RETURN_NAMES = ('image', 'show_help')
-    FUNCTION = 'make_panel'
-    CATEGORY = icons.get('Comfyroll/Graphics/Layout')
-
-    def make_panel(self, panel_width, panel_height, fill_color, fill_color_hex='#000000'):
-        fill_color = get_color_values(fill_color, fill_color_hex, color_mapping)
-        size = (panel_width, panel_height)
-        panel = Image.new('RGB', size, fill_color)
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Layout-Nodes#cr-color-panel'
-        return (pil2tensor(panel), show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

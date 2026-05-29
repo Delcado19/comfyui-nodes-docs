@@ -48,25 +48,6 @@ The CR_PromptList node is designed to process and manipulate text data in list f
 - Infra type: CPU
 
 # Source code
-```
-class CR_PromptList:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'prepend_text': ('STRING', {'multiline': False, 'default': ''}), 'multiline_text': ('STRING', {'multiline': True, 'default': 'body_text'}), 'append_text': ('STRING', {'multiline': False, 'default': ''}), 'start_index': ('INT', {'default': 0, 'min': 0, 'max': 9999}), 'max_rows': ('INT', {'default': 1000, 'min': 1, 'max': 9999})}}
-    RETURN_TYPES = ('STRING', 'STRING', 'STRING')
-    RETURN_NAMES = ('prompt', 'body_text', 'show_help')
-    OUTPUT_IS_LIST = (True, True, False)
-    FUNCTION = 'make_list'
-    CATEGORY = icons.get('Comfyroll/List')
-
-    def make_list(self, multiline_text, prepend_text='', append_text='', start_index=0, max_rows=9999):
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/List-Nodes#cr-prompt-list'
-        lines = multiline_text.split('\n')
-        start_index = max(0, min(start_index, len(lines) - 1))
-        end_index = min(start_index + max_rows, len(lines))
-        selected_rows = lines[start_index:end_index]
-        prompt_list_out = [prepend_text + line + append_text for line in selected_rows]
-        body_list_out = selected_rows
-        return (prompt_list_out, body_list_out, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

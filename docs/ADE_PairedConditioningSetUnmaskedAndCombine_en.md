@@ -47,29 +47,6 @@ This node aims to process and combine paired conditional inputs, applying unmask
 - Common nodes: unknown
 
 ## Source code
-```python
-class PairedConditioningSetUnmaskedAndCombineHooked:
-    @classmethod
-    def INPUT_TYPES(s):
-        return {
-            "required": {
-                "positive": ("CONDITIONING",),
-                "negative": ("CONDITIONING",),
-                "positive_DEFAULT": ("CONDITIONING",),
-                "negative_DEFAULT": ("CONDITIONING",),
-            },
-            "optional": {
-                "opt_lora_hook": ("LORA_HOOK",),
-            }
-        }
-    
-    RETURN_TYPES = ("CONDITIONING", "CONDITIONING")
-    RETURN_NAMES = ("positive", "negative")
-    CATEGORY = "Animate Diff 🎭🅐🅓/conditioning"
-    FUNCTION = "append_and_combine"
+[View source repository on GitHub](https://github.com/Kosinkadink/ComfyUI-AnimateDiff-Evolved)
 
-    def append_and_combine(self, positive, negative, positive_DEFAULT, negative_DEFAULT,
-                           opt_lora_hook: LoraHookGroup=None):
-        final_positive, final_negative = set_unmasked_and_combine_conds(conds=[positive, negative], new_conds=[positive_DEFAULT, negative_DEFAULT],
-                                                                        opt_lora_hook=opt_lora_hook)
-        return (final_positive, final_negative,)
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

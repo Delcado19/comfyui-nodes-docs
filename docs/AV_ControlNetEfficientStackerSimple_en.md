@@ -58,38 +58,7 @@ This node is designed to simplify the control network stacking process for image
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class AVControlNetEfficientStackerSimple(AVControlNetEfficientStacker):
-    @classmethod
-    def INPUT_TYPES(s):
-        return {
-            "required": {
-                "control_net_name": (["None", "Auto: sd15", "Auto: sdxl", "Auto: sdxl_t2i"] + s.controlnets,),
-                "image": ("IMAGE",),
-                "strength": (
-                    "FLOAT",
-                    {"default": 1.0, "min": 0.0, "max": 10.0, "step": 0.01},
-                ),
-                "preprocessor": (["None"] + s.preprocessors,),
-            },
-            "optional": {
-                "cnet_stack": ("CONTROL_NET_STACK",),
-                "control_net_override": ("STRING", {"default": "None"}),
-                "timestep_keyframe": ("TIMESTEP_KEYFRAME",),
-                "resolution": ("INT", {"default": 512, "min": 64, "max": 2048, "step": 64}),
-                "enabled": ("BOOLEAN", {"default": True}),
-            },
-        }
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    FUNCTION = "control_net_stacker_simple"
-
-    def control_net_stacker_simple(
-        self,
-        *args,
-        **kwargs,
-    ):
-        return self.control_net_stacker(*args, start_percent=0.0, end_percent=1.0, **kwargs)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

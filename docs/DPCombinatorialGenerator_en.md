@@ -27,11 +27,6 @@ The DPCombinatorialGenerator node is designed to generate combinations of prompt
 - Infra type: CPU
 
 # Source code
-```
-class DPCombinatorialGenerator(DPAbstractSamplerNode):
+[View source repository on GitHub](https://github.com/adieyal/comfyui-dynamicprompts)
 
-    @property
-    @lru_cache(maxsize=1)
-    def context(self) -> SamplingContext:
-        return SamplingContext(wildcard_manager=self._wildcard_manager, default_sampling_method=SamplingMethod.COMBINATORIAL)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

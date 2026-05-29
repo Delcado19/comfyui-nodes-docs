@@ -31,19 +31,6 @@ The OffsetImage node is designed to perform translation operations on the input 
 - Infra type: CPU
 
 # Source code
-```
-class OffsetImage:
+[View source repository on GitHub](https://github.com/spinagon/ComfyUI-seamless-tiling)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'pixels': ('IMAGE',), 'x_percent': ('FLOAT', {'default': 50.0, 'min': 0.0, 'max': 100.0, 'step': 1}), 'y_percent': ('FLOAT', {'default': 50.0, 'min': 0.0, 'max': 100.0, 'step': 1})}}
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'run'
-    CATEGORY = 'image'
-
-    def run(self, pixels, x_percent, y_percent):
-        (n, y, x, c) = pixels.size()
-        y = round(y * y_percent / 100)
-        x = round(x * x_percent / 100)
-        return (pixels.roll((y, x), (1, 2)),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

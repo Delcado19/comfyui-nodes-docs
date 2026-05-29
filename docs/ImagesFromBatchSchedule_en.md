@@ -40,22 +40,6 @@ The 'animate' method of the ImagesFromBatchSchedule node is designed to generate
 - Infra type: CPU
 
 # Source code
-```
-class ImagesFromBatchSchedule:
+[View source repository on GitHub](https://github.com/FizzleDorf/ComfyUI_FizzNodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'images': ('IMAGE',), 'text': ('STRING', {'multiline': True, 'default': defaultPrompt}), 'current_frame': ('INT', {'default': 0.0, 'min': 0.0, 'max': 999999.0, 'step': 1.0}), 'max_frames': ('INT', {'default': 120.0, 'min': 1.0, 'max': 999999.0, 'step': 1.0}), 'print_output': ('BOOLEAN', {'default': False})}}
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'animate'
-    CATEGORY = 'FizzNodes 📅🅕🅝/ScheduleNodes'
-
-    def animate(self, images, text, current_frame, max_frames, print_output):
-        inputText = str('{' + text + '}')
-        inputText = re.sub(',\\s*}', '}', inputText)
-        start_frame = 0
-        animation_prompts = json.loads(inputText.strip())
-        (pos_cur_prompt, pos_nxt_prompt, weight) = interpolate_prompt_series(animation_prompts, max_frames, 0, '', '', 0, 0, 0, 0, print_output)
-        selImages = selectImages(images, pos_cur_prompt[current_frame])
-        return selImages
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

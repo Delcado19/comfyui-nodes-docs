@@ -30,25 +30,7 @@ The SemSegPreprocessor node is an image preprocessing tool designed for semantic
 - Infra type: `GPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class Uniformer_SemSegPreprocessor:
-    @classmethod
-    def INPUT_TYPES(s):
-        return create_node_input_types()
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "semantic_segmentate"
-
-    CATEGORY = "ControlNet Preprocessors/Semantic Segmentation"
-
-    def semantic_segmentate(self, image, resolution=512):
-        from controlnet_aux.uniformer import UniformerSegmentor
-
-        model = UniformerSegmentor.from_pretrained().to(model_management.get_torch_device())
-        out = common_annotator_call(model, image, resolution=resolution)
-        del model
-        return (out, )
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

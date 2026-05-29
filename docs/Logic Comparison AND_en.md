@@ -27,9 +27,6 @@ The WAS_Logical_AND node is designed to perform a logical AND operation. It eval
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Logical_AND(WAS_Logical_Comparisons):
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def do(self, boolean_a, boolean_b):
-        return (boolean_a and boolean_b,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

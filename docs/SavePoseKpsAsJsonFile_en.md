@@ -26,33 +26,7 @@ This node has no output types.
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class SavePoseKpsAsJsonFile:
-    @classmethod
-    def INPUT_TYPES(s):
-        return {
-            "required": {
-                "pose_kps": ("POSE_KEYPOINT",),
-                "filename_prefix": ("STRING", {"default": "PoseKeypoint"})
-            }
-        }
-    RETURN_TYPES = ()
-    FUNCTION = "save_pose_kps"
-    OUTPUT_NODE = True
-    CATEGORY = "ControlNet Preprocessors/Pose Keypoint Postprocess"
-    def __init__(self):
-        self.output_dir = folder_paths.get_output_directory()
-        self.type = "output"
-        self.prefix_append = ""
-    def save_pose_kps(self, pose_kps, filename_prefix):
-        filename_prefix += self.prefix_append
-        full_output_folder, filename, counter, subfolder, filename_prefix = \
-            folder_paths.get_save_image_path(filename_prefix, self.output_dir, pose_kps[0]["canvas_width"], pose_kps[0]["canvas_height"])
-        file = f"{filename}_{counter:05}.json"
-        with open(os.path.join(full_output_folder, file), 'w') as f:
-            json.dump(pose_kps , f)
-        return {}
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

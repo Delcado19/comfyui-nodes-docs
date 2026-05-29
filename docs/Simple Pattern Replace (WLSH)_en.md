@@ -40,33 +40,6 @@ This node can replace specific patterns in a text string with entries from the p
 - Infra type: CPU
 
 # Source code
-```
-class WLSH_Simple_Pattern_Replace:
+[View source repository on GitHub](https://github.com/wallish77/wlsh_nodes)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'input_string': ('STRING', {'multiline': True, 'forceInput': True}), 'list_string': ('STRING', {'default': f''}), 'pattern': ('STRING', {'default': f'$var'}), 'delimiter': ('STRING', {'default': f','}), 'seed': ('INT', {'default': 0, 'min': 0, 'max': 18446744073709551615})}}
-    RETURN_TYPES = ('STRING',)
-    RETURN_NAMES = ('string',)
-    FUNCTION = 'replace_string'
-    CATEGORY = 'WLSH Nodes/text'
-
-    def replace_string(self, input_string, list_string, pattern, delimiter, seed):
-        pattern = re.escape(pattern).strip()
-        regex = re.compile(pattern)
-        matches = regex.findall(input_string)
-        if not matches:
-            return (input_string,)
-        if seed is not None:
-            random.seed(seed)
-        if delimiter not in list_string:
-            raise ValueError('Delimiter not found in list_string')
-
-        def replace(match):
-            return random.choice(list_string.split(delimiter))
-        new_string = regex.sub(replace, input_string)
-        return (new_string,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -36,24 +36,6 @@ The 'dictionary_update' method aims to merge multiple dictionaries into one. It 
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Dictionary_Update:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'dictionary_a': ('DICT',), 'dictionary_b': ('DICT',)}, 'optional': {'dictionary_c': ('DICT',), 'dictionary_d': ('DICT',)}}
-    RETURN_TYPES = ('DICT',)
-    FUNCTION = 'dictionary_update'
-    CATEGORY = 'WAS Suite/Text'
-
-    def dictionary_update(self, dictionary_a, dictionary_b, dictionary_c=None, dictionary_d=None):
-        return_dictionary = {**dictionary_a, **dictionary_b}
-        if dictionary_c is not None:
-            return_dictionary = {**return_dictionary, **dictionary_c}
-        if dictionary_d is not None:
-            return_dictionary = {**return_dictionary, **dictionary_d}
-        return (return_dictionary,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

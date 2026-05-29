@@ -32,23 +32,6 @@ This node resizes images to a specified size while maintaining the aspect ratio,
 - Infra type: CPU
 
 # Source code
-```
-class imageScaleDownToSize(imageScaleDownBy):
+[View source repository on GitHub](https://github.com/yolain/ComfyUI-Easy-Use)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'images': ('IMAGE',), 'size': ('INT', {'default': 512, 'min': 1, 'max': MAX_RESOLUTION, 'step': 1}), 'mode': ('BOOLEAN', {'default': True, 'label_on': 'max', 'label_off': 'min'})}}
-    RETURN_TYPES = ('IMAGE',)
-    CATEGORY = 'EasyUse/Image'
-    FUNCTION = 'image_scale_down_to_size'
-
-    def image_scale_down_to_size(self, images, size, mode):
-        width = images.shape[2]
-        height = images.shape[1]
-        if mode:
-            scale_by = size / max(width, height)
-        else:
-            scale_by = size / min(width, height)
-        scale_by = min(scale_by, 1.0)
-        return self.image_scale_down_by(images, scale_by)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

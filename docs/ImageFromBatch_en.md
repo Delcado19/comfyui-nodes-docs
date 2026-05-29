@@ -32,20 +32,6 @@ The ImageFromBatch node is designed to extract a series of images from a batch o
 - Infra type: CPU
 
 # Source code
-```
-class ImageFromBatch:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'image': ('IMAGE',), 'batch_index': ('INT', {'default': 0, 'min': 0, 'max': 4095}), 'length': ('INT', {'default': 1, 'min': 1, 'max': 4096})}}
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'frombatch'
-    CATEGORY = 'image/batch'
-
-    def frombatch(self, image, batch_index, length):
-        s_in = image
-        batch_index = min(s_in.shape[0] - 1, batch_index)
-        length = min(s_in.shape[0] - batch_index, length)
-        s = s_in[batch_index:batch_index + length].clone()
-        return (s,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

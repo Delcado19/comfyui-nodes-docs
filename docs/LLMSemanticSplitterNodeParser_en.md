@@ -46,39 +46,7 @@ The LLMSemanticSplitterNodeParser node is designed to perform semantic analysis 
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class LLMSemanticSplitterNodeParser:
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {
-            "required": {
-                "document": ("DOCUMENT",),
-                "llm_embed_model": ("LLM_EMBED_MODEL",),
-            },
-            "optional": {
-                "buffer_size": ("INT", {"default": 1, "min": 1}),
-                "sentence_splitter": ("LLM_SENTENCE_SPLITTER",),
-                "include_metadata": ("BOOLEAN", {"default": True}),
-                "include_prev_next_rel": ("BOOLEAN", {"default": True}),
-            },
-        }
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    RETURN_TYPES = ("LLM_NODE_PARSER",)
-    RETURN_NAMES = ("llm_node_parser",)
-
-    FUNCTION = "semantic_nodes"
-    CATEGORY = f"{MENU_NAME}/{SUB_MENU_NAME}/Parsing"
-
-    def semantic_nodes(self, document, llm_embed_model, buffer_size=1, sentence_splitter=None, include_metadata=True, include_prev_next_rel=True):
-        parser = SemanticSplitterNodeParser(
-            embed_model=llm_embed_model,
-            buffer_size=buffer_size,
-            sentence_splitter=sentence_splitter,
-            include_metadata=include_metadata,
-            include_prev_next_rel=include_prev_next_rel,
-        )
-        return (parser.build_semantic_nodes_from_documents(document, show_progress=True), )
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

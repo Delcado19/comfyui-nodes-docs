@@ -23,22 +23,6 @@ The PhotoMakerLoader class is responsible for loading and initializing the Photo
 - Infra type: CPU
 
 # Source code
-```
-class PhotoMakerLoader:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'photomaker_model_name': (folder_paths.get_filename_list('photomaker'),)}}
-    RETURN_TYPES = ('PHOTOMAKER',)
-    FUNCTION = 'load_photomaker_model'
-    CATEGORY = '_for_testing/photomaker'
-
-    def load_photomaker_model(self, photomaker_model_name):
-        photomaker_model_path = folder_paths.get_full_path('photomaker', photomaker_model_name)
-        photomaker_model = PhotoMakerIDEncoder()
-        data = comfy.utils.load_torch_file(photomaker_model_path, safe_load=True)
-        if 'id_encoder' in data:
-            data = data['id_encoder']
-        photomaker_model.load_state_dict(data)
-        return (photomaker_model,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

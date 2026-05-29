@@ -68,13 +68,6 @@ The IPAdapterTiledBatch node aims to adapt and process image data in batch forma
 - Infra type: CPU
 
 # Source code
-```
-class IPAdapterTiledBatch(IPAdapterTiled):
+[View source repository on GitHub](https://github.com/cubiq/ComfyUI_IPAdapter_plus)
 
-    def __init__(self):
-        self.unfold_batch = True
-
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'model': ('MODEL',), 'ipadapter': ('IPADAPTER',), 'image': ('IMAGE',), 'weight': ('FLOAT', {'default': 1.0, 'min': -1, 'max': 3, 'step': 0.05}), 'weight_type': (WEIGHT_TYPES,), 'start_at': ('FLOAT', {'default': 0.0, 'min': 0.0, 'max': 1.0, 'step': 0.001}), 'end_at': ('FLOAT', {'default': 1.0, 'min': 0.0, 'max': 1.0, 'step': 0.001}), 'sharpening': ('FLOAT', {'default': 0.0, 'min': 0.0, 'max': 1.0, 'step': 0.05}), 'embeds_scaling': (['V only', 'K+V', 'K+V w/ C penalty', 'K+mean(V) w/ C penalty'],)}, 'optional': {'image_negative': ('IMAGE',), 'attn_mask': ('MASK',), 'clip_vision': ('CLIP_VISION',)}}
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

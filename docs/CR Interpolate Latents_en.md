@@ -39,35 +39,6 @@ CR_InterpolateLatents is a node for performing interpolation between two latent 
 - Infra type: CPU
 
 # Source code
-```
-class CR_InterpolateLatents:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        interpolation_methods = ['lerp']
-        return {'required': {'latent1': ('LATENT',), 'latent2': ('LATENT',), 'weight': ('FLOAT', {'default': 0.5, 'min': 0.0, 'max': 1.0, 'step': 0.01}), 'method': (interpolation_methods,)}}
-    RETURN_TYPES = ('LATENT', 'STRING')
-    RETURN_NAMES = ('LATENT', 'show_help')
-    FUNCTION = 'interpolate'
-    CATEGORY = icons.get('Comfyroll/Animation/Interpolate')
-
-    def interpolate(self, latent1, latent2, weight, method):
-        a = latent1.copy()
-        b = latent2.copy()
-        c = {}
-        if method == 'lerp':
-            torch.lerp(a['samples'], b['samples'], weight, out=a['samples'])
-        elif method == 'slerp':
-            dot_products = torch.sum(latent1['samples'] * latent2['samples'], dim=(2, 3))
-            dot_products = torch.clamp(dot_products, -1, 1)
-            angles = torch.acos(dot_products)
-            sin_angles = torch.sin(angles)
-            weight1 = torch.sin((1 - weight) * angles) / sin_angles
-            weight2 = torch.sin(weight * angles) / sin_angles
-            weight1 = weight1.unsqueeze(-1).unsqueeze(-1)
-            weight2 = weight2.unsqueeze(-1).unsqueeze(-1)
-            interpolated_samples = weight1 * latent1['samples'] + weight2 * latent2['samples']
-            a['samples'] = interpolated_samples
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Interpolation-Nodes#cr-interpolate-latents'
-        return (a, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

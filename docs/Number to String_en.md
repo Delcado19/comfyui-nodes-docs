@@ -23,19 +23,6 @@ The WAS_Number_To_String node converts a numeric value into its corresponding st
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Number_To_String:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'number': ('NUMBER',)}}
-    RETURN_TYPES = ('STRING',)
-    FUNCTION = 'number_to_string'
-    CATEGORY = 'WAS Suite/Number/Operations'
-
-    def number_to_string(self, number):
-        return (str(number),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

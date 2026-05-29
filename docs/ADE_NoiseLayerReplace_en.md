@@ -48,21 +48,6 @@ NoiseLayerReplaceNode is designed to manipulate and generate noise layers in a m
 - Infra type: CPU
 
 # Source code
-```
-class NoiseLayerReplaceNode:
+[View source repository on GitHub](https://github.com/Kosinkadink/ComfyUI-AnimateDiff-Evolved)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'batch_offset': ('INT', {'default': 0, 'min': 0, 'max': BIGMAX}), 'noise_type': (NoiseLayerType.LIST,), 'seed_gen_override': (SeedNoiseGeneration.LIST_WITH_OVERRIDE,), 'seed_offset': ('INT', {'default': 0, 'min': BIGMIN, 'max': BIGMAX})}, 'optional': {'prev_noise_layers': ('NOISE_LAYERS',), 'mask_optional': ('MASK',), 'seed_override': ('INT', {'default': 0, 'min': 0, 'max': 18446744073709551615, 'forceInput': True})}}
-    RETURN_TYPES = ('NOISE_LAYERS',)
-    CATEGORY = 'Animate Diff 🎭🅐🅓/noise layers'
-    FUNCTION = 'create_layers'
-
-    def create_layers(self, batch_offset: int, noise_type: str, seed_gen_override: str, seed_offset: int, prev_noise_layers: NoiseLayerGroup=None, mask_optional: Tensor=None, seed_override: int=None):
-        if prev_noise_layers is None:
-            prev_noise_layers = NoiseLayerGroup()
-        prev_noise_layers = prev_noise_layers.clone()
-        layer = NoiseLayerReplace(noise_type=noise_type, batch_offset=batch_offset, seed_gen_override=seed_gen_override, seed_offset=seed_offset, seed_override=seed_override, mask=mask_optional)
-        prev_noise_layers.add_to_start(layer)
-        return (prev_noise_layers,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

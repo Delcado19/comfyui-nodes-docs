@@ -28,31 +28,6 @@ The WAS_Image_Bounds_to_Console node facilitates the debugging process by output
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Image_Bounds_to_Console:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'image_bounds': ('IMAGE_BOUNDS',), 'label': ('STRING', {'default': 'Debug to Console', 'multiline': False})}}
-    RETURN_TYPES = ('IMAGE_BOUNDS',)
-    OUTPUT_NODE = True
-    FUNCTION = 'debug_to_console'
-    CATEGORY = 'WAS Suite/Debug'
-
-    def debug_to_console(self, image_bounds, label):
-        label_out = 'Debug to Console'
-        if label.strip() != '':
-            label_out = label
-        bounds_out = 'Empty'
-        if len(bounds_out) > 0:
-            bounds_out = ', \n    '.join(('\t(rmin={}, rmax={}, cmin={}, cmax={})'.format(a, b, c, d) for (a, b, c, d) in image_bounds))
-        cstr(f'\x1b[33m{label_out}\x1b[0m:\n[\n{bounds_out}\n]\n').msg.print()
-        return (image_bounds,)
-
-    @classmethod
-    def IS_CHANGED(cls, **kwargs):
-        return float('NaN')
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

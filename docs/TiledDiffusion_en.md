@@ -43,27 +43,6 @@ The TiledDiffusion class is a framework for applying diffusion models in tiles, 
 - Infra type: GPU
 
 # Source code
-```
-class TiledDiffusion:
+[View source repository on GitHub](https://github.com/shiimizu/ComfyUI-TiledDiffusion)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'model': ('MODEL',), 'method': (['MultiDiffusion', 'Mixture of Diffusers'], {'default': 'Mixture of Diffusers'}), 'tile_width': ('INT', {'default': 96 * opt_f, 'min': 16, 'max': MAX_RESOLUTION, 'step': 16}), 'tile_height': ('INT', {'default': 96 * opt_f, 'min': 16, 'max': MAX_RESOLUTION, 'step': 16}), 'tile_overlap': ('INT', {'default': 8 * opt_f, 'min': 0, 'max': 256 * opt_f, 'step': 4 * opt_f}), 'tile_batch_size': ('INT', {'default': 4, 'min': 1, 'max': MAX_RESOLUTION, 'step': 1})}}
-    RETURN_TYPES = ('MODEL',)
-    FUNCTION = 'apply'
-    CATEGORY = '_for_testing'
-
-    def apply(self, model: ModelPatcher, method, tile_width, tile_height, tile_overlap, tile_batch_size):
-        if method == 'Mixture of Diffusers':
-            implement = MixtureOfDiffusers()
-        else:
-            implement = MultiDiffusion()
-        implement.tile_width = tile_width // opt_f
-        implement.tile_height = tile_height // opt_f
-        implement.tile_overlap = tile_overlap // opt_f
-        implement.tile_batch_size = tile_batch_size
-        model = model.clone()
-        model.set_model_unet_function_wrapper(implement)
-        model.model_options['tiled_diffusion'] = True
-        return (model,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -27,20 +27,6 @@ The `load_model` method is responsible for loading and preparing a model for ima
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Upscale_Model_Loader:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'model_name': (comfy_paths.get_filename_list('upscale_models'),)}}
-    RETURN_TYPES = ('UPSCALE_MODEL', TEXT_TYPE)
-    RETURN_NAMES = ('UPSCALE_MODEL', 'MODEL_NAME_TEXT')
-    FUNCTION = 'load_model'
-    CATEGORY = 'WAS Suite/Loaders'
-
-    def load_model(self, model_name):
-        model_path = comfy_paths.get_full_path('upscale_models', model_name)
-        sd = comfy.utils.load_torch_file(model_path)
-        out = model_loading.load_state_dict(sd).eval()
-        return (out, model_name)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

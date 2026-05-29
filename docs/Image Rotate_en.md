@@ -36,44 +36,6 @@ The image rotation method applies specified rotation to a batch of images. It ha
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Image_Rotate:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'images': ('IMAGE',), 'mode': (['transpose', 'internal'],), 'rotation': ('INT', {'default': 0, 'min': 0, 'max': 360, 'step': 90}), 'sampler': (['nearest', 'bilinear', 'bicubic'],)}}
-    RETURN_TYPES = ('IMAGE',)
-    RETURN_NAMES = ('images',)
-    FUNCTION = 'image_rotate'
-    CATEGORY = 'WAS Suite/Image/Transform'
-
-    def image_rotate(self, images, mode, rotation, sampler):
-        batch_tensor = []
-        for image in images:
-            image = tensor2pil(image)
-            if rotation > 360:
-                rotation = int(360)
-            if rotation % 90 != 0:
-                rotation = int(rotation // 90 * 90)
-            if sampler:
-                if sampler == 'nearest':
-                    sampler = Image.NEAREST
-                elif sampler == 'bicubic':
-                    sampler = Image.BICUBIC
-                elif sampler == 'bilinear':
-                    sampler = Image.BILINEAR
-                else:
-                    sampler == Image.BILINEAR
-            if mode == 'internal':
-                image = image.rotate(rotation, sampler)
-            else:
-                rot = int(rotation / 90)
-                for _ in range(rot):
-                    image = image.transpose(2)
-            batch_tensor.append(pil2tensor(image))
-        batch_tensor = torch.cat(batch_tensor, dim=0)
-        return (batch_tensor,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

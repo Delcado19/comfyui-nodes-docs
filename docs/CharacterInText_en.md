@@ -32,19 +32,6 @@ This node facilitates identifying specific characters in text and calculating th
 - Infra type: CPU
 
 # Source code
-```
-class CharacterInText:
+[View source repository on GitHub](https://github.com/shadowcz007/comfyui-mixlab-nodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'text': ('STRING', {'multiline': True, 'dynamicPrompts': False}), 'character': ('STRING', {'multiline': True, 'dynamicPrompts': False}), 'start_index': ('INT', {'default': 1, 'min': 0, 'max': 1024, 'step': 1, 'display': 'number'})}}
-    INPUT_IS_LIST = False
-    RETURN_TYPES = ('INT',)
-    FUNCTION = 'run'
-    OUTPUT_IS_LIST = (False,)
-    CATEGORY = '♾️Mixlab/GPT'
-
-    def run(self, text, character, start_index):
-        b = 1 if character.lower() in text.lower() else 0
-        return (b + start_index,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -27,26 +27,6 @@ This node aims to improve the visual quality of an image by adjusting its contra
 - Infra type: CPU
 
 # Source code
-```
-class EnhanceImage:
+[View source repository on GitHub](https://github.com/shadowcz007/comfyui-mixlab-nodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'image': ('IMAGE',), 'contrast': ('FLOAT', {'default': 0.5, 'min': 0, 'max': 10, 'step': 0.01, 'display': 'slider'})}}
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'run'
-    CATEGORY = '♾️Mixlab/Image'
-    INPUT_IS_LIST = True
-    OUTPUT_IS_LIST = (True,)
-
-    def run(self, image, contrast):
-        contrast = contrast[0]
-        res = []
-        for ims in image:
-            for im in ims:
-                image = tensor2pil(im)
-                image = enhance_depth_map(image, contrast)
-                image = pil2tensor(image)
-                res.append(image)
-        return (res,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

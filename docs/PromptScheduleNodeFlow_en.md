@@ -40,23 +40,6 @@ This node is designed to manipulate and schedule based on a given frame count an
 - Infra type: CPU
 
 # Source code
-```
-class PromptScheduleNodeFlow:
+[View source repository on GitHub](https://github.com/FizzleDorf/ComfyUI_FizzNodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'text': ('STRING', {'multiline': True}), 'num_frames': ('INT', {'default': 24.0, 'min': 0.0, 'max': 9999.0, 'step': 1.0})}, 'optional': {'in_text': ('STRING', {'multiline': False}), 'max_frames': ('INT', {'default': 0.0, 'min': 0.0, 'max': 999999.0, 'step': 1.0})}}
-    RETURN_TYPES = ('INT', 'STRING')
-    FUNCTION = 'addString'
-    CATEGORY = 'FizzNodes 📅🅕🅝/ScheduleNodes'
-
-    def addString(self, text, in_text='', max_frames=0, num_frames=0):
-        if in_text:
-            in_text = in_text.rstrip(',')
-        new_max = num_frames + max_frames
-        if max_frames == 0:
-            new_text = in_text + (', ' if in_text else '') + f'"{max_frames}": "{text}"'
-        else:
-            new_text = in_text + (', ' if in_text else '') + f'"{new_max}": "{text}"'
-        return (new_max, new_text)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

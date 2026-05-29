@@ -35,19 +35,6 @@ This node class encapsulates the functionality for processing and outputting gri
 - Infra type: CPU
 
 # Source code
-```
-class GridOutput:
+[View source repository on GitHub](https://github.com/shadowcz007/comfyui-mixlab-nodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'grid': ('_GRID',)}}
-    RETURN_TYPES = ('INT', 'INT', 'INT', 'INT')
-    RETURN_NAMES = ('x', 'y', 'width', 'height')
-    FUNCTION = 'run'
-    CATEGORY = '♾️Mixlab/Layer'
-    INPUT_IS_LIST = False
-
-    def run(self, grid):
-        (x, y, w, h) = grid
-        return (x, y, w, h)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

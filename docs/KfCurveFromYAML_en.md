@@ -23,17 +23,6 @@ This node is designed to parse YAML-formatted strings to generate keyframe curve
 - Infra type: CPU
 
 # Source code
-```
-class KfCurveFromYAML:
-    CATEGORY = CATEGORY
-    FUNCTION = 'main'
-    RETURN_TYPES = ('KEYFRAMED_CURVE',)
+[View source repository on GitHub](https://github.com/dmarx/ComfyUI-Keyframed)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'yaml': ('STRING', {'multiline': True, 'default': 'curve:\n- - 0\n  - 0\n  - linear\n- - 1\n  - 1\nloop: false\nbounce: false\nduration: 1\nlabel: foo'})}}
-
-    def main(self, yaml):
-        curve = kf.serialization.from_yaml(yaml)
-        return (curve,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

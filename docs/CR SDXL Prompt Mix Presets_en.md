@@ -63,56 +63,6 @@ CR_PromptMixPresets is a node for composing and manipulating prompts and styles 
 - Infra type: CPU
 
 # Source code
-```
-class CR_PromptMixPresets:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {}, 'optional': {'prompt_positive': ('STRING', {'multiline': True, 'default': 'prompt_pos'}), 'prompt_negative': ('STRING', {'multiline': True, 'default': 'prompt_neg'}), 'style_positive': ('STRING', {'multiline': True, 'default': 'style_pos'}), 'style_negative': ('STRING', {'multiline': True, 'default': 'style_neg'}), 'preset': (['default with no style text', 'default with style text', 'style boost 1', 'style boost 2', 'style text to refiner'],)}}
-    RETURN_TYPES = ('STRING', 'STRING', 'STRING', 'STRING', 'STRING', 'STRING', 'STRING')
-    RETURN_NAMES = ('pos_g', 'pos_l', 'pos_r', 'neg_g', 'neg_l', 'neg_r', 'show_help')
-    FUNCTION = 'mixer'
-    CATEGORY = icons.get('Comfyroll/SDXL')
-
-    def mixer(self, prompt_positive, prompt_negative, style_positive, style_negative, preset):
-        if preset == 'default with no style text':
-            pos_g = prompt_positive
-            pos_l = prompt_positive
-            pos_r = prompt_positive
-            neg_g = prompt_negative
-            neg_l = prompt_negative
-            neg_r = prompt_negative
-        elif preset == 'default with style text':
-            pos_g = prompt_positive + style_positive
-            pos_l = prompt_positive + style_positive
-            pos_r = prompt_positive + style_positive
-            neg_g = prompt_negative + style_negative
-            neg_l = prompt_negative + style_negative
-            neg_r = prompt_negative + style_negative
-        elif preset == 'style boost 1':
-            pos_g = prompt_positive
-            pos_l = style_positive
-            pos_r = prompt_positive
-            neg_g = prompt_negative
-            neg_l = style_negative
-            neg_r = prompt_negative
-        elif preset == 'style boost 2':
-            pos_g = style_positive
-            pos_l = prompt_positive
-            pos_r = style_positive
-            neg_g = style_negative
-            neg_l = prompt_negative
-            neg_r = style_negative
-        elif preset == 'style text to refiner':
-            pos_g = prompt_positive
-            pos_l = prompt_positive
-            pos_r = style_positive
-            neg_g = prompt_negative
-            neg_l = prompt_negative
-            neg_r = style_negative
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/SDXL-Nodes#cr-sdxl-prompt-mix-presets'
-        return (pos_g, pos_l, pos_r, neg_g, neg_l, neg_r, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

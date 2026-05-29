@@ -43,44 +43,7 @@ The ConversableAgentCreatorAdvanced node is specifically designed to create adva
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class ConversableAgentCreatorAdvanced:
-	@classmethod
-	def INPUT_TYPES(cls):
-		return {
-			"required": {
-				"name": ("STRING", {"multiline": False, "placeholder": "Assistant"}),
-				"system_message": ("STRING", {
-					"multiline": True,
-					"default": "You are a helpful AI assistant. You can help with document QA. Return 'TERMINATE' when the task is done."
-				}),
-			},
-			"optional": {
-				"llm_model": ("LLM_MODEL",),
-				# default auto reply when no code execution or llm-based reply is generated.
-				"default_auto_reply": ("STRING", {"multiline": True}),
-				# a short description of the agent, this description is used by other agents.
-				"description": ("STRING", {"multiline": True}),
-			}
-		}
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-	RETURN_TYPES = ("AGENT",)
-	RETURN_NAMES = ("agent",)
-
-	FUNCTION = "create_agent"
-	CATEGORY = f"{MENU_NAME}/Shakers/Agents"
-
-	def create_agent(self, name, system_message, llm_model=None, default_auto_reply="", description=None):
-		agent = ConversableAgent(
-			name=name,
-			system_message=system_message,
-			llm_config={"config_list": [{"model": llm_model["llm"].model, "api_key": llm_model["llm"].api_key}]} if llm_model is not None else False,
-			human_input_mode="NEVER",
-			default_auto_reply=default_auto_reply,
-			description=description if description is not None else system_message,
-		)
-		return (agent,)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

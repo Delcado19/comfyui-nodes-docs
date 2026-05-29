@@ -27,21 +27,6 @@ The WAS_Text_to_Conditioning node is designed to convert text input into a condi
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Text_to_Conditioning:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'clip': ('CLIP',), 'text': (TEXT_TYPE, {'forceInput': True if TEXT_TYPE == 'STRING' else False})}}
-    RETURN_TYPES = ('CONDITIONING',)
-    FUNCTION = 'text_to_conditioning'
-    CATEGORY = 'WAS Suite/Text/Operations'
-
-    def text_to_conditioning(self, clip, text):
-        encoder = nodes.CLIPTextEncode()
-        encoded = encoder.encode(clip=clip, text=text)
-        return (encoded[0], {'ui': {'string': text}})
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -52,40 +52,6 @@ The RegionalPromptSimple node enhances the image synthesis process through a loc
 - Infra type: GPU
 
 # Source code
-```
-class RegionalPromptSimple:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Inspire-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'basic_pipe': ('BASIC_PIPE',), 'mask': ('MASK',), 'cfg': ('FLOAT', {'default': 8.0, 'min': 0.0, 'max': 100.0}), 'sampler_name': (comfy.samplers.KSampler.SAMPLERS,), 'scheduler': (comfy.samplers.KSampler.SCHEDULERS,), 'wildcard_prompt': ('STRING', {'multiline': True, 'dynamicPrompts': False, 'placeholder': 'wildcard prompt'}), 'controlnet_in_pipe': ('BOOLEAN', {'default': False, 'label_on': 'Keep', 'label_off': 'Override'}), 'sigma_factor': ('FLOAT', {'default': 1.0, 'min': 0.0, 'max': 10.0, 'step': 0.01})}}
-    RETURN_TYPES = ('REGIONAL_PROMPTS',)
-    FUNCTION = 'doit'
-    CATEGORY = 'InspirePack/Regional'
-
-    def doit(self, basic_pipe, mask, cfg, sampler_name, scheduler, wildcard_prompt, controlnet_in_pipe=False, sigma_factor=1.0):
-        if 'RegionalPrompt' not in nodes.NODE_CLASS_MAPPINGS:
-            utils.try_install_custom_node('https://github.com/ltdrdata/ComfyUI-Impact-Pack', "To use 'RegionalPromptSimple' node, 'Impact Pack' extension is required.")
-            raise Exception(f"[ERROR] To use RegionalPromptSimple, you need to install 'ComfyUI-Impact-Pack'")
-        (model, clip, vae, positive, negative) = basic_pipe
-        iwe = nodes.NODE_CLASS_MAPPINGS['ImpactWildcardEncode']()
-        kap = nodes.NODE_CLASS_MAPPINGS['KSamplerAdvancedProvider']()
-        rp = nodes.NODE_CLASS_MAPPINGS['RegionalPrompt']()
-        if wildcard_prompt != '':
-            (model, clip, new_positive, _) = iwe.doit(model=model, clip=clip, populated_text=wildcard_prompt)
-            if controlnet_in_pipe:
-                prev_cnet = None
-                for t in positive:
-                    if 'control' in t[1] and 'control_apply_to_uncond' in t[1]:
-                        prev_cnet = (t[1]['control'], t[1]['control_apply_to_uncond'])
-                        break
-                if prev_cnet is not None:
-                    for t in new_positive:
-                        t[1]['control'] = prev_cnet[0]
-                        t[1]['control_apply_to_uncond'] = prev_cnet[1]
-        else:
-            new_positive = positive
-        basic_pipe = (model, clip, vae, new_positive, negative)
-        sampler = kap.doit(cfg, sampler_name, scheduler, basic_pipe, sigma_factor=sigma_factor)[0]
-        regional_prompts = rp.doit(mask, sampler)[0]
-        return (regional_prompts,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

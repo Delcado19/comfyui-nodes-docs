@@ -28,22 +28,6 @@ The `StringConstantMultiline` node is designed to process and manipulate multili
 - Infra type: CPU
 
 # Source code
-```
-class StringConstantMultiline:
+[View source repository on GitHub](https://github.com/kijai/ComfyUI-KJNodes)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'string': ('STRING', {'default': '', 'multiline': True}), 'strip_newlines': ('BOOLEAN', {'default': True})}}
-    RETURN_TYPES = ('STRING',)
-    FUNCTION = 'stringify'
-    CATEGORY = 'KJNodes/constants'
-
-    def stringify(self, string, strip_newlines):
-        new_string = []
-        for line in io.StringIO(string):
-            if not line.strip().startswith('\n') and strip_newlines:
-                line = line.replace('\n', '')
-            new_string.append(line)
-        new_string = '\n'.join(new_string)
-        return (new_string,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

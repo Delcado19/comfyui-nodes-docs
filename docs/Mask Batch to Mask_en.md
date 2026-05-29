@@ -28,27 +28,6 @@ The ‘mask_batch_to_mask’ method processes a batch of mask tensors and extrac
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Mask_Batch_to_Single_Mask:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'masks': ('MASK',), 'batch_number': ('INT', {'default': 0, 'min': 0, 'max': 64, 'step': 1})}}
-    RETURN_TYPES = ('MASK',)
-    FUNCTION = 'mask_batch_to_mask'
-    CATEGORY = 'WAS Suite/Image/Masking'
-
-    def mask_batch_to_mask(self, masks=[], batch_number=0):
-        count = 0
-        for _ in masks:
-            if batch_number == count:
-                tensor = masks[batch_number][0]
-                return (tensor,)
-            count += 1
-        cstr(f'Batch number `{batch_number}` is not defined, returning last image').error.print()
-        last_tensor = masks[-1][0]
-        return (last_tensor,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

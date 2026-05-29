@@ -27,24 +27,6 @@ The ImageToMask node is designed to convert input images into mask representatio
 - Infra type: CPU
 
 # Source code
-```
-class ImageToMask:
+[View source repository on GitHub](https://github.com/BadCafeCode/masquerade-nodes-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'image': ('IMAGE',), 'method': (['intensity', 'alpha'],)}}
-    RETURN_TYPES = ('MASK',)
-    FUNCTION = 'convert'
-    CATEGORY = 'Masquerade Nodes'
-
-    def convert(self, image, method):
-        if method == 'intensity':
-            if len(image.shape) > 3 and image.shape[3] == 4:
-                image = tensor2rgb(image)
-            return (tensor2mask(image),)
-        else:
-            return (tensor2rgba(image)[:, :, :, 0],)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -27,30 +27,6 @@ This node uses a deep learning model to perform semantic segmentation on images,
 - Infra type: GPU
 
 # Source code
-```
-class YoloSEGdetectionNode:
+[View source repository on GitHub](https://github.com/jags111/ComfyUI_Jags_VectorMagic)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'image': ('IMAGE',), 'model_name': (folder_paths.get_filename_list('yolov8'),)}}
-    RETURN_TYPES = ('IMAGE',)
-    RETURN_NAMES = ('SEG_IMAGE',)
-    FUNCTION = 'detect'
-    CATEGORY = 'Jags_vector/yoloSEG'
-
-    def detect(self, image, model_name):
-        image_tensor = image
-        image_np = image_tensor.cpu().numpy()
-        image = Image.fromarray((image_np.squeeze(0) * 255).astype(np.uint8))
-        print(f"model_path: {os.path.join(folder_paths.models_dir, 'yolov8')}/{model_name}")
-        model = YOLO(f"{os.path.join(folder_paths.models_dir, 'yolov8')}/{model_name}")
-        results = model(image)
-        im_array = results[0].plot()
-        im = Image.fromarray(im_array[..., ::-1])
-        image_tensor_out = torch.tensor(np.array(im).astype(np.float32) / 255.0)
-        image_tensor_out = torch.unsqueeze(image_tensor_out, 0)
-        return (image_tensor_out,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

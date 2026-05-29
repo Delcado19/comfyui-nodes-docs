@@ -23,20 +23,6 @@ The 'MakeImageList' node is designed to aggregate image data into a list for bat
 - Infra type: CPU
 
 # Source code
-```
-class MakeImageList:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'image1': ('IMAGE',)}}
-    RETURN_TYPES = ('IMAGE',)
-    OUTPUT_IS_LIST = (True,)
-    FUNCTION = 'doit'
-    CATEGORY = 'ImpactPack/Util'
-
-    def doit(self, **kwargs):
-        images = []
-        for (k, v) in kwargs.items():
-            images.append(v)
-        return (images,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

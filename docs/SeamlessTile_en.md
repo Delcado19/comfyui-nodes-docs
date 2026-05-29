@@ -32,28 +32,6 @@ SeamlessTile is a node that modifies the padding and convolution behavior of a m
 - Infra type: CPU
 
 # Source code
-```
-class SeamlessTile:
+[View source repository on GitHub](https://github.com/spinagon/ComfyUI-seamless-tiling)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'model': ('MODEL',), 'tiling': (['enable', 'x_only', 'y_only', 'disable'],), 'copy_model': (['Make a copy', 'Modify in place'],)}}
-    CATEGORY = 'conditioning'
-    RETURN_TYPES = ('MODEL',)
-    FUNCTION = 'run'
-
-    def run(self, model, copy_model, tiling):
-        if copy_model == 'Modify in place':
-            model_copy = model
-        else:
-            model_copy = copy.deepcopy(model)
-        if tiling == 'enable':
-            make_circular_asymm(model_copy.model, True, True)
-        elif tiling == 'x_only':
-            make_circular_asymm(model_copy.model, True, False)
-        elif tiling == 'y_only':
-            make_circular_asymm(model_copy.model, False, True)
-        else:
-            make_circular_asymm(model_copy.model, False, False)
-        return (model_copy,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

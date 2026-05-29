@@ -40,26 +40,6 @@ This node aims to tag images by using a specified model to classify input image 
 - Infra type: CPU
 
 # Source code
-```
-class WD14Tagger:
+[View source repository on GitHub](https://github.com/pythongosssss/ComfyUI-WD14-Tagger)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'image': ('IMAGE',), 'model': (all_models,), 'threshold': ('FLOAT', {'default': defaults['threshold'], 'min': 0.0, 'max': 1, 'step': 0.05}), 'character_threshold': ('FLOAT', {'default': defaults['character_threshold'], 'min': 0.0, 'max': 1, 'step': 0.05}), 'exclude_tags': ('STRING', {'default': defaults['exclude_tags']})}}
-    RETURN_TYPES = ('STRING',)
-    OUTPUT_IS_LIST = (True,)
-    FUNCTION = 'tag'
-    OUTPUT_NODE = True
-    CATEGORY = 'image'
-
-    def tag(self, image, model, threshold, character_threshold, exclude_tags=''):
-        tensor = image * 255
-        tensor = np.array(tensor, dtype=np.uint8)
-        pbar = comfy.utils.ProgressBar(tensor.shape[0])
-        tags = []
-        for i in range(tensor.shape[0]):
-            image = Image.fromarray(tensor[i])
-            tags.append(wait_for_async(lambda : tag(image, model, threshold, character_threshold, exclude_tags)))
-            pbar.update(1)
-        return {'ui': {'tags': tags}, 'result': (tags,)}
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

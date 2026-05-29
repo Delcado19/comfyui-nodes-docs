@@ -27,20 +27,6 @@ This node performs integer multiplication, a basic arithmetic operation that amp
 - Infra type: CPU
 
 # Source code
-```
-class WLSH_Int_Multiply:
+[View source repository on GitHub](https://github.com/wallish77/wlsh_nodes)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'number': ('INT', {'default': 2, 'min': 1, 'max': 10000, 'forceInput': True}), 'multiplier': ('INT', {'default': 2, 'min': 1, 'max': 10000})}}
-    RETURN_TYPES = ('INT',)
-    FUNCTION = 'multiply'
-    CATEGORY = 'WLSH Nodes/number'
-
-    def multiply(self, number, multiplier):
-        result = number * multiplier
-        return (int(result),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

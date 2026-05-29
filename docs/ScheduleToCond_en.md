@@ -27,18 +27,6 @@ The 'apply' method of the ScheduleToCond node is designed to process and apply a
 - Infra type: CPU
 
 # Source code
-```
-class ScheduleToCond:
+[View source repository on GitHub](https://github.com/asagi4/comfyui-prompt-control)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'clip': ('CLIP',), 'prompt_schedule': ('PROMPT_SCHEDULE',)}}
-    RETURN_TYPES = ('CONDITIONING',)
-    CATEGORY = 'promptcontrol'
-    FUNCTION = 'apply'
-
-    def apply(self, clip, prompt_schedule):
-        with Timer('ScheduleToCond'):
-            r = (control_to_clip_common(clip, prompt_schedule),)
-        return r
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -40,24 +40,6 @@ The showSpentTime node is designed to provide feedback on workflow processing ti
 - Infra type: CPU
 
 # Source code
-```
-class showSpentTime:
+[View source repository on GitHub](https://github.com/yolain/ComfyUI-Easy-Use)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'pipe': ('PIPE_LINE',), 'spent_time': ('INFO', {'default': '推理完成后将显示推理时间', 'forceInput': False})}, 'hidden': {'unique_id': 'UNIQUE_ID', 'extra_pnginfo': 'EXTRA_PNGINFO'}}
-    FUNCTION = 'notify'
-    OUTPUT_NODE = True
-    RETURN_TYPES = ()
-    RETURN_NAMES = ()
-    CATEGORY = 'EasyUse/Util'
-
-    def notify(self, pipe, spent_time=None, unique_id=None, extra_pnginfo=None):
-        if unique_id and extra_pnginfo and ('workflow' in extra_pnginfo):
-            workflow = extra_pnginfo['workflow']
-            node = next((x for x in workflow['nodes'] if str(x['id']) == unique_id), None)
-            if node:
-                spent_time = pipe['loader_settings']['spent_time'] if 'spent_time' in pipe['loader_settings'] else ''
-                node['widgets_values'] = [spent_time]
-        return {'ui': {'text': spent_time}, 'result': {}}
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

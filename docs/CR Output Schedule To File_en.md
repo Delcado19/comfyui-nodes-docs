@@ -32,38 +32,6 @@ The CR_OutputScheduleToFile node is designed to output schedule data to a file f
 - Infra type: CPU
 
 # Source code
-```
-class CR_OutputScheduleToFile:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'output_file_path': ('STRING', {'multiline': False, 'default': ''}), 'file_name': ('STRING', {'multiline': False, 'default': ''}), 'file_extension': (['txt', 'csv'],), 'schedule': ('SCHEDULE',)}}
-    RETURN_TYPES = ()
-    OUTPUT_NODE = True
-    FUNCTION = 'csvoutput'
-    CATEGORY = icons.get('Comfyroll/Animation/Schedule')
-
-    def csvoutput(self, output_file_path, file_name, schedule, file_extension):
-        filepath = output_file_path + '\\' + file_name + '.' + file_extension
-        index = 2
-        if output_file_path == '' or file_name == '':
-            print(f'[Warning] CR Output Schedule To File. No file details found. No file output.')
-            return ()
-        while os.path.exists(filepath):
-            if os.path.exists(filepath):
-                filepath = output_file_path + '\\' + file_name + str(index) + '.' + file_extension
-                index = index + 1
-            else:
-                break
-        print(f'[Info] CR Output Schedule To File: Saving to {filepath}')
-        if file_extension == 'csv':
-            with open(filepath, 'w', newline='') as csv_file:
-                csv_writer = csv.writer(csv_file)
-                csv_writer.writerows(schedule)
-        else:
-            with open(filepath, 'w', newline='') as text_writer:
-                for line in schedule:
-                    str_item = f'{line[0]},"{line[1]}"\n'
-                    text_writer.write(str_item)
-        return ()
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

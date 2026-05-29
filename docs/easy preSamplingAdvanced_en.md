@@ -80,38 +80,6 @@ This node provides a configuration workflow for sampling parameters of generativ
 - Infra type: CPU
 
 # Source code
-```
-class samplerSettingsAdvanced:
+[View source repository on GitHub](https://github.com/yolain/ComfyUI-Easy-Use)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'pipe': ('PIPE_LINE',), 'steps': ('INT', {'default': 20, 'min': 1, 'max': 10000}), 'cfg': ('FLOAT', {'default': 8.0, 'min': 0.0, 'max': 100.0}), 'sampler_name': (comfy.samplers.KSampler.SAMPLERS,), 'scheduler': (comfy.samplers.KSampler.SCHEDULERS,), 'start_at_step': ('INT', {'default': 0, 'min': 0, 'max': 10000}), 'end_at_step': ('INT', {'default': 10000, 'min': 0, 'max': 10000}), 'add_noise': (['enable', 'disable'],), 'seed': ('INT', {'default': 0, 'min': 0, 'max': MAX_SEED_NUM}), 'return_with_leftover_noise': (['disable', 'enable'],)}, 'optional': {'image_to_latent': ('IMAGE',), 'latent': ('LATENT',)}, 'hidden': {'prompt': 'PROMPT', 'extra_pnginfo': 'EXTRA_PNGINFO', 'my_unique_id': 'UNIQUE_ID'}}
-    RETURN_TYPES = ('PIPE_LINE',)
-    RETURN_NAMES = ('pipe',)
-    OUTPUT_NODE = True
-    FUNCTION = 'settings'
-    CATEGORY = 'EasyUse/PreSampling'
-
-    def settings(self, pipe, steps, cfg, sampler_name, scheduler, start_at_step, end_at_step, add_noise, seed, return_with_leftover_noise, image_to_latent=None, latent=None, prompt=None, extra_pnginfo=None, my_unique_id=None):
-        vae = pipe['vae']
-        batch_size = pipe['loader_settings']['batch_size'] if 'batch_size' in pipe['loader_settings'] else 1
-        if image_to_latent is not None:
-            samples = {'samples': vae.encode(image_to_latent[:, :, :, :3])}
-            samples = RepeatLatentBatch().repeat(samples, batch_size)[0]
-            images = image_to_latent
-        elif latent is not None:
-            samples = latent
-            images = pipe['images']
-        else:
-            samples = pipe['samples']
-            images = pipe['images']
-        force_full_denoise = True
-        if return_with_leftover_noise == 'enable':
-            force_full_denoise = False
-        new_pipe = {'model': pipe['model'], 'positive': pipe['positive'], 'negative': pipe['negative'], 'vae': pipe['vae'], 'clip': pipe['clip'], 'samples': samples, 'images': images, 'seed': seed, 'loader_settings': {**pipe['loader_settings'], 'steps': steps, 'cfg': cfg, 'sampler_name': sampler_name, 'scheduler': scheduler, 'start_step': start_at_step, 'last_step': end_at_step, 'denoise': 1.0, 'add_noise': add_noise, 'force_full_denoise': force_full_denoise}}
-        del pipe
-        return {'ui': {'value': [seed]}, 'result': (new_pipe,)}
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

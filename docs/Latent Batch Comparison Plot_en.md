@@ -27,44 +27,6 @@ This node aims to compare two batches of latent variables by generating a visual
 - Infra type: CPU
 
 # Source code
-```
-class LatentBatchComparator:
-    """
-    Generate plots showing the differences between two batches of latents.
-    """
+[View source repository on GitHub](https://github.com/ttulttul/ComfyUI-Iterative-Mixer)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'latent_batch_1': ('LATENT',), 'latent_batch_2': ('LATENT',)}}
-    RETURN_TYPES = ('IMAGE',)
-    RETURN_NAMES = ('plot_image',)
-    CATEGORY = 'test'
-    FUNCTION = 'plot_latent_differences'
-
-    def plot_latent_differences(self, latent_batch_1, latent_batch_2):
-        """
-        Generate a plot of the differences between two batches of latents.
-        """
-        import torch.nn.functional as F
-        (tensor1, tensor2) = [x['samples'] for x in (latent_batch_1, latent_batch_2)]
-        if tensor1.shape != tensor2.shape:
-            raise ValueError('Latent batches must have the same shape: %s != %s' % (tensor1.shape, tensor2.shape))
-        (B, C, H, W) = tensor1.shape
-        tensor1_flat = tensor1.view(B, -1)
-        tensor2_flat = tensor2.view(B, -1)
-        tensor1_flat_expanded = tensor1_flat.unsqueeze(1)
-        cosine_similarities_vectorized = F.cosine_similarity(tensor1_flat_expanded, tensor2_flat.unsqueeze(0), dim=2)
-        plt.figure(figsize=(15, 10))
-        plt.imshow(cosine_similarities_vectorized, cmap='viridis')
-        plt.title('Cosine Similarity Matrix')
-        plt.xlabel('Batch 1 Index')
-        plt.ylabel('Batch 2 Index')
-        plt.tight_layout()
-        buf = io.BytesIO()
-        plt.savefig(buf, format='png')
-        buf.seek(0)
-        pil_image = Image.open(buf)
-        image_tensor = pil2tensor(pil_image)
-        batch_output = image_tensor.unsqueeze(0)
-        return batch_output
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

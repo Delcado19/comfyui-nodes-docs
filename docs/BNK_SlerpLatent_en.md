@@ -36,27 +36,6 @@ This node performs spherical linear interpolation (slerp) between two sets of la
 - Infra type: GPU
 
 # Source code
-```
-class LatentSlerp:
+[View source repository on GitHub](https://github.com/BlenderNeko/ComfyUI_Noise)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'latents1': ('LATENT',), 'factor': ('FLOAT', {'default': 0.5, 'min': 0.0, 'max': 1.0, 'step': 0.01})}, 'optional': {'latents2': ('LATENT',), 'mask': ('MASK',)}}
-    RETURN_TYPES = ('LATENT',)
-    FUNCTION = 'slerp_latents'
-    CATEGORY = 'latent'
-
-    def slerp_latents(self, latents1, factor, latents2=None, mask=None):
-        s = latents1.copy()
-        if latents2 is None:
-            return (s,)
-        if latents1['samples'].shape != latents2['samples'].shape:
-            print('warning, shapes in LatentSlerp not the same, ignoring')
-            return (s,)
-        slerped = slerp(factor, latents1['samples'].clone(), latents2['samples'].clone())
-        if mask is not None:
-            mask = prepare_mask(mask, slerped.shape)
-            slerped = mask * slerped + (1 - mask) * latents1['samples']
-        s['samples'] = slerped
-        return (s,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

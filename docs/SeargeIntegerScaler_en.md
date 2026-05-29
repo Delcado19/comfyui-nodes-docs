@@ -31,17 +31,6 @@ This node scales and rounds the input integer value based on the provided factor
 - Infra type: CPU
 
 # Source code
-```
-class SeargeIntegerScaler:
+[View source repository on GitHub](https://github.com/jobunk/SeargeSDXL)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'value': ('INT', {'default': 0, 'min': 0, 'max': 18446744073709551615}), 'factor': ('FLOAT', {'default': 1.0, 'step': 0.01}), 'multiple_of': ('INT', {'default': 1, 'min': 0, 'max': 65536})}}
-    RETURN_TYPES = ('INT',)
-    RETURN_NAMES = ('value',)
-    FUNCTION = 'get_value'
-    CATEGORY = 'Searge/_deprecated_/Integers'
-
-    def get_value(self, value, factor, multiple_of):
-        return (int(value * factor // multiple_of) * multiple_of,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

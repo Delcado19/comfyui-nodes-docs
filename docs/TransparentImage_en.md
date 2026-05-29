@@ -47,43 +47,6 @@ The TransparentImage node handles and manipulates images with transparency, prov
 - Infra type: CPU
 
 # Source code
-```
-class TransparentImage:
+[View source repository on GitHub](https://github.com/shadowcz007/comfyui-mixlab-nodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'images': ('IMAGE',), 'masks': ('MASK',), 'invert': (['yes', 'no'],), 'save': (['yes', 'no'],)}, 'optional': {'filename_prefix': ('STRING', {'multiline': False, 'default': 'Mixlab_save'})}, 'hidden': {'prompt': 'PROMPT', 'extra_pnginfo': 'EXTRA_PNGINFO'}}
-    RETURN_TYPES = ('STRING', 'IMAGE', 'RGBA')
-    RETURN_NAMES = ('file_path', 'IMAGE', 'RGBA')
-    OUTPUT_NODE = True
-    FUNCTION = 'run'
-    CATEGORY = '♾️Mixlab/Image'
-    OUTPUT_IS_LIST = (True, True, True)
-
-    def run(self, images, masks, invert, save, filename_prefix, prompt=None, extra_pnginfo=None):
-        ui_images = []
-        image_paths = []
-        count = images.shape[0]
-        masks_new = []
-        nh = masks.shape[0] // count
-        masks_new = masks
-        if images.shape[0] == masks.shape[0] and images.shape[1] == masks.shape[1] and (images.shape[2] == masks.shape[2]):
-            print('TransparentImage', images.shape, images.size(), masks.shape, masks.size())
-        elif nh * count == masks.shape[0]:
-            masks_new = split_mask_by_new_height(masks, nh)
-        else:
-            masks_new = split_mask_by_new_height(masks, masks.shape[0])
-        is_save = True if save == 'yes' else False
-        images_rgb = []
-        images_rgba = []
-        for i in range(len(images)):
-            image = images[i]
-            mask = masks_new[i]
-            result = doMask(image, mask, is_save, filename_prefix, invert, not is_save, prompt, extra_pnginfo)
-            for item in result['result']:
-                ui_images.append(item)
-            image_paths.append(result['image_path'])
-            images_rgb.append(result['im_tensor'])
-            images_rgba.append(result['im_rgba_tensor'])
-        return {'ui': {'images': ui_images, 'image_paths': image_paths}, 'result': (image_paths, images_rgb, images_rgba)}
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

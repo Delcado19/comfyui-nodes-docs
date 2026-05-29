@@ -23,7 +23,6 @@ The KfDebug_Latent node aims to provide insight into the latent space representa
 - Infra type: CPU
 
 # Source code
-```
-class KfDebug_Latent(KfDebug_Passthrough):
-    RETURN_TYPES = ('LATENT',)
-```
+[View source repository on GitHub](https://github.com/dmarx/ComfyUI-Keyframed)
+
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

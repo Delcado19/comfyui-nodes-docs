@@ -32,35 +32,6 @@ The arbitrary_region method of the WAS_Mask_Arbitrary_Region node is designed to
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Mask_Arbitrary_Region:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        self.WT = WAS_Tools_Class()
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'masks': ('MASK',), 'size': ('INT', {'default': 256, 'min': 1, 'max': 4096, 'step': 1}), 'threshold': ('INT', {'default': 128, 'min': 0, 'max': 255, 'step': 1})}}
-    CATEGORY = 'WAS Suite/Image/Masking'
-    RETURN_TYPES = ('MASK',)
-    RETURN_NAMES = ('MASKS',)
-    FUNCTION = 'arbitrary_region'
-
-    def arbitrary_region(self, masks, size=256, threshold=128):
-        if masks.ndim > 3:
-            regions = []
-            for mask in masks:
-                mask_np = np.clip(255.0 * mask.cpu().numpy().squeeze(), 0, 255).astype(np.uint8)
-                pil_image = Image.fromarray(mask_np, mode='L')
-                region_mask = self.WT.Masking.arbitrary_region(pil_image, size, threshold)
-                region_tensor = pil2mask(region_mask).unsqueeze(0).unsqueeze(1)
-                regions.append(region_tensor)
-            regions_tensor = torch.cat(regions, dim=0)
-            return (regions_tensor,)
-        else:
-            mask_np = np.clip(255.0 * masks.cpu().numpy().squeeze(), 0, 255).astype(np.uint8)
-            pil_image = Image.fromarray(mask_np, mode='L')
-            region_mask = self.WT.Masking.arbitrary_region(pil_image, size, threshold)
-            region_tensor = pil2mask(region_mask).unsqueeze(0).unsqueeze(1)
-            return (region_tensor,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

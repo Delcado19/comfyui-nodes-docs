@@ -39,23 +39,6 @@ The CR_RandomRGB node generates random RGB color codes. It serves as a utility f
 - Infra type: CPU
 
 # Source code
-```
-class CR_RandomRGB:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'seed': ('INT', {'default': 0, 'min': 0, 'max': 18446744073709551615})}}
-    RETURN_TYPES = ('STRING', 'STRING', 'STRING', 'STRING', 'STRING')
-    RETURN_NAMES = ('rgb_1', 'rgb_2', 'rgb_3', 'rgb_4', 'show_help')
-    FUNCTION = 'get_colors'
-    CATEGORY = icons.get('Comfyroll/Utils/Random')
-
-    def get_colors(self, seed):
-        random.seed(seed)
-        rgb_1 = random_rgb()
-        rgb_2 = random_rgb()
-        rgb_3 = random_rgb()
-        rgb_4 = random_rgb()
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Other-Nodes#cr-random-rgb'
-        return (rgb_1, rgb_2, rgb_3, rgb_4, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

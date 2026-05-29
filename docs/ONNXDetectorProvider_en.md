@@ -23,17 +23,6 @@ The ONNXDetectorProvider node is designed to facilitate loading and providing ON
 - Infra type: CPU
 
 # Source code
-```
-class ONNXDetectorProvider:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'model_name': (folder_paths.get_filename_list('onnx'),)}}
-    RETURN_TYPES = ('BBOX_DETECTOR',)
-    FUNCTION = 'load_onnx'
-    CATEGORY = 'ImpactPack'
-
-    def load_onnx(self, model_name):
-        model = folder_paths.get_full_path('onnx', model_name)
-        return (core.ONNXDetector(model),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -49,44 +49,7 @@ This node aims to configure the settings for the OpenPose algorithm within the c
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class CtrlNet_OpenPose_Settings:
-    openposefrom = ["Source Image", "Support Image", "Support Direct"]
-    
-    def __init__(self):
-        pass
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {
-            "required": {
-                "openpose_from": (s.openposefrom,),
-                "openpose_strength": ("FLOAT", {"default": 1.00, "min": 0.00, "max": 10.00, "step": 0.10}),
-                "openpose_start": ("FLOAT", {"default": 0.000, "min": 0.000, "max": 1.000, "step": 0.05}),
-                "openpose_end": ("FLOAT", {"default": 1.000, "min": 0.000, "max": 1.000, "step": 0.05}),
-                "openpose_body": (["enable","disable"],),
-                "openpose_face": (["enable","disable"],),
-                "openpose_hand": (["enable","disable"],),
-            }   
-        }
-    RETURN_TYPES = ("BASIC_PIPE",) 
-    RETURN_NAMES = ("openpose_settings",)
-    FUNCTION = "get_ctrlnet_openpose"
-
-    CATEGORY="JPS Nodes/Settings"
-
-    def get_ctrlnet_openpose(self, openpose_from, openpose_strength, openpose_start, openpose_end, openpose_body, openpose_face, openpose_hand):
-
-        openpose_source = int (1)
-        if (openpose_from == "Support Image"):
-            openpose_source = int(2)
-        if (openpose_from == "Support Direct"):
-            openpose_source = int(3)
-        
-        openpose_settings = openpose_source, openpose_strength, openpose_start, openpose_end, openpose_body, openpose_face, openpose_hand
-
-        return(openpose_settings,)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

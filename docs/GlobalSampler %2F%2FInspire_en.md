@@ -27,17 +27,6 @@ The GlobalSampler node abstractly represents a system that uniformly samples ele
 - Infra type: CPU
 
 # Source code
-```
-class GlobalSampler:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Inspire-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'sampler_name': (comfy.samplers.KSampler.SAMPLERS,), 'scheduler': (comfy.samplers.KSampler.SCHEDULERS,)}}
-    RETURN_TYPES = ()
-    FUNCTION = 'doit'
-    CATEGORY = 'InspirePack/Prompt'
-    OUTPUT_NODE = True
-
-    def doit(self, **kwargs):
-        return {}
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

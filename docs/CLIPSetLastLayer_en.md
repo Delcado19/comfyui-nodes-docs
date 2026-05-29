@@ -27,18 +27,6 @@ The method `set_last_layer` is designed to modify the last layer of a CLIP model
 - Infra type: GPU
 
 # Source code
-```
-class CLIPSetLastLayer:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'clip': ('CLIP',), 'stop_at_clip_layer': ('INT', {'default': -1, 'min': -24, 'max': -1, 'step': 1})}}
-    RETURN_TYPES = ('CLIP',)
-    FUNCTION = 'set_last_layer'
-    CATEGORY = 'conditioning'
-
-    def set_last_layer(self, clip, stop_at_clip_layer):
-        clip = clip.clone()
-        clip.clip_layer(stop_at_clip_layer)
-        return (clip,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

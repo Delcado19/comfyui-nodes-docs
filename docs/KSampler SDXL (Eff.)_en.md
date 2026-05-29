@@ -91,47 +91,7 @@ KSampler SDXL (Eff.) node is an efficient sampling tool designed specifically fo
     - [Image Filter Adjustments](../../was-node-suite-comfyui/Nodes/Image Filter Adjustments.md)
     - [IterativeLatentUpscale](../../ComfyUI-Impact-Pack/Nodes/IterativeLatentUpscale.md)
 
-
-
 ## Source code
-```python
-class TSC_KSamplerSDXL(TSC_KSampler):
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {"required":
-                    {"sdxl_tuple": ("SDXL_TUPLE",),
-                     "noise_seed": ("INT", {"default": 0, "min": 0, "max": 0xffffffffffffffff}),
-                     "steps": ("INT", {"default": 20, "min": 1, "max": 10000}),
-                     "cfg": ("FLOAT", {"default": 7.0, "min": 0.0, "max": 100.0}),
-                     "sampler_name": (comfy.samplers.KSampler.SAMPLERS,),
-                     "scheduler": (comfy.samplers.KSampler.SCHEDULERS,),
-                     "latent_image": ("LATENT",),
-                     "start_at_step": ("INT", {"default": 0, "min": 0, "max": 10000}),
-                     "refine_at_step": ("INT", {"default": -1, "min": -1, "max": 10000}),
-                     "preview_method": (["auto", "latent2rgb", "taesd", "none"],),
-                     "vae_decode": (["true", "true (tiled)", "false", "output only", "output only (tiled)"],),
-                     },
-                "optional": {"optional_vae": ("VAE",),
-                             "script": ("SCRIPT",),},
-                "hidden": {"prompt": "PROMPT", "extra_pnginfo": "EXTRA_PNGINFO", "my_unique_id": "UNIQUE_ID",},
-                }
-
-    RETURN_TYPES = ("SDXL_TUPLE", "LATENT", "VAE", "IMAGE",)
-    RETURN_NAMES = ("SDXL_TUPLE", "LATENT", "VAE", "IMAGE",)
-    OUTPUT_NODE = True
-    FUNCTION = "sample_sdxl"
-    CATEGORY = "Efficiency Nodes/Sampling"
-
-    def sample_sdxl(self, sdxl_tuple, noise_seed, steps, cfg, sampler_name, scheduler, latent_image,
-               start_at_step, refine_at_step, preview_method, vae_decode, prompt=None, extra_pnginfo=None,
-               my_unique_id=None, optional_vae=(None,), refiner_extras=None, script=None):
-        # sdxl_tuple sent through the 'model' channel
-        negative = None
-        return super().sample(sdxl_tuple, noise_seed, steps, cfg, sampler_name, scheduler,
-               refiner_extras, negative, latent_image, preview_method, vae_decode, denoise=1.0,
-               prompt=prompt, extra_pnginfo=extra_pnginfo, my_unique_id=my_unique_id, optional_vae=optional_vae,
-               script=script, add_noise=None, start_at_step=start_at_step, end_at_step=refine_at_step,
-               return_with_leftover_noise=None,sampler_type="sdxl")
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

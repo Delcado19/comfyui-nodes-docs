@@ -23,19 +23,6 @@ This node is designed to convert input data into a numerical representation, fac
 - Infra type: CPU
 
 # Source code
-```
-class WLSH_Seed_to_Number:
+[View source repository on GitHub](https://github.com/wallish77/wlsh_nodes)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'seed': ('SEED',)}}
-    RETURN_TYPES = ('INT',)
-    FUNCTION = 'number_to_seed'
-    CATEGORY = 'WLSH Nodes/number'
-
-    def number_to_seed(self, seed):
-        return (int(seed['seed']),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

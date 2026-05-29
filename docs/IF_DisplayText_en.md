@@ -29,33 +29,7 @@ The IF_DisplayText node is designed to display text output within the ImpactFram
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class IFDisplayText:
-    def __init__(self):
-        self.type = "output"
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-
-        return {
-            "required": {        
-                "text": ("STRING", {"forceInput": True}),     
-                },
-            "hidden": {},
-            }
-
-    RETURN_TYPES = ("STRING",)
-    FUNCTION = "display_text"
-    OUTPUT_NODE = True
-    CATEGORY = "ImpactFrames💥🎞️"
-    
-    def display_text(self, text):
-        print("==================")
-        print("IF_AI_tool_output:")
-        print("==================")
-        print(text)
-        return {"ui": {"string": [text,]}, "result": (text,)}
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

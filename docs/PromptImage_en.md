@@ -31,45 +31,6 @@ The PromptImage node is designed to process and manipulate images based on text 
 - Infra type: CPU
 
 # Source code
-```
-class PromptImage:
+[View source repository on GitHub](https://github.com/shadowcz007/comfyui-mixlab-nodes)
 
-    def __init__(self):
-        self.output_dir = folder_paths.get_output_directory()
-        self.type = 'output'
-        self.prefix_append = 'PromptImage'
-        self.compress_level = 4
-
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'prompts': ('STRING', {'multiline': True, 'default': '', 'dynamicPrompts': False}), 'images': ('IMAGE', {'default': None}), 'save_to_image': (['enable', 'disable'],)}}
-    RETURN_TYPES = ()
-    OUTPUT_NODE = True
-    INPUT_IS_LIST = True
-    FUNCTION = 'run'
-    CATEGORY = '♾️Mixlab/Prompt'
-
-    def run(self, prompts, images, save_to_image):
-        filename_prefix = 'mixlab_'
-        filename_prefix += self.prefix_append
-        (full_output_folder, filename, counter, subfolder, filename_prefix) = folder_paths.get_save_image_path(filename_prefix, self.output_dir, images[0].shape[1], images[0].shape[0])
-        results = list()
-        save_to_image = save_to_image[0] == 'enable'
-        for index in range(len(images)):
-            res = []
-            imgs = images[index]
-            for image in imgs:
-                img = tensor2pil(image)
-                metadata = None
-                if save_to_image:
-                    metadata = PngInfo()
-                    prompt_text = prompts[index]
-                    if prompt_text is not None:
-                        metadata.add_text('prompt_text', prompt_text)
-                file = f'{filename}_{index}_{counter:05}_.png'
-                img.save(os.path.join(full_output_folder, file), pnginfo=metadata, compress_level=self.compress_level)
-                res.append({'filename': file, 'subfolder': subfolder, 'type': self.type})
-                counter += 1
-            results.append(res)
-        return {'ui': {'_images': results, 'prompts': prompts}}
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -31,34 +31,6 @@ The ConvertColorSpace node is designed to convert an image from one color space 
 - Infra type: CPU
 
 # Source code
-```
-class ConvertColorSpace:
+[View source repository on GitHub](https://github.com/BadCafeCode/masquerade-nodes-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'in_space': (['RGB', 'HSV', 'HSL'],), 'out_space': (['RGB', 'HSV', 'HSL'],), 'image': ('IMAGE',)}}
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'convert_color_space'
-    CATEGORY = 'Masquerade Nodes'
-
-    def convert_color_space(self, in_space, out_space, image):
-        if in_space == out_space:
-            return (image,)
-        image = tensor2rgb(image)
-        if in_space == 'HSV':
-            hsv = image
-        if in_space == 'RGB':
-            hsv = rgb2hsv(image)
-        elif in_space == 'HSL':
-            hsv = hsl2hsv(image)
-        if out_space == 'HSV':
-            return (hsv,)
-        elif out_space == 'RGB':
-            return (hsv2rgb(hsv),)
-        else:
-            assert out_space == 'HSL'
-            return (hsv2hsl(hsv),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

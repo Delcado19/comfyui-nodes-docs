@@ -32,17 +32,6 @@ The PreviewDetailerHookProvider node is designed to facilitate image enhancement
 - Infra type: CPU
 
 # Source code
-```
-class PreviewDetailerHookProvider:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'quality': ('INT', {'default': 95, 'min': 20, 'max': 100})}, 'hidden': {'unique_id': 'UNIQUE_ID'}}
-    RETURN_TYPES = ('DETAILER_HOOK', 'UPSCALER_HOOK')
-    FUNCTION = 'doit'
-    CATEGORY = 'ImpactPack/Util'
-
-    def doit(self, quality, unique_id):
-        hook = hooks.PreviewDetailerHook(unique_id, quality)
-        return (hook, hook)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

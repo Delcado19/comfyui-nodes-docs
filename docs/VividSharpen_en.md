@@ -32,28 +32,6 @@ The VividSharpen node enhances image clarity and sharpness by applying a sharpen
 - Infra type: CPU
 
 # Source code
-```
-class VividSharpen:
+[View source repository on GitHub](https://github.com/WASasquatch/WAS_Extras)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'images': ('IMAGE',), 'radius': ('FLOAT', {'default': 1.5, 'min': 0.01, 'max': 64.0, 'step': 0.01}), 'strength': ('FLOAT', {'default': 1.0, 'min': 0.0, 'max': 1.0, 'step': 0.01})}}
-    RETURN_TYPES = ('IMAGE',)
-    RETURN_NAMES = ('images',)
-    FUNCTION = 'sharpen'
-    CATEGORY = 'image/postprocessing'
-
-    def sharpen(self, images, radius, strength):
-        results = []
-        if images.size(0) > 1:
-            for image in images:
-                image = tensor2pil(image)
-                results.append(pil2tensor(vivid_sharpen(image, radius=radius, strength=strength)))
-            results = torch.cat(results, dim=0)
-        else:
-            results = pil2tensor(vivid_sharpen(tensor2pil(images), radius=radius, strength=strength))
-        return (results,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

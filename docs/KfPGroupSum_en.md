@@ -23,20 +23,6 @@ The KfPGroupSum node is designed to aggregate keyframe curves into a single comp
 - Infra type: CPU
 
 # Source code
-```
-class KfPGroupSum:
-    CATEGORY = 'keyframed/experimental'
-    FUNCTION = 'main'
-    RETURN_TYPES = ('KEYFRAMED_CURVE',)
+[View source repository on GitHub](https://github.com/dmarx/ComfyUI-Keyframed)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'parameter_group': ('PARAMETER_GROUP', {'forceInput': True})}}
-
-    def main(self, parameter_group):
-        parameter_group = deepcopy(parameter_group)
-        outv = kf.Curve(0)
-        for curve in parameter_group.parameters.values():
-            outv += curve
-        return (outv,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

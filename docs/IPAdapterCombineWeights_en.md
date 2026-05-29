@@ -20,26 +20,6 @@ The IPAdapterCombineWeights node supports weight scheduling, allowing users to a
 - Infra type: GPU
 
 # Source code
-```
-class IPAdapterCombineWeights:
-    @classmethod
-    def INPUT_TYPES(s):
-        return {
-        "required": {
-            "weights_1": ("FLOAT", { "default": 0.0, "min": 0.0, "max": 1.0, "step": 0.05 }),
-            "weights_2": ("FLOAT", { "default": 0.0, "min": 0.0, "max": 1.0, "step": 0.05 }),
-        }}
-    RETURN_TYPES = ("FLOAT", "INT")
-    RETURN_NAMES = ("weights", "count")
-    FUNCTION = "combine"
-    CATEGORY = "ipadapter/utils"
+[View source repository on GitHub](https://github.com/cubiq/ComfyUI_IPAdapter_plus)
 
-    def combine(self, weights_1, weights_2):
-        if not isinstance(weights_1, list):
-            weights_1 = [weights_1]
-        if not isinstance(weights_2, list):
-            weights_2 = [weights_2]
-        weights = weights_1 + weights_2
-
-        return (weights, len(weights), )
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

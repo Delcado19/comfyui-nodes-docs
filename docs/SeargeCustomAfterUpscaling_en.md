@@ -23,21 +23,6 @@ This node class is designed to process image data after upscaling operations, us
 - Infra type: CPU
 
 # Source code
-```
-class SeargeCustomAfterUpscaling:
+[View source repository on GitHub](https://github.com/jobunk/SeargeSDXL)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'custom_output': ('SRG_STAGE_OUTPUT',)}, 'optional': {}}
-    RETURN_TYPES = ('IMAGE',)
-    RETURN_NAMES = ('image',)
-    FUNCTION = 'output'
-    CATEGORY = UI.CATEGORY_MAGIC_CUSTOM_STAGES
-
-    def output(self, custom_output):
-        if custom_output is None:
-            return (None,)
-        vae_decoded = retrieve_parameter(Names.S_UPSCALED, custom_output)
-        image = retrieve_parameter(Names.F_UPSCALED_IMAGE, vae_decoded)
-        return (image,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

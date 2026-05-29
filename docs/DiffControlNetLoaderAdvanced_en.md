@@ -32,20 +32,6 @@ The DiffControlNetLoaderAdvanced node is designed to load and manage advanced co
 - Infra type: CPU
 
 # Source code
-```
-class DiffControlNetLoaderAdvanced:
+[View source repository on GitHub](https://github.com/Kosinkadink/ComfyUI-Advanced-ControlNet)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'model': ('MODEL',), 'control_net_name': (folder_paths.get_filename_list('controlnet'),)}, 'optional': {'timestep_keyframe': ('TIMESTEP_KEYFRAME',)}}
-    RETURN_TYPES = ('CONTROL_NET',)
-    FUNCTION = 'load_controlnet'
-    CATEGORY = 'Adv-ControlNet 🛂🅐🅒🅝'
-
-    def load_controlnet(self, control_net_name, model, timestep_keyframe: TimestepKeyframeGroup=None):
-        controlnet_path = folder_paths.get_full_path('controlnet', control_net_name)
-        controlnet = load_controlnet(controlnet_path, timestep_keyframe, model)
-        if is_advanced_controlnet(controlnet):
-            controlnet.verify_all_weights()
-        return (controlnet,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

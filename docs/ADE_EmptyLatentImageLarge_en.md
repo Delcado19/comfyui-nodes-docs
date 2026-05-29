@@ -35,21 +35,6 @@ The ADE_EmptyLatentImageLarge node is designed to initialize a large latent imag
     - [KSampler](../../Comfy/Nodes/KSampler.md) -->
 
 ## Source code
-```python
-class EmptyLatentImageLarge:
-    def __init__(self, device="cpu"):
-        self.device = device
+[View source repository on GitHub](https://github.com/Kosinkadink/ComfyUI-AnimateDiff-Evolved)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {"required": { "width": ("INT", {"default": 512, "min": 64, "max": comfy_nodes.MAX_RESOLUTION, "step": 8}),
-                              "height": ("INT", {"default": 512, "min": 64, "max": comfy_nodes.MAX_RESOLUTION, "step": 8}),
-                              "batch_size": ("INT", {"default": 1, "min": 1, "max": 262144})}}
-    RETURN_TYPES = ("LATENT",)
-    FUNCTION = "generate"
-
-    CATEGORY = "Animate Diff 🎭🅐🅓/extras"
-
-    def generate(self, width, height, batch_size=1):
-        latent = torch.zeros([batch_size, 4, height // 8, width // 8])
-        return ({"samples":latent}, )
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

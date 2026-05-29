@@ -77,52 +77,7 @@ The InstantID Pose Prepare Settings (JPS) node is used to configure image prepar
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class InstantIDPosePrepare_Settings:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(s):
-        return {
-            "required": {
-                "resize_to": (["Resize to Target","Resize to Source","Keep Size"],),
-                "offset_width": ("INT", { "default": 0, "min": -99, "max": 99, "step": 1, "display": "number" }),
-                "offset_height": ("INT", { "default": 0, "min": -99, "max": 99, "step": 1, "display": "number" }),
-                "crop_left": ("INT", { "default": 0, "min": 0, "max": 90, "step": 1, "display": "number" }),
-                "crop_right": ("INT", { "default": 0, "min": 0, "max": 90, "step": 1, "display": "number" }),
-                "crop_top": ("INT", { "default": 0, "min": 0, "max": 90, "step": 1, "display": "number" }),
-                "crop_bottom": ("INT", { "default": 0, "min": 0, "max": 90, "step": 1, "display": "number" }),
-                "padding_left": ("INT", { "default": 0, "min": 0, "max": 500, "step": 1, "display": "number" }),
-                "padding_right": ("INT", { "default": 0, "min": 0, "max": 500, "step": 1, "display": "number" }),
-                "padding_top": ("INT", { "default": 0, "min": 0, "max": 500, "step": 1, "display": "number" }),
-                "padding_bottom": ("INT", { "default": 0, "min": 0, "max": 500, "step": 1, "display": "number" }),
-                "interpolation": (["lanczos", "nearest", "bilinear", "bicubic", "area", "nearest-exact"],),
-                "sharpening": ("FLOAT", { "default": 0.0, "min": 0, "max": 1, "step": 0.05, "display": "number" }),
-                "flip": (["No", "X-Axis", "Y-Axis"],),      
-            }
-        }
-    RETURN_TYPES = ("BASIC_PIPE",)
-    RETURN_NAMES = ("imageprepare_settings",)
-    FUNCTION = "get_imageprepare"
-
-    CATEGORY="JPS Nodes/Settings"
-
-    def get_imageprepare(self,resize_to,offset_width,offset_height,crop_left,crop_right,crop_top,crop_bottom,padding_left,padding_right,padding_top,padding_bottom,interpolation,sharpening,flip):
-
-        resizeto = int (0)
-        if(resize_to == "Keep Size"):
-            resizeto = int(1)
-        elif(resize_to == "Resize to Target"):
-            resizeto = int(2)
-        elif(resize_to == "Resize to Source"):
-            resizeto = int(3)
-
-        imageprepare_settings = resizeto, offset_width,offset_height,crop_left,crop_right,crop_top,crop_bottom,padding_left,padding_right,padding_top,padding_bottom,interpolation,sharpening,flip
-
-        return(imageprepare_settings,)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

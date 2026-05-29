@@ -31,17 +31,6 @@ This node class is designed to process and return a pair of floating-point value
 - Infra type: CPU
 
 # Source code
-```
-class SeargeFloatPair:
+[View source repository on GitHub](https://github.com/jobunk/SeargeSDXL)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'value1': ('FLOAT', {'default': 0.0, 'step': 0.01}), 'value2': ('FLOAT', {'default': 0.0, 'step': 0.01})}}
-    RETURN_TYPES = ('FLOAT', 'FLOAT')
-    RETURN_NAMES = ('value 1', 'value 2')
-    FUNCTION = 'get_value'
-    CATEGORY = 'Searge/_deprecated_/Floats'
-
-    def get_value(self, value1, value2):
-        return (value1, value2)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

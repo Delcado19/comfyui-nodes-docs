@@ -55,17 +55,6 @@ This node is designed to manage and adjust parameters of the prompt schedule, wh
 - Infra type: CPU
 
 # Source code
-```
-class PCScheduleSettings:
+[View source repository on GitHub](https://github.com/asagi4/comfyui-prompt-control)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {}, 'optional': {'steps': ('INT', {'default': 0, 'min': 0, 'max': 10000}), 'mask_width': ('INT', {'default': 512, 'min': 64, 'max': 4096 * 4}), 'mask_height': ('INT', {'default': 512, 'min': 64, 'max': 4096 * 4}), 'sdxl_width': ('INT', {'default': 1024, 'min': 0, 'max': 4096 * 4}), 'sdxl_height': ('INT', {'default': 1024, 'min': 0, 'max': 4096 * 4}), 'sdxl_target_w': ('INT', {'default': 1024, 'min': 0, 'max': 4096 * 4}), 'sdxl_target_h': ('INT', {'default': 1024, 'min': 0, 'max': 4096 * 4}), 'sdxl_crop_w': ('INT', {'default': 0, 'min': 0, 'max': 4096 * 4}), 'sdxl_crop_h': ('INT', {'default': 0, 'min': 0, 'max': 4096 * 4})}}
-    RETURN_TYPES = ('SCHEDULE_SETTINGS',)
-    CATEGORY = 'promptcontrol'
-    FUNCTION = 'apply'
-
-    def apply(self, steps=0, mask_width=512, mask_height=512, sdxl_width=1024, sdxl_height=1024, sdxl_target_w=1024, sdxl_target_h=1024, sdxl_crop_w=0, sdxl_crop_h=0):
-        settings = {'steps': steps, 'mask_width': mask_width, 'mask_height': mask_height, 'sdxl_width': sdxl_width, 'sdxl_height': sdxl_height, 'sdxl_twidth': sdxl_target_w, 'sdxl_theight': sdxl_target_h, 'sdxl_cwidth': sdxl_crop_w, 'sdxl_cheight': sdxl_crop_h}
-        return (settings,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

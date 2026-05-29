@@ -47,39 +47,6 @@ The RangeInt class encapsulates the logic for generating a range of integers bas
 - Infra type: CPU
 
 # Source code
-```
-class RangeInt:
+[View source repository on GitHub](https://github.com/yolain/ComfyUI-Easy-Use)
 
-    def __init__(self) -> None:
-        pass
-
-    @classmethod
-    def INPUT_TYPES(s) -> Dict[str, Dict[str, Any]]:
-        return {'required': {'range_mode': (['step', 'num_steps'], {'default': 'step'}), 'start': ('INT', {'default': 0, 'min': -4096, 'max': 4096, 'step': 1}), 'stop': ('INT', {'default': 0, 'min': -4096, 'max': 4096, 'step': 1}), 'step': ('INT', {'default': 0, 'min': -4096, 'max': 4096, 'step': 1}), 'num_steps': ('INT', {'default': 0, 'min': -4096, 'max': 4096, 'step': 1}), 'end_mode': (['Inclusive', 'Exclusive'], {'default': 'Inclusive'})}}
-    RETURN_TYPES = ('INT', 'INT')
-    RETURN_NAMES = ('range', 'range_sizes')
-    INPUT_IS_LIST = True
-    OUTPUT_IS_LIST = (True, True)
-    FUNCTION = 'build_range'
-    CATEGORY = 'EasyUse/Logic/Type'
-
-    def build_range(self, range_mode, start, stop, step, num_steps, end_mode) -> Tuple[List[int], List[int]]:
-        error_if_mismatched_list_args(locals())
-        ranges = []
-        range_sizes = []
-        for (range_mode, e_start, e_stop, e_num_steps, e_step, e_end_mode) in zip_with_fill(range_mode, start, stop, num_steps, step, end_mode):
-            if range_mode == 'step':
-                if e_end_mode == 'Inclusive':
-                    e_stop += 1
-                vals = list(range(e_start, e_stop, e_step))
-                ranges.extend(vals)
-                range_sizes.append(len(vals))
-            elif range_mode == 'num_steps':
-                direction = 1 if e_stop > e_start else -1
-                if e_end_mode == 'Exclusive':
-                    e_stop -= direction
-                vals = np.rint(np.linspace(e_start, e_stop, e_num_steps)).astype(int).tolist()
-                ranges.extend(vals)
-                range_sizes.append(len(vals))
-        return (ranges, range_sizes)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

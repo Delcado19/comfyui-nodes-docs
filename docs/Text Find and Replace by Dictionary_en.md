@@ -36,33 +36,6 @@ This node aims to perform search and replace operations on a given text using a 
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Search_and_Replace_Dictionary:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'text': (TEXT_TYPE, {'forceInput': True if TEXT_TYPE == 'STRING' else False}), 'dictionary': ('DICT',), 'replacement_key': ('STRING', {'default': '__', 'multiline': False}), 'seed': ('INT', {'default': 0, 'min': 0, 'max': 18446744073709551615})}}
-    RETURN_TYPES = (TEXT_TYPE,)
-    FUNCTION = 'text_search_and_replace_dict'
-    CATEGORY = 'WAS Suite/Text/Search'
-
-    def text_search_and_replace_dict(self, text, dictionary, replacement_key, seed):
-        random.seed(seed)
-        new_text = text
-        for term in dictionary.keys():
-            tkey = f'{replacement_key}{term}{replacement_key}'
-            tcount = new_text.count(tkey)
-            for _ in range(tcount):
-                new_text = new_text.replace(tkey, random.choice(dictionary[term]), 1)
-                if seed > 0 or seed < 0:
-                    seed = seed + 1
-                    random.seed(seed)
-        return (new_text,)
-
-    @classmethod
-    def IS_CHANGED(cls, **kwargs):
-        return float('NaN')
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

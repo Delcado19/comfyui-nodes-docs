@@ -36,24 +36,6 @@ The CR_ControlNetInputSwitch node provides a conditional switching mechanism for
 - Infra type: CPU
 
 # Source code
-```
-class CR_ControlNetInputSwitch:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'Input': ('INT', {'default': 1, 'min': 1, 'max': 2}), 'control_net1': ('CONTROL_NET',), 'control_net2': ('CONTROL_NET',)}, 'optional': {'control_net1': ('CONTROL_NET',), 'control_net2': ('CONTROL_NET',)}}
-    RETURN_TYPES = ('CONTROL_NET', 'STRING')
-    RETURN_NAMES = ('CONTROL_NET', 'show_help')
-    FUNCTION = 'switch'
-    CATEGORY = icons.get('Comfyroll/Utils/Logic')
-
-    def switch(self, Input, control_net1=None, control_net2=None):
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Logic-Nodes#cr-controlnet-input-switch'
-        if Input == 1:
-            return (control_net1, show_help)
-        else:
-            return (control_net2, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

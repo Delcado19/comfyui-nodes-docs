@@ -44,30 +44,6 @@ The WAS_Mask_Combine node is designed to merge multiple mask images into a singl
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Mask_Combine:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        self.WT = WAS_Tools_Class()
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'mask_a': ('MASK',), 'mask_b': ('MASK',)}, 'optional': {'mask_c': ('MASK',), 'mask_d': ('MASK',), 'mask_e': ('MASK',), 'mask_f': ('MASK',)}}
-    CATEGORY = 'WAS Suite/Image/Masking'
-    RETURN_TYPES = ('MASK',)
-    FUNCTION = 'combine_masks'
-
-    def combine_masks(self, mask_a, mask_b, mask_c=None, mask_d=None, mask_e=None, mask_f=None):
-        masks = [mask_a, mask_b]
-        if mask_c:
-            masks.append(mask_c)
-        if mask_d:
-            masks.append(mask_d)
-        if mask_e:
-            masks.append(mask_e)
-        if mask_f:
-            masks.append(mask_f)
-        combined_mask = torch.sum(torch.stack(masks, dim=0), dim=0)
-        combined_mask = torch.clamp(combined_mask, 0, 1)
-        return (combined_mask,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

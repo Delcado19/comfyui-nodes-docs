@@ -32,20 +32,6 @@ EmptyLatentImage node is designed to generate an empty latent space representati
 - Infra type: GPU
 
 # Source code
-```
-class EmptyLatentImage:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    def __init__(self):
-        self.device = comfy.model_management.intermediate_device()
-
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'width': ('INT', {'default': 512, 'min': 16, 'max': MAX_RESOLUTION, 'step': 8}), 'height': ('INT', {'default': 512, 'min': 16, 'max': MAX_RESOLUTION, 'step': 8}), 'batch_size': ('INT', {'default': 1, 'min': 1, 'max': 4096})}}
-    RETURN_TYPES = ('LATENT',)
-    FUNCTION = 'generate'
-    CATEGORY = 'latent'
-
-    def generate(self, width, height, batch_size=1):
-        latent = torch.zeros([batch_size, 4, height // 8, width // 8], device=self.device)
-        return ({'samples': latent},)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

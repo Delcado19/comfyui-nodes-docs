@@ -72,34 +72,6 @@ SimpleDetectorForEach node performs object detection on a single image using a b
 - Infra type: CPU
 
 # Source code
-```
-class SimpleDetectorForEach:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'bbox_detector': ('BBOX_DETECTOR',), 'image': ('IMAGE',), 'bbox_threshold': ('FLOAT', {'default': 0.5, 'min': 0.0, 'max': 1.0, 'step': 0.01}), 'bbox_dilation': ('INT', {'default': 0, 'min': -512, 'max': 512, 'step': 1}), 'crop_factor': ('FLOAT', {'default': 3.0, 'min': 1.0, 'max': 100, 'step': 0.1}), 'drop_size': ('INT', {'min': 1, 'max': MAX_RESOLUTION, 'step': 1, 'default': 10}), 'sub_threshold': ('FLOAT', {'default': 0.5, 'min': 0.0, 'max': 1.0, 'step': 0.01}), 'sub_dilation': ('INT', {'default': 0, 'min': -512, 'max': 512, 'step': 1}), 'sub_bbox_expansion': ('INT', {'default': 0, 'min': 0, 'max': 1000, 'step': 1}), 'sam_mask_hint_threshold': ('FLOAT', {'default': 0.7, 'min': 0.0, 'max': 1.0, 'step': 0.01})}, 'optional': {'post_dilation': ('INT', {'default': 0, 'min': -512, 'max': 512, 'step': 1}), 'sam_model_opt': ('SAM_MODEL',), 'segm_detector_opt': ('SEGM_DETECTOR',)}}
-    RETURN_TYPES = ('SEGS',)
-    FUNCTION = 'doit'
-    CATEGORY = 'ImpactPack/Detector'
-
-    @staticmethod
-    def detect(bbox_detector, image, bbox_threshold, bbox_dilation, crop_factor, drop_size, sub_threshold, sub_dilation, sub_bbox_expansion, sam_mask_hint_threshold, post_dilation=0, sam_model_opt=None, segm_detector_opt=None, detailer_hook=None):
-        if len(image) > 1:
-            raise Exception('[Impact Pack] ERROR: SimpleDetectorForEach does not allow image batches.\nPlease refer to https://github.com/ltdrdata/ComfyUI-extension-tutorials/blob/Main/ComfyUI-Impact-Pack/tutorial/batching-detailer.md for more information.')
-        if segm_detector_opt is not None and hasattr(segm_detector_opt, 'bbox_detector') and (segm_detector_opt.bbox_detector == bbox_detector):
-            segs = segm_detector_opt.detect(image, sub_threshold, sub_dilation, crop_factor, drop_size, detailer_hook=detailer_hook)
-        else:
-            segs = bbox_detector.detect(image, bbox_threshold, bbox_dilation, crop_factor, drop_size, detailer_hook=detailer_hook)
-            if sam_model_opt is not None:
-                mask = core.make_sam_mask(sam_model_opt, segs, image, 'center-1', sub_dilation, sub_threshold, sub_bbox_expansion, sam_mask_hint_threshold, False)
-                segs = core.segs_bitwise_and_mask(segs, mask)
-            elif segm_detector_opt is not None:
-                segm_segs = segm_detector_opt.detect(image, sub_threshold, sub_dilation, crop_factor, drop_size, detailer_hook=detailer_hook)
-                mask = core.segs_to_combined_mask(segm_segs)
-                segs = core.segs_bitwise_and_mask(segs, mask)
-        segs = core.dilate_segs(segs, post_dilation)
-        return (segs,)
-
-    def doit(self, bbox_detector, image, bbox_threshold, bbox_dilation, crop_factor, drop_size, sub_threshold, sub_dilation, sub_bbox_expansion, sam_mask_hint_threshold, post_dilation=0, sam_model_opt=None, segm_detector_opt=None):
-        return SimpleDetectorForEach.detect(bbox_detector, image, bbox_threshold, bbox_dilation, crop_factor, drop_size, sub_threshold, sub_dilation, sub_bbox_expansion, sam_mask_hint_threshold, post_dilation=post_dilation, sam_model_opt=sam_model_opt, segm_detector_opt=segm_detector_opt)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

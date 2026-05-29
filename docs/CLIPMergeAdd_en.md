@@ -27,22 +27,6 @@ The CLIPAdd node is designed to seamlessly integrate two separate CLIP models in
 - Infra type: CPU
 
 # Source code
-```
-class CLIPAdd:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'clip1': ('CLIP',), 'clip2': ('CLIP',)}}
-    RETURN_TYPES = ('CLIP',)
-    FUNCTION = 'merge'
-    CATEGORY = 'advanced/model_merging'
-
-    def merge(self, clip1, clip2):
-        m = clip1.clone()
-        kp = clip2.get_key_patches()
-        for k in kp:
-            if k.endswith('.position_ids') or k.endswith('.logit_scale'):
-                continue
-            m.add_patches({k: kp[k]}, 1.0, 1.0)
-        return (m,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

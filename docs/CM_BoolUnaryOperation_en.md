@@ -27,16 +27,6 @@ The BoolUnaryOperation node is designed to perform unary operations on boolean v
 - Infra type: CPU
 
 # Source code
-```
-class BoolUnaryOperation:
+[View source repository on GitHub](https://github.com/evanspearman/ComfyMath)
 
-    @classmethod
-    def INPUT_TYPES(cls) -> Mapping[str, Any]:
-        return {'required': {'op': (list(BOOL_UNARY_OPERATIONS.keys()),), 'a': DEFAULT_BOOL}}
-    RETURN_TYPES = ('BOOL',)
-    FUNCTION = 'op'
-    CATEGORY = 'math/bool'
-
-    def op(self, op: str, a: bool) -> tuple[bool]:
-        return (BOOL_UNARY_OPERATIONS[op](a),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

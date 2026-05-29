@@ -23,21 +23,6 @@ This type of node encapsulates the functionality for processing and generating p
 - Infra type: CPU
 
 # Source code
-```
-class positivePrompt:
+[View source repository on GitHub](https://github.com/yolain/ComfyUI-Easy-Use)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'positive': ('STRING', {'default': '', 'multiline': True, 'placeholder': 'Positive'})}}
-    RETURN_TYPES = ('STRING',)
-    RETURN_NAMES = ('positive',)
-    FUNCTION = 'main'
-    CATEGORY = 'EasyUse/Prompt'
-
-    @staticmethod
-    def main(positive):
-        return (positive,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

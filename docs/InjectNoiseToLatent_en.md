@@ -48,37 +48,6 @@ The InjectNoiseToLatent node is designed to introduce noise into latent space re
 - Infra type: CPU
 
 # Source code
-```
-class InjectNoiseToLatent:
+[View source repository on GitHub](https://github.com/kijai/ComfyUI-KJNodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'latents': ('LATENT',), 'strength': ('FLOAT', {'default': 0.1, 'min': 0.0, 'max': 200.0, 'step': 0.0001}), 'noise': ('LATENT',), 'normalize': ('BOOLEAN', {'default': False}), 'average': ('BOOLEAN', {'default': False})}, 'optional': {'mask': ('MASK',), 'mix_randn_amount': ('FLOAT', {'default': 0.0, 'min': 0.0, 'max': 1000.0, 'step': 0.001}), 'seed': ('INT', {'default': 123, 'min': 0, 'max': 18446744073709551615, 'step': 1})}}
-    RETURN_TYPES = ('LATENT',)
-    FUNCTION = 'injectnoise'
-    CATEGORY = 'KJNodes/noise'
-
-    def injectnoise(self, latents, strength, noise, normalize, average, mix_randn_amount=0, seed=None, mask=None):
-        samples = latents.copy()
-        if latents['samples'].shape != noise['samples'].shape:
-            raise ValueError('InjectNoiseToLatent: Latent and noise must have the same shape')
-        if average:
-            noised = (samples['samples'].clone() + noise['samples'].clone()) / 2
-        else:
-            noised = samples['samples'].clone() + noise['samples'].clone() * strength
-        if normalize:
-            noised = noised / noised.std()
-        if mask is not None:
-            mask = torch.nn.functional.interpolate(mask.reshape((-1, 1, mask.shape[-2], mask.shape[-1])), size=(noised.shape[2], noised.shape[3]), mode='bilinear')
-            mask = mask.expand((-1, noised.shape[1], -1, -1))
-            if mask.shape[0] < noised.shape[0]:
-                mask = mask.repeat((noised.shape[0] - 1) // mask.shape[0] + 1, 1, 1, 1)[:noised.shape[0]]
-            noised = mask * noised + (1 - mask) * latents['samples']
-        if mix_randn_amount > 0:
-            if seed is not None:
-                torch.manual_seed(seed)
-            rand_noise = torch.randn_like(noised)
-            noised = ((1 - mix_randn_amount) * noised + mix_randn_amount * rand_noise) / (mix_randn_amount ** 2 + (1 - mix_randn_amount) ** 2) ** 0.5
-        samples['samples'] = noised
-        return (samples,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

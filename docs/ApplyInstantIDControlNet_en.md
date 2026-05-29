@@ -60,52 +60,6 @@ The node applies a control network to modify facial features in the image based 
 - Infra type: GPU
 
 # Source code
-```
-class ApplyInstantIDControlNet:
+[View source repository on GitHub](https://github.com/cubiq/ComfyUI_InstantID)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'face_embeds': ('FACE_EMBEDS',), 'control_net': ('CONTROL_NET',), 'image_kps': ('IMAGE',), 'positive': ('CONDITIONING',), 'negative': ('CONDITIONING',), 'strength': ('FLOAT', {'default': 1.0, 'min': 0.0, 'max': 10.0, 'step': 0.01}), 'start_at': ('FLOAT', {'default': 0.0, 'min': 0.0, 'max': 1.0, 'step': 0.001}), 'end_at': ('FLOAT', {'default': 1.0, 'min': 0.0, 'max': 1.0, 'step': 0.001})}, 'optional': {'mask': ('MASK',)}}
-    RETURN_TYPES = ('CONDITIONING', 'CONDITIONING')
-    RETURN_NAMES = ('positive', 'negative')
-    FUNCTION = 'apply_controlnet'
-    CATEGORY = 'InstantID'
-
-    def apply_controlnet(self, face_embeds, control_net, image_kps, positive, negative, strength, start_at, end_at, mask=None):
-        self.device = comfy.model_management.get_torch_device()
-        if strength == 0:
-            return (positive, negative)
-        if mask is not None:
-            mask = mask.to(self.device)
-        if mask is not None and len(mask.shape) < 3:
-            mask = mask.unsqueeze(0)
-        image_prompt_embeds = face_embeds['cond']
-        uncond_image_prompt_embeds = face_embeds['uncond']
-        cnets = {}
-        cond_uncond = []
-        control_hint = image_kps.movedim(-1, 1)
-        is_cond = True
-        for conditioning in [positive, negative]:
-            c = []
-            for t in conditioning:
-                d = t[1].copy()
-                prev_cnet = d.get('control', None)
-                if prev_cnet in cnets:
-                    c_net = cnets[prev_cnet]
-                else:
-                    c_net = control_net.copy().set_cond_hint(control_hint, strength, (start_at, end_at))
-                    c_net.set_previous_controlnet(prev_cnet)
-                    cnets[prev_cnet] = c_net
-                d['control'] = c_net
-                d['control_apply_to_uncond'] = False
-                d['cross_attn_controlnet'] = image_prompt_embeds.to(comfy.model_management.intermediate_device()) if is_cond else uncond_image_prompt_embeds.to(comfy.model_management.intermediate_device())
-                if mask is not None and is_cond:
-                    d['mask'] = mask
-                    d['set_area_to_bounds'] = False
-                n = [t[0], d]
-                c.append(n)
-            cond_uncond.append(c)
-            is_cond = False
-            print(cond_uncond[0])
-        return (cond_uncond[0], cond_uncond[1])
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

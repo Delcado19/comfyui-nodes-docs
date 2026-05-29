@@ -40,19 +40,6 @@ The RangeInteger node is designed to generate a sequence of integers within a sp
 - Infra type: CPU
 
 # Source code
-```
-class RangeInteger:
+[View source repository on GitHub](https://github.com/bash-j/mikey_nodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'start': ('INT', {'default': 0, 'min': 0, 'max': 18446744073709551615}), 'end': ('INT', {'default': 0, 'min': 0, 'max': 18446744073709551615}), 'step': ('INT', {'default': 0, 'min': 0, 'max': 18446744073709551615}), 'seed': ('INT', {'default': 0, 'min': 0, 'max': 18446744073709551615})}}
-    RETURN_TYPES = ('INT', 'STRING')
-    FUNCTION = 'generate'
-    CATEGORY = 'Mikey/Utils'
-
-    def generate(self, start, end, step, seed):
-        range_ = np.arange(start, end, step)
-        list_of_numbers = list(range_)
-        offset = seed % len(list_of_numbers)
-        return (list_of_numbers[offset], f'{list_of_numbers[offset]}')
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

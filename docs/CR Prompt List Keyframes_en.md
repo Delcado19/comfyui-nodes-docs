@@ -32,31 +32,6 @@ The CR_PromptListKeyframes node is designed to generate keyframes from a prompt 
 - Infra type: CPU
 
 # Source code
-```
-class CR_PromptListKeyframes:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'prompt_list': ('PROMPT_LIST',), 'keyframe_format': (['Deforum'],)}}
-    RETURN_TYPES = ('STRING', 'STRING')
-    RETURN_NAMES = ('keyframe_list', 'show_help')
-    FUNCTION = 'make_keyframes'
-    CATEGORY = icons.get('Comfyroll/Animation/Legacy')
-
-    def make_keyframes(self, prompt_list, keyframe_format):
-        keyframe_format = 'Deforum'
-        keyframe_list = list()
-        i = 0
-        for (index, prompt_tuple) in enumerate(prompt_list):
-            (prompt, transition_type, transition_speed, transition_profile, keyframe_interval, loops) = prompt_tuple
-            if i == 0:
-                keyframe_list.extend(['"0": "' + prompt + '",\n'])
-                i += keyframe_interval
-                continue
-            new_keyframe = '"' + str(i) + '": "' + prompt + '",\n'
-            keyframe_list.extend([new_keyframe])
-            i += keyframe_interval
-        keyframes_out = ''.join(keyframe_list)[:-2]
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Prompt-Nodes#cr-prompt-list-keyframes'
-        return (keyframes_out, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

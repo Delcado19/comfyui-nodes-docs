@@ -48,27 +48,6 @@ This node acts as a multiplexer for multiple model inputs, integrating and organ
 - Infra type: CPU
 
 # Source code
-```
-class SeargeInput4:
+[View source repository on GitHub](https://github.com/jobunk/SeargeSDXL)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'base_model': (folder_paths.get_filename_list('checkpoints'),), 'refiner_model': (folder_paths.get_filename_list('checkpoints'),), 'vae_model': (folder_paths.get_filename_list('vae'),), 'main_upscale_model': (folder_paths.get_filename_list('upscale_models'),), 'support_upscale_model': (folder_paths.get_filename_list('upscale_models'),), 'lora_model': (folder_paths.get_filename_list('loras'),)}, 'optional': {'model_settings': ('MODEL_SETTINGS',)}}
-    RETURN_TYPES = ('MODEL_NAMES',)
-    RETURN_NAMES = ('model_names',)
-    FUNCTION = 'mux'
-    CATEGORY = 'Searge/_deprecated_/UI/Inputs'
-
-    def mux(self, base_model, refiner_model, vae_model, main_upscale_model, support_upscale_model, lora_model, model_settings=None):
-        if model_settings is None:
-            model_names = {}
-        else:
-            model_names = model_settings
-        model_names['base_model'] = base_model
-        model_names['refiner_model'] = refiner_model
-        model_names['vae_model'] = vae_model
-        model_names['main_upscale_model'] = main_upscale_model
-        model_names['support_upscale_model'] = support_upscale_model
-        model_names['lora_model'] = lora_model
-        return (model_names,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

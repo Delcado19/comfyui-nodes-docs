@@ -39,36 +39,6 @@ SeargePipelineStart node is the entry point of the data processing pipeline. It 
 - Infra type: CPU
 
 # Source code
-```
-class SeargePipelineStart:
+[View source repository on GitHub](https://github.com/jobunk/SeargeSDXL)
 
-    def __init__(self):
-        self.pipeline = Pipeline()
-
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'wf_version': (Defs.WORKFLOW_VERSIONS,)}, 'optional': {'data': ('SRG_DATA_STREAM',), 'additional_data': ('SRG_DATA_STREAM',)}, 'hidden': {'prompt': 'PROMPT', 'extra_pnginfo': 'EXTRA_PNGINFO'}}
-    RETURN_TYPES = ('SRG_DATA_STREAM',)
-    RETURN_NAMES = ('data',)
-    FUNCTION = 'trigger'
-    OUTPUT_NODE = True
-    CATEGORY = UI.CATEGORY_MAGIC
-
-    def trigger(self, wf_version, data=None, additional_data=None, prompt=None, extra_pnginfo=None):
-        if data is None:
-            print('Warning: Pipeline Start - missing data stream')
-        else:
-            if additional_data is not None:
-                data = data | additional_data
-            self.pipeline.start(data)
-            access = PipelineAccess(data)
-            self.pipeline.enable(access.get_active_setting(UI.S_OPERATING_MODE, UI.F_WORKFLOW_MODE) != UI.NONE)
-            mb_hidden = {Names.F_MAGIC_BOX_PROMPT: prompt, Names.F_MAGIC_BOX_EXTRA_PNGINFO: extra_pnginfo}
-            mb_version = {Names.F_MAGIC_BOX_EXTENSION: Defs.VERSION, Names.F_MAGIC_BOX_WORKFLOW: wf_version}
-            access.update_in_pipeline(Names.S_MAGIC_BOX_HIDDEN, mb_hidden)
-            access.update_in_pipeline(Names.S_MAGIC_BOX_VERSION, mb_version)
-            if data is not None:
-                data[Names.S_MAGIC_BOX_HIDDEN] = mb_hidden
-                data[Names.S_MAGIC_BOX_VERSION] = mb_version
-        return (data,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

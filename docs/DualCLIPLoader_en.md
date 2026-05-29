@@ -27,19 +27,6 @@ The DualCLIPLoader node is designed to efficiently load and manage dual CLIP (Co
 - Infra type: CPU
 
 # Source code
-```
-class DualCLIPLoader:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'clip_name1': (folder_paths.get_filename_list('clip'),), 'clip_name2': (folder_paths.get_filename_list('clip'),)}}
-    RETURN_TYPES = ('CLIP',)
-    FUNCTION = 'load_clip'
-    CATEGORY = 'advanced/loaders'
-
-    def load_clip(self, clip_name1, clip_name2):
-        clip_path1 = folder_paths.get_full_path('clip', clip_name1)
-        clip_path2 = folder_paths.get_full_path('clip', clip_name2)
-        clip = comfy.sd.load_clip(ckpt_paths=[clip_path1, clip_path2], embedding_directory=folder_paths.get_folder_paths('embeddings'))
-        return (clip,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

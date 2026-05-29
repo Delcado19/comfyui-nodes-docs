@@ -29,25 +29,7 @@ The GetBoolFromJson node is used to extract boolean values from a JSON object. I
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class UtilGetBoolFromJson:
-    @classmethod
-    def INPUT_TYPES(s):
-        return {
-            "required": {
-                "json": ("JSON",),
-                "key": ("STRING", {"default": ""}),
-            }
-        }
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    RETURN_TYPES = ("BOOLEAN",)
-    CATEGORY = "Art Venture/Utils"
-    FUNCTION = "get_bool_from_json"
-    OUTPUT_NODE = True
-
-    def get_bool_from_json(self, json: Dict, key: str):
-        return (get_dict_attribute(json, key, False),)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

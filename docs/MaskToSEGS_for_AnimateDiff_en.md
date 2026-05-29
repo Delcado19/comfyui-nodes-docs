@@ -44,24 +44,6 @@ The MaskToSEGS_for_AnimateDiff node is designed to convert a binary mask into a 
 - Infra type: CPU
 
 # Source code
-```
-class MaskToSEGS_for_AnimateDiff:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'mask': ('MASK',), 'combined': ('BOOLEAN', {'default': False, 'label_on': 'True', 'label_off': 'False'}), 'crop_factor': ('FLOAT', {'default': 3.0, 'min': 1.0, 'max': 100, 'step': 0.1}), 'bbox_fill': ('BOOLEAN', {'default': False, 'label_on': 'enabled', 'label_off': 'disabled'}), 'drop_size': ('INT', {'min': 1, 'max': MAX_RESOLUTION, 'step': 1, 'default': 10}), 'contour_fill': ('BOOLEAN', {'default': False, 'label_on': 'enabled', 'label_off': 'disabled'})}}
-    RETURN_TYPES = ('SEGS',)
-    FUNCTION = 'doit'
-    CATEGORY = 'ImpactPack/Operation'
-
-    def doit(self, mask, combined, crop_factor, bbox_fill, drop_size, contour_fill=False):
-        mask = make_2d_mask(mask)
-        segs = core.mask_to_segs(mask, combined, crop_factor, bbox_fill, drop_size, is_contour=contour_fill)
-        all_masks = SEGSToMaskList().doit(segs)[0]
-        result_mask = (all_masks[0] * 255).to(torch.uint8)
-        for mask in all_masks[1:]:
-            result_mask |= (mask * 255).to(torch.uint8)
-        result_mask = (result_mask / 255.0).to(torch.float32)
-        result_mask = utils.to_binary_mask(result_mask, 0.1)[0]
-        return MaskToSEGS().doit(result_mask, False, crop_factor, False, drop_size, contour_fill)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

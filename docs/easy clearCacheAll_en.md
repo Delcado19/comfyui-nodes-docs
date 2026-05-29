@@ -22,26 +22,7 @@ The node has no output type.
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class clearCacheAll:
-    @classmethod
-    def INPUT_TYPES(s):
-        return {"required": {
-            "anything": (AlwaysEqualProxy("*"), {}),
-        }, "optional": {},
-            "hidden": {"unique_id": "UNIQUE_ID", "extra_pnginfo": "EXTRA_PNGINFO",}
-        }
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    RETURN_TYPES = ()
-    RETURN_NAMES = ()
-    OUTPUT_NODE = True
-    FUNCTION = "empty_cache"
-    CATEGORY = "EasyUse/Logic"
-
-    def empty_cache(self, anything, unique_id=None, extra_pnginfo=None):
-        remove_cache('*')
-        return ()
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

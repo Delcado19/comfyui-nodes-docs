@@ -25,47 +25,7 @@ easy XYInputs: NegativeCond node is designed to handle negative condition inputs
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class XYplot_Negative_Cond:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        inputs = {
-            "optional": {
-                "negative_1": ("CONDITIONING"),
-                "negative_2": ("CONDITIONING"),
-                "negative_3": ("CONDITIONING"),
-                "negative_4": ("CONDITIONING"),
-            }
-        }
-
-        return inputs
-
-    RETURN_TYPES = ("X_Y",)
-    RETURN_NAMES = ("X or Y",)
-    FUNCTION = "xy_value"
-    CATEGORY = "EasyUse/XY Inputs"
-
-    def xy_value(self, negative_1=None, negative_2=None, negative_3=None, negative_4=None):
-        axis = "advanced: Neg Condition"
-        values = []
-        cond = []
-        # Create base entry
-        if negative_1 is not None:
-            values.append(0)
-            cond.append(negative_1)
-        if negative_2 is not None:
-            values.append(1)
-            cond.append(negative_2)
-        if negative_3 is not None:
-            values.append(2)
-            cond.append(negative_3)
-        if negative_4 is not None:
-            values.append(3)
-            cond.append(negative_4)
-
-        return ({"axis": axis, "values": values, "cond": cond},) if values is not None else (None,)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

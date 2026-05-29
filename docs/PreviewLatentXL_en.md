@@ -25,27 +25,7 @@ The PreviewLatentXL node is specifically used to preview latent representations 
 - Infra type: `GPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class PreviewLatentXL(PreviewLatentAdvanced):
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {"required":
-                    {"latent": ("LATENT",),
-                     },
-                "hidden": {"prompt": "PROMPT",
-                           "extra_pnginfo": "EXTRA_PNGINFO",
-                           "my_unique_id": "UNIQUE_ID",},
-                }
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    RETURN_TYPES = ("LATENT",)
-    RETURN_NAMES = ("latent",)
-    OUTPUT_NODE = True
-    FUNCTION = "lpreview_xl"
-    CATEGORY = "latent"
-
-    def lpreview_xl(self, latent, prompt=None, extra_pnginfo=None, my_unique_id=None):
-        return PreviewLatentAdvanced().lpreview(latent=latent, base_model="SDXL", preview_method="auto", prompt=prompt, extra_pnginfo=extra_pnginfo, my_unique_id=my_unique_id)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

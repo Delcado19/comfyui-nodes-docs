@@ -44,28 +44,6 @@ The TextConcat node is designed to efficiently combine multiple strings into a s
 - Infra type: CPU
 
 # Source code
-```
-class TextConcat:
+[View source repository on GitHub](https://github.com/bash-j/mikey_nodes)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'delimiter': ('STRING', {'default': ' '})}, 'optional': {'text1': ('STRING', {'default': ''}), 'text2': ('STRING', {'default': ''}), 'text3': ('STRING', {'default': ''}), 'text4': ('STRING', {'default': ''}), 'text5': ('STRING', {'default': ''})}}
-    RETURN_TYPES = ('STRING',)
-    FUNCTION = 'concat'
-    CATEGORY = 'Mikey/Text'
-
-    def concat(self, delimiter, text1, text2, text3, text4, text5):
-        texts = []
-        if text1:
-            texts.append(text1)
-        if text2:
-            texts.append(text2)
-        if text3:
-            texts.append(text3)
-        if text4:
-            texts.append(text4)
-        if text5:
-            texts.append(text5)
-        text = delimiter.join(texts)
-        return (text,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

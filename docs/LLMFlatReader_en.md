@@ -30,42 +30,7 @@ The LLMFlatReader node is designed to read and process "flat" files, converting 
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class LLMFlatReader(FlatReader):
-    """
-    @NOTE: Reads 'flat' files into a llama_index Document
-    @Source: https://github.com/run-llama/llama_index/blob/main/llama-index-integrations/readers/llama-index-readers-file/llama_index/readers/file/flat/base.py
-    @Documentation: https://docs.llamaindex.ai/en/latest/api_reference/readers/file/#llama_index.readers.file.FlatReader
-    """
-    def __init__(self):
-        super().__init__()
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {
-            "required": {
-                "path": ("STRING", {"default": ""}),
-            },
-            "optional": {
-                "extra_info": ("STRING", {"multiline": True, "dynamicPrompts": False, "default": "{}"}),
-            }
-        }
-
-    RETURN_TYPES = ("DOCUMENT", )
-    RETURN_NAMES = ("documents",)
-
-    FUNCTION = "execute"
-    CATEGORY = f"{MENU_NAME}/{SUB_MENU_NAME}/Readers"
-
-    def execute(self, path:str, extra_info:str, fs = None):
-        get_full_path(1, path)
-        if not os.path.exists(path):
-            raise FileNotFoundError(f"No file available at: {path}")
-        path = Path(path)
-        extra_info = read_extra_info(extra_info)
-        data = self.load_data(path, extra_info)
-        return (data, )
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

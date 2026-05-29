@@ -64,30 +64,6 @@ The CR_ImagePanel node combines multiple images into a single image panel accord
 - Infra type: CPU
 
 # Source code
-```
-class CR_ImagePanel:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        directions = ['horizontal', 'vertical']
-        return {'required': {'image_1': ('IMAGE',), 'border_thickness': ('INT', {'default': 0, 'min': 0, 'max': 1024}), 'border_color': (COLORS,), 'outline_thickness': ('INT', {'default': 0, 'min': 0, 'max': 1024}), 'outline_color': (COLORS[1:],), 'layout_direction': (directions,)}, 'optional': {'image_2': ('IMAGE',), 'image_3': ('IMAGE',), 'image_4': ('IMAGE',), 'border_color_hex': ('STRING', {'multiline': False, 'default': '#000000'})}}
-    RETURN_TYPES = ('IMAGE', 'STRING')
-    RETURN_NAMES = ('image', 'show_help')
-    FUNCTION = 'make_panel'
-    CATEGORY = icons.get('Comfyroll/Graphics/Layout')
-
-    def make_panel(self, image_1, border_thickness, border_color, outline_thickness, outline_color, layout_direction, image_2=None, image_3=None, image_4=None, border_color_hex='#000000'):
-        border_color = get_color_values(border_color, border_color_hex, color_mapping)
-        images = []
-        images.append(tensor2pil(image_1))
-        if image_2 is not None:
-            images.append(tensor2pil(image_2))
-        if image_3 is not None:
-            images.append(tensor2pil(image_3))
-        if image_4 is not None:
-            images.append(tensor2pil(image_4))
-        images = apply_outline_and_border(images, outline_thickness, outline_color, border_thickness, border_color)
-        combined_image = combine_images(images, layout_direction)
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Layout-Nodes#cr-image-panel'
-        return (pil2tensor(combined_image), show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

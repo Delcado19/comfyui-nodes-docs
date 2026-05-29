@@ -39,27 +39,6 @@ The PlaySound node plays audio files with customizable settings such as volume a
 - Common nodes: unknown
 
 ## Source code
-```python
-class PlaySound:
-    @classmethod
-    def INPUT_TYPES(s):
-        return {"required": {
-            "any": (any, {}),
-            "mode": (["always", "on empty queue"], {}),
-            "volume": ("FLOAT", {"min": 0, "max": 1, "step": 0.1, "default": 0.5}),
-            "file": ("STRING", { "default": "notify.mp3" })
-        }}
+[View source repository on GitHub](https://github.com/pythongosssss/ComfyUI-Custom-Scripts)
 
-    FUNCTION = "nop"
-    INPUT_IS_LIST = True
-    OUTPUT_IS_LIST = (True,)
-    OUTPUT_NODE = True
-    RETURN_TYPES = (any,)
-
-    CATEGORY = "utils"
-
-    def IS_CHANGED(self, **kwargs):
-        return float("NaN")
-
-    def nop(self, any, mode, volume, file):
-        return {"ui": {"a": []}, "result": (any,)}
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

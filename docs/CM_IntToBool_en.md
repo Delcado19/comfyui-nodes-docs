@@ -23,16 +23,6 @@ The IntToBool node is designed to convert integer values to a boolean representa
 - Infra type: CPU
 
 # Source code
-```
-class IntToBool:
+[View source repository on GitHub](https://github.com/evanspearman/ComfyMath)
 
-    @classmethod
-    def INPUT_TYPES(cls) -> Mapping[str, Any]:
-        return {'required': {'a': ('INT', {'default': 0})}}
-    RETURN_TYPES = ('BOOL',)
-    FUNCTION = 'op'
-    CATEGORY = 'math/conversion'
-
-    def op(self, a: int) -> tuple[bool]:
-        return (a != 0,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -76,19 +76,6 @@ The SEGS output provides a structured representation of facial feature segmentat
 - Infra type: CPU
 
 # Source code
-```
-class MediaPipeFaceMeshToSEGS:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        bool_true_widget = ('BOOLEAN', {'default': True, 'label_on': 'Enabled', 'label_off': 'Disabled'})
-        bool_false_widget = ('BOOLEAN', {'default': False, 'label_on': 'Enabled', 'label_off': 'Disabled'})
-        return {'required': {'image': ('IMAGE',), 'crop_factor': ('FLOAT', {'default': 3.0, 'min': 1.0, 'max': 100, 'step': 0.1}), 'bbox_fill': ('BOOLEAN', {'default': False, 'label_on': 'enabled', 'label_off': 'disabled'}), 'crop_min_size': ('INT', {'min': 10, 'max': MAX_RESOLUTION, 'step': 1, 'default': 50}), 'drop_size': ('INT', {'min': 1, 'max': MAX_RESOLUTION, 'step': 1, 'default': 1}), 'dilation': ('INT', {'default': 0, 'min': -512, 'max': 512, 'step': 1}), 'face': bool_true_widget, 'mouth': bool_false_widget, 'left_eyebrow': bool_false_widget, 'left_eye': bool_false_widget, 'left_pupil': bool_false_widget, 'right_eyebrow': bool_false_widget, 'right_eye': bool_false_widget, 'right_pupil': bool_false_widget}}
-    RETURN_TYPES = ('SEGS',)
-    FUNCTION = 'doit'
-    CATEGORY = 'ImpactPack/Operation'
-
-    def doit(self, image, crop_factor, bbox_fill, crop_min_size, drop_size, dilation, face, mouth, left_eyebrow, left_eye, left_pupil, right_eyebrow, right_eye, right_pupil):
-        result = core.mediapipe_facemesh_to_segs(image, crop_factor, bbox_fill, crop_min_size, drop_size, dilation, face, mouth, left_eyebrow, left_eye, left_pupil, right_eyebrow, right_eye, right_pupil)
-        return (result,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

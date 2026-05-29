@@ -40,22 +40,6 @@ This node aims to automatically generate negative prompts based on given positiv
 - Infra type: CPU
 
 # Source code
-```
-class AutoNegativePrompt:
+[View source repository on GitHub](https://github.com/AIrjen/OneButtonPrompt)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'postive_prompt': ('STRING', {'default': '', 'multiline': True})}, 'optional': {'base_negative': ('STRING', {'multiline': True, 'default': 'text, watermark'}), 'enhancenegative': ('INT', {'default': 0, 'min': 0, 'max': 1, 'step': 1}), 'insanitylevel': ('INT', {'default': 0, 'min': 0, 'max': 10, 'step': 1}), 'seed': ('INT', {'default': 0, 'min': 0, 'max': 18446744073709551615})}}
-    RETURN_TYPES = ('STRING',)
-    RETURN_NAMES = ('negative_prompt',)
-    FUNCTION = 'Comfy_OBP_AutoNegativePrompt'
-    CATEGORY = 'OneButtonPrompt'
-
-    def Comfy_OBP_AutoNegativePrompt(self, postive_prompt, insanitylevel, enhancenegative, base_negative, seed):
-        generatedprompt = build_dynamic_negative(postive_prompt, insanitylevel, enhancenegative, base_negative)
-        print('Generated negative prompt: ' + generatedprompt)
-        return (generatedprompt,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

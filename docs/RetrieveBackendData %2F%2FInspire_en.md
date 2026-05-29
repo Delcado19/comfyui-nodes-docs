@@ -23,23 +23,6 @@ This node extracts data from the backend cache system, providing a streamlined m
 - Infra type: CPU
 
 # Source code
-```
-class RetrieveBackendData:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Inspire-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'key': ('STRING', {'multiline': False, 'placeholder': "Input data key (e.g. 'model a', 'chunli lora', 'girl latent 3', ...)"})}}
-    RETURN_TYPES = (any_typ,)
-    RETURN_NAMES = ('data',)
-    OUTPUT_IS_LIST = (True,)
-    FUNCTION = 'doit'
-    CATEGORY = 'InspirePack/Backend'
-
-    def doit(self, key):
-        global cache
-        (is_list, data) = cache[key][1]
-        if is_list:
-            return (data,)
-        else:
-            return ([data],)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

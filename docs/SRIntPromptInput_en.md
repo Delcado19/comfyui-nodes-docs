@@ -36,18 +36,6 @@ The SRIntPromptInput node is designed to integrate integer inputs into a structu
 - Infra type: CPU
 
 # Source code
-```
-class SRIntPromptInput:
+[View source repository on GitHub](https://github.com/bash-j/mikey_nodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'input_int': ('INT', {'forceInput': True})}, 'hidden': {'unique_id': 'UNIQUE_ID', 'extra_pnginfo': 'EXTRA_PNGINFO', 'prompt': 'PROMPT'}}
-    RETURN_TYPES = ('INT',)
-    RETURN_NAMES = ('output_int',)
-    FUNCTION = 'add'
-    CATEGORY = 'Mikey/Meta'
-
-    def add(self, input_int, extra_pnginfo, unique_id, prompt):
-        prompt.get(str(unique_id))['inputs']['sr_val'] = str(input_int)
-        return (input_int,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

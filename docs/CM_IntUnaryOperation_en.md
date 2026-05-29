@@ -27,16 +27,6 @@ The IntUnaryOperation node is designed to perform various unary operations on in
 - Infra type: CPU
 
 # Source code
-```
-class IntUnaryOperation:
+[View source repository on GitHub](https://github.com/evanspearman/ComfyMath)
 
-    @classmethod
-    def INPUT_TYPES(cls) -> Mapping[str, Any]:
-        return {'required': {'op': (list(INT_UNARY_OPERATIONS.keys()),), 'a': DEFAULT_INT}}
-    RETURN_TYPES = ('INT',)
-    FUNCTION = 'op'
-    CATEGORY = 'math/int'
-
-    def op(self, op: str, a: int) -> tuple[int]:
-        return (INT_UNARY_OPERATIONS[op](a),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

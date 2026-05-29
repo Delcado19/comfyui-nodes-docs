@@ -27,18 +27,6 @@ This node coordinates the flow of image data within the processing loop, ensurin
 - Infra type: CPU
 
 # Source code
-```
-class LoopEnd_IMAGE:
+[View source repository on GitHub](https://github.com/chaojie/ComfyUI-DragNUWA)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'send_to_next_loop': ('IMAGE',), 'loop': ('LOOP',)}}
-    RETURN_TYPES = ()
-    FUNCTION = 'run'
-    CATEGORY = 'DragNUWA'
-    OUTPUT_NODE = True
-
-    def run(self, send_to_next_loop, loop):
-        loop.next = send_to_next_loop
-        return ()
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

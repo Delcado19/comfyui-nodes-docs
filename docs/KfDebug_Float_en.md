@@ -23,7 +23,6 @@ The KfDebug_Float node is designed to facilitate the debugging process by provid
 - Infra type: CPU
 
 # Source code
-```
-class KfDebug_Float(KfDebug_Passthrough):
-    RETURN_TYPES = ('FLOAT',)
-```
+[View source repository on GitHub](https://github.com/dmarx/ComfyUI-Keyframed)
+
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -25,25 +25,7 @@ This node refines the input of an XY plot according to a specified percentage, e
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class TSC_XYplot_Refiner_OnOff:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {"required": {
-                    "refine_at_percent": ("FLOAT",{"default": 0.80, "min": 0.00, "max": 1.00, "step": 0.01})},
-        }
-
-    RETURN_TYPES = ("XY",)
-    RETURN_NAMES = ("X or Y",)
-    FUNCTION = "xy_value"
-    CATEGORY = "Efficiency Nodes/XY Inputs"
-
-    def xy_value(self, refine_at_percent):
-        xy_type = "Refiner On/Off"
-        xy_value = [refine_at_percent, 1]
-        return ((xy_type, xy_value),)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

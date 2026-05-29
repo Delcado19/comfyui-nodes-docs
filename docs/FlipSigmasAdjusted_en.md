@@ -40,34 +40,6 @@ The 'FlipSigmasAdjusted' node processes and adjusts a set of sigma values. It re
 - Infra type: CPU
 
 # Source code
-```
-class FlipSigmasAdjusted:
+[View source repository on GitHub](https://github.com/kijai/ComfyUI-KJNodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'sigmas': ('SIGMAS',), 'divide_by_last_sigma': ('BOOLEAN', {'default': False}), 'divide_by': ('FLOAT', {'default': 1, 'min': 1, 'max': 255, 'step': 0.01}), 'offset_by': ('INT', {'default': 1, 'min': -100, 'max': 100, 'step': 1})}}
-    RETURN_TYPES = ('SIGMAS', 'STRING')
-    RETURN_NAMES = ('SIGMAS', 'sigmas_string')
-    CATEGORY = 'KJNodes/noise'
-    FUNCTION = 'get_sigmas_adjusted'
-
-    def get_sigmas_adjusted(self, sigmas, divide_by_last_sigma, divide_by, offset_by):
-        sigmas = sigmas.flip(0)
-        if sigmas[0] == 0:
-            sigmas[0] = 0.0001
-        adjusted_sigmas = sigmas.clone()
-        for i in range(1, len(sigmas)):
-            offset_index = i - offset_by
-            if 0 <= offset_index < len(sigmas):
-                adjusted_sigmas[i] = sigmas[offset_index]
-            else:
-                adjusted_sigmas[i] = 0.0001
-        if adjusted_sigmas[0] == 0:
-            adjusted_sigmas[0] = 0.0001
-        if divide_by_last_sigma:
-            adjusted_sigmas = adjusted_sigmas / adjusted_sigmas[-1]
-        sigma_np_array = adjusted_sigmas.numpy()
-        array_string = np.array2string(sigma_np_array, precision=2, separator=', ', threshold=np.inf)
-        adjusted_sigmas = adjusted_sigmas / divide_by
-        return (adjusted_sigmas, array_string)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -43,18 +43,6 @@ The LayeredDiffusionDecodeSplit class aims to efficiently decode RGBA images in 
 - Infra type: GPU
 
 # Source code
-```
-class LayeredDiffusionDecodeSplit(LayeredDiffusionDecodeRGBA):
-    """Decode RGBA every N images."""
+[View source repository on GitHub](https://github.com/huchenlei/ComfyUI-layerdiffuse)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'samples': ('LATENT',), 'images': ('IMAGE',), 'frames': ('INT', {'default': 2, 'min': 2, 'max': s.MAX_FRAMES, 'step': 1}), 'sd_version': ([StableDiffusionVersion.SD1x.value, StableDiffusionVersion.SDXL.value], {'default': StableDiffusionVersion.SDXL.value}), 'sub_batch_size': ('INT', {'default': 16, 'min': 1, 'max': 4096, 'step': 1})}}
-    MAX_FRAMES = 3
-    RETURN_TYPES = ('IMAGE',) * MAX_FRAMES
-
-    def decode(self, samples, images: torch.Tensor, frames: int, sd_version: str, sub_batch_size: int):
-        sliced_samples = copy.copy(samples)
-        sliced_samples['samples'] = sliced_samples['samples'][::frames]
-        return tuple((super(LayeredDiffusionDecodeSplit, self).decode(sliced_samples, imgs, sd_version, sub_batch_size)[0] if i == 0 else imgs for i in range(frames) for imgs in (images[i::frames],))) + (None,) * (self.MAX_FRAMES - frames)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

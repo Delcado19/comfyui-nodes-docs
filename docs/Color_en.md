@@ -39,24 +39,6 @@ This node facilitates processing and extracting input color information, providi
 - Infra type: CPU
 
 # Source code
-```
-class ColorInput:
+[View source repository on GitHub](https://github.com/shadowcz007/comfyui-mixlab-nodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'color': ('TCOLOR',)}}
-    RETURN_TYPES = ('STRING', 'INT', 'INT', 'INT', 'FLOAT')
-    RETURN_NAMES = ('hex', 'r', 'g', 'b', 'a')
-    FUNCTION = 'run'
-    CATEGORY = '♾️Mixlab/Utils'
-    INPUT_IS_LIST = False
-    OUTPUT_IS_LIST = (False, False, False, False, False)
-
-    def run(self, color):
-        h = color['hex']
-        r = color['r']
-        g = color['g']
-        b = color['b']
-        a = color['a']
-        return (h, r, g, b, a)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

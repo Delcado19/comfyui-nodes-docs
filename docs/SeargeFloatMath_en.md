@@ -35,29 +35,6 @@ The SeargeFloatMath node is designed to perform basic arithmetic operations on f
 - Infra type: CPU
 
 # Source code
-```
-class SeargeFloatMath:
-    OPERATIONS = ['a * b + c', 'a + c', 'a - c', 'a * b', 'a / b']
+[View source repository on GitHub](https://github.com/jobunk/SeargeSDXL)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'op': (SeargeFloatMath.OPERATIONS, {'default': 'a * b + c'}), 'a': ('FLOAT', {'default': 0.0, 'step': 0.01}), 'b': ('FLOAT', {'default': 1.0, 'step': 0.01}), 'c': ('FLOAT', {'default': 0.0, 'step': 0.01})}}
-    RETURN_TYPES = ('FLOAT',)
-    RETURN_NAMES = ('result',)
-    FUNCTION = 'get_value'
-    CATEGORY = 'Searge/_deprecated_/Floats'
-
-    def get_value(self, op, a, b, c):
-        res = 0.0
-        if op == 'a * b + c':
-            res = a * b + c
-        elif op == 'a + c':
-            res = a + c
-        elif op == 'a - c':
-            res = a - c
-        elif op == 'a * b':
-            res = a * b
-        elif op == 'a / b':
-            res = a / b
-        return (res,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

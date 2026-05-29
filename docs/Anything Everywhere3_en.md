@@ -30,16 +30,7 @@ The node has no output type.
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class AnythingEverywhereTriplet(Base):
-    @classmethod
-    def INPUT_TYPES(s):
-        return {"required":{}, 
-                "optional": { "anything" : ("*", {}), "anything2" : ("*", {}), "anything3" : ("*", {}),} }
-    
-    def func(self, **kwargs):
-        return ()
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -40,39 +40,6 @@ The SplitTrackingPoints node is designed to process and manipulate tracking poin
 - Infra type: CPU
 
 # Source code
-```
-class SplitTrackingPoints:
+[View source repository on GitHub](https://github.com/chaojie/ComfyUI-DragNUWA)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'pose_kps': ('POSE_KEYPOINT',), 'split_index': ('INT', {'default': 0}), 'height': ('INT', {'default': 320}), 'width': ('INT', {'default': 576})}, 'optional': {'last_pose_kps': ('POSE_KEYPOINT', {'default': None})}}
-    RETURN_TYPES = ('STRING',)
-    RETURN_NAMES = ('tracking_points',)
-    FUNCTION = 'split_tracking_points'
-    OUTPUT_NODE = True
-    CATEGORY = 'DragNUWA'
-
-    def split_tracking_points(self, pose_kps, split_index, height, width, last_pose_kps=None):
-        if split_index != 0:
-            if last_pose_kps is not None:
-                pose_kps[split_index * 14] = last_pose_kps[0]
-        trajs = []
-        for ipose in range(int(len(pose_kps[split_index * 14]['people'][0]['pose_keypoints_2d']) / 3)):
-            traj = []
-            for itracking in range(14):
-                people = pose_kps[split_index * 14 + itracking]['people']
-                if people[0]['pose_keypoints_2d'][ipose * 3 + 2] == 1.0:
-                    x = people[0]['pose_keypoints_2d'][ipose * 3]
-                    y = people[0]['pose_keypoints_2d'][ipose * 3 + 1]
-                    if x <= width and y <= height:
-                        traj.append([x, y])
-                    else:
-                        break
-                elif len(traj) > 0:
-                    traj.append(traj[len(traj) - 1])
-                else:
-                    break
-        if len(traj) > 0:
-            trajs.append(traj)
-        return (json.dumps(trajs),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

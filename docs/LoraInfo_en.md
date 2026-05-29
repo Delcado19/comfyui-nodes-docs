@@ -33,30 +33,7 @@ The LoraInfo node is designed to retrieve and provide detailed information about
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class LoraInfo:
-    def __init__(self):
-        pass
-    
-    @classmethod
-    def INPUT_TYPES(s):
-        LORA_LIST = sorted(folder_paths.get_filename_list("loras"), key=str.lower)
-        return {
-            "required": {
-                "lora_name": (LORA_LIST, )
-            },
-        }
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    RETURN_NAMES = ("trigger_words", "example_prompt")
-    RETURN_TYPES = ("STRING", "STRING")
-    FUNCTION = "lora_info"
-    OUTPUT_NODE = True
-    CATEGORY = "jitcoder"
-
-    def lora_info(self, lora_name):
-        (output, triggerWords, examplePrompt, baseModel) = get_lora_info(lora_name)
-        return {"ui": {"text": (output,), "model": (baseModel,)}, "result": (triggerWords, examplePrompt)}
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

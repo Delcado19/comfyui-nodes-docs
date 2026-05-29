@@ -40,41 +40,6 @@ The WAS_Image_High_Pass_Filter node is designed to enhance high-frequency detail
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Image_High_Pass_Filter:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'images': ('IMAGE',), 'radius': ('INT', {'default': 10, 'min': 1, 'max': 500, 'step': 1}), 'strength': ('FLOAT', {'default': 1.5, 'min': 0.0, 'max': 255.0, 'step': 0.1}), 'color_output': (['true', 'false'],), 'neutral_background': (['true', 'false'],)}}
-    RETURN_TYPES = ('IMAGE',)
-    RETURN_NAMES = ('images',)
-    FUNCTION = 'high_pass'
-    CATEGORY = 'WAS Suite/Image/Filter'
-
-    def high_pass(self, images, radius=10, strength=1.5, color_output='true', neutral_background='true'):
-        batch_tensor = []
-        for image in images:
-            transformed_image = self.apply_hpf(tensor2pil(image), radius, strength, color_output, neutral_background)
-            batch_tensor.append(pil2tensor(transformed_image))
-        batch_tensor = torch.cat(batch_tensor, dim=0)
-        return (batch_tensor,)
-
-    def apply_hpf(self, img, radius=10, strength=1.5, color_output='true', neutral_background='true'):
-        img_arr = np.array(img).astype('float')
-        blurred_arr = np.array(img.filter(ImageFilter.GaussianBlur(radius=radius))).astype('float')
-        hpf_arr = img_arr - blurred_arr
-        hpf_arr = np.clip(hpf_arr * strength, 0, 255).astype('uint8')
-        if color_output == 'true':
-            high_pass = Image.fromarray(hpf_arr, mode='RGB')
-        else:
-            grayscale_arr = np.mean(hpf_arr, axis=2).astype('uint8')
-            high_pass = Image.fromarray(grayscale_arr, mode='L')
-        if neutral_background == 'true':
-            neutral_color = (128, 128, 128) if high_pass.mode == 'RGB' else 128
-            neutral_bg = Image.new(high_pass.mode, high_pass.size, neutral_color)
-            high_pass = ImageChops.screen(neutral_bg, high_pass)
-        return high_pass.convert('RGB')
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

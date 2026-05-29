@@ -23,22 +23,6 @@ This node is designed to convert color images to grayscale images, a basic opera
 - Infra type: CPU
 
 # Source code
-```
-class WLSH_Image_Grayscale:
+[View source repository on GitHub](https://github.com/wallish77/wlsh_nodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'original': ('IMAGE',)}}
-    RETURN_TYPES = ('IMAGE',)
-    RETURN_NAMES = ('grayscale',)
-    FUNCTION = 'make_grayscale'
-    CATEGORY = 'WLSH Nodes/image'
-
-    def make_grayscale(self, original):
-        image = tensor2pil(original)
-        image = ImageOps.grayscale(image)
-        image = image.convert('RGB')
-        image = np.array(image).astype(np.float32) / 255.0
-        image = torch.from_numpy(image)[None,]
-        return (image,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

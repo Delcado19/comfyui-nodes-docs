@@ -31,18 +31,6 @@ The Compare node facilitates logical comparison between two inputs, providing a 
 - Infra type: CPU
 
 # Source code
-```
-class Compare:
+[View source repository on GitHub](https://github.com/yolain/ComfyUI-Easy-Use)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        s.compare_functions = list(COMPARE_FUNCTIONS.keys())
-        return {'required': {'a': (AlwaysEqualProxy('*'), {'default': 0}), 'b': (AlwaysEqualProxy('*'), {'default': 0}), 'comparison': (s.compare_functions, {'default': 'a == b'})}}
-    RETURN_TYPES = ('BOOLEAN',)
-    RETURN_NAMES = ('boolean',)
-    FUNCTION = 'compare'
-    CATEGORY = 'EasyUse/Logic/Math'
-
-    def compare(self, a, b, comparison):
-        return (COMPARE_FUNCTIONS[comparison](a, b),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

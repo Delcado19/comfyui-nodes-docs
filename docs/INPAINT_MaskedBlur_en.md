@@ -36,27 +36,6 @@ The MaskedBlur node is designed to fill in missing or unwanted parts of an image
 - Infra type: CPU
 
 # Source code
-```
-class MaskedBlur:
+[View source repository on GitHub](https://github.com/Acly/comfyui-inpaint-nodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'image': ('IMAGE',), 'mask': ('MASK',), 'blur': ('INT', {'default': 255, 'min': 3, 'max': 8191, 'step': 1}), 'falloff': ('INT', {'default': 0, 'min': 0, 'max': 8191, 'step': 1})}}
-    RETURN_TYPES = ('IMAGE',)
-    CATEGORY = 'inpaint'
-    FUNCTION = 'fill'
-
-    def fill(self, image: Tensor, mask: Tensor, blur: int, falloff: int):
-        blur = make_odd(blur)
-        falloff = min(make_odd(falloff), blur - 2)
-        (image, mask) = to_torch(image, mask)
-        original = image.clone()
-        alpha = mask.floor()
-        if falloff > 0:
-            erosion = binary_erosion(alpha, falloff)
-            alpha = alpha * gaussian_blur(erosion, falloff)
-        alpha = alpha.repeat(1, 3, 1, 1)
-        image = gaussian_blur(image, blur)
-        image = original + (image - original) * alpha
-        return (to_comfy(image),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -36,33 +36,6 @@ The Text2AudioEdgeTts node aims to convert text to audio files using the edge_tt
 - Infra type: CPU
 
 # Source code
-```
-class Text2AudioEdgeTts:
+[View source repository on GitHub](https://github.com/chflame163/ComfyUI_MSSpeech_TTS)
 
-    def __init__(self):
-        self.output_dir = os.path.join(folder_paths.get_output_directory(), 'audio')
-        if not os.path.exists(self.output_dir):
-            os.makedirs(self.output_dir)
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        VOICES = list(voice_dict.keys())
-        return {'required': {'voice': (VOICES,), 'rate': ('INT', {'default': 0, 'min': -200, 'max': 200}), 'filename_prefix': ('STRING', {'default': 'comfyUI'}), 'text': ('STRING', {'multiline': True})}}
-    RETURN_TYPES = ('STRING',)
-    RETURN_NAMES = ('MP3 file: String',)
-    FUNCTION = 'text_2_audio'
-    OUTPUT_NODE = True
-    CATEGORY = '😺dzNodes'
-
-    def text_2_audio(self, voice, filename_prefix, text, rate):
-        voice_name = voice_dict[voice]
-        (full_output_folder, filename, counter, subfolder, filename_prefix) = folder_paths.get_save_image_path(filename_prefix, self.output_dir)
-        _datetime = datetime.datetime.now().strftime('%Y%m%d')
-        _datetime = _datetime + datetime.datetime.now().strftime('%H%M%S%f')
-        file = f'{filename}_{_datetime}_{voice_name}.mp3'
-        audio_path = os.path.join(full_output_folder, file)
-        _rate = str(rate) + '%' if rate < 0 else '+' + str(rate) + '%'
-        print(f"# 😺dzNodes: MSSpeech TTS: Generating voice files, voice=‘{voice_name}’, rate={rate}, audiofile_path='{audio_path}, 'text='{text}'")
-        asyncio.run(gen_tts(text, voice_name, _rate, audio_path))
-        return {'ui': {'text': 'Audio file：' + os.path.join(full_output_folder, file), 'audios': [{'filename': file, 'type': 'output', 'subfolder': 'audio'}]}, 'result': (audio_path,)}
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

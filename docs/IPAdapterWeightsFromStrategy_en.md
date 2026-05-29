@@ -58,14 +58,6 @@ These weights can be applied at different stages of image processing to achieve 
 - Infra type: GPU
 
 # Source code
-```
-class IPAdapterWeightsFromStrategy(IPAdapterWeights):
-    @classmethod
-    def INPUT_TYPES(s):
-        return {"required": {
-            "weights_strategy": ("WEIGHTS_STRATEGY",),
-            }, "optional": {
-                "image": ("IMAGE",),
-            }
-        }
-```
+[View source repository on GitHub](https://github.com/cubiq/ComfyUI_IPAdapter_plus)
+
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

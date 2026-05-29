@@ -28,29 +28,6 @@ The WAS_Dictionary_To_Console node facilitates debugging by outputting dictionar
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Dictionary_To_Console:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'dictionary': ('DICT',), 'label': ('STRING', {'default': f'Dictionary Output', 'multiline': False})}}
-    RETURN_TYPES = ('DICT',)
-    OUTPUT_NODE = True
-    FUNCTION = 'text_to_console'
-    CATEGORY = 'WAS Suite/Debug'
-
-    def text_to_console(self, dictionary, label):
-        if label.strip() != '':
-            print(f'\x1b[34mWAS Node Suite \x1b[33m{label}\x1b[0m:\n')
-            from pprint import pprint
-            pprint(dictionary, indent=4)
-            print('')
-        else:
-            cstr(f'\x1b[33mText to Console\x1b[0m:\n')
-            pprint(dictionary, indent=4)
-            print('')
-        return (dictionary,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

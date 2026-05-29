@@ -23,25 +23,6 @@ The display method of the TripoSRViewer class is designed to visualize and expor
 - Infra type: CPU
 
 # Source code
-```
-class TripoSRViewer:
+[View source repository on GitHub](https://github.com/flowtyone/ComfyUI-Flowty-TripoSR)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'mesh': ('MESH',)}}
-    RETURN_TYPES = ()
-    OUTPUT_NODE = True
-    FUNCTION = 'display'
-    CATEGORY = 'Flowty TripoSR'
-
-    def display(self, mesh):
-        saved = list()
-        (full_output_folder, filename, counter, subfolder, filename_prefix) = get_save_image_path('meshsave', get_output_directory())
-        for (batch_number, single_mesh) in enumerate(mesh):
-            filename_with_batch_num = filename.replace('%batch_num%', str(batch_number))
-            file = f'{filename_with_batch_num}_{counter:05}_.obj'
-            single_mesh.apply_transform(np.array([[1, 0, 0, 0], [0, 0, 1, 0], [0, -1, 0, 0], [0, 0, 0, 1]]))
-            single_mesh.export(path.join(full_output_folder, file))
-            saved.append({'filename': file, 'type': 'output', 'subfolder': subfolder})
-        return {'ui': {'mesh': saved}}
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

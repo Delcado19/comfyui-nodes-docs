@@ -23,10 +23,6 @@ This node aims to extract numeric data from the backend service based on the pro
 - Infra type: CPU
 
 # Source code
-```
-class RetrieveBackendDataNumberKey(RetrieveBackendData):
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Inspire-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'key': ('INT', {'default': 0, 'min': 0, 'max': 18446744073709551615})}}
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -35,19 +35,6 @@ The CR_IndexReset node is designed to reset a given index to a specified value, 
 - Infra type: CPU
 
 # Source code
-```
-class CR_IndexReset:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'index': ('INT', {'default': 1, 'min': 0, 'max': 10000, 'forceInput': True}), 'reset_to': ('INT', {'default': 1, 'min': 0, 'max': 10000})}}
-    RETURN_TYPES = ('INT', 'INT', 'STRING')
-    RETURN_NAMES = ('index', 'reset_to', 'show_help')
-    FUNCTION = 'reset'
-    CATEGORY = icons.get('Comfyroll/Utils/Index')
-
-    def reset(self, index, reset_to):
-        index = reset_to
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Index-Nodes#cr-index-reset'
-        return (index, reset_to, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -28,19 +28,6 @@ The DilateMask node performs morphological dilation on a binary mask, expanding 
 - Infra type: CPU
 
 # Source code
-```
-class DilateMask:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'mask': ('MASK',), 'dilation': ('INT', {'default': 10, 'min': -512, 'max': 512, 'step': 1})}}
-    RETURN_TYPES = ('MASK',)
-    FUNCTION = 'doit'
-    CATEGORY = 'ImpactPack/Util'
-
-    def doit(self, mask, dilation):
-        mask = core.dilate_mask(mask.numpy(), dilation)
-        mask = torch.from_numpy(mask)
-        mask = utils.make_3d_mask(mask)
-        return (mask,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

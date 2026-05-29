@@ -23,21 +23,6 @@ The FaceParsingModelLoader node is designed to efficiently load and utilize a pr
 - Infra type: GPU
 
 # Source code
-```
-class FaceParsingModelLoader:
+[View source repository on GitHub](https://github.com/Ryuukeisyou/comfyui_face_parsing)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {}}
-    RETURN_TYPES = ('FACE_PARSING_MODEL',)
-    FUNCTION = 'main'
-    CATEGORY = 'face_parsing'
-
-    def main(self):
-        from transformers import AutoModelForSemanticSegmentation
-        model = AutoModelForSemanticSegmentation.from_pretrained(face_parsing_path)
-        return (model,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

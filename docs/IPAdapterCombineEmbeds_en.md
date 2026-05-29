@@ -44,34 +44,6 @@ The IPAdapterCombineEmbeds node is designed to intelligently combine multiple em
 - Infra type: GPU
 
 # Source code
-```
-class IPAdapterCombineEmbeds:
+[View source repository on GitHub](https://github.com/cubiq/ComfyUI_IPAdapter_plus)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'embed1': ('EMBEDS',), 'method': (['concat', 'add', 'subtract', 'average', 'norm average', 'max', 'min'],)}, 'optional': {'embed2': ('EMBEDS',), 'embed3': ('EMBEDS',), 'embed4': ('EMBEDS',), 'embed5': ('EMBEDS',)}}
-    RETURN_TYPES = ('EMBEDS',)
-    FUNCTION = 'batch'
-    CATEGORY = 'ipadapter/embeds'
-
-    def batch(self, embed1, method, embed2=None, embed3=None, embed4=None, embed5=None):
-        if method == 'concat' and embed2 is None and (embed3 is None) and (embed4 is None) and (embed5 is None):
-            return (embed1,)
-        embeds = [embed1, embed2, embed3, embed4, embed5]
-        embeds = [embed for embed in embeds if embed is not None]
-        embeds = torch.cat(embeds, dim=0)
-        if method == 'add':
-            embeds = torch.sum(embeds, dim=0).unsqueeze(0)
-        elif method == 'subtract':
-            embeds = embeds[0] - torch.mean(embeds[1:], dim=0)
-            embeds = embeds.unsqueeze(0)
-        elif method == 'average':
-            embeds = torch.mean(embeds, dim=0).unsqueeze(0)
-        elif method == 'norm average':
-            embeds = torch.mean(embeds / torch.norm(embeds, dim=0, keepdim=True), dim=0).unsqueeze(0)
-        elif method == 'max':
-            embeds = torch.max(embeds, dim=0).values.unsqueeze(0)
-        elif method == 'min':
-            embeds = torch.min(embeds, dim=0).values.unsqueeze(0)
-        return (embeds,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

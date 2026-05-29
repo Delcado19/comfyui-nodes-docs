@@ -23,17 +23,6 @@ This node class aims to enhance contrast by adjusting the image histogram, which
 - Infra type: CPU
 
 # Source code
-```
-class Equalize:
+[View source repository on GitHub](https://github.com/Jordach/comfy-plasma)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'IMAGE': ('IMAGE',)}}
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'process_image'
-    CATEGORY = 'image/postprocessing'
-
-    def process_image(self, IMAGE):
-        cimg = conv_tensor_pil(IMAGE)
-        return conv_pil_tensor(ImageOps.equalize(cimg))
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -23,17 +23,6 @@ IPAdapterModelLoader is designed to efficiently load and integrate IPAdapter mod
 - Infra type: CPU
 
 # Source code
-```
-class IPAdapterModelLoader:
+[View source repository on GitHub](https://github.com/cubiq/ComfyUI_IPAdapter_plus)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'ipadapter_file': (folder_paths.get_filename_list('ipadapter'),)}}
-    RETURN_TYPES = ('IPADAPTER',)
-    FUNCTION = 'load_ipadapter_model'
-    CATEGORY = 'ipadapter/loaders'
-
-    def load_ipadapter_model(self, ipadapter_file):
-        ipadapter_file = folder_paths.get_full_path('ipadapter', ipadapter_file)
-        return (ipadapter_model_loader(ipadapter_file),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

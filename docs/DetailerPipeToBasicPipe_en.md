@@ -27,20 +27,6 @@ The DetailerPipeToBasicPipe node is designed to convert detailed pipeline struct
 - Infra type: CPU
 
 # Source code
-```
-class DetailerPipeToBasicPipe:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'detailer_pipe': ('DETAILER_PIPE',)}}
-    RETURN_TYPES = ('BASIC_PIPE', 'BASIC_PIPE')
-    RETURN_NAMES = ('base_basic_pipe', 'refiner_basic_pipe')
-    FUNCTION = 'doit'
-    CATEGORY = 'ImpactPack/Pipe'
-
-    def doit(self, detailer_pipe):
-        (model, clip, vae, positive, negative, _, _, _, _, _, refiner_model, refiner_clip, refiner_positive, refiner_negative) = detailer_pipe
-        pipe = (model, clip, vae, positive, negative)
-        refiner_pipe = (refiner_model, refiner_clip, vae, refiner_positive, refiner_negative)
-        return (pipe, refiner_pipe)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

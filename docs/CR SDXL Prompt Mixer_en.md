@@ -59,56 +59,6 @@ CR_PromptMixer is a node designed to blend different prompts and styles to gener
 - Infra type: CPU
 
 # Source code
-```
-class CR_PromptMixer:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {}, 'optional': {'prompt_positive': ('STRING', {'multiline': True, 'default': 'BASE_POSITIVE'}), 'prompt_negative': ('STRING', {'multiline': True, 'default': 'BASE_NEGATIVE'}), 'style_positive': ('STRING', {'multiline': True, 'default': 'REFINER_POSTIVE'}), 'style_negative': ('STRING', {'multiline': True, 'default': 'REFINER_NEGATIVE'}), 'preset': (['preset 1', 'preset 2', 'preset 3', 'preset 4', 'preset 5'],)}}
-    RETURN_TYPES = ('STRING', 'STRING', 'STRING', 'STRING', 'STRING', 'STRING')
-    RETURN_NAMES = ('pos_g', 'pos_l', 'pos_r', 'neg_g', 'neg_l', 'neg_r')
-    FUNCTION = 'mixer'
-    CATEGORY = icons.get('Comfyroll/Essential/Legacy')
-
-    def mixer(self, prompt_positive, prompt_negative, style_positive, style_negative, preset):
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Legacy-Nodes#cr-prompt-mixer'
-        if preset == 'preset 1':
-            pos_g = prompt_positive
-            pos_l = prompt_positive
-            pos_r = prompt_positive
-            neg_g = prompt_negative
-            neg_l = prompt_negative
-            neg_r = prompt_negative
-        elif preset == 'preset 2':
-            pos_g = prompt_positive
-            pos_l = style_positive
-            pos_r = prompt_positive
-            neg_g = prompt_negative
-            neg_l = style_negative
-            neg_r = prompt_negative
-        elif preset == 'preset 3':
-            pos_g = style_positive
-            pos_l = prompt_positive
-            pos_r = style_positive
-            neg_g = style_negative
-            neg_l = prompt_negative
-            neg_r = style_negative
-        elif preset == 'preset 4':
-            pos_g = prompt_positive + style_positive
-            pos_l = prompt_positive + style_positive
-            pos_r = prompt_positive + style_positive
-            neg_g = prompt_negative + style_negative
-            neg_l = prompt_negative + style_negative
-            neg_r = prompt_negative + style_negative
-        elif preset == 'preset 5':
-            pos_g = prompt_positive
-            pos_l = prompt_positive
-            pos_r = style_positive
-            neg_g = prompt_negative
-            neg_l = prompt_negative
-            neg_r = style_negative
-        return (pos_g, pos_l, pos_r, neg_g, neg_l, neg_r)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

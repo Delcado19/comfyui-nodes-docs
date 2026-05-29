@@ -36,33 +36,6 @@ The CR_BinaryPatternSimple node parses a binary pattern and renders it as a visu
 - Infra type: CPU
 
 # Source code
-```
-class CR_BinaryPatternSimple:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'binary_pattern': ('STRING', {'multiline': True, 'default': '10101'}), 'width': ('INT', {'default': 512, 'min': 64, 'max': 4096}), 'height': ('INT', {'default': 512, 'min': 64, 'max': 4096})}}
-    RETURN_TYPES = ('IMAGE', 'STRING')
-    RETURN_NAMES = ('IMAGE', 'show_help')
-    FUNCTION = 'draw_pattern'
-    CATEGORY = icons.get('Comfyroll/Graphics/Pattern')
-
-    def draw_pattern(self, binary_pattern, width, height):
-        rows = binary_pattern.strip().split('\n')
-        grid = [[int(bit) for bit in row.strip()] for row in rows]
-        square_width = width // len(rows[0])
-        square_height = height // len(rows)
-        image = Image.new('RGB', (width, height), color='black')
-        draw = ImageDraw.Draw(image)
-        for (row_index, row) in enumerate(grid):
-            for (col_index, bit) in enumerate(row):
-                x1 = col_index * square_width
-                y1 = row_index * square_height
-                x2 = x1 + square_width
-                y2 = y1 + square_height
-                color = 'black' if bit == 1 else 'white'
-                draw.rectangle([x1, y1, x2, y2], fill=color, outline='black')
-        image_out = pil2tensor(image)
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Pattern-Nodes-2#cr-simple-binary-pattern'
-        return (image_out, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

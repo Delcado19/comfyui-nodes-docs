@@ -40,44 +40,6 @@ The WAS_Film_Grain node is designed to add a film grain effect to images, enhanc
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Film_Grain:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'image': ('IMAGE',), 'density': ('FLOAT', {'default': 1.0, 'min': 0.01, 'max': 1.0, 'step': 0.01}), 'intensity': ('FLOAT', {'default': 1.0, 'min': 0.01, 'max': 1.0, 'step': 0.01}), 'highlights': ('FLOAT', {'default': 1.0, 'min': 0.01, 'max': 255.0, 'step': 0.01}), 'supersample_factor': ('INT', {'default': 4, 'min': 1, 'max': 8, 'step': 1})}}
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'film_grain'
-    CATEGORY = 'WAS Suite/Image/Filter'
-
-    def film_grain(self, image, density, intensity, highlights, supersample_factor):
-        return (pil2tensor(self.apply_film_grain(tensor2pil(image), density, intensity, highlights, supersample_factor)),)
-
-    def apply_film_grain(self, img, density=0.1, intensity=1.0, highlights=1.0, supersample_factor=4):
-        """
-        Apply grayscale noise with specified density, intensity, and highlights to a PIL image.
-        """
-        img_gray = img.convert('L')
-        original_size = img.size
-        img_gray = img_gray.resize((img.size[0] * supersample_factor, img.size[1] * supersample_factor), Image.Resampling(2))
-        num_pixels = int(density * img_gray.size[0] * img_gray.size[1])
-        noise_pixels = []
-        for i in range(num_pixels):
-            x = random.randint(0, img_gray.size[0] - 1)
-            y = random.randint(0, img_gray.size[1] - 1)
-            noise_pixels.append((x, y))
-        for (x, y) in noise_pixels:
-            value = random.randint(0, 255)
-            img_gray.putpixel((x, y), value)
-        img_noise = img_gray.convert('RGB')
-        img_noise = img_noise.filter(ImageFilter.GaussianBlur(radius=0.125))
-        img_noise = img_noise.resize(original_size, Image.Resampling(1))
-        img_noise = img_noise.filter(ImageFilter.EDGE_ENHANCE_MORE)
-        img_final = Image.blend(img, img_noise, intensity)
-        enhancer = ImageEnhance.Brightness(img_final)
-        img_highlights = enhancer.enhance(highlights)
-        return img_highlights
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

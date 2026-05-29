@@ -23,17 +23,6 @@ The FloatConstant node is designed to provide a constant floating-point value in
 - Infra type: CPU
 
 # Source code
-```
-class FloatConstant:
+[View source repository on GitHub](https://github.com/kijai/ComfyUI-KJNodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'value': ('FLOAT', {'default': 0.0, 'min': -18446744073709551615, 'max': 18446744073709551615, 'step': 0.001})}}
-    RETURN_TYPES = ('FLOAT',)
-    RETURN_NAMES = ('value',)
-    FUNCTION = 'get_value'
-    CATEGORY = 'KJNodes/constants'
-
-    def get_value(self, value):
-        return (value,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

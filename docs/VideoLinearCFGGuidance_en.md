@@ -27,25 +27,6 @@ The VideoLinearCFGGuidance node aims to provide a way to modify the guidance of 
 - Infra type: GPU
 
 # Source code
-```
-class VideoLinearCFGGuidance:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'model': ('MODEL',), 'min_cfg': ('FLOAT', {'default': 1.0, 'min': 0.0, 'max': 100.0, 'step': 0.5, 'round': 0.01})}}
-    RETURN_TYPES = ('MODEL',)
-    FUNCTION = 'patch'
-    CATEGORY = 'sampling/video_models'
-
-    def patch(self, model, min_cfg):
-
-        def linear_cfg(args):
-            cond = args['cond']
-            uncond = args['uncond']
-            cond_scale = args['cond_scale']
-            scale = torch.linspace(min_cfg, cond_scale, cond.shape[0], device=cond.device).reshape((cond.shape[0], 1, 1, 1))
-            return uncond + scale * (cond - uncond)
-        m = model.clone()
-        m.set_model_sampler_cfg_function(linear_cfg)
-        return (m,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -28,19 +28,6 @@ The ImageColorToMask node is designed to convert a color image into a binary mas
 - Infra type: GPU
 
 # Source code
-```
-class ImageColorToMask:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'image': ('IMAGE',), 'color': ('INT', {'default': 0, 'min': 0, 'max': 16777215, 'step': 1, 'display': 'color'})}}
-    CATEGORY = 'mask'
-    RETURN_TYPES = ('MASK',)
-    FUNCTION = 'image_to_mask'
-
-    def image_to_mask(self, image, color):
-        temp = (torch.clamp(image, 0, 1.0) * 255.0).round().to(torch.int)
-        temp = torch.bitwise_left_shift(temp[:, :, :, 0], 16) + torch.bitwise_left_shift(temp[:, :, :, 1], 8) + temp[:, :, :, 2]
-        mask = torch.where(temp == color, 255, 0).float()
-        return (mask,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

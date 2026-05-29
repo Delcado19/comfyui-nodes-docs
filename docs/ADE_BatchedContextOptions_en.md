@@ -36,22 +36,6 @@ BatchedContextOptionsNode is designed to manage and generate context options for
 - Infra type: CPU
 
 # Source code
-```
-class BatchedContextOptionsNode:
+[View source repository on GitHub](https://github.com/Kosinkadink/ComfyUI-AnimateDiff-Evolved)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'context_length': ('INT', {'default': 16, 'min': 1, 'max': LENGTH_MAX})}, 'optional': {'start_percent': ('FLOAT', {'default': 0.0, 'min': 0.0, 'max': 1.0, 'step': 0.001}), 'guarantee_steps': ('INT', {'default': 1, 'min': 0, 'max': BIGMAX}), 'prev_context': ('CONTEXT_OPTIONS',)}}
-    RETURN_TYPES = ('CONTEXT_OPTIONS',)
-    RETURN_NAMES = ('CONTEXT_OPTS',)
-    CATEGORY = 'Animate Diff 🎭🅐🅓/context opts'
-    FUNCTION = 'create_options'
-
-    def create_options(self, context_length: int, start_percent: float=0.0, guarantee_steps: int=1, prev_context: ContextOptionsGroup=None):
-        if prev_context is None:
-            prev_context = ContextOptionsGroup()
-        prev_context = prev_context.clone()
-        context_options = ContextOptions(context_length=context_length, context_overlap=0, context_schedule=ContextSchedules.BATCHED, start_percent=start_percent, guarantee_steps=guarantee_steps)
-        prev_context.add(context_options)
-        return (prev_context,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

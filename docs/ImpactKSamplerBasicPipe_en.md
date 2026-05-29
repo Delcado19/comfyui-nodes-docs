@@ -60,18 +60,6 @@ The KSamplerBasicPipe node is designed to perform sampling operations using a sp
 - Infra type: CPU
 
 # Source code
-```
-class KSamplerBasicPipe:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'basic_pipe': ('BASIC_PIPE',), 'seed': ('INT', {'default': 0, 'min': 0, 'max': 18446744073709551615}), 'steps': ('INT', {'default': 20, 'min': 1, 'max': 10000}), 'cfg': ('FLOAT', {'default': 8.0, 'min': 0.0, 'max': 100.0}), 'sampler_name': (comfy.samplers.KSampler.SAMPLERS,), 'scheduler': (comfy.samplers.KSampler.SCHEDULERS,), 'latent_image': ('LATENT',), 'denoise': ('FLOAT', {'default': 1.0, 'min': 0.0, 'max': 1.0, 'step': 0.01})}}
-    RETURN_TYPES = ('BASIC_PIPE', 'LATENT', 'VAE')
-    FUNCTION = 'sample'
-    CATEGORY = 'sampling'
-
-    def sample(self, basic_pipe, seed, steps, cfg, sampler_name, scheduler, latent_image, denoise=1.0):
-        (model, clip, vae, positive, negative) = basic_pipe
-        latent = nodes.KSampler().sample(model, seed, steps, cfg, sampler_name, scheduler, positive, negative, latent_image, denoise)[0]
-        return (basic_pipe, latent, vae)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

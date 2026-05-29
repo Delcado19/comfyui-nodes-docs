@@ -43,33 +43,6 @@ The “showLoaderSettingsNames” node is designed to extract and display the na
 - Infra type: CPU
 
 # Source code
-```
-class showLoaderSettingsNames:
+[View source repository on GitHub](https://github.com/yolain/ComfyUI-Easy-Use)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'pipe': ('PIPE_LINE',), 'names': ('INFO', {'default': '', 'forceInput': False})}, 'hidden': {'unique_id': 'UNIQUE_ID', 'extra_pnginfo': 'EXTRA_PNGINFO'}}
-    RETURN_TYPES = ('STRING', 'STRING', 'STRING')
-    RETURN_NAMES = ('ckpt_name', 'vae_name', 'lora_name')
-    FUNCTION = 'notify'
-    OUTPUT_NODE = True
-    CATEGORY = 'EasyUse/Util'
-
-    def notify(self, pipe, names=None, unique_id=None, extra_pnginfo=None):
-        if unique_id and extra_pnginfo and ('workflow' in extra_pnginfo):
-            workflow = extra_pnginfo['workflow']
-            node = next((x for x in workflow['nodes'] if str(x['id']) == unique_id), None)
-            if node:
-                ckpt_name = pipe['loader_settings']['ckpt_name'] if 'ckpt_name' in pipe['loader_settings'] else ''
-                vae_name = pipe['loader_settings']['vae_name'] if 'vae_name' in pipe['loader_settings'] else ''
-                lora_name = pipe['loader_settings']['lora_name'] if 'lora_name' in pipe['loader_settings'] else ''
-                if ckpt_name:
-                    ckpt_name = os.path.basename(os.path.splitext(ckpt_name)[0])
-                if vae_name:
-                    vae_name = os.path.basename(os.path.splitext(vae_name)[0])
-                if lora_name:
-                    lora_name = os.path.basename(os.path.splitext(lora_name)[0])
-                names = 'ckpt_name: ' + ckpt_name + '\n' + 'vae_name: ' + vae_name + '\n' + 'lora_name: ' + lora_name
-                node['widgets_values'] = names
-        return {'ui': {'text': names}, 'result': (ckpt_name, vae_name, lora_name)}
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

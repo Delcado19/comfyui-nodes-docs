@@ -44,31 +44,6 @@ The FileNamePrefix node is responsible for generating a standardized file name p
 - Infra type: CPU
 
 # Source code
-```
-class FileNamePrefix:
+[View source repository on GitHub](https://github.com/bash-j/mikey_nodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'date': (['true', 'false'], {'default': 'true'}), 'date_directory': (['true', 'false'], {'default': 'true'}), 'custom_directory': ('STRING', {'default': ''}), 'custom_text': ('STRING', {'default': ''})}, 'hidden': {'prompt': 'PROMPT', 'extra_pnginfo': 'EXTRA_PNGINFO'}}
-    RETURN_TYPES = ('STRING',)
-    RETURN_NAMES = ('filename_prefix',)
-    FUNCTION = 'get_filename_prefix'
-    CATEGORY = 'Mikey/Meta'
-
-    def get_filename_prefix(self, date, date_directory, custom_directory, custom_text, prompt=None, extra_pnginfo=None):
-        filename_prefix = ''
-        if custom_directory:
-            custom_directory = search_and_replace(custom_directory, extra_pnginfo, prompt)
-            filename_prefix += custom_directory + '/'
-        if date_directory == 'true':
-            ts_str = datetime.datetime.now().strftime('%y%m%d')
-            filename_prefix += ts_str + '/'
-        if date == 'true':
-            ts_str = datetime.datetime.now().strftime('%y%m%d%H%M%S')
-            filename_prefix += ts_str
-        if custom_text != '':
-            custom_text = search_and_replace(custom_text, extra_pnginfo, prompt)
-            custom_text = re.sub('[<>:"/\\\\|?*]', '', custom_text)
-            filename_prefix += '_' + custom_text
-        return (filename_prefix,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -51,18 +51,6 @@ The From_SEG_ELT node is designed to process and convert SEG_ELT objects into a 
 - Infra type: CPU
 
 # Source code
-```
-class From_SEG_ELT:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'seg_elt': ('SEG_ELT',)}}
-    RETURN_TYPES = ('SEG_ELT', 'IMAGE', 'MASK', 'SEG_ELT_crop_region', 'SEG_ELT_bbox', 'SEG_ELT_control_net_wrapper', 'FLOAT', 'STRING')
-    RETURN_NAMES = ('seg_elt', 'cropped_image', 'cropped_mask', 'crop_region', 'bbox', 'control_net_wrapper', 'confidence', 'label')
-    FUNCTION = 'doit'
-    CATEGORY = 'ImpactPack/Util'
-
-    def doit(self, seg_elt):
-        cropped_image = to_tensor(seg_elt.cropped_image) if seg_elt.cropped_image is not None else None
-        return (seg_elt, cropped_image, to_tensor(seg_elt.cropped_mask), seg_elt.crop_region, seg_elt.bbox, seg_elt.control_net_wrapper, seg_elt.confidence, seg_elt.label)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

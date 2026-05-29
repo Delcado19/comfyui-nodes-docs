@@ -23,17 +23,6 @@ This node is designed to process and output text data, serving as a key utility 
 - Infra type: CPU
 
 # Source code
-```
-class OutputString:
+[View source repository on GitHub](https://github.com/adieyal/comfyui-dynamicprompts)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'text': ('STRING', {})}}
-    RETURN_TYPES = ()
-    FUNCTION = 'output_string'
-    OUTPUT_NODE = True
-    CATEGORY = 'utils'
-
-    def output_string(self, string):
-        return ({'ui': {'string': string}},)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

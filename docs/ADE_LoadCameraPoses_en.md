@@ -25,30 +25,6 @@ The `ADE_LoadCameraPoses` node is designed to load camera control poses from a s
 - Common nodes: unknown
 
 ## Source code
-```python
-class LoadCameraPoses:
-    @classmethod
-    def INPUT_TYPES(s):
-        input_dir = folder_paths.get_input_directory()
-        files = [f for f in os.listdir(input_dir) if os.path.isfile(os.path.join(input_dir, f))]
-        files = [f for f in files if f.endswith(".txt")]
-        return {
-            "required": {
-                "pose_filename": (sorted(files),),
-            }
-        }
+[View source repository on GitHub](https://github.com/Kosinkadink/ComfyUI-AnimateDiff-Evolved)
 
-    RETURN_TYPES = ("CAMERACTRL_POSES",)
-    CATEGORY = "Animate Diff 🎭🅐🅓/② Gen2 nodes ②/CameraCtrl/poses"
-    FUNCTION = "load_camera_poses"
-
-    def load_camera_poses(self, pose_filename: str):
-        file_path = folder_paths.get_annotated_filepath(pose_filename)
-        with open(file_path, 'r') as f:
-            poses = f.readlines()
-        # first line of file is the link to source, so can be skipped,
-        # and the rest is a header-less CSV file separated by single spaces
-        poses = [pose.strip().split(' ') for pose in poses[1:]]
-        poses = [[float(x) for x in pose] for pose in poses]
-        poses = set_original_pose_dims(poses, pose_width=CAM.DEFAULT_POSE_WIDTH, pose_height=CAM.DEFAULT_POSE_HEIGHT)
-        return (poses,)
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

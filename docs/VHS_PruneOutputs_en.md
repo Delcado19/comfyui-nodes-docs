@@ -27,33 +27,6 @@ The method 'prune_outputs' is designed to manage and clean up intermediate and u
 - Infra type: CPU
 
 # Source code
-```
-class PruneOutputs:
+[View source repository on GitHub](https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'filenames': ('VHS_FILENAMES',), 'options': (['Intermediate', 'Intermediate and Utility'],)}}
-    RETURN_TYPES = ()
-    OUTPUT_NODE = True
-    CATEGORY = 'Video Helper Suite 🎥🅥🅗🅢'
-    FUNCTION = 'prune_outputs'
-
-    def prune_outputs(self, filenames, options):
-        if len(filenames[1]) == 0:
-            return ()
-        assert len(filenames[1]) <= 3 and len(filenames[1]) >= 2
-        delete_list = []
-        if options in ['Intermediate', 'Intermediate and Utility', 'All']:
-            delete_list += filenames[1][1:-1]
-        if options in ['Intermediate and Utility', 'All']:
-            delete_list.append(filenames[1][0])
-        if options in ['All']:
-            delete_list.append(filenames[1][-1])
-        output_dirs = [os.path.abspath('output'), os.path.abspath('temp')]
-        for file in delete_list:
-            if os.path.commonpath([output_dirs[0], file]) != output_dirs[0] and os.path.commonpath([output_dirs[1], file]) != output_dirs[1]:
-                raise Exception('Tried to prune output from invalid directory: ' + file)
-            if os.path.exists(file):
-                os.remove(file)
-        return ()
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

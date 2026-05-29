@@ -83,45 +83,6 @@ The ADE_CameraPoseAdvanced node is designed to create advanced camera control po
 - Common nodes: unknown
 
 ## Source code
-```python
-class CameraCtrlPoseAdvanced:
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {
-            "required": {
-                "motion_type1": (CAM._LIST,),
-                "strength1": ("FLOAT", {"default": 1.0, "min": 0.0, "max": 10.0, "step": 0.01}),
-                "motion_type2": (CAM._LIST,),
-                "strength2": ("FLOAT", {"default": 1.0, "min": 0.0, "max": 10.0, "step": 0.01}),
-                "motion_type3": (CAM._LIST,),
-                "strength3": ("FLOAT", {"default": 1.0, "min": 0.0, "max": 10.0, "step": 0.01}),
-                "motion_type4": (CAM._LIST,),
-                "strength4": ("FLOAT", {"default": 1.0, "min": 0.0, "max": 10.0, "step": 0.01}),
-                "motion_type5": (CAM._LIST,),
-                "strength5": ("FLOAT", {"default": 1.0, "min": 0.0, "max": 10.0, "step": 0.01}),
-                "motion_type6": (CAM._LIST,),
-                "strength6": ("FLOAT", {"default": 1.0, "min": 0.0, "max": 10.0, "step": 0.01}),
-                "speed": ("FLOAT", {"default": 1.0, "min": -100.0, "max": 100.0, "step": 0.01}),
-                "frame_length": ("INT", {"default": 16}),
-            },
-            "optional": {
-                "prev_poses": ("CAMERACTRL_POSES",),
-            }
-        }
+[View source repository on GitHub](https://github.com/Kosinkadink/ComfyUI-AnimateDiff-Evolved)
 
-    RETURN_TYPES = ("CAMERACTRL_POSES",)
-    FUNCTION = "camera_pose_combo"
-    CATEGORY = "Animate Diff 🎭🅐🅓/② Gen2 nodes ②/CameraCtrl/poses"
-
-    def camera_pose_combo(self,
-                          motion_type1: str, motion_type2: str, motion_type3: str,
-                          motion_type4: str, motion_type5: str, motion_type6: str,
-                          speed: float, frame_length: int,
-                          prev_poses: list[list[float]]=None,
-                          strength1=1.0, strength2=1.0, strength3=1.0, strength4=1.0, strength5=1.0, strength6=1.0):
-        return CameraCtrlPoseCombo.camera_pose_combo(self,
-                                                     motion_type1=motion_type1, motion_type2=motion_type2, motion_type3=motion_type3,
-                                                     motion_type4=motion_type4, motion_type5=motion_type5, motion_type6=motion_type6,
-                                                     speed=speed, frame_length=frame_length, prev_poses=prev_poses,
-                                                     strength1=strength1, strength2=strength2, strength3=strength3,
-                                                     strength4=strength4, strength5=strength5, strength6=strength6)
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

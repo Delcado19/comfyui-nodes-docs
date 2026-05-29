@@ -27,16 +27,6 @@ The BreakoutVec2 node is designed to decompose a two-dimensional vector into its
 - Infra type: CPU
 
 # Source code
-```
-class BreakoutVec2:
+[View source repository on GitHub](https://github.com/evanspearman/ComfyMath)
 
-    @classmethod
-    def INPUT_TYPES(cls) -> Mapping[str, Any]:
-        return {'required': {'a': ('VEC2', {'default': VEC2_ZERO})}}
-    RETURN_TYPES = ('FLOAT', 'FLOAT')
-    FUNCTION = 'op'
-    CATEGORY = 'math/conversion'
-
-    def op(self, a: Vec2) -> tuple[float, float]:
-        return (a[0], a[1])
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

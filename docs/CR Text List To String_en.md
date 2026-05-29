@@ -27,20 +27,6 @@ The CR_TextListToString node is designed to concatenate a list of strings into a
 - Infra type: CPU
 
 # Source code
-```
-class CR_TextListToString:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'text_list': ('STRING', {'forceInput': True})}}
-    RETURN_TYPES = ('STRING', 'STRING')
-    RETURN_NAMES = ('STRING', 'show_help')
-    INPUT_IS_LIST = True
-    FUNCTION = 'joinlist'
-    CATEGORY = icons.get('Comfyroll/List/Utils')
-
-    def joinlist(self, text_list):
-        string_out = '\n'.join(text_list)
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/List-Nodes#cr-text-list-to-string'
-        return (string_out, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

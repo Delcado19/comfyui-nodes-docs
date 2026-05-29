@@ -23,7 +23,6 @@ The KfDebug_Image node is designed to facilitate visualization of image data wit
 - Infra type: CPU
 
 # Source code
-```
-class KfDebug_Image(KfDebug_Passthrough):
-    RETURN_TYPES = ('IMAGE',)
-```
+[View source repository on GitHub](https://github.com/dmarx/ComfyUI-Keyframed)
+
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

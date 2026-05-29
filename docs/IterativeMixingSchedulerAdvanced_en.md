@@ -43,32 +43,6 @@ The IterativeMixingSchedulerAdvanced node is designed to generate a series of no
 - Infra type: CPU
 
 # Source code
-```
-class IterativeMixingSchedulerAdvanced:
+[View source repository on GitHub](https://github.com/ttulttul/ComfyUI-Iterative-Mixer)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'model': ('MODEL',), 'scheduler': (comfy.samplers.SCHEDULER_NAMES,), 'steps': ('INT', {'default': 20, 'min': 1, 'max': 10000}), 'start_at_step': ('INT', {'default': 0, 'min': 0, 'max': 10000}), 'end_at_step': ('INT', {'default': 10000, 'min': 0, 'max': 10000}), 'denoise': ('FLOAT', {'default': 1.0, 'min': 0.0, 'max': 1.0, 'step': 0.01})}}
-    RETURN_TYPES = ('SIGMAS',)
-    CATEGORY = 'sampling/custom_sampling/schedulers'
-    FUNCTION = 'get_sigmas'
-
-    @torch.no_grad()
-    def get_sigmas(self, model, scheduler, steps, start_at_step, end_at_step, denoise):
-        sigmas = None
-        cs = comfy.samplers.calculate_sigmas_scheduler
-        if denoise is None or denoise > 0.9999:
-            sigmas = cs(model.model, scheduler, steps).cpu()
-        else:
-            new_steps = int(steps / denoise)
-            sigmas = cs(model.model, scheduler, new_steps).cpu()
-            sigmas = sigmas[-(steps + 1):]
-        if end_at_step is not None and end_at_step < len(sigmas) - 1:
-            sigmas = sigmas[:end_at_step + 1]
-        if start_at_step is not None:
-            if start_at_step < len(sigmas) - 1:
-                sigmas = sigmas[start_at_step:]
-            else:
-                return torch.Tensor([])
-        return (sigmas,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

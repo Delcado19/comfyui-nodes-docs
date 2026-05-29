@@ -43,26 +43,6 @@ This node calculates the sigma value, an indicator of noise or signal-to-noise r
 - Infra type: GPU
 
 # Source code
-```
-class GetSigma:
+[View source repository on GitHub](https://github.com/BlenderNeko/ComfyUI_Noise)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'model': ('MODEL',), 'sampler_name': (comfy.samplers.KSampler.SAMPLERS,), 'scheduler': (comfy.samplers.KSampler.SCHEDULERS,), 'steps': ('INT', {'default': 10000, 'min': 0, 'max': 10000}), 'start_at_step': ('INT', {'default': 0, 'min': 0, 'max': 10000}), 'end_at_step': ('INT', {'default': 10000, 'min': 1, 'max': 10000})}}
-    RETURN_TYPES = ('FLOAT',)
-    FUNCTION = 'calc_sigma'
-    CATEGORY = 'latent/noise'
-
-    def calc_sigma(self, model, sampler_name, scheduler, steps, start_at_step, end_at_step):
-        device = comfy.model_management.get_torch_device()
-        end_at_step = min(steps, end_at_step)
-        start_at_step = min(start_at_step, end_at_step)
-        real_model = None
-        comfy.model_management.load_model_gpu(model)
-        real_model = model.model
-        sampler = comfy.samplers.KSampler(real_model, steps=steps, device=device, sampler=sampler_name, scheduler=scheduler, denoise=1.0, model_options=model.model_options)
-        sigmas = sampler.sigmas
-        sigma = sigmas[start_at_step] - sigmas[end_at_step]
-        sigma /= model.model.latent_format.scale_factor
-        return (sigma.cpu().numpy(),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

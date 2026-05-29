@@ -31,19 +31,6 @@ The 'doit' method of the ImpactMinMax node is designed to perform a basic operat
 - Infra type: CPU
 
 # Source code
-```
-class ImpactMinMax:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'mode': ('BOOLEAN', {'default': True, 'label_on': 'max', 'label_off': 'min'}), 'a': (any_typ,), 'b': (any_typ,)}}
-    FUNCTION = 'doit'
-    CATEGORY = 'ImpactPack/Logic/_for_test'
-    RETURN_TYPES = ('INT',)
-
-    def doit(self, mode, a, b):
-        if mode:
-            return (max(a, b),)
-        else:
-            return (min(a, b),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

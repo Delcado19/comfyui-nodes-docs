@@ -35,22 +35,6 @@ SeargeLatentMuxer3 is a node for managing latent data streams. It controls data 
 - Infra type: CPU
 
 # Source code
-```
-class SeargeLatentMuxer3:
+[View source repository on GitHub](https://github.com/jobunk/SeargeSDXL)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'input0': ('LATENT',), 'input1': ('LATENT',), 'input2': ('LATENT',), 'input_selector': ('INT', {'default': 0, 'min': 0, 'max': 2})}}
-    RETURN_TYPES = ('LATENT',)
-    RETURN_NAMES = ('output',)
-    FUNCTION = 'mux'
-    CATEGORY = 'Searge/_deprecated_/FlowControl'
-
-    def mux(self, input0, input1, input2, input_selector):
-        if input_selector == 1:
-            return (input1,)
-        elif input_selector == 2:
-            return (input2,)
-        else:
-            return (input0,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

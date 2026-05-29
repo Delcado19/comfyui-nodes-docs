@@ -23,18 +23,6 @@ The CLIPVisionLoader node is designed to efficiently load and process visual dat
 - Infra type: CPU
 
 # Source code
-```
-class CLIPVisionLoader:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'clip_name': (folder_paths.get_filename_list('clip_vision'),)}}
-    RETURN_TYPES = ('CLIP_VISION',)
-    FUNCTION = 'load_clip'
-    CATEGORY = 'loaders'
-
-    def load_clip(self, clip_name):
-        clip_path = folder_paths.get_full_path('clip_vision', clip_name)
-        clip_vision = comfy.clip_vision.load(clip_path)
-        return (clip_vision,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

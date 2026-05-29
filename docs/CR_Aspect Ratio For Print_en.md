@@ -71,27 +71,6 @@ The CR_AspectRatioForPrint node is intended to calculate and adjust the size of 
 - Infra type: CPU
 
 # Source code
-```
-class CR_AspectRatioForPrint:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        aspect_ratios = list(PRINT_SIZES.keys())
-        return {'required': {'width': ('INT', {'default': 1024, 'min': 64, 'max': 8192}), 'height': ('INT', {'default': 1024, 'min': 64, 'max': 8192}), 'aspect_ratio': (aspect_ratios,), 'swap_dimensions': (['Off', 'On'],), 'upscale_factor': ('FLOAT', {'default': 1.0, 'min': 0.1, 'max': 100.0, 'step': 0.1}), 'prescale_factor': ('FLOAT', {'default': 1.0, 'min': 0.1, 'max': 100.0, 'step': 0.1}), 'batch_size': ('INT', {'default': 1, 'min': 1, 'max': 64})}}
-    RETURN_TYPES = ('INT', 'INT', 'FLOAT', 'FLOAT', 'INT', 'LATENT', 'STRING')
-    RETURN_NAMES = ('width', 'height', 'upscale_factor', 'prescale_factor', 'batch_size', 'empty_latent', 'show_help')
-    FUNCTION = 'Aspect_Ratio'
-    CATEGORY = icons.get('Comfyroll/Aspect Ratio')
-
-    def Aspect_Ratio(self, width, height, aspect_ratio, swap_dimensions, upscale_factor, prescale_factor, batch_size):
-        if aspect_ratio in PRINT_SIZES:
-            (width, height) = PRINT_SIZES[aspect_ratio]
-        if swap_dimensions == 'On':
-            (width, height) = (height, width)
-        width = int(width * prescale_factor)
-        height = int(height * prescale_factor)
-        print(f'Width: {width}, Height: {height}')
-        latent = torch.zeros([batch_size, 4, height // 8, width // 8])
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Aspect-Ratio-Nodes#cr-aspect-ratio-scial-media'
-        return (width, height, upscale_factor, prescale_factor, batch_size, {'samples': latent}, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -23,17 +23,6 @@ The GetLatentCount node determines the number of latent samples present in a giv
 - Infra type: CPU
 
 # Source code
-```
-class GetLatentCount:
+[View source repository on GitHub](https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'latents': ('LATENT',)}}
-    CATEGORY = 'Video Helper Suite 🎥🅥🅗🅢/latent'
-    RETURN_TYPES = ('INT',)
-    RETURN_NAMES = ('count',)
-    FUNCTION = 'count_input'
-
-    def count_input(self, latents: dict):
-        return (latents['samples'].size(0),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

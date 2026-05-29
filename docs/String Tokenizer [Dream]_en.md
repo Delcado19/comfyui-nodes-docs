@@ -33,32 +33,7 @@ The String Tokenizer node splits a given string into parts based on a specified 
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class DreamStringTokenizer:
-    NODE_NAME = "String Tokenizer"
-    ICON = "🪙"
-    OUTPUT_NODE = True
-    CATEGORY = NodeCategories.UTILS
-    RETURN_TYPES = ("STRING",)
-    RETURN_NAMES = ("token",)
-    FUNCTION = "exec"
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {
-            "required": {
-                "text": ("STRING", {"default": "", "multiline": True}),
-                "separator": ("STRING", {"default": ","}),
-                "selected": ("INT", {"default": 0, "min": 0})
-            },
-        }
-
-    def exec(self, text: str, separator: str, selected: int):
-        if separator is None or separator == "":
-            separator = " "
-        parts = text.split(sep=separator)
-        return (parts[abs(selected) % len(parts)].strip(),)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

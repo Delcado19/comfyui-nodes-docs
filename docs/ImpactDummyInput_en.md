@@ -23,16 +23,6 @@ The 'doit' method of the ImpactDummyInput node acts as a placeholder function in
 - Infra type: CPU
 
 # Source code
-```
-class ImpactDummyInput:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {}}
-    CATEGORY = 'ImpactPack/Debug'
-    RETURN_TYPES = (any_typ,)
-    FUNCTION = 'doit'
-
-    def doit(self):
-        return ('DUMMY',)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

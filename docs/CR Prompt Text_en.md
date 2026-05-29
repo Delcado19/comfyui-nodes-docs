@@ -27,18 +27,6 @@ The CR_PromptText node aims to simplify the process of obtaining user input thro
 - Infra type: CPU
 
 # Source code
-```
-class CR_PromptText:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'prompt': ('STRING', {'default': 'prompt', 'multiline': True})}}
-    RETURN_TYPES = ('STRING', 'STRING')
-    RETURN_NAMES = ('prompt', 'show_help')
-    FUNCTION = 'get_value'
-    CATEGORY = icons.get('Comfyroll/Essential/Core')
-
-    def get_value(self, prompt):
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Core-Nodes#cr-prompt-text'
-        return (prompt, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -32,52 +32,6 @@ The WAS_Text_File_History node is designed to manage and retrieve historical tex
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Text_File_History:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        self.HDB = WASDatabase(WAS_HISTORY_DATABASE)
-        self.conf = getSuiteConfig()
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        HDB = WASDatabase(WAS_HISTORY_DATABASE)
-        conf = getSuiteConfig()
-        paths = ['No History']
-        if HDB.catExists('History') and HDB.keyExists('History', 'TextFiles'):
-            history_paths = HDB.get('History', 'TextFiles')
-            if conf.__contains__('history_display_limit'):
-                history_paths = history_paths[-conf['history_display_limit']:]
-                paths = []
-            for path_ in history_paths:
-                paths.append(os.path.join('...' + os.sep + os.path.basename(os.path.dirname(path_)), os.path.basename(path_)))
-        return {'required': {'file': (paths,), 'dictionary_name': ('STRING', {'default': '[filename]', 'multiline': True})}}
-    RETURN_TYPES = (TEXT_TYPE, 'DICT')
-    FUNCTION = 'text_file_history'
-    CATEGORY = 'WAS Suite/History'
-
-    def text_file_history(self, file=None, dictionary_name='[filename]]'):
-        file_path = file.strip()
-        filename = os.path.basename(file_path).split('.', 1)[0] if '.' in os.path.basename(file_path) else os.path.basename(file_path)
-        if dictionary_name != '[filename]' or dictionary_name not in [' ', '']:
-            filename = dictionary_name
-        if not os.path.exists(file_path):
-            cstr(f'The path `{file_path}` specified cannot be found.').error.print()
-            return ('', {filename: []})
-        with open(file_path, 'r', encoding='utf-8', newline='\n') as file:
-            text = file.read()
-        update_history_text_files(file_path)
-        import io
-        lines = []
-        for line in io.StringIO(text):
-            if not line.strip().startswith('#'):
-                if not line.strip().startswith('\n'):
-                    line = line.replace('\n', '')
-                lines.append(line.replace('\n', ''))
-        dictionary = {filename: lines}
-        return ('\n'.join(lines), dictionary)
-
-    @classmethod
-    def IS_CHANGED(cls, **kwargs):
-        return float('NaN')
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -51,21 +51,6 @@ This node facilitates creating images with text content, providing a range of cu
 - Infra type: CPU
 
 # Source code
-```
-class TextImage:
+[View source repository on GitHub](https://github.com/shadowcz007/comfyui-mixlab-nodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'text': ('STRING', {'multiline': True, 'default': '龍馬精神迎新歲', 'dynamicPrompts': False}), 'font_path': ('STRING', {'multiline': False, 'default': FONT_PATH, 'dynamicPrompts': False}), 'font_size': ('INT', {'default': 100, 'min': 100, 'max': 1000, 'step': 1, 'display': 'number'}), 'spacing': ('INT', {'default': 12, 'min': -200, 'max': 200, 'step': 1, 'display': 'number'}), 'text_color': ('STRING', {'multiline': False, 'default': '#000000', 'dynamicPrompts': False}), 'vertical': ('BOOLEAN', {'default': True}), 'stroke': ('BOOLEAN', {'default': False})}}
-    RETURN_TYPES = ('IMAGE', 'MASK')
-    FUNCTION = 'run'
-    CATEGORY = '♾️Mixlab/Image'
-    INPUT_IS_LIST = False
-    OUTPUT_IS_LIST = (False, False)
-
-    def run(self, text, font_path, font_size, spacing, text_color, vertical, stroke):
-        (img, mask) = generate_text_image(text, font_path, font_size, text_color, vertical, stroke, (0, 0, 0), 1, spacing)
-        img = pil2tensor(img)
-        mask = pil2tensor(mask)
-        return (img, mask)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -37,50 +37,7 @@ The SmplifyMotionData node converts motion data into a format compatible with th
 - Infra type: `GPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class SmplifyMotionData:
-    @classmethod
-    def INPUT_TYPES(s):
-        global smpl_model_dicts
-        smpl_model_dicts = get_smpl_models_dict()
-        return {
-            "required": {
-                "motion_data": ("MOTION_DATA", ),
-                "num_smplify_iters": ("INT", {"min": 1, "max": 1000, "default": 20}),
-                "smplify_step_size": ("FLOAT", {"min": 1e-4, "max": 5e-1, "step": 1e-4, "default": 1e-1}),
-                "smpl_model": (list(smpl_model_dicts.keys()), {"default": "SMPL_NEUTRAL.pkl"})
-            }
-        }
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    RETURN_TYPES = ("SMPL",)
-    CATEGORY = "MotionDiff/smpl"
-    FUNCTION = "convent"
-    
-    def convent(self, motion_data, num_smplify_iters, smplify_step_size, smpl_model):
-        global smpl_model_dicts
-        if smpl_model_dicts is None:
-            smpl_model_dicts = get_smpl_models_dict()
-        smpl_model_path = smpl_model_dicts[smpl_model]
-        if "joints" in motion_data:
-            joints = motion_data["joints"]
-        else:
-            joints = motion_data_to_joints(motion_data["motion"])
-        with torch.inference_mode(False):
-            convention = joints2smpl(
-                num_frames=joints.shape[0], 
-                device=get_torch_device(), 
-                num_smplify_iters=num_smplify_iters, 
-                smplify_step_size=smplify_step_size,
-                smpl_model_path = smpl_model_path
-            )
-            thetas, meta = convention.joint2smpl(joints)
-        thetas = thetas.cpu().detach()
-        for key in meta:
-            meta[key] = meta[key].cpu().detach()
-        gc.collect()
-        soft_empty_cache()
-        return ((smpl_model_path, thetas, meta), ) #thetas after normalized to vertices is 1N3B with N, B being number of vertices and number of frames respectively
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

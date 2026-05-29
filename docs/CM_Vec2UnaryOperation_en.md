@@ -27,16 +27,6 @@ The Vec2UnaryOperation node is designed to perform various unary operations on t
 - Infra type: CPU
 
 # Source code
-```
-class Vec2UnaryOperation:
+[View source repository on GitHub](https://github.com/evanspearman/ComfyMath)
 
-    @classmethod
-    def INPUT_TYPES(cls) -> Mapping[str, Any]:
-        return {'required': {'op': (list(VEC_UNARY_OPERATIONS.keys()),), 'a': DEFAULT_VEC2}}
-    RETURN_TYPES = ('VEC2',)
-    FUNCTION = 'op'
-    CATEGORY = 'math/vec2'
-
-    def op(self, op: str, a: Vec2) -> tuple[Vec2]:
-        return (_vec2_from_numpy(VEC_UNARY_OPERATIONS[op](numpy.array(a))),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

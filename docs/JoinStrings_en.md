@@ -32,17 +32,6 @@ The JoinStrings node is designed to merge two input strings into a single string
 - Infra type: CPU
 
 # Source code
-```
-class JoinStrings:
+[View source repository on GitHub](https://github.com/kijai/ComfyUI-KJNodes)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'string1': ('STRING', {'default': '', 'forceInput': True}), 'string2': ('STRING', {'default': '', 'forceInput': True}), 'delimiter': ('STRING', {'default': ' ', 'multiline': False})}}
-    RETURN_TYPES = ('STRING',)
-    FUNCTION = 'joinstring'
-    CATEGORY = 'KJNodes/constants'
-
-    def joinstring(self, string1, string2, delimiter):
-        joined_string = string1 + delimiter + string2
-        return (joined_string,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

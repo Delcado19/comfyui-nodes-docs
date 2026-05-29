@@ -28,18 +28,6 @@ This node is designed to manage and create interpolation state lists, which are 
 - Infra type: CPU
 
 # Source code
-```
-class MakeInterpolationStateList:
+[View source repository on GitHub](https://github.com/Fannovel16/ComfyUI-Frame-Interpolation)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'frame_indices': ('STRING', {'multiline': True, 'default': '1,2,3'}), 'is_skip_list': ('BOOLEAN', {'default': True})}}
-    RETURN_TYPES = ('INTERPOLATION_STATES',)
-    FUNCTION = 'create_options'
-    CATEGORY = 'ComfyUI-Frame-Interpolation/VFI'
-
-    def create_options(self, frame_indices: str, is_skip_list: bool):
-        frame_indices_list = [int(item) for item in frame_indices.split(',')]
-        interpolation_state_list = InterpolationStateList(frame_indices=frame_indices_list, is_skip_list=is_skip_list)
-        return (interpolation_state_list,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

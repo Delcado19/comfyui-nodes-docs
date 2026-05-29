@@ -27,17 +27,6 @@ Encode the visual information of an image into a format suitable for downstream 
 - Infra type: GPU
 
 # Source code
-```
-class CLIPVisionEncode:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'clip_vision': ('CLIP_VISION',), 'image': ('IMAGE',)}}
-    RETURN_TYPES = ('CLIP_VISION_OUTPUT',)
-    FUNCTION = 'encode'
-    CATEGORY = 'conditioning'
-
-    def encode(self, clip_vision, image):
-        output = clip_vision.encode_image(image)
-        return (output,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -37,47 +37,7 @@ The Inference_Core_PixelPerfectResolution node aims to calculate the optimal res
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class PixelPerfectResolution:
-    @classmethod
-    def INPUT_TYPES(s):
-        return {
-            "required": {
-                "original_image": ("IMAGE", ),
-                "image_gen_width": ("INT", {"default": 512, "min": 64, "max": MAX_IMAGEGEN_RESOLUTION, "step": 8}),
-                "image_gen_height": ("INT", {"default": 512, "min": 64, "max": MAX_IMAGEGEN_RESOLUTION, "step": 8}),
-                #https://github.com/comfyanonymous/ComfyUI/blob/c910b4a01ca58b04e5d4ab4c747680b996ada02b/nodes.py#L854
-                "resize_mode": (RESIZE_MODES, {"default": ResizeMode.RESIZE.value})
-            }
-        }
-    
-    RETURN_TYPES = ("INT",)
-    RETURN_NAMES = ("RESOLUTION (INT)", )
-    FUNCTION = "execute"
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    CATEGORY = "ControlNet Preprocessors"
-
-    def execute(self, original_image, image_gen_width, image_gen_height, resize_mode):
-        _, raw_H, raw_W, _ = original_image.shape
-
-        k0 = float(image_gen_height) / float(raw_H)
-        k1 = float(image_gen_width) / float(raw_W)
-
-        if resize_mode == ResizeMode.OUTER_FIT.value:
-            estimation = min(k0, k1) * float(min(raw_H, raw_W))
-        else:
-            estimation = max(k0, k1) * float(min(raw_H, raw_W))
-
-        log.debug(f"Pixel Perfect Computation:")
-        log.debug(f"resize_mode = {resize_mode}")
-        log.debug(f"raw_H = {raw_H}")
-        log.debug(f"raw_W = {raw_W}")
-        log.debug(f"target_H = {image_gen_height}")
-        log.debug(f"target_W = {image_gen_width}")
-        log.debug(f"estimation = {estimation}")
-
-        return (int(np.round(estimation)), )
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

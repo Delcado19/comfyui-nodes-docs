@@ -44,30 +44,6 @@ The WAS_Text_Concatenate node is designed to efficiently merge multiple text inp
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Text_Concatenate:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'delimiter': ('STRING', {'default': ', '}), 'clean_whitespace': (['true', 'false'],)}, 'optional': {'text_a': (TEXT_TYPE, {'forceInput': True if TEXT_TYPE == 'STRING' else False}), 'text_b': (TEXT_TYPE, {'forceInput': True if TEXT_TYPE == 'STRING' else False}), 'text_c': (TEXT_TYPE, {'forceInput': True if TEXT_TYPE == 'STRING' else False}), 'text_d': (TEXT_TYPE, {'forceInput': True if TEXT_TYPE == 'STRING' else False})}}
-    RETURN_TYPES = (TEXT_TYPE,)
-    FUNCTION = 'text_concatenate'
-    CATEGORY = 'WAS Suite/Text'
-
-    def text_concatenate(self, delimiter, clean_whitespace, **kwargs):
-        text_inputs: list[str] = []
-        if delimiter == '\\n':
-            delimiter = '\n'
-        for k in sorted(kwargs.keys()):
-            v = kwargs[k]
-            if isinstance(v, str):
-                if clean_whitespace == 'true':
-                    v = v.strip()
-                if v != '':
-                    text_inputs.append(v)
-        merged_text = delimiter.join(text_inputs)
-        return (merged_text,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -33,45 +33,6 @@ The VHS_LoadAudioUpload node is used to upload and process audio files in the vi
 - Common nodes: unknown
 
 ## Source code
-```python
-class LoadAudioUpload:
-    @classmethod
-    def INPUT_TYPES(s):
-        input_dir = folder_paths.get_input_directory()
-        files = []
-        for f in os.listdir(input_dir):
-            if os.path.isfile(os.path.join(input_dir, f)):
-                file_parts = f.split('.')
-                if len(file_parts) > 1 and (file_parts[-1] in audio_extensions):
-                    files.append(f)
-        return {"required": {
-                    "audio": (sorted(files),),
-                    "start_time": ("FLOAT" , {"default": 0, "min": 0, "max": 10000000, "step": 0.01}),
-                    "duration": ("FLOAT" , {"default": 0, "min": 0, "max": 10000000, "step": 0.01}),
-                     },
-                }
+[View source repository on GitHub](https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite)
 
-    CATEGORY = "Video Helper Suite 🎥🅥🅗🅢"
-
-    RETURN_TYPES = ("VHS_AUDIO", )
-    RETURN_NAMES = ("audio",)
-    FUNCTION = "load_audio"
-
-    def load_audio(self, start_time, duration, **kwargs):
-        audio_file = folder_paths.get_annotated_filepath(kwargs['audio'].strip("\""))
-        if audio_file is None or validate_path(audio_file) != True:
-            raise Exception("audio_file is not a valid path: " + audio_file)
-
-        audio = get_audio(audio_file, start_time, duration)
-
-        return (lambda : audio,)
-
-    @classmethod
-    def IS_CHANGED(s, audio, start_time, duration):
-        audio_file = folder_paths.get_annotated_filepath(audio.strip("\""))
-        return hash_path(audio_file)
-
-    @classmethod
-    def VALIDATE_INPUTS(s, audio, **kwargs):
-        audio_file = folder_paths.get_annotated_filepath(audio.strip("\""))
-        return validate_path(audio_file, allow_none=True)
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

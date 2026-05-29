@@ -23,17 +23,6 @@ This node provides basic floating‑point operations, focusing on manipulating a
 - Infra type: CPU
 
 # Source code
-```
-class Float:
+[View source repository on GitHub](https://github.com/yolain/ComfyUI-Easy-Use)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'value': ('FLOAT', {'default': 0, 'step': 0.01})}}
-    RETURN_TYPES = ('FLOAT',)
-    RETURN_NAMES = ('float',)
-    FUNCTION = 'execute'
-    CATEGORY = 'EasyUse/Logic/Type'
-
-    def execute(self, value):
-        return (value,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -52,23 +52,6 @@ The BboxDetectorForEach node is designed to detect the bounding box of each segm
 - Infra type: CPU
 
 # Source code
-```
-class BboxDetectorForEach:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'bbox_detector': ('BBOX_DETECTOR',), 'image': ('IMAGE',), 'threshold': ('FLOAT', {'default': 0.5, 'min': 0.0, 'max': 1.0, 'step': 0.01}), 'dilation': ('INT', {'default': 10, 'min': -512, 'max': 512, 'step': 1}), 'crop_factor': ('FLOAT', {'default': 3.0, 'min': 1.0, 'max': 100, 'step': 0.1}), 'drop_size': ('INT', {'min': 1, 'max': MAX_RESOLUTION, 'step': 1, 'default': 10}), 'labels': ('STRING', {'multiline': True, 'default': 'all', 'placeholder': 'List the types of segments to be allowed, separated by commas'})}, 'optional': {'detailer_hook': ('DETAILER_HOOK',)}}
-    RETURN_TYPES = ('SEGS',)
-    FUNCTION = 'doit'
-    CATEGORY = 'ImpactPack/Detector'
-
-    def doit(self, bbox_detector, image, threshold, dilation, crop_factor, drop_size, labels=None, detailer_hook=None):
-        if len(image) > 1:
-            raise Exception('[Impact Pack] ERROR: BboxDetectorForEach does not allow image batches.\nPlease refer to https://github.com/ltdrdata/ComfyUI-extension-tutorials/blob/Main/ComfyUI-Impact-Pack/tutorial/batching-detailer.md for more information.')
-        segs = bbox_detector.detect(image, threshold, dilation, crop_factor, drop_size, detailer_hook)
-        if labels is not None and labels != '':
-            labels = labels.split(',')
-            if len(labels) > 0:
-                (segs, _) = segs_nodes.SEGSLabelFilter.filter(segs, labels)
-        return (segs,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -40,29 +40,6 @@ The WAS_Image_Generate_Gradient node generates seamless gradient textures from a
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Image_Generate_Gradient:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        gradient_stops = '0:255,0,0\n25:255,255,255\n50:0,255,0\n75:0,0,255'
-        return {'required': {'width': ('INT', {'default': 512, 'max': 4096, 'min': 64, 'step': 1}), 'height': ('INT', {'default': 512, 'max': 4096, 'min': 64, 'step': 1}), 'direction': (['horizontal', 'vertical'],), 'tolerance': ('INT', {'default': 0, 'max': 255, 'min': 0, 'step': 1}), 'gradient_stops': ('STRING', {'default': gradient_stops, 'multiline': True})}}
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'image_gradient'
-    CATEGORY = 'WAS Suite/Image/Generate'
-
-    def image_gradient(self, gradient_stops, width=512, height=512, direction='horizontal', tolerance=0):
-        import io
-        WTools = WAS_Tools_Class()
-        colors_dict = {}
-        stops = io.StringIO(gradient_stops.strip().replace(' ', ''))
-        for stop in stops:
-            parts = stop.split(':')
-            colors = parts[1].replace('\n', '').split(',')
-            colors_dict[parts[0].replace('\n', '')] = colors
-        image = WTools.gradient((width, height), direction, colors_dict, tolerance)
-        return (pil2tensor(image),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

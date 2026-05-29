@@ -27,21 +27,6 @@ Output a seed value.
 - Infra type: CPU
 
 # Source code
-```
-class SeedNode:
-    def __init__(self):
-        pass
-    @classmethod
-    def INPUT_TYPES(self):
-        return {"required": {
-                "seed":("INT", {"default": 0, "min": 0, "max": 99999999999999999999, "step": 1}),
-            },}
+[View source repository on GitHub](https://github.com/chflame163/ComfyUI_LayerStyle)
 
-    RETURN_TYPES = ("INT",)
-    RETURN_NAMES = ("seed",)
-    FUNCTION = 'seed_node'
-    CATEGORY = '😺dzNodes/LayerUtility/Data'
-
-    def seed_node(self, seed):
-        return (seed,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

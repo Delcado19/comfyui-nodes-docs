@@ -35,23 +35,6 @@ The AddCLIPSDXLRParams node is designed to enhance input conditioning data for a
 - Infra type: CPU
 
 # Source code
-```
-class AddCLIPSDXLRParams:
+[View source repository on GitHub](https://github.com/BlenderNeko/ComfyUI_ADV_CLIP_emb)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'conditioning': ('CONDITIONING',), 'width': ('INT', {'default': 1024.0, 'min': 0, 'max': MAX_RESOLUTION}), 'height': ('INT', {'default': 1024.0, 'min': 0, 'max': MAX_RESOLUTION}), 'ascore': ('FLOAT', {'default': 6.0, 'min': 0.0, 'max': 1000.0, 'step': 0.01})}}
-    RETURN_TYPES = ('CONDITIONING',)
-    FUNCTION = 'encode'
-    CATEGORY = 'conditioning/advanced'
-
-    def encode(self, conditioning, width, height, ascore):
-        c = []
-        for t in conditioning:
-            n = [t[0], t[1].copy()]
-            n[1]['width'] = width
-            n[1]['height'] = height
-            n[1]['aesthetic_score'] = ascore
-            c.append(n)
-        return (c,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

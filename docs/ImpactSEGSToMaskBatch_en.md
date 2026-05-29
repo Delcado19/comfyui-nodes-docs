@@ -23,19 +23,6 @@ SEGSToMaskBatch node is designed to convert segmentation data into a batch of ma
 - Infra type: CPU
 
 # Source code
-```
-class SEGSToMaskBatch:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'segs': ('SEGS',)}}
-    RETURN_TYPES = ('MASK',)
-    FUNCTION = 'doit'
-    CATEGORY = 'ImpactPack/Util'
-
-    def doit(self, segs):
-        masks = core.segs_to_masklist(segs)
-        masks = [utils.make_3d_mask(mask) for mask in masks]
-        mask_batch = torch.concat(masks)
-        return (mask_batch,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

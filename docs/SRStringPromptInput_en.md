@@ -32,17 +32,6 @@ The SRStringPromptInput node is designed to accept and process text input, parti
 - Infra type: CPU
 
 # Source code
-```
-class SRStringPromptInput:
+[View source repository on GitHub](https://github.com/bash-j/mikey_nodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'input_str': ('STRING', {'forceInput': True})}, 'hidden': {'unique_id': 'UNIQUE_ID', 'prompt': 'PROMPT'}}
-    RETURN_TYPES = ('STRING',)
-    FUNCTION = 'add'
-    CATEGORY = 'Mikey/Meta'
-
-    def add(self, input_str, unique_id=None, prompt=None):
-        prompt.get(str(unique_id))['inputs']['sr_val'] = input_str
-        return (input_str,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

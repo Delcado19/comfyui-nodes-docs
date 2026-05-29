@@ -34,25 +34,7 @@ The AV_ControlNetLoader node is used for loading control network configurations 
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class AVControlNetLoader(ControlNetLoader):
-    @classmethod
-    def INPUT_TYPES(s):
-        return {
-            "required": {"control_net_name": (folder_paths.get_filename_list("controlnet"),)},
-            "optional": {
-                "control_net_override": ("STRING", {"default": "None"}),
-                "timestep_keyframe": ("TIMESTEP_KEYFRAME",),
-            },
-        }
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    RETURN_TYPES = ("CONTROL_NET",)
-    FUNCTION = "load_controlnet"
-    CATEGORY = "Art Venture/Loaders"
-
-    def load_controlnet(self, control_net_name, control_net_override="None", timestep_keyframe=None):
-        return load_controlnet(control_net_name, control_net_override, timestep_keyframe=timestep_keyframe)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -31,25 +31,6 @@ This node helps convert image data into latent representations, which is useful 
 - Infra type: GPU
 
 # Source code
-```
-class PPFNImageAsLatent:
+[View source repository on GitHub](https://github.com/WASasquatch/PowerNoiseSuite)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'images': ('IMAGE',), 'resampling': (['nearest-exact', 'bilinear', 'area', 'bicubic', 'bislerp'],)}}
-    RETURN_TYPES = ('LATENT', 'IMAGE')
-    RETURN_NAMES = ('latents', 'images')
-    FUNCTION = 'image_latent'
-    CATEGORY = 'latent/util'
-
-    def image_latent(self, images, resampling):
-        if images.shape[-1] != 4:
-            ones_channel = torch.ones(images.shape[:-1] + (1,), dtype=images.dtype, device=images.device)
-            images = torch.cat((images, ones_channel), dim=-1)
-        latents = images.permute(0, 3, 1, 2)
-        latents = F.interpolate(latents, size=(images.shape[1] // 8, images.shape[2] // 8), mode=resampling)
-        return ({'samples': latents}, images)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

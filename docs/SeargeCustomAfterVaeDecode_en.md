@@ -23,23 +23,6 @@ This node aims to generate the final image by decoding and post-processing the o
 - Infra type: CPU
 
 # Source code
-```
-class SeargeCustomAfterVaeDecode:
+[View source repository on GitHub](https://github.com/jobunk/SeargeSDXL)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'custom_output': ('SRG_STAGE_OUTPUT',)}, 'optional': {}}
-    RETURN_TYPES = ('IMAGE',)
-    RETURN_NAMES = ('image',)
-    FUNCTION = 'output'
-    CATEGORY = UI.CATEGORY_MAGIC_CUSTOM_STAGES
-
-    def output(self, custom_output):
-        if custom_output is None:
-            return (None,)
-        vae_decoded = retrieve_parameter(Names.S_VAE_DECODED, custom_output)
-        image = retrieve_parameter(Names.F_DECODED_IMAGE, vae_decoded)
-        post_processed = retrieve_parameter(Names.F_POST_PROCESSED, vae_decoded)
-        result = image if post_processed is None else post_processed
-        return (result,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

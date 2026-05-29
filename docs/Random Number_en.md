@@ -43,35 +43,6 @@ The WAS_Random_Number node is designed to generate random numbers based on speci
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Random_Number:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'number_type': (['integer', 'float', 'bool'],), 'minimum': ('FLOAT', {'default': 0, 'min': -18446744073709551615, 'max': 18446744073709551615}), 'maximum': ('FLOAT', {'default': 0, 'min': -18446744073709551615, 'max': 18446744073709551615}), 'seed': ('INT', {'default': 0, 'min': 0, 'max': 18446744073709551615})}}
-    RETURN_TYPES = ('NUMBER', 'FLOAT', 'INT')
-    FUNCTION = 'return_randm_number'
-    CATEGORY = 'WAS Suite/Number'
-
-    def return_randm_number(self, minimum, maximum, seed, number_type='integer'):
-        random.seed(seed)
-        if number_type:
-            if number_type == 'integer':
-                number = random.randint(minimum, maximum)
-            elif number_type == 'float':
-                number = random.uniform(minimum, maximum)
-            elif number_type == 'bool':
-                number = random.random()
-            else:
-                return
-        return (number, float(number), round(number))
-
-    @classmethod
-    def IS_CHANGED(cls, seed, **kwargs):
-        m = hashlib.sha256()
-        m.update(seed)
-        return m.digest().hex()
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -28,46 +28,6 @@ The ImageSelector node filters images based on specified indices, ensuring only 
 - Infra type: CPU
 
 # Source code
-```
-class ImageSelector:
+[View source repository on GitHub](https://github.com/chaojie/ComfyUI-MotionCtrl)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'images': ('IMAGE',), 'selected_indexes': ('STRING', {'multiline': False, 'default': '1,2,3'})}}
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'run'
-    OUTPUT_NODE = False
-    CATEGORY = 'motionctrl'
-
-    def run(self, images: torch.Tensor, selected_indexes: str):
-        shape = images.shape
-        len_first_dim = shape[0]
-        selected_index: list[int] = []
-        total_indexes: list[int] = list(range(len_first_dim))
-        for s in selected_indexes.strip().split(','):
-            try:
-                if ':' in s:
-                    _li = s.strip().split(':', maxsplit=1)
-                    _start = _li[0]
-                    _end = _li[1]
-                    if _start and _end:
-                        selected_index.extend(total_indexes[int(_start):int(_end)])
-                    elif _start:
-                        selected_index.extend(total_indexes[int(_start):])
-                    elif _end:
-                        selected_index.extend(total_indexes[:int(_end)])
-                else:
-                    x: int = int(s.strip())
-                    if x < len_first_dim:
-                        selected_index.append(x)
-            except:
-                pass
-        if selected_index:
-            print(f'ImageSelector: selected: {len(selected_index)} images')
-            return (images[selected_index, :, :, :],)
-        print(f'ImageSelector: selected no images, passthrough')
-        return (images,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

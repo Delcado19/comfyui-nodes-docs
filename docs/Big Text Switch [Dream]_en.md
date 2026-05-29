@@ -34,27 +34,7 @@ The Big Text Switch node dynamically selects one of multiple text inputs based o
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class DreamBigTextSwitch:
-    _switch_type = "STRING"
-    NODE_NAME = "Big Text Switch"
-    ICON = "⭆"
-    CATEGORY = NodeCategories.UTILS_SWITCHES
-    RETURN_TYPES = (_switch_type,)
-    RETURN_NAMES = ("selected",)
-    FUNCTION = "pick"
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return _generate_switch_input(cls._switch_type, _NOT_A_VALUE_S)
-
-    @classmethod
-    def IS_CHANGED(cls, *values):
-        return hashed_as_strings(values)
-
-    def pick(self, select, on_missing, **args):
-        return _do_pick(self.__class__, select, lambda n: (n is not None) and (n != _NOT_A_VALUE_S), on_missing, **args)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

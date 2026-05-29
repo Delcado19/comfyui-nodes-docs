@@ -47,36 +47,6 @@ The ImageResizeCalculator node aims to intelligently resize images while maintai
 - Infra type: CPU
 
 # Source code
-```
-class ImageResizeCalculator:
+[View source repository on GitHub](https://github.com/Ryuukeisyou/comfyui_face_parsing)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'image': ('IMAGE', {}), 'target_size': ('INT', {'default': 512, 'min': 1, 'step': 1}), 'force_8x': ('BOOLEAN', {'default': True})}}
-    RETURN_TYPES = ('INT', 'INT', 'INT', 'FLOAT', 'FLOAT')
-    RETURN_NAMES = ('width', 'height', 'min', 'scale', 'scale_r')
-    FUNCTION = 'main'
-    CATEGORY = 'face_parsing'
-
-    def main(self, image: Tensor, target_size: int, force_8x: bool):
-        w = image[0].shape[1]
-        h = image[0].shape[0]
-        ratio = h * 1.0 / w
-        if w >= h:
-            w_new = target_size
-            h_new = target_size * ratio
-            if force_8x:
-                w_new = int(w_new / 8) * 8
-                h_new = int(h_new / 8) * 8
-            return (w_new, int(h_new), h_new, w_new * 1.0 / w, w * 1.0 / w_new)
-        else:
-            w_new = target_size / ratio
-            h_new = target_size
-            if force_8x:
-                w_new = int(w_new / 8) * 8
-                h_new = int(h_new / 8) * 8
-            return (int(w_new), h_new, w_new, h_new * 1.0 / h, h * 1.0 / h_new)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -36,24 +36,6 @@ The WAS_Text_List_Concatenate node is designed to efficiently merge multiple str
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Text_List_Concatenate:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {}, 'optional': {'list_a': ('LIST', {'forceInput': True}), 'list_b': ('LIST', {'forceInput': True}), 'list_c': ('LIST', {'forceInput': True}), 'list_d': ('LIST', {'forceInput': True})}}
-    RETURN_TYPES = ('LIST',)
-    FUNCTION = 'text_concatenate_list'
-    CATEGORY = 'WAS Suite/Text'
-
-    def text_concatenate_list(self, **kwargs):
-        merged_list: list[str] = []
-        for k in sorted(kwargs.keys()):
-            v = kwargs[k]
-            if isinstance(v, list):
-                merged_list += v
-        return (merged_list,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

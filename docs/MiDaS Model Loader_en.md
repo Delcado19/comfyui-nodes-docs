@@ -23,48 +23,6 @@ The MiDaS_Model_Loader node is responsible for loading and preparing the MiDaS m
 - Infra type: GPU
 
 # Source code
-```
-class MiDaS_Model_Loader:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        self.midas_dir = os.path.join(MODELS_DIR, 'midas')
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'midas_model': (['DPT_Large', 'DPT_Hybrid'],)}}
-    RETURN_TYPES = ('MIDAS_MODEL',)
-    RETURN_NAMES = ('midas_model',)
-    FUNCTION = 'load_midas_model'
-    CATEGORY = 'WAS Suite/Loaders'
-
-    def load_midas_model(self, midas_model):
-        global MIDAS_INSTALLED
-        if not MIDAS_INSTALLED:
-            self.install_midas()
-        if midas_model == 'DPT_Large':
-            model_name = 'dpt_large_384.pt'
-        elif midas_model == 'DPT_Hybrid':
-            model_name = 'dpt_hybrid_384.pt'
-        else:
-            model_name = 'dpt_large_384.pt'
-        model_path = os.path.join(self.midas_dir, 'checkpoints' + os.sep + model_name)
-        torch.hub.set_dir(self.midas_dir)
-        if os.path.exists(model_path):
-            cstr(f'Loading MiDaS Model from `{model_path}`').msg.print()
-            midas_type = model_path
-        else:
-            cstr('Downloading and loading MiDaS Model...').msg.print()
-        midas = torch.hub.load('intel-isl/MiDaS', midas_model, trust_repo=True)
-        device = torch.device('cpu')
-        cstr(f'MiDaS is using passive device `{device}` until in use.').msg.print()
-        midas.to(device)
-        midas_transforms = torch.hub.load('intel-isl/MiDaS', 'transforms')
-        transform = midas_transforms.dpt_transform
-        return ((midas, transform),)
-
-    def install_midas(self):
-        global MIDAS_INSTALLED
-        if 'timm' not in packages():
-            install_package('timm')
-        MIDAS_INSTALLED = True
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

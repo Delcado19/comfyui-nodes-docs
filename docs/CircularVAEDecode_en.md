@@ -31,26 +31,6 @@ The CircularVAEDecode node is designed to perform the decoding process of a Vari
 - Infra type: GPU
 
 # Source code
-```
-class CircularVAEDecode:
+[View source repository on GitHub](https://github.com/spinagon/ComfyUI-seamless-tiling)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'samples': ('LATENT',), 'vae': ('VAE',), 'tiling': (['enable', 'x_only', 'y_only', 'disable'],)}}
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'decode'
-    CATEGORY = 'latent'
-
-    def decode(self, samples, vae, tiling):
-        vae_copy = copy.deepcopy(vae)
-        if tiling == 'enable':
-            make_circular_asymm(vae_copy.first_stage_model, True, True)
-        elif tiling == 'x_only':
-            make_circular_asymm(vae_copy.first_stage_model, True, False)
-        elif tiling == 'y_only':
-            make_circular_asymm(vae_copy.first_stage_model, False, True)
-        else:
-            make_circular_asymm(vae_copy.first_stage_model, False, False)
-        result = (vae_copy.decode(samples['samples']),)
-        return result
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

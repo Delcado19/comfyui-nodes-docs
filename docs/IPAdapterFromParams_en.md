@@ -50,23 +50,6 @@ The main function of the IPAdapterFromParams node is to create an IP adapter obj
 - Infra type: GPU
 
 # Source code
-```
-class IPAdapterFromParams(IPAdapterAdvanced):
-    @classmethod
-    def INPUT_TYPES(s):
-        return {
-            "required": {
-                "model": ("MODEL", ),
-                "ipadapter": ("IPADAPTER", ),
-                "ipadapter_params": ("IPADAPTER_PARAMS", ),
-                "combine_embeds": (["concat", "add", "subtract", "average", "norm average"],),
-                "embeds_scaling": (['V only', 'K+V', 'K+V w/ C penalty', 'K+mean(V) w/ C penalty'], ),
-            },
-            "optional": {
-                "image_negative": ("IMAGE",),
-                "clip_vision": ("CLIP_VISION",),
-            }
-        }
+[View source repository on GitHub](https://github.com/cubiq/ComfyUI_IPAdapter_plus)
 
-    CATEGORY = "ipadapter/params"
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

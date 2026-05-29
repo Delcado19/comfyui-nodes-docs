@@ -43,40 +43,6 @@ The MergeMasks node aims to merge two input masks into a single mask. It intelli
 - Infra type: CPU
 
 # Source code
-```
-class MergeMasks:
+[View source repository on GitHub](https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'mask_A': ('MASK',), 'mask_B': ('MASK',), 'merge_strategy': (MergeStrategies.list_all,), 'scale_method': (ScaleMethods.list_all,), 'crop': (CropMethods.list_all,)}}
-    CATEGORY = 'Video Helper Suite 🎥🅥🅗🅢/mask'
-    RETURN_TYPES = ('MASK', 'INT')
-    RETURN_NAMES = ('MASK', 'count')
-    FUNCTION = 'merge'
-
-    def merge(self, mask_A: Tensor, mask_B: Tensor, merge_strategy: str, scale_method: str, crop: str):
-        masks = []
-        if mask_A.shape[2] != mask_B.shape[2] or mask_A.shape[1] != mask_B.shape[1]:
-            A_size = mask_A.shape[2] * mask_A.shape[1]
-            B_size = mask_B.shape[2] * mask_B.shape[1]
-            use_A_as_template = True
-            if merge_strategy == MergeStrategies.MATCH_A:
-                pass
-            elif merge_strategy == MergeStrategies.MATCH_B:
-                use_A_as_template = False
-            elif merge_strategy in (MergeStrategies.MATCH_SMALLER, MergeStrategies.MATCH_LARGER):
-                if A_size <= B_size:
-                    use_A_as_template = True if merge_strategy == MergeStrategies.MATCH_SMALLER else False
-            mask_A = torch.unsqueeze(mask_A, 1)
-            mask_B = torch.unsqueeze(mask_B, 1)
-            if use_A_as_template:
-                mask_B = comfy.utils.common_upscale(mask_B, mask_A.shape[3], mask_A.shape[2], scale_method, crop)
-            else:
-                mask_A = comfy.utils.common_upscale(mask_A, mask_B.shape[3], mask_B.shape[2], scale_method, crop)
-            mask_A = torch.squeeze(mask_A, 1)
-            mask_B = torch.squeeze(mask_B, 1)
-        masks.append(mask_A)
-        masks.append(mask_B)
-        all_masks = torch.cat(masks, dim=0)
-        return (all_masks, all_masks.size(0))
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

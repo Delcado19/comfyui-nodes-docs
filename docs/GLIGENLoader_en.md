@@ -23,18 +23,6 @@ The GLIGENLoader node is designed to efficiently load and process GLIGEN data. I
 - Infra type: CPU
 
 # Source code
-```
-class GLIGENLoader:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'gligen_name': (folder_paths.get_filename_list('gligen'),)}}
-    RETURN_TYPES = ('GLIGEN',)
-    FUNCTION = 'load_gligen'
-    CATEGORY = 'loaders'
-
-    def load_gligen(self, gligen_name):
-        gligen_path = folder_paths.get_full_path('gligen', gligen_name)
-        gligen = comfy.sd.load_gligen(gligen_path)
-        return (gligen,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

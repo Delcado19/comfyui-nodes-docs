@@ -44,45 +44,6 @@ The CR_BinaryPattern node generates visual patterns from binary strings. It acce
 - Infra type: CPU
 
 # Source code
-```
-class CR_BinaryPattern:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'binary_pattern': ('STRING', {'multiline': True, 'default': '10101'}), 'width': ('INT', {'default': 512, 'min': 64, 'max': 4096}), 'height': ('INT', {'default': 512, 'min': 64, 'max': 4096}), 'background_color': (COLORS,), 'color_0': (COLORS,), 'color_1': (COLORS,), 'outline_thickness': ('INT', {'default': 0, 'min': 0, 'max': 1024}), 'outline_color': (COLORS,), 'jitter_distance': ('INT', {'default': 0, 'min': 0, 'max': 1024}), 'bias': ('FLOAT', {'default': 0.5, 'min': 0.0, 'max': 1.0, 'step': 0.05})}, 'optional': {'bg_color_hex': ('STRING', {'multiline': False, 'default': '#000000'}), 'color0_hex': ('STRING', {'multiline': False, 'default': '#000000'}), 'color1_hex': ('STRING', {'multiline': False, 'default': '#000000'}), 'outline_color_hex': ('STRING', {'multiline': False, 'default': '#000000'})}}
-    RETURN_TYPES = ('IMAGE', 'STRING')
-    RETURN_NAMES = ('IMAGE', 'show_help')
-    FUNCTION = 'draw_pattern'
-    CATEGORY = icons.get('Comfyroll/Graphics/Pattern')
-
-    def draw_pattern(self, binary_pattern, width, height, background_color, outline_color, color_0='white', color_1='black', outline_thickness=0, color0_hex='#000000', color1_hex='#000000', bg_color_hex='#000000', outline_color_hex='#000000', jitter_distance=0, bias=0.5):
-        color0 = get_color_values(color_0, color0_hex, color_mapping)
-        color1 = get_color_values(color_1, color1_hex, color_mapping)
-        bg_color = get_color_values(background_color, bg_color_hex, color_mapping)
-        outline_color = get_color_values(outline_color, outline_color_hex, color_mapping)
-        rows = binary_pattern.strip().split('\n')
-        grid = [[int(bit) for bit in row.strip()] for row in rows]
-        square_width = width / len(rows[0])
-        square_height = height / len(rows)
-        image = Image.new('RGB', (width, height), color=bg_color)
-        draw = ImageDraw.Draw(image)
-        x_jitter = 0
-        y_jitter = 0
-        for (row_index, row) in enumerate(grid):
-            for (col_index, bit) in enumerate(row):
-                if jitter_distance != 0:
-                    x_jitter = random.uniform(0, jitter_distance)
-                    y_jitter = random.uniform(0, jitter_distance)
-                x1 = col_index * square_width + x_jitter
-                y1 = row_index * square_height + y_jitter
-                x2 = x1 + square_width + x_jitter
-                y2 = y1 + square_height + y_jitter
-                if random.uniform(0, 1) < abs(bias):
-                    color = color1
-                else:
-                    color = color0
-                draw.rectangle([x1, y1, x2, y2], fill=color, outline=outline_color, width=outline_thickness)
-        image_out = pil2tensor(image)
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Pattern-Nodes-2#cr-binary-pattern'
-        return (image_out, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

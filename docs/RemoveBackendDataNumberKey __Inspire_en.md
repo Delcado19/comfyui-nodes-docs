@@ -30,30 +30,7 @@ This node is designed to remove specific data entries from the backend cache bas
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class RemoveBackendDataNumberKey(RemoveBackendData):
-    @classmethod
-    def INPUT_TYPES(s):
-        return {
-            "required": {
-                "key": ("INT", {"default": 0, "min": 0, "max": 0xffffffffffffffff}),
-            },
-            "optional": {
-                "signal_opt": (any_typ,),
-            }
-        }
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Inspire-Pack)
 
-    @staticmethod
-    def doit(key, signal_opt=None):
-        global cache
-
-        if key in cache:
-            del cache[key]
-        else:
-            print(f"[Inspire Pack] RemoveBackendDataNumberKey: invalid data key {key}")
-
-        return (signal_opt,)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

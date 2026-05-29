@@ -47,24 +47,6 @@ CR_ModelAndCLIPInputSwitch is a node used for selecting between two sets of mode
 - Infra type: CPU
 
 # Source code
-```
-class CR_ModelAndCLIPInputSwitch:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'Input': ('INT', {'default': 1, 'min': 1, 'max': 2}), 'model1': ('MODEL',), 'clip1': ('CLIP',), 'model2': ('MODEL',), 'clip2': ('CLIP',)}}
-    RETURN_TYPES = ('MODEL', 'CLIP', 'STRING')
-    RETURN_NAMES = ('MODEL', 'CLIP', 'show_help')
-    FUNCTION = 'switch'
-    CATEGORY = icons.get('Comfyroll/Utils/Logic')
-
-    def switch(self, Input, clip1, clip2, model1, model2):
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Logic-Nodes#cr-switch-model-and-clip'
-        if Input == 1:
-            return (model1, clip1, show_help)
-        else:
-            return (model2, clip2, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

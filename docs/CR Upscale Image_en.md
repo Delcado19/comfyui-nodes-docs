@@ -56,33 +56,6 @@ CR_UpscaleImage is a node designed to increase the resolution of an input image 
 - Infra type: GPU
 
 # Source code
-```
-class CR_UpscaleImage:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        resampling_methods = ['lanczos', 'nearest', 'bilinear', 'bicubic']
-        return {'required': {'image': ('IMAGE',), 'upscale_model': (folder_paths.get_filename_list('upscale_models'),), 'mode': (['rescale', 'resize'],), 'rescale_factor': ('FLOAT', {'default': 2, 'min': 0.01, 'max': 16.0, 'step': 0.01}), 'resize_width': ('INT', {'default': 1024, 'min': 1, 'max': 48000, 'step': 1}), 'resampling_method': (resampling_methods,), 'supersample': (['true', 'false'],), 'rounding_modulus': ('INT', {'default': 8, 'min': 8, 'max': 1024, 'step': 8})}}
-    RETURN_TYPES = ('IMAGE', 'STRING')
-    RETURN_NAMES = ('IMAGE', 'show_help')
-    FUNCTION = 'upscale'
-    CATEGORY = icons.get('Comfyroll/Upscale')
-
-    def upscale(self, image, upscale_model, rounding_modulus=8, loops=1, mode='rescale', supersample='true', resampling_method='lanczos', rescale_factor=2, resize_width=1024):
-        up_model = load_model(upscale_model)
-        up_image = upscale_with_model(up_model, image)
-        for img in image:
-            pil_img = tensor2pil(img)
-            (original_width, original_height) = pil_img.size
-        for img in up_image:
-            pil_img = tensor2pil(img)
-            (upscaled_width, upscaled_height) = pil_img.size
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Upscale-Nodes#cr-upscale-image'
-        if upscaled_width == original_width and rescale_factor == 1:
-            return (up_image, show_help)
-        scaled_images = []
-        for img in up_image:
-            scaled_images.append(pil2tensor(apply_resize_image(tensor2pil(img), original_width, original_height, rounding_modulus, mode, supersample, rescale_factor, resize_width, resampling_method)))
-        images_out = torch.cat(scaled_images, dim=0)
-        return (images_out, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

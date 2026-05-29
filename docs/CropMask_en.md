@@ -40,18 +40,6 @@ The CropMask node is designed to extract a specified region of interest from a l
 - Infra type: CPU
 
 # Source code
-```
-class CropMask:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'mask': ('MASK',), 'x': ('INT', {'default': 0, 'min': 0, 'max': MAX_RESOLUTION, 'step': 1}), 'y': ('INT', {'default': 0, 'min': 0, 'max': MAX_RESOLUTION, 'step': 1}), 'width': ('INT', {'default': 512, 'min': 1, 'max': MAX_RESOLUTION, 'step': 1}), 'height': ('INT', {'default': 512, 'min': 1, 'max': MAX_RESOLUTION, 'step': 1})}}
-    CATEGORY = 'mask'
-    RETURN_TYPES = ('MASK',)
-    FUNCTION = 'crop'
-
-    def crop(self, mask, x, y, width, height):
-        mask = mask.reshape((-1, mask.shape[-2], mask.shape[-1]))
-        out = mask[:, y:y + height, x:x + width]
-        return (out,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

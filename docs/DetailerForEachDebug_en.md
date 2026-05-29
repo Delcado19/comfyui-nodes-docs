@@ -132,25 +132,6 @@ The DetailerForEachTest node is designed to enhance image details by processing 
 - Infra type: GPU
 
 # Source code
-```
-class DetailerForEachTest(DetailerForEach):
-    RETURN_TYPES = ('IMAGE', 'IMAGE', 'IMAGE', 'IMAGE', 'IMAGE')
-    RETURN_NAMES = ('image', 'cropped', 'cropped_refined', 'cropped_refined_alpha', 'cnet_images')
-    OUTPUT_IS_LIST = (False, True, True, True, True)
-    FUNCTION = 'doit'
-    CATEGORY = 'ImpactPack/Detailer'
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    def doit(self, image, segs, model, clip, vae, guide_size, guide_size_for, max_size, seed, steps, cfg, sampler_name, scheduler, positive, negative, denoise, feather, noise_mask, force_inpaint, wildcard, detailer_hook=None, cycle=1, inpaint_model=False, noise_mask_feather=0):
-        if len(image) > 1:
-            raise Exception('[Impact Pack] ERROR: DetailerForEach does not allow image batches.\nPlease refer to https://github.com/ltdrdata/ComfyUI-extension-tutorials/blob/Main/ComfyUI-Impact-Pack/tutorial/batching-detailer.md for more information.')
-        (enhanced_img, cropped, cropped_enhanced, cropped_enhanced_alpha, cnet_pil_list, new_segs) = DetailerForEach.do_detail(image, segs, model, clip, vae, guide_size, guide_size_for, max_size, seed, steps, cfg, sampler_name, scheduler, positive, negative, denoise, feather, noise_mask, force_inpaint, wildcard, detailer_hook, cycle=cycle, inpaint_model=inpaint_model, noise_mask_feather=noise_mask_feather)
-        if len(cropped) == 0:
-            cropped = [empty_pil_tensor()]
-        if len(cropped_enhanced) == 0:
-            cropped_enhanced = [empty_pil_tensor()]
-        if len(cropped_enhanced_alpha) == 0:
-            cropped_enhanced_alpha = [empty_pil_tensor()]
-        if len(cnet_pil_list) == 0:
-            cnet_pil_list = [empty_pil_tensor()]
-        return (enhanced_img, cropped, cropped_enhanced, cropped_enhanced_alpha, cnet_pil_list)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

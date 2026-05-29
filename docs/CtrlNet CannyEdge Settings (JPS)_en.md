@@ -45,43 +45,7 @@ This node configures the Canny edge detection process settings in the pipeline, 
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class CtrlNet_CannyEdge_Settings:
-    cannyedgefrom = ["Source Image", "Support Image", "Support Direct"]
-    
-    def __init__(self):
-        pass
+[View source repository on GitHub](https://github.com/jps-yes/ComfyUI_JPS)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {
-            "required": {
-                "cannyedge_from": (s.cannyedgefrom,),
-                "cannyedge_strength": ("FLOAT", {"default": 1.00, "min": 0.00, "max": 10.00, "step": 0.10}),
-                "cannyedge_start": ("FLOAT", {"default": 0.000, "min": 0.000, "max": 1.000, "step": 0.05}),
-                "cannyedge_end": ("FLOAT", {"default": 1.000, "min": 0.000, "max": 1.000, "step": 0.05}),
-                "cannyedge_low": ("INT", {"default": 100, "min": 0, "max": 255, "step": 1}),
-                "cannyedge_high": ("INT", {"default": 200, "min": 0, "max": 255, "step": 1}),
-            }   
-        }
-    RETURN_TYPES = ("BASIC_PIPE",) 
-    RETURN_NAMES = ("cannyedge_settings",)
-    FUNCTION = "get_ctrlnet_cannyedge"
-
-    CATEGORY="JPS Nodes/Settings"
-
-    def get_ctrlnet_cannyedge(self, cannyedge_from, cannyedge_strength, cannyedge_start, cannyedge_end, cannyedge_low, cannyedge_high):
-
-        cannyedge_source = int (1)
-        if (cannyedge_from == "Support Image"):
-            cannyedge_source = int(2)
-        if (cannyedge_from == "Support Direct"):
-            cannyedge_source = int(3)
-        
-        cannyedge_settings = cannyedge_source, cannyedge_strength, cannyedge_start, cannyedge_end, cannyedge_low, cannyedge_high
-
-        return(cannyedge_settings,)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

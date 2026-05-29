@@ -32,18 +32,6 @@ This node aims to visualize the schedule defined in keyframed, abstracting the c
 - Infra type: CPU
 
 # Source code
-```
-class KfDrawSchedule:
-    CATEGORY = CATEGORY
-    FUNCTION = 'main'
-    RETURN_TYPES = ('IMAGE',)
+[View source repository on GitHub](https://github.com/dmarx/ComfyUI-Keyframed)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'schedule': ('SCHEDULE', {'forceInput': True}), 'n': ('INT', {'default': 64}), 'show_legend': ('BOOLEAN', {'default': True})}}
-
-    def main(self, schedule, n, show_legend):
-        curves = schedule_to_weight_curves(schedule)
-        img_tensor = plot_curve(curves, n, show_legend, is_pgroup=True)
-        return (img_tensor,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

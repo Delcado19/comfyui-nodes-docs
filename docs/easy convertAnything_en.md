@@ -27,30 +27,6 @@ This node can convert the given input to the specified output type, providing a 
 - Infra type: CPU
 
 # Source code
-```
-class ConvertAnything:
+[View source repository on GitHub](https://github.com/yolain/ComfyUI-Easy-Use)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'anything': (AlwaysEqualProxy('*'),), 'output_type': (['string', 'int', 'float', 'boolean'], {'default': 'string'})}}
-    RETURN_TYPES = ((AlwaysEqualProxy('*'),),)
-    RETURN_NAMES = ('*',)
-    OUTPUT_NODE = True
-    FUNCTION = 'convert'
-    CATEGORY = 'EasyUse/Logic'
-
-    def convert(self, *args, **kwargs):
-        print(kwargs)
-        anything = kwargs['anything']
-        output_type = kwargs['output_type']
-        params = None
-        if output_type == 'string':
-            params = str(anything)
-        elif output_type == 'int':
-            params = int(anything)
-        elif output_type == 'float':
-            params = float(anything)
-        elif output_type == 'boolean':
-            params = bool(anything)
-        return (params,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

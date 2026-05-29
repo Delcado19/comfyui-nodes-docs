@@ -27,25 +27,6 @@ The WAS_Mask_Add node is designed to perform the addition of two mask images. It
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Mask_Add:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'masks_a': ('MASK',), 'masks_b': ('MASK',)}}
-    CATEGORY = 'WAS Suite/Image/Masking'
-    RETURN_TYPES = ('MASK',)
-    RETURN_NAMES = ('MASKS',)
-    FUNCTION = 'add_masks'
-
-    def add_masks(self, masks_a, masks_b):
-        if masks_a.ndim > 2 and masks_b.ndim > 2:
-            added_masks = masks_a + masks_b
-        else:
-            added_masks = torch.clamp(masks_a.unsqueeze(1) + masks_b.unsqueeze(1), 0, 255)
-            added_masks = added_masks.squeeze(1)
-        return (added_masks,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

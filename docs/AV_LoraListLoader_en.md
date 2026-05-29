@@ -42,45 +42,7 @@ The AV_LoraListLoader node is designed to load and stack a list of LoRA models b
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class AVLoraListLoader(AVLoraListStacker):
-    @classmethod
-    def INPUT_TYPES(s):
-        return {
-            "required": {
-                "model": ("MODEL",),
-                "clip": ("CLIP",),
-                "data": ("STRING", {"default": "", "multiline": True, "dynamicPrompts": False}),
-            },
-            "optional": {"base_url": ("STRING", {"default": lora_cloud_front_url})},
-        }
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    RETURN_TYPES = ("MODEL", "CLIP")
-
-    def load_list_lora(self, model, clip, data, base_url=lora_cloud_front_url):
-        lora_params = self.parse_lora_list(data, base_url=base_url)
-
-        if len(lora_params) == 0:
-            return (model, clip)
-
-        def recursive_load_lora(lora_params, model, clip, id, folder_paths):
-            if len(lora_params) == 0:
-                return model, clip
-
-            lora_name, strength_model, strength_clip = lora_params[0]
-
-            lora_path = folder_paths.get_full_path("loras", lora_name)
-            lora_model, lora_clip = comfy.sd.load_lora_for_models(
-                model, clip, comfy.utils.load_torch_file(lora_path), strength_model, strength_clip
-            )
-
-            # Call the function again with the new lora_model and lora_clip and the remaining tuples
-            return recursive_load_lora(lora_params[1:], lora_model, lora_clip, id, folder_paths)
-
-        lora_model, lora_clip = recursive_load_lora(lora_params, model, clip, id, folder_paths)
-
-        return (lora_model, lora_clip)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

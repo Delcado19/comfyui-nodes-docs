@@ -31,23 +31,6 @@ CR_IntertwineLists is a utility node that combines two lists into a single list,
 - Infra type: CPU
 
 # Source code
-```
-class CR_IntertwineLists:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'list1': ('STRING', {'multiline': True, 'default': '', 'forceInput': True}), 'list2': ('STRING', {'multiline': True, 'default': '', 'forceInput': True})}}
-    RETURN_TYPES = ('STRING', 'STRING')
-    RETURN_NAMES = ('STRING', 'show_help')
-    OUTPUT_IS_LIST = (True, False)
-    FUNCTION = 'make_list'
-    CATEGORY = icons.get('Comfyroll/List/Utils')
-
-    def make_list(self, list1, list2):
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/List-Nodes#cr-intertwine-lists'
-        min_length = min(len(list1), len(list2))
-        combined_list = []
-        combined_element = str(list1) + ', ' + str(list2)
-        combined_list.append(combined_element)
-        return (combined_list, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

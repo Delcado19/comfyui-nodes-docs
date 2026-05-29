@@ -39,23 +39,6 @@ The CR_RandomHexColor node is designed to generate random hexadecimal color code
 - Infra type: CPU
 
 # Source code
-```
-class CR_RandomHexColor:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'seed': ('INT', {'default': 0, 'min': 0, 'max': 18446744073709551615})}}
-    RETURN_TYPES = ('STRING', 'STRING', 'STRING', 'STRING', 'STRING')
-    RETURN_NAMES = ('hex_color1', 'hex_color2', 'hex_color3', 'hex_color4', 'show_help')
-    FUNCTION = 'get_colors'
-    CATEGORY = icons.get('Comfyroll/Utils/Random')
-
-    def get_colors(self, seed):
-        random.seed(seed)
-        hex_color1 = random_hex_color()
-        hex_color2 = random_hex_color()
-        hex_color3 = random_hex_color()
-        hex_color4 = random_hex_color()
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Other-Nodes#cr-random-hex-color'
-        return (hex_color1, hex_color2, hex_color3, hex_color4, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

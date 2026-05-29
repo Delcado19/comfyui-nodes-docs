@@ -65,46 +65,7 @@ This node is specifically designed to merge two SDXL model architectures by blen
 - Infra type: `GPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class ModelMergeSDXLTransformers(comfy_extras.nodes_model_merging.ModelMergeBlocks):
-    @classmethod
-    def INPUT_TYPES(s):
-        arg_dict = { "model1": ("MODEL",),
-                              "model2": ("MODEL",)}
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-        argument = ("FLOAT", {"default": 1.0, "min": 0.0, "max": 1.0, "step": 0.01})
-
-        arg_dict["time_embed."] = argument
-        arg_dict["label_emb."] = argument
-
-        transformers = {4: 2, 5:2, 7:10, 8:10}
-
-        for i in range(9):
-            arg_dict["input_blocks.{}.0.".format(i)] = argument
-            if i in transformers:
-                arg_dict["input_blocks.{}.1.".format(i)] = argument
-                for j in range(transformers[i]):
-                    arg_dict["input_blocks.{}.1.transformer_blocks.{}.".format(i, j)] = argument
-
-        for i in range(3):
-            arg_dict["middle_block.{}.".format(i)] = argument
-            if i == 1:
-                for j in range(10):
-                    arg_dict["middle_block.{}.transformer_blocks.{}.".format(i, j)] = argument
-
-        transformers = {3:2, 4: 2, 5:2, 6:10, 7:10, 8:10}
-        for i in range(9):
-            arg_dict["output_blocks.{}.0.".format(i)] = argument
-            t = 8 - i
-            if t in transformers:
-                arg_dict["output_blocks.{}.1.".format(i)] = argument
-                for j in range(transformers[t]):
-                    arg_dict["output_blocks.{}.1.transformer_blocks.{}.".format(i, j)] = argument
-
-        arg_dict["out."] = argument
-
-        return {"required": arg_dict}
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

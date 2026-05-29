@@ -52,23 +52,6 @@ CR_ImageGridPanel is a node designed to efficiently create and organize image gr
 - Infra type: CPU
 
 # Source code
-```
-class CR_ImageGridPanel:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'images': ('IMAGE',), 'border_thickness': ('INT', {'default': 0, 'min': 0, 'max': 1024}), 'border_color': (COLORS,), 'outline_thickness': ('INT', {'default': 0, 'min': 0, 'max': 1024}), 'outline_color': (COLORS[1:],), 'max_columns': ('INT', {'default': 5, 'min': 0, 'max': 256})}, 'optional': {'border_color_hex': ('STRING', {'multiline': False, 'default': '#000000'})}}
-    RETURN_TYPES = ('IMAGE', 'STRING')
-    RETURN_NAMES = ('image', 'show_help')
-    FUNCTION = 'make_panel'
-    CATEGORY = icons.get('Comfyroll/Graphics/Layout')
-
-    def make_panel(self, images, border_thickness, border_color, outline_thickness, outline_color, max_columns, border_color_hex='#000000'):
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Layout-Nodes#cr-image-grid-panel'
-        border_color = get_color_values(border_color, border_color_hex, color_mapping)
-        images = [tensor2pil(image) for image in images]
-        images = apply_outline_and_border(images, outline_thickness, outline_color, border_thickness, border_color)
-        combined_image = make_grid_panel(images, max_columns)
-        image_out = pil2tensor(combined_image)
-        return (image_out, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

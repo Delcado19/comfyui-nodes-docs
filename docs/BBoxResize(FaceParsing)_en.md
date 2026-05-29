@@ -39,29 +39,6 @@ The BBoxResize node is designed to resize bounding boxes (BBOX) to fit new image
 - Infra type: CPU
 
 # Source code
-```
-class BBoxResize:
+[View source repository on GitHub](https://github.com/Ryuukeisyou/comfyui_face_parsing)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'bbox': ('BBOX', {}), 'width_old': ('INT', {}), 'height_old': ('INT', {}), 'width': ('INT', {}), 'height': ('INT', {})}}
-    RETURN_TYPES = ('BBOX',)
-    FUNCTION = 'main'
-    CATEGORY = 'face_parsing'
-
-    def main(self, bbox: Tensor, width_old: int, height_old: int, width: int, height: int):
-        newBbox = bbox.clone()
-        bbox_values = newBbox.float()
-        l = bbox_values[0] / width_old * width
-        t = bbox_values[1] / height_old * height
-        r = bbox_values[2] / width_old * width
-        b = bbox_values[3] / height_old * height
-        newBbox[0] = l
-        newBbox[1] = t
-        newBbox[2] = r
-        newBbox[3] = b
-        return (newBbox,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

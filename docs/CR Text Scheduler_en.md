@@ -48,34 +48,6 @@ CR_TextScheduler is a node for managing and interpolating text prompts based on 
 - Infra type: CPU
 
 # Source code
-```
-class CR_TextScheduler:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        modes = ['Default Text', 'Schedule']
-        return {'required': {'mode': (modes,), 'current_frame': ('INT', {'default': 0.0, 'min': 0.0, 'max': 9999.0, 'step': 1.0}), 'schedule_alias': ('STRING', {'default': '', 'multiline': False}), 'default_text': ('STRING', {'multiline': False, 'default': 'default text'}), 'schedule_format': (['CR', 'Deforum'],)}, 'optional': {'schedule': ('SCHEDULE',)}}
-    RETURN_TYPES = ('STRING', 'STRING')
-    RETURN_NAMES = ('STRING', 'show_help')
-    FUNCTION = 'schedule'
-    CATEGORY = icons.get('Comfyroll/Animation/Schedulers')
-
-    def schedule(self, mode, current_frame, schedule_alias, default_text, schedule_format, schedule=None):
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Scheduler-Nodes#cr-text-scheduler'
-        if mode == 'Default Text':
-            print(f'[Info] CR Text Scheduler: Scheduler {schedule_alias} is disabled')
-            text_out = default_text
-            return (text_out, show_help)
-        params = keyframe_scheduler(schedule, schedule_alias, current_frame)
-        if params == '':
-            if current_frame == 0:
-                print(f'[Warning] CR Text Scheduler. No frame 0 found in schedule. Starting with default value at frame 0')
-            text_out = (default_value,)
-        else:
-            try:
-                text_out = params
-            except ValueError:
-                print(f'[Warning] CR Text Scheduler. Invalid params: {params}')
-                return ()
-        return (text_out, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

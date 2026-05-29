@@ -42,33 +42,7 @@ The AV_PromptsToParametersPipe node aims to convert text prompts into a structur
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class AVPromptsToParametersPipe:
-    @classmethod
-    def INPUT_TYPES(s):
-        return {
-            "required": {
-                "positive": ("STRING", {"multiline": True, "default": "Positive"}),
-                "negative": ("STRING", {"multiline": True, "default": "Negative"}),
-            },
-            "optional": {
-                "pipe": ("PIPE",),
-                "image": ("IMAGE",),
-                "mask": ("MASK",),
-            },
-        }
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    RETURN_TYPES = ("PIPE",)
-    CATEGORY = "Art Venture/Parameters"
-    FUNCTION = "prompt_to_parameter_pipe"
-
-    def prompt_to_parameter_pipe(self, positive, negative, pipe: Dict = {}, image=None, mask=None):
-        pipe["positive"] = positive
-        pipe["negative"] = negative
-        pipe["image"] = image
-        pipe["mask"] = mask
-        return (pipe,)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -27,22 +27,6 @@ The method `load_models` initializes and loads models required for face analysis
 - Infra type: GPU
 
 # Source code
-```
-class FaceAnalysisModels:
+[View source repository on GitHub](https://github.com/cubiq/ComfyUI_FaceAnalysis)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'library': (INSTALLED_LIBRARIES,), 'provider': (['CPU', 'CUDA', 'DirectML', 'OpenVINO', 'ROCM', 'CoreML'],)}}
-    RETURN_TYPES = ('ANALYSIS_MODELS',)
-    FUNCTION = 'load_models'
-    CATEGORY = 'FaceAnalysis'
-
-    def load_models(self, library, provider):
-        out = {}
-        if library == 'insightface':
-            out = {'library': library, 'detector': FaceAnalysis(name='buffalo_l', root=INSIGHTFACE_DIR, providers=[provider + 'ExecutionProvider'])}
-            out['detector'].prepare(ctx_id=0, det_size=(640, 640))
-        else:
-            out = {'library': library, 'detector': dlib.get_frontal_face_detector(), 'shape_predict': dlib.shape_predictor(os.path.join(DLIB_DIR, 'shape_predictor_68_face_landmarks.dat')), 'face_recog': dlib.face_recognition_model_v1(os.path.join(DLIB_DIR, 'dlib_face_recognition_resnet_model_v1.dat'))}
-        return (out,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

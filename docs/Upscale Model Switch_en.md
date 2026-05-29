@@ -32,22 +32,6 @@ The method 'upscale_model_switch' is designed to provide a conditional selection
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Upscale_Model_Input_Switch:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'upscale_model_a': ('UPSCALE_MODEL',), 'upscale_model_b': ('UPSCALE_MODEL',), 'boolean': ('BOOLEAN', {'forceInput': True})}}
-    RETURN_TYPES = ('UPSCALE_MODEL',)
-    FUNCTION = 'upscale_model_switch'
-    CATEGORY = 'WAS Suite/Logic'
-
-    def upscale_model_switch(self, upscale_model_a, upscale_model_b, boolean=True):
-        if boolean:
-            return (upscale_model_a,)
-        else:
-            return (upscale_model_b,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

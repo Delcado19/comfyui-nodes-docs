@@ -23,22 +23,6 @@ The SEGSToMaskList node is designed to convert segmentation objects into a mask 
 - Infra type: CPU
 
 # Source code
-```
-class SEGSToMaskList:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'segs': ('SEGS',)}}
-    RETURN_TYPES = ('MASK',)
-    OUTPUT_IS_LIST = (True,)
-    FUNCTION = 'doit'
-    CATEGORY = 'ImpactPack/Util'
-
-    def doit(self, segs):
-        masks = core.segs_to_masklist(segs)
-        if len(masks) == 0:
-            empty_mask = torch.zeros(segs[0], dtype=torch.float32, device='cpu')
-            masks = [empty_mask]
-        masks = [utils.make_3d_mask(mask) for mask in masks]
-        return (masks,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

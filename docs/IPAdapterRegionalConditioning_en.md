@@ -61,47 +61,6 @@ IPAdapterRegionalConditioning node is a tool for generating images with regional
 - Infra type: GPU
 
 # Source code
-```
-class IPAdapterRegionalConditioning:
-    @classmethod
-    def INPUT_TYPES(s):
-        return {"required": {
-            #"set_cond_area": (["default", "mask bounds"],),
-            "image": ("IMAGE",),
-            "image_weight": ("FLOAT", { "default": 1.0, "min": -1.0, "max": 3.0, "step": 0.05 }),
-            "prompt_weight": ("FLOAT", { "default": 1.0, "min": 0.0, "max": 10.0, "step": 0.05 }),
-            "weight_type": (WEIGHT_TYPES, ),
-            "start_at": ("FLOAT", { "default": 0.0, "min": 0.0, "max": 1.0, "step": 0.001 }),
-            "end_at": ("FLOAT", { "default": 1.0, "min": 0.0, "max": 1.0, "step": 0.001 }),
-        }, "optional": {
-            "mask": ("MASK",),
-            "positive": ("CONDITIONING",),
-            "negative": ("CONDITIONING",),
-        }}
+[View source repository on GitHub](https://github.com/cubiq/ComfyUI_IPAdapter_plus)
 
-    RETURN_TYPES = ("IPADAPTER_PARAMS", "CONDITIONING", "CONDITIONING", )
-    RETURN_NAMES = ("IPADAPTER_PARAMS", "POSITIVE", "NEGATIVE")
-    FUNCTION = "conditioning"
-
-    CATEGORY = "ipadapter/params"
-
-    def conditioning(self, image, image_weight, prompt_weight, weight_type, start_at, end_at, mask=None, positive=None, negative=None):
-        set_area_to_bounds = False #if set_cond_area == "default" else True
-
-        if mask is not None:
-            if positive is not None:
-                positive = conditioning_set_values(positive, {"mask": mask, "set_area_to_bounds": set_area_to_bounds, "mask_strength": prompt_weight})
-            if negative is not None:
-                negative = conditioning_set_values(negative, {"mask": mask, "set_area_to_bounds": set_area_to_bounds, "mask_strength": prompt_weight})
-
-        ipadapter_params = {
-            "image": [image],
-            "attn_mask": [mask],
-            "weight": [image_weight],
-            "weight_type": [weight_type],
-            "start_at": [start_at],
-            "end_at": [end_at],
-        }
-
-        return (ipadapter_params, positive, negative, )
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

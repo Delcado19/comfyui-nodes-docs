@@ -27,20 +27,6 @@ The StepsScheduleHookProvider node is designed to facilitate the creation and ma
 - Infra type: CPU
 
 # Source code
-```
-class StepsScheduleHookProvider:
-    schedules = ['simple']
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'schedule_for_iteration': (s.schedules,), 'target_steps': ('INT', {'default': 20, 'min': 1, 'max': 10000})}}
-    RETURN_TYPES = ('PK_HOOK',)
-    FUNCTION = 'doit'
-    CATEGORY = 'ImpactPack/Upscale'
-
-    def doit(self, schedule_for_iteration, target_steps):
-        hook = None
-        if schedule_for_iteration == 'simple':
-            hook = hooks.SimpleStepsScheduleHook(target_steps)
-        return (hook,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -29,39 +29,7 @@ This node counts files in a specified directory that match a given pattern (such
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class DreamDirectoryFileCount:
-    NODE_NAME = "File Count"
-    ICON = "📂"
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {
-            "required": {
-                "directory_path": ("STRING", {"default": '', "multiline": False}),
-                "patterns": ("STRING", {"default": '*.jpg|*.png|*.jpeg', "multiline": False}),
-            },
-        }
-
-    CATEGORY = NodeCategories.ANIMATION
-    RETURN_TYPES = ("INT",)
-    RETURN_NAMES = ("TOTAL",)
-    FUNCTION = "result"
-
-    @classmethod
-    def IS_CHANGED(cls, *v):
-        return ALWAYS_CHANGED_FLAG
-
-    def result(self, directory_path, patterns):
-        if not os.path.isdir(directory_path):
-            return (0,)
-        total = 0
-        for pattern in patterns.split("|"):
-            files = list(glob.glob(pattern, root_dir=directory_path))
-            total += len(files)
-        print("total " + str(total))
-        return (total,)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

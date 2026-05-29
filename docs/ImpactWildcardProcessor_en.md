@@ -36,21 +36,6 @@ The ImpactWildcardProcessor node is designed to manage and process wildcards in 
 - Infra type: CPU
 
 # Source code
-```
-class ImpactWildcardProcessor:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'wildcard_text': ('STRING', {'multiline': True, 'dynamicPrompts': False}), 'populated_text': ('STRING', {'multiline': True, 'dynamicPrompts': False}), 'mode': ('BOOLEAN', {'default': True, 'label_on': 'Populate', 'label_off': 'Fixed'}), 'seed': ('INT', {'default': 0, 'min': 0, 'max': 18446744073709551615}), 'Select to add Wildcard': (['Select the Wildcard to add to the text'],)}}
-    CATEGORY = 'ImpactPack/Prompt'
-    RETURN_TYPES = ('STRING',)
-    FUNCTION = 'doit'
-
-    @staticmethod
-    def process(**kwargs):
-        return impact.wildcards.process(**kwargs)
-
-    def doit(self, *args, **kwargs):
-        populated_text = kwargs['populated_text']
-        return (populated_text,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

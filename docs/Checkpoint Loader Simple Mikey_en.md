@@ -60,21 +60,6 @@ CheckpointLoaderSimpleMikey node aims to simplify the loading and management of 
 - Infra type: CPU
 
 # Source code
-```
-class CheckpointLoaderSimpleMikey:
+[View source repository on GitHub](https://github.com/bash-j/mikey_nodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'ckpt_name': (folder_paths.get_filename_list('checkpoints'),)}, 'hidden': {'unique_id': 'UNIQUE_ID', 'extra_pnginfo': 'EXTRA_PNGINFO', 'prompt': 'PROMPT'}}
-    RETURN_TYPES = ('MODEL', 'CLIP', 'VAE', 'STRING', 'STRING')
-    RETURN_NAMES = ('model', 'clip', 'vae', 'ckpt_name', 'ckpt_hash')
-    FUNCTION = 'load_checkpoint'
-    CATEGORY = 'Mikey/Loaders'
-
-    def load_checkpoint(self, ckpt_name, output_vae=True, output_clip=True, unique_id=None, extra_pnginfo=None, prompt=None):
-        ckpt_path = folder_paths.get_full_path('checkpoints', ckpt_name)
-        out = comfy.sd.load_checkpoint_guess_config(ckpt_path, output_vae=True, output_clip=True, embedding_directory=folder_paths.get_folder_paths('embeddings'))
-        hash = get_file_hash(ckpt_path)
-        ckpt_name = os.path.basename(ckpt_name)
-        return out[:3] + (ckpt_name, hash)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

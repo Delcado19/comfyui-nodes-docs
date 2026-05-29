@@ -72,33 +72,6 @@ CR_DrawPie is a node designed to generate visual representations of pie charts. 
 - Infra type: CPU
 
 # Source code
-```
-class CR_DrawPie:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'width': ('INT', {'default': 512, 'min': 64, 'max': 4096}), 'height': ('INT', {'default': 512, 'min': 64, 'max': 4096}), 'pie_start': ('FLOAT', {'default': 30.0, 'min': 0.0, 'max': 9999.0, 'step': 0.1}), 'pie_stop': ('FLOAT', {'default': 330.0, 'min': 0.0, 'max': 9999.0, 'step': 0.1}), 'shape_color': (COLORS,), 'back_color': (COLORS,), 'x_offset': ('INT', {'default': 0, 'min': -2048, 'max': 2048}), 'y_offset': ('INT', {'default': 0, 'min': -2048, 'max': 2048}), 'zoom': ('FLOAT', {'default': 1.0, 'min': 0.0, 'max': 10.0, 'step': 0.05}), 'rotation': ('FLOAT', {'default': 0.0, 'min': 0.0, 'max': 3600.0, 'step': 0.1})}, 'optional': {'shape_color_hex': ('STRING', {'multiline': False, 'default': '#000000'}), 'bg_color_hex': ('STRING', {'multiline': False, 'default': '#000000'})}}
-    RETURN_TYPES = ('IMAGE', 'STRING')
-    RETURN_NAMES = ('IMAGE', 'show_help')
-    FUNCTION = 'make_shape'
-    CATEGORY = icons.get('Comfyroll/Graphics/Shape')
-
-    def make_shape(self, width, height, rotation, pie_start, pie_stop, shape_color, back_color, x_offset=0, y_offset=0, zoom=1.0, shape_color_hex='#000000', bg_color_hex='#000000'):
-        bg_color = get_color_values(back_color, bg_color_hex, color_mapping)
-        shape_color = get_color_values(shape_color, shape_color_hex, color_mapping)
-        back_img = Image.new('RGB', (width, height), color=bg_color)
-        shape_img = Image.new('RGBA', (width, height), color=(0, 0, 0, 0))
-        draw = ImageDraw.Draw(shape_img, 'RGBA')
-        center_x = width // 2 + x_offset
-        center_y = height // 2 + y_offset
-        size = min(width - x_offset, height - y_offset) * zoom
-        aspect_ratio = width / height
-        num_rays = 16
-        color = 'white'
-        draw.pieslice([(center_x - size / 2, center_y - size / 2), (center_x + size / 2, center_y + size / 2)], start=pie_start, end=pie_stop, fill=color, outline=None)
-        shape_img = shape_img.rotate(rotation, center=(center_x, center_y))
-        result_image = Image.alpha_composite(back_img.convert('RGBA'), shape_img)
-        image_out = pil2tensor(result_image.convert('RGB'))
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Pattern-Nodes-2#cr-draw-pie'
-        return (image_out, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

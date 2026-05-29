@@ -60,21 +60,6 @@ The WeightAdjustIndivAttnMultNode class is designed to individually adjust the w
 - Infra type: CPU
 
 # Source code
-```
-class WeightAdjustIndivAttnMultNode:
+[View source repository on GitHub](https://github.com/Kosinkadink/ComfyUI-AnimateDiff-Evolved)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'pe_MULT': ('FLOAT', {'default': 1.0, 'min': 0.0, 'max': 2.0, 'step': 1e-06}), 'attn_MULT': ('FLOAT', {'default': 1.0, 'min': 0.0, 'max': 2.0, 'step': 1e-06}), 'attn_q_MULT': ('FLOAT', {'default': 1.0, 'min': 0.0, 'max': 2.0, 'step': 1e-06}), 'attn_k_MULT': ('FLOAT', {'default': 1.0, 'min': 0.0, 'max': 2.0, 'step': 1e-06}), 'attn_v_MULT': ('FLOAT', {'default': 1.0, 'min': 0.0, 'max': 2.0, 'step': 1e-06}), 'attn_out_weight_MULT': ('FLOAT', {'default': 1.0, 'min': 0.0, 'max': 2.0, 'step': 1e-06}), 'attn_out_bias_MULT': ('FLOAT', {'default': 1.0, 'min': 0.0, 'max': 2.0, 'step': 1e-06}), 'other_MULT': ('FLOAT', {'default': 1.0, 'min': 0.0, 'max': 2.0, 'step': 1e-06}), 'print_adjustment': ('BOOLEAN', {'default': False})}, 'optional': {'prev_weight_adjust': ('WEIGHT_ADJUST',)}}
-    RETURN_TYPES = ('WEIGHT_ADJUST',)
-    CATEGORY = 'Animate Diff 🎭🅐🅓/ad settings/weight adjust'
-    FUNCTION = 'get_weight_adjust'
-
-    def get_weight_adjust(self, pe_MULT: float, attn_MULT: float, attn_q_MULT: float, attn_k_MULT: float, attn_v_MULT: float, attn_out_weight_MULT: float, attn_out_bias_MULT: float, other_MULT: float, print_adjustment: bool, prev_weight_adjust: AdjustGroup=None):
-        if prev_weight_adjust is None:
-            prev_weight_adjust = AdjustGroup()
-        prev_weight_adjust = prev_weight_adjust.clone()
-        adjust = AdjustWeight(pe_MULT=pe_MULT, attn_MULT=attn_MULT, attn_q_MULT=attn_q_MULT, attn_k_MULT=attn_k_MULT, attn_v_MULT=attn_v_MULT, attn_out_weight_MULT=attn_out_weight_MULT, attn_out_bias_MULT=attn_out_bias_MULT, other_MULT=other_MULT, print_adjustment=print_adjustment)
-        prev_weight_adjust.add(adjust)
-        return (prev_weight_adjust,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

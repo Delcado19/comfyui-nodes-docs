@@ -64,49 +64,6 @@ The CR_XYFromFolder node is designed to process and organize images from a speci
 - Infra type: CPU
 
 # Source code
-```
-class CR_XYFromFolder:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(cls) -> dict[str, t.Any]:
-        input_dir = folder_paths.output_directory
-        image_folder = [name for name in os.listdir(input_dir) if os.path.isdir(os.path.join(input_dir, name))]
-        return {'required': {'image_folder': (sorted(image_folder),), 'start_index': ('INT', {'default': 1, 'min': 0, 'max': 10000}), 'end_index': ('INT', {'default': 1, 'min': 1, 'max': 10000}), 'max_columns': ('INT', {'default': 1, 'min': 1, 'max': 10000}), 'x_annotation': ('STRING', {'multiline': True}), 'y_annotation': ('STRING', {'multiline': True}), 'font_size': ('INT', {'default': 50, 'min': 1}), 'gap': ('INT', {'default': 0, 'min': 0})}, 'optional': {'trigger': ('BOOLEAN', {'default': False})}}
-    RETURN_TYPES = ('IMAGE', 'BOOLEAN', 'STRING')
-    RETURN_NAMES = ('IMAGE', 'trigger', 'show_help')
-    FUNCTION = 'load_images'
-    CATEGORY = icons.get('Comfyroll/XY Grid')
-
-    def load_images(self, image_folder, start_index, end_index, max_columns, x_annotation, y_annotation, font_size, gap, trigger=False):
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/XY-Grid-Nodes#cr-xy-from-folder'
-        if trigger == False:
-            return ((), False, show_help)
-        input_dir = folder_paths.output_directory
-        image_path = os.path.join(input_dir, image_folder)
-        file_list = sorted(os.listdir(image_path), key=lambda s: sum(((s, int(n)) for (s, n) in re.findall('(\\D+)(\\d+)', 'a%s0' % s)), ()))
-        sample_frames = []
-        pillow_images = []
-        if len(file_list) < end_index:
-            end_index = len(file_list)
-        for num in range(start_index, end_index + 1):
-            i = Image.open(os.path.join(image_path, file_list[num - 1]))
-            image = i.convert('RGB')
-            image = np.array(image).astype(np.float32) / 255.0
-            image = torch.from_numpy(image)[None,]
-            image = image.squeeze()
-            sample_frames.append(image)
-        resolved_font_path = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), 'fonts\\Roboto-Regular.ttf')
-        font = ImageFont.truetype(str(resolved_font_path), size=font_size)
-        start_x_ann = start_index % max_columns - 1
-        start_y_ann = int(start_index / max_columns)
-        column_list = x_annotation.split(';')[start_x_ann:]
-        row_list = y_annotation.split(';')[start_y_ann:]
-        column_list = [item.strip() for item in column_list]
-        row_list = [item.strip() for item in row_list]
-        annotation = Annotation(column_texts=column_list, row_texts=row_list, font=font)
-        images = torch.stack(sample_frames)
-        pillow_images = [tensor_to_pillow(i) for i in images]
-        pillow_grid = create_images_grid_by_columns(images=pillow_images, gap=gap, annotation=annotation, max_columns=max_columns)
-        tensor_grid = pillow_to_tensor(pillow_grid)
-        return (tensor_grid, trigger, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

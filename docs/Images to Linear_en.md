@@ -23,26 +23,6 @@ The WAS_Images_To_Linear node is designed to convert image data into a linear fo
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Images_To_Linear:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'images': ('IMAGE',)}}
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'image_to_linear'
-    CATEGORY = 'WAS Suite/Image'
-
-    def image_to_linear(self, images):
-        if len(images) > 1:
-            tensors = []
-            for image in images:
-                tensors.append(pil2tensor(tensor2pil(image).convert('L')))
-            tensors = torch.cat(tensors, dim=0)
-            return (tensors,)
-        else:
-            return (pil2tensor(tensor2pil(images).convert('L')),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

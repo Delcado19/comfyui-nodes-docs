@@ -41,54 +41,7 @@ The ImageTransformCropRelative node provides functionality for cropping images b
 - Infra type: `GPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class ImageTransformCropRelative:
-    def __init__(self):
-        pass
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {
-            "required": {
-                "images": ("IMAGE",),
-                "start_x": ("FLOAT", {
-                    "default": 0.25,
-                    "max": 1.0,
-                    "step": 0.01
-                }),
-                "start_y": ("FLOAT", {
-                    "default": 0.25,
-                    "max": 1.0,
-                    "step": 0.01
-                }),
-                "end_x": ("FLOAT", {
-                    "default": 0.75,
-                    "max": 1.0,
-                    "step": 0.01
-                }),
-                "end_y": ("FLOAT", {
-                    "default": 0.75,
-                    "max": 1.0,
-                    "step": 0.01
-                }),
-            },
-        }
-
-    RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "node"
-    CATEGORY = "image/transform"
-
-    def node(self, images, start_x, start_y, end_x, end_y):
-        height, width = images[0, :, :, 0].shape
-
-        return ImageTransformCropAbsolute().node(
-            images,
-            width * start_x,
-            height * start_y,
-            width * end_x,
-            height * end_y
-        )
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

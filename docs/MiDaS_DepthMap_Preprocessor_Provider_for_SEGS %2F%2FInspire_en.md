@@ -27,17 +27,6 @@ This node generates a depth map for semantic segmentation tasks using the MiDaS 
 - Infra type: GPU
 
 # Source code
-```
-class MiDaS_DepthMap_Preprocessor_Provider_for_SEGS:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Inspire-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'a': ('FLOAT', {'default': np.pi * 2.0, 'min': 0.0, 'max': np.pi * 5.0, 'step': 0.05}), 'bg_threshold': ('FLOAT', {'default': 0.1, 'min': 0, 'max': 1, 'step': 0.05})}}
-    RETURN_TYPES = ('SEGS_PREPROCESSOR',)
-    FUNCTION = 'doit'
-    CATEGORY = 'InspirePack/SEGS/ControlNet'
-
-    def doit(self, a, bg_threshold):
-        obj = MiDaS_DepthMap_Preprocessor_wrapper(a, bg_threshold)
-        return (obj,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

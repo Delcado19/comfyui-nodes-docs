@@ -32,20 +32,6 @@ This node enhances image contrast by stretching the intensity value range of the
 - Infra type: CPU
 
 # Source code
-```
-class AutoContrast:
+[View source repository on GitHub](https://github.com/Jordach/comfy-plasma)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'IMAGE': ('IMAGE',), 'cutoff': ('FLOAT', {'default': 2, 'min': 0, 'max': 100, 'step': 0.01}), 'min_value': ('INT', {'default': -1, 'min': -1, 'max': 255, 'step': 1})}}
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'process_image'
-    CATEGORY = 'image/postprocessing'
-
-    def process_image(self, IMAGE, cutoff, min_value):
-        cimg = conv_tensor_pil(IMAGE)
-        if min_value >= 0:
-            return conv_pil_tensor(ImageOps.autocontrast(cimg, cutoff=cutoff, ignore=min_value))
-        else:
-            return conv_pil_tensor(ImageOps.autocontrast(cimg, cutoff=cutoff))
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

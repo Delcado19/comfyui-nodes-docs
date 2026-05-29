@@ -28,24 +28,6 @@ This node merges multiple images into a single large image by stacking them vert
 - Infra type: CPU
 
 # Source code
-```
-class JoinImageBatch:
-    """Turns an image batch into one big image."""
+[View source repository on GitHub](https://github.com/yolain/ComfyUI-Easy-Use)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'images': ('IMAGE',), 'mode': (('horizontal', 'vertical'), {'default': 'horizontal'})}}
-    RETURN_TYPES = ('IMAGE',)
-    RETURN_NAMES = ('image',)
-    FUNCTION = 'join'
-    CATEGORY = 'EasyUse/Image'
-
-    def join(self, images, mode):
-        (n, h, w, c) = images.shape
-        image = None
-        if mode == 'vertical':
-            image = images.reshape(1, n * h, w, c)
-        elif mode == 'horizontal':
-            image = torch.transpose(torch.transpose(images, 1, 2).reshape(1, n * w, h, c), 1, 2)
-        return (image,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -25,9 +25,7 @@ The ToMaskList node is designed to convert a series of inputs into a mask list. 
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class ToMaskList(metaclass=MakeListMeta): TYPE = "MASK"
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -39,24 +39,6 @@ The 'mix' method of the MixColorByMask node blends an input image with a solid c
 - Infra type: CPU
 
 # Source code
-```
-class MixColorByMask:
+[View source repository on GitHub](https://github.com/BadCafeCode/masquerade-nodes-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'image': ('IMAGE',), 'r': ('INT', {'default': 0, 'min': 0, 'max': 255, 'step': 1}), 'g': ('INT', {'default': 0, 'min': 0, 'max': 255, 'step': 1}), 'b': ('INT', {'default': 0, 'min': 0, 'max': 255, 'step': 1}), 'mask': ('IMAGE',)}}
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'mix'
-    CATEGORY = 'Masquerade Nodes'
-
-    def mix(self, image, r, g, b, mask):
-        (r, g, b) = (r / 255.0, g / 255.0, b / 255.0)
-        image_size = image.size()
-        image2 = torch.tensor([r, g, b]).to(device=image.device).unsqueeze(0).unsqueeze(0).unsqueeze(0).repeat(image_size[0], image_size[1], image_size[2], 1)
-        (image, image2) = tensors2common(image, image2)
-        mask = tensor2batch(tensor2mask(mask), image.size())
-        return (image * (1.0 - mask) + image2 * mask,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

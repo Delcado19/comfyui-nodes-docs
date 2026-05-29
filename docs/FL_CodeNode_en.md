@@ -42,31 +42,7 @@ FL_CodeNode allows dynamic execution of user-provided code within a predefined e
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class FL_CodeNode:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        required = {"code_input": ("STRING", {"multiline": True})}
-        optional = {f"input_{i}": (AlwaysEqualProxy("*")) for i in range(4)}
-        return {"required": required, "optional": optional}
-
-    CATEGORY = "🏵️Fill Nodes"
-    RETURN_TYPES = tuple(AlwaysEqualProxy("*") for _ in range(4))
-    RETURN_NAMES = tuple(f"output_{i}" for i in range(4))
-
-    FUNCTION = "execute"
-
-    def execute(self, code_input, **kwargs):
-        outputs = {i: None for i in range(4)}
-
-        try:
-            exec(code_input, {"inputs": kwargs, "outputs": outputs})
-        except Exception as e:
-            raise RuntimeError(f"Error executing user code: {e}")
-
-        return tuple(outputs[i] for i in range(4))
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

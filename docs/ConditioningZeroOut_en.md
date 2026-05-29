@@ -23,23 +23,6 @@ The ConditioningZeroOut node aims to manipulate conditioning data by zeroing out
 - Infra type: CPU
 
 # Source code
-```
-class ConditioningZeroOut:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'conditioning': ('CONDITIONING',)}}
-    RETURN_TYPES = ('CONDITIONING',)
-    FUNCTION = 'zero_out'
-    CATEGORY = 'advanced/conditioning'
-
-    def zero_out(self, conditioning):
-        c = []
-        for t in conditioning:
-            d = t[1].copy()
-            if 'pooled_output' in d:
-                d['pooled_output'] = torch.zeros_like(d['pooled_output'])
-            n = [torch.zeros_like(t[0]), d]
-            c.append(n)
-        return (c,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

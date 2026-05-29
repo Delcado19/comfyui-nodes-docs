@@ -27,18 +27,6 @@ The CircularVAEDecode node decodes latent representations back into images using
 - Infra type: GPU
 
 # Source code
-```
-class CircularVAEDecode:
+[View source repository on GitHub](https://github.com/FlyingFireCo/tiled_ksampler)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'samples': ('LATENT',), 'vae': ('VAE',)}}
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'decode'
-    CATEGORY = 'latent'
-
-    def decode(self, vae, samples):
-        for layer in [layer for layer in vae.first_stage_model.modules() if isinstance(layer, torch.nn.Conv2d)]:
-            layer.padding_mode = 'circular'
-        return (vae.decode(samples['samples']),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -23,20 +23,6 @@ The `image_bounds` method of the WAS_Image_Bounds node aims to calculate the bou
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Image_Bounds:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(self):
-        return {'required': {'image': ('IMAGE',)}}
-    RETURN_TYPES = ('IMAGE_BOUNDS',)
-    FUNCTION = 'image_bounds'
-    CATEGORY = 'WAS Suite/Image/Bound'
-
-    def image_bounds(self, image):
-        image = image.unsqueeze(0) if image.dim() == 3 else image
-        return ([(0, img.shape[0] - 1, 0, img.shape[1] - 1) for img in image],)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

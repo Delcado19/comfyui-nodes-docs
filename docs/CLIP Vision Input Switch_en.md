@@ -32,22 +32,6 @@ The method 'clip_vision_switch' is designed to conditionally select between two 
 - Infra type: CPU
 
 # Source code
-```
-class WAS_CLIP_Vision_Input_Switch:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'clip_vision_a': ('CLIP_VISION',), 'clip_vision_b': ('CLIP_VISION',), 'boolean': ('BOOLEAN', {'forceInput': True})}}
-    RETURN_TYPES = ('CLIP_VISION',)
-    FUNCTION = 'clip_vision_switch'
-    CATEGORY = 'WAS Suite/Logic'
-
-    def clip_vision_switch(self, clip_vision_a, clip_vision_b, boolean=True):
-        if boolean:
-            return (clip_vision_a,)
-        else:
-            return clip_vision_b
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -59,30 +59,6 @@ The CR_8ChannelIn node is designed to efficiently manage and organize multi-chan
 - Infra type: CPU
 
 # Source code
-```
-class CR_8ChannelIn:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {}, 'optional': {'pipe': (any_type,), 'ch1': (any_type,), 'ch2': (any_type,), 'ch3': (any_type,), 'ch4': (any_type,), 'ch5': (any_type,), 'ch6': (any_type,), 'ch7': (any_type,), 'ch8': (any_type,)}}
-    RETURN_TYPES = ('PIPE_LINE', 'STRING')
-    RETURN_NAMES = ('pipe', 'show_help')
-    FUNCTION = 'load_data'
-    CATEGORY = icons.get('Comfyroll/Pipe/Bus')
-
-    def load_data(self, ch1=None, ch2=None, ch3=None, ch4=None, ch5=None, ch6=None, ch7=None, ch8=None, pipe=None):
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Pipe-Nodes#cr-8-channel-in'
-        (new_ch1, new_ch2, new_ch3, new_ch4, new_ch5, new_ch6, new_ch7, new_ch8) = (None, None, None, None, None, None, None, None)
-        if pipe is not None:
-            (new_ch1, new_ch2, new_ch3, new_ch4, new_ch5, new_ch6, new_ch7, new_ch8) = pipe
-        new_ch1 = ch1 if ch1 is not None else new_ch1
-        new_ch2 = ch2 if ch2 is not None else new_ch2
-        new_ch3 = ch3 if ch3 is not None else new_ch3
-        new_ch4 = ch4 if ch4 is not None else new_ch4
-        new_ch5 = ch5 if ch5 is not None else new_ch5
-        new_ch6 = ch6 if ch6 is not None else new_ch6
-        new_ch7 = ch7 if ch7 is not None else new_ch7
-        new_ch8 = ch8 if ch8 is not None else new_ch8
-        new_pipe = (new_ch1, new_ch2, new_ch3, new_ch4, new_ch5, new_ch6, new_ch7, new_ch8)
-        return (new_pipe, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

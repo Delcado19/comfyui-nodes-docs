@@ -27,27 +27,6 @@ This node simplifies the prompt by reducing the word count to a specified length
 - Infra type: CPU
 
 # Source code
-```
-class PromptSimplification:
+[View source repository on GitHub](https://github.com/shadowcz007/comfyui-mixlab-nodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'prompt': ('STRING', {'multiline': True, 'default': '', 'dynamicPrompts': False}), 'length': ('INT', {'default': 5, 'min': 1, 'max': 100, 'step': 1, 'display': 'number'})}}
-    RETURN_TYPES = ('STRING',)
-    RETURN_NAMES = ('prompts',)
-    FUNCTION = 'run'
-    CATEGORY = '♾️Mixlab/Prompt'
-    INPUT_IS_LIST = True
-    OUTPUT_IS_LIST = (True,)
-    OUTPUT_NODE = True
-
-    def run(self, prompt, length):
-        length = length[0]
-        result = []
-        for p in prompt:
-            nps = prompt_delete_words(p, length)
-            for n in nps:
-                result.append(n)
-        result = [elem.strip() for elem in result if elem.strip()]
-        return {'ui': {'prompts': result}, 'result': (result,)}
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

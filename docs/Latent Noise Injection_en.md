@@ -28,22 +28,6 @@ The "inject_noise" method introduces random noise into a set of latent samples t
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Latent_Noise:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'samples': ('LATENT',), 'noise_std': ('FLOAT', {'default': 0.1, 'min': 0.0, 'max': 1.0, 'step': 0.01})}}
-    RETURN_TYPES = ('LATENT',)
-    FUNCTION = 'inject_noise'
-    CATEGORY = 'WAS Suite/Latent/Generate'
-
-    def inject_noise(self, samples, noise_std):
-        s = samples.copy()
-        noise = torch.randn_like(s['samples']) * noise_std
-        s['samples'] = s['samples'] + noise
-        return (s,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -89,38 +89,7 @@ The Images Masks MultiPipe (JPS) node is designed to simplify the processing and
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class Images_Masks_MultiPipe:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    CATEGORY = 'JPS Nodes/Pipes'
-    RETURN_TYPES = ("IMAGE","MASK","IMAGE","IMAGE","MASK","MASK","IMAGE","IMAGE","MODEL",)
-    RETURN_NAMES = ("generation_img","generation_mask","ipa1_img","ipa2_img","ipa1_mask","ipa2_mask","revision1_img","revision2_img","inpaint_model",)
-    FUNCTION = "get_imagemask"
-
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {
-            "required": {},
-            "optional": {
-                "generation_img": ("IMAGE",),
-                "generation_mask": ("MASK",),
-                "ipa1_img": ("IMAGE",),
-                "ipa2_img": ("IMAGE",),
-                "ipa1_mask": ("MASK",),
-                "ipa2_mask": ("MASK",),
-                "revision1_img": ("IMAGE",),
-                "revision2_img": ("IMAGE",),
-                "inpaint_model": ("MODEL",),
-            }
-        }
-
-    def get_imagemask(self,generation_img=None,generation_mask=None,ipa1_img=None,ipa2_img=None,ipa1_mask=None,ipa2_mask=None,revision1_img=None,revision2_img=None,inpaint_model=None,):
-        
-        return (generation_img,generation_mask,ipa1_img,ipa2_img,ipa1_mask,ipa2_mask,revision1_img,revision2_img,inpaint_model,)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -31,25 +31,6 @@ The 'upscale' method of the WLSH_Image_Scale_By_Factor node is designed to incre
 - Infra type: GPU
 
 # Source code
-```
-class WLSH_Image_Scale_By_Factor:
-    upscale_methods = ['nearest-exact', 'bilinear', 'area']
+[View source repository on GitHub](https://github.com/wallish77/wlsh_nodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'original': ('IMAGE',), 'upscale_method': (s.upscale_methods,), 'factor': ('FLOAT', {'default': 2.0, 'min': 0.1, 'max': 8.0, 'step': 0.1})}}
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'upscale'
-    CATEGORY = 'WLSH Nodes/upscaling'
-
-    def upscale(self, original, upscale_method, factor):
-        old_width = original.shape[2]
-        old_height = original.shape[1]
-        new_width = int(old_width * factor)
-        new_height = int(old_height * factor)
-        print('Processing image with shape: ', old_width, 'x', old_height, 'to ', new_width, 'x', new_height)
-        samples = original.movedim(-1, 1)
-        s = comfy.utils.common_upscale(samples, new_width, new_height, upscale_method, crop='disabled')
-        s = s.movedim(1, -1)
-        return (s,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

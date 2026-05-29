@@ -37,21 +37,6 @@ This node aims to register a model as a LoRA (Low-Rank Adaptation) hook, focusin
 - Common nodes: unknown
 
 ## Source code
-```python
-class MaskableLoraLoaderModelOnly(MaskableLoraLoader):
-    @classmethod
-    def INPUT_TYPES(s):
-        return {
-            "required": {
-                "model": ("MODEL",),
-                "lora_name": (folder_paths.get_filename_list("loras"), ),
-                "strength_model": ("FLOAT", {"default": 1.0, "min": -20.0, "max": 20.0, "step": 0.01}),
-            }
-        }
+[View source repository on GitHub](https://github.com/Kosinkadink/ComfyUI-AnimateDiff-Evolved)
 
-    RETURN_TYPES = ("MODEL", "LORA_HOOK")
-    CATEGORY = "Animate Diff 🎭🅐🅓/conditioning/register lora hooks"
-    FUNCTION = "load_lora_model_only"
-
-    def load_lora_model_only(self, model: ModelPatcher, lora_name: str, strength_model: float):
-        model_lora, clip_lora, lora_hook = self.load_lora(mod
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

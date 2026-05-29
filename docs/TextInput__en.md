@@ -23,18 +23,6 @@ The TextInput node is designed to handle text input, providing a simple interfac
 - Infra type: CPU
 
 # Source code
-```
-class TextInput:
+[View source repository on GitHub](https://github.com/shadowcz007/comfyui-mixlab-nodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'text': ('STRING', {'multiline': True, 'default': ''})}}
-    RETURN_TYPES = ('STRING',)
-    FUNCTION = 'run'
-    CATEGORY = '♾️Mixlab/Utils'
-    INPUT_IS_LIST = False
-    OUTPUT_IS_LIST = (False,)
-
-    def run(self, text):
-        return (text,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

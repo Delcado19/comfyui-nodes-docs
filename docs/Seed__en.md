@@ -23,21 +23,6 @@ This node generates seed values for various randomization processes, ensuring ra
 - Infra type: CPU
 
 # Source code
-```
-class CreateSeedNode:
+[View source repository on GitHub](https://github.com/shadowcz007/comfyui-mixlab-nodes)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'seed': ('INT', {'default': 0, 'min': 0, 'max': 18446744073709551615})}}
-    RETURN_TYPES = ('INT',)
-    RETURN_NAMES = ('seed',)
-    OUTPUT_NODE = True
-    FUNCTION = 'run'
-    CATEGORY = '♾️Mixlab/Utils'
-
-    def run(self, seed):
-        return (seed,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

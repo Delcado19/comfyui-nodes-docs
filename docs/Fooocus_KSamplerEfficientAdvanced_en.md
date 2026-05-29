@@ -103,27 +103,7 @@ This node is an advanced sampler designed for efficient sampling in artistic cre
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-    class KSamplerEfficientAdvancedWithSharpness(TSC_KSamplerAdvanced):
-        @classmethod
-        def INPUT_TYPES(cls):
-            inputs = TSC_KSampler.INPUT_TYPES()
-            inputs["optional"]["sharpness"] = (
-                "FLOAT",
-                {"default": 2.0, "min": 0.0, "max": 100.0, "step": 0.01},
-            )
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-            return inputs
-
-        CATEGORY = "Art Venture/Sampling"
-
-        def sampleadv(self, *args, sharpness=2.0, **kwargs):
-            patch.sharpness = sharpness
-            patch.patch_all()
-            results = super().sampleadv(*args, **kwargs)
-            patch.unpatch_all()
-            return results
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

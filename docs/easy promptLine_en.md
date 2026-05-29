@@ -31,22 +31,6 @@ This node generates text content based on a given prompt, with control over the 
 - Infra type: CPU
 
 # Source code
-```
-class promptLine:
+[View source repository on GitHub](https://github.com/yolain/ComfyUI-Easy-Use)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'prompt': ('STRING', {'multiline': True, 'default': 'text'}), 'start_index': ('INT', {'default': 0, 'min': 0, 'max': 9999}), 'max_rows': ('INT', {'default': 1000, 'min': 1, 'max': 9999})}}
-    RETURN_TYPES = ('STRING',)
-    RETURN_NAMES = ('STRING',)
-    OUTPUT_IS_LIST = (True,)
-    FUNCTION = 'generate_strings'
-    CATEGORY = 'EasyUse/Prompt'
-
-    def generate_strings(self, prompt, start_index, max_rows):
-        lines = prompt.split('\n')
-        start_index = max(0, min(start_index, len(lines) - 1))
-        end_index = min(start_index + max_rows, len(lines))
-        rows = lines[start_index:end_index]
-        return (rows,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

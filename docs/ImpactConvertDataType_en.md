@@ -23,30 +23,6 @@ The ImpactConvertDataType node is designed to convert input data into various da
 - Infra type: CPU
 
 # Source code
-```
-class ImpactConvertDataType:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'value': (any_typ,)}}
-    RETURN_TYPES = ('STRING', 'FLOAT', 'INT', 'BOOLEAN')
-    FUNCTION = 'doit'
-    CATEGORY = 'ImpactPack/Logic'
-
-    @staticmethod
-    def is_number(string):
-        pattern = re.compile('^[-+]?[0-9]*\\.?[0-9]+$')
-        return bool(pattern.match(string))
-
-    def doit(self, value):
-        if self.is_number(str(value)):
-            num = value
-        elif str.lower(str(value)) != 'false':
-            num = 1
-        else:
-            num = 0
-        return (str(value), float(num), int(float(num)), bool(float(num)))
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

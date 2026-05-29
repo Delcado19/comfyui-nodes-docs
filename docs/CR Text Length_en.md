@@ -27,19 +27,6 @@ The CR_TextLength node is designed to measure the length of a given text string.
 - Infra type: CPU
 
 # Source code
-```
-class CR_TextLength:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'text': ('STRING', {'multiline': False, 'default': '', 'forceInput': True})}}
-    RETURN_TYPES = ('INT', 'STRING')
-    RETURN_NAMES = ('INT', 'show_help')
-    FUNCTION = 'len_text'
-    CATEGORY = icons.get('Comfyroll/Utils/Text')
-
-    def len_text(self, text):
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/List-Nodes#cr-text-length'
-        int_out = len(text)
-        return (int_out, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

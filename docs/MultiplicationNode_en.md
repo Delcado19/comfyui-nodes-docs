@@ -35,20 +35,6 @@ This node performs arithmetic operations on the input value, scaling and adjusti
 - Infra type: CPU
 
 # Source code
-```
-class MultiplicationNode:
+[View source repository on GitHub](https://github.com/shadowcz007/comfyui-mixlab-nodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'numberA': (any_type,), 'multiply_by': ('FLOAT', {'default': 1, 'min': -2, 'max': 18446744073709551615, 'step': 0.01, 'display': 'number'}), 'add_by': ('FLOAT', {'default': 0, 'min': -2000, 'max': 18446744073709551615, 'step': 0.01, 'display': 'number'})}}
-    RETURN_TYPES = ('FLOAT', 'INT')
-    FUNCTION = 'run'
-    CATEGORY = '♾️Mixlab/Utils'
-    INPUT_IS_LIST = False
-    OUTPUT_IS_LIST = (False, False)
-
-    def run(self, numberA, multiply_by, add_by):
-        b = int(numberA * multiply_by + add_by)
-        a = float(numberA * multiply_by + add_by)
-        return (a, b)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

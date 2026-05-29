@@ -23,10 +23,6 @@ FakeScribblePreprocessor_Provider_for_SEGS node aims to enhance image segmentati
 - Infra type: CPU
 
 # Source code
-```
-class FakeScribblePreprocessor_Provider_for_SEGS(HEDPreprocessor_Provider_for_SEGS):
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Inspire-Pack)
 
-    def doit(self, safe):
-        obj = HED_Preprocessor_wrapper(safe, 'FakeScribblePreprocessor')
-        return (obj,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

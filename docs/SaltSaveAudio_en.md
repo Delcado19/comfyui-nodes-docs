@@ -30,47 +30,7 @@ This node has no output types.
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class SaltSaveAudio:
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {
-            "required": {
-                "audio": ("AUDIO",),
-                "filename_prefix": ("STRING", {"default": "audio_sfx"}),
-                "format": (["wav", "mp3", "flac"], ),
-            },
-        }
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    RETURN_TYPES = ()
-    RETURN_NAMES = ()
-    OUTPUT_NODE = True
-    FUNCTION = "save_audio"
-    CATEGORY = "SALT/Audio"
-
-    def save_audio(self, audio, filename_prefix="audio_sfx", format="wav"):
-        OUTPUT = folder_paths.get_output_directory()
-        index = 0
-
-        file_extension = format.lower()
-        if format not in ['wav', 'mp3', 'flac']:
-            print(f"Unsupported format: {format}. Defaulting to WAV.")
-            file_extension = "wav"
-            format = "wav"
-
-        while True:
-            filename = f"{filename_prefix}_%04d.{file_extension}" % index
-            full_path = os.path.realpath(os.path.join(OUTPUT, filename))
-            if not os.path.exists(full_path):
-                break
-            index += 1
-
-        audio_segment = AudioSegment.from_file(io.BytesIO(audio), format="wav")
-        audio_segment.export(full_path, format=format)
-
-        print(f"Audio saved to {filename} in {format.upper()} format")
-        return ()
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

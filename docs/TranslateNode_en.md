@@ -32,19 +32,6 @@ This node translates text from one language to another using an external transla
 - Infra type: CPU
 
 # Source code
-```
-class TranslateNode:
+[View source repository on GitHub](https://github.com/esheep/esheep_custom_nodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'text': ('STRING', {'multiline': True})}, 'hidden': {'app_id': ('STRING', {}), 'app_key': ('STRING', {})}}
-    RETURN_TYPES = ('STRING',)
-    FUNCTION = 'main'
-    CATEGORY = 'translate'
-    OUTPUT_IS_LIST = (True,)
-    OUTPUT_NODE = True
-
-    def main(self, text, app_id='', app_key=''):
-        result = translate(text, Credentials(app_id=app_id, app_key=app_key))
-        return {'ui': {'result': [result]}, 'result': ([result],)}
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

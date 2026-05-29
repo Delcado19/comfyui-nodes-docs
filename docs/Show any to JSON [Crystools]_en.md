@@ -27,57 +27,7 @@ This node converts any given value to a JSON string (if possible) and displays i
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class CConsoleAnyToJson:
-    def __init__(self):
-        pass
+[View source repository on GitHub](https://github.com/crystian/ComfyUI-Crystools)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {
-            "required": {
-            },
-            "optional": {
-                "any_value": (any,),
-            },
-        }
-
-    CATEGORY = CATEGORY.MAIN.value + CATEGORY.DEBUGGER.value
-    INPUT_IS_LIST = True
-
-    RETURN_TYPES = ("STRING",)
-    RETURN_NAMES = ("string",)
-    OUTPUT_NODE = True
-
-    FUNCTION = "execute"
-
-    def execute(self, any_value=None):
-        text = TEXTS.INACTIVE_MSG.value
-
-        if any_value is not None and isinstance(any_value, list):
-            item = any_value[0]
-
-            if isinstance(item, dict):
-                try:
-                    text = json.dumps(item, indent=CONFIG["indent"])
-                except Exception as e:
-                    text = "The input is a dict, but could not be serialized.\n"
-                    logger.warn(e)
-
-            elif isinstance(item, list):
-                try:
-                    text = json.dumps(item, indent=CONFIG["indent"])
-                except Exception as e:
-                    text = "The input is a list, but could not be serialized.\n"
-                    logger.warn(e)
-
-            else:
-                text = str(item)
-
-        logger.debug(f"Show any-json to console is running...")
-
-        return {"ui": {"text": [text]}, "result": (text,)}
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

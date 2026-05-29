@@ -31,21 +31,6 @@ The ListCounter node is designed to incrementally count occurrences of unique id
 - Infra type: CPU
 
 # Source code
-```
-class ListCounter:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Inspire-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'signal': (utils.any_typ,), 'base_value': ('INT', {'default': 0, 'min': 0, 'max': 18446744073709551615})}, 'hidden': {'unique_id': 'UNIQUE_ID'}}
-    RETURN_TYPES = ('INT',)
-    FUNCTION = 'doit'
-    CATEGORY = 'InspirePack/Util'
-
-    def doit(self, signal, base_value, unique_id):
-        if unique_id not in list_counter_map:
-            count = 0
-        else:
-            count = list_counter_map[unique_id]
-        list_counter_map[unique_id] = count + 1
-        return (count + base_value,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

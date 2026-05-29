@@ -22,56 +22,7 @@ The node has no output type.
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class GetModels:
-    dump_option = ['all models',
-                   'checkpoints',
-                   'clip',
-                   'clip_vision',
-                   'configs',
-                   'controlnet',
-                   'diffusers',
-                   'embeddings',
-                   'gligen',
-                   'hypernetworks',
-                   'loras',
-                   'style_models',
-                   'upscale_models',
-                   'vae'
-                   ]
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    def __init__(self):
-        self.output_dir = folder_paths.get_output_directory()
-        self.type = "output"
-
-    @classmethod
-    def INPUT_TYPES(s):
-        return {"required": {
-            "dump": (s.dump_option, {"default": "all models"})
-        }
-        }
-
-    RETURN_TYPES = ()
-    FUNCTION = "dump_it"
-    CATEGORY = "Bmad/dump"
-    OUTPUT_NODE = True
-
-    def dump_it(self, dump):
-        dump_data = {}
-
-        if dump == 'all models':
-            for item in self.dump_option[1:]:
-                dump_data[item] = folder_paths.get_filename_list(item)
-        else:
-            dump_data['list'] = folder_paths.get_filename_list(dump)
-
-        file = f"{dump}.json"
-        file = os.path.join(self.output_dir, file)
-        with open(file, 'w') as f:
-            json.dump(dump_data, f, indent=1)
-
-        return ()
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -52,45 +52,6 @@ The ImagePadForOutpaintMasked node is designed to extend the boundaries of an im
 - Infra type: CPU
 
 # Source code
-```
-class ImagePadForOutpaintMasked:
+[View source repository on GitHub](https://github.com/kijai/ComfyUI-KJNodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'image': ('IMAGE',), 'left': ('INT', {'default': 0, 'min': 0, 'max': MAX_RESOLUTION, 'step': 8}), 'top': ('INT', {'default': 0, 'min': 0, 'max': MAX_RESOLUTION, 'step': 8}), 'right': ('INT', {'default': 0, 'min': 0, 'max': MAX_RESOLUTION, 'step': 8}), 'bottom': ('INT', {'default': 0, 'min': 0, 'max': MAX_RESOLUTION, 'step': 8}), 'feathering': ('INT', {'default': 40, 'min': 0, 'max': MAX_RESOLUTION, 'step': 1})}, 'optional': {'mask': ('MASK',)}}
-    RETURN_TYPES = ('IMAGE', 'MASK')
-    FUNCTION = 'expand_image'
-    CATEGORY = 'image'
-
-    def expand_image(self, image, left, top, right, bottom, feathering, mask=None):
-        (B, H, W, C) = image.size()
-        new_image = torch.ones((B, H + top + bottom, W + left + right, C), dtype=torch.float32) * 0.5
-        new_image[:, top:top + H, left:left + W, :] = image
-        if mask is None:
-            new_mask = torch.ones((H + top + bottom, W + left + right), dtype=torch.float32)
-            t = torch.zeros((H, W), dtype=torch.float32)
-        else:
-            mask = F.pad(mask, (left, right, top, bottom), mode='constant', value=0)
-            mask = 1 - mask
-            t = torch.zeros_like(mask)
-        if feathering > 0 and feathering * 2 < H and (feathering * 2 < W):
-            for i in range(H):
-                for j in range(W):
-                    dt = i if top != 0 else H
-                    db = H - i if bottom != 0 else H
-                    dl = j if left != 0 else W
-                    dr = W - j if right != 0 else W
-                    d = min(dt, db, dl, dr)
-                    if d >= feathering:
-                        continue
-                    v = (feathering - d) / feathering
-                    if mask is None:
-                        t[i, j] = v * v
-                    else:
-                        t[:, top + i, left + j] = v * v
-        if mask is None:
-            mask = new_mask.squeeze(0)
-            mask[top:top + H, left:left + W] = t
-            mask = mask.unsqueeze(0)
-        return (new_image, mask)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

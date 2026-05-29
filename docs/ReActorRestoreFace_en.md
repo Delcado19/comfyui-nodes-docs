@@ -39,20 +39,6 @@ RestoreFace node aims to enhance and restore facial features in images using adv
 - Infra type: GPU
 
 # Source code
-```
-class RestoreFace:
+[View source repository on GitHub](https://github.com/Gourieff/comfyui-reactor-node)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'image': ('IMAGE',), 'facedetection': (['retinaface_resnet50', 'retinaface_mobile0.25', 'YOLOv5l', 'YOLOv5n'],), 'model': (get_model_names(get_restorers),), 'visibility': ('FLOAT', {'default': 1, 'min': 0.0, 'max': 1, 'step': 0.05}), 'codeformer_weight': ('FLOAT', {'default': 0.5, 'min': 0.0, 'max': 1, 'step': 0.05})}}
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'execute'
-    CATEGORY = '🌌 ReActor'
-
-    def __init__(self):
-        self.face_helper = None
-
-    def execute(self, image, model, visibility, codeformer_weight, facedetection):
-        result = reactor.restore_face(self, image, model, visibility, codeformer_weight, facedetection)
-        return (result,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

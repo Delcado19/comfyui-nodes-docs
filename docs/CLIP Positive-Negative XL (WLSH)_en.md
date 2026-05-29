@@ -39,35 +39,6 @@ The negative output corresponds to the positive output but is for the negative i
 - Infra type: GPU
 
 # Source code
-```
-class WLSH_CLIP_Positive_Negative_XL:
+[View source repository on GitHub](https://github.com/wallish77/wlsh_nodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'width': ('INT', {'default': 1024.0, 'min': 0, 'max': MAX_RESOLUTION}), 'height': ('INT', {'default': 1024.0, 'min': 0, 'max': MAX_RESOLUTION}), 'crop_w': ('INT', {'default': 0, 'min': 0, 'max': MAX_RESOLUTION}), 'crop_h': ('INT', {'default': 0, 'min': 0, 'max': MAX_RESOLUTION}), 'target_width': ('INT', {'default': 1024.0, 'min': 0, 'max': MAX_RESOLUTION}), 'target_height': ('INT', {'default': 1024.0, 'min': 0, 'max': MAX_RESOLUTION}), 'positive_g': ('STRING', {'multiline': True, 'default': 'POS_G'}), 'positive_l': ('STRING', {'multiline': True, 'default': 'POS_L'}), 'negative_g': ('STRING', {'multiline': True, 'default': 'NEG_G'}), 'negative_l': ('STRING', {'multiline': True, 'default': 'NEG_L'}), 'clip': ('CLIP',)}}
-    RETURN_TYPES = ('CONDITIONING', 'CONDITIONING')
-    RETURN_NAMES = ('positive', 'negative')
-    FUNCTION = 'encode'
-    CATEGORY = 'WLSH Nodes/conditioning'
-
-    def encode(self, clip, width, height, crop_w, crop_h, target_width, target_height, positive_g, positive_l, negative_g, negative_l):
-        tokens = clip.tokenize(positive_g)
-        tokens['l'] = clip.tokenize(positive_l)['l']
-        if len(tokens['l']) != len(tokens['g']):
-            empty = clip.tokenize('')
-            while len(tokens['l']) < len(tokens['g']):
-                tokens['l'] += empty['l']
-            while len(tokens['l']) > len(tokens['g']):
-                tokens['g'] += empty['g']
-        (condP, pooledP) = clip.encode_from_tokens(tokens, return_pooled=True)
-        tokensN = clip.tokenize(negative_g)
-        tokensN['l'] = clip.tokenize(negative_l)['l']
-        if len(tokensN['l']) != len(tokensN['g']):
-            empty = clip.tokenize('')
-            while len(tokensN['l']) < len(tokensN['g']):
-                tokensN['l'] += empty['l']
-            while len(tokensN['l']) > len(tokensN['g']):
-                tokensN['g'] += empty['g']
-        (condN, pooledN) = clip.encode_from_tokens(tokensN, return_pooled=True)
-        return ([[condP, {'pooled_output': pooledP, 'width': width, 'height': height, 'crop_w': crop_w, 'crop_h': crop_h, 'target_width': target_width, 'target_height': target_height}]], [[condN, {'pooled_output': pooledP, 'width': width, 'height': height, 'crop_w': crop_w, 'crop_h': crop_h, 'target_width': target_width, 'target_height': target_height}]])
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

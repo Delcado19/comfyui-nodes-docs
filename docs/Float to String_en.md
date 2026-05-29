@@ -28,19 +28,6 @@ The FLOATtoSTRING node converts a floating-point number to its string representa
 - Infra type: CPU
 
 # Source code
-```
-class FLOATtoSTRING:
+[View source repository on GitHub](https://github.com/bash-j/mikey_nodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'float_': ('FLOAT', {'default': 0.0, 'min': 0.0, 'max': 1000000.0}), 'use_commas': (['true', 'false'], {'default': 'false'})}}
-    RETURN_TYPES = ('STRING',)
-    FUNCTION = 'convert'
-    CATEGORY = 'Mikey/Utils'
-
-    def convert(self, float_, use_commas):
-        if use_commas == 'true':
-            return (f'{float_:,}',)
-        else:
-            return (f'{float_}',)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

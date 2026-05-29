@@ -32,19 +32,6 @@ This type of node provides a method to adjust the wavelength of a sine curve, ef
 - Infra type: CPU
 
 # Source code
-```
-class KfSinusoidalAdjustWavelength:
-    CATEGORY = CATEGORY
-    FUNCTION = 'main'
-    RETURN_TYPES = ('KEYFRAMED_CURVE', 'SINUSOIDAL_CURVE')
+[View source repository on GitHub](https://github.com/dmarx/ComfyUI-Keyframed)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'curve': ('SINUSOIDAL_CURVE', {'forceInput': True}), 'adjustment': ('FLOAT', {'default': 0.0, 'step': 0.5})}}
-
-    def main(self, curve, adjustment):
-        (wavelength, phase, amplitude) = (curve.wavelength, curve.phase, curve.amplitude)
-        wavelength += adjustment
-        curve = kf.SinusoidalCurve(wavelength=wavelength, phase=phase, amplitude=amplitude)
-        return (curve, curve)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -35,18 +35,6 @@ TranslateCLIPTextEncode node acts as an intermediary that encodes text data into
 - Infra type: CPU
 
 # Source code
-```
-class TranslateCLIPTextEncode:
+[View source repository on GitHub](https://github.com/esheep/esheep_custom_nodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'text': ('STRING', {'multiline': True}), 'clip': ('CLIP',)}, 'hidden': {'app_id': ('STRING', {}), 'app_key': ('STRING', {})}}
-    RETURN_TYPES = ('CONDITIONING',)
-    FUNCTION = 'encode'
-    CATEGORY = 'translate'
-
-    def encode(self, clip, text, app_id='', app_key=''):
-        tokens = clip.tokenize(translate(text, Credentials(app_id=app_id, app_key=app_key)))
-        (cond, pooled) = clip.encode_from_tokens(tokens, return_pooled=True)
-        return ([[cond, {'pooled_output': pooled}]],)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

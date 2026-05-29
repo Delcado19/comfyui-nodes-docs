@@ -48,24 +48,6 @@ This node class encapsulates advanced parameters for refining image details, man
 - Infra type: CPU
 
 # Source code
-```
-class SeargeAdvancedParameters:
+[View source repository on GitHub](https://github.com/jobunk/SeargeSDXL)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'dynamic_cfg_method': (UI.DYNAMIC_CFG_METHODS, {'default': UI.NONE}), 'dynamic_cfg_factor': ('FLOAT', {'default': 0.0, 'min': -1.0, 'max': 1.0, 'step': 0.05}), 'refiner_detail_boost': ('FLOAT', {'default': 0.0, 'min': 0.0, 'max': 1.0, 'step': 0.05}), 'contrast_factor': ('FLOAT', {'default': 0.0, 'min': 0.0, 'max': 1.0, 'step': 0.05}), 'saturation_factor': ('FLOAT', {'default': 0.0, 'min': 0.0, 'max': 1.0, 'step': 0.05}), 'latent_detailer': (UI.LATENT_DETAILERS, {'default': UI.NONE})}, 'optional': {'data': ('SRG_DATA_STREAM',)}}
-    RETURN_TYPES = ('SRG_DATA_STREAM',)
-    RETURN_NAMES = ('data',)
-    FUNCTION = 'get'
-    CATEGORY = UI.CATEGORY_UI_INPUTS
-
-    @staticmethod
-    def create_dict(dynamic_cfg_method, dynamic_cfg_factor, refiner_detail_boost, contrast_factor, saturation_factor, latent_detailer):
-        return {UI.F_DYNAMIC_CFG_METHOD: dynamic_cfg_method, UI.F_DYNAMIC_CFG_FACTOR: round(dynamic_cfg_factor, 3), UI.F_REFINER_DETAIL_BOOST: round(refiner_detail_boost, 3), UI.F_CONTRAST_FACTOR: round(contrast_factor, 3), UI.F_SATURATION_FACTOR: round(saturation_factor, 3), UI.F_LATENT_DETAILER: latent_detailer}
-
-    def get(self, dynamic_cfg_method, dynamic_cfg_factor, refiner_detail_boost, contrast_factor, saturation_factor, latent_detailer, data=None):
-        if data is None:
-            data = {}
-        data[UI.S_ADVANCED_PARAMETERS] = self.create_dict(dynamic_cfg_method, dynamic_cfg_factor, refiner_detail_boost, contrast_factor, saturation_factor, latent_detailer)
-        return (data,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

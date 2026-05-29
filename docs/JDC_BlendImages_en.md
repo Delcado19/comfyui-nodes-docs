@@ -31,26 +31,6 @@ The BlendImages class implements seamless blending of two images by adjusting th
 - Infra type: CPU
 
 # Source code
-```
-class BlendImages:
+[View source repository on GitHub](https://github.com/Jordach/comfy-plasma)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'IMAGE_A': ('IMAGE',), 'IMAGE_B': ('IMAGE',), 'blend': ('FLOAT', {'default': 0.5, 'min': 0, 'max': 1, 'step': 0.001})}}
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'process_image'
-    CATEGORY = 'image/postprocessing'
-
-    def process_image(self, IMAGE_A, IMAGE_B, blend):
-        source_a = conv_tensor_pil(IMAGE_A)
-        source_b = conv_tensor_pil(IMAGE_B)
-        (aw, ah) = (source_a.width, source_a.height)
-        (bw, bh) = (source_b.width, source_b.height)
-        img_a = Image.new('RGB', (aw, ah))
-        img_a.paste(source_a)
-        img_b = Image.new('RGB', (bw, bh))
-        img_b.paste(source_b)
-        if aw != bw or ah != bh:
-            img_b.resize((aw, ah), resample=get_pil_resampler('lanczos'))
-        return conv_pil_tensor(Image.blend(img_a, img_b, blend))
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

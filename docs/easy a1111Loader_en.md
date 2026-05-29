@@ -75,21 +75,6 @@ This node facilitates loading and integrating various model components, includin
 - Infra type: CPU
 
 # Source code
-```
-class a1111Loader:
+[View source repository on GitHub](https://github.com/yolain/ComfyUI-Easy-Use)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        resolution_strings = [f'{width} x {height}' for (width, height) in BASE_RESOLUTIONS]
-        a1111_prompt_style_default = False
-        checkpoints = folder_paths.get_filename_list('checkpoints')
-        loras = ['None'] + folder_paths.get_filename_list('loras')
-        return {'required': {'ckpt_name': (checkpoints,), 'vae_name': (['Baked VAE'] + folder_paths.get_filename_list('vae'),), 'clip_skip': ('INT', {'default': -1, 'min': -24, 'max': 0, 'step': 1}), 'lora_name': (loras,), 'lora_model_strength': ('FLOAT', {'default': 1.0, 'min': -10.0, 'max': 10.0, 'step': 0.01}), 'lora_clip_strength': ('FLOAT', {'default': 1.0, 'min': -10.0, 'max': 10.0, 'step': 0.01}), 'resolution': (resolution_strings, {'default': '512 x 512'}), 'empty_latent_width': ('INT', {'default': 512, 'min': 64, 'max': MAX_RESOLUTION, 'step': 8}), 'empty_latent_height': ('INT', {'default': 512, 'min': 64, 'max': MAX_RESOLUTION, 'step': 8}), 'positive': ('STRING', {'default': 'Positive', 'multiline': True}), 'negative': ('STRING', {'default': 'Negative', 'multiline': True}), 'batch_size': ('INT', {'default': 1, 'min': 1, 'max': 64})}, 'optional': {'optional_lora_stack': ('LORA_STACK',), 'a1111_prompt_style': ('BOOLEAN', {'default': a1111_prompt_style_default})}, 'hidden': {'prompt': 'PROMPT', 'my_unique_id': 'UNIQUE_ID'}}
-    RETURN_TYPES = ('PIPE_LINE', 'MODEL', 'VAE')
-    RETURN_NAMES = ('pipe', 'model', 'vae')
-    FUNCTION = 'adv_pipeloader'
-    CATEGORY = 'EasyUse/Loaders'
-
-    def adv_pipeloader(self, ckpt_name, vae_name, clip_skip, lora_name, lora_model_strength, lora_clip_strength, resolution, empty_latent_width, empty_latent_height, positive, negative, batch_size, optional_lora_stack=None, a1111_prompt_style=False, prompt=None, my_unique_id=None):
-        return fullLoader.adv_pipeloader(self, ckpt_name, 'Default', vae_name, clip_skip, lora_name, lora_model_strength, lora_clip_strength, resolution, empty_latent_width, empty_latent_height, positive, 'mean', 'A1111', negative, 'mean', 'A1111', batch_size, None, None, None, optional_lora_stack, a1111_prompt_style, prompt, my_unique_id)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

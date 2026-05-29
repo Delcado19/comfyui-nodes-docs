@@ -23,16 +23,6 @@ The BreakoutVec4 node splits a four‑dimensional vector into its individual com
 - Infra type: CPU
 
 # Source code
-```
-class BreakoutVec4:
+[View source repository on GitHub](https://github.com/evanspearman/ComfyMath)
 
-    @classmethod
-    def INPUT_TYPES(cls) -> Mapping[str, Any]:
-        return {'required': {'a': ('VEC4', {'default': VEC4_ZERO})}}
-    RETURN_TYPES = ('FLOAT', 'FLOAT', 'FLOAT', 'FLOAT')
-    FUNCTION = 'op'
-    CATEGORY = 'math/conversion'
-
-    def op(self, a: Vec4) -> tuple[float, float, float, float]:
-        return (a[0], a[1], a[2], a[3])
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

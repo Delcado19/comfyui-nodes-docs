@@ -23,28 +23,6 @@ The LoadTextFile node is designed to read and retrieve the contents of a specifi
 - Infra type: CPU
 
 # Source code
-```
-class LoadTextFile:
+[View source repository on GitHub](https://github.com/chflame163/ComfyUI_WordCloud)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'path': ('STRING', {'default': 'c:\\text.txt'})}, 'optional': {}}
-    RETURN_TYPES = ('STRING',)
-    RETURN_NAMES = ('Text',)
-    FUNCTION = 'load_text_file'
-    OUTPUT_NODE = True
-    CATEGORY = '😺dzNodes/WordCloud'
-
-    def load_text_file(self, path):
-        text_content = ''
-        try:
-            with open(os.path.normpath(path), 'r', encoding='utf-8') as f:
-                text_content = ''.join((str(l) for l in f.read()))
-            print('# 😺dzNodes: Load Text File -> ' + path + ' success.')
-        except Exception as e:
-            print('# 😺dzNodes: Load Text File -> ERROR, ' + path + ', ' + repr(e))
-        return {'ui': {'text': text_content}, 'result': (text_content,)}
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

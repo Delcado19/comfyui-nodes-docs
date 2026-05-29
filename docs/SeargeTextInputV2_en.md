@@ -23,17 +23,6 @@ This node enables the system to collect text input from users, supporting intera
 - Infra type: CPU
 
 # Source code
-```
-class SeargeTextInputV2:
+[View source repository on GitHub](https://github.com/jobunk/SeargeSDXL)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'prompt': ('STRING', {'default': '', 'multiline': True})}}
-    RETURN_TYPES = ('SRG_PROMPT_TEXT',)
-    RETURN_NAMES = ('prompt_text',)
-    FUNCTION = 'get_value'
-    CATEGORY = UI.CATEGORY_UI_PROMPTING
-
-    def get_value(self, prompt):
-        return (prompt,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -32,20 +32,6 @@ This node aims to integrate animation differences into the model by loading and 
 - Infra type: CPU
 
 # Source code
-```
-class AnimateDiffLoraLoader:
+[View source repository on GitHub](https://github.com/ArtVentureX/comfyui-animatediff)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'lora_name': (get_available_loras(),), 'alpha': ('FLOAT', {'default': 1.0, 'min': 0.0, 'max': 10.0, 'step': 0.001})}, 'optional': {'lora_stack': ('MOTION_LORA_STACK',)}}
-    RETURN_TYPES = ('MOTION_LORA_STACK',)
-    CATEGORY = 'Animate Diff'
-    FUNCTION = 'load_lora'
-
-    def load_lora(self, lora_name: str, alpha: float, lora_stack: List=None):
-        if not lora_stack:
-            lora_stack = []
-        lora = load_lora(lora_name)
-        lora_stack.append((lora, alpha))
-        return (lora_stack,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -38,40 +38,6 @@ Perform Boolean operations on two values and output the result*. Supported opera
 - Infra type: CPU
 
 # Source code
-```
-class NumberCalculator:
-    def __init__(self):
-        pass
-    @classmethod
-    def INPUT_TYPES(self):
-        operator_list = ["+", "-", "*", "/", "**", "//", "%" ]
-        return {"required": {
-                "a": (any, {}),
-                "b": (any, {}),
-                "operator": (operator_list,),
-            },}
+[View source repository on GitHub](https://github.com/chflame163/ComfyUI_LayerStyle)
 
-    RETURN_TYPES = ("INT", "FLOAT",)
-    RETURN_NAMES = ("int", "float",)
-    FUNCTION = 'number_calculator_node'
-    CATEGORY = '😺dzNodes/LayerUtility/Data'
-
-    def number_calculator_node(self, a, b, operator):
-        ret_value = 0
-        if operator == "+":
-            ret_value = a + b
-        if operator == "-":
-            ret_value = a - b
-        if operator == "*":
-            ret_value = a * b
-        if operator == "/":
-            ret_value = a / b
-        if operator == "**":
-            ret_value = a ** b
-        if operator == "//":
-            ret_value = a // b
-        if operator == "%":
-            ret_value = a % b
-
-        return (int(ret_value), float(ret_value),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

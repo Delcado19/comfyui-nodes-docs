@@ -47,51 +47,6 @@ CR_StyleBars is a node that generates bar‑style visual patterns for various gr
 - Infra type: CPU
 
 # Source code
-```
-class CR_StyleBars:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        modes = ['color bars', 'sin wave', 'gradient bars']
-        return {'required': {'mode': (modes,), 'width': ('INT', {'default': 512, 'min': 64, 'max': 4096}), 'height': ('INT', {'default': 512, 'min': 64, 'max': 4096}), 'bar_style': (STYLES,), 'orientation': (['vertical', 'horizontal'],), 'bar_frequency': ('INT', {'default': 5, 'min': 1, 'max': 200, 'step': 1})}}
-    RETURN_TYPES = ('IMAGE', 'STRING')
-    RETURN_NAMES = ('IMAGE', 'show_help')
-    FUNCTION = 'draw'
-    CATEGORY = icons.get('Comfyroll/Graphics/Pattern')
-
-    def draw(self, mode, width, height, bar_style, orientation, bar_frequency):
-        if orientation == 'vertical':
-            x = np.linspace(0, 1, width)
-            y = np.zeros((height, width))
-        elif orientation == 'horizontal':
-            x = np.zeros((height, width))
-            y = np.linspace(0, 1, height)
-        (X, Y) = np.meshgrid(x, y)
-        if mode == 'color bars':
-            bar_width = 1 / bar_frequency
-            if orientation == 'vertical':
-                colors = X // bar_width % 2
-            elif orientation == 'horizontal':
-                colors = Y // bar_width % 2
-        elif mode == 'sin wave':
-            if orientation == 'vertical':
-                colors = np.sin(2 * np.pi * bar_frequency * X)
-            elif orientation == 'horizontal':
-                colors = np.sin(2 * np.pi * bar_frequency * Y)
-        elif mode == 'gradient bars':
-            if orientation == 'vertical':
-                colors = X * bar_frequency * 2 % 2
-            elif orientation == 'horizontal':
-                colors = Y * bar_frequency * 2 % 2
-        (fig, ax) = plt.subplots(figsize=(width / 100, height / 100))
-        ax.imshow(colors, cmap=bar_style, aspect='auto')
-        plt.axis('off')
-        plt.tight_layout(pad=0, w_pad=0, h_pad=0)
-        plt.autoscale(tight=True)
-        img_buf = io.BytesIO()
-        plt.savefig(img_buf, format='png')
-        img = Image.open(img_buf)
-        image_out = pil2tensor(img.convert('RGB'))
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Pattern-Nodes#cr-style-bars'
-        return (image_out, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

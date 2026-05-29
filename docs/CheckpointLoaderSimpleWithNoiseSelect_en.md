@@ -55,32 +55,6 @@ This node loads model checkpoints, focusing on noise selection, allowing finer c
     - [ToBasicPipe](../../ComfyUI-Impact-Pack/Nodes/ToBasicPipe.md) -->
 
 ## Source code
-```python
-class CheckpointLoaderSimpleWithNoiseSelect:
-    @classmethod
-    def INPUT_TYPES(s):
-        return {
-            "required": {
-                "ckpt_name": (folder_paths.get_filename_list("checkpoints"), ),
-                "beta_schedule": (BetaSchedules.ALIAS_LIST, {"default": BetaSchedules.USE_EXISTING}, )
-            },
-            "optional": {
-                "use_custom_scale_factor": ("BOOLEAN", {"default": False}),
-                "scale_factor": ("FLOAT", {"default": 0.18215, "min": 0.0, "max": 1.0, "step": 0.00001})
-            }
-        }
-    RETURN_TYPES = ("MODEL", "CLIP", "VAE")
-    FUNCTION = "load_checkpoint"
+[View source repository on GitHub](https://github.com/Kosinkadink/ComfyUI-AnimateDiff-Evolved)
 
-    CATEGORY = "Animate Diff 🎭🅐🅓/extras"
-
-    def load_checkpoint(self, ckpt_name, beta_schedule, output_vae=True, output_clip=True, use_custom_scale_factor=False, scale_factor=0.18215):
-        ckpt_path = folder_paths.get_full_path("checkpoints", ckpt_name)
-        out = load_checkpoint_guess_config(ckpt_path, output_vae=True, output_clip=True, embedding_directory=folder_paths.get_folder_paths("embeddings"))
-        # register chosen beta schedule on model - convert to beta_schedule name recognized by ComfyUI
-        new_model_sampling = BetaSchedules.to_model_sampling(beta_schedule, out[0])
-        if new_model_sampling is not None:
-            out[0].model.model_sampling = new_model_sampling
-        if use_custom_scale_factor:
-            out[0].model.latent_format.scale_factor = scale_factor
-        return out
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

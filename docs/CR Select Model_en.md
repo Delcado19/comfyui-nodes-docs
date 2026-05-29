@@ -59,35 +59,6 @@ CR_SelectModel is a node for selecting and loading models based on user-defined 
 - Infra type: CPU
 
 # Source code
-```
-class CR_SelectModel:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        checkpoint_files = ['None'] + folder_paths.get_filename_list('checkpoints')
-        return {'required': {'ckpt_name1': (checkpoint_files,), 'ckpt_name2': (checkpoint_files,), 'ckpt_name3': (checkpoint_files,), 'ckpt_name4': (checkpoint_files,), 'ckpt_name5': (checkpoint_files,), 'select_model': ('INT', {'default': 1, 'min': 1, 'max': 5})}}
-    RETURN_TYPES = ('MODEL', 'CLIP', 'VAE', 'STRING', 'STRING')
-    RETURN_NAMES = ('MODEL', 'CLIP', 'VAE', 'ckpt_name', 'show_help')
-    FUNCTION = 'select_model'
-    CATEGORY = icons.get('Comfyroll/Essential/Core')
-
-    def select_model(self, ckpt_name1, ckpt_name2, ckpt_name3, ckpt_name4, ckpt_name5, select_model):
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Core-Nodes#cr-select-model'
-        model_list = list()
-        if select_model == 1:
-            model_name = ckpt_name1
-        elif select_model == 2:
-            model_name = ckpt_name2
-        elif select_model == 3:
-            model_name = ckpt_name3
-        elif select_model == 4:
-            model_name = ckpt_name4
-        elif select_model == 5:
-            model_name = ckpt_name5
-        if model_name == 'None':
-            print(f'CR Select Model: No model selected')
-            return ()
-        ckpt_path = folder_paths.get_full_path('checkpoints', model_name)
-        (model, clip, vae, clipvision) = comfy.sd.load_checkpoint_guess_config(ckpt_path, output_vae=True, output_clip=True, embedding_directory=folder_paths.get_folder_paths('embeddings'))
-        return (model, clip, vae, model_name, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

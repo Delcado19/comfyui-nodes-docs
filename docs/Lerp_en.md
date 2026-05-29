@@ -35,18 +35,6 @@ The Lerp node performs linear interpolation between two values, providing a smoo
 - Infra type: CPU
 
 # Source code
-```
-class Lerp:
+[View source repository on GitHub](https://github.com/FizzleDorf/ComfyUI_FizzNodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'num_Images': ('FLOAT', {'default': 1.0, 'min': 0.0, 'max': 9999.0, 'step': 1.0}), 'strength': ('FLOAT', {'default': 1.0, 'min': 0.0, 'max': 10.0, 'step': 0.01}), 'current_frame': ('INT', {'default': 1.0, 'min': 0.0, 'max': 9999, 'step': 1.0})}}
-    RETURN_TYPES = ('FLOAT', 'INT')
-    FUNCTION = 'lerp'
-    CATEGORY = 'FizzNodes 📅🅕🅝/WaveNodes'
-
-    def lerp(self, num_Images, strength, current_frame):
-        step = strength / num_Images
-        output = strength - step * current_frame
-        return (output, int(output))
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -38,31 +38,7 @@ The ToIPAdapterPipe node aims to create a pipeline integrating various component
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class ToIPAdapterPipe:
-    @classmethod
-    def INPUT_TYPES(s):
-        return {
-            "required": {
-                "ipadapter": ("IPADAPTER", ),
-                "model": ("MODEL",),
-            },
-            "optional": {
-                "clip_vision": ("CLIP_VISION",),
-                "insightface": ("INSIGHTFACE",),
-            }
-        }
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    RETURN_TYPES = ("IPADAPTER_PIPE",)
-    FUNCTION = "doit"
-
-    CATEGORY = "InspirePack/Util"
-
-    def doit(self, ipadapter, model, clip_vision, insightface=None):
-        pipe = ipadapter, model, clip_vision, insightface, lambda x: x
-
-        return (pipe,)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

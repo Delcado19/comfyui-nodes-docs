@@ -23,17 +23,6 @@ This node aims to load and prepare a GroundingDino model for image segmentation 
 - Infra type: GPU
 
 # Source code
-```
-class GroundingDinoModelLoader:
+[View source repository on GitHub](https://github.com/storyicon/comfyui_segment_anything)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'model_name': (list_groundingdino_model(),)}}
-    CATEGORY = 'segment_anything'
-    FUNCTION = 'main'
-    RETURN_TYPES = ('GROUNDING_DINO_MODEL',)
-
-    def main(self, model_name):
-        dino_model = load_groundingdino_model(model_name)
-        return (dino_model,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

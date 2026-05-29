@@ -29,31 +29,7 @@ The ConvertImg node is designed for explicit image format conversion, enabling s
 - Infra type: `GPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class ConvertImg:
-    """ An explicit conversion, instead of using workarounds when using certain custom nodes. """
-    options_map = {
-        "RGBA": 4,
-        "RGB": 3,
-        "GRAY": 1,
-    }
-    options = list(options_map.keys())
+[View source repository on GitHub](https://github.com/bmad4ever/ComfyUI-Bmad-Custom-Nodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {"required": {
-            "image": ("IMAGE",),
-            "to": (s.options, {"default": s.options[1]})
-        }}
-
-    RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "convert"
-    CATEGORY = "Bmad/CV"
-
-    def convert(self, image, to):
-        image = tensor2opencv(image, self.options_map[to])
-        return (opencv2tensor(image),)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

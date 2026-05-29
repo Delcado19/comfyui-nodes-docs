@@ -27,17 +27,6 @@ This node is designed to merge two strings into a single string. It serves as a 
 - Infra type: CPU
 
 # Source code
-```
-class ConcatStringSingle:
+[View source repository on GitHub](https://github.com/FizzleDorf/ComfyUI_FizzNodes)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'string_a': ('STRING', {'forceInput': True, 'default': '', 'multiline': True}), 'string_b': ('STRING', {'forceInput': True, 'default': '', 'multiline': True})}}
-    RETURN_TYPES = ('STRING',)
-    FUNCTION = 'concat'
-    CATEGORY = 'FizzNodes 📅🅕🅝/HelperNodes'
-
-    def concat(self, string_a, string_b):
-        c = string_a + string_b
-        return (c,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -60,20 +60,6 @@ The MediaPipeFaceMeshDetectorProvider node is designed to detect and segment fac
 - Infra type: CPU
 
 # Source code
-```
-class MediaPipeFaceMeshDetectorProvider:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Inspire-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        bool_true_widget = ('BOOLEAN', {'default': True, 'label_on': 'enable', 'label_off': 'disable'})
-        bool_false_widget = ('BOOLEAN', {'default': False, 'label_on': 'enable', 'label_off': 'disable'})
-        return {'required': {'max_faces': ('INT', {'default': 10, 'min': 1, 'max': 50, 'step': 1}), 'face': bool_true_widget, 'mouth': bool_false_widget, 'left_eyebrow': bool_false_widget, 'left_eye': bool_false_widget, 'left_pupil': bool_false_widget, 'right_eyebrow': bool_false_widget, 'right_eye': bool_false_widget, 'right_pupil': bool_false_widget}}
-    RETURN_TYPES = ('BBOX_DETECTOR', 'SEGM_DETECTOR')
-    FUNCTION = 'doit'
-    CATEGORY = 'InspirePack/Detector'
-
-    def doit(self, max_faces, face, mouth, left_eyebrow, left_eye, left_pupil, right_eyebrow, right_eye, right_pupil):
-        bbox_detector = MediaPipeFaceMeshDetector(face, mouth, left_eyebrow, left_eye, left_pupil, right_eyebrow, right_eye, right_pupil, max_faces, is_segm=False)
-        segm_detector = MediaPipeFaceMeshDetector(face, mouth, left_eyebrow, left_eye, left_pupil, right_eyebrow, right_eye, right_pupil, max_faces, is_segm=True)
-        return (bbox_detector, segm_detector)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

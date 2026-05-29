@@ -51,51 +51,6 @@ The ImageCropByAlpha node is designed to intelligently crop images based on the 
 - Infra type: CPU
 
 # Source code
-```
-class ImageCropByAlpha:
+[View source repository on GitHub](https://github.com/shadowcz007/comfyui-mixlab-nodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'image': ('IMAGE',), 'RGBA': ('RGBA',)}}
-    RETURN_TYPES = ('IMAGE', 'MASK', 'MASK', 'INT', 'INT', 'INT', 'INT')
-    RETURN_NAMES = ('IMAGE', 'MASK', 'AREA_MASK', 'x', 'y', 'width', 'height')
-    FUNCTION = 'run'
-    CATEGORY = '♾️Mixlab/Image'
-    INPUT_IS_LIST = True
-    OUTPUT_IS_LIST = (True, True, True, True, True, True, True)
-
-    def run(self, image, RGBA):
-        image = image[0]
-        RGBA = RGBA[0]
-        bf_im = tensor2pil(image)
-        im = tensor2pil(RGBA)
-        im = im.convert('RGBA')
-        (red, green, blue, alpha) = im.split()
-        im = naive_cutout(bf_im, alpha)
-        (x, y, w, h) = get_not_transparent_area(im)
-        x = min(x, image.shape[2] - 1)
-        y = min(y, image.shape[1] - 1)
-        to_x = w + x
-        to_y = h + y
-        x_1 = x
-        y_1 = y
-        width_1 = w
-        height_1 = h
-        img = image[:, y:to_y, x:to_x, :]
-        ori = RGBA[:, y:to_y, x:to_x, :]
-        ori = tensor2pil(ori)
-        new_image = Image.new('RGBA', ori.size)
-        pixel_data = ori.load()
-        new_pixel_data = new_image.load()
-        for y in range(ori.size[1]):
-            for x in range(ori.size[0]):
-                (r, g, b, a) = pixel_data[x, y]
-                if a != 0:
-                    new_pixel_data[x, y] = (255, 255, 255, 255)
-                else:
-                    new_pixel_data[x, y] = (0, 0, 0, 0)
-        ori = new_image.convert('L')
-        ori = pil2tensor(ori)
-        b_image = AreaToMask_run(RGBA)
-        return ([img], [ori], [b_image], [x_1], [y_1], [width_1], [height_1])
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

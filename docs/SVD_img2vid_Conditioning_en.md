@@ -64,27 +64,6 @@ The SVD_img2vid_Conditioning node is designed to process and condition video fra
 - Infra type: GPU
 
 # Source code
-```
-class SVD_img2vid_Conditioning:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'clip_vision': ('CLIP_VISION',), 'init_image': ('IMAGE',), 'vae': ('VAE',), 'width': ('INT', {'default': 1024, 'min': 16, 'max': nodes.MAX_RESOLUTION, 'step': 8}), 'height': ('INT', {'default': 576, 'min': 16, 'max': nodes.MAX_RESOLUTION, 'step': 8}), 'video_frames': ('INT', {'default': 14, 'min': 1, 'max': 4096}), 'motion_bucket_id': ('INT', {'default': 127, 'min': 1, 'max': 1023}), 'fps': ('INT', {'default': 6, 'min': 1, 'max': 1024}), 'augmentation_level': ('FLOAT', {'default': 0.0, 'min': 0.0, 'max': 10.0, 'step': 0.01})}}
-    RETURN_TYPES = ('CONDITIONING', 'CONDITIONING', 'LATENT')
-    RETURN_NAMES = ('positive', 'negative', 'latent')
-    FUNCTION = 'encode'
-    CATEGORY = 'conditioning/video_models'
-
-    def encode(self, clip_vision, init_image, vae, width, height, video_frames, motion_bucket_id, fps, augmentation_level):
-        output = clip_vision.encode_image(init_image)
-        pooled = output.image_embeds.unsqueeze(0)
-        pixels = comfy.utils.common_upscale(init_image.movedim(-1, 1), width, height, 'bilinear', 'center').movedim(1, -1)
-        encode_pixels = pixels[:, :, :, :3]
-        if augmentation_level > 0:
-            encode_pixels += torch.randn_like(pixels) * augmentation_level
-        t = vae.encode(encode_pixels)
-        positive = [[pooled, {'motion_bucket_id': motion_bucket_id, 'fps': fps, 'augmentation_level': augmentation_level, 'concat_latent_image': t}]]
-        negative = [[torch.zeros_like(pooled), {'motion_bucket_id': motion_bucket_id, 'fps': fps, 'augmentation_level': augmentation_level, 'concat_latent_image': torch.zeros_like(t)}]]
-        latent = torch.zeros([video_frames, 4, height // 8, width // 8])
-        return (positive, negative, {'samples': latent})
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

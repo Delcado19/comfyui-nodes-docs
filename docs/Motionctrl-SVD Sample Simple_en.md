@@ -47,21 +47,6 @@ The MotionctrlSVDSampleSimple node is designed to process and generate motion se
 - Infra type: GPU
 
 # Source code
-```
-class MotionctrlSVDSampleSimple:
+[View source repository on GitHub](https://github.com/chaojie/ComfyUI-MotionCtrl-SVD)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'model': ('MOTIONCTRLSVD',), 'camera': ('STRING', {'multiline': True, 'default': '[[1,0,0,0,0,1,0,0,0,0,1,0.2]]'}), 'image': ('IMAGE',), 'resize_mode': (RESIZE_MODE,), 'seed': ('INT', {'default': 1234}), 'fps_id': ('INT', {'default': 6, 'min': 5, 'max': 30}), 'frame_length': ('INT', {'default': 14})}}
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'run_inference'
-    CATEGORY = 'motionctrl'
-
-    def run_inference(self, model, camera, image, resize_mode, seed, fps_id, frame_length):
-        global device
-        RT = process_camera(camera, frame_length).reshape(-1, 12)
-        image = 255.0 * image[0].cpu().numpy()
-        image = Image.fromarray(np.clip(image, 0, 255).astype(np.uint8))
-        image = process_input_image(image, resize_mode)
-        return motionctrl_sample(model=model, image=image, RT=RT, num_frames=frame_length, fps_id=fps_id, decoding_t=1, seed=seed, sample_num=1, device=device)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

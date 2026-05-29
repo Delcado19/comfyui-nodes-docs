@@ -36,26 +36,6 @@ The WAS_Image_Stitch node is designed to seamlessly combine two images according
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Image_Stitch:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'image_a': ('IMAGE',), 'image_b': ('IMAGE',), 'stitch': (['top', 'left', 'bottom', 'right'],), 'feathering': ('INT', {'default': 50, 'min': 0, 'max': 2048, 'step': 1})}}
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'image_stitching'
-    CATEGORY = 'WAS Suite/Image/Transform'
-
-    def image_stitching(self, image_a, image_b, stitch='right', feathering=50):
-        valid_stitches = ['top', 'left', 'bottom', 'right']
-        if stitch not in valid_stitches:
-            cstr(f"The stitch mode `{stitch}` is not valid. Valid sitch modes are {', '.join(valid_stitches)}").error.print()
-        if feathering > 2048:
-            cstr(f'The stitch feathering of `{feathering}` is too high. Please choose a value between `0` and `2048`').error.print()
-        WTools = WAS_Tools_Class()
-        stitched_image = WTools.stitch_image(tensor2pil(image_a), tensor2pil(image_b), stitch, feathering)
-        return (pil2tensor(stitched_image),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

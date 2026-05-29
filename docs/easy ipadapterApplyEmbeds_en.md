@@ -60,27 +60,6 @@ This node facilitates applying positional embeddings to the model, enhancing its
 - Infra type: CPU
 
 # Source code
-```
-class ipadapterApplyEmbeds(ipadapter):
+[View source repository on GitHub](https://github.com/yolain/ComfyUI-Easy-Use)
 
-    def __init__(self):
-        super().__init__()
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        ipa_cls = cls()
-        weight_types = ipa_cls.weight_types
-        return {'required': {'model': ('MODEL',), 'ipadapter': ('IPADAPTER',), 'pos_embed': ('EMBEDS',), 'weight': ('FLOAT', {'default': 1.0, 'min': -1, 'max': 3, 'step': 0.05}), 'weight_type': (weight_types,), 'start_at': ('FLOAT', {'default': 0.0, 'min': 0.0, 'max': 1.0, 'step': 0.001}), 'end_at': ('FLOAT', {'default': 1.0, 'min': 0.0, 'max': 1.0, 'step': 0.001}), 'embeds_scaling': (['V only', 'K+V', 'K+V w/ C penalty', 'K+mean(V) w/ C penalty'],)}, 'optional': {'neg_embed': ('EMBEDS',), 'attn_mask': ('MASK',)}}
-    RETURN_TYPES = ('MODEL', 'IPADAPTER')
-    RETURN_NAMES = ('model', 'ipadapter')
-    CATEGORY = 'EasyUse/Adapter'
-    FUNCTION = 'apply'
-
-    def apply(self, model, ipadapter, pos_embed, weight, weight_type, start_at, end_at, embeds_scaling, attn_mask=None, neg_embed=None):
-        if 'IPAdapterEmbeds' not in ALL_NODE_CLASS_MAPPINGS:
-            self.error()
-        cls = ALL_NODE_CLASS_MAPPINGS['IPAdapterEmbeds']
-        (model,) = cls().apply_ipadapter(model, ipadapter, pos_embed, weight, weight_type, start_at, end_at, neg_embed=neg_embed, attn_mask=attn_mask, clip_vision=None, embeds_scaling=embeds_scaling)
-        return (model, ipadapter)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

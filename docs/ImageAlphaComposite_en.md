@@ -25,38 +25,7 @@ The ImageAlphaComposite node blends two images together based on their alpha cha
 - Infra type: `GPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class UtilImageAlphaComposite:
-    @classmethod
-    def INPUT_TYPES(s):
-        return {
-            "required": {
-                "image_1": ("IMAGE",),
-                "image_2": ("IMAGE",),
-            }
-        }
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    RETURN_TYPES = ("IMAGE",)
-    CATEGORY = "Art Venture/Utils"
-    FUNCTION = "image_alpha_composite"
-
-    def image_alpha_composite(self, image_1: torch.Tensor, image_2: torch.Tensor):
-        if image_1.shape[0] != image_2.shape[0]:
-            raise Exception("Images must have the same amount")
-
-        if image_1.shape[1] != image_2.shape[1] or image_1.shape[2] != image_2.shape[2]:
-            raise Exception("Images must have the same size")
-
-        composited_images = []
-        for i, im1 in enumerate(image_1):
-            composited = Image.alpha_composite(
-                tensor2pil(im1).convert("RGBA"),
-                tensor2pil(image_2[i]).convert("RGBA"),
-            )
-            composited_images.append(pil2tensor(composited))
-
-        return (torch.cat(composited_images, dim=0),)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

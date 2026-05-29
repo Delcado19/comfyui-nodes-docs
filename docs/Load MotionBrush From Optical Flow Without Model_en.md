@@ -23,16 +23,6 @@ This node helps interpret optical flow data to generate motion brush effects, wh
 - Infra type: CPU
 
 # Source code
-```
-class LoadMotionBrushFromOpticalFlowWithoutModel:
+[View source repository on GitHub](https://github.com/chaojie/ComfyUI-DragNUWA)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'optical_flow': ('OPTICAL_FLOW',)}}
-    RETURN_TYPES = ('MotionBrush',)
-    FUNCTION = 'run_inference'
-    CATEGORY = 'DragNUWA'
-
-    def run_inference(self, optical_flow):
-        return (optical_flow,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

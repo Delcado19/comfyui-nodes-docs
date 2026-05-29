@@ -35,35 +35,6 @@ The `sam_image_mask` method of the WAS_SAM_Image_Mask node aims to apply a seman
 - Infra type: GPU
 
 # Source code
-```
-class WAS_SAM_Image_Mask:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(self):
-        return {'required': {'sam_model': ('SAM_MODEL',), 'sam_parameters': ('SAM_PARAMETERS',), 'image': ('IMAGE',)}}
-    RETURN_TYPES = ('IMAGE', 'MASK')
-    FUNCTION = 'sam_image_mask'
-    CATEGORY = 'WAS Suite/Image/Masking'
-
-    def sam_image_mask(self, sam_model, sam_parameters, image):
-        image = tensor2sam(image)
-        points = sam_parameters['points']
-        labels = sam_parameters['labels']
-        from segment_anything import SamPredictor
-        device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-        sam_model.to(device=device)
-        predictor = SamPredictor(sam_model)
-        predictor.set_image(image)
-        (masks, scores, logits) = predictor.predict(point_coords=points, point_labels=labels, multimask_output=False)
-        sam_model.to(device='cpu')
-        mask = np.expand_dims(masks, axis=-1)
-        image = np.repeat(mask, 3, axis=-1)
-        image = torch.from_numpy(image)
-        mask = torch.from_numpy(mask)
-        mask = mask.squeeze(2)
-        mask = mask.squeeze().to(torch.float32)
-        return (image, mask)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

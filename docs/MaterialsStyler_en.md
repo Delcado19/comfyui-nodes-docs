@@ -41,8 +41,7 @@ The MaterialsStyler node can dynamically apply styles to text prompts based on a
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-# Could not find class definition, unable to automatically detect source code
-```
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
+
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

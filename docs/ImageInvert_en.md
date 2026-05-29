@@ -23,17 +23,6 @@ The ImageInvert node is designed to perform a fundamental image processing opera
 - Infra type: CPU
 
 # Source code
-```
-class ImageInvert:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'image': ('IMAGE',)}}
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'invert'
-    CATEGORY = 'image'
-
-    def invert(self, image):
-        s = 1.0 - image
-        return (s,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

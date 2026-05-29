@@ -75,27 +75,6 @@ This node simplifies the iterative mixing and sampling process, making it possib
 - Infra type: CPU
 
 # Source code
-```
-class IterativeMixingKSamplerSimple:
-    """
-    A simplified version of IterativeMixingKSamplerAdv, this node
-    does the noising (unsampling) and de-noising (sampling) all within
-    one node with easy settings.
-    """
+[View source repository on GitHub](https://github.com/ttulttul/ComfyUI-Iterative-Mixer)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'model': ('MODEL',), 'positive': ('CONDITIONING',), 'negative': ('CONDITIONING',), 'latent_image': ('LATENT',), 'seed': ('INT', {'default': 0, 'min': 0, 'max': 18446744073709551615}), 'steps': ('INT', {'default': 40, 'min': 0, 'max': 10000}), 'cfg': ('FLOAT', {'default': 8.0, 'min': 0.0, 'max': 100.0, 'step': 0.1, 'round': 0.01}), 'sampler_name': (comfy.samplers.KSampler.SAMPLERS,), 'scheduler': (comfy.samplers.KSampler.SCHEDULERS,), 'denoise': ('FLOAT', {'default': 1.0, 'min': 0.0, 'max': 1.0, 'step': 0.01}), 'alpha_1': ('FLOAT', {'default': 2.4, 'min': 0.05, 'max': 100.0, 'step': 0.05}), 'blending_schedule': (list(BLENDING_SCHEDULE_MAP.keys()), {'default': 'cosine'}), 'blending_function': (list(BLENDING_FUNCTION_MAP.keys()), {'default': 'addition'}), 'normalize_on_mean': ('BOOLEAN', {'default': False})}}
-    RETURN_TYPES = ('LATENT',)
-    FUNCTION = 'sample'
-    CATEGORY = 'test'
-
-    def __init__(self):
-        self.batch_unsampler = BatchUnsampler()
-
-    def sample(self, model, positive, negative, latent_image, seed, steps, cfg, sampler_name, scheduler, denoise, alpha_1, blending_schedule, blending_function, normalize_on_mean):
-        (z_primes,) = self.batch_unsampler.unsampler(model, sampler_name, scheduler, steps, 0, steps, latent_image, normalize=normalize_on_mean)
-        sampler = IterativeMixingKSampler()
-        (z_out, _, _, _) = sampler(model, seed, cfg, sampler_name, scheduler, positive, negative, z_primes, denoise=denoise, alpha_1=alpha_1, reverse_input_batch=True, blending_schedule=blending_schedule, blending_function=blending_function, stop_blending_at_pct=1.0)
-        return ({'samples': z_out['samples'][-1:]},)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

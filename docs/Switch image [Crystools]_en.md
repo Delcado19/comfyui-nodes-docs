@@ -33,35 +33,7 @@
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class CSwitchBooleanImage:
-    def __init__(self):
-        pass
+[View source repository on GitHub](https://github.com/crystian/ComfyUI-Crystools)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {
-            "required": {
-                "on_true": ("IMAGE",),
-                "on_false": ("IMAGE",),
-                "boolean": BOOLEAN,
-            }
-        }
-
-    CATEGORY = CATEGORY.MAIN.value + CATEGORY.SWITCH.value
-    RETURN_TYPES = ("IMAGE",)
-    RETURN_NAMES = ("image",)
-
-    FUNCTION = "execute"
-
-    def execute(self, on_true, on_false, boolean=True):
-        logger.debug("Image switch: " + str(boolean))
-
-        if boolean:
-            return (on_true,)
-        else:
-            return (on_false,)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

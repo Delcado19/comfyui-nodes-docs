@@ -42,37 +42,7 @@ The Evaluate Strings node dynamically evaluates Python expressions containing st
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-    class TSC_EvaluateStrs:
-        @classmethod
-        def INPUT_TYPES(cls):
-            return {"required": {
-                "python_expression": ("STRING", {"default": "a + b + c", "multiline": False}),
-                "print_to_console": (["False", "True"],)},
-                "optional": {
-                    "a": ("STRING", {"default": "Hello", "multiline": False}),
-                    "b": ("STRING", {"default": " World", "multiline": False}),
-                    "c": ("STRING", {"default": "!", "multiline": False}), }
-            }
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-        RETURN_TYPES = ("STRING",)
-        OUTPUT_NODE = True
-        FUNCTION = "evaluate"
-        CATEGORY = "Efficiency Nodes/Simple Eval"
-
-        def evaluate(self, python_expression, print_to_console, a="", b="", c=""):
-            variables = {'a': a, 'b': b, 'c': c}  # Define the variables for the expression
-
-            functions = simpleeval.DEFAULT_FUNCTIONS.copy()
-            functions.update({"len": len})  # Add the functions for the expression
-
-            result = simpleeval.simple_eval(python_expression, names=variables, functions=functions)
-            if print_to_console == "True":
-                print(f"\n{error('Evaluate Strings:')}")
-                print(f"\033[90ma = {a} \nb = {b} \nc = {c}\033[0m")
-                print(f"{python_expression} = \033[92m" + str(result) + "\033[0m")
-            return (str(result),)  # Convert result to a string before returning
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -60,30 +60,6 @@ The WAS_Dictionary_New node efficiently creates and manages dictionaries. It fac
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Dictionary_New:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'key_1': ('STRING', {'default': '', 'multiline': False}), 'value_1': ('STRING', {'default': '', 'multiline': False})}, 'optional': {'key_2': ('STRING', {'default': '', 'multiline': False}), 'value_2': ('STRING', {'default': '', 'multiline': False}), 'key_3': ('STRING', {'default': '', 'multiline': False}), 'value_3': ('STRING', {'default': '', 'multiline': False}), 'key_4': ('STRING', {'default': '', 'multiline': False}), 'value_4': ('STRING', {'default': '', 'multiline': False}), 'key_5': ('STRING', {'default': '', 'multiline': False}), 'value_5': ('STRING', {'default': '', 'multiline': False})}}
-    RETURN_TYPES = ('DICT',)
-    FUNCTION = 'dictionary_new'
-    CATEGORY = 'WAS Suite/Text'
-
-    def append_to_dictionary(self, dictionary, key, value):
-        if key is not None and key != '':
-            dictionary[key] = value
-        return dictionary
-
-    def dictionary_new(self, key_1, value_1, key_2, value_2, key_3, value_3, key_4, value_4, key_5, value_5):
-        dictionary = {}
-        dictionary = self.append_to_dictionary(dictionary, key_1, value_1)
-        dictionary = self.append_to_dictionary(dictionary, key_2, value_2)
-        dictionary = self.append_to_dictionary(dictionary, key_3, value_3)
-        dictionary = self.append_to_dictionary(dictionary, key_4, value_4)
-        dictionary = self.append_to_dictionary(dictionary, key_5, value_5)
-        return (dictionary,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

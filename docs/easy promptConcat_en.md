@@ -32,17 +32,6 @@ This node facilitates text input concatenation, offering a simple method to comb
 - Infra type: CPU
 
 # Source code
-```
-class promptConcat:
+[View source repository on GitHub](https://github.com/yolain/ComfyUI-Easy-Use)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {}, 'optional': {'prompt1': ('STRING', {'multiline': False, 'default': '', 'forceInput': True}), 'prompt2': ('STRING', {'multiline': False, 'default': '', 'forceInput': True}), 'separator': ('STRING', {'multiline': False, 'default': ''})}}
-    RETURN_TYPES = ('STRING',)
-    RETURN_NAMES = ('prompt',)
-    FUNCTION = 'concat_text'
-    CATEGORY = 'EasyUse/Prompt'
-
-    def concat_text(self, prompt1='', prompt2='', separator=''):
-        return (prompt1 + separator + prompt2,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

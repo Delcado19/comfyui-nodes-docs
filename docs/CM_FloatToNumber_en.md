@@ -23,16 +23,6 @@ The FloatToNumber node is designed to convert floating-point values into a more 
 - Infra type: CPU
 
 # Source code
-```
-class FloatToNumber:
+[View source repository on GitHub](https://github.com/evanspearman/ComfyMath)
 
-    @classmethod
-    def INPUT_TYPES(cls) -> Mapping[str, Any]:
-        return {'required': {'a': ('FLOAT', {'default': 0.0})}}
-    RETURN_TYPES = ('NUMBER',)
-    FUNCTION = 'op'
-    CATEGORY = 'math/conversion'
-
-    def op(self, a: float) -> tuple[number]:
-        return (a,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

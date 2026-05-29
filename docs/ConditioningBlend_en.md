@@ -40,26 +40,6 @@ The WAS_ConditioningBlend node is designed to seamlessly blend two conditioning 
 - Infra type: CPU
 
 # Source code
-```
-class WAS_ConditioningBlend:
+[View source repository on GitHub](https://github.com/WASasquatch/WAS_Extras)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'conditioning_a': ('CONDITIONING',), 'conditioning_b': ('CONDITIONING',), 'blending_mode': (list(blending_modes.keys()),), 'blending_strength': ('FLOAT', {'default': 0.5, 'min': -10.0, 'max': 10.0, 'step': 0.001}), 'seed': ('INT', {'default': 0, 'min': 0, 'max': 18446744073709551615})}}
-    RETURN_TYPES = ('CONDITIONING',)
-    RETURN_NAMES = ('conditioning',)
-    FUNCTION = 'combine'
-    CATEGORY = 'conditioning'
-
-    def combine(self, conditioning_a, conditioning_b, blending_mode, blending_strength, seed):
-        if seed > 0:
-            torch.manual_seed(seed)
-        a = conditioning_a[0][0].clone()
-        b = conditioning_b[0][0].clone()
-        pa = conditioning_a[0][1]['pooled_output'].clone()
-        pb = conditioning_b[0][1]['pooled_output'].clone()
-        cond = normalize(blending_modes[blending_mode](a, b, 1 - blending_strength))
-        pooled = normalize(blending_modes[blending_mode](pa, pb, 1 - blending_strength))
-        conditioning = [[cond, {'pooled_output': pooled}]]
-        return (conditioning,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

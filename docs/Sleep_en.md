@@ -33,29 +33,7 @@ The Sleep node introduces a pause of a specified duration in the workflow. It al
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class Sleep:
-    @classmethod
-    def INPUT_TYPES(s):
-        return {
-            "required": {
-                "input": (any, {}),
-                "minutes": ("INT", {"default": 0, "min": 0, "max": 1439}),
-                "seconds": ("FLOAT", {"default": 0.0, "min": 0.0, "max": 59.99, "step": 0.01}),
-            },
-        }
-    RETURN_TYPES = (any,)
-    FUNCTION = "sleepdelay"
-    CATEGORY = "KJNodes/misc"
-    DESCRIPTION = """
-Delays the execution for the input amount of time.
-"""
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    def sleepdelay(self, input, minutes, seconds):
-        total_seconds = minutes * 60 + seconds
-        time.sleep(total_seconds)
-        return input,
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

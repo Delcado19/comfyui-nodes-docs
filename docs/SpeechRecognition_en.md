@@ -27,19 +27,6 @@ The speech recognition node converts audio input to text. It plays a key role in
 - Infra type: CPU
 
 # Source code
-```
-class SpeechRecognition:
+[View source repository on GitHub](https://github.com/shadowcz007/comfyui-mixlab-nodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'upload': ('AUDIOINPUTMIX',)}, 'optional': {'start_by': ('INT', {'default': 0, 'min': 0, 'max': 2048, 'step': 1, 'display': 'number'})}}
-    RETURN_TYPES = ('STRING',)
-    RETURN_NAMES = ('prompt',)
-    FUNCTION = 'run'
-    CATEGORY = '♾️Mixlab/Audio'
-    INPUT_IS_LIST = False
-    OUTPUT_IS_LIST = (False,)
-
-    def run(self, upload, start_by):
-        return {'ui': {'start_by': [start_by]}, 'result': (upload,)}
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

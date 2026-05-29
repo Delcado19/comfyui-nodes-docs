@@ -68,28 +68,6 @@ These nodes encapsulate management and application of prompt schedules and model
 - Infra type: CPU
 
 # Source code
-```
-class PromptControlSimple:
+[View source repository on GitHub](https://github.com/asagi4/comfyui-prompt-control)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'model': ('MODEL',), 'clip': ('CLIP',), 'positive': ('STRING', {'multiline': True}), 'negative': ('STRING', {'multiline': True})}, 'optional': {'tags': ('STRING', {'default': ''}), 'start': ('FLOAT', {'min': 0.0, 'max': 1.0, 'step': 0.1, 'default': 0.0}), 'end': ('FLOAT', {'min': 0.0, 'max': 1.0, 'step': 0.1, 'default': 1.0})}}
-    RETURN_TYPES = ('MODEL', 'CONDITIONING', 'CONDITIONING', 'MODEL', 'CONDITIONING', 'CONDITIONING')
-    RETURN_NAMES = ('model', 'positive', 'negative', 'model_filtered', 'pos_filtered', 'neg_filtered')
-    CATEGORY = 'promptcontrol'
-    FUNCTION = 'apply'
-
-    def apply(self, model, clip, positive, negative, tags='', start=0.0, end=1.0):
-        lora_cache = {}
-        cond_cache = {}
-        pos_sched = parse_prompt_schedules(positive)
-        pos_cond = pos_filtered = control_to_clip_common(self, clip, pos_sched, lora_cache, cond_cache)
-        neg_sched = parse_prompt_schedules(negative)
-        neg_cond = neg_filtered = control_to_clip_common(self, clip, neg_sched, lora_cache, cond_cache)
-        new_model = model_filtered = schedule_lora_common(model, pos_sched, lora_cache)
-        if [tags.strip(), start, end] != ['', 0.0, 1.0]:
-            pos_filtered = control_to_clip_common(self, clip, pos_sched.with_filters(tags, start, end), lora_cache, cond_cache)
-            neg_filtered = control_to_clip_common(self, clip, neg_sched.with_filters(tags, start, end), lora_cache, cond_cache)
-            model_filtered = schedule_lora_common(model, pos_sched.with_filters(tags, start, end), lora_cache)
-        return (new_model, pos_cond, neg_cond, model_filtered, pos_filtered, neg_filtered)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

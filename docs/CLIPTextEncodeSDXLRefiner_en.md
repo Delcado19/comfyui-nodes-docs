@@ -39,18 +39,6 @@ The CLIPTextEncodeSDXLRefiner node is designed to refine and encode text inputs 
 - Infra type: GPU
 
 # Source code
-```
-class CLIPTextEncodeSDXLRefiner:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'ascore': ('FLOAT', {'default': 6.0, 'min': 0.0, 'max': 1000.0, 'step': 0.01}), 'width': ('INT', {'default': 1024.0, 'min': 0, 'max': MAX_RESOLUTION}), 'height': ('INT', {'default': 1024.0, 'min': 0, 'max': MAX_RESOLUTION}), 'text': ('STRING', {'multiline': True, 'dynamicPrompts': True}), 'clip': ('CLIP',)}}
-    RETURN_TYPES = ('CONDITIONING',)
-    FUNCTION = 'encode'
-    CATEGORY = 'advanced/conditioning'
-
-    def encode(self, clip, ascore, width, height, text):
-        tokens = clip.tokenize(text)
-        (cond, pooled) = clip.encode_from_tokens(tokens, return_pooled=True)
-        return ([[cond, {'pooled_output': pooled, 'aesthetic_score': ascore, 'width': width, 'height': height}]],)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

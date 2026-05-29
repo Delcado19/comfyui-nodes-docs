@@ -63,33 +63,6 @@ The WAS_Bus node serves as the central hub in the WAS suite for managing and coo
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Bus:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {}, 'optional': {'bus': ('BUS',), 'model': ('MODEL',), 'clip': ('CLIP',), 'vae': ('VAE',), 'positive': ('CONDITIONING',), 'negative': ('CONDITIONING',)}}
-    RETURN_TYPES = ('BUS', 'MODEL', 'CLIP', 'VAE', 'CONDITIONING', 'CONDITIONING')
-    RETURN_NAMES = ('bus', 'model', 'clip', 'vae', 'positive', 'negative')
-    FUNCTION = 'bus_fn'
-    CATEGORY = 'WAS Suite/Utilities'
-
-    def bus_fn(self, bus=(None, None, None, None, None), model=None, clip=None, vae=None, positive=None, negative=None):
-        (bus_model, bus_clip, bus_vae, bus_positive, bus_negative) = bus
-        out_model = model or bus_model
-        out_clip = clip or bus_clip
-        out_vae = vae or bus_vae
-        out_positive = positive or bus_positive
-        out_negative = negative or bus_negative
-        out_bus = (out_model, out_clip, out_vae, out_positive, out_negative)
-        if not out_model:
-            raise ValueError('Either model or bus containing a model should be supplied')
-        if not out_clip:
-            raise ValueError('Either clip or bus containing a clip should be supplied')
-        if not out_vae:
-            raise ValueError('Either vae or bus containing a vae should be supplied')
-        return (out_bus, out_model, out_clip, out_vae, out_positive, out_negative)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

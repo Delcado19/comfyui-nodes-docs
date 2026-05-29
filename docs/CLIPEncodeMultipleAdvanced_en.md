@@ -37,27 +37,7 @@ The CLIPEncodeMultipleAdvanced node is designed for advanced text encoding using
 - Infra type: `GPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class CLIPEncodeMultipleAdvanced(AdvancedCLIPTextEncode):
-    @classmethod
-    def INPUT_TYPES(s):
-        types = super().INPUT_TYPES()  # TODO should refactor Grid class above to this too, so if original is changed, all the new options are added there too
-        types["required"].pop("text")
-        types["required"]["inputs_len"] = ("INT", {"default": 9, "min": 0, "max": 32})
-        return types
+[View source repository on GitHub](https://github.com/Stability-AI/StableCascade)
 
-    RETURN_TYPES = ("CONDITIONING",)
-    FUNCTION = "gen2"
-    CATEGORY = "Bmad/conditioning"
-    OUTPUT_IS_LIST = (True,)
-
-    def gen2(self, clip, token_normalization, weight_interpretation, inputs_len, **kwargs):
-        conds = []
-        for i in range(inputs_len):
-            arg_name = get_arg_name_from_multiple_inputs("string", i)
-            conds.append(super().encode(clip, kwargs[arg_name], token_normalization, weight_interpretation,'disable')[0])
-        return (conds,)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

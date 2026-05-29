@@ -48,24 +48,6 @@ The 'doit' method of the ImpactQueueTriggerCountdown node is designed to manage 
 - Infra type: CPU
 
 # Source code
-```
-class ImpactQueueTriggerCountdown:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'count': ('INT', {'default': 0, 'min': 0, 'max': 18446744073709551615}), 'total': ('INT', {'default': 10, 'min': 1, 'max': 18446744073709551615}), 'mode': ('BOOLEAN', {'default': True, 'label_on': 'Trigger', 'label_off': "Don't trigger"})}, 'optional': {'signal': (any_typ,)}, 'hidden': {'unique_id': 'UNIQUE_ID'}}
-    FUNCTION = 'doit'
-    CATEGORY = 'ImpactPack/Logic/_for_test'
-    RETURN_TYPES = (any_typ, 'INT', 'INT')
-    RETURN_NAMES = ('signal_opt', 'count', 'total')
-    OUTPUT_NODE = True
-
-    def doit(self, count, total, mode, unique_id, signal=None):
-        if mode:
-            if count < total - 1:
-                PromptServer.instance.send_sync('impact-node-feedback', {'node_id': unique_id, 'widget_name': 'count', 'type': 'int', 'value': count + 1})
-                PromptServer.instance.send_sync('impact-add-queue', {})
-            if count >= total - 1:
-                PromptServer.instance.send_sync('impact-node-feedback', {'node_id': unique_id, 'widget_name': 'count', 'type': 'int', 'value': 0})
-        return (signal, count, total)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

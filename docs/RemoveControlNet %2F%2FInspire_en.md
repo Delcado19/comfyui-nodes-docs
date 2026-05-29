@@ -23,24 +23,6 @@ This node aims to process and refine input data by removing control-related elem
 - Infra type: CPU
 
 # Source code
-```
-class RemoveControlNet:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Inspire-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'conditioning': ('CONDITIONING',)}}
-    RETURN_TYPES = ('CONDITIONING',)
-    FUNCTION = 'doit'
-    CATEGORY = 'InspirePack/Util'
-
-    def doit(self, conditioning):
-        c = []
-        for t in conditioning:
-            n = [t[0], t[1].copy()]
-            if 'control' in n[1]:
-                del n[1]['control']
-            if 'control_apply_to_uncond' in n[1]:
-                del n[1]['control_apply_to_uncond']
-            c.append(n)
-        return (c,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -29,20 +29,6 @@ This node focuses on adjusting the application timing of specific conditions dur
 - Common nodes: unknown
 
 ## Source code
-```python
-class ConditioningTimestepsNode:
-    @classmethod
-    def INPUT_TYPES(s):
-        return {
-            "required": {
-                "start_percent": ("FLOAT", {"default": 0.0, "min": 0.0, "max": 1.0, "step": 0.001}),
-                "end_percent": ("FLOAT", {"default": 1.0, "min": 0.0, "max": 1.0, "step": 0.001})
-            }
-        }
-    
-    RETURN_TYPES = ("TIMESTEPS_COND",)
-    CATEGORY = "Animate Diff 🎭🅐🅓/conditioning"
-    FUNCTION = "create_schedule"
+[View source repository on GitHub](https://github.com/Kosinkadink/ComfyUI-AnimateDiff-Evolved)
 
-    def create_schedule(self, start_percent: float, end_percent: float):
-        return (TimestepsCond(start_percent=start_percent, end_percent=end_percent),)
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

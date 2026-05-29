@@ -27,18 +27,6 @@ The PCSplitSampling node aims to modify a given model by enabling or disabling a
 - Infra type: CPU
 
 # Source code
-```
-class PCSplitSampling:
+[View source repository on GitHub](https://github.com/asagi4/comfyui-prompt-control)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'model': ('MODEL',), 'split_sampling': (['enable', 'disable'],)}}
-    RETURN_TYPES = ('MODEL',)
-    CATEGORY = 'promptcontrol'
-    FUNCTION = 'apply'
-
-    def apply(self, model, split_sampling):
-        model = clone_model(model)
-        model.model_options['pc_split_sampling'] = split_sampling == 'enable'
-        return (model,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

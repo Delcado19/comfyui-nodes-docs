@@ -31,28 +31,6 @@ CR_RandomRGBGradient is a node for generating random RGB gradients. It creates a
 - Infra type: CPU
 
 # Source code
-```
-class CR_RandomRGBGradient:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'seed': ('INT', {'default': 0, 'min': 0, 'max': 18446744073709551615}), 'rows': ('INT', {'default': 5, 'min': 1, 'max': 2048})}}
-    RETURN_TYPES = ('STRING', 'STRING')
-    RETURN_NAMES = ('multiline_text', 'show_help')
-    FUNCTION = 'generate'
-    CATEGORY = icons.get('Comfyroll/Utils/Random')
-
-    def generate(self, rows, seed):
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Other-Nodes#cr-random-RGB-gradient'
-        random.seed(seed)
-        temp = 0
-        multiline_text = ''
-        for i in range(1, rows + 1):
-            print(temp)
-            if temp <= 99 - rows + i:
-                upper_bound = min(99, temp + (99 - temp) // (rows - i + 1))
-                current_value = random.randint(temp, upper_bound)
-                multiline_text += f'{current_value}:{random.randint(0, 255)},{random.randint(0, 255)},{random.randint(0, 255)}\n'
-                temp = current_value + 1
-        return (multiline_text, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

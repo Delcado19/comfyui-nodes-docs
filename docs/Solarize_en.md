@@ -28,21 +28,6 @@ This node aims to adjust the color of an image by inverting colors above a certa
 - Infra type: CPU
 
 # Source code
-```
-class Solarize:
+[View source repository on GitHub](https://github.com/EllangoK/ComfyUI-post-processing-nodes)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'image': ('IMAGE',), 'threshold': ('FLOAT', {'default': 0.5, 'min': 0.0, 'max': 1.0, 'step': 0.01})}}
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'solarize_image'
-    CATEGORY = 'postprocessing/Color Adjustments'
-
-    def solarize_image(self, image: torch.Tensor, threshold: float):
-        solarized_image = torch.where(image > threshold, 1 - image, image)
-        solarized_image = torch.clamp(solarized_image, 0, 1)
-        return (solarized_image,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

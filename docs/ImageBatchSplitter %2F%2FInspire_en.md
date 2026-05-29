@@ -28,27 +28,6 @@ The ImageBatchSplitter node is designed to efficiently manage and manipulate ima
 - Infra type: CPU
 
 # Source code
-```
-class ImageBatchSplitter:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Inspire-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'images': ('IMAGE',), 'split_count': ('INT', {'default': 4, 'min': 0, 'max': 50, 'step': 1})}}
-    RETURN_TYPES = ByPassTypeTuple(('IMAGE',))
-    FUNCTION = 'doit'
-    CATEGORY = 'InspirePack/Util'
-
-    def doit(self, images, split_count):
-        cnt = min(split_count, len(images))
-        res = [image.unsqueeze(0) for image in images[:cnt]]
-        if split_count >= len(images):
-            lack_cnt = split_count - cnt + 1
-            empty_image = empty_pil_tensor()
-            for x in range(0, lack_cnt):
-                res.append(empty_image)
-        elif cnt < len(images):
-            remained_cnt = len(images) - cnt
-            remained_image = images[-remained_cnt:]
-            res.append(remained_image)
-        return tuple(res)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

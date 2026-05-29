@@ -44,21 +44,6 @@ This node uses a YOLO-based model to detect specified objects in images, with an
 - Infra type: GPU
 
 # Source code
-```
-class Yoloworld_ESAM_DetectorProvider_Zho:
+[View source repository on GitHub](https://github.com/ZHO-ZHO-ZHO/ComfyUI-YoloWorld-EfficientSAM)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'yolo_world_model': ('YOLOWORLDMODEL',), 'categories': ('STRING', {'default': '', 'placeholder': 'Please enter the objects to be detected separated by commas.', 'multiline': True}), 'iou_threshold': ('FLOAT', {'default': 0.1, 'min': 0, 'max': 1, 'step': 0.01}), 'with_class_agnostic_nms': ('BOOLEAN', {'default': False})}, 'optional': {'esam_model_opt': ('ESAMMODEL',)}}
-    RETURN_TYPES = ('BBOX_DETECTOR', 'SEGM_DETECTOR')
-    FUNCTION = 'doit'
-    CATEGORY = 'ImpactPack'
-
-    def doit(self, yolo_world_model, categories, iou_threshold, with_class_agnostic_nms, esam_model_opt=None):
-        bbox_detector = YoloworldBboxDetector(yolo_world_model, categories, iou_threshold, with_class_agnostic_nms)
-        if esam_model_opt is not None:
-            segm_detector = YoloworldSegmDetector(bbox_detector, esam_model_opt)
-        else:
-            segm_detector = None
-        return (bbox_detector, segm_detector)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

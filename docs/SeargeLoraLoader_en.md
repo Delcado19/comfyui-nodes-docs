@@ -43,19 +43,6 @@ This node facilitates loading and integrating LORA (Low-Rank Adaptation) models,
 - Infra type: CPU
 
 # Source code
-```
-class SeargeLoraLoader:
+[View source repository on GitHub](https://github.com/jobunk/SeargeSDXL)
 
-    def __init__(self):
-        self.lora_loader = nodes.LoraLoader()
-
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'model': ('MODEL',), 'clip': ('CLIP',), 'lora_name': ('LORA_NAME',), 'strength_model': ('FLOAT', {'default': 1.0, 'min': -10.0, 'max': 10.0, 'step': 0.01}), 'strength_clip': ('FLOAT', {'default': 1.0, 'min': -10.0, 'max': 10.0, 'step': 0.01})}}
-    RETURN_TYPES = ('MODEL', 'CLIP')
-    FUNCTION = 'load_lora'
-    CATEGORY = 'Searge/_deprecated_/Files'
-
-    def load_lora(self, model, clip, lora_name, strength_model, strength_clip):
-        return self.lora_loader.load_lora(model, clip, lora_name, strength_model, strength_clip)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

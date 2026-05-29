@@ -29,20 +29,6 @@ The ADE_CameraManualPoseAppend node is used to manually append camera control po
 - Common nodes: unknown
 
 ## Source code
-```python
-class CameraCtrlManualAppendPose:
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {
-            "required": {
-                "poses_first": ("CAMERACTRL_POSES",),
-                "poses_last": ("CAMERACTRL_POSES",),
-            }
-        }
+[View source repository on GitHub](https://github.com/Kosinkadink/ComfyUI-AnimateDiff-Evolved)
 
-    RETURN_TYPES = ("CAMERACTRL_POSES",)
-    FUNCTION = "camera_manual_append"
-    CATEGORY = "Animate Diff 🎭🅐🅓/② Gen2 nodes ②/CameraCtrl/poses"
-
-    def camera_manual_append(self, poses_first: list[list[float]], poses_last: list[list[float]]):
-        return (combine_poses(poses0=poses_first, poses1=poses_last),)
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

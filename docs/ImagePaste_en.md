@@ -36,30 +36,6 @@ The ImagePaste node is designed to seamlessly integrate a foreground image onto 
 - Infra type: CPU
 
 # Source code
-```
-class ImagePaste:
+[View source repository on GitHub](https://github.com/bash-j/mikey_nodes)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'background_image': ('IMAGE',), 'foreground_image': ('IMAGE',), 'x_position': ('INT', {'default': 0, 'min': -10000, 'max': 10000}), 'y_position': ('INT', {'default': 0, 'min': -10000, 'max': 10000})}}
-    RETURN_TYPES = ('IMAGE',)
-    RETURN_NAMES = ('image',)
-    FUNCTION = 'paste'
-    CATEGORY = 'Mikey/Image'
-
-    def tensor2pil(self, image):
-        image_np = np.clip(255.0 * image.cpu().numpy().squeeze(), 0, 255).astype(np.uint8)
-        if image_np.shape[0] == 4:
-            return Image.fromarray(image_np.transpose(1, 2, 0), 'RGBA')
-        else:
-            return Image.fromarray(image_np.transpose(1, 2, 0), 'RGB')
-
-    def paste(self, background_image, foreground_image, x_position, y_position):
-        background_image = tensor2pil(background_image)
-        foreground_image = tensor2pil(foreground_image)
-        if foreground_image.mode != 'RGBA':
-            foreground_image = foreground_image.convert('RGBA')
-        (r, g, b, alpha) = foreground_image.split()
-        background_image.paste(foreground_image, (x_position, y_position), mask=alpha)
-        return (pil2tensor(background_image),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

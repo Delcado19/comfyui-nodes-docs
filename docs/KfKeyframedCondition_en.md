@@ -40,29 +40,6 @@ KfKeyframedCondition node is designed to integrate conditioning elements into th
 - Infra type: CPU
 
 # Source code
-```
-class KfKeyframedCondition:
-    """
-    Attaches a condition to a keyframe
-    """
-    CATEGORY = CATEGORY
-    FUNCTION = 'main'
-    RETURN_TYPES = ('KEYFRAMED_CONDITION',)
+[View source repository on GitHub](https://github.com/dmarx/ComfyUI-Keyframed)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'conditioning': ('CONDITIONING', {}), 'time': ('FLOAT', {'default': 0, 'step': 1}), 'interpolation_method': (list(kf.interpolation.EASINGS.keys()), {'default': 'linear'})}}
-
-    def main(self, conditioning, time, interpolation_method):
-        (cond_tensor, cond_dict) = conditioning[0]
-        cond_tensor = cond_tensor.clone()
-        kf_cond_t = kf.Keyframe(t=time, value=cond_tensor, interpolation_method=interpolation_method)
-        cond_pooled = cond_dict.get('pooled_output')
-        cond_dict = deepcopy(cond_dict)
-        kf_cond_pooled = None
-        if cond_pooled is not None:
-            cond_pooled = cond_pooled.clone()
-            kf_cond_pooled = kf.Keyframe(t=time, value=cond_pooled, interpolation_method=interpolation_method)
-            cond_dict['pooled_output'] = cond_pooled
-        return ({'kf_cond_t': kf_cond_t, 'kf_cond_pooled': kf_cond_pooled, 'cond_dict': cond_dict},)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

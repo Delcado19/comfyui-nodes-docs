@@ -23,19 +23,6 @@ The CR_DebatchFrames node is designed to process and split input data into indiv
 - Infra type: CPU
 
 # Source code
-```
-class CR_DebatchFrames:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'frames': ('IMAGE',)}}
-    RETURN_TYPES = ('IMAGE',)
-    RETURN_NAMES = ('debatched_frames',)
-    OUTPUT_IS_LIST = (True,)
-    FUNCTION = 'debatch'
-    CATEGORY = icons.get('Comfyroll/Animation/Utils')
-
-    def debatch(self, frames):
-        images = [frames[i:i + 1, ...] for i in range(frames.shape[0])]
-        return (images,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

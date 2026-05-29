@@ -64,25 +64,6 @@ The UnsamplerHookProvider node aims to enhance the upscaling process by applying
 - Infra type: CPU
 
 # Source code
-```
-class UnsamplerHookProvider:
-    schedules = ['simple']
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'model': ('MODEL',), 'steps': ('INT', {'default': 25, 'min': 1, 'max': 10000}), 'start_end_at_step': ('INT', {'default': 21, 'min': 0, 'max': 10000}), 'end_end_at_step': ('INT', {'default': 24, 'min': 0, 'max': 10000}), 'cfg': ('FLOAT', {'default': 1.0, 'min': 0.0, 'max': 100.0}), 'sampler_name': (comfy.samplers.KSampler.SAMPLERS,), 'scheduler': (comfy.samplers.KSampler.SCHEDULERS,), 'normalize': (['disable', 'enable'],), 'positive': ('CONDITIONING',), 'negative': ('CONDITIONING',), 'schedule_for_iteration': (s.schedules,)}}
-    RETURN_TYPES = ('PK_HOOK',)
-    FUNCTION = 'doit'
-    CATEGORY = 'ImpactPack/Upscale'
-
-    def doit(self, model, steps, start_end_at_step, end_end_at_step, cfg, sampler_name, scheduler, normalize, positive, negative, schedule_for_iteration):
-        try:
-            hook = None
-            if schedule_for_iteration == 'simple':
-                hook = hooks.UnsamplerHook(model, steps, start_end_at_step, end_end_at_step, cfg, sampler_name, scheduler, normalize, positive, negative)
-            return (hook,)
-        except Exception as e:
-            print("[ERROR] UnsamplerHookProvider: 'ComfyUI Noise' custom node isn't installed. You must install 'BlenderNeko/ComfyUI Noise' extension to use this node.")
-            print(f'\t{e}')
-            pass
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

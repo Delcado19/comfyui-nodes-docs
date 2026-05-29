@@ -42,43 +42,7 @@ The LLMOpenAIModel node is designed to simplify the integration and use of OpenA
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class LLMOpenAI:
-    """
-    @Documentation: https://docs.llamaindex.ai/en/stable/api_reference/llms/openai/
-    """
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {
-            "required": {
-                "model": (list(ALL_AVAILABLE_MODELS),),
-                "api_key": ("STRING", {
-                    "multiline": False, 
-                    "dynamicPrompts": False, 
-                    "default": os.environ.get("OPENAI_API_KEY", "")
-                }),
-                "embedding_model": (
-                    sorted([x.value for x in OpenAIEmbeddingModelType]),
-                    {"default": "text-embedding-ada-002"},
-                ),
-            },
-            "optional": {
-                "multimodal": ("BOOLEAN", {"default": False})
-            }
-        }
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    RETURN_TYPES = ("LLM_MODEL", "LLM_EMBED_MODEL")
-    RETURN_NAMES = ("llm_model", "embed_model_only")
-
-    FUNCTION = "load_model"
-    CATEGORY = f"{MENU_NAME}/{SUB_MENU_NAME}/Loaders"
-
-    def load_model(self, model:str, embedding_model:str, api_key:str, multimodal:bool = False) -> Dict[str, Any]:
-        llm = OpenAI(model=model) if not multimodal else OpenAIMultiModal(model=model)
-        llm.api_key = api_key
-        embed_model = OpenAIEmbedding(model_name=embedding_model, api_key=api_key,)
-        return ({"llm":llm, "llm_name": model, "embed_model":embed_model, "embed_name": embedding_model}, {"embed_model": embed_model, "embed_name": embedding_model})
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

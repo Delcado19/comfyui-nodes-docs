@@ -25,23 +25,7 @@ The RemapInsideParabolas node is designed to perform a remapping operation based
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class RemapInsideParabolas(RemapBase):
-    @classmethod
-    def INPUT_TYPES(s):
-        return {"required": {
-            "dst_mask_with_2_parabolas": ("MASK",),
-        }
-        }
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    def send_remap(self, dst_mask_with_2_parabolas):
-        from .utils.remaps import remap_inside_parabolas_simple
-        return ({
-                    "func": remap_inside_parabolas_simple,
-                    "xargs": [tensor2opencv(dst_mask_with_2_parabolas, 1)],
-                    "dims": RemapBase.get_dims(dst_mask_with_2_parabolas)
-                },)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -27,31 +27,6 @@ The node classifies images based on the specified side length standard and provi
 - Infra type: CPU
 
 # Source code
-```
-class imageSizeBySide:
+[View source repository on GitHub](https://github.com/yolain/ComfyUI-Easy-Use)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'image': ('IMAGE',), 'side': (['Longest', 'Shortest'],)}}
-    RETURN_TYPES = ('INT',)
-    RETURN_NAMES = ('resolution',)
-    OUTPUT_NODE = True
-    FUNCTION = 'image_side'
-    CATEGORY = 'EasyUse/Image'
-
-    def image_side(self, image, side):
-        (_, raw_H, raw_W, _) = image.shape
-        width = raw_W
-        height = raw_H
-        if width is not None and height is not None:
-            if side == 'Longest':
-                result = (width,) if width > height else (height,)
-            elif side == 'Shortest':
-                result = (width,) if width < height else (height,)
-        else:
-            result = (0,)
-        return {'ui': {'text': str(result[0])}, 'result': result}
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

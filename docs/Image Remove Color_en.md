@@ -52,28 +52,6 @@ The WAS_Image_Remove_Color node aims to process images according to user-defined
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Image_Remove_Color:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'image': ('IMAGE',), 'target_red': ('INT', {'default': 255, 'min': 0, 'max': 255, 'step': 1}), 'target_green': ('INT', {'default': 255, 'min': 0, 'max': 255, 'step': 1}), 'target_blue': ('INT', {'default': 255, 'min': 0, 'max': 255, 'step': 1}), 'replace_red': ('INT', {'default': 255, 'min': 0, 'max': 255, 'step': 1}), 'replace_green': ('INT', {'default': 255, 'min': 0, 'max': 255, 'step': 1}), 'replace_blue': ('INT', {'default': 255, 'min': 0, 'max': 255, 'step': 1}), 'clip_threshold': ('INT', {'default': 10, 'min': 0, 'max': 255, 'step': 1})}}
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'image_remove_color'
-    CATEGORY = 'WAS Suite/Image/Process'
-
-    def image_remove_color(self, image, clip_threshold=10, target_red=255, target_green=255, target_blue=255, replace_red=255, replace_green=255, replace_blue=255):
-        return (pil2tensor(self.apply_remove_color(tensor2pil(image), clip_threshold, (target_red, target_green, target_blue), (replace_red, replace_green, replace_blue))),)
-
-    def apply_remove_color(self, image, threshold=10, color=(255, 255, 255), rep_color=(0, 0, 0)):
-        color_image = Image.new('RGB', image.size, color)
-        diff_image = ImageChops.difference(image, color_image)
-        gray_image = diff_image.convert('L')
-        mask_image = gray_image.point(lambda x: 255 if x > threshold else 0)
-        mask_image = ImageOps.invert(mask_image)
-        result_image = Image.composite(Image.new('RGB', image.size, rep_color), image, mask_image)
-        return result_image
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

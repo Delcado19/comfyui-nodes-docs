@@ -32,19 +32,6 @@ The “ImpactValueSender” node is designed to transmit impact values to a spec
 - Infra type: CPU
 
 # Source code
-```
-class ImpactValueSender:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'value': (any_typ,), 'link_id': ('INT', {'default': 0, 'min': 0, 'max': sys.maxsize, 'step': 1})}, 'optional': {'signal_opt': (any_typ,)}}
-    OUTPUT_NODE = True
-    FUNCTION = 'doit'
-    CATEGORY = 'ImpactPack/Logic'
-    RETURN_TYPES = (any_typ,)
-    RETURN_NAMES = ('signal',)
-
-    def doit(self, value, link_id=0, signal_opt=None):
-        PromptServer.instance.send_sync('value-send', {'link_id': link_id, 'value': value})
-        return (signal_opt,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

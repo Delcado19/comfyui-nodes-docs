@@ -32,44 +32,6 @@ WAS_Lucy_Sharpen node aims to enhance image clarity and detail by applying a sha
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Lucy_Sharpen:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'images': ('IMAGE',), 'iterations': ('INT', {'default': 2, 'min': 1, 'max': 12, 'step': 1}), 'kernel_size': ('INT', {'default': 3, 'min': 1, 'max': 16, 'step': 1})}}
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'sharpen'
-    CATEGORY = 'WAS Suite/Image/Filter'
-
-    def sharpen(self, images, iterations, kernel_size):
-        tensors = []
-        if len(images) > 1:
-            for img in images:
-                tensors.append(pil2tensor(self.lucy_sharpen(tensor2pil(img), iterations, kernel_size)))
-            tensors = torch.cat(tensors, dim=0)
-        else:
-            return (pil2tensor(self.lucy_sharpen(tensor2pil(images), iterations, kernel_size)),)
-        return (tensors,)
-
-    def lucy_sharpen(self, image, iterations=10, kernel_size=3):
-        from scipy.signal import convolve2d
-        image_array = np.array(image, dtype=np.float32) / 255.0
-        kernel = np.ones((kernel_size, kernel_size), dtype=np.float32) / kernel_size ** 2
-        sharpened_channels = []
-        padded_image_array = np.pad(image_array, ((kernel_size, kernel_size), (kernel_size, kernel_size), (0, 0)), mode='edge')
-        for channel in range(3):
-            channel_array = padded_image_array[:, :, channel]
-            for _ in range(iterations):
-                blurred_channel = convolve2d(channel_array, kernel, mode='same')
-                ratio = channel_array / (blurred_channel + 1e-06)
-                channel_array *= convolve2d(ratio, kernel, mode='same')
-            sharpened_channels.append(channel_array)
-        cropped_sharpened_image_array = np.stack(sharpened_channels, axis=-1)[kernel_size:-kernel_size, kernel_size:-kernel_size, :]
-        sharpened_image_array = np.clip(cropped_sharpened_image_array * 255.0, 0, 255).astype(np.uint8)
-        sharpened_image = Image.fromarray(sharpened_image_array)
-        return sharpened_image
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

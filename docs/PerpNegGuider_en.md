@@ -44,19 +44,6 @@ The PerpNegGuider node aims to guide the generation process by providing conditi
 - Infra type: CPU
 
 # Source code
-```
-class PerpNegGuider:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'model': ('MODEL',), 'positive': ('CONDITIONING',), 'negative': ('CONDITIONING',), 'empty_conditioning': ('CONDITIONING',), 'cfg': ('FLOAT', {'default': 8.0, 'min': 0.0, 'max': 100.0, 'step': 0.1, 'round': 0.01}), 'neg_scale': ('FLOAT', {'default': 1.0, 'min': 0.0, 'max': 100.0, 'step': 0.01})}}
-    RETURN_TYPES = ('GUIDER',)
-    FUNCTION = 'get_guider'
-    CATEGORY = '_for_testing'
-
-    def get_guider(self, model, positive, negative, empty_conditioning, cfg, neg_scale):
-        guider = Guider_PerpNeg(model)
-        guider.set_conds(positive, negative, empty_conditioning)
-        guider.set_cfg(cfg, neg_scale)
-        return (guider,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

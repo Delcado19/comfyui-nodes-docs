@@ -27,20 +27,6 @@ The FaceKeypointsPreprocessor node aims to extract and utilize facial keypoints 
 - Infra type: CPU
 
 # Source code
-```
-class FaceKeypointsPreprocessor:
+[View source repository on GitHub](https://github.com/cubiq/ComfyUI_InstantID)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'faceanalysis': ('FACEANALYSIS',), 'image': ('IMAGE',)}}
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'preprocess_image'
-    CATEGORY = 'InstantID'
-
-    def preprocess_image(self, faceanalysis, image):
-        face_kps = extractFeatures(faceanalysis, image, extract_kps=True)
-        if face_kps is None:
-            face_kps = torch.zeros_like(image)
-            print(f'\x1b[33mWARNING: no face detected, unable to extract the keypoints!\x1b[0m')
-        return (face_kps,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

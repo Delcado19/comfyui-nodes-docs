@@ -31,27 +31,6 @@ The AsciiArt node applies an ASCII art effect to the input image, converting it 
 - Infra type: CPU
 
 # Source code
-```
-class AsciiArt:
+[View source repository on GitHub](https://github.com/EllangoK/ComfyUI-post-processing-nodes)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'image': ('IMAGE',), 'char_size': ('INT', {'default': 12, 'min': 0, 'max': 64, 'step': 2}), 'font_size': ('INT', {'default': 12, 'min': 0, 'max': 64, 'step': 2})}}
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'apply_ascii_art_effect'
-    CATEGORY = 'postprocessing/Effects'
-
-    def apply_ascii_art_effect(self, image: torch.Tensor, char_size: int, font_size: int):
-        (batch_size, height, width, channels) = image.shape
-        result = torch.zeros_like(image)
-        for b in range(batch_size):
-            img_b = image[b] * 255.0
-            img_b = Image.fromarray(img_b.numpy().astype('uint8'), 'RGB')
-            result_b = ascii_art_effect(img_b, char_size, font_size)
-            result_b = torch.tensor(np.array(result_b)) / 255.0
-            result[b] = result_b
-        return (result,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

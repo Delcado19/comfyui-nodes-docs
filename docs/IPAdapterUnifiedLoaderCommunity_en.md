@@ -28,11 +28,6 @@ The IPAdapterUnifiedLoaderCommunity node aims to simplify loading and managing v
 - Infra type: CPU
 
 # Source code
-```
-class IPAdapterUnifiedLoaderCommunity(IPAdapterUnifiedLoader):
+[View source repository on GitHub](https://github.com/cubiq/ComfyUI_IPAdapter_plus)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'model': ('MODEL',), 'preset': (['Composition'],)}, 'optional': {'ipadapter': ('IPADAPTER',)}}
-    CATEGORY = 'ipadapter/loaders'
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

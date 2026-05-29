@@ -35,17 +35,6 @@ The 'doit' method of the ImpactImageInfo node is designed to provide critical im
 - Infra type: CPU
 
 # Source code
-```
-class ImpactImageInfo:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'value': ('IMAGE',)}}
-    FUNCTION = 'doit'
-    CATEGORY = 'ImpactPack/Logic/_for_test'
-    RETURN_TYPES = ('INT', 'INT', 'INT', 'INT')
-    RETURN_NAMES = ('batch', 'height', 'width', 'channel')
-
-    def doit(self, value):
-        return (value.shape[0], value.shape[1], value.shape[2], value.shape[3])
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

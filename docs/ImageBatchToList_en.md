@@ -25,21 +25,7 @@ The main function of the ImageBatchToList node is to convert a batch of images i
 - Infra type: `GPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class ImageBatchToList:
-    @classmethod
-    def INPUT_TYPES(s):
-        return {"required": {"images": ("IMAGE",)}}
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "to_list"
-    CATEGORY = "Bmad/image"
-    OUTPUT_IS_LIST = (True,)
-
-    def to_list(self, images):
-        image_list = [images[i][None, ...] for i in range(images.shape[0])]
-        return (image_list,)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

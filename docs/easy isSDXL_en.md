@@ -27,23 +27,6 @@ This node classifies inputs based on compatibility with a specific model, ensuri
 - Infra type: CPU
 
 # Source code
-```
-class isSDXL:
+[View source repository on GitHub](https://github.com/yolain/ComfyUI-Easy-Use)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {}, 'optional': {'optional_pipe': ('PIPE_LINE',), 'optional_clip': ('CLIP',)}}
-    RETURN_TYPES = ('BOOLEAN',)
-    RETURN_NAMES = ('boolean',)
-    FUNCTION = 'execute'
-    CATEGORY = 'EasyUse/Logic'
-
-    def execute(self, optional_pipe=None, optional_clip=None):
-        if optional_pipe is None and optional_clip is None:
-            raise Exception(f'[ERROR] optional_pipe or optional_clip is missing')
-        clip = optional_clip if optional_clip is not None else optional_pipe['clip']
-        if isinstance(clip.cond_stage_model, (SDXLClipModel, SDXLRefinerClipModel, SDXLClipG)):
-            return (True,)
-        else:
-            return (False,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -55,25 +55,6 @@ This node class encapsulates the logic of decomposing a set of parameters into i
 - Infra type: CPU
 
 # Source code
-```
-class SeargeOutput3:
+[View source repository on GitHub](https://github.com/jobunk/SeargeSDXL)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'parameters': ('PARAMETERS',)}}
-    RETURN_TYPES = ('PARAMETERS', 'FLOAT', 'FLOAT', 'FLOAT', 'INT', 'INT', 'INT', 'FLOAT', 'ENABLE_STATE')
-    RETURN_NAMES = ('parameters', 'denoise', 'base_ratio', 'refiner_strength', 'noise_offset', 'precondition_steps', 'batch_size', 'upscale_resolution_factor', 'save_upscaled_image')
-    FUNCTION = 'demux'
-    CATEGORY = 'Searge/_deprecated_/UI/Outputs'
-
-    def demux(self, parameters):
-        denoise = parameters['denoise']
-        base_ratio = parameters['base_ratio']
-        refiner_strength = parameters['refiner_strength']
-        noise_offset = parameters['noise_offset']
-        precondition_steps = parameters['precondition_steps']
-        batch_size = parameters['batch_size']
-        upscale_resolution_factor = parameters['upscale_resolution_factor']
-        save_upscaled_image = parameters['save_upscaled_image']
-        return (parameters, denoise, base_ratio, refiner_strength, noise_offset, precondition_steps, batch_size, upscale_resolution_factor, save_upscaled_image)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

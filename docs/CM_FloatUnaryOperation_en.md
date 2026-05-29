@@ -27,16 +27,6 @@ The FloatUnaryOperation node applies a mathematical operation to a single floati
 - Infra type: CPU
 
 # Source code
-```
-class FloatUnaryOperation:
+[View source repository on GitHub](https://github.com/evanspearman/ComfyMath)
 
-    @classmethod
-    def INPUT_TYPES(cls) -> Mapping[str, Any]:
-        return {'required': {'op': (list(FLOAT_UNARY_OPERATIONS.keys()),), 'a': DEFAULT_FLOAT}}
-    RETURN_TYPES = ('FLOAT',)
-    FUNCTION = 'op'
-    CATEGORY = 'math/float'
-
-    def op(self, op: str, a: float) -> tuple[float]:
-        return (FLOAT_UNARY_OPERATIONS[op](a),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

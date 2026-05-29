@@ -40,27 +40,6 @@ CR_SimpleSchedule is a node for managing and organizing schedules of various tas
 - Infra type: CPU
 
 # Source code
-```
-class CR_SimpleSchedule:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        schedule_types = ['Value', 'Text', 'Prompt', 'Prompt Weight', 'Model', 'LoRA', 'ControlNet', 'Style', 'Upscale', 'Camera', 'Job']
-        return {'required': {'schedule': ('STRING', {'multiline': True, 'default': 'frame_number, item_alias, [attr_value1, attr_value2]'}), 'schedule_type': (schedule_types,), 'schedule_alias': ('STRING', {'default': '', 'multiline': False}), 'schedule_format': (['CR', 'Deforum'],)}}
-    RETURN_TYPES = ('SCHEDULE', 'STRING')
-    RETURN_NAMES = ('SCHEDULE', 'show_help')
-    FUNCTION = 'send_schedule'
-    CATEGORY = icons.get('Comfyroll/Animation/Schedule')
-
-    def send_schedule(self, schedule, schedule_type, schedule_alias, schedule_format):
-        schedule_lines = list()
-        if schedule != '' and schedule_alias != '':
-            lines = schedule.split('\n')
-            for line in lines:
-                if not line.strip():
-                    print(f'[Warning] CR Simple Schedule. Skipped blank line: {line}')
-                    continue
-                schedule_lines.extend([(schedule_alias, line)])
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Schedule-Nodes#cr-simple-schedule'
-        return (schedule_lines, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

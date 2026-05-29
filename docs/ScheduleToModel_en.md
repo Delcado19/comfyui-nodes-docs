@@ -27,16 +27,6 @@ The 'apply' method of the ScheduleToModel node aims to dynamically adjust the mo
 - Infra type: GPU
 
 # Source code
-```
-class ScheduleToModel:
+[View source repository on GitHub](https://github.com/asagi4/comfyui-prompt-control)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'model': ('MODEL',), 'prompt_schedule': ('PROMPT_SCHEDULE',)}}
-    RETURN_TYPES = ('MODEL',)
-    CATEGORY = 'promptcontrol'
-    FUNCTION = 'apply'
-
-    def apply(self, model, prompt_schedule):
-        return (schedule_lora_common(model, prompt_schedule),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

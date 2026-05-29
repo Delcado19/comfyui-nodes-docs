@@ -55,46 +55,7 @@ The ttN_imageOutput node is designed to manage the image output process in custo
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class ttN_imageOUPUT:
-        version = '1.1.0'
-        def __init__(self):
-            pass
-        
-        @classmethod
-        def INPUT_TYPES(s):
-            return {"required": { 
-                    "image": ("IMAGE",),
-                    "image_output": (["Hide", "Preview", "Save", "Hide/Save"],{"default": "Preview"}),
-                    "output_path": ("STRING", {"default": folder_paths.get_output_directory(), "multiline": False}),
-                    "save_prefix": ("STRING", {"default": "ComfyUI"}),
-                    "number_padding": (["None", 2, 3, 4, 5, 6, 7, 8, 9],{"default": 5}),
-                    "file_type": (["PNG", "JPG", "JPEG", "BMP", "TIFF", "TIF"],{"default": "PNG"}),
-                    "overwrite_existing": (["True", "False"],{"default": "False"}),
-                    "embed_workflow": (["True", "False"],),
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-                    },
-                    "hidden": {"prompt": "PROMPT", "extra_pnginfo": "EXTRA_PNGINFO", "my_unique_id": "UNIQUE_ID",
-                               "ttNnodeVersion": ttN_imageOUPUT.version},
-                }
-
-        RETURN_TYPES = ("IMAGE",)
-        RETURN_NAMES = ("image",)
-        FUNCTION = "output"
-        CATEGORY = "ttN/image"
-        OUTPUT_NODE = True
-
-        def output(self, image, image_output, output_path, save_prefix, number_padding, file_type, overwrite_existing, embed_workflow, prompt, extra_pnginfo, my_unique_id):
-            ttN_save = ttNsave(my_unique_id, prompt, extra_pnginfo, number_padding, overwrite_existing, output_path)
-            results = ttN_save.images(image, save_prefix, image_output, embed_workflow, file_type.lower())
-
-            if image_output in ("Hide", "Hide/Save"):
-                return (image,)
-
-            # Output image results to ui and node outputs
-            return {"ui": {"images": results},
-                    "result": (image,)}
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

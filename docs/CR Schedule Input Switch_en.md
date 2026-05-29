@@ -35,25 +35,6 @@ The Comfyroll_ScheduleInputSwitch node is designed to select between two differe
 - Infra type: CPU
 
 # Source code
-```
-class Comfyroll_ScheduleInputSwitch:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'Input': ('INT', {'default': 1, 'min': 1, 'max': 2}), 'schedule1': ('SCHEDULE',), 'schedule2': ('SCHEDULE',)}}
-    RETURN_TYPES = ('SCHEDULE', 'STRING')
-    RETURN_NAMES = ('SCHEDULE', 'show_help')
-    OUTPUT_NODE = True
-    FUNCTION = 'switch'
-    CATEGORY = icons.get('Comfyroll/Animation/Schedule')
-
-    def switch(self, Input, schedule1, schedule2):
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Schedule-Nodes#cr-schedule-input-switch'
-        if Input == 1:
-            return (schedule1, show_help)
-        else:
-            return (schedule2, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

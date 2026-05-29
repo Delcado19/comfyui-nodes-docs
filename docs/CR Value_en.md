@@ -31,18 +31,6 @@ The CR_Value node is designed to provide a versatile interface for converting in
 - Infra type: CPU
 
 # Source code
-```
-class CR_Value:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'value': ('FLOAT', {'default': 1.0})}}
-    RETURN_TYPES = ('FLOAT', 'INT', 'STRING')
-    RETURN_NAMES = ('FLOAT', 'INT', 'show_help')
-    CATEGORY = icons.get('Comfyroll/Utils/Other')
-    FUNCTION = 'get_value'
-
-    def get_value(self, value):
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Other-Nodes#cr-value'
-        return (float(value), int(value), show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

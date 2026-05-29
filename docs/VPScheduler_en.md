@@ -36,17 +36,6 @@ The VPScheduler node is designed to generate a continuous variance-preserving (V
 - Infra type: CPU
 
 # Source code
-```
-class VPScheduler:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'steps': ('INT', {'default': 20, 'min': 1, 'max': 10000}), 'beta_d': ('FLOAT', {'default': 19.9, 'min': 0.0, 'max': 1000.0, 'step': 0.01, 'round': False}), 'beta_min': ('FLOAT', {'default': 0.1, 'min': 0.0, 'max': 1000.0, 'step': 0.01, 'round': False}), 'eps_s': ('FLOAT', {'default': 0.001, 'min': 0.0, 'max': 1.0, 'step': 0.0001, 'round': False})}}
-    RETURN_TYPES = ('SIGMAS',)
-    CATEGORY = 'sampling/custom_sampling/schedulers'
-    FUNCTION = 'get_sigmas'
-
-    def get_sigmas(self, steps, beta_d, beta_min, eps_s):
-        sigmas = k_diffusion_sampling.get_sigmas_vp(n=steps, beta_d=beta_d, beta_min=beta_min, eps_s=eps_s)
-        return (sigmas,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

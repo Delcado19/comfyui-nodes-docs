@@ -31,25 +31,6 @@ MotionctrlSVDLoader class initializes and manages the Motionctrl-SVD model, effi
 - Infra type: GPU
 
 # Source code
-```
-class MotionctrlSVDLoader:
+[View source repository on GitHub](https://github.com/chaojie/ComfyUI-MotionCtrl-SVD)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'ckpt_name': (['motionctrl_svd.ckpt'], {'default': 'motionctrl_svd.ckpt'}), 'frame_length': ('INT', {'default': 14}), 'steps': ('INT', {'default': 25})}}
-    RETURN_TYPES = ('MOTIONCTRLSVD',)
-    RETURN_NAMES = ('model',)
-    FUNCTION = 'load_checkpoint'
-    CATEGORY = 'motionctrl'
-
-    def load_checkpoint(self, ckpt_name, frame_length, steps):
-        global device
-        comfy_path = os.path.dirname(folder_paths.__file__)
-        ckpt_path = folder_paths.get_full_path('checkpoints', ckpt_name)
-        config_path = os.path.join(comfy_path, 'custom_nodes/ComfyUI-MotionCtrl-SVD/configs/inference/config_motionctrl_cmcm.yaml')
-        if not os.path.exists(ckpt_path):
-            os.system(f'wget https://huggingface.co/TencentARC/MotionCtrl/resolve/main/motionctrl_svd.ckpt?download=true -P .')
-            os.system(f'mv motionctrl_svd.ckpt?download=true {ckpt_path}')
-        model = build_model(config_path, ckpt_path, device, frame_length, steps)
-        return (model,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -31,16 +31,6 @@ The Vec2ToScalarBinaryOperation node performs a binary operation on a 2D vector 
 - Infra type: CPU
 
 # Source code
-```
-class Vec2ToScalarBinaryOperation:
+[View source repository on GitHub](https://github.com/evanspearman/ComfyMath)
 
-    @classmethod
-    def INPUT_TYPES(cls) -> Mapping[str, Any]:
-        return {'required': {'op': (list(VEC_TO_SCALAR_BINARY_OPERATION.keys()),), 'a': DEFAULT_VEC2, 'b': DEFAULT_VEC2}}
-    RETURN_TYPES = ('FLOAT',)
-    FUNCTION = 'op'
-    CATEGORY = 'math/vec2'
-
-    def op(self, op: str, a: Vec2, b: Vec2) -> tuple[float]:
-        return (VEC_TO_SCALAR_BINARY_OPERATION[op](numpy.array(a), numpy.array(b)),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -31,23 +31,6 @@ The CR_SelectISOSize node aims to provide the corresponding dimensions for the u
 - Infra type: CPU
 
 # Source code
-```
-class CR_SelectISOSize:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        sizes = list(iso_sizes.keys())
-        return {'required': {'iso_size': (sizes,)}}
-    RETURN_TYPES = ('INT', 'INT', 'STRING')
-    RETURN_NAMES = ('width', 'height', 'show_help')
-    FUNCTION = 'get_size'
-    CATEGORY = icons.get('Comfyroll/Utils/Other')
-
-    def get_size(self, iso_size):
-        if iso_size in iso_sizes:
-            (width, height) = iso_sizes[iso_size]
-        else:
-            print('Size not found.')
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Other-Nodes#cr-select-iso-size'
-        return (width, height, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -27,27 +27,6 @@ The `image_edges` method is designed to apply edge detection to the input image.
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Image_Edge:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'image': ('IMAGE',), 'mode': (['normal', 'laplacian'],)}}
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'image_edges'
-    CATEGORY = 'WAS Suite/Image/Filter'
-
-    def image_edges(self, image, mode):
-        image = tensor2pil(image)
-        if mode:
-            if mode == 'normal':
-                image = image.filter(ImageFilter.FIND_EDGES)
-            elif mode == 'laplacian':
-                image = image.filter(ImageFilter.Kernel((3, 3), (-1, -1, -1, -1, 8, -1, -1, -1, -1), 1, 0))
-            else:
-                image = image
-        return (torch.from_numpy(np.array(image).astype(np.float32) / 255.0).unsqueeze(0),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

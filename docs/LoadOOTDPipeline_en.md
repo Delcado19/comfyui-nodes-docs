@@ -27,30 +27,6 @@ This node is designed to instantiate and provide access to the OOTDiffusion mode
 - Infra type: GPU
 
 # Source code
-```
-class LoadOOTDPipeline:
-    display_name = 'Load OOTDiffusion Local'
+[View source repository on GitHub](https://github.com/AuroBit/ComfyUI-OOTDiffusion)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'type': (['Half body', 'Full body'],), 'path': (['/data/app/aigc-worker-v3/models/OOTDiffusion'], {'default': '/data/app/aigc-worker-v3/models/OOTDiffusion'})}}
-    RETURN_TYPES = ('MODEL',)
-    RETURN_NAMES = ('pipe',)
-    FUNCTION = 'load'
-    CATEGORY = 'OOTD'
-
-    @staticmethod
-    def load_impl(type, path):
-        if type == 'Half body':
-            type = 'hd'
-        elif type == 'Full body':
-            type = 'dc'
-        else:
-            raise ValueError(f"unknown input type {type} must be 'Half body' or 'Full body'")
-        if not os.path.isdir(path):
-            raise ValueError(f'input path {path} is not a directory')
-        return OOTDiffusion(path, model_type=type)
-
-    def load(self, type, path):
-        return (self.load_impl(type, path),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -51,40 +51,6 @@ The VHS_LoadImagesPath node loads images from a specified directory path into a 
     - LinearBatchCreativeInterpolation
 
 ## Source code
-```python
-class LoadImagesFromDirectoryPath:
-    @classmethod
-    def INPUT_TYPES(s):
-        return {
-            "required": {
-                "directory": ("STRING", {"default": "X://path/to/images", "vhs_path_extensions": []}),
-            },
-            "optional": {
-                "image_load_cap": ("INT", {"default": 0, "min": 0, "max": BIGMAX, "step": 1}),
-                "skip_first_images": ("INT", {"default": 0, "min": 0, "max": BIGMAX, "step": 1}),
-                "select_every_nth": ("INT", {"default": 1, "min": 1, "max": BIGMAX, "step": 1}),
-            }
-        }
+[View source repository on GitHub](https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite)
 
-    RETURN_TYPES = ("IMAGE", "MASK", "INT")
-    FUNCTION = "load_images"
-
-    CATEGORY = "Video Helper Suite 🎥🅥🅗🅢"
-
-    def load_images(self, directory: str, **kwargs):
-        if directory is None or validate_load_images(directory) != True:
-            raise Exception("directory is not valid: " + directory)
-
-        return load_images(directory, **kwargs)
-
-    @classmethod
-    def IS_CHANGED(s, directory: str, **kwargs):
-        if directory is None:
-            return "input"
-        return is_changed_load_images(directory, **kwargs)
-
-    @classmethod
-    def VALIDATE_INPUTS(s, directory: str, **kwargs):
-        if directory is None:
-            return True
-        return validate_load_images(directory)
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

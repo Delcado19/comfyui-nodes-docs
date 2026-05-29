@@ -60,24 +60,6 @@ The WAS_Mask_Crop_Region node processes images by identifying and cropping regio
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Mask_Crop_Region:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        self.WT = WAS_Tools_Class()
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'mask': ('MASK',), 'padding': ('INT', {'default': 24, 'min': 0, 'max': 4096, 'step': 1}), 'region_type': (['dominant', 'minority'],)}}
-    RETURN_TYPES = ('MASK', 'CROP_DATA', 'INT', 'INT', 'INT', 'INT', 'INT', 'INT')
-    RETURN_NAMES = ('cropped_mask', 'crop_data', 'top_int', 'left_int', 'right_int', 'bottom_int', 'width_int', 'height_int')
-    FUNCTION = 'mask_crop_region'
-    CATEGORY = 'WAS Suite/Image/Masking'
-
-    def mask_crop_region(self, mask, padding=24, region_type='dominant'):
-        mask_pil = Image.fromarray(np.clip(255.0 * mask.cpu().numpy().squeeze(), 0, 255).astype(np.uint8))
-        (region_mask, crop_data) = self.WT.Masking.crop_region(mask_pil, region_type, padding)
-        region_tensor = pil2mask(ImageOps.invert(region_mask)).unsqueeze(0).unsqueeze(1)
-        ((width, height), (left, top, right, bottom)) = crop_data
-        return (region_tensor, crop_data, top, left, right, bottom, width, height)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

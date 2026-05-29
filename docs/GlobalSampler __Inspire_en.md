@@ -26,27 +26,7 @@ This node has no output types.
 - Infra type: `GPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class GlobalSampler:
-    @classmethod
-    def INPUT_TYPES(s):
-        return {
-            "required": {
-                "sampler_name": (comfy.samplers.KSampler.SAMPLERS, ),
-                "scheduler": (common.SCHEDULERS, ),
-            }
-        }
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Inspire-Pack)
 
-    RETURN_TYPES = ()
-    FUNCTION = "doit"
-
-    CATEGORY = "InspirePack/Prompt"
-
-    OUTPUT_NODE = True
-
-    def doit(self, **kwargs):
-        return {}
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

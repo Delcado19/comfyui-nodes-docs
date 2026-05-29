@@ -36,24 +36,6 @@ The CR_LatentInputSwitch node is designed to manage the selection between two la
 - Infra type: CPU
 
 # Source code
-```
-class CR_LatentInputSwitch:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'Input': ('INT', {'default': 1, 'min': 1, 'max': 2})}, 'optional': {'latent1': ('LATENT',), 'latent2': ('LATENT',)}}
-    RETURN_TYPES = ('LATENT', 'STRING')
-    RETURN_NAMES = ('LATENT', 'show_help')
-    FUNCTION = 'switch'
-    CATEGORY = icons.get('Comfyroll/Utils/Logic')
-
-    def switch(self, Input, latent1=None, latent2=None):
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Logic-Nodes#cr-latent-input-switch'
-        if Input == 1:
-            return (latent1, show_help)
-        else:
-            return (latent2, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

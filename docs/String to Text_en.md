@@ -23,19 +23,6 @@ The method `string_to_text` aims to convert a given string into a text format th
 - Infra type: CPU
 
 # Source code
-```
-class WAS_String_To_Text:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'string': ('STRING', {})}}
-    RETURN_TYPES = (TEXT_TYPE,)
-    FUNCTION = 'string_to_text'
-    CATEGORY = 'WAS Suite/Text/Operations'
-
-    def string_to_text(self, string):
-        return (string,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

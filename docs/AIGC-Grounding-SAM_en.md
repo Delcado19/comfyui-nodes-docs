@@ -52,20 +52,6 @@ The AIGCImageRemoveBackgroundRembg node is designed to seamlessly remove image b
 - Infra type: GPU
 
 # Source code
-```
-class AIGCImageRemoveBackgroundRembg:
+[View source repository on GitHub](https://github.com/esheep/esheep_custom_nodes)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'image': ('IMAGE',), 'text': ('STRING', {'multiline': False}), 'sam_model_name': (['sam_vit_h_4b8939.pth', 'sam_vit_l_0b3195.pth', 'sam_vit_b_01ec64.pth'],), 'groundingdino_model_name': (['GroundingDINO_SwinT_OGC', 'GroundingDINO_SwinB'],), 'dino_box_threshold': ('FLOAT', {'default': 0.3, 'min': -100.0, 'max': 100.0, 'step': 0.1}), 'highest_confidence_mode': ('INT', {'default': 0, 'min': 0, 'max': 1, 'step': 1}), 'return_index': ('INT', {'default': 0})}}
-    RETURN_TYPES = ('IMAGE', 'MASK')
-    FUNCTION = 'sam'
-    CATEGORY = 'AIGC'
-
-    def sam(self, image, text: str, sam_model_name: str, groundingdino_model_name: str, dino_box_threshold: float, highest_confidence_mode: int, return_index: int):
-        (new_image, mask) = sam_with_groundingdino(image, text, sam_model_name, groundingdino_model_name, dino_box_threshold, bool(highest_confidence_mode), return_index)
-        return (new_image, mask)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

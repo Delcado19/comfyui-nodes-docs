@@ -23,21 +23,6 @@ The Yoloworld_ModelLoader_Zho class is designed to facilitate loading and initia
 - Infra type: CPU
 
 # Source code
-```
-class Yoloworld_ModelLoader_Zho:
+[View source repository on GitHub](https://github.com/ZHO-ZHO-ZHO/ComfyUI-YoloWorld-EfficientSAM)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'yolo_world_model': (['yolo_world/l', 'yolo_world/m', 'yolo_world/s'],)}}
-    RETURN_TYPES = ('YOLOWORLDMODEL',)
-    RETURN_NAMES = ('yolo_world_model',)
-    FUNCTION = 'load_yolo_world_model'
-    CATEGORY = '🔎YOLOWORLD_ESAM'
-
-    def load_yolo_world_model(self, yolo_world_model):
-        YOLO_WORLD_MODEL = YOLOWorld(model_id=yolo_world_model)
-        return [YOLO_WORLD_MODEL]
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

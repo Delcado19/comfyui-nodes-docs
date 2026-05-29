@@ -36,17 +36,6 @@ StandardUniformViewOptionsNode is designed to generate a unified set of view opt
 - Infra type: CPU
 
 # Source code
-```
-class StandardUniformViewOptionsNode:
+[View source repository on GitHub](https://github.com/Kosinkadink/ComfyUI-AnimateDiff-Evolved)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'view_length': ('INT', {'default': 16, 'min': 1, 'max': LENGTH_MAX}), 'view_stride': ('INT', {'default': 1, 'min': 1, 'max': STRIDE_MAX}), 'view_overlap': ('INT', {'default': 4, 'min': 0, 'max': OVERLAP_MAX})}, 'optional': {'fuse_method': (ContextFuseMethod.LIST,)}}
-    RETURN_TYPES = ('VIEW_OPTS',)
-    CATEGORY = 'Animate Diff 🎭🅐🅓/context opts/view opts'
-    FUNCTION = 'create_options'
-
-    def create_options(self, view_length: int, view_overlap: int, view_stride: int, fuse_method: str=ContextFuseMethod.PYRAMID):
-        view_options = ContextOptions(context_length=view_length, context_stride=view_stride, context_overlap=view_overlap, context_schedule=ContextSchedules.UNIFORM_STANDARD, fuse_method=fuse_method)
-        return (view_options,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

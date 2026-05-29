@@ -53,37 +53,7 @@ The SaltBatchCropDataExtractor node processes a batch of crop data, extracting s
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class SaltBatchCropDataExtractor:
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {
-            "required": {
-                "crop_data_batch": ("CROP_DATA_BATCH",),
-                "index": ("INT", {"min": 0}),
-            }
-        }
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    RETURN_TYPES = ("CROP_DATA_BATCH", "INT", "INT", "INT", "INT", "INT", "INT")
-    RETURN_NAMES = ("crop_data_batch", "width", "height", "top", "left", "right", "bottom")
-
-    FUNCTION = "extract"
-    CATEGORY = f"{NAME}/Masking/Process"
-
-    def extract(self, crop_data_batch, index):
-        if index < 0 or index >= len(crop_data_batch):
-            raise ValueError("Index out of range")
-
-        try:
-            crop_size, (crop_left, crop_top, crop_right, crop_bottom) = crop_data_batch[index]
-            width = crop_right - crop_left
-            height = crop_bottom - crop_top
-            single_crop_data = [(crop_size, (crop_left, crop_top, crop_right, crop_bottom))]
-            return single_crop_data, width, height, crop_top, crop_left, crop_right, crop_bottom
-        except Exception as e:
-            print(e)
-            return [((0, 0), (0, 0, 0, 0))], 0, 0, 0, 0, 0, 0
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

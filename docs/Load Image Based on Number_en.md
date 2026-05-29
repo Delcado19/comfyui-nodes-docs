@@ -32,25 +32,6 @@ This node loads an image from a specified directory based on a provided index. I
 - Infra type: CPU
 
 # Source code
-```
-class LoadImgFromDirectoryBasedOnIndex:
+[View source repository on GitHub](https://github.com/bash-j/mikey_nodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'image_directory': ('STRING', {'multiline': False, 'placeholder': 'Image Directory'}), 'seed': ('INT', {'default': 0, 'min': 0, 'max': 18446744073709551615})}}
-    RETURN_TYPES = ('IMAGE', 'STRING')
-    RETURN_NAMES = ('image', 'filename')
-    FUNCTION = 'load'
-    CATEGORY = 'Mikey/Image'
-
-    def load(self, image_directory, seed):
-        if not os.path.exists(image_directory):
-            raise Exception(f'Image directory {image_directory} does not exist')
-        files = [os.path.join(image_directory, f) for f in os.listdir(image_directory) if os.path.isfile(os.path.join(image_directory, f)) and f.endswith(('.png', '.jpg', '.jpeg', '.webp', '.bmp', '.gif'))]
-        files.sort()
-        offset = seed % len(files)
-        filename = files[offset].split('/')[-1]
-        img = Image.open(files[offset])
-        img = pil2tensor(img)
-        return (img, filename)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

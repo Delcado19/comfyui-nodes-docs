@@ -27,21 +27,6 @@ Output a boolean value.
 - Infra type: CPU
 
 # Source code
-```
-class BooleanNode:
-    def __init__(self):
-        pass
-    @classmethod
-    def INPUT_TYPES(self):
-        return {"required": {
-                "bool_value": ("BOOLEAN", {"default": False}),
-            },}
+[View source repository on GitHub](https://github.com/chflame163/ComfyUI_LayerStyle)
 
-    RETURN_TYPES = ("BOOLEAN",)
-    RETURN_NAMES = ("boolean",)
-    FUNCTION = 'boolean_node'
-    CATEGORY = '😺dzNodes/LayerUtility/Data'
-
-    def boolean_node(self, bool_value):
-        return (bool_value,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -37,42 +37,7 @@ The mgpt_t2m node uses the MotionGPT model to convert text descriptions into mot
 - Infra type: `GPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class mgpt_t2m:
-    @classmethod
-    def INPUT_TYPES(s):
-        return {"required": {
-            "mgpt_model": ("MGPTMODEL",),
-            "motion_length": ("INT", {"default": 196, "min": 1, "max": 196, "step": 1}),
-            "seed": ("INT", {"default": 0, "min": 0, "max": 0xffffffffffffffff}),
-            "text": ("STRING", {"multiline": True,"default": "make the person jump and turn around"}),
-            }
-        }
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    RETURN_TYPES = ("MOTION_DATA",)
-    RETURN_NAMES = ("motion_data", )
-    FUNCTION = "process"
-    CATEGORY = "MotionDiff/mGPT"
-
-    def process(self, seed, text, mgpt_model, motion_length):
-        device = get_torch_device()
-        torch.manual_seed(seed)
-
-        prompt = mgpt_model.lm.placeholder_fulfill(text, motion_length, "", "")
-        batch = {
-            "length": [motion_length], #I don"t know what this is supposed to do if anything? Lenght seems to be determined by the prompt up to the max of 196
-            "text": [prompt],
-        }
-        mgpt_model.to(device)
-        outputs = mgpt_model(batch, task="t2m")
-        #out_feats = outputs["feats"][0]
-        #print("out_feats_shape: ",out_feats.shape)
-        out_lengths = outputs["length"][0]
-        #print("out_lengths: ",out_lengths)
-        out_joints = outputs["joints"][:out_lengths].detach().cpu().numpy()
-        mgpt_model.cpu()
-        return ({"joints": out_joints.squeeze(0)},)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

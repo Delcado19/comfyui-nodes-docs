@@ -23,16 +23,6 @@ The BoolToInt node is designed to convert a boolean value to its integer equival
 - Infra type: CPU
 
 # Source code
-```
-class BoolToInt:
+[View source repository on GitHub](https://github.com/evanspearman/ComfyMath)
 
-    @classmethod
-    def INPUT_TYPES(cls) -> Mapping[str, Any]:
-        return {'required': {'a': ('BOOL', {'default': False})}}
-    RETURN_TYPES = ('INT',)
-    FUNCTION = 'op'
-    CATEGORY = 'math/conversion'
-
-    def op(self, a: bool) -> tuple[int]:
-        return (int(a),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

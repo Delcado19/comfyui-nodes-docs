@@ -36,25 +36,6 @@ This node aims to generate a series of random numbers based on a given seed, ens
 - Infra type: CPU
 
 # Source code
-```
-class RandomGeneratorForList:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Inspire-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'signal': (utils.any_typ,), 'seed': ('INT', {'default': 0, 'min': 0, 'max': 18446744073709551615})}, 'hidden': {'unique_id': 'UNIQUE_ID'}}
-    RETURN_TYPES = (utils.any_typ, 'INT')
-    RETURN_NAMES = ('signal', 'random_value')
-    FUNCTION = 'doit'
-    CATEGORY = 'InspirePack/Util'
-
-    def doit(self, signal, seed, unique_id):
-        if unique_id not in list_counter_map:
-            count = 0
-        else:
-            count = list_counter_map[unique_id]
-        list_counter_map[unique_id] = count + 1
-        rn = random.Random()
-        rn.seed(seed + count)
-        new_seed = random.randint(0, 1125899906842624)
-        return (signal, new_seed)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

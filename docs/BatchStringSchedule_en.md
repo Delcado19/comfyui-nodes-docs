@@ -60,24 +60,6 @@ The `animate` method of the BatchStringSchedule node is designed to process stru
 - Infra type: CPU
 
 # Source code
-```
-class BatchStringSchedule:
+[View source repository on GitHub](https://github.com/FizzleDorf/ComfyUI_FizzNodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'text': ('STRING', {'multiline': True, 'default': defaultPrompt}), 'max_frames': ('INT', {'default': 120.0, 'min': 1.0, 'max': 999999.0, 'step': 1.0}), 'print_output': ('BOOLEAN', {'default': False})}, 'optional': {'pre_text': ('STRING', {'multiline': True}), 'app_text': ('STRING', {'multiline': True}), 'pw_a': ('FLOAT', {'default': 0.0, 'min': -9999.0, 'max': 9999.0, 'step': 0.1}), 'pw_b': ('FLOAT', {'default': 0.0, 'min': -9999.0, 'max': 9999.0, 'step': 0.1}), 'pw_c': ('FLOAT', {'default': 0.0, 'min': -9999.0, 'max': 9999.0, 'step': 0.1}), 'pw_d': ('FLOAT', {'default': 0.0, 'min': -9999.0, 'max': 9999.0, 'step': 0.1})}}
-    RETURN_TYPES = ('STRING', 'STRING')
-    RETURN_NAMES = ('POS', 'NEG')
-    FUNCTION = 'animate'
-    CATEGORY = 'FizzNodes 📅🅕🅝/BatchScheduleNodes'
-
-    def animate(self, text, max_frames, pw_a=0, pw_b=0, pw_c=0, pw_d=0, pre_text='', app_text='', print_output=False):
-        inputText = str('{' + text + '}')
-        inputText = re.sub(',\\s*}', '}', inputText)
-        start_frame = 0
-        animation_prompts = json.loads(inputText.strip())
-        (pos, neg) = batch_split_weighted_subprompts(animation_prompts, pre_text, app_text)
-        (pos_cur_prompt, pos_nxt_prompt, weight) = interpolate_prompt_series(pos, max_frames, start_frame, pre_text, app_text, pw_a, pw_b, pw_c, pw_d, print_output)
-        (neg_cur_prompt, neg_nxt_prompt, weight) = interpolate_prompt_series(neg, max_frames, start_frame, pre_text, app_text, pw_a, pw_b, pw_c, pw_d, print_output)
-        return (pos_cur_prompt, neg_cur_prompt)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

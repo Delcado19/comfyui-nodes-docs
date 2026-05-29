@@ -31,21 +31,6 @@ SDTurboScheduler is a node that efficiently manages and schedules sampling opera
 - Infra type: GPU
 
 # Source code
-```
-class SDTurboScheduler:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'model': ('MODEL',), 'steps': ('INT', {'default': 1, 'min': 1, 'max': 10}), 'denoise': ('FLOAT', {'default': 1.0, 'min': 0, 'max': 1.0, 'step': 0.01})}}
-    RETURN_TYPES = ('SIGMAS',)
-    CATEGORY = 'sampling/custom_sampling/schedulers'
-    FUNCTION = 'get_sigmas'
-
-    def get_sigmas(self, model, steps, denoise):
-        start_step = 10 - int(10 * denoise)
-        timesteps = torch.flip(torch.arange(1, 11) * 100 - 1, (0,))[start_step:start_step + steps]
-        comfy.model_management.load_models_gpu([model])
-        sigmas = model.model.model_sampling.sigma(timesteps)
-        sigmas = torch.cat([sigmas, sigmas.new_zeros([1])])
-        return (sigmas,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

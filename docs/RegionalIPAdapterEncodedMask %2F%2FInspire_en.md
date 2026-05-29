@@ -48,17 +48,6 @@ The RegionalIPAdapterEncodedMask class aims to apply a regional mask to the imag
 - Infra type: GPU
 
 # Source code
-```
-class RegionalIPAdapterEncodedMask:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Inspire-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'mask': ('MASK',), 'embeds': ('embeds',), 'weight': ('FLOAT', {'default': 0.7, 'min': -1, 'max': 3, 'step': 0.05}), 'weight_type': (['original', 'linear', 'channel penalty'],), 'start_at': ('FLOAT', {'default': 0.0, 'min': 0.0, 'max': 1.0, 'step': 0.001}), 'end_at': ('FLOAT', {'default': 1.0, 'min': 0.0, 'max': 1.0, 'step': 0.001}), 'unfold_batch': ('BOOLEAN', {'default': False})}}
-    RETURN_TYPES = ('REGIONAL_IPADAPTER',)
-    FUNCTION = 'doit'
-    CATEGORY = 'InspirePack/Regional'
-
-    def doit(self, mask, embeds, weight, weight_type, start_at=0.0, end_at=1.0, unfold_batch=False):
-        cond = IPAdapterConditioning(mask, weight, weight_type, embeds=embeds, start_at=start_at, end_at=end_at, unfold_batch=unfold_batch)
-        return (cond,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

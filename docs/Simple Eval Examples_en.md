@@ -22,18 +22,7 @@ The node has no output type.
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-    class TSC_EvalExamples:
-        @classmethod
-        def INPUT_TYPES(cls):
-            filepath = os.path.join(my_dir, 'workflows', 'SimpleEval_Node_Examples.txt')
-            with open(filepath, 'r') as file:
-                examples = file.read()
-            return {"required": {"models_text": ("STRING", {"default": examples, "multiline": True}), }, }
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-        RETURN_TYPES = ()
-        CATEGORY = "Efficiency Nodes/Simple Eval"
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

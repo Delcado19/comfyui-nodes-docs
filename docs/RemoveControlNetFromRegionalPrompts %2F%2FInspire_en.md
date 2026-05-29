@@ -23,23 +23,6 @@ This node aims to process and refine regional prompts by removing control elemen
 - Infra type: CPU
 
 # Source code
-```
-class RemoveControlNetFromRegionalPrompts:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Inspire-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'regional_prompts': ('REGIONAL_PROMPTS',)}}
-    RETURN_TYPES = ('REGIONAL_PROMPTS',)
-    FUNCTION = 'doit'
-    CATEGORY = 'InspirePack/Util'
-
-    def doit(self, regional_prompts):
-        rcn = RemoveControlNet()
-        res = []
-        for rp in regional_prompts:
-            (_, _, _, _, positive, negative) = rp.sampler.params
-            (positive, negative) = (rcn.doit(positive)[0], rcn.doit(negative)[0])
-            sampler = rp.sampler.clone_with_conditionings(positive, negative)
-            res.append(rp.clone_with_sampler(sampler))
-        return (res,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

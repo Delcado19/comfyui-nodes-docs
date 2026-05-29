@@ -40,18 +40,6 @@ The CheckpointLoaderSimple node is designed to load and manage machine learning 
 - Infra type: CPU
 
 # Source code
-```
-class CheckpointLoaderSimple:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'ckpt_name': (folder_paths.get_filename_list('checkpoints'),)}}
-    RETURN_TYPES = ('MODEL', 'CLIP', 'VAE')
-    FUNCTION = 'load_checkpoint'
-    CATEGORY = 'loaders'
-
-    def load_checkpoint(self, ckpt_name, output_vae=True, output_clip=True):
-        ckpt_path = folder_paths.get_full_path('checkpoints', ckpt_name)
-        out = comfy.sd.load_checkpoint_guess_config(ckpt_path, output_vae=True, output_clip=True, embedding_directory=folder_paths.get_folder_paths('embeddings'))
-        return out[:3]
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

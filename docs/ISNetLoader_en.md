@@ -29,31 +29,7 @@ The ISNetLoader node loads ISNet models, allowing selection of a specific model 
 - Infra type: `GPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class ISNetLoader:
-    @classmethod
-    def INPUT_TYPES(s):
-        return {
-            "required": {
-                "model_name": (folder_paths.get_filename_list("isnet"),),
-                "model_override": ("STRING", {"default": "None"}),
-            },
-        }
+[View source repository on GitHub](https://github.com/ArtVentureX/comfyui-art-venture)
 
-    RETURN_TYPES = ("ISNET_MODEL",)
-    FUNCTION = "load_isnet"
-    CATEGORY = "Art Venture/Segmentation"
-
-    def load_isnet(self, model_name, model_override="None"):
-        if model_override != "None":
-            if model_override not in folder_paths.get_filename_list("isnet"):
-                logger.warning(f"Model override {model_override} not found. Use {model_name} instead.")
-            else:
-                model_name = model_override
-
-        model = load_isnet_model(model_name)
-        return (model,)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

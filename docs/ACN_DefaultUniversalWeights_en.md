@@ -22,18 +22,6 @@ The 'load_weights' method of the DefaultWeights node is designed to initialize a
 - Infra type: CPU
 
 # Source code
-```
-class DefaultWeights:
+[View source repository on GitHub](https://github.com/Kosinkadink/ComfyUI-Advanced-ControlNet)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {}
-    RETURN_TYPES = ('CONTROL_NET_WEIGHTS', 'TIMESTEP_KEYFRAME')
-    RETURN_NAMES = WEIGHTS_RETURN_NAMES
-    FUNCTION = 'load_weights'
-    CATEGORY = 'Adv-ControlNet 🛂🅐🅒🅝/weights'
-
-    def load_weights(self):
-        weights = ControlWeights.default()
-        return (weights, TimestepKeyframeGroup.default(TimestepKeyframe(control_weights=weights)))
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -60,24 +60,6 @@ The controlnetAdvanced node is designed to facilitate the application of control
 - Infra type: CPU
 
 # Source code
-```
-class controlnetAdvanced:
+[View source repository on GitHub](https://github.com/yolain/ComfyUI-Easy-Use)
 
-    @classmethod
-    def INPUT_TYPES(s):
-
-        def get_file_list(filenames):
-            return [file for file in filenames if file != 'put_models_here.txt' and 'lllite' not in file]
-        return {'required': {'pipe': ('PIPE_LINE',), 'image': ('IMAGE',), 'control_net_name': (get_file_list(folder_paths.get_filename_list('controlnet')),)}, 'optional': {'control_net': ('CONTROL_NET',), 'strength': ('FLOAT', {'default': 1.0, 'min': 0.0, 'max': 10.0, 'step': 0.01}), 'start_percent': ('FLOAT', {'default': 0.0, 'min': 0.0, 'max': 1.0, 'step': 0.001}), 'end_percent': ('FLOAT', {'default': 1.0, 'min': 0.0, 'max': 1.0, 'step': 0.001}), 'scale_soft_weights': ('FLOAT', {'default': 1.0, 'min': 0.0, 'max': 1.0, 'step': 0.001})}}
-    RETURN_TYPES = ('PIPE_LINE', 'CONDITIONING', 'CONDITIONING')
-    RETURN_NAMES = ('pipe', 'positive', 'negative')
-    OUTPUT_NODE = True
-    FUNCTION = 'controlnetApply'
-    CATEGORY = 'EasyUse/Loaders'
-
-    def controlnetApply(self, pipe, image, control_net_name, control_net=None, strength=1, start_percent=0, end_percent=1, scale_soft_weights=1):
-        (positive, negative) = easyControlnet().apply(control_net_name, image, pipe['positive'], pipe['negative'], strength, start_percent, end_percent, control_net, scale_soft_weights)
-        new_pipe = {'model': pipe['model'], 'positive': positive, 'negative': negative, 'vae': pipe['vae'], 'clip': pipe['clip'], 'samples': pipe['samples'], 'images': pipe['images'], 'seed': 0, 'loader_settings': pipe['loader_settings']}
-        del pipe
-        return (new_pipe, positive, negative)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

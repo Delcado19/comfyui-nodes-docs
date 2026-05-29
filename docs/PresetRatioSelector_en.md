@@ -76,36 +76,6 @@ The PresetRatioSelector node is designed to calculate and select image sizes bas
 - Infra type: CPU
 
 # Source code
-```
-class PresetRatioSelector:
+[View source repository on GitHub](https://github.com/bash-j/mikey_nodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        (s.ratio_presets, s.ratio_config) = read_ratio_presets()
-        return {'required': {'select_preset': (s.ratio_presets, {'default': 'none'}), 'swap_axis': (['true', 'false'], {'default': 'false'}), 'use_preset_seed': (['true', 'false'], {'default': 'false'}), 'seed': ('INT', {'default': 0, 'min': 0, 'max': 18446744073709551615})}, 'hidden': {'unique_id': 'UNIQUE_ID', 'extra_pnginfo': 'EXTRA_PNGINFO', 'prompt': 'PROMPT'}}
-    RETURN_TYPES = ('INT', 'INT', 'INT', 'INT', 'INT', 'INT', 'INT', 'INT')
-    RETURN_NAMES = ('latent_w', 'latent_h', 'cte_w', 'cte_h', 'target_w', 'target_h', 'crop_w', 'crop_h')
-    CATEGORY = 'Mikey/Utils'
-    FUNCTION = 'calculate'
-
-    def calculate(self, select_preset, swap_axis, use_preset_seed, seed, unique_id=None, extra_pnginfo=None, prompt=None):
-        if use_preset_seed == 'true' and len(self.ratio_presets) > 0:
-            len_presets = len(self.ratio_presets)
-            offset = seed % (len_presets - 1)
-            presets = [p for p in self.ratio_presets if p != 'none']
-            select_preset = presets[offset]
-        latent_width = self.ratio_config[select_preset]['custom_latent_w']
-        latent_height = self.ratio_config[select_preset]['custom_latent_h']
-        cte_w = self.ratio_config[select_preset]['cte_w']
-        cte_h = self.ratio_config[select_preset]['cte_h']
-        target_w = self.ratio_config[select_preset]['target_w']
-        target_h = self.ratio_config[select_preset]['target_h']
-        crop_w = self.ratio_config[select_preset]['crop_w']
-        crop_h = self.ratio_config[select_preset]['crop_h']
-        if swap_axis == 'true':
-            (latent_width, latent_height) = (latent_height, latent_width)
-            (cte_w, cte_h) = (cte_h, cte_w)
-            (target_w, target_h) = (target_h, target_w)
-            (crop_w, crop_h) = (crop_h, crop_w)
-        return (latent_width, latent_height, cte_w, cte_h, target_w, target_h, crop_w, crop_h)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

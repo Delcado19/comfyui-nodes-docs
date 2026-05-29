@@ -56,18 +56,6 @@ The ToDetailerPipe node is designed to convert input data into a more detailed a
 - Infra type: CPU
 
 # Source code
-```
-class ToDetailerPipe:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'model': ('MODEL',), 'clip': ('CLIP',), 'vae': ('VAE',), 'positive': ('CONDITIONING',), 'negative': ('CONDITIONING',), 'bbox_detector': ('BBOX_DETECTOR',), 'wildcard': ('STRING', {'multiline': True, 'dynamicPrompts': False}), 'Select to add LoRA': (['Select the LoRA to add to the text'] + folder_paths.get_filename_list('loras'),), 'Select to add Wildcard': (['Select the Wildcard to add to the text'],)}, 'optional': {'sam_model_opt': ('SAM_MODEL',), 'segm_detector_opt': ('SEGM_DETECTOR',), 'detailer_hook': ('DETAILER_HOOK',)}}
-    RETURN_TYPES = ('DETAILER_PIPE',)
-    RETURN_NAMES = ('detailer_pipe',)
-    FUNCTION = 'doit'
-    CATEGORY = 'ImpactPack/Pipe'
-
-    def doit(self, *args, **kwargs):
-        pipe = (kwargs['model'], kwargs['clip'], kwargs['vae'], kwargs['positive'], kwargs['negative'], kwargs['wildcard'], kwargs['bbox_detector'], kwargs.get('segm_detector_opt', None), kwargs.get('sam_model_opt', None), kwargs.get('detailer_hook', None), kwargs.get('refiner_model', None), kwargs.get('refiner_clip', None), kwargs.get('refiner_positive', None), kwargs.get('refiner_negative', None))
-        return (pipe,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -33,34 +33,7 @@ This node provides a mechanism for switching between two values based on a boole
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class CSwitchBooleanAny:
-    def __init__(self):
-        pass
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {
-            "required": {
-                "on_true": (any, {}),
-                "on_false": (any, {}),
-                "boolean": BOOLEAN,
-            }
-        }
-
-    CATEGORY = CATEGORY.MAIN.value + CATEGORY.SWITCH.value
-    RETURN_TYPES = (any,)
-
-    FUNCTION = "execute"
-
-    def execute(self, on_true, on_false, boolean=True):
-        logger.debug("Any switch: " + str(boolean))
-
-        if boolean:
-            return (on_true,)
-        else:
-            return (on_false,)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

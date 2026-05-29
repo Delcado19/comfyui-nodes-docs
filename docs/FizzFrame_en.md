@@ -40,31 +40,6 @@ The NodeFrame class is designed to manage and create frames within structured da
 - Infra type: CPU
 
 # Source code
-```
-class NodeFrame:
+[View source repository on GitHub](https://github.com/FizzleDorf/ComfyUI_FizzNodes)
 
-    def __init__(self):
-        self.frames = {}
-        self.thisFrame = {}
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'frame': ('INT', {'default': 0, 'min': 0}), 'previous_frame': ('FIZZFRAME', {'forceInput': True}), 'positive_text': ('STRING', {'multiline': True})}, 'optional': {'negative_text': ('STRING', {'multiline': True})}}
-    RETURN_TYPES = ('FIZZFRAME', 'CONDITIONING', 'CONDITIONING')
-    FUNCTION = 'create_frame'
-    CATEGORY = 'FizzNodes 📅🅕🅝/FrameNodes'
-
-    def create_frame(self, frame, previous_frame, positive_text, negative_text=None):
-        self.frames = previous_frame.frames
-        prev_frame = previous_frame.thisFrame
-        new_positive_text = f"{positive_text}, {prev_frame['general_positive']}"
-        new_negative_text = f"{negative_text}, {prev_frame['general_negative']}"
-        pos_tokens = prev_frame['clip'].tokenize(new_positive_text)
-        (pos_cond, pos_pooled) = prev_frame['clip'].encode_from_tokens(pos_tokens, return_pooled=True)
-        neg_tokens = prev_frame['clip'].tokenize(new_negative_text)
-        (neg_cond, neg_pooled) = prev_frame['clip'].encode_from_tokens(neg_tokens, return_pooled=True)
-        new_frame = {'positive_text': positive_text, 'negative_text': negative_text, 'general_positive': prev_frame['general_positive'], 'general_negative': prev_frame['general_negative'], 'clip': prev_frame['clip'], 'pos_conditioning': {'cond': pos_cond, 'pooled': pos_pooled}, 'neg_conditioning': {'cond': neg_cond, 'pooled': neg_pooled}}
-        self.thisFrame = new_frame
-        self.frames[frame] = new_frame
-        return (self, [[pos_cond, {'pooled_output': pos_pooled}]], [[neg_cond, {'pooled_output': neg_pooled}]])
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

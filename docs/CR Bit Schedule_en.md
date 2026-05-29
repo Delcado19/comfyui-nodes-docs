@@ -36,27 +36,6 @@ The CR_BitSchedule node is designed to generate a schedule based on a binary str
 - Infra type: CPU
 
 # Source code
-```
-class CR_BitSchedule:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'binary_string': ('STRING', {'multiline': True, 'default': ''}), 'interval': ('INT', {'default': 1, 'min': 1, 'max': 99999}), 'loops': ('INT', {'default': 1, 'min': 1, 'max': 99999})}}
-    RETURN_TYPES = ('STRING', 'STRING')
-    RETURN_NAMES = ('SCHEDULE', 'show_text')
-    FUNCTION = 'bit_schedule'
-    CATEGORY = icons.get('Comfyroll/Animation/Schedule')
-
-    def bit_schedule(self, binary_string, interval, loops=1):
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Schedule-Nodes#cr-bit-schedule'
-        schedule = []
-        binary_string = binary_string.replace(' ', '').replace('\n', '')
-        '\n        for i in range(len(binary_string) * loops):\n            index = i % len(binary_string)  # Use modulo to ensure the index continues in a single sequence\n            bit = int(binary_string[index])\n            schedule.append(f"{i},{bit}")\n        '
-        for i in range(len(binary_string) * loops):
-            schedule_index = i * interval
-            bit_index = i % len(binary_string)
-            bit = int(binary_string[bit_index])
-            schedule.append(f'{schedule_index},{bit}')
-        schedule_out = '\n'.join(schedule)
-        return (schedule_out, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

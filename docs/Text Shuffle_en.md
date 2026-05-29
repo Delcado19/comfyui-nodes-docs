@@ -32,24 +32,6 @@ The `shuffle` method of the WAS_Text_Shuffle node is designed to rearrange the o
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Text_Shuffle:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'text': (TEXT_TYPE, {'forceInput': True if TEXT_TYPE == 'STRING' else False}), 'separator': ('STRING', {'default': ',', 'multiline': False}), 'seed': ('INT', {'default': 0, 'min': 0, 'max': 18446744073709551615})}}
-    RETURN_TYPES = (TEXT_TYPE,)
-    FUNCTION = 'shuffle'
-    CATEGORY = 'WAS Suite/Text/Operations'
-
-    def shuffle(self, text, separator, seed):
-        if seed is not None:
-            random.seed(seed)
-        text_list = text.split(separator)
-        random.shuffle(text_list)
-        new_text = separator.join(text_list)
-        return (new_text,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

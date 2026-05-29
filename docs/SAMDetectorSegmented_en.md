@@ -60,18 +60,6 @@ The SAMDetectorSegmented node is designed to detect and segment objects in image
 - Infra type: GPU
 
 # Source code
-```
-class SAMDetectorSegmented:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'sam_model': ('SAM_MODEL',), 'segs': ('SEGS',), 'image': ('IMAGE',), 'detection_hint': (['center-1', 'horizontal-2', 'vertical-2', 'rect-4', 'diamond-4', 'mask-area', 'mask-points', 'mask-point-bbox', 'none'],), 'dilation': ('INT', {'default': 0, 'min': -512, 'max': 512, 'step': 1}), 'threshold': ('FLOAT', {'default': 0.93, 'min': 0.0, 'max': 1.0, 'step': 0.01}), 'bbox_expansion': ('INT', {'default': 0, 'min': 0, 'max': 1000, 'step': 1}), 'mask_hint_threshold': ('FLOAT', {'default': 0.7, 'min': 0.0, 'max': 1.0, 'step': 0.01}), 'mask_hint_use_negative': (['False', 'Small', 'Outter'],)}}
-    RETURN_TYPES = ('MASK', 'MASK')
-    RETURN_NAMES = ('combined_mask', 'batch_masks')
-    FUNCTION = 'doit'
-    CATEGORY = 'ImpactPack/Detector'
-
-    def doit(self, sam_model, segs, image, detection_hint, dilation, threshold, bbox_expansion, mask_hint_threshold, mask_hint_use_negative):
-        (combined_mask, batch_masks) = core.make_sam_mask_segmented(sam_model, segs, image, detection_hint, dilation, threshold, bbox_expansion, mask_hint_threshold, mask_hint_use_negative)
-        return (combined_mask, batch_masks)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

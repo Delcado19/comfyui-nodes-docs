@@ -36,43 +36,6 @@ The SEGSPicker node is designed to process and select segments from a series of 
 - Infra type: CPU
 
 # Source code
-```
-class SEGSPicker:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'picks': ('STRING', {'multiline': True, 'dynamicPrompts': False, 'pysssss.autocomplete': False}), 'segs': ('SEGS',)}, 'optional': {'fallback_image_opt': ('IMAGE',)}, 'hidden': {'unique_id': 'UNIQUE_ID'}}
-    RETURN_TYPES = ('SEGS',)
-    OUTPUT_NODE = True
-    FUNCTION = 'doit'
-    CATEGORY = 'ImpactPack/Util'
-
-    def doit(self, picks, segs, fallback_image_opt=None, unique_id=None):
-        if fallback_image_opt is not None:
-            segs = core.segs_scale_match(segs, fallback_image_opt.shape)
-        cands = []
-        for seg in segs[1]:
-            if seg.cropped_image is not None:
-                cropped_image = seg.cropped_image
-            elif fallback_image_opt is not None:
-                cropped_image = crop_image(fallback_image_opt, seg.crop_region)
-            else:
-                cropped_image = empty_pil_tensor()
-            mask_array = seg.cropped_mask.copy()
-            mask_array[mask_array < 0.3] = 0.3
-            mask_array = mask_array[None, ..., None]
-            cropped_image = cropped_image * mask_array
-            cands.append(cropped_image)
-        impact.impact_server.segs_picker_map[unique_id] = cands
-        pick_ids = set()
-        for pick in picks.split(','):
-            try:
-                pick_ids.add(int(pick) - 1)
-            except Exception:
-                pass
-        new_segs = []
-        for i in pick_ids:
-            if 0 <= i < len(segs[1]):
-                new_segs.append(segs[1][i])
-        return ((segs[0], new_segs),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

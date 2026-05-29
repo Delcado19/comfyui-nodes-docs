@@ -23,19 +23,6 @@ The CombineRegionalPrompts node is designed to merge multiple sets of regional p
 - Infra type: CPU
 
 # Source code
-```
-class CombineRegionalPrompts:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'regional_prompts1': ('REGIONAL_PROMPTS',)}}
-    RETURN_TYPES = ('REGIONAL_PROMPTS',)
-    FUNCTION = 'doit'
-    CATEGORY = 'ImpactPack/Regional'
-
-    def doit(self, **kwargs):
-        res = []
-        for (k, v) in kwargs.items():
-            res += v
-        return (res,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

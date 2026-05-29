@@ -27,17 +27,6 @@ The ConditioningSetAreaStrength node modifies and enhances conditioning sets by 
 - Infra type: CPU
 
 # Source code
-```
-class ConditioningSetAreaStrength:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'conditioning': ('CONDITIONING',), 'strength': ('FLOAT', {'default': 1.0, 'min': 0.0, 'max': 10.0, 'step': 0.01})}}
-    RETURN_TYPES = ('CONDITIONING',)
-    FUNCTION = 'append'
-    CATEGORY = 'conditioning'
-
-    def append(self, conditioning, strength):
-        c = node_helpers.conditioning_set_values(conditioning, {'strength': strength})
-        return (c,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

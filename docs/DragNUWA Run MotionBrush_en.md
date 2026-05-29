@@ -39,22 +39,6 @@ This node infers motion from brush input and applies it to a static image to sim
 - Infra type: GPU
 
 # Source code
-```
-class DragNUWARunMotionBrush:
+[View source repository on GitHub](https://github.com/chaojie/ComfyUI-DragNUWA)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'model': ('DragNUWA',), 'image': ('IMAGE',), 'motion_brush': ('MotionBrush',), 'inference_batch_size': ('INT', {'default': 1, 'min': 1, 'max': 1}), 'motion_bucket_id': ('INT', {'default': 4, 'min': 1, 'max': 100})}}
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'run_inference'
-    CATEGORY = 'DragNUWA'
-
-    def run_inference(self, model, image, motion_brush, inference_batch_size, motion_bucket_id):
-        image = 255.0 * image[0].cpu().numpy()
-        image_pil = Image.fromarray(np.clip(image, 0, 255).astype(np.uint8))
-        (raw_w, raw_h) = image_pil.size
-        resize_ratio = max(model.width / raw_w, model.height / raw_h)
-        image_pil = image_pil.resize((int(raw_w * resize_ratio), int(raw_h * resize_ratio)), Image.BILINEAR)
-        image_pil = transforms.CenterCrop((model.height, model.width))(image_pil.convert('RGB'))
-        return model.run_brush(image_pil, motion_brush, inference_batch_size, motion_bucket_id)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -27,17 +27,6 @@ This node dynamically modifies model behavior during inference based on a predef
 - Infra type: CPU
 
 # Source code
-```
-class LoRAScheduler:
+[View source repository on GitHub](https://github.com/asagi4/comfyui-prompt-control)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'model': ('MODEL',), 'text': ('STRING', {'multiline': True})}}
-    RETURN_TYPES = ('MODEL',)
-    CATEGORY = 'promptcontrol/old'
-    FUNCTION = 'apply'
-
-    def apply(self, model, text):
-        schedules = parse_prompt_schedules(text)
-        return (schedule_lora_common(model, schedules),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

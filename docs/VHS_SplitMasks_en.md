@@ -40,19 +40,6 @@ The SplitMasks node is designed to split a given mask tensor into two distinct g
 - Infra type: CPU
 
 # Source code
-```
-class SplitMasks:
+[View source repository on GitHub](https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'mask': ('MASK',), 'split_index': ('INT', {'default': 0, 'step': 1, 'min': BIGMIN, 'max': BIGMAX})}}
-    CATEGORY = 'Video Helper Suite 🎥🅥🅗🅢/mask'
-    RETURN_TYPES = ('MASK', 'INT', 'MASK', 'INT')
-    RETURN_NAMES = ('MASK_A', 'A_count', 'MASK_B', 'B_count')
-    FUNCTION = 'split_masks'
-
-    def split_masks(self, mask: Tensor, split_index: int):
-        group_a = mask[:split_index]
-        group_b = mask[split_index:]
-        return (group_a, group_a.size(0), group_b, group_b.size(0))
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

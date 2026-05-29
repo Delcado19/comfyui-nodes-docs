@@ -23,29 +23,6 @@ APISR_ModelLoader_Zho is a node for loading and managing various image super-res
 - Infra type: GPU
 
 # Source code
-```
-class APISR_ModelLoader_Zho:
+[View source repository on GitHub](https://github.com/ZHO-ZHO-ZHO/ComfyUI-APISR)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'apisr_model': (folder_paths.get_filename_list('apisr'),)}}
-    RETURN_TYPES = ('APISRMODEL',)
-    RETURN_NAMES = ('pipe',)
-    FUNCTION = 'load_model'
-    CATEGORY = '🔎APISR'
-
-    def load_model(self, apisr_model):
-        if not apisr_model:
-            raise ValueError('Please provide the apisr_model parameter with the name of the model file.')
-        apisr_path = folder_paths.get_full_path('apisr', apisr_model)
-        if apisr_model == '4x_APISR_GRL_GAN_generator.pth':
-            generator = load_grl(apisr_path, scale=4)
-        elif apisr_model == '2x_APISR_RRDB_GAN_generator.pth':
-            generator = load_rrdb(apisr_path, scale=2)
-        else:
-            raise gr.Error(error)
-        return [generator]
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

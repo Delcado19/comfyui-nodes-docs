@@ -27,17 +27,6 @@ The VAEEncode node is designed to convert input data into a latent space represe
 - Infra type: GPU
 
 # Source code
-```
-class VAEEncode:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'pixels': ('IMAGE',), 'vae': ('VAE',)}}
-    RETURN_TYPES = ('LATENT',)
-    FUNCTION = 'encode'
-    CATEGORY = 'latent'
-
-    def encode(self, vae, pixels):
-        t = vae.encode(pixels[:, :, :, :3])
-        return ({'samples': t},)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

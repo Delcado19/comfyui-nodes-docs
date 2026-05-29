@@ -31,16 +31,6 @@
 - Infra type: CPU
 
 # Source code
-```
-class NumberBinaryCondition:
+[View source repository on GitHub](https://github.com/evanspearman/ComfyMath)
 
-    @classmethod
-    def INPUT_TYPES(cls) -> Mapping[str, Any]:
-        return {'required': {'op': (list(FLOAT_BINARY_CONDITIONS.keys()),), 'a': DEFAULT_NUMBER, 'b': DEFAULT_NUMBER}}
-    RETURN_TYPES = ('BOOL',)
-    FUNCTION = 'op'
-    CATEGORY = 'math/float'
-
-    def op(self, op: str, a: number, b: number) -> tuple[bool]:
-        return (FLOAT_BINARY_CONDITIONS[op](float(a), float(b)),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

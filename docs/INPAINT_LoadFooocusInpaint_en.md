@@ -27,22 +27,6 @@ This node aims to load and integrate two key components for image inpainting tas
 - Infra type: CPU
 
 # Source code
-```
-class LoadFooocusInpaint:
+[View source repository on GitHub](https://github.com/Acly/comfyui-inpaint-nodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'head': (folder_paths.get_filename_list('inpaint'),), 'patch': (folder_paths.get_filename_list('inpaint'),)}}
-    RETURN_TYPES = ('INPAINT_PATCH',)
-    CATEGORY = 'inpaint'
-    FUNCTION = 'load'
-
-    def load(self, head: str, patch: str):
-        head_file = folder_paths.get_full_path('inpaint', head)
-        inpaint_head_model = InpaintHead()
-        sd = torch.load(head_file, map_location='cpu')
-        inpaint_head_model.load_state_dict(sd)
-        patch_file = folder_paths.get_full_path('inpaint', patch)
-        inpaint_lora = comfy.utils.load_torch_file(patch_file, safe_load=True)
-        return ((inpaint_head_model, inpaint_lora),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

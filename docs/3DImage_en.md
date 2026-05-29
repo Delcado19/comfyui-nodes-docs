@@ -39,39 +39,6 @@ The Image3D node is designed to process and manipulate 3D images. It accepts a b
 - Infra type: CPU
 
 # Source code
-```
-class Image3D:
+[View source repository on GitHub](https://github.com/shadowcz007/comfyui-mixlab-nodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'upload': ('THREED',)}, 'optional': {'material': ('IMAGE',)}}
-    RETURN_TYPES = ('IMAGE', 'MASK', 'IMAGE', 'IMAGE')
-    RETURN_NAMES = ('IMAGE', 'MASK', 'BG_IMAGE', 'MATERIAL')
-    FUNCTION = 'run'
-    CATEGORY = '♾️Mixlab/Image'
-    INPUT_IS_LIST = False
-    OUTPUT_IS_LIST = (False, False, False, False)
-    OUTPUT_NODE = True
-
-    def run(self, upload, material=None):
-        image = base64_to_image(upload['image'])
-        mat = None
-        if 'material' in upload and upload['material']:
-            mat = base64_to_image(upload['material'])
-            mat = mat.convert('RGB')
-            mat = pil2tensor(mat)
-        mask = image.split()[3]
-        image = image.convert('RGB')
-        mask = mask.convert('L')
-        bg_image = None
-        if 'bg_image' in upload and upload['bg_image']:
-            bg_image = base64_to_image(upload['bg_image'])
-            bg_image = bg_image.convert('RGB')
-            bg_image = pil2tensor(bg_image)
-        mask = pil2tensor(mask)
-        image = pil2tensor(image)
-        m = []
-        if not material is None:
-            m = create_temp_file(material[0])
-        return {'ui': {'material': m}, 'result': (image, mask, bg_image, mat)}
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

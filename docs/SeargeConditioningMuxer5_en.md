@@ -43,26 +43,6 @@ This node acts as a conditional multiplexer, selecting a specific conditioning i
 - Infra type: CPU
 
 # Source code
-```
-class SeargeConditioningMuxer5:
+[View source repository on GitHub](https://github.com/jobunk/SeargeSDXL)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'input0': ('CONDITIONING',), 'input1': ('CONDITIONING',), 'input2': ('CONDITIONING',), 'input3': ('CONDITIONING',), 'input4': ('CONDITIONING',), 'input_selector': ('INT', {'default': 0, 'min': 0, 'max': 4})}}
-    RETURN_TYPES = ('CONDITIONING',)
-    RETURN_NAMES = ('output',)
-    FUNCTION = 'mux'
-    CATEGORY = 'Searge/_deprecated_/FlowControl'
-
-    def mux(self, input0, input1, input2, input3, input4, input_selector):
-        if input_selector == 1:
-            return (input1,)
-        elif input_selector == 2:
-            return (input2,)
-        elif input_selector == 3:
-            return (input3,)
-        elif input_selector == 4:
-            return (input4,)
-        else:
-            return (input0,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

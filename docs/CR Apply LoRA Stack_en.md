@@ -40,30 +40,6 @@ CR_ApplyLoRAStack node applies a series of LoRA (Low-Rank Adaptation) modificati
 - Infra type: GPU
 
 # Source code
-```
-class CR_ApplyLoRAStack:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'model': ('MODEL',), 'clip': ('CLIP',), 'lora_stack': ('LORA_STACK',)}}
-    RETURN_TYPES = ('MODEL', 'CLIP', 'STRING')
-    RETURN_NAMES = ('MODEL', 'CLIP', 'show_help')
-    FUNCTION = 'apply_lora_stack'
-    CATEGORY = icons.get('Comfyroll/LoRA')
-
-    def apply_lora_stack(self, model, clip, lora_stack=None):
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/LoRA-Nodes#cr-apply-lora-stack'
-        lora_params = list()
-        if lora_stack:
-            lora_params.extend(lora_stack)
-        else:
-            return (model, clip, show_help)
-        model_lora = model
-        clip_lora = clip
-        for tup in lora_params:
-            (lora_name, strength_model, strength_clip) = tup
-            lora_path = folder_paths.get_full_path('loras', lora_name)
-            lora = comfy.utils.load_torch_file(lora_path, safe_load=True)
-            (model_lora, clip_lora) = comfy.sd.load_lora_for_models(model_lora, clip_lora, lora, strength_model, strength_clip)
-        return (model_lora, clip_lora, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

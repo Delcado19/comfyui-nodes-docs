@@ -40,19 +40,6 @@ The RangeFloat node is designed to create a sequence of floating-point numbers w
 - Infra type: CPU
 
 # Source code
-```
-class RangeFloat:
+[View source repository on GitHub](https://github.com/bash-j/mikey_nodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'start': ('FLOAT', {'default': 0, 'min': 0, 'step': 0.0001, 'max': 18446744073709551615}), 'end': ('FLOAT', {'default': 0, 'min': 0, 'step': 0.0001, 'max': 18446744073709551615}), 'step': ('FLOAT', {'default': 0, 'min': 0, 'step': 0.0001, 'max': 18446744073709551615}), 'seed': ('INT', {'default': 0, 'min': 0, 'max': 18446744073709551615})}}
-    RETURN_TYPES = ('FLOAT', 'STRING')
-    FUNCTION = 'generate'
-    CATEGORY = 'Mikey/Utils'
-
-    def generate(self, start, end, step, seed):
-        range_ = np.arange(start, end, step)
-        list_of_numbers = list(range_)
-        offset = seed % len(list_of_numbers)
-        return (list_of_numbers[offset], f'{list_of_numbers[offset]}')
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -32,21 +32,6 @@ The ReroutePrimitive node is designed to pass any given input unmodified, acting
     - [SaveImage](../../Comfy/Nodes/SaveImage.md) -->
 
 ## Source code
-```python
-class ReroutePrimitive:
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {
-            "required": {"value": (any, )},
-        }
+[View source repository on GitHub](https://github.com/pythongosssss/ComfyUI-Custom-Scripts)
 
-    @classmethod
-    def VALIDATE_INPUTS(s, **kwargs):
-        return True
-
-    RETURN_TYPES = (any,)
-    FUNCTION = "route"
-    CATEGORY = "utils"
-
-    def route(self, value):
-        return (value,)
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

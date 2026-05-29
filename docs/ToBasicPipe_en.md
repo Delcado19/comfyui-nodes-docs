@@ -39,18 +39,6 @@ The ToBasicPipe node aims to simplify the assembly of basic pipelines for model 
 - Infra type: CPU
 
 # Source code
-```
-class ToBasicPipe:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'model': ('MODEL',), 'clip': ('CLIP',), 'vae': ('VAE',), 'positive': ('CONDITIONING',), 'negative': ('CONDITIONING',)}}
-    RETURN_TYPES = ('BASIC_PIPE',)
-    RETURN_NAMES = ('basic_pipe',)
-    FUNCTION = 'doit'
-    CATEGORY = 'ImpactPack/Pipe'
-
-    def doit(self, model, clip, vae, positive, negative):
-        pipe = (model, clip, vae, positive, negative)
-        return (pipe,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

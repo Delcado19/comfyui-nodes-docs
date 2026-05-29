@@ -27,18 +27,6 @@ The BasicGuider node is responsible for generating a guider object that assists 
 - Infra type: CPU
 
 # Source code
-```
-class BasicGuider:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'model': ('MODEL',), 'conditioning': ('CONDITIONING',)}}
-    RETURN_TYPES = ('GUIDER',)
-    FUNCTION = 'get_guider'
-    CATEGORY = 'sampling/custom_sampling/guiders'
-
-    def get_guider(self, model, conditioning):
-        guider = Guider_Basic(model)
-        guider.set_conds(conditioning)
-        return (guider,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

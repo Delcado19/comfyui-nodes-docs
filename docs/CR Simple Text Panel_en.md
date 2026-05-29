@@ -67,30 +67,6 @@ CR_SimpleTextPanel aims to create visually appealing text panels with customizab
 - Infra type: CPU
 
 # Source code
-```
-class CR_SimpleTextPanel:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        font_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), 'fonts')
-        file_list = [f for f in os.listdir(font_dir) if os.path.isfile(os.path.join(font_dir, f)) and f.lower().endswith('.ttf')]
-        return {'required': {'panel_width': ('INT', {'default': 512, 'min': 8, 'max': 4096}), 'panel_height': ('INT', {'default': 512, 'min': 8, 'max': 4096}), 'text': ('STRING', {'multiline': True, 'default': 'text'}), 'font_name': (file_list,), 'font_color': (COLORS,), 'font_size': ('INT', {'default': 100, 'min': 0, 'max': 1024}), 'font_outline_thickness': ('INT', {'default': 0, 'min': 0, 'max': 50}), 'font_outline_color': (COLORS,), 'background_color': (COLORS,), 'align': (ALIGN_OPTIONS,), 'justify': (JUSTIFY_OPTIONS,)}, 'optional': {'font_color_hex': ('STRING', {'multiline': False, 'default': '#000000'}), 'bg_color_hex': ('STRING', {'multiline': False, 'default': '#000000'})}}
-    RETURN_TYPES = ('IMAGE', 'STRING')
-    RETURN_NAMES = ('image', 'show_help')
-    FUNCTION = 'layout'
-    CATEGORY = icons.get('Comfyroll/Graphics/Layout')
-
-    def layout(self, panel_width, panel_height, text, align, justify, font_name, font_color, font_size, font_outline_thickness, font_outline_color, background_color, font_color_hex='#000000', font_outline_color_hex='#000000', bg_color_hex='#000000'):
-        font_color = get_color_values(font_color, font_color_hex, color_mapping)
-        outline_color = get_color_values(font_outline_color, font_outline_color_hex, color_mapping)
-        bg_color = get_color_values(background_color, bg_color_hex, color_mapping)
-        margins = 50
-        line_spacing = 0
-        position_x = 0
-        position_y = 0
-        rotation_angle = 0
-        rotation_options = 'image center'
-        panel = text_panel(panel_width, panel_height, text, font_name, font_size, font_color, font_outline_thickness, outline_color, bg_color, margins, line_spacing, position_x, position_y, align, justify, rotation_angle, rotation_options)
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Layout-Nodes#cr-simple-text-panel'
-        return (pil2tensor(panel), show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

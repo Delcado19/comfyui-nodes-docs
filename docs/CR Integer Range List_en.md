@@ -43,29 +43,6 @@ The CR_IntegerRangeList node generates a list of integers within a specified ran
 - Infra type: CPU
 
 # Source code
-```
-class CR_IntegerRangeList:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'start': ('INT', {'default': 0, 'min': -99999, 'max': 99999}), 'end': ('INT', {'default': 0, 'min': -99999, 'max': 99999}), 'step': ('INT', {'default': 1, 'min': 1, 'max': 99999}), 'loops': ('INT', {'default': 1, 'min': 1, 'max': 999}), 'ping_pong': ('BOOLEAN', {'default': False})}}
-    RETURN_TYPES = ('INT', 'STRING')
-    RETURN_NAMES = ('INT', 'show_help')
-    OUTPUT_IS_LIST = (True, False)
-    FUNCTION = 'make_range'
-    CATEGORY = icons.get('Comfyroll/List')
-
-    def make_range(self, start, end, step, loops, ping_pong):
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/List-Nodes#cr-list-schedule'
-        range_values = list()
-        for i in range(loops):
-            current_range = list(range(start, end, step))
-            if ping_pong:
-                if i % 2 == 1:
-                    range_values += reversed(current_range)
-                else:
-                    range_values += current_range
-            else:
-                range_values += current_range
-        return (range_values, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

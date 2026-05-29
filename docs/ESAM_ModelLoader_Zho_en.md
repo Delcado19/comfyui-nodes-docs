@@ -23,26 +23,6 @@ This node is designed to load an ESAM model tailored for GPU or CPU environments
 - Infra type: GPU
 
 # Source code
-```
-class ESAM_ModelLoader_Zho:
+[View source repository on GitHub](https://github.com/ZHO-ZHO-ZHO/ComfyUI-YoloWorld-EfficientSAM)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'device': (['CUDA', 'CPU'],)}}
-    RETURN_TYPES = ('ESAMMODEL',)
-    RETURN_NAMES = ('esam_model',)
-    FUNCTION = 'load_esam_model'
-    CATEGORY = '🔎YOLOWORLD_ESAM'
-
-    def load_esam_model(self, device):
-        new_current_directory = os.path.join(current_directory, 'models')
-        if device == 'CUDA':
-            model_path = os.path.join(new_current_directory, 'efficient_sam_s_gpu.jit')
-        else:
-            model_path = os.path.join(new_current_directory, 'efficient_sam_s_cpu.jit')
-        EFFICIENT_SAM_MODEL = torch.jit.load(model_path)
-        return [EFFICIENT_SAM_MODEL]
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

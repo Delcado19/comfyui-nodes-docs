@@ -64,38 +64,6 @@ CR_ModuleOutput is a node designed to manage and modify pipeline output, ensurin
 - Infra type: CPU
 
 # Source code
-```
-class CR_ModuleOutput:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'pipe': ('PIPE_LINE',)}, 'optional': {'model': ('MODEL',), 'pos': ('CONDITIONING',), 'neg': ('CONDITIONING',), 'latent': ('LATENT',), 'vae': ('VAE',), 'clip': ('CLIP',), 'controlnet': ('CONTROL_NET',), 'image': ('IMAGE',), 'seed': ('INT', {'default': 0, 'min': 0, 'max': 18446744073709551615})}}
-    RETURN_TYPES = ('PIPE_LINE', 'STRING')
-    RETURN_NAMES = ('pipe', 'show_help')
-    FUNCTION = 'pipe_output'
-    CATEGORY = icons.get('Comfyroll/Pipe/Module')
-
-    def pipe_output(self, pipe, model=None, pos=None, neg=None, latent=None, vae=None, clip=None, controlnet=None, image=None, seed=None):
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Pipe-Nodes#cr-module-output'
-        (new_model, new_pos, new_neg, new_latent, new_vae, new_clip, new_controlnet, new_image, new_seed) = pipe
-        if model is not None:
-            new_model = model
-        if pos is not None:
-            new_pos = pos
-        if neg is not None:
-            new_neg = neg
-        if latent is not None:
-            new_latent = latent
-        if vae is not None:
-            new_vae = vae
-        if clip is not None:
-            new_clip = clip
-        if controlnet is not None:
-            new_controlnet = controlnet
-        if image is not None:
-            new_image = image
-        if seed is not None:
-            new_seed = seed
-        pipe = (new_model, new_pos, new_neg, new_latent, new_vae, new_clip, new_controlnet, new_image, new_seed)
-        return (pipe, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

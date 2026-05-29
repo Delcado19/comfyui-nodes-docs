@@ -27,16 +27,6 @@ The Vec4UnaryOperation node is designed to perform various unary operations on f
 - Infra type: CPU
 
 # Source code
-```
-class Vec4UnaryOperation:
+[View source repository on GitHub](https://github.com/evanspearman/ComfyMath)
 
-    @classmethod
-    def INPUT_TYPES(cls) -> Mapping[str, Any]:
-        return {'required': {'op': (list(VEC_UNARY_OPERATIONS.keys()),), 'a': DEFAULT_VEC4}}
-    RETURN_TYPES = ('VEC4',)
-    FUNCTION = 'op'
-    CATEGORY = 'math/vec4'
-
-    def op(self, op: str, a: Vec4) -> tuple[Vec4]:
-        return (_vec4_from_numpy(VEC_UNARY_OPERATIONS[op](numpy.array(a))),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -91,32 +91,6 @@ This node improves a batch of noisy latent representations by progressively intr
 - Infra type: GPU
 
 # Source code
-```
-class IterativeMixingKSamplerAdv:
-    """
-    Take a batch of latents, z_prime, and progressively de-noise them
-    step by step from z_prime[0] to z_prime[steps], mixing in a weighted
-    fraction of z_prime[i] at each step so that de-noising is guided by
-    the z_prime latents. This batch sampler assumes that the number of steps
-    is just the length of z_prime, so there is no steps parameter. The parameter
-    latent_image_batch should come from the Batch Unsampler node. The parameter
-    alpha_1 controls an exponential cosine function that schedules how much
-    of the noised latents to mix with the de-noised latents at each step.
-    Small values cause more of the noised latents to be mixed in at each step,
-    which provides more guidance to the diffusion, but which may result in more
-    artifacts. Large values (i.e. >1.0) can cause output to be grainy. Your
-    mileage may vary.
-    """
+[View source repository on GitHub](https://github.com/ttulttul/ComfyUI-Iterative-Mixer)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'model': ('MODEL',), 'seed': ('INT', {'default': 0, 'min': 0, 'max': 18446744073709551615}), 'cfg': ('FLOAT', {'default': 8.0, 'min': 0.0, 'max': 100.0, 'step': 0.1, 'round': 0.01}), 'sampler_name': (comfy.samplers.KSampler.SAMPLERS,), 'scheduler': (comfy.samplers.KSampler.SCHEDULERS,), 'positive': ('CONDITIONING',), 'negative': ('CONDITIONING',), 'latent_image_batch': ('LATENT',), 'denoise': ('FLOAT', {'default': 1.0, 'min': 0.0, 'max': 1.0, 'step': 0.01}), 'alpha_1': ('FLOAT', {'default': 2.4, 'min': 0.05, 'max': 100.0, 'step': 0.05}), 'reverse_input_batch': ('BOOLEAN', {'default': True}), 'blending_schedule': (list(BLENDING_SCHEDULE_MAP.keys()), {'default': 'cosine'}), 'stop_blending_at_pct': ('FLOAT', {'default': 1.0}), 'clamp_blending_at_pct': ('FLOAT', {'default': 1.0}), 'blending_function': (list(BLENDING_FUNCTION_MAP.keys()), {'default': 'addition'})}}
-    RETURN_TYPES = ('LATENT', 'LATENT', 'LATENT', 'IMAGE')
-    RETURN_NAMES = ('mixed_latents', 'noised_latents', 'intermediate_latents', 'plot_image')
-    FUNCTION = 'sample'
-    CATEGORY = 'test'
-
-    def sample(self, model, seed, cfg, sampler_name, scheduler, positive, negative, latent_image_batch, denoise=1.0, alpha_1=0.1, reverse_input_batch=True, blending_schedule='cosine', stop_blending_at_pct=1.0, clamp_blending_at_pct=1.0, blending_function=list(BLENDING_FUNCTION_MAP.keys())[0]):
-        sampler = IterativeMixingKSampler()
-        return sampler(model, seed, cfg, sampler_name, scheduler, positive, negative, latent_image_batch, denoise=denoise, alpha_1=alpha_1, reverse_input_batch=True, blending_schedule=blending_schedule, stop_blending_at_pct=stop_blending_at_pct, clamp_blending_at_pct=clamp_blending_at_pct, blending_function=blending_function)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

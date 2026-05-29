@@ -27,25 +27,6 @@ The ConditioningConcat node is designed to merge two conditional inputs into a s
 - Infra type: CPU
 
 # Source code
-```
-class ConditioningConcat:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'conditioning_to': ('CONDITIONING',), 'conditioning_from': ('CONDITIONING',)}}
-    RETURN_TYPES = ('CONDITIONING',)
-    FUNCTION = 'concat'
-    CATEGORY = 'conditioning'
-
-    def concat(self, conditioning_to, conditioning_from):
-        out = []
-        if len(conditioning_from) > 1:
-            logging.warning('Warning: ConditioningConcat conditioning_from contains more than 1 cond, only the first one will actually be applied to conditioning_to.')
-        cond_from = conditioning_from[0][0]
-        for i in range(len(conditioning_to)):
-            t1 = conditioning_to[i][0]
-            tw = torch.cat((t1, cond_from), 1)
-            n = [tw, conditioning_to[i][1].copy()]
-            out.append(n)
-        return (out,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

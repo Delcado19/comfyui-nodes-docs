@@ -59,19 +59,6 @@ CR_8ChannelOut node is designed to manage and distribute data to eight different
 - Infra type: CPU
 
 # Source code
-```
-class CR_8ChannelOut:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'pipe': ('PIPE_LINE',)}}
-    RETURN_TYPES = ('PIPE_LINE', any_type, any_type, any_type, any_type, any_type, any_type, any_type, any_type, 'STRING')
-    RETURN_NAMES = ('pipe', 'ch1', 'ch2', 'ch3', 'ch4', 'ch5', 'ch6', 'ch7', 'ch8', 'show_help')
-    FUNCTION = 'data_out'
-    CATEGORY = icons.get('Comfyroll/Pipe/Bus')
-
-    def data_out(self, ch1=None, ch2=None, ch3=None, ch4=None, ch5=None, ch6=None, ch7=None, ch8=None, pipe=None):
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Pipe-Nodes#cr-8-channel-out'
-        (new_ch1, new_ch2, new_ch3, new_ch4, new_ch5, new_ch6, new_ch7, new_ch8) = pipe
-        return (pipe, new_ch1, new_ch2, new_ch3, new_ch4, new_ch5, new_ch6, new_ch7, new_ch8, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

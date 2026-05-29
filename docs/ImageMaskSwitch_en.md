@@ -60,24 +60,6 @@ The ImageMaskSwitch node is designed to selectively route image and mask inputs 
 - Infra type: CPU
 
 # Source code
-```
-class ImageMaskSwitch:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'select': ('INT', {'default': 1, 'min': 1, 'max': 4, 'step': 1}), 'images1': ('IMAGE',)}, 'optional': {'mask1_opt': ('MASK',), 'images2_opt': ('IMAGE',), 'mask2_opt': ('MASK',), 'images3_opt': ('IMAGE',), 'mask3_opt': ('MASK',), 'images4_opt': ('IMAGE',), 'mask4_opt': ('MASK',)}}
-    RETURN_TYPES = ('IMAGE', 'MASK')
-    OUTPUT_NODE = True
-    FUNCTION = 'doit'
-    CATEGORY = 'ImpactPack/Util'
-
-    def doit(self, select, images1, mask1_opt=None, images2_opt=None, mask2_opt=None, images3_opt=None, mask3_opt=None, images4_opt=None, mask4_opt=None):
-        if select == 1:
-            return (images1, mask1_opt)
-        elif select == 2:
-            return (images2_opt, mask2_opt)
-        elif select == 3:
-            return (images3_opt, mask3_opt)
-        else:
-            return (images4_opt, mask4_opt)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

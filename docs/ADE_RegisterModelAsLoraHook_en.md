@@ -49,35 +49,6 @@ This node is designed to register a model as a LoRA hook within the AnimateDiff 
 - Common nodes: unknown
 
 ## Source code
-```python
-class MaskableSDModelLoader:
-    @classmethod
-    def INPUT_TYPES(s):
-        return {
-            "required": {
-                "model": ("MODEL",),
-                "clip": ("CLIP",),
-                "ckpt_name": (folder_paths.get_filename_list("checkpoints"), ),
-                "strength_model": ("FLOAT", {"default": 1.0, "min": -20.0, "max": 20.0, "step": 0.01}),
-                "strength_clip": ("FLOAT", {"default": 1.0, "min": -20.0, "max": 20.0, "step": 0.01}),
-            }
-        }
-    
-    RETURN_TYPES = ("MODEL", "CLIP", "LORA_HOOK")
-    CATEGORY = "Animate Diff 🎭🅐🅓/conditioning/register lora hooks"
-    FUNCTION = "load_model_as_lora"
+[View source repository on GitHub](https://github.com/Kosinkadink/ComfyUI-AnimateDiff-Evolved)
 
-    def load_model_as_lora(self, model: ModelPatcher, clip: CLIP, ckpt_name: str, strength_model: float, strength_clip: float):
-        ckpt_path = folder_paths.get_full_path("checkpoints", ckpt_name)
-        out = comfy.sd.load_checkpoint_guess_config(ckpt_path, output_vae=True, output_clip=True, embedding_directory=folder_paths.get_folder_paths("embeddings"))
-        model_loaded = out[0]
-        clip_loaded = out[1]
-
-        lora_hook = LoraHook(lora_name=ckpt_name)
-        lora_hook_group = LoraHookGroup()
-        lora_hook_group.add(lora_hook)
-        model_lora, clip_lora = load_model_as_hooked_lora_for_models(model=model, clip=clip,
-                                                                     model_loaded=model_loaded, clip_loaded=clip_loaded,
-                                                                     lora_hook=lora_hook,
-                                                                     strength_model=strength_model, strength_clip=strength_clip)
-        return (model_lora, clip_lora, lora_hook_group)
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

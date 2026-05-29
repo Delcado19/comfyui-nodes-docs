@@ -48,27 +48,6 @@ The SparseCtrlMergedLoaderAdvanced node is designed to efficiently manage and lo
 - Infra type: GPU
 
 # Source code
-```
-class SparseCtrlMergedLoaderAdvanced:
+[View source repository on GitHub](https://github.com/Kosinkadink/ComfyUI-Advanced-ControlNet)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'sparsectrl_name': (folder_paths.get_filename_list('controlnet'),), 'control_net_name': (folder_paths.get_filename_list('controlnet'),), 'use_motion': ('BOOLEAN', {'default': True}), 'motion_strength': ('FLOAT', {'default': 1.0, 'min': 0.0, 'max': 10.0, 'step': 0.001}), 'motion_scale': ('FLOAT', {'default': 1.0, 'min': 0.0, 'max': 10.0, 'step': 0.001})}, 'optional': {'sparse_method': ('SPARSE_METHOD',), 'tk_optional': ('TIMESTEP_KEYFRAME',)}}
-    RETURN_TYPES = ('CONTROL_NET',)
-    FUNCTION = 'load_controlnet'
-    CATEGORY = 'Adv-ControlNet 🛂🅐🅒🅝/SparseCtrl/experimental'
-
-    def load_controlnet(self, sparsectrl_name: str, control_net_name: str, use_motion: bool, motion_strength: float, motion_scale: float, sparse_method: SparseMethod=SparseSpreadMethod(), tk_optional: TimestepKeyframeGroup=None):
-        sparsectrl_path = folder_paths.get_full_path('controlnet', sparsectrl_name)
-        controlnet_path = folder_paths.get_full_path('controlnet', control_net_name)
-        sparse_settings = SparseSettings(sparse_method=sparse_method, use_motion=use_motion, motion_strength=motion_strength, motion_scale=motion_scale, merged=True)
-        controlnet = load_controlnet(controlnet_path, timestep_keyframe=tk_optional)
-        if controlnet is None or type(controlnet) != ControlNetAdvanced:
-            raise ValueError(f'controlnet_path must point to a normal ControlNet, but instead: {type(controlnet).__name__}')
-        sparsectrl = load_sparsectrl(sparsectrl_path, timestep_keyframe=tk_optional, sparse_settings=SparseSettings.default())
-        new_state_dict = controlnet.control_model.state_dict()
-        for (key, value) in sparsectrl.control_model.motion_holder.motion_wrapper.state_dict().items():
-            new_state_dict[key] = value
-        sparsectrl = load_sparsectrl(sparsectrl_path, controlnet_data=new_state_dict, timestep_keyframe=tk_optional, sparse_settings=sparse_settings)
-        return (sparsectrl,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

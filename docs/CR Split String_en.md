@@ -44,21 +44,6 @@ The CR_SplitString node is designed to split a given text string into multiple s
 - Infra type: CPU
 
 # Source code
-```
-class CR_SplitString:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'text': ('STRING', {'multiline': False, 'default': 'text'})}, 'optional': {'delimiter': ('STRING', {'multiline': False, 'default': ','})}}
-    RETURN_TYPES = (any_type, any_type, any_type, any_type, 'STRING')
-    RETURN_NAMES = ('string_1', 'string_2', 'string_3', 'string_4', 'show_help')
-    FUNCTION = 'split'
-    CATEGORY = icons.get('Comfyroll/Utils/Text')
-
-    def split(self, text, delimiter=''):
-        parts = text.split(delimiter)
-        strings = [part.strip() for part in parts[:4]]
-        (string_1, string_2, string_3, string_4) = strings + [''] * (4 - len(strings))
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Other-Nodes#cr-split-string'
-        return (string_1, string_2, string_3, string_4, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

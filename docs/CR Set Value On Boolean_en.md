@@ -39,21 +39,6 @@ The CR_SetValueOnBoolean node is designed to assign a value based on the evaluat
 - Infra type: CPU
 
 # Source code
-```
-class CR_SetValueOnBoolean:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'boolean': ('BOOLEAN', {'default': True, 'forceInput': True}), 'value_if_true': ('FLOAT', {'default': 1, 'min': -18446744073709551615, 'max': 18446744073709551615}), 'value_if_false': ('FLOAT', {'default': 0, 'min': -18446744073709551615, 'max': 18446744073709551615})}}
-    RETURN_TYPES = ('INT', 'FLOAT', 'STRING')
-    RETURN_NAMES = ('INT', 'FLOAT', 'show_help')
-    FUNCTION = 'set_value'
-    CATEGORY = icons.get('Comfyroll/Utils/Conditional')
-
-    def set_value(self, boolean, value_if_true, value_if_false):
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Other-Nodes#cr-set-value-on-boolean'
-        if boolean == True:
-            return (int(value_if_true), value_if_true, show_help)
-        else:
-            return (int(value_if_false), value_if_false, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

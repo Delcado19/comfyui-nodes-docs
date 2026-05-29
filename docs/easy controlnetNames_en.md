@@ -25,24 +25,7 @@ This node aims to list available control network names, simplifying the user's s
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class setControlName:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {"required": {
-                "controlnet_name": (folder_paths.get_filename_list("controlnet"),),
-            }
-        }
-
-    RETURN_TYPES = (AlwaysEqualProxy('*'),)
-    RETURN_NAMES = ("controlnet_name",)
-    FUNCTION = "set_name"
-    CATEGORY = "EasyUse/Util"
-
-    def set_name(self, controlnet_name):
-        return (controlnet_name,)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

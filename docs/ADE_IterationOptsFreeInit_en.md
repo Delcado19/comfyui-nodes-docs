@@ -60,17 +60,6 @@ FreeInitOptionsNode is designed to facilitate the creation of iteration options 
 - Infra type: CPU
 
 # Source code
-```
-class FreeInitOptionsNode:
+[View source repository on GitHub](https://github.com/Kosinkadink/ComfyUI-AnimateDiff-Evolved)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'iterations': ('INT', {'default': 2, 'min': 1}), 'filter': (FreeInitFilter.LIST,), 'd_s': ('FLOAT', {'default': 0.25, 'min': 0.0, 'max': 1.0, 'step': 0.001}), 'd_t': ('FLOAT', {'default': 0.25, 'min': 0.0, 'max': 1.0, 'step': 0.001}), 'n_butterworth': ('INT', {'default': 4, 'min': 1, 'max': 100}), 'sigma_step': ('INT', {'default': 999, 'min': 1, 'max': 999}), 'apply_to_1st_iter': ('BOOLEAN', {'default': False}), 'init_type': (FreeInitOptions.LIST,)}, 'optional': {'iter_batch_offset': ('INT', {'default': 0, 'min': 0, 'max': BIGMAX}), 'iter_seed_offset': ('INT', {'default': 1, 'min': BIGMIN, 'max': BIGMAX})}}
-    RETURN_TYPES = ('ITERATION_OPTS',)
-    CATEGORY = 'Animate Diff 🎭🅐🅓/iteration opts'
-    FUNCTION = 'create_iter_opts'
-
-    def create_iter_opts(self, iterations: int, filter: str, d_s: float, d_t: float, n_butterworth: int, sigma_step: int, apply_to_1st_iter: bool, init_type: str, iter_batch_offset: int=0, iter_seed_offset: int=1):
-        iter_opts = FreeInitOptions(iterations=iterations, step=sigma_step, apply_to_1st_iter=apply_to_1st_iter, filter=filter, d_s=d_s, d_t=d_t, n=n_butterworth, init_type=init_type, iter_batch_offset=iter_batch_offset, iter_seed_offset=iter_seed_offset)
-        return (iter_opts,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

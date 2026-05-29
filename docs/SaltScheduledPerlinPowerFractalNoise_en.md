@@ -75,53 +75,7 @@ This node is designed to generate complex and visually appealing noise patterns 
 - Infra type: `GPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class SaltScheduledPerlinPowerFractalNoise:
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {
-            "required": {
-                "batch_size": ("INT", {"min": 1, "max": 4096}),
-                "width": ("INT", {"default": 256, "min": 64, "max": MAX_RESOLUTION}),
-                "height": ("INT", {"default": 256, "min": 64, "max": MAX_RESOLUTION}),
-            },
-            "optional": {
-                "scale_schedule": ("LIST",),
-                "octaves_schedule": ("LIST",),
-                "persistence_schedule": ("LIST",),
-                "lacunarity_schedule": ("LIST",),
-                "exponent_schedule": ("LIST",),
-                "seed_schedule": ("LIST",),
-                "clamp_min_schedule": ("LIST",),
-                "clamp_max_schedule": ("LIST",),
-                "device": (["cuda", "cpu"],),
-            }
-        }
-    
-    RETURN_TYPES = ("IMAGE", "INT")
-    RETURN_NAMES = ("images", "batch_size")
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    FUNCTION = "generate"
-    CATEGORY = "SALT/Scheduling/Image"
-
-    def generate(self, batch_size, width, height, scale_schedule=[1.0], octaves_schedule=[4], persistence_schedule=[0.5], lacunarity_schedule=[2.0], exponent_schedule=[1.0], seed_schedule=[0], clamp_min_schedule=[-0.5], clamp_max_schedule=[1.5], device="cuda"):
-        octaves_schedule = [int(octave) for octave in octaves_schedule]
-        ppfn = PerlinPowerFractalNoise(
-            width, height, 
-            scale=scale_schedule, 
-            octaves=octaves_schedule, 
-            persistence=persistence_schedule, 
-            lacunarity=lacunarity_schedule, 
-            exponent=exponent_schedule, 
-            seeds=seed_schedule, 
-            clamp_min=clamp_min_schedule, 
-            clamp_max=clamp_max_schedule, 
-            batch_size=batch_size, 
-            device=device
-        )
-        noise_tensor = ppfn.forward()
-        return (noise_tensor, batch_size)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

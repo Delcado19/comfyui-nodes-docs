@@ -35,29 +35,6 @@ This node performs various integer arithmetic operations based on user-selected 
 - Infra type: CPU
 
 # Source code
-```
-class SeargeIntegerMath:
-    OPERATIONS = ['a * b + c', 'a + c', 'a - c', 'a * b', 'a / b']
+[View source repository on GitHub](https://github.com/jobunk/SeargeSDXL)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'op': (SeargeIntegerMath.OPERATIONS, {'default': 'a * b + c'}), 'a': ('INT', {'default': 0, 'min': 0, 'max': 18446744073709551615}), 'b': ('INT', {'default': 1, 'min': 0, 'max': 18446744073709551615}), 'c': ('INT', {'default': 0, 'min': 0, 'max': 18446744073709551615})}}
-    RETURN_TYPES = ('INT',)
-    RETURN_NAMES = ('result',)
-    FUNCTION = 'get_value'
-    CATEGORY = 'Searge/_deprecated_/Integers'
-
-    def get_value(self, op, a, b, c):
-        res = 0
-        if op == 'a * b + c':
-            res = a * b + c
-        elif op == 'a + c':
-            res = a + c
-        elif op == 'a - c':
-            res = a - c
-        elif op == 'a * b':
-            res = a * b
-        elif op == 'a / b':
-            res = a // b
-        return (int(res),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

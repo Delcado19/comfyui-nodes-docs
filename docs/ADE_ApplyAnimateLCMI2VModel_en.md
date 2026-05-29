@@ -67,45 +67,6 @@ This node is designed to apply the AnimateLCM-I2V model, using latent code motio
 - Common nodes: unknown
 
 ## Source code
-```python
-class ApplyAnimateLCMI2VModel:
-    @classmethod
-    def INPUT_TYPES(s):
-        return {
-            "required": {
-                "motion_model": ("MOTION_MODEL_ADE",),
-                "ref_latent": ("LATENT",),
-                "ref_drift": ("FLOAT", {"default": 0.0, "min": 0.0, "max": 10.0, "step": 0.001}),
-                "apply_ref_when_disabled": ("BOOLEAN", {"default": False}),
-                "start_percent": ("FLOAT", {"default": 0.0, "min": 0.0, "max": 1.0, "step": 0.001}),
-                "end_percent": ("FLOAT", {"default": 1.0, "min": 0.0, "max": 1.0, "step": 0.001}),
-            },
-            "optional": {
-                "motion_lora": ("MOTION_LORA",),
-                "scale_multival": ("MULTIVAL",),
-                "effect_multival": ("MULTIVAL",),
-                "ad_keyframes": ("AD_KEYFRAMES",),
-                "prev_m_models": ("M_MODELS",),
-            }
-        }
-    
-    RETURN_TYPES = ("M_MODELS",)
-    CATEGORY = "Animate Diff 🎭🅐🅓/② Gen2 nodes ②/AnimateLCM-I2V"
-    FUNCTION = "apply_motion_model"
+[View source repository on GitHub](https://github.com/Kosinkadink/ComfyUI-AnimateDiff-Evolved)
 
-    def apply_motion_model(self, motion_model: MotionModelPatcher, ref_latent: dict, ref_drift: float=0.0, apply_ref_when_disabled=False, start_percent: float=0.0, end_percent: float=1.0,
-                           motion_lora: MotionLoraList=None, ad_keyframes: ADKeyframeGroup=None,
-                           scale_multival=None, effect_multival=None,
-                           prev_m_models: MotionModelGroup=None,):
-        new_m_models = ApplyAnimateDiffModelNode.apply_motion_model(self, motion_model, start_percent=start_percent, end_percent=end_percent,
-                                                                    motion_lora=motion_lora, ad_keyframes=ad_keyframes,
-                                                                    scale_multival=scale_multival, effect_multival=effect_multival, prev_m_models=prev_m_models)
-        # most recent added model will always be first in list;
-        curr_model = new_m_models[0].models[0]
-        # confirm that model contains img_encoder
-        if curr_model.model.img_encoder is None:
-            raise Exception(f"Motion model '{curr_model.model.mm_info.mm_name}' does not contain an img_encoder; cannot be used with Apply AnimateLCM-I2V Model node.")
-        curr_model.orig_img_latents = ref_latent["samples"]
-        curr_model.orig_ref_drift = ref_drift
-        curr_model.orig_apply_ref_when_disabled = apply_ref_when_disabled
-        return new_m_models
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

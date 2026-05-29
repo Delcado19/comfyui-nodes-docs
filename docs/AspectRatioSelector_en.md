@@ -33,36 +33,7 @@ The AspectRatioSelector node is designed to select and adjust the aspect ratio o
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class UtilAspectRatioSelector(UtilSDXLAspectRatioSelector):
-    @classmethod
-    def INPUT_TYPES(s):
-        return {
-            "required": {
-                "aspect_ratio": (
-                    [
-                        "1:1",
-                        "2:3",
-                        "3:4",
-                        "9:16",
-                        "3:2",
-                        "4:3",
-                        "16:9",
-                    ],
-                ),
-            }
-        }
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    def get_aspect_ratio(self, aspect_ratio):
-        ratio, width, height = super().get_aspect_ratio(aspect_ratio)
-
-        scale_ratio = 768 / max(width, height)
-
-        width = int(scale_ratio * width / 8) * 8
-        height = int(scale_ratio * height / 8) * 8
-
-        return (ratio, width, height)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

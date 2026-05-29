@@ -23,10 +23,6 @@ This node generates a set of four sine waves based on the input wavelength, whic
 - Infra type: CPU
 
 # Source code
-```
-class KfSinusoidalEntangledZeroOneFromWavelengthx4(KfSinusoidalEntangledZeroOneFromWavelength):
-    RETURN_TYPES = ('KEYFRAMED_CURVE',) * 4
+[View source repository on GitHub](https://github.com/dmarx/ComfyUI-Keyframed)
 
-    def main(self, wavelength):
-        return super().main(n=4, wavelength=wavelength)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

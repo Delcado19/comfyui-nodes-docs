@@ -44,19 +44,6 @@ The DualCFGGuider node is designed to guide the sampling process of a generative
 - Infra type: CPU
 
 # Source code
-```
-class DualCFGGuider:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'model': ('MODEL',), 'cond1': ('CONDITIONING',), 'cond2': ('CONDITIONING',), 'negative': ('CONDITIONING',), 'cfg_conds': ('FLOAT', {'default': 8.0, 'min': 0.0, 'max': 100.0, 'step': 0.1, 'round': 0.01}), 'cfg_cond2_negative': ('FLOAT', {'default': 8.0, 'min': 0.0, 'max': 100.0, 'step': 0.1, 'round': 0.01})}}
-    RETURN_TYPES = ('GUIDER',)
-    FUNCTION = 'get_guider'
-    CATEGORY = 'sampling/custom_sampling/guiders'
-
-    def get_guider(self, model, cond1, cond2, negative, cfg_conds, cfg_cond2_negative):
-        guider = Guider_DualCFG(model)
-        guider.set_conds(cond1, cond2, negative)
-        guider.set_cfg(cfg_conds, cfg_cond2_negative)
-        return (guider,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

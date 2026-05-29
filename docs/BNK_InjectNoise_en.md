@@ -35,27 +35,6 @@ The InjectNoise node introduces noise into a set of latent representations to si
 - Infra type: CPU
 
 # Source code
-```
-class InjectNoise:
+[View source repository on GitHub](https://github.com/BlenderNeko/ComfyUI_Noise)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'latents': ('LATENT',), 'strength': ('FLOAT', {'default': 1.0, 'min': 0.0, 'max': 200.0, 'step': 0.01})}, 'optional': {'noise': ('LATENT',), 'mask': ('MASK',)}}
-    RETURN_TYPES = ('LATENT',)
-    FUNCTION = 'inject_noise'
-    CATEGORY = 'latent/noise'
-
-    def inject_noise(self, latents, strength, noise=None, mask=None):
-        s = latents.copy()
-        if noise is None:
-            return (s,)
-        if latents['samples'].shape != noise['samples'].shape:
-            print('warning, shapes in InjectNoise not the same, ignoring')
-            return (s,)
-        noised = s['samples'].clone() + noise['samples'].clone() * strength
-        if mask is not None:
-            mask = prepare_mask(mask, noised.shape)
-            noised = mask * noised + (1 - mask) * latents['samples']
-        s['samples'] = noised
-        return (s,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

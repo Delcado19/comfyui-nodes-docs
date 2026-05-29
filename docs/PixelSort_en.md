@@ -44,30 +44,6 @@ PixelSort node introduces a creative pixel sorting effect to images, reorganizin
 - Infra type: CPU
 
 # Source code
-```
-class PixelSort:
+[View source repository on GitHub](https://github.com/EllangoK/ComfyUI-post-processing-nodes)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'image': ('IMAGE',), 'mask': ('IMAGE',), 'direction': (['horizontal', 'vertical'],), 'span_limit': ('INT', {'default': None, 'min': 0, 'max': 100, 'step': 5}), 'sort_by': (['hue', 'saturation', 'value'],), 'order': (['forward', 'backward'],)}}
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'sort_pixels'
-    CATEGORY = 'postprocessing/Effects'
-
-    def sort_pixels(self, image: torch.Tensor, mask: torch.Tensor, direction: str, span_limit: int, sort_by: str, order: str):
-        horizontal_sort = direction == 'horizontal'
-        reverse_sorting = order == 'backward'
-        sort_by = sort_by[0].upper()
-        span_limit = span_limit if span_limit > 0 else None
-        batch_size = image.shape[0]
-        result = torch.zeros_like(image)
-        for b in range(batch_size):
-            tensor_img = image[b].numpy()
-            tensor_mask = mask[b].numpy()
-            sorted_image = pixel_sort(tensor_img, tensor_mask, horizontal_sort, span_limit, sort_by, reverse_sorting)
-            result[b] = torch.from_numpy(sorted_image)
-        return (result,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

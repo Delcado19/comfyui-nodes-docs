@@ -31,33 +31,6 @@ This node uses a deep learning model to perform image inpainting, effectively fi
 - Infra type: GPU
 
 # Source code
-```
-class InpaintWithModel:
+[View source repository on GitHub](https://github.com/Acly/comfyui-inpaint-nodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'inpaint_model': ('INPAINT_MODEL',), 'image': ('IMAGE',), 'mask': ('MASK',)}}
-    RETURN_TYPES = ('IMAGE',)
-    CATEGORY = 'inpaint'
-    FUNCTION = 'inpaint'
-
-    def inpaint(self, inpaint_model: PyTorchModel, image: Tensor, mask: Tensor):
-        if inpaint_model.model_arch == 'MAT':
-            required_size = 512
-        elif inpaint_model.model_arch == 'LaMa':
-            required_size = 256
-        else:
-            raise ValueError(f'Unknown model_arch {inpaint_model.model_arch}')
-        (image, mask) = to_torch(image, mask)
-        image_device = image.device
-        (original_image, original_mask) = (image, mask)
-        (image, mask, original_size) = resize_square(image, mask, required_size)
-        mask = mask.floor()
-        device = get_torch_device()
-        inpaint_model.to(device)
-        image = inpaint_model(image.to(device), mask.to(device))
-        inpaint_model.cpu()
-        image = undo_resize_square(image.to(image_device), original_size)
-        image = original_image + (image - original_image) * original_mask.floor()
-        return (to_comfy(image),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -35,36 +35,6 @@ The WLSH_Generate_Edge_Mask node generates an edge mask based on a given directi
 - Infra type: CPU
 
 # Source code
-```
-class WLSH_Generate_Edge_Mask:
-    directions = ['left', 'right', 'up', 'down']
+[View source repository on GitHub](https://github.com/wallish77/wlsh_nodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'image': ('IMAGE',), 'direction': (s.directions,), 'pixels': ('INT', {'default': 128, 'min': 32, 'max': 512, 'step': 32}), 'overlap': ('INT', {'default': 64, 'min': 16, 'max': 256, 'step': 16})}}
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'gen_second_mask'
-    CATEGORY = 'WLSH Nodes/inpainting'
-
-    def gen_second_mask(self, direction, image, pixels, overlap):
-        image = tensor2pil(image)
-        (new_width, new_height) = image.size
-        mask2 = Image.new('RGBA', (new_width, new_height), (0, 0, 0, 255))
-        mask_thickness = overlap
-        if direction == 'up':
-            new_mask = Image.new('RGBA', (new_width, mask_thickness), (0, 122, 0, 255))
-            mask2.paste(new_mask, (0, pixels - int(mask_thickness / 2)))
-        elif direction == 'down':
-            new_mask = Image.new('RGBA', (new_width, mask_thickness), (0, 122, 0, 255))
-            mask2.paste(new_mask, (0, new_height - pixels - int(mask_thickness / 2)))
-        elif direction == 'left':
-            new_mask = Image.new('RGBA', (mask_thickness, new_height), (0, 122, 0, 255))
-            mask2.paste(new_mask, (pixels - int(mask_thickness / 2), 0))
-        elif direction == 'right':
-            new_mask = Image.new('RGBA', (mask_thickness, new_height), (0, 122, 0, 255))
-            mask2.paste(new_mask, (new_width - pixels - int(mask_thickness / 2), 0))
-        mask2 = mask2.filter(ImageFilter.GaussianBlur(radius=5))
-        mask2 = np.array(mask2).astype(np.float32) / 255.0
-        mask2 = torch.from_numpy(mask2)[None,]
-        return (mask2,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

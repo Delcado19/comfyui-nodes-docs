@@ -23,7 +23,6 @@ This node is designed to facilitate the inspection and analysis of string data w
 - Infra type: CPU
 
 # Source code
-```
-class KfDebug_String(KfDebug_Passthrough):
-    RETURN_TYPES = ('STRING',)
-```
+[View source repository on GitHub](https://github.com/dmarx/ComfyUI-Keyframed)
+
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

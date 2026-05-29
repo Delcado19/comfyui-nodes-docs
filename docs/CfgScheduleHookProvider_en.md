@@ -27,20 +27,6 @@ CfgScheduleHookProvider node manages and provides configuration schedules for th
 - Infra type: CPU
 
 # Source code
-```
-class CfgScheduleHookProvider:
-    schedules = ['simple']
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'schedule_for_iteration': (s.schedules,), 'target_cfg': ('FLOAT', {'default': 3.0, 'min': 0.0, 'max': 100.0})}}
-    RETURN_TYPES = ('PK_HOOK',)
-    FUNCTION = 'doit'
-    CATEGORY = 'ImpactPack/Upscale'
-
-    def doit(self, schedule_for_iteration, target_cfg):
-        hook = None
-        if schedule_for_iteration == 'simple':
-            hook = hooks.SimpleCfgScheduleHook(target_cfg)
-        return (hook,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

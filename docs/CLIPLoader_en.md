@@ -28,21 +28,6 @@ The CLIPLoader node is designed to efficiently manage and load CLIP models of a 
 - Infra type: CPU
 
 # Source code
-```
-class CLIPLoader:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'clip_name': (folder_paths.get_filename_list('clip'),), 'type': (['stable_diffusion', 'stable_cascade'],)}}
-    RETURN_TYPES = ('CLIP',)
-    FUNCTION = 'load_clip'
-    CATEGORY = 'advanced/loaders'
-
-    def load_clip(self, clip_name, type='stable_diffusion'):
-        clip_type = comfy.sd.CLIPType.STABLE_DIFFUSION
-        if type == 'stable_cascade':
-            clip_type = comfy.sd.CLIPType.STABLE_CASCADE
-        clip_path = folder_paths.get_full_path('clip', clip_name)
-        clip = comfy.sd.load_clip(ckpt_paths=[clip_path], embedding_directory=folder_paths.get_folder_paths('embeddings'), clip_type=clip_type)
-        return (clip,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

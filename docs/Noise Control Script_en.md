@@ -48,32 +48,7 @@ The Noise Control Script node integrates and manages noise sources and seed vari
     - [KSampler Adv. (Efficient)](../../efficiency-nodes-comfyui/Nodes/KSampler Adv. (Efficient).md)
     - [KSampler SDXL (Eff.)](../../efficiency-nodes-comfyui/Nodes/KSampler SDXL (Eff.).md)
 
-
-
 ## Source code
-```python
-class TSC_Noise_Control_Script:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {
-            "required": {
-                "rng_source": (["cpu", "gpu", "nv"],),
-                "cfg_denoiser": ("BOOLEAN", {"default": False}),
-                "add_seed_noise": ("BOOLEAN", {"default": False}),
-                "seed": ("INT", {"default": 0, "min": 0, "max": 0xffffffffffffffff}),
-                "weight": ("FLOAT", {"default": 0.015, "min": 0, "max": 1, "step": 0.001})},
-            "optional": {"script": ("SCRIPT",)}
-        }
-
-    RETURN_TYPES = ("SCRIPT",)
-    RETURN_NAMES = ("SCRIPT",)
-    FUNCTION = "noise_control"
-    CATEGORY = "Efficiency Nodes/Scripts"
-
-    def noise_control(self, rng_source, cfg_denoiser, add_seed_noise, seed, weight, script=None):
-        script = script or {}
-        script["noise"] = (rng_source, cfg_denoiser, add_seed_noise, seed, weight)
-        return (script,)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

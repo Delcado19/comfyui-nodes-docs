@@ -35,34 +35,6 @@ The `latent_upscale` method is designed to enhance the resolution of latent repr
 - Infra type: GPU
 
 # Source code
-```
-class WAS_Latent_Upscale:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'samples': ('LATENT',), 'mode': (['area', 'bicubic', 'bilinear', 'nearest'],), 'factor': ('FLOAT', {'default': 2.0, 'min': 0.1, 'max': 8.0, 'step': 0.01}), 'align': (['true', 'false'],)}}
-    RETURN_TYPES = ('LATENT',)
-    FUNCTION = 'latent_upscale'
-    CATEGORY = 'WAS Suite/Latent/Transform'
-
-    def latent_upscale(self, samples, mode, factor, align):
-        valid_modes = ['area', 'bicubic', 'bilinear', 'nearest']
-        if mode not in valid_modes:
-            cstr(f"Invalid interpolation mode `{mode}` selected. Valid modes are: {', '.join(valid_modes)}").error.print()
-            return (s,)
-        align = True if align == 'true' else False
-        if not isinstance(factor, float) or factor <= 0:
-            cstr(f'The input `factor` is `{factor}`, but should be a positive or negative float.').error.print()
-            return (s,)
-        s = samples.copy()
-        shape = s['samples'].shape
-        size = tuple((int(round(dim * factor)) for dim in shape[-2:]))
-        if mode in ['linear', 'bilinear', 'bicubic', 'trilinear']:
-            s['samples'] = torch.nn.functional.interpolate(s['samples'], size=size, mode=mode, align_corners=align)
-        else:
-            s['samples'] = torch.nn.functional.interpolate(s['samples'], size=size, mode=mode)
-        return (s,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

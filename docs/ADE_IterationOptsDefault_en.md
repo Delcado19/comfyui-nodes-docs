@@ -32,17 +32,6 @@ The `create_iter_opts` method of the iteration options node class is designed to
 - Infra type: CPU
 
 # Source code
-```
-class IterationOptionsNode:
+[View source repository on GitHub](https://github.com/Kosinkadink/ComfyUI-AnimateDiff-Evolved)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'iterations': ('INT', {'default': 1, 'min': 1})}, 'optional': {'iter_batch_offset': ('INT', {'default': 0, 'min': 0, 'max': BIGMAX}), 'iter_seed_offset': ('INT', {'default': 0, 'min': BIGMIN, 'max': BIGMAX})}}
-    RETURN_TYPES = ('ITERATION_OPTS',)
-    CATEGORY = 'Animate Diff 🎭🅐🅓/iteration opts'
-    FUNCTION = 'create_iter_opts'
-
-    def create_iter_opts(self, iterations: int, iter_batch_offset: int=0, iter_seed_offset: int=0):
-        iter_opts = IterationOptions(iterations=iterations, iter_batch_offset=iter_batch_offset, iter_seed_offset=iter_seed_offset)
-        return (iter_opts,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

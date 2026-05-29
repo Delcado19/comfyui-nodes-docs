@@ -40,46 +40,6 @@ The RandomPrompt node aims to generate diverse prompt sets by combining mutable 
 - Infra type: CPU
 
 # Source code
-```
-class RandomPrompt:
-    """
-    @classmethod 是Python中的一个装饰器，用于将一个方法标记为类方法。
-    类方法是与类相关联的方法，而不是与实例相关联的方法。
-    这意味着类方法可以直接通过类进行调用，而不需要先创建一个类的实例。
-    """
+[View source repository on GitHub](https://github.com/shadowcz007/comfyui-mixlab-nodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'max_count': ('INT', {'default': 9, 'min': 1, 'max': 1000}), 'mutable_prompt': ('STRING', {'multiline': True, 'default': default_prompt1}), 'immutable_prompt': ('STRING', {'multiline': True, 'default': 'sticker, Cartoon, ``'}), 'random_sample': (['enable', 'disable'],)}, 'optional': {'seed': (any_type, {'default': 0, 'min': 0, 'max': 18446744073709551615})}}
-    RETURN_TYPES = ('STRING',)
-    FUNCTION = 'run'
-    CATEGORY = '♾️Mixlab/Prompt'
-    OUTPUT_IS_LIST = (True,)
-    OUTPUT_NODE = True
-
-    def run(self, max_count, mutable_prompt, immutable_prompt, random_sample, seed=0):
-        words1 = mutable_prompt.split('\n')
-        words2 = immutable_prompt.split('\n')
-        pbar = comfy.utils.ProgressBar(len(words1) * len(words2))
-        prompts = []
-        for w1 in words1:
-            w1 = w1.strip()
-            for w2 in words2:
-                w2 = w2.strip()
-                if '``' not in w2:
-                    if w2 == '':
-                        w2 = '``'
-                    else:
-                        w2 = w2 + ',``'
-                if w1 != '' and w2 != '':
-                    prompts.append(w2.replace('``', w1))
-                pbar.update(1)
-        if len(prompts) == 0:
-            prompts.append(immutable_prompt)
-        if random_sample == 'enable':
-            prompts = random.sample(prompts, min(max_count, len(prompts)))
-        else:
-            prompts = prompts[:min(max_count, len(prompts))]
-        prompts = [elem.strip() for elem in prompts if elem.strip()]
-        return {'ui': {'prompts': prompts}, 'result': (prompts,)}
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

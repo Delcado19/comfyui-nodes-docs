@@ -62,56 +62,7 @@ The SaltFloatScheduler node creates and manages float schedules, which are seque
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class SaltFloatScheduler:
-    @classmethod
-    def INPUT_TYPES(cls):
-        easing_fns = list(easing_functions.keys())
-        easing_fns.insert(0, "None")
-        return {
-            "required": {
-                "repeat_sequence_times": ("INT", {"default": 0, "min": 0}),
-                "curves_mode": (easing_fns, ),
-                "use_perlin_tremors": ("BOOLEAN", {"default": True}),
-                "tremor_scale": ("FLOAT", {"default": 64, "min": 0.01, "max": 1024.0, "step": 0.01}),
-                "tremor_octaves": ("INT", {"default": 1, "min": 1, "max": 10}),
-                "tremor_persistence": ("FLOAT", {"default": 0.5, "min": 0.01, "max": 1.0, "step": 0.01}),
-                "tremor_lacunarity": ("FLOAT", {"default": 2.0, "min": 1.0, "max": 3.0, "step": 0.01}),
-                "sequence": ("STRING", {"multiline": True, "placeholder": "[1.0, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1, 0.0]"}),
-            },
-            "optional": {
-                "max_sequence_length": ("INT", {"default": 0, "min": 0, "max": 4096}),
-            }
-        }
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    RETURN_TYPES = ("LIST", "INT")
-    RETURN_NAMES = ("schedule_list", "schedule_length")
-    FUNCTION = "generate_sequence"
-    CATEGORY = "SALT/Scheduling"
-
-    def apply_curve(self, sequence, mode):
-        if mode in easing_functions.keys():
-            sequence = [easing_functions[mode](t) for t in sequence]
-        else:
-            print(f"The easing mode `{mode}` does not exist in the valid easing functions: {', '.join(easing_functions.keys())}")
-        return sequence
-
-    def apply_perlin_noise(self, sequence, scale, octaves, persistence, lacunarity):
-        perlin = PerlinNoise()
-        noise_values = [perlin.sample(i, scale=scale, octaves=octaves, persistence=persistence, lacunarity=lacunarity) for i, _ in enumerate(sequence)]
-        sequence = [val + noise for val, noise in zip(sequence, noise_values)]
-        return sequence
-
-    def generate_sequence(self, sequence, repeat_sequence_times, curves_mode, use_perlin_tremors, tremor_scale, tremor_octaves, tremor_persistence, tremor_lacunarity, max_sequence_length=0):
-        sequence_list = [float(val.strip()) for val in sequence.replace("[", "").replace("]", "").split(',')]
-        if use_perlin_tremors:
-            sequence_list = self.apply_perlin_noise(sequence_list, tremor_scale, tremor_octaves, tremor_persistence, tremor_lacunarity)
-        if curves_mode != "None":
-            sequence_list = self.apply_curve(sequence_list, curves_mode)
-        sequence_list = sequence_list * (repeat_sequence_times + 1)
-        sequence_list = sequence_list[:max_sequence_length] if max_sequence_length != 0 else sequence_list
-        return (sequence_list, len(sequence_list))
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

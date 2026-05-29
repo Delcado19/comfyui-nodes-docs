@@ -60,39 +60,6 @@ CR_HalftoneGrid is a node for creating halftone grid patterns with customizable 
 - Infra type: CPU
 
 # Source code
-```
-class CR_HalftoneGrid:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'width': ('INT', {'default': 512, 'min': 64, 'max': 4096}), 'height': ('INT', {'default': 512, 'min': 64, 'max': 4096}), 'dot_style': (STYLES,), 'reverse_dot_style': (['No', 'Yes'],), 'dot_frequency': ('INT', {'default': 50, 'min': 1, 'max': 200, 'step': 1}), 'background_color': (COLORS,), 'x_pos': ('FLOAT', {'default': 0.5, 'min': 0, 'max': 1, 'step': 0.01}), 'y_pos': ('FLOAT', {'default': 0.5, 'min': 0, 'max': 1, 'step': 0.01})}, 'optional': {'bg_color_hex': ('STRING', {'multiline': False, 'default': '#000000'})}}
-    RETURN_TYPES = ('IMAGE', 'STRING')
-    RETURN_NAMES = ('IMAGE', 'show_help')
-    FUNCTION = 'halftone'
-    CATEGORY = icons.get('Comfyroll/Graphics/Pattern')
-
-    def halftone(self, width, height, dot_style, reverse_dot_style, dot_frequency, background_color, x_pos, y_pos, bg_color_hex='#000000'):
-        if background_color == 'custom':
-            bgc = bg_color_hex
-        else:
-            bgc = background_color
-        reverse = ''
-        if reverse_dot_style == 'Yes':
-            reverse = '_r'
-        (fig, ax) = plt.subplots(figsize=(width / 100, height / 100))
-        dotsx = np.linspace(0, 1, dot_frequency)
-        dotsy = np.linspace(0, 1, dot_frequency)
-        (X, Y) = np.meshgrid(dotsx, dotsy)
-        dist = np.sqrt((X - x_pos) ** 2 + (Y - y_pos) ** 2)
-        fig.patch.set_facecolor(bgc)
-        ax.scatter(X, Y, c=dist, cmap=dot_style + reverse)
-        plt.axis('off')
-        plt.tight_layout(pad=0, w_pad=0, h_pad=0)
-        plt.autoscale(tight=True)
-        img_buf = io.BytesIO()
-        plt.savefig(img_buf, format='png')
-        img = Image.open(img_buf)
-        image_out = pil2tensor(img.convert('RGB'))
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Pattern-Nodes#cr-halftone-grid'
-        return (image_out, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -40,31 +40,6 @@ The WAS_Diffusers_Hub_Model_Loader node is designed to facilitate loading advanc
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Diffusers_Hub_Model_Loader:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'repo_id': ('STRING', {'multiline': False}), 'revision': ('STRING', {'default': 'None', 'multiline': False})}}
-    RETURN_TYPES = ('MODEL', 'CLIP', 'VAE', TEXT_TYPE)
-    RETURN_NAMES = ('MODEL', 'CLIP', 'VAE', 'NAME_STRING')
-    FUNCTION = 'load_hub_checkpoint'
-    CATEGORY = 'WAS Suite/Loaders/Advanced'
-
-    def load_hub_checkpoint(self, repo_id=None, revision=None):
-        if revision in ['', 'None', 'none', None]:
-            revision = None
-        model_path = comfy_paths.get_folder_paths('diffusers')[0]
-        self.download_diffusers_model(repo_id, model_path, revision)
-        diffusersLoader = nodes.DiffusersLoader()
-        (model, clip, vae) = diffusersLoader.load_checkpoint(os.path.join(model_path, repo_id))
-        return (model, clip, vae, repo_id)
-
-    def download_diffusers_model(self, repo_id, local_dir, revision=None):
-        if 'huggingface-hub' not in packages():
-            install_package('huggingface_hub')
-        from huggingface_hub import snapshot_download
-        model_path = os.path.join(local_dir, repo_id)
-        ignore_patterns = ['*.ckpt', '*.safetensors', '*.onnx']
-        snapshot_download(repo_id=repo_id, repo_type='model', local_dir=model_path, revision=revision, use_auth_token=False, ignore_patterns=ignore_patterns)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

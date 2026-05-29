@@ -23,20 +23,6 @@ This node converts the input color image to a grayscale image, enhancing visual 
 - Infra type: CPU
 
 # Source code
-```
-class GreyScale:
+[View source repository on GitHub](https://github.com/Jordach/comfy-plasma)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'IMAGE': ('IMAGE',)}}
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'process_image'
-    CATEGORY = 'image/postprocessing'
-
-    def process_image(self, IMAGE):
-        cimg = conv_tensor_pil(IMAGE)
-        gimg = ImageOps.grayscale(cimg)
-        rgbimg = Image.new('RGB', (gimg.width, gimg.height))
-        rgbimg.paste(gimg)
-        return conv_pil_tensor(rgbimg)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -27,7 +27,6 @@ This node facilitates inspection and analysis of the model's internal state and 
 - Infra type: GPU
 
 # Source code
-```
-class KfDebug_Model(KfDebug_Passthrough):
-    RETURN_TYPES = ('MODEL',)
-```
+[View source repository on GitHub](https://github.com/dmarx/ComfyUI-Keyframed)
+
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

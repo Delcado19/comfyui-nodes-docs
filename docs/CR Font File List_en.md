@@ -40,44 +40,6 @@ CR_FontFileList is a node for generating a list of font files from a specified d
 - Infra type: CPU
 
 # Source code
-```
-class CR_FontFileList:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        comfyroll_font_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), 'fonts')
-        comfyroll_file_list = [f for f in os.listdir(comfyroll_font_dir) if os.path.isfile(os.path.join(comfyroll_font_dir, f)) and f.lower().endswith('.ttf')]
-        sources = ['system', 'Comfyroll', 'from folder']
-        return {'required': {'source_folder': (sources,), 'start_index': ('INT', {'default': 0, 'min': 0, 'max': 9999}), 'max_rows': ('INT', {'default': 1000, 'min': 1, 'max': 9999})}, 'optional': {'folder_path': ('STRING', {'default': 'C:\\Windows\\Fonts', 'multiline': False})}}
-    RETURN_TYPES = (any_type, 'STRING')
-    RETURN_NAMES = ('LIST', 'show_help')
-    OUTPUT_IS_LIST = (True, False)
-    FUNCTION = 'make_list'
-    CATEGORY = icons.get('Comfyroll/List/IO')
-
-    def make_list(self, source_folder, start_index, max_rows, folder_path='C:\\Windows\\Fonts'):
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/List-Nodes#cr-font-file-list'
-        if source_folder == 'system':
-            system_root = os.environ.get('SystemRoot')
-            system_font_dir = os.path.join(system_root, 'Fonts')
-            file_list = [f for f in os.listdir(system_font_dir) if os.path.isfile(os.path.join(system_font_dir, f)) and f.lower().endswith('.ttf')]
-        elif source_folder == 'Comfyroll':
-            comfyroll_font_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), 'fonts')
-            file_list = [f for f in os.listdir(comfyroll_font_dir) if os.path.isfile(os.path.join(comfyroll_font_dir, f)) and f.lower().endswith('.ttf')]
-        elif source_folder == 'from folder':
-            if folder_path != '' and folder_path is not None:
-                if not os.path.exists(folder_path):
-                    print(f'[Warning] CR Font File List: The folder_path `{folder_path}` does not exist')
-                    return None
-                font_dir = folder_path
-                file_list = [f for f in os.listdir(font_dir) if os.path.isfile(os.path.join(font_dir, f)) and f.lower().endswith('.ttf')]
-            else:
-                print(f'[Warning] CR Font File List: No folder_path entered')
-                return None
-        else:
-            pass
-        start_index = max(0, min(start_index, len(file_list) - 1))
-        end_index = min(start_index + max_rows, len(file_list))
-        selected_files = file_list[start_index:end_index]
-        return (selected_files, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

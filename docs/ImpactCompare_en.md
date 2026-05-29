@@ -31,31 +31,6 @@ The ImpactCompare node evaluates and compares two inputs 'a' and 'b' based on a 
 - Infra type: CPU
 
 # Source code
-```
-class ImpactCompare:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'cmp': (['a = b', 'a <> b', 'a > b', 'a < b', 'a >= b', 'a <= b', 'tt', 'ff'],), 'a': (any_typ,), 'b': (any_typ,)}}
-    FUNCTION = 'doit'
-    CATEGORY = 'ImpactPack/Logic'
-    RETURN_TYPES = ('BOOLEAN',)
-
-    def doit(self, cmp, a, b):
-        if cmp == 'a = b':
-            return (a == b,)
-        elif cmp == 'a <> b':
-            return (a != b,)
-        elif cmp == 'a > b':
-            return (a > b,)
-        elif cmp == 'a < b':
-            return (a < b,)
-        elif cmp == 'a >= b':
-            return (a >= b,)
-        elif cmp == 'a <= b':
-            return (a <= b,)
-        elif cmp == 'tt':
-            return (True,)
-        else:
-            return (False,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -40,26 +40,6 @@ This node aims to extract and optionally resize an image to ensure it meets a mi
 - Infra type: CPU
 
 # Source code
-```
-class GetImageSize_:
+[View source repository on GitHub](https://github.com/shadowcz007/comfyui-mixlab-nodes)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'image': ('IMAGE',)}, 'optional': {'min_width': ('INT', {'default': 512, 'min': 1, 'max': 2048, 'step': 8, 'display': 'number'})}}
-    RETURN_TYPES = ('INT', 'INT', 'INT', 'INT')
-    RETURN_NAMES = ('width', 'height', 'min_width', 'min_height')
-    FUNCTION = 'get_size'
-    CATEGORY = '♾️Mixlab/Image'
-
-    def get_size(self, image, min_width):
-        (_, height, width, _) = image.shape
-        if min_width > width:
-            im = tensor2pil(image)
-            im = resize_image(im, 'width', min_width, min_width, 'white')
-            im = im.convert('RGB')
-            (min_width, min_height) = im.size
-        else:
-            min_width = width
-            min_height = height
-        return (width, height, min_width, min_height)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

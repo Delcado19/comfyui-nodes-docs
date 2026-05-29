@@ -39,18 +39,6 @@ Such nodes provide a method to apply regional conditioning to images using CLIP 
 - Infra type: GPU
 
 # Source code
-```
-class RegionalConditioningSimple:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Inspire-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'clip': ('CLIP',), 'mask': ('MASK',), 'strength': ('FLOAT', {'default': 1.0, 'min': 0.0, 'max': 10.0, 'step': 0.01}), 'set_cond_area': (['default', 'mask bounds'],), 'prompt': ('STRING', {'multiline': True, 'placeholder': 'prompt'})}}
-    RETURN_TYPES = ('CONDITIONING',)
-    FUNCTION = 'doit'
-    CATEGORY = 'InspirePack/Regional'
-
-    def doit(self, clip, mask, strength, set_cond_area, prompt):
-        conditioning = nodes.CLIPTextEncode().encode(clip, prompt)[0]
-        conditioning = nodes.ConditioningSetMask().append(conditioning, mask, set_cond_area, strength)[0]
-        return (conditioning,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

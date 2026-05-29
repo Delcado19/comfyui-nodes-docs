@@ -36,29 +36,6 @@ The WLSH_String_Append node is designed to concatenate strings in a specified ma
 - Infra type: CPU
 
 # Source code
-```
-class WLSH_String_Append:
-    location = ['after', 'before']
-    separator = ['comma', 'space', 'newline', 'none']
+[View source repository on GitHub](https://github.com/wallish77/wlsh_nodes)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'addition': ('STRING', {'multiline': True}), 'placement': (s.location,), 'separator': (s.separator,)}, 'optional': {'input_string': ('STRING', {'multiline': True, 'forceInput': True})}}
-    RETURN_TYPES = ('STRING',)
-    RETURN_NAMES = ('combined',)
-    FUNCTION = 'concat_string'
-    CATEGORY = 'WLSH Nodes/text'
-
-    def concat_string(self, placement, separator, addition='', input_string=''):
-        sep = {'comma': ', ', 'space': ' ', 'newline': '\n', 'none': ''}
-        if input_string is None:
-            return (addition,)
-        if placement == 'after':
-            new_string = input_string + sep[separator] + addition
-        else:
-            new_string = addition + sep[separator] + input_string
-        return (new_string,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -25,26 +25,7 @@ The ImageFilterDetail node applies detail enhancement filters to a set of images
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class ImageFilterDetail:
-    def __init__(self):
-        pass
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {
-            "required": {
-                "images": ("IMAGE",),
-            },
-        }
-
-    RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "node"
-    CATEGORY = "image/filter"
-
-    def node(self, images):
-        return applyImageFilter(images, ImageFilter.DETAIL)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -22,20 +22,7 @@ This node has no required input parameters.
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class Color_Preprocessor_Provider_for_SEGS:
-    @classmethod
-    def INPUT_TYPES(s):
-        return {"required": {}}
-    RETURN_TYPES = ("SEGS_PREPROCESSOR",)
-    FUNCTION = "doit"
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Inspire-Pack)
 
-    CATEGORY = "InspirePack/SEGS/ControlNet"
-
-    def doit(self):
-        obj = Color_Preprocessor_wrapper()
-        return (obj, )
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

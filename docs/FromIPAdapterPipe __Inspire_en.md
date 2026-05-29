@@ -37,26 +37,7 @@ The FromIPAdapterPipe node is designed to break down a pre-built IP adapter pipe
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class FromIPAdapterPipe:
-    @classmethod
-    def INPUT_TYPES(s):
-        return {
-            "required": {
-                "ipadapter_pipe": ("IPADAPTER_PIPE", ),
-            }
-        }
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Inspire-Pack)
 
-    RETURN_TYPES = ("IPADAPTER", "MODEL", "CLIP_VISION", "INSIGHTFACE")
-    RETURN_NAMES = ("ipadapter", "model", "clip_vision", "insight_face")
-    FUNCTION = "doit"
-
-    CATEGORY = "InspirePack/Util"
-
-    def doit(self, ipadapter_pipe):
-        ipadapter, model, clip_vision, insightface, _ = ipadapter_pipe
-        return ipadapter, model, clip_vision, insightface
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

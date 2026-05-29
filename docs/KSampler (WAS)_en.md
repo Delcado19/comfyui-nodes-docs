@@ -60,16 +60,6 @@ The WAS_KSampler node is designed to perform sampling operations within the WAS 
 - Infra type: GPU
 
 # Source code
-```
-class WAS_KSampler:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'model': ('MODEL',), 'seed': ('SEED',), 'steps': ('INT', {'default': 20, 'min': 1, 'max': 10000}), 'cfg': ('FLOAT', {'default': 8.0, 'min': 0.0, 'max': 100.0}), 'sampler_name': (comfy.samplers.KSampler.SAMPLERS,), 'scheduler': (comfy.samplers.KSampler.SCHEDULERS,), 'positive': ('CONDITIONING',), 'negative': ('CONDITIONING',), 'latent_image': ('LATENT',), 'denoise': ('FLOAT', {'default': 1.0, 'min': 0.0, 'max': 1.0, 'step': 0.01})}}
-    RETURN_TYPES = ('LATENT',)
-    FUNCTION = 'sample'
-    CATEGORY = 'WAS Suite/Sampling'
-
-    def sample(self, model, seed, steps, cfg, sampler_name, scheduler, positive, negative, latent_image, denoise=1.0):
-        return nodes.common_ksampler(model, seed['seed'], steps, cfg, sampler_name, scheduler, positive, negative, latent_image, denoise=denoise)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

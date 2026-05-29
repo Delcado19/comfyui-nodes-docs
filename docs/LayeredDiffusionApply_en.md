@@ -31,23 +31,6 @@ The LayeredDiffusionFG class aims to enhance image generation tasks by applying 
 - Infra type: GPU
 
 # Source code
-```
-class LayeredDiffusionFG:
-    """Generate foreground with transparent background."""
+[View source repository on GitHub](https://github.com/huchenlei/ComfyUI-layerdiffuse)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'model': ('MODEL',), 'config': ([c.config_string for c in s.MODELS],), 'weight': ('FLOAT', {'default': 1.0, 'min': -1, 'max': 3, 'step': 0.05})}}
-    RETURN_TYPES = ('MODEL',)
-    FUNCTION = 'apply_layered_diffusion'
-    CATEGORY = 'layer_diffuse'
-    MODELS = (LayeredDiffusionBase(model_file_name='layer_xl_transparent_attn.safetensors', model_url='https://huggingface.co/LayerDiffusion/layerdiffusion-v1/resolve/main/layer_xl_transparent_attn.safetensors', sd_version=StableDiffusionVersion.SDXL, injection_method=LayerMethod.ATTN), LayeredDiffusionBase(model_file_name='layer_xl_transparent_conv.safetensors', model_url='https://huggingface.co/LayerDiffusion/layerdiffusion-v1/resolve/main/layer_xl_transparent_conv.safetensors', sd_version=StableDiffusionVersion.SDXL, injection_method=LayerMethod.CONV), LayeredDiffusionBase(model_file_name='layer_sd15_transparent_attn.safetensors', model_url='https://huggingface.co/LayerDiffusion/layerdiffusion-v1/resolve/main/layer_sd15_transparent_attn.safetensors', sd_version=StableDiffusionVersion.SD1x, injection_method=LayerMethod.ATTN, attn_sharing=True))
-
-    def apply_layered_diffusion(self, model: ModelPatcher, config: str, weight: float):
-        ld_model = [m for m in self.MODELS if m.config_string == config][0]
-        assert get_model_sd_version(model) == ld_model.sd_version
-        if ld_model.attn_sharing:
-            return ld_model.apply_layered_diffusion_attn_sharing(model)
-        else:
-            return ld_model.apply_layered_diffusion(model, weight)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

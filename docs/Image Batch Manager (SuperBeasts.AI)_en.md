@@ -87,47 +87,7 @@ The Image Batch Manager node is designed to rearrange and process a batch of ima
 - Infra type: `GPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class ImageBatchManagement:
-    def __init__(self):
-        pass
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {
-            "required": {
-                "width": ("INT", {"default": 512}),
-                "height": ("INT", {"default": 768}),
-                "ordering_enabled": (["disabled", "enabled"], {"default": "disabled"})
-            },
-            "optional": {
-                "new_order": ("STRING", {"default": ""}),
-                **{f"image{i}": ("IMAGE",) for i in range(1, 13)}
-            },
-        }
-
-    RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "reorder"
-    CATEGORY = "SuperBeastsAI/Image"
-
-    def reorder(self, width, height, ordering_enabled, new_order, **kwargs):
-        image_keys = [f'image{i}' for i in range(1, 13)]
-        images = [kwargs.get(key) for key in image_keys if kwargs.get(key) is not None]
-
-        if ordering_enabled == "enabled" and new_order:
-            order_indices = [int(idx) - 1 for idx in new_order.split(',') if idx.strip()]
-            images = [images[idx] for idx in order_indices if idx < len(images)]
-
-        processed_images = []
-        for img in images:
-            pil_img = tensor2pil(img)
-            resized_cropped_img = resize_and_crop(pil_img, width, height)
-            img_tensor = pil2tensor(resized_cropped_img)
-            processed_images.append(img_tensor)
-
-        result = torch.cat(processed_images, dim=0) if processed_images else torch.empty(0, 3, height, width)
-        return (result,)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

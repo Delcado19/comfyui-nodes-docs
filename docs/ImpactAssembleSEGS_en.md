@@ -27,17 +27,6 @@ The AssembleSEGS node is designed to combine the segmentation header and element
 - Infra type: CPU
 
 # Source code
-```
-class AssembleSEGS:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'seg_header': ('SEGS_HEADER',), 'seg_elt': ('SEG_ELT',)}}
-    INPUT_IS_LIST = True
-    RETURN_TYPES = ('SEGS',)
-    FUNCTION = 'doit'
-    CATEGORY = 'ImpactPack/Util'
-
-    def doit(self, seg_header, seg_elt):
-        return ((seg_header[0], seg_elt),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

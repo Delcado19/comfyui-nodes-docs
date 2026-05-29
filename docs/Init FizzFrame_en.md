@@ -52,43 +52,6 @@ The `create_frame` method initializes and manages frames within a node. It build
 - Infra type: CPU
 
 # Source code
-```
-class InitNodeFrame:
+[View source repository on GitHub](https://github.com/FizzleDorf/ComfyUI_FizzNodes)
 
-    def __init__(self):
-        self.frames = {}
-        self.thisFrame = {}
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'frame': ('INT', {'default': 0, 'min': 0}), 'positive_text': ('STRING', {'multiline': True})}, 'optional': {'negative_text': ('STRING', {'multiline': True}), 'general_positive': ('STRING', {'multiline': True}), 'general_negative': ('STRING', {'multiline': True}), 'previous_frame': ('FIZZFRAME', {'forceInput': True}), 'clip': ('CLIP',)}}
-    RETURN_TYPES = ('FIZZFRAME', 'CONDITIONING', 'CONDITIONING')
-    FUNCTION = 'create_frame'
-    CATEGORY = 'FizzNodes 📅🅕🅝/FrameNodes'
-
-    def create_frame(self, frame, positive_text, negative_text=None, general_positive=None, general_negative=None, previous_frame=None, clip=None):
-        new_frame = {'positive_text': positive_text, 'negative_text': negative_text}
-        if previous_frame:
-            prev_frame = previous_frame.thisFrame
-            new_frame['general_positive'] = prev_frame['general_positive']
-            new_frame['general_negative'] = prev_frame['general_negative']
-            new_frame['clip'] = prev_frame['clip']
-            self.frames = previous_frame.frames
-        if general_positive:
-            new_frame['general_positive'] = general_positive
-        if general_negative:
-            new_frame['general_negative'] = general_negative
-        new_positive_text = f"{positive_text}, {new_frame['general_positive']}"
-        new_negative_text = f"{negative_text}, {new_frame['general_negative']}"
-        if clip:
-            new_frame['clip'] = clip
-        pos_tokens = new_frame['clip'].tokenize(new_positive_text)
-        (pos_cond, pos_pooled) = new_frame['clip'].encode_from_tokens(pos_tokens, return_pooled=True)
-        new_frame['pos_conditioning'] = {'cond': pos_cond, 'pooled': pos_pooled}
-        neg_tokens = new_frame['clip'].tokenize(new_negative_text)
-        (neg_cond, neg_pooled) = new_frame['clip'].encode_from_tokens(neg_tokens, return_pooled=True)
-        new_frame['neg_conditioning'] = {'cond': neg_cond, 'pooled': neg_pooled}
-        self.frames[frame] = new_frame
-        self.thisFrame = new_frame
-        return (self, [[pos_cond, {'pooled_output': pos_pooled}]], [[neg_cond, {'pooled_output': neg_pooled}]])
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

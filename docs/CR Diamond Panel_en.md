@@ -36,50 +36,6 @@ CR_DiamondPanel is a node for creating visually appealing diamond panels from im
 - Infra type: CPU
 
 # Source code
-```
-class CR_DiamondPanel:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        patterns = ['none', 'diamond']
-        return {'required': {'image': ('IMAGE',), 'pattern': (patterns,)}}
-    RETURN_TYPES = ('IMAGE', 'STRING')
-    RETURN_NAMES = ('image', 'show_help')
-    FUNCTION = 'make_panel'
-    CATEGORY = icons.get('Comfyroll/Graphics/Layout')
-
-    def make_panel(self, image, pattern, drop_percentage=0.5):
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Layout-Nodes#cr-diamond-panel'
-        if pattern == 'none':
-            return (image, show_help)
-        pil_img = tensor2pil(image)
-        pil_img = pil_img.convert('RGBA')
-        (x, y) = pil_img.size
-        aspect_ratio = x / y
-        d = int(drop_percentage * 100)
-        panel_image = Image.new('RGBA', (x * 2, y * 2))
-        if pattern == 'diamond':
-            diamond_size = min(x, y)
-            diamond_width = min(x, y * aspect_ratio)
-            diamond_height = min(y, x / aspect_ratio)
-            diamond_mask = Image.new('L', (x, y), 0)
-            draw = ImageDraw.Draw(diamond_mask)
-            draw.polygon([(x // 2, 0), (x, y // 2), (x // 2, y), (0, y // 2)], fill=255)
-            diamond_image = pil_img.copy()
-            diamond_image.putalpha(diamond_mask)
-            panel_image.paste(diamond_image, (-x // 2, (d - 100) * y // 100), diamond_image)
-            panel_image.paste(diamond_image, (-x // 2, d * y // 100), diamond_image)
-            panel_image.paste(diamond_image, (-x // 2, y + d * y // 100), diamond_image)
-            panel_image.paste(diamond_image, (0, 0), diamond_image)
-            panel_image.paste(diamond_image, (0, y), diamond_image)
-            panel_image.paste(diamond_image, (x // 2, (d - 100) * y // 100), diamond_image)
-            panel_image.paste(diamond_image, (x // 2, d * y // 100), diamond_image)
-            panel_image.paste(diamond_image, (x // 2, y + d * y // 100), diamond_image)
-            panel_image.paste(diamond_image, (x, 0), diamond_image)
-            panel_image.paste(diamond_image, (x, y), diamond_image)
-            panel_image.paste(diamond_image, (3 * x // 2, (d - 100) * y // 100), diamond_image)
-            panel_image.paste(diamond_image, (3 * x // 2, d * y // 100), diamond_image)
-            panel_image.paste(diamond_image, (3 * x // 2, y + d * y // 100), diamond_image)
-        image_out = pil2tensor(panel_image.convert('RGB'))
-        return (image_out, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

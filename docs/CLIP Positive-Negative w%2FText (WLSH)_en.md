@@ -43,17 +43,6 @@ The `encode` method of the WLSH_CLIP_Text_Positive_Negative node processes text 
 - Infra type: GPU
 
 # Source code
-```
-class WLSH_CLIP_Text_Positive_Negative:
+[View source repository on GitHub](https://github.com/wallish77/wlsh_nodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'positive': ('STRING', {'multiline': True}), 'negative': ('STRING', {'multiline': True}), 'clip': ('CLIP',)}}
-    RETURN_TYPES = ('CONDITIONING', 'CONDITIONING', 'STRING', 'STRING')
-    RETURN_NAMES = ('positive', 'negative', 'positive_text', 'negative_text')
-    FUNCTION = 'encode'
-    CATEGORY = 'WLSH Nodes/conditioning'
-
-    def encode(self, clip, positive, negative):
-        return ([[clip.encode(positive), {}]], [[clip.encode(negative), {}]], positive, negative)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -28,24 +28,6 @@ The node acts as a conditional gate, evaluating inputs to determine whether they
 - Infra type: CPU
 
 # Source code
-```
-class Trigger:
+[View source repository on GitHub](https://github.com/chflame163/ComfyUI_MSSpeech_TTS)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'always_true': ('BOOLEAN', {'default': False})}, 'optional': {'anything': (any, {})}}
-    RETURN_TYPES = ('BOOLEAN',)
-    FUNCTION = 'check_input'
-    OUTPUT_NODE = True
-    CATEGORY = '😺dzNodes'
-
-    def check_input(self, always_true, anything=None):
-        ret = False
-        if always_true or anything is not None:
-            ret = True
-        print(f'# 😺dzNodes: Input Trigger: {ret}')
-        return (ret,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

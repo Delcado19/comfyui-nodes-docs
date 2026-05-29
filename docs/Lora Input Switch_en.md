@@ -39,22 +39,6 @@ The node acts as a conditional switch in WAS Suite, selecting and forwarding one
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Lora_Input_Switch:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'model_a': ('MODEL',), 'clip_a': ('CLIP',), 'model_b': ('MODEL',), 'clip_b': ('CLIP',), 'boolean': ('BOOLEAN', {'forceInput': True})}}
-    RETURN_TYPES = ('MODEL', 'CLIP')
-    FUNCTION = 'lora_input_switch'
-    CATEGORY = 'WAS Suite/Logic'
-
-    def lora_input_switch(self, model_a, clip_a, model_b, clip_b, boolean=True):
-        if boolean:
-            return (model_a, clip_a)
-        else:
-            return (model_b, clip_b)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

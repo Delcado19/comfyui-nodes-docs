@@ -40,25 +40,6 @@ The CR_VAEDecode node uses a pre-trained Variational Autoencoder (VAE) to decode
 - Infra type: GPU
 
 # Source code
-```
-class CR_VAEDecode:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'samples': ('LATENT',), 'vae': ('VAE',), 'tiled': ('BOOLEAN', {'default': False}), 'circular': ('BOOLEAN', {'default': False})}}
-    RETURN_TYPES = ('IMAGE', 'STRING')
-    RETURN_NAMES = ('IMAGE', 'show_help')
-    FUNCTION = 'vae_decode'
-    CATEGORY = icons.get('Comfyroll/Essential/Core')
-
-    def vae_decode(self, samples, vae, circular=False, tiled=False):
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Core-Nodes#cr-vae-decode'
-        if circular == True:
-            for layer in [layer for layer in vae.first_stage_model.modules() if isinstance(layer, torch.nn.Conv2d)]:
-                layer.padding_mode = 'circular'
-        if tiled == True:
-            c = vae.decode_tiled(samples['samples'], tile_x=512, tile_y=512)
-        else:
-            c = vae.decode(samples['samples'])
-        return (c, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

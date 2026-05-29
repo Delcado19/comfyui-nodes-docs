@@ -36,18 +36,6 @@ The SearchAndReplace node is designed to perform text manipulation tasks by sear
 - Infra type: CPU
 
 # Source code
-```
-class SearchAndReplace:
+[View source repository on GitHub](https://github.com/bash-j/mikey_nodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'text': ('STRING', {'multiline': False, 'placeholder': 'Text to search and replace'}), 'seed': ('INT', {'default': 0, 'min': 0, 'max': 18446744073709551615})}, 'hidden': {'prompt': 'PROMPT', 'extra_pnginfo': 'EXTRA_PNGINFO'}}
-    RETURN_TYPES = ('STRING',)
-    FUNCTION = 'search_and_replace'
-    CATEGORY = 'Mikey/Utils'
-
-    def search_and_replace(self, text, seed, prompt=None, extra_pnginfo=None):
-        result = search_and_replace(text, extra_pnginfo, prompt)
-        s = seed + 1
-        return (result,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -26,18 +26,7 @@ This node is designed to handle or manipulate simple string data. It focuses on 
 - Common nodes:
     - [StringFunction|pysssss](../../ComfyUI-Custom-Scripts/Nodes/StringFunction|pysssss.md)
 
-
-
 ## Source code
-```python
-class SimpleString(Base):
-    OUTPUT_NODE = False
-    @classmethod
-    def INPUT_TYPES(s):
-        return {"required":{ "string": ("STRING", {"default": ""}) }}
-    RETURN_TYPES = ("STRING",)
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    def func(self,string):
-        return (string,)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

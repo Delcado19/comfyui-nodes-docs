@@ -31,22 +31,6 @@ CacheBackendDataNumberKeyList node aims to efficiently manage and store data ass
 - Infra type: CPU
 
 # Source code
-```
-class CacheBackendDataNumberKeyList:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Inspire-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'key': ('INT', {'default': 0, 'min': 0, 'max': 18446744073709551615}), 'tag': ('STRING', {'multiline': False, 'placeholder': 'Tag: short description'}), 'data': (any_typ,)}}
-    INPUT_IS_LIST = True
-    RETURN_TYPES = (any_typ,)
-    RETURN_NAMES = ('data opt',)
-    OUTPUT_IS_LIST = (True,)
-    FUNCTION = 'doit'
-    CATEGORY = 'InspirePack/Backend'
-    OUTPUT_NODE = True
-
-    def doit(self, key, tag, data):
-        global cache
-        cache[key[0]] = (tag[0], (True, data))
-        return (data,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

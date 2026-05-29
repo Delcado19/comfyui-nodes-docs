@@ -52,25 +52,6 @@ The BasicPipeToDetailerPipe node is designed to convert a basic pipe structure i
 - Infra type: CPU
 
 # Source code
-```
-class BasicPipeToDetailerPipe:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'basic_pipe': ('BASIC_PIPE',), 'bbox_detector': ('BBOX_DETECTOR',), 'wildcard': ('STRING', {'multiline': True, 'dynamicPrompts': False}), 'Select to add LoRA': (['Select the LoRA to add to the text'] + folder_paths.get_filename_list('loras'),), 'Select to add Wildcard': (['Select the Wildcard to add to the text'],)}, 'optional': {'sam_model_opt': ('SAM_MODEL',), 'segm_detector_opt': ('SEGM_DETECTOR',), 'detailer_hook': ('DETAILER_HOOK',)}}
-    RETURN_TYPES = ('DETAILER_PIPE',)
-    RETURN_NAMES = ('detailer_pipe',)
-    FUNCTION = 'doit'
-    CATEGORY = 'ImpactPack/Pipe'
-
-    def doit(self, *args, **kwargs):
-        basic_pipe = kwargs['basic_pipe']
-        bbox_detector = kwargs['bbox_detector']
-        wildcard = kwargs['wildcard']
-        sam_model_opt = kwargs.get('sam_model_opt', None)
-        segm_detector_opt = kwargs.get('segm_detector_opt', None)
-        detailer_hook = kwargs.get('detailer_hook', None)
-        (model, clip, vae, positive, negative) = basic_pipe
-        pipe = (model, clip, vae, positive, negative, wildcard, bbox_detector, segm_detector_opt, sam_model_opt, detailer_hook, None, None, None, None)
-        return (pipe,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

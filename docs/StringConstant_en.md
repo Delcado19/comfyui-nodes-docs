@@ -23,16 +23,6 @@ StringConstant node aims to provide a fixed string value in data processing work
 - Infra type: CPU
 
 # Source code
-```
-class StringConstant:
+[View source repository on GitHub](https://github.com/kijai/ComfyUI-KJNodes)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'string': ('STRING', {'default': '', 'multiline': False})}}
-    RETURN_TYPES = ('STRING',)
-    FUNCTION = 'passtring'
-    CATEGORY = 'KJNodes/constants'
-
-    def passtring(self, string):
-        return (string,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -23,24 +23,6 @@ This node facilitates the integration of search conditions into the data flow, e
 - Infra type: CPU
 
 # Source code
-```
-class SeargeConditionMixing:
+[View source repository on GitHub](https://github.com/jobunk/SeargeSDXL)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {}, 'optional': {'data': ('SRG_DATA_STREAM',)}}
-    RETURN_TYPES = ('SRG_DATA_STREAM',)
-    RETURN_NAMES = ('data',)
-    FUNCTION = 'get'
-    CATEGORY = UI.CATEGORY_UI_INPUTS
-
-    @staticmethod
-    def create_dict(example):
-        return {UI.EXAMPLE: example}
-
-    def get(self, data=None):
-        if data is None:
-            data = {}
-        data[UI.S_CONDITION_MIXING] = self.create_dict('example')
-        return (data,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

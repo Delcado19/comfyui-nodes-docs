@@ -36,24 +36,6 @@ This node manages data retrieval and storage in the backend system, facilitating
 - Infra type: CPU
 
 # Source code
-```
-class CacheBackendDataList:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Inspire-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'key': ('STRING', {'multiline': False, 'placeholder': "Input data key (e.g. 'model a', 'chunli lora', 'girl latent 3', ...)"}), 'tag': ('STRING', {'multiline': False, 'placeholder': 'Tag: short description'}), 'data': (any_typ,)}}
-    INPUT_IS_LIST = True
-    RETURN_TYPES = (any_typ,)
-    RETURN_NAMES = ('data opt',)
-    OUTPUT_IS_LIST = (True,)
-    FUNCTION = 'doit'
-    CATEGORY = 'InspirePack/Backend'
-    OUTPUT_NODE = True
-
-    def doit(self, key, tag, data):
-        global cache
-        if key == '*':
-            print(f"[Inspire Pack] CacheBackendDataList: '*' is reserved key. Cannot use that key")
-        cache[key[0]] = (tag[0], (True, data))
-        return (data,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

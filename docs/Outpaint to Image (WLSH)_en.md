@@ -39,46 +39,6 @@ This node expands the image in a specified direction and generates a correspondi
 - Infra type: CPU
 
 # Source code
-```
-class WLSH_Outpaint_To_Image:
-    directions = ['left', 'right', 'up', 'down']
+[View source repository on GitHub](https://github.com/wallish77/wlsh_nodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'image': ('IMAGE',), 'direction': (s.directions,), 'pixels': ('INT', {'default': 128, 'min': 32, 'max': 512, 'step': 32}), 'mask_padding': ('INT', {'default': 12, 'min': 0, 'max': 64, 'step': 4})}}
-    RETURN_TYPES = ('IMAGE', 'MASK')
-    FUNCTION = 'outpaint'
-    CATEGORY = 'WLSH Nodes/inpainting'
-
-    def convert_image(self, im, direction, mask_padding):
-        (width, height) = im.size
-        im = im.convert('RGBA')
-        alpha = Image.new('L', (width, height), 255)
-        im.putalpha(alpha)
-        return im
-
-    def outpaint(self, image, direction, mask_padding, pixels):
-        image = tensor2pil(image)
-        image = self.convert_image(image, direction, mask_padding)
-        if direction == 'right':
-            border = (0, 0, pixels, 0)
-            new_image = ImageOps.expand(image, border=border, fill=(0, 0, 0, 0))
-        elif direction == 'left':
-            border = (pixels, 0, 0, 0)
-            new_image = ImageOps.expand(image, border=border, fill=(0, 0, 0, 0))
-        elif direction == 'up':
-            border = (0, pixels, 0, 0)
-            new_image = ImageOps.expand(image, border=border, fill=(0, 0, 0, 0))
-        elif direction == 'down':
-            border = (0, 0, 0, pixels)
-            new_image = ImageOps.expand(image, border=border, fill=(0, 0, 0, 0))
-        image = new_image.convert('RGB')
-        image = np.array(image).astype(np.float32) / 255.0
-        image = torch.from_numpy(image)[None,]
-        if 'A' in new_image.getbands():
-            mask = np.array(new_image.getchannel('A')).astype(np.float32) / 255.0
-            mask = 1.0 - torch.from_numpy(mask)
-        else:
-            mask = torch.zeros((64, 64), dtype=torch.float32, device='cpu')
-        return (image, mask)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

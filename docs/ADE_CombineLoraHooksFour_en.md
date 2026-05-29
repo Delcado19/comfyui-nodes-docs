@@ -38,26 +38,6 @@ This node aims to aggregate and combine up to four LoRA hooks into a unified LoR
 - Common nodes: unknown
 
 ## Source code
-```python
-class CombineLoraHookFourOptional:
-    @classmethod
-    def INPUT_TYPES(s):
-        return {
-            "required": {
-            },
-            "optional": {
-                "lora_hook_A": ("LORA_HOOK",),
-                "lora_hook_B": ("LORA_HOOK",),
-                "lora_hook_C": ("LORA_HOOK",),
-                "lora_hook_D": ("LORA_HOOK",),
-            }
-        }
+[View source repository on GitHub](https://github.com/Kosinkadink/ComfyUI-AnimateDiff-Evolved)
 
-    RETURN_TYPES = ("LORA_HOOK",)
-    CATEGORY = "Animate Diff 🎭🅐🅓/conditioning/combine lora hooks"
-    FUNCTION = "combine_lora_hooks"
-
-    def combine_lora_hooks(self,
-                           lora_hook_A: LoraHookGroup=None, lora_hook_B: LoraHookGroup=None,
-                           lora_hook_C: LoraHookGroup=None, lora_hook_D: LoraHookGroup=None,):
-        candidates = [lora_hook_A, lora_hook_B, lora_hook_C, lora_hook_D]
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

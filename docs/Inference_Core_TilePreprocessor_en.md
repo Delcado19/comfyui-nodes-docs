@@ -34,25 +34,7 @@ The Tile Preprocessor node enhances image input by applying a tiling mechanism f
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class Tile_Preprocessor:
-    @classmethod
-    def INPUT_TYPES(s):
-        return create_node_input_types(
-            pyrUp_iters = ("INT", {"default": 3, "min": 1, "max": 10, "step": 1})
-        )
-        
+[View source repository on GitHub](https://github.com/Mikubill/sd-webui-controlnet)
 
-    RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "execute"
-
-    CATEGORY = "ControlNet Preprocessors/others"
-
-    def execute(self, image, pyrUp_iters, resolution=512, **kwargs):
-        from controlnet_aux.tile import TileDetector
-
-        return (common_annotator_call(TileDetector(), image, pyrUp_iters=pyrUp_iters, resolution=resolution),)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

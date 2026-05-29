@@ -31,21 +31,6 @@ The MixByMask node is designed to blend two images based on a provided mask. It 
 - Infra type: CPU
 
 # Source code
-```
-class MixByMask:
+[View source repository on GitHub](https://github.com/BadCafeCode/masquerade-nodes-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'image1': ('IMAGE',), 'image2': ('IMAGE',), 'mask': ('IMAGE',)}}
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'mix'
-    CATEGORY = 'Masquerade Nodes'
-
-    def mix(self, image1, image2, mask):
-        (image1, image2) = tensors2common(image1, image2)
-        mask = tensor2batch(mask, image1.size())
-        return (image1 * (1.0 - mask) + image2 * mask,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

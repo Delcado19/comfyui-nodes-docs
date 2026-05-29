@@ -28,25 +28,6 @@ This node is designed to manage and clear data stored in the backend cache, ensu
 - Infra type: CPU
 
 # Source code
-```
-class RemoveBackendData:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Inspire-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'key': ('STRING', {'multiline': False, 'placeholder': "Input data key ('*' = clear all)"})}, 'optional': {'signal_opt': (any_typ,)}}
-    RETURN_TYPES = (any_typ,)
-    RETURN_NAMES = ('signal',)
-    FUNCTION = 'doit'
-    CATEGORY = 'InspirePack/Backend'
-    OUTPUT_NODE = True
-
-    def doit(self, key, signal_opt=None):
-        global cache
-        if key == '*':
-            cache = {}
-        elif key in cache:
-            del cache[key]
-        else:
-            print(f'[Inspire Pack] RemoveBackendData: invalid data key {key}')
-        return (signal_opt,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

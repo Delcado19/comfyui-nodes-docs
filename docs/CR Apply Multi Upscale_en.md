@@ -43,39 +43,6 @@ CR_ApplyMultiUpscale is a node designed to improve image resolution through a mu
 - Infra type: GPU
 
 # Source code
-```
-class CR_ApplyMultiUpscale:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        resampling_methods = ['lanczos', 'nearest', 'bilinear', 'bicubic']
-        return {'required': {'image': ('IMAGE',), 'resampling_method': (resampling_methods,), 'supersample': (['true', 'false'],), 'rounding_modulus': ('INT', {'default': 8, 'min': 8, 'max': 1024, 'step': 8}), 'upscale_stack': ('UPSCALE_STACK',)}}
-    RETURN_TYPES = ('IMAGE', 'STRING')
-    RETURN_NAMES = ('IMAGE', 'show_help')
-    FUNCTION = 'apply'
-    CATEGORY = icons.get('Comfyroll/Upscale')
-
-    def apply(self, image, resampling_method, supersample, rounding_modulus, upscale_stack):
-        pil_img = tensor2pil(image)
-        (original_width, original_height) = pil_img.size
-        params = list()
-        params.extend(upscale_stack)
-        for tup in params:
-            (upscale_model, rescale_factor) = tup
-            print(f'[Info] CR Apply Multi Upscale: Applying {upscale_model} and rescaling by factor {rescale_factor}')
-            up_model = load_model(upscale_model)
-            up_image = upscale_with_model(up_model, image)
-            pil_img = tensor2pil(up_image)
-            (upscaled_width, upscaled_height) = pil_img.size
-            if upscaled_width == original_width and rescale_factor == 1:
-                image = up_image
-            else:
-                scaled_images = []
-                mode = 'rescale'
-                resize_width = 1024
-                for img in up_image:
-                    scaled_images.append(pil2tensor(apply_resize_image(tensor2pil(img), original_width, original_height, rounding_modulus, mode, supersample, rescale_factor, resize_width, resampling_method)))
-                image = torch.cat(scaled_images, dim=0)
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Upscale-Nodes#cr-apply-multi-upscale'
-        return (image, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

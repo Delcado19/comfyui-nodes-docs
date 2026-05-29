@@ -40,23 +40,6 @@ ReencodeLatent is a node that re-encodes latent representations using a pair of 
 - Infra type: GPU
 
 # Source code
-```
-class ReencodeLatent:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'samples': ('LATENT',), 'tile_mode': (['None', 'Both', 'Decode(input) only', 'Encode(output) only'],), 'input_vae': ('VAE',), 'output_vae': ('VAE',), 'tile_size': ('INT', {'default': 512, 'min': 320, 'max': 4096, 'step': 64})}}
-    CATEGORY = 'ImpactPack/Util'
-    RETURN_TYPES = ('LATENT',)
-    FUNCTION = 'doit'
-
-    def doit(self, samples, tile_mode, input_vae, output_vae, tile_size=512):
-        if tile_mode in ['Both', 'Decode(input) only']:
-            pixels = nodes.VAEDecodeTiled().decode(input_vae, samples, tile_size)[0]
-        else:
-            pixels = nodes.VAEDecode().decode(input_vae, samples)[0]
-        if tile_mode in ['Both', 'Encode(output) only']:
-            return nodes.VAEEncodeTiled().encode(output_vae, pixels, tile_size)
-        else:
-            return nodes.VAEEncode().encode(output_vae, pixels)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

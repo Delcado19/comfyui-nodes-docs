@@ -31,19 +31,6 @@ The OutlineMask node is designed to manipulate image masks by applying dilation 
 - Infra type: CPU
 
 # Source code
-```
-class OutlineMask:
+[View source repository on GitHub](https://github.com/shadowcz007/comfyui-mixlab-nodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'mask': ('MASK',), 'outline_width': ('INT', {'default': 10, 'min': 1, 'max': MAX_RESOLUTION, 'step': 1}), 'tapered_corners': ('BOOLEAN', {'default': True})}}
-    RETURN_TYPES = ('MASK',)
-    FUNCTION = 'run'
-    CATEGORY = '♾️Mixlab/Mask'
-
-    def run(self, mask, outline_width, tapered_corners):
-        m1 = grow(mask, outline_width, tapered_corners)
-        m2 = grow(mask, -outline_width, tapered_corners)
-        m3 = combine(m1, m2, 0, 0)
-        return (m3,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

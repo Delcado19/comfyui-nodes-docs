@@ -36,46 +36,6 @@ CR_HalfDropPanel is a node that operates on and transforms images according to a
 - Infra type: CPU
 
 # Source code
-```
-class CR_HalfDropPanel:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        patterns = ['none', 'half drop', 'quarter drop', 'custom drop %']
-        return {'required': {'image': ('IMAGE',), 'pattern': (patterns,)}, 'optional': {'drop_percentage': ('FLOAT', {'default': 0.5, 'min': 0.0, 'max': 1.0, 'step': 0.01})}}
-    RETURN_TYPES = ('IMAGE', 'STRING')
-    RETURN_NAMES = ('image', 'show_help')
-    FUNCTION = 'make_panel'
-    CATEGORY = icons.get('Comfyroll/Graphics/Layout')
-
-    def make_panel(self, image, pattern, drop_percentage=0.5):
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Layout-Nodes#cr-half-drop-panel'
-        if pattern == 'none':
-            return (image, show_help)
-        pil_img = tensor2pil(image)
-        pil_img = pil_img.convert('RGBA')
-        (x, y) = pil_img.size
-        aspect_ratio = x / y
-        d = int(drop_percentage * 100)
-        panel_image = Image.new('RGBA', (x * 2, y * 2))
-        if pattern == 'half drop':
-            panel_image.paste(pil_img, (0, 0))
-            panel_image.paste(pil_img, (0, y))
-            panel_image.paste(pil_img, (x, -y // 2))
-            panel_image.paste(pil_img, (x, y // 2))
-            panel_image.paste(pil_img, (x, 3 * y // 2))
-        elif pattern == 'quarter drop':
-            panel_image.paste(pil_img, (0, 0))
-            panel_image.paste(pil_img, (0, y))
-            panel_image.paste(pil_img, (x, -3 * y // 4))
-            panel_image.paste(pil_img, (x, y // 4))
-            panel_image.paste(pil_img, (x, 5 * y // 4))
-        elif pattern == 'custom drop %':
-            panel_image.paste(pil_img, (0, 0))
-            panel_image.paste(pil_img, (0, y))
-            panel_image.paste(pil_img, (x, (d - 100) * y // 100))
-            panel_image.paste(pil_img, (x, d * y // 100))
-            panel_image.paste(pil_img, (x, y + d * y // 100))
-        image_out = pil2tensor(panel_image.convert('RGB'))
-        return (image_out, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

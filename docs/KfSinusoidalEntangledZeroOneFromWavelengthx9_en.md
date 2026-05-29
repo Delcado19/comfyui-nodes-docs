@@ -23,10 +23,6 @@ The KfSinusoidalEntangledZeroOneFromWavelengthx9 node generates a set of nine si
 - Infra type: CPU
 
 # Source code
-```
-class KfSinusoidalEntangledZeroOneFromWavelengthx9(KfSinusoidalEntangledZeroOneFromWavelength):
-    RETURN_TYPES = ('KEYFRAMED_CURVE',) * 9
+[View source repository on GitHub](https://github.com/dmarx/ComfyUI-Keyframed)
 
-    def main(self, wavelength):
-        return super().main(n=9, wavelength=wavelength)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

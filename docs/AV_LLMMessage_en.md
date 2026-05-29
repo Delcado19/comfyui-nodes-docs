@@ -39,43 +39,7 @@ The AV_LLMMessage node is designed to create and manage messages for a language 
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class LLMMessageNode:
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {
-            "required": {
-                "role": (["system", "user", "assistant"],),
-                "text": ("STRING", {"multiline": True}),
-            },
-            "optional": {"image": ("IMAGE",), "messages": ("LLM_MESSAGE",)},
-        }
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    RETURN_TYPES = ("LLM_MESSAGE",)
-    RETURN_NAMES = ("messages",)
-    FUNCTION = "make_message"
-    CATEGORY = "ArtVenture/LLM"
-
-    def make_message(self, role, text, image: Optional[Tensor] = None, messages: Optional[List[LLMMessage]] = None):
-        messages = [] if messages is None else messages.copy()
-
-        if role == "system":
-            if isinstance(image, Tensor):
-                raise Exception("System prompt does not support image.")
-
-            system_message = [m for m in messages if m.role == "system"]
-            if len(system_message) > 0:
-                raise Exception("Only one system prompt is allowed.")
-
-        if isinstance(image, Tensor):
-            pil = tensor2pil(image)
-            content = pil2base64(pil)
-            messages.append(LLMMessage(role=role, text=text, image=content))
-        else:
-            messages.append(LLMMessage(role=role, text=text))
-
-        return (messages,)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

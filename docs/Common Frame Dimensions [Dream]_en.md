@@ -57,44 +57,7 @@ The Common Frame Dimensions node provides a utility to calculate frame sizes bas
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class DreamFrameDimensions:
-    NODE_NAME = "Common Frame Dimensions"
-    ICON = "⌗"
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {
-            "required": {
-                "size": (["3840", "1920", "1440", "1280", "768", "720", "640", "512"],),
-                "aspect_ratio": (["16:9", "16:10", "4:3", "1:1", "5:4", "3:2", "21:9", "14:9"],),
-                "orientation": (["wide", "tall"],),
-                "divisor": (["8", "4", "2", "1"],),
-                "alignment": ("INT", {"default": 64, "min": 1, "max": 512}),
-                "alignment_type": (["ceil", "floor", "nearest"],),
-            },
-        }
-
-    CATEGORY = NodeCategories.UTILS
-    RETURN_TYPES = ("INT", "INT", "INT", "INT")
-    RETURN_NAMES = ("width", "height", "final_width", "final_height")
-    FUNCTION = "result"
-
-    @classmethod
-    def IS_CHANGED(cls, *values):
-        return hashed_as_strings(*values)
-
-    def result(self, size, aspect_ratio, orientation, divisor, alignment, alignment_type):
-        ratio = tuple(map(int, aspect_ratio.split(":")))
-        final_width = int(size)
-        final_height = int(round((float(final_width) * ratio[1]) / ratio[0]))
-        width = _align_num(int(round(final_width / float(divisor))), alignment, alignment_type)
-        height = _align_num(int(round((float(width) * ratio[1]) / ratio[0])), alignment, alignment_type)
-        if orientation == "wide":
-            return (width, height, final_width, final_height)
-        else:
-            return (height, width, final_height, final_width)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

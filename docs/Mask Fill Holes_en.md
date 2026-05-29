@@ -23,35 +23,6 @@ The WAS_Mask_Fill_Region node processes image masks and fills specified regions,
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Mask_Fill_Region:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        self.WT = WAS_Tools_Class()
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'masks': ('MASK',)}}
-    CATEGORY = 'WAS Suite/Image/Masking'
-    RETURN_TYPES = ('MASK',)
-    RETURN_NAMES = ('MASKS',)
-    FUNCTION = 'fill_region'
-
-    def fill_region(self, masks):
-        if masks.ndim > 3:
-            regions = []
-            for mask in masks:
-                mask_np = np.clip(255.0 * mask.cpu().numpy().squeeze(), 0, 255).astype(np.uint8)
-                pil_image = Image.fromarray(mask_np, mode='L')
-                region_mask = self.WT.Masking.fill_region(pil_image)
-                region_tensor = pil2mask(region_mask).unsqueeze(0).unsqueeze(1)
-                regions.append(region_tensor)
-            regions_tensor = torch.cat(regions, dim=0)
-            return (regions_tensor,)
-        else:
-            mask_np = np.clip(255.0 * masks.cpu().numpy().squeeze(), 0, 255).astype(np.uint8)
-            pil_image = Image.fromarray(mask_np, mode='L')
-            region_mask = self.WT.Masking.fill_region(pil_image)
-            region_tensor = pil2mask(region_mask).unsqueeze(0).unsqueeze(1)
-            return (region_tensor,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

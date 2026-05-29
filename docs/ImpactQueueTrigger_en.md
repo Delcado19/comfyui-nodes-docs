@@ -28,20 +28,6 @@ The 'doit' method of the ImpactQueueTrigger node is designed to manage the trigg
 - Infra type: CPU
 
 # Source code
-```
-class ImpactQueueTrigger:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'signal': (any_typ,), 'mode': ('BOOLEAN', {'default': True, 'label_on': 'Trigger', 'label_off': "Don't trigger"})}}
-    FUNCTION = 'doit'
-    CATEGORY = 'ImpactPack/Logic/_for_test'
-    RETURN_TYPES = (any_typ,)
-    RETURN_NAMES = ('signal_opt',)
-    OUTPUT_NODE = True
-
-    def doit(self, signal, mode):
-        if mode:
-            PromptServer.instance.send_sync('impact-add-queue', {})
-        return (signal,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

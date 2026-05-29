@@ -27,17 +27,6 @@ The 'parse' method of the PromptToSchedule node is designed to parse and convert
 - Infra type: CPU
 
 # Source code
-```
-class PromptToSchedule:
+[View source repository on GitHub](https://github.com/asagi4/comfyui-prompt-control)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'text': ('STRING', {'multiline': True})}}
-    RETURN_TYPES = ('PROMPT_SCHEDULE',)
-    CATEGORY = 'promptcontrol'
-    FUNCTION = 'parse'
-
-    def parse(self, text, settings=None):
-        schedules = parse_prompt_schedules(text)
-        return (schedules,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

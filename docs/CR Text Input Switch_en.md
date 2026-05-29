@@ -36,24 +36,6 @@ The CR_TextInputSwitch node is designed to facilitate conditional selection of t
 - Infra type: CPU
 
 # Source code
-```
-class CR_TextInputSwitch:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'Input': ('INT', {'default': 1, 'min': 1, 'max': 2})}, 'optional': {'text1': ('STRING', {'forceInput': True}), 'text2': ('STRING', {'forceInput': True})}}
-    RETURN_TYPES = ('STRING', 'STRING')
-    RETURN_NAMES = ('STRING', 'show_help')
-    FUNCTION = 'switch'
-    CATEGORY = icons.get('Comfyroll/Utils/Logic')
-
-    def switch(self, Input, text1=None, text2=None):
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Logic-Nodes#cr-text-input-switch'
-        if Input == 1:
-            return (text1, show_help)
-        else:
-            return (text2, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

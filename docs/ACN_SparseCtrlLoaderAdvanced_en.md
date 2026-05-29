@@ -44,19 +44,6 @@ The SparseCtrlLoaderAdvanced node is designed to efficiently load and manage adv
 - Infra type: GPU
 
 # Source code
-```
-class SparseCtrlLoaderAdvanced:
+[View source repository on GitHub](https://github.com/Kosinkadink/ComfyUI-Advanced-ControlNet)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'sparsectrl_name': (folder_paths.get_filename_list('controlnet'),), 'use_motion': ('BOOLEAN', {'default': True}), 'motion_strength': ('FLOAT', {'default': 1.0, 'min': 0.0, 'max': 10.0, 'step': 0.001}), 'motion_scale': ('FLOAT', {'default': 1.0, 'min': 0.0, 'max': 10.0, 'step': 0.001})}, 'optional': {'sparse_method': ('SPARSE_METHOD',), 'tk_optional': ('TIMESTEP_KEYFRAME',)}}
-    RETURN_TYPES = ('CONTROL_NET',)
-    FUNCTION = 'load_controlnet'
-    CATEGORY = 'Adv-ControlNet 🛂🅐🅒🅝/SparseCtrl'
-
-    def load_controlnet(self, sparsectrl_name: str, use_motion: bool, motion_strength: float, motion_scale: float, sparse_method: SparseMethod=SparseSpreadMethod(), tk_optional: TimestepKeyframeGroup=None):
-        sparsectrl_path = folder_paths.get_full_path('controlnet', sparsectrl_name)
-        sparse_settings = SparseSettings(sparse_method=sparse_method, use_motion=use_motion, motion_strength=motion_strength, motion_scale=motion_scale)
-        sparsectrl = load_sparsectrl(sparsectrl_path, timestep_keyframe=tk_optional, sparse_settings=sparse_settings)
-        return (sparsectrl,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -68,35 +68,6 @@ This node is designed to generate various types of power-law noise, applicable t
 - Infra type: GPU
 
 # Source code
-```
-class PPFNPowerLawNoise:
+[View source repository on GitHub](https://github.com/WASasquatch/PowerNoiseSuite)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        pln = PowerLawNoise('cpu')
-        return {'required': {'batch_size': ('INT', {'default': 1, 'max': 64, 'min': 1, 'step': 1}), 'width': ('INT', {'default': 512, 'max': 8192, 'min': 64, 'step': 1}), 'height': ('INT', {'default': 512, 'max': 8192, 'min': 64, 'step': 1}), 'resampling': (['nearest-exact', 'bilinear', 'area', 'bicubic', 'bislerp'],), 'noise_type': (pln.get_noise_types(),), 'scale': ('FLOAT', {'default': 1.0, 'max': 1024.0, 'min': 0.01, 'step': 0.001}), 'alpha_exponent': ('FLOAT', {'default': 1.0, 'max': 12.0, 'min': -12.0, 'step': 0.001}), 'modulator': ('FLOAT', {'default': 1.0, 'max': 2.0, 'min': 0.1, 'step': 0.01}), 'seed': ('INT', {'default': 0, 'min': 0, 'max': 18446744073709551615}), 'device': (['cpu', 'cuda'],)}, 'optional': {'optional_vae': ('VAE',)}}
-    RETURN_TYPES = ('LATENT', 'IMAGE')
-    RETURN_NAMES = ('latents', 'previews')
-    FUNCTION = 'power_noise'
-    CATEGORY = 'Power Noise Suite/Noise'
-
-    def power_noise(self, batch_size, width, height, resampling, noise_type, scale, alpha_exponent, modulator, seed, device, optional_vae=None):
-        power_law = PowerLawNoise(device=device)
-        tensors = power_law(batch_size, width, height, scale=scale, alpha=alpha_exponent, modulator=modulator, noise_type=noise_type, seed=seed)
-        alpha_channel = torch.ones((batch_size, height, width, 1), dtype=tensors.dtype, device='cpu')
-        tensors = torch.cat((tensors, alpha_channel), dim=3)
-        if optional_vae is None:
-            latents = tensors.permute(0, 3, 1, 2)
-            latents = F.interpolate(latents, size=(height // 8, width // 8), mode=resampling)
-            return ({'samples': latents}, tensors)
-        encoder = nodes.VAEEncode()
-        latents = []
-        for tensor in tensors:
-            tensor = tensor.unsqueeze(0)
-            latents.append(encoder.encode(optional_vae, tensor)[0]['samples'])
-        latents = torch.cat(latents)
-        return ({'samples': latents}, tensors)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

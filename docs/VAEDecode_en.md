@@ -27,16 +27,6 @@ The VAEDecode node aims to convert latent representations back into the original
 - Infra type: GPU
 
 # Source code
-```
-class VAEDecode:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'samples': ('LATENT',), 'vae': ('VAE',)}}
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'decode'
-    CATEGORY = 'latent'
-
-    def decode(self, vae, samples):
-        return (vae.decode(samples['samples']),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

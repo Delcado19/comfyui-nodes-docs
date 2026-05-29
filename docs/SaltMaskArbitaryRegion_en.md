@@ -33,37 +33,7 @@ The SaltMaskArbitaryRegion node is used to filter arbitrary regions in a given m
 - Infra type: `GPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class SaltMaskArbitaryRegion:
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {
-                    "required": {
-                        "masks": ("MASK",),
-                        "size": ("INT", {"default":256, "min":1, "max":4096, "step":1}),
-                        "threshold": ("INT", {"default":128, "min":0, "max":255, "step":1}),
-                    }
-                }
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    CATEGORY = f"{NAME}/Masking/Filter"
-
-    RETURN_TYPES = ("MASK",)
-    RETURN_NAMES = ("MASKS",)
-
-    FUNCTION = "arbitrary_region"
-
-    def arbitrary_region(self, masks, size=256, threshold=128):
-        if not isinstance(threshold, list):
-            threshold = [threshold]
-        regions = []
-        for i, mask in enumerate(masks):
-            pil_image = mask2pil(mask.unsqueeze(0))
-            region_mask = MaskFilters.arbitrary_region(pil_image, size, int(threshold[i if i < len(threshold) else -1]))
-            region_tensor = pil2mask(region_mask)
-            regions.append(region_tensor)
-        regions_tensor = torch.cat(regions, dim=0)
-        return (regions_tensor,)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

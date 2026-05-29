@@ -23,7 +23,6 @@ The KfDebug_Cond node is designed to provide a way to visualize and understand t
 - Infra type: CPU
 
 # Source code
-```
-class KfDebug_Cond(KfDebug_Passthrough):
-    RETURN_TYPES = ('CONDITIONING',)
-```
+[View source repository on GitHub](https://github.com/dmarx/ComfyUI-Keyframed)
+
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

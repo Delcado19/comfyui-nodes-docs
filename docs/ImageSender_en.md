@@ -40,18 +40,6 @@ The ImageSender node is designed to facilitate the transmission of image data. I
 - Infra type: CPU
 
 # Source code
-```
-class ImageSender(nodes.PreviewImage):
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'images': ('IMAGE',), 'filename_prefix': ('STRING', {'default': 'ImgSender'}), 'link_id': ('INT', {'default': 0, 'min': 0, 'max': sys.maxsize, 'step': 1})}, 'hidden': {'prompt': 'PROMPT', 'extra_pnginfo': 'EXTRA_PNGINFO'}}
-    OUTPUT_NODE = True
-    FUNCTION = 'doit'
-    CATEGORY = 'ImpactPack/Util'
-
-    def doit(self, images, filename_prefix='ImgSender', link_id=0, prompt=None, extra_pnginfo=None):
-        result = nodes.PreviewImage().save_images(images, filename_prefix, prompt, extra_pnginfo)
-        PromptServer.instance.send_sync('img-send', {'link_id': link_id, 'images': result['ui']['images']})
-        return result
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

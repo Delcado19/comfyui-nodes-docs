@@ -27,16 +27,6 @@ The Vec3ToScalarUnaryOperation node is designed to perform various unary operati
 - Infra type: CPU
 
 # Source code
-```
-class Vec3ToScalarUnaryOperation:
+[View source repository on GitHub](https://github.com/evanspearman/ComfyMath)
 
-    @classmethod
-    def INPUT_TYPES(cls) -> Mapping[str, Any]:
-        return {'required': {'op': (list(VEC_TO_SCALAR_UNARY_OPERATION.keys()),), 'a': DEFAULT_VEC3}}
-    RETURN_TYPES = ('FLOAT',)
-    FUNCTION = 'op'
-    CATEGORY = 'math/vec3'
-
-    def op(self, op: str, a: Vec3) -> tuple[float]:
-        return (VEC_TO_SCALAR_UNARY_OPERATION[op](numpy.array(a)),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

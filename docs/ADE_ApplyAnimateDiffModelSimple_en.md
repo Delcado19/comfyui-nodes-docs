@@ -43,30 +43,6 @@ This node aims to apply motion models to animate images or sequences, providing 
 - Common nodes: unknown
 
 ## Source code
-```python
-class ApplyAnimateDiffModelBasicNode:
-    @classmethod
-    def INPUT_TYPES(s):
-        return {
-            "required": {
-                "motion_model": ("MOTION_MODEL_ADE",),
-            },
-            "optional": {
-                "motion_lora": ("MOTION_LORA",),
-                "scale_multival": ("MULTIVAL",),
-                "effect_multival": ("MULTIVAL",),
-                "ad_keyframes": ("AD_KEYFRAMES",),
-            }
-        }
-    
-    RETURN_TYPES = ("M_MODELS",)
-    CATEGORY = "Animate Diff 🎭🅐🅓/② Gen2 nodes ②"
-    FUNCTION = "apply_motion_model"
+[View source repository on GitHub](https://github.com/Kosinkadink/ComfyUI-AnimateDiff-Evolved)
 
-    def apply_motion_model(self,
-                           motion_model: MotionModelPatcher, motion_lora: MotionLoraList=None,
-                           scale_multival=None, effect_multival=None, ad_keyframes=None):
-        # just a subset of normal ApplyAnimateDiffModelNode inputs
-        return ApplyAnimateDiffModelNode.apply_motion_model(self, motion_model, motion_lora=motion_lora,
-                                                            scale_multival=scale_multival, effect_multival=effect_multival,
-                                                            ad_keyframes=ad_keyframes)
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

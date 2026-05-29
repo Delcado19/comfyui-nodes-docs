@@ -31,18 +31,6 @@ The ReferenceControlNetNode class is designed to manage the loading and applicat
 - Infra type: CPU
 
 # Source code
-```
-class ReferenceControlNetNode:
+[View source repository on GitHub](https://github.com/Kosinkadink/ComfyUI-Advanced-ControlNet)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'reference_type': (ReferenceType._LIST,), 'style_fidelity': ('FLOAT', {'default': 0.5, 'min': 0.0, 'max': 1.0, 'step': 0.01}), 'ref_weight': ('FLOAT', {'default': 1.0, 'min': 0.0, 'max': 1.0, 'step': 0.01})}}
-    RETURN_TYPES = ('CONTROL_NET',)
-    FUNCTION = 'load_controlnet'
-    CATEGORY = 'Adv-ControlNet 🛂🅐🅒🅝/Reference'
-
-    def load_controlnet(self, reference_type: str, style_fidelity: float, ref_weight: float):
-        ref_opts = ReferenceOptions.create_combo(reference_type=reference_type, style_fidelity=style_fidelity, ref_weight=ref_weight)
-        controlnet = ReferenceAdvanced(ref_opts=ref_opts, timestep_keyframes=None)
-        return (controlnet,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -48,51 +48,6 @@ CR_LoadGIFAsList is a node for loading and processing GIF files, capable of extr
 - Infra type: CPU
 
 # Source code
-```
-class CR_LoadGIFAsList:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        input_dir = folder_paths.input_directory
-        image_folder = [name for name in os.listdir(input_dir) if os.path.isdir(os.path.join(input_dir, name))]
-        return {'required': {'input_folder': (sorted(image_folder),), 'gif_filename': ('STRING', {'multiline': False, 'default': 'text'}), 'start_frame': ('INT', {'default': 0, 'min': 0, 'max': 99999}), 'max_frames': ('INT', {'default': 1, 'min': 1, 'max': 99999})}, 'optional': {'input_path': ('STRING', {'default': '', 'multiline': False})}}
-    RETURN_TYPES = ('IMAGE', 'MASK', 'STRING')
-    RETURN_NAMES = ('IMAGE', 'MASK', 'show_help')
-    OUTPUT_IS_LIST = (True, True, False)
-    FUNCTION = 'load_gif'
-    CATEGORY = icons.get('Comfyroll/List/IO')
-
-    def load_gif(self, input_folder, gif_filename, start_frame, max_frames, input_path=None):
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/List-Nodes#cr-load-gif-images'
-        if input_path != '' and input_path is not None:
-            if not os.path.exists(input_path):
-                print(f'[Warning] CR Image List: The input_path `{input_path}` does not exist')
-                return ('',)
-            in_path = input_path
-        else:
-            input_dir = folder_paths.input_directory
-            in_path = os.path.join(input_dir, input_folder)
-        gif_file_path = os.path.join(in_path, gif_filename)
-        frames_list = []
-        masks_list = []
-        try:
-            with Image.open(gif_file_path) as gif_image:
-                for (i, frame) in enumerate(ImageSequence.Iterator(gif_image)):
-                    if i < start_frame:
-                        continue
-                    if max_frames is not None and i >= start_frame + max_frames:
-                        break
-                    img = frame.copy()
-                    (width, height) = img.size
-                    frames_list.append(pil2tensor(img.convert('RGB')))
-                    tensor_img = pil2tensor(img)
-                    masks_list.append(tensor2rgba(tensor_img)[:, :, :, 0])
-            images = torch.cat(frames_list, dim=0)
-            images_out = [images[i:i + 1, ...] for i in range(images.shape[0])]
-            masks = torch.cat(masks_list, dim=0)
-            masks_out = [masks[i:i + 1, ...] for i in range(masks.shape[0])]
-            return (images_out, masks_out, show_help)
-        except Exception as e:
-            print(f'Error: {e}')
-            return (None, None, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

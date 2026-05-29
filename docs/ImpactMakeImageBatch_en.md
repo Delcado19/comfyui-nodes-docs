@@ -28,26 +28,6 @@ The ‘MakeImageBatch’ node efficiently combines multiple images into a single
 - Infra type: CPU
 
 # Source code
-```
-class MakeImageBatch:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'image1': ('IMAGE',)}}
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'doit'
-    CATEGORY = 'ImpactPack/Util'
-
-    def doit(self, **kwargs):
-        image1 = kwargs['image1']
-        del kwargs['image1']
-        images = [value for value in kwargs.values()]
-        if len(images) == 0:
-            return (image1,)
-        else:
-            for image2 in images:
-                if image1.shape[1:] != image2.shape[1:]:
-                    image2 = comfy.utils.common_upscale(image2.movedim(-1, 1), image1.shape[2], image1.shape[1], 'lanczos', 'center').movedim(1, -1)
-                image1 = torch.cat((image1, image2), dim=0)
-            return (image1,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

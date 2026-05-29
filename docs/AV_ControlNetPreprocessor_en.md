@@ -47,44 +47,7 @@ The AV_ControlNetPreprocessor node is designed to prepare images for further pro
 - Common nodes:
     - [CR Multi-ControlNet Stack](../../ComfyUI_Comfyroll_CustomNodes/Nodes/CR Multi-ControlNet Stack.md)
 
-
-
 ## Source code
-```python
-class AV_ControlNetPreprocessor:
-    preprocessors = list(control_net_preprocessors.keys())
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {
-            "required": {
-                "image": ("IMAGE",),
-                "preprocessor": (["None", "tile"] + s.preprocessors,),
-                "sd_version": (["sd15", "sd15++", "sdxl", "sdxl_t2i", "sdxl_lllite"],),
-            },
-            "optional": {
-                "resolution": ("INT", {"default": 512, "min": 64, "max": 2048, "step": 64}),
-                "preprocessor_override": ("STRING", {"default": "None"}),
-            },
-        }
-
-    RETURN_TYPES = ("IMAGE", "STRING")
-    RETURN_NAMES = ("IMAGE", "CNET_NAME")
-    FUNCTION = "detect_controlnet"
-    CATEGORY = "Art Venture/Loaders"
-
-    def detect_controlnet(self, image, preprocessor, sd_version, resolution=512, preprocessor_override="None"):
-        if preprocessor_override != "None":
-            if preprocessor_override not in control_net_preprocessors:
-                print(
-                    f"Warning: Not found ControlNet preprocessor {preprocessor_override}. Use {preprocessor} instead."
-                )
-            else:
-                preprocessor = preprocessor_override
-
-        image = apply_preprocessor(image, preprocessor, resolution=resolution)
-        control_net_name = detect_controlnet(preprocessor, sd_version)
-
-        return (image, control_net_name)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

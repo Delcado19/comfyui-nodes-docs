@@ -27,19 +27,6 @@ The SplitImageWithAlpha node is designed to separate the color information of an
 - Infra type: GPU
 
 # Source code
-```
-class SplitImageWithAlpha:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'image': ('IMAGE',)}}
-    CATEGORY = 'mask/compositing'
-    RETURN_TYPES = ('IMAGE', 'MASK')
-    FUNCTION = 'split_image_with_alpha'
-
-    def split_image_with_alpha(self, image: torch.Tensor):
-        out_images = [i[:, :, :3] for i in image]
-        out_alphas = [i[:, :, 3] if i.shape[2] > 3 else torch.ones_like(i[:, :, 0]) for i in image]
-        result = (torch.stack(out_images), 1.0 - torch.stack(out_alphas))
-        return result
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

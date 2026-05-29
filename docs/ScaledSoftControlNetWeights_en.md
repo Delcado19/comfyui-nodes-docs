@@ -32,18 +32,6 @@ The ScaledSoftUniversalWeights class provides a method for generating control we
 - Infra type: CPU
 
 # Source code
-```
-class ScaledSoftUniversalWeights:
+[View source repository on GitHub](https://github.com/Kosinkadink/ComfyUI-Advanced-ControlNet)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'base_multiplier': ('FLOAT', {'default': 0.825, 'min': 0.0, 'max': 1.0, 'step': 0.001}), 'flip_weights': ('BOOLEAN', {'default': False})}}
-    RETURN_TYPES = ('CONTROL_NET_WEIGHTS', 'TIMESTEP_KEYFRAME')
-    RETURN_NAMES = WEIGHTS_RETURN_NAMES
-    FUNCTION = 'load_weights'
-    CATEGORY = 'Adv-ControlNet 🛂🅐🅒🅝/weights'
-
-    def load_weights(self, base_multiplier, flip_weights):
-        weights = ControlWeights.universal(base_multiplier=base_multiplier, flip_weights=flip_weights)
-        return (weights, TimestepKeyframeGroup.default(TimestepKeyframe(control_weights=weights)))
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -52,22 +52,6 @@ The WAS_Image_Perlin_Power_Fractal node programmatically generates fractal noise
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Image_Perlin_Power_Fractal:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'width': ('INT', {'default': 512, 'max': 8192, 'min': 64, 'step': 1}), 'height': ('INT', {'default': 512, 'max': 8192, 'min': 64, 'step': 1}), 'scale': ('INT', {'default': 100, 'max': 2048, 'min': 2, 'step': 1}), 'octaves': ('INT', {'default': 4, 'max': 8, 'min': 0, 'step': 1}), 'persistence': ('FLOAT', {'default': 0.5, 'max': 100.0, 'min': 0.01, 'step': 0.01}), 'lacunarity': ('FLOAT', {'default': 2.0, 'max': 100.0, 'min': 0.01, 'step': 0.01}), 'exponent': ('FLOAT', {'default': 2.0, 'max': 100.0, 'min': 0.01, 'step': 0.01}), 'seed': ('INT', {'default': 0, 'min': 0, 'max': 18446744073709551615})}}
-    RETURN_TYPES = ('IMAGE',)
-    RETURN_NAMES = ('image',)
-    FUNCTION = 'perlin_power_fractal'
-    CATEGORY = 'WAS Suite/Image/Generate/Noise'
-
-    def perlin_power_fractal(self, width, height, scale, octaves, persistence, lacunarity, exponent, seed):
-        WTools = WAS_Tools_Class()
-        image = WTools.perlin_power_fractal(width, height, octaves, persistence, lacunarity, exponent, scale, seed)
-        return (pil2tensor(image),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

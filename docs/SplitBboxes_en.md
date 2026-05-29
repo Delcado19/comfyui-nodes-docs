@@ -33,32 +33,7 @@ The SplitBboxes node is used to split a list of bounding boxes (bboxes) into two
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class SplitBboxes:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {
-            "required": {
-                "bboxes": ("BBOX",),
-                "index": ("INT", {"default": 0,"min": 0, "max": 99999999, "step": 1}),
-            },
-        }
-
-    RETURN_TYPES = ("BBOX","BBOX",)
-    RETURN_NAMES = ("bboxes_a","bboxes_b",)
-    FUNCTION = "splitbbox"
-    CATEGORY = "KJNodes/masking"
-    DESCRIPTION = """
-Splits the specified bbox list at the given index into two lists.
-"""
-
-    def splitbbox(self, bboxes, index):
-        bboxes_a = bboxes[:index]  # Sub-list from the start of bboxes up to (but not including) the index
-        bboxes_b = bboxes[index:]  # Sub-list from the index to the end of bboxes
-
-        return (bboxes_a, bboxes_b,)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

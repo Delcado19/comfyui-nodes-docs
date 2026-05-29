@@ -54,49 +54,7 @@ The KepStringList node is designed to aggregate and process multiple string inpu
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class StringList:
-    def __init__(self) -> None:
-        pass
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(self) -> Dict[str, Dict[str, Any]]:
-        return {
-            "required": {
-                "Text1": ("STRING", {}),
-                "Text2": ("STRING", {}),
-            },
-            "optional": {
-                "Text3": ("STRING", {}),
-                "Text4": ("STRING", {}),
-                "Text5": ("STRING", {}),
-                "Text6": ("STRING", {}),
-                "Text7": ("STRING", {}),
-            },
-        }
-
-    RETURN_TYPES = ("STRING", "INT")
-    RETURN_NAMES = ("Strings", "Num Strings")
-    INPUT_IS_LIST = False
-    OUTPUT_IS_LIST = (True,)
-    FUNCTION = "to_string_list"
-
-    CATEGORY = "List Stuff"
-
-    def to_string_list(
-            self,
-            *args: str,
-            **kwargs: str,
-    ) -> Tuple[List[str], List[int]]:
-        ret = []
-        for arg in args:
-            ret.append(arg)
-        for arg in kwargs.values():
-            if arg != "":
-                ret.append(arg)
-
-        return ret, [len(ret)]
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

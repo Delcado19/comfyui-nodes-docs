@@ -28,30 +28,6 @@ The SEGSToImageList node is designed to convert segmentation data into a list of
 - Infra type: CPU
 
 # Source code
-```
-class SEGSToImageList:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'segs': ('SEGS',)}, 'optional': {'fallback_image_opt': ('IMAGE',)}}
-    RETURN_TYPES = ('IMAGE',)
-    OUTPUT_IS_LIST = (True,)
-    FUNCTION = 'doit'
-    CATEGORY = 'ImpactPack/Util'
-
-    def doit(self, segs, fallback_image_opt=None):
-        results = list()
-        if fallback_image_opt is not None:
-            segs = core.segs_scale_match(segs, fallback_image_opt.shape)
-        for seg in segs[1]:
-            if seg.cropped_image is not None:
-                cropped_image = to_tensor(seg.cropped_image)
-            elif fallback_image_opt is not None:
-                cropped_image = to_tensor(crop_image(fallback_image_opt, seg.crop_region))
-            else:
-                cropped_image = empty_pil_tensor()
-            results.append(cropped_image)
-        if len(results) == 0:
-            results.append(empty_pil_tensor())
-        return (results,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

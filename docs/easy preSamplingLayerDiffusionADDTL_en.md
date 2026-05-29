@@ -48,37 +48,6 @@ This type of node is responsible for setting additional text prompts for the lay
 - Infra type: CPU
 
 # Source code
-```
-class layerDiffusionSettingsADDTL:
+[View source repository on GitHub](https://github.com/yolain/ComfyUI-Easy-Use)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'pipe': ('PIPE_LINE',), 'foreground_prompt': ('STRING', {'default': '', 'placeholder': 'Foreground Additional Prompt', 'multiline': True}), 'background_prompt': ('STRING', {'default': '', 'placeholder': 'Background Additional Prompt', 'multiline': True}), 'blended_prompt': ('STRING', {'default': '', 'placeholder': 'Blended Additional Prompt', 'multiline': True})}, 'optional': {'optional_fg_cond': ('CONDITIONING',), 'optional_bg_cond': ('CONDITIONING',), 'optional_blended_cond': ('CONDITIONING',)}, 'hidden': {'prompt': 'PROMPT', 'extra_pnginfo': 'EXTRA_PNGINFO', 'my_unique_id': 'UNIQUE_ID'}}
-    RETURN_TYPES = ('PIPE_LINE',)
-    RETURN_NAMES = ('pipe',)
-    OUTPUT_NODE = True
-    FUNCTION = 'settings'
-    CATEGORY = 'EasyUse/PreSampling'
-
-    def settings(self, pipe, foreground_prompt, background_prompt, blended_prompt, optional_fg_cond=None, optional_bg_cond=None, optional_blended_cond=None, prompt=None, extra_pnginfo=None, my_unique_id=None):
-        (fg_cond, bg_cond, blended_cond) = (None, None, None)
-        clip = pipe['clip']
-        if optional_fg_cond is not None:
-            fg_cond = optional_fg_cond
-        elif foreground_prompt != '':
-            (fg_cond,) = CLIPTextEncode().encode(clip, foreground_prompt)
-        if optional_bg_cond is not None:
-            bg_cond = optional_bg_cond
-        elif background_prompt != '':
-            (bg_cond,) = CLIPTextEncode().encode(clip, background_prompt)
-        if optional_blended_cond is not None:
-            blended_cond = optional_blended_cond
-        elif blended_prompt != '':
-            (blended_cond,) = CLIPTextEncode().encode(clip, blended_prompt)
-        new_pipe = {**pipe, 'loader_settings': {**pipe['loader_settings'], 'layer_diffusion_cond': (fg_cond, bg_cond, blended_cond)}}
-        del pipe
-        return (new_pipe,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

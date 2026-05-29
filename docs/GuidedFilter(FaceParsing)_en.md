@@ -36,27 +36,6 @@ The GuidedFilter node applies a nonlinear filtering technique that uses a guide 
 - Infra type: CPU
 
 # Source code
-```
-class GuidedFilter:
+[View source repository on GitHub](https://github.com/Ryuukeisyou/comfyui_face_parsing)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'image': ('IMAGE',), 'radius': ('INT', {'default': 3, 'min': 0, 'step': 1}), 'eps': ('FLOAT', {'default': 125, 'min': 0, 'step': 1})}, 'optional': {'guide': ('IMAGE', {'default': None})}}
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'guided_filter'
-    CATEGORY = 'face_parsing'
-
-    def guided_filter(self, image: Tensor, radius: int, eps: float, guide: Tensor | None=None):
-        results = []
-        for item in image:
-            image_cv2 = cv2.cvtColor(item.mul(255).byte().numpy(), cv2.COLOR_RGB2BGR)
-            guide_cv2 = image_cv2 if guide is None else cv2.cvtColor(guide.numpy(), cv2.COLOR_RGB2BGR)
-            result_cv2 = cv2.ximgproc.guidedFilter(guide_cv2, image_cv2, radius, eps)
-            result_cv2_rgb = cv2.cvtColor(result_cv2, cv2.COLOR_BGR2RGB)
-            result = torch.tensor(result_cv2_rgb).float().div(255)
-            results.append(result)
-        return (torch.cat(results, dim=0).unsqueeze(0),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

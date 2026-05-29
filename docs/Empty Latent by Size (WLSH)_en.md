@@ -40,23 +40,6 @@ The 'generate' method of the WLSH_Empty_Latent_Image_By_Resolution node creates 
 - Infra type: CPU
 
 # Source code
-```
-class WLSH_Empty_Latent_Image_By_Resolution:
+[View source repository on GitHub](https://github.com/wallish77/wlsh_nodes)
 
-    def __init__(self, device='cpu'):
-        self.device = device
-
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'width': ('INT', {'default': 512, 'min': 16, 'max': MAX_RESOLUTION, 'step': 8}), 'height': ('INT', {'default': 512, 'min': 16, 'max': MAX_RESOLUTION, 'step': 8}), 'batch_size': ('INT', {'default': 1, 'min': 1, 'max': 4096})}}
-    RETURN_TYPES = ('LATENT', 'INT', 'INT')
-    RETURN_NAMES = ('latent', 'width', 'height')
-    FUNCTION = 'generate'
-    CATEGORY = 'WLSH Nodes/latent'
-
-    def generate(self, width, height, batch_size=1):
-        adj_width = width // 8
-        adj_height = height // 8
-        latent = torch.zeros([batch_size, 4, adj_height, adj_width])
-        return ({'samples': latent}, adj_width * 8, adj_height * 8)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

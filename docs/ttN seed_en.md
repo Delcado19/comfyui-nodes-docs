@@ -30,32 +30,7 @@ The ttN_SEED node is specifically used to manage and use seed values to ensure c
     - KRestartSamplerAdv
     - [DetailerForEachDebug](../../ComfyUI-Impact-Pack/Nodes/DetailerForEachDebug.md)
 
-
-
 ## Source code
-```python
-class ttN_SEED:
-    version = '1.0.0'
-    def __init__(self):
-        pass
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {"required": {
-                    "seed": ("INT", {"default": 0, "min": 0, "max": 0xffffffffffffffff}),
-                },
-                "hidden": {"ttNnodeVersion": ttN_SEED.version},
-        }
-
-    RETURN_TYPES = ("INT",)
-    RETURN_NAMES = ("seed",)
-    FUNCTION = "plant"
-    OUTPUT_NODE = True
-
-    CATEGORY = "ttN/util"
-
-    @staticmethod
-    def plant(seed):
-        return seed,
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

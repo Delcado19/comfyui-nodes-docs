@@ -41,8 +41,7 @@ The AzazealStylesStyler node dynamically applies a specific aesthetic or themati
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-# Could not find class definition, unable to automatically detect source code
-```
+[View source repository on GitHub](https://github.com/ali1234/comfyui-stylers)
+
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

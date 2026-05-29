@@ -36,37 +36,6 @@ The CR_StringToNumber node is designed to convert a given string into a numeric 
 - Infra type: CPU
 
 # Source code
-```
-class CR_StringToNumber:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'text': ('STRING', {'multiline': False, 'default': 'text', 'forceInput': True}), 'round_integer': (['round', 'round down', 'round up'],)}}
-    RETURN_TYPES = ('INT', 'FLOAT', 'STRING')
-    RETURN_NAMES = ('INT', 'FLOAT', 'show_help')
-    FUNCTION = 'convert'
-    CATEGORY = icons.get('Comfyroll/Utils/Conversion')
-
-    def convert(self, text, round_integer):
-        if text.startswith('-') and text[1:].replace('.', '', 1).isdigit():
-            float_out = -float(text[1:])
-        elif text.replace('.', '', 1).isdigit():
-            float_out = float(text)
-        else:
-            print(f'[Error] CR String To Number. Not a number.')
-            return {}
-        if round_integer == 'round up':
-            if text.startswith('-'):
-                int_out = int(float_out)
-            else:
-                int_out = int(float_out) + 1
-        elif round_integer == 'round down':
-            if text.startswith('-'):
-                int_out = int(float_out) - 1
-            else:
-                int_out = int(float_out)
-        else:
-            int_out = round(float_out)
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Conversion-Nodes#cr-string-to-number'
-        return (int_out, float_out, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

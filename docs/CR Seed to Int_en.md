@@ -27,21 +27,6 @@ The CR_SeedToInt node converts a seed object into an integer. It plays a critica
 - Infra type: CPU
 
 # Source code
-```
-class CR_SeedToInt:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'seed': ('SEED',)}}
-    RETURN_TYPES = ('INT', 'STRING')
-    RETURN_NAMES = ('INT', 'show_help')
-    FUNCTION = 'seed_to_int'
-    CATEGORY = icons.get('Comfyroll/Essential/Legacy')
-
-    def seed_to_int(self, seed):
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Conversion-Nodes#cr-seed-to-int'
-        return (seed.get('seed'), show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

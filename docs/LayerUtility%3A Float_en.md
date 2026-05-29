@@ -27,21 +27,6 @@
 - Infra type: CPU
 
 # Source code
-```
-class FloatNode:
-    def __init__(self):
-        pass
-    @classmethod
-    def INPUT_TYPES(self):
-        return {"required": {
-                "float_value":  ("FLOAT", {"default": 0, "min": -99999999999999999999, "max": 99999999999999999999, "step": 0.00001}),
-            },}
+[View source repository on GitHub](https://github.com/chflame163/ComfyUI_LayerStyle)
 
-    RETURN_TYPES = ("FLOAT",)
-    RETURN_NAMES = ("float",)
-    FUNCTION = 'float_node'
-    CATEGORY = '😺dzNodes/LayerUtility/Data'
-
-    def float_node(self, float_value):
-        return (float_value,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

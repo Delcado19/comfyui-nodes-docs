@@ -32,7 +32,6 @@ This node facilitates visualization and analysis of segmentation results within 
 - Infra type: CPU
 
 # Source code
-```
-class KfDebug_Segs(KfDebug_Passthrough):
-    RETURN_TYPES = ('SEGS',)
-```
+[View source repository on GitHub](https://github.com/dmarx/ComfyUI-Keyframed)
+
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

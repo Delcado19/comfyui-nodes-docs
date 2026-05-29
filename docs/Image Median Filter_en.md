@@ -36,24 +36,6 @@ The WAS_Image_Median_Filter node applies a median filter to the input image, a n
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Image_Median_Filter:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'image': ('IMAGE',), 'diameter': ('INT', {'default': 2.0, 'min': 0.1, 'max': 255, 'step': 1}), 'sigma_color': ('FLOAT', {'default': 10.0, 'min': -255.0, 'max': 255.0, 'step': 0.1}), 'sigma_space': ('FLOAT', {'default': 10.0, 'min': -255.0, 'max': 255.0, 'step': 0.1})}}
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'apply_median_filter'
-    CATEGORY = 'WAS Suite/Image/Filter'
-
-    def apply_median_filter(self, image, diameter, sigma_color, sigma_space):
-        tensor_images = []
-        for img in image:
-            img = tensor2pil(img)
-            tensor_images.append(pil2tensor(medianFilter(img, diameter, sigma_color, sigma_space)))
-        tensor_images = torch.cat(tensor_images, dim=0)
-        return (tensor_images,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

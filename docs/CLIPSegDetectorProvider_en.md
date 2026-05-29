@@ -36,19 +36,6 @@ The CLIPSegDetectorProvider node aims to create a bounding box detector based on
 - Infra type: GPU
 
 # Source code
-```
-class CLIPSegDetectorProvider:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'text': ('STRING', {'multiline': False}), 'blur': ('FLOAT', {'min': 0, 'max': 15, 'step': 0.1, 'default': 7}), 'threshold': ('FLOAT', {'min': 0, 'max': 1, 'step': 0.05, 'default': 0.4}), 'dilation_factor': ('INT', {'min': 0, 'max': 10, 'step': 1, 'default': 4})}}
-    RETURN_TYPES = ('BBOX_DETECTOR',)
-    FUNCTION = 'doit'
-    CATEGORY = 'ImpactPack/Util'
-
-    def doit(self, text, blur, threshold, dilation_factor):
-        if 'CLIPSeg' in nodes.NODE_CLASS_MAPPINGS:
-            return (core.BBoxDetectorBasedOnCLIPSeg(text, blur, threshold, dilation_factor),)
-        else:
-            print("[ERROR] CLIPSegToBboxDetector: CLIPSeg custom node isn't installed. You must install biegert/ComfyUI-CLIPSeg extension to use this node.")
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

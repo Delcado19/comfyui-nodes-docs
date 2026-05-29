@@ -40,33 +40,6 @@ SwitchByIndex is a node designed to select elements from two input lists based o
 - Infra type: CPU
 
 # Source code
-```
-class SwitchByIndex:
+[View source repository on GitHub](https://github.com/shadowcz007/comfyui-mixlab-nodes)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'optional': {'A': (any_type,), 'B': (any_type,)}, 'required': {'index': ('INT', {'default': -1, 'min': -1, 'max': 1000, 'step': 1, 'display': 'number'}), 'flat': (['off', 'on'],)}}
-    RETURN_TYPES = (any_type, 'INT')
-    RETURN_NAMES = ('C', 'count')
-    FUNCTION = 'run'
-    CATEGORY = '♾️Mixlab/Utils'
-    INPUT_IS_LIST = True
-    OUTPUT_IS_LIST = (True, False)
-
-    def run(self, A=[], B=[], index=-1, flat='on'):
-        flat = flat[0]
-        C = []
-        index = index[0]
-        for a in A:
-            C.append(a)
-        for b in B:
-            C.append(b)
-        if flat == 'on':
-            C = flatten_list(C)
-        if index > -1:
-            try:
-                C = [C[index]]
-            except Exception as e:
-                C = []
-        return (C, len(C))
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

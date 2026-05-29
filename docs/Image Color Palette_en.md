@@ -36,40 +36,6 @@ The WAS_Image_Color_Palette node is designed to analyze and process image data t
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Image_Color_Palette:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'image': ('IMAGE',), 'colors': ('INT', {'default': 16, 'min': 8, 'max': 256, 'step': 1}), 'mode': (['Chart', 'back_to_back'],)}}
-    RETURN_TYPES = ('IMAGE', 'LIST')
-    RETURN_NAMES = ('image', 'color_palettes')
-    FUNCTION = 'image_generate_palette'
-    CATEGORY = 'WAS Suite/Image/Analyze'
-
-    def image_generate_palette(self, image, colors=16, mode='chart'):
-        WTools = WAS_Tools_Class()
-        res_dir = os.path.join(WAS_SUITE_ROOT, 'res')
-        font = os.path.join(res_dir, 'font.ttf')
-        if not os.path.exists(font):
-            font = None
-        elif mode == 'Chart':
-            cstr(f'Found font at `{font}`').msg.print()
-        if len(image) > 1:
-            palette_strings = []
-            palette_images = []
-            for img in image:
-                img = tensor2pil(img)
-                (palette_image, palette) = WTools.generate_palette(img, colors, 128, 10, font, 15, mode.lower())
-                palette_images.append(pil2tensor(palette_image))
-                palette_strings.append(palette)
-            palette_images = torch.cat(palette_images, dim=0)
-            return (palette_images, palette_strings)
-        else:
-            image = tensor2pil(image)
-            (palette_image, palette) = WTools.generate_palette(image, colors, 128, 10, font, 15, mode.lower())
-            return (pil2tensor(palette_image), [palette])
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

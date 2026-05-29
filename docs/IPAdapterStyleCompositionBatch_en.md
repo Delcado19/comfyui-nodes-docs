@@ -60,13 +60,6 @@ The IPAdapterStyleCompositionBatch node is designed to facilitate the combinatio
 - Infra type: GPU
 
 # Source code
-```
-class IPAdapterStyleCompositionBatch(IPAdapterStyleComposition):
+[View source repository on GitHub](https://github.com/cubiq/ComfyUI_IPAdapter_plus)
 
-    def __init__(self):
-        self.unfold_batch = True
-
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'model': ('MODEL',), 'ipadapter': ('IPADAPTER',), 'image_style': ('IMAGE',), 'image_composition': ('IMAGE',), 'weight_style': ('FLOAT', {'default': 1.0, 'min': -1, 'max': 5, 'step': 0.05}), 'weight_composition': ('FLOAT', {'default': 1.0, 'min': -1, 'max': 5, 'step': 0.05}), 'expand_style': ('BOOLEAN', {'default': False}), 'start_at': ('FLOAT', {'default': 0.0, 'min': 0.0, 'max': 1.0, 'step': 0.001}), 'end_at': ('FLOAT', {'default': 1.0, 'min': 0.0, 'max': 1.0, 'step': 0.001}), 'embeds_scaling': (['V only', 'K+V', 'K+V w/ C penalty', 'K+mean(V) w/ C penalty'],)}, 'optional': {'image_negative': ('IMAGE',), 'attn_mask': ('MASK',), 'clip_vision': ('CLIP_VISION',)}}
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

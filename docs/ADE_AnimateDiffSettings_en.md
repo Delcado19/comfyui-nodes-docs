@@ -27,16 +27,6 @@ AnimateDiffSettingsNode is designed to generate animation settings for adjusting
 - Infra type: CPU
 
 # Source code
-```
-class AnimateDiffSettingsNode:
+[View source repository on GitHub](https://github.com/Kosinkadink/ComfyUI-AnimateDiff-Evolved)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'optional': {'pe_adjust': ('PE_ADJUST',), 'weight_adjust': ('WEIGHT_ADJUST',)}}
-    RETURN_TYPES = ('AD_SETTINGS',)
-    CATEGORY = 'Animate Diff 🎭🅐🅓/ad settings'
-    FUNCTION = 'get_ad_settings'
-
-    def get_ad_settings(self, pe_adjust: AdjustGroup=None, weight_adjust: AdjustGroup=None):
-        return (AnimateDiffSettings(adjust_pe=pe_adjust, adjust_weight=weight_adjust),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

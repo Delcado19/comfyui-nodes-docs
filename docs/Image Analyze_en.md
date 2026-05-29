@@ -28,28 +28,6 @@ The WAS_Image_Analyze node is designed to perform various image analysis operati
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Image_Analyze:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'image': ('IMAGE',), 'mode': (['Black White Levels', 'RGB Levels'],)}}
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'image_analyze'
-    CATEGORY = 'WAS Suite/Image/Analyze'
-
-    def image_analyze(self, image, mode='Black White Levels'):
-        image = tensor2pil(image)
-        WTools = WAS_Tools_Class()
-        if mode:
-            if mode == 'Black White Levels':
-                image = WTools.black_white_levels(image)
-            elif mode == 'RGB Levels':
-                image = WTools.channel_frequency(image)
-            else:
-                image = image
-        return (pil2tensor(image),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

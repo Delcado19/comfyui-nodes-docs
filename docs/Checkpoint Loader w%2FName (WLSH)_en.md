@@ -35,31 +35,6 @@ The WLSH_Checkpoint_Loader_Model_Name node is designed to load and manage checkp
 - Infra type: CPU
 
 # Source code
-```
-class WLSH_Checkpoint_Loader_Model_Name:
+[View source repository on GitHub](https://github.com/wallish77/wlsh_nodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'ckpt_name': (folder_paths.get_filename_list('checkpoints'),)}}
-    RETURN_TYPES = ('MODEL', 'CLIP', 'VAE', 'STRING')
-    RETURN_NAMES = ('MODEL', 'CLIP', 'VAE', 'modelname')
-    FUNCTION = 'load_checkpoint'
-    CATEGORY = 'WLSH Nodes/loaders'
-
-    def load_checkpoint(self, ckpt_name, output_vae=True, output_clip=True):
-        ckpt_path = folder_paths.get_full_path('checkpoints', ckpt_name)
-        name = self.parse_name(ckpt_name)
-        out = comfy.sd.load_checkpoint_guess_config(ckpt_path, output_vae=True, output_clip=True, embedding_directory=folder_paths.get_folder_paths('embeddings'))
-        new_out = list(out)
-        new_out.pop()
-        new_out.append(name)
-        out = tuple(new_out)
-        return out
-
-    def parse_name(self, ckpt_name):
-        path = ckpt_name
-        filename = path.split('/')[-1]
-        filename = filename.split('.')[:-1]
-        filename = '.'.join(filename)
-        return filename
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

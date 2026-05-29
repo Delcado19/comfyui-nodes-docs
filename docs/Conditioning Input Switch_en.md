@@ -32,22 +32,6 @@ The method `conditioning_input_switch` is designed to conditionally select betwe
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Conditioning_Input_Switch:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'conditioning_a': ('CONDITIONING',), 'conditioning_b': ('CONDITIONING',), 'boolean': ('BOOLEAN', {'forceInput': True})}}
-    RETURN_TYPES = ('CONDITIONING',)
-    FUNCTION = 'conditioning_input_switch'
-    CATEGORY = 'WAS Suite/Logic'
-
-    def conditioning_input_switch(self, conditioning_a, conditioning_b, boolean=True):
-        if boolean:
-            return (conditioning_a,)
-        else:
-            return (conditioning_b,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

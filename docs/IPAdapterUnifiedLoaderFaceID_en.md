@@ -39,12 +39,6 @@ The IPAdapterUnifiedLoaderFaceID class serves as a specialized interface for loa
 - Infra type: CPU
 
 # Source code
-```
-class IPAdapterUnifiedLoaderFaceID(IPAdapterUnifiedLoader):
+[View source repository on GitHub](https://github.com/cubiq/ComfyUI_IPAdapter_plus)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'model': ('MODEL',), 'preset': (['FACEID', 'FACEID PLUS - SD1.5 only', 'FACEID PLUS V2', 'FACEID PORTRAIT (style transfer)'],), 'lora_strength': ('FLOAT', {'default': 0.6, 'min': 0, 'max': 1, 'step': 0.01}), 'provider': (['CPU', 'CUDA', 'ROCM', 'DirectML', 'OpenVINO', 'CoreML'],)}, 'optional': {'ipadapter': ('IPADAPTER',)}}
-    RETURN_NAMES = ('MODEL', 'ipadapter')
-    CATEGORY = 'ipadapter/faceid'
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

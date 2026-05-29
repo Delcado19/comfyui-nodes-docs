@@ -52,35 +52,6 @@ CR_ValueScheduler is a node used to manage value scheduling in an animation work
 - Infra type: CPU
 
 # Source code
-```
-class CR_ValueScheduler:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        modes = ['Default Value', 'Schedule']
-        return {'required': {'mode': (modes,), 'current_frame': ('INT', {'default': 0.0, 'min': 0.0, 'max': 9999.0, 'step': 1.0}), 'schedule_alias': ('STRING', {'default': '', 'multiline': False}), 'default_value': ('FLOAT', {'default': 1.0, 'min': -9999.0, 'max': 9999.0, 'step': 0.01}), 'schedule_format': (['CR', 'Deforum'],)}, 'optional': {'schedule': ('SCHEDULE',)}}
-    RETURN_TYPES = ('INT', 'FLOAT', 'STRING')
-    RETURN_NAMES = ('INT', 'FLOAT', 'show_help')
-    FUNCTION = 'schedule'
-    CATEGORY = icons.get('Comfyroll/Animation/Schedulers')
-
-    def schedule(self, mode, current_frame, schedule_alias, default_value, schedule_format, schedule=None):
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Scheduler-Nodes#cr-value-scheduler'
-        if mode == 'Default Value':
-            print(f'[Info] CR Value Scheduler: Scheduler {schedule_alias} is disabled')
-            (int_out, float_out) = (int(default_value), float(default_value))
-            return (int_out, float_out, show_help)
-        params = keyframe_scheduler(schedule, schedule_alias, current_frame)
-        if params == '':
-            if current_frame == 0:
-                print(f'[Warning] CR Value Scheduler. No frame 0 found in schedule. Starting with default value at frame 0')
-            (int_out, float_out) = (int(default_value), float(default_value))
-        else:
-            try:
-                value = float(params)
-                (int_out, float_out) = (int(value), float(value))
-            except ValueError:
-                print(f'[Warning] CR Value Scheduler. Invalid params: {params}')
-                return ()
-        return (int_out, float_out, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

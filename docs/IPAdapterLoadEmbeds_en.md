@@ -23,19 +23,6 @@ The `load` method of the IPAdapterLoadEmbeds node is designed to retrieve and pr
 - Infra type: CPU
 
 # Source code
-```
-class IPAdapterLoadEmbeds:
+[View source repository on GitHub](https://github.com/cubiq/ComfyUI_IPAdapter_plus)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        input_dir = folder_paths.get_input_directory()
-        files = [os.path.relpath(os.path.join(root, file), input_dir) for (root, dirs, files) in os.walk(input_dir) for file in files if file.endswith('.ipadpt')]
-        return {'required': {'embeds': [sorted(files)]}}
-    RETURN_TYPES = ('EMBEDS',)
-    FUNCTION = 'load'
-    CATEGORY = 'ipadapter/embeds'
-
-    def load(self, embeds):
-        path = folder_paths.get_annotated_filepath(embeds)
-        return (torch.load(path).cpu(),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

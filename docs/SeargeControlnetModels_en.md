@@ -43,24 +43,6 @@ This node coordinates the retrieval and integration of various ControlNet models
 - Infra type: CPU
 
 # Source code
-```
-class SeargeControlnetModels:
+[View source repository on GitHub](https://github.com/jobunk/SeargeSDXL)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'clip_vision': (UI.CLIP_VISION_WITH_NONE(),), 'canny_checkpoint': (UI.CONTROLNETS_WITH_NONE(),), 'depth_checkpoint': (UI.CONTROLNETS_WITH_NONE(),), 'recolor_checkpoint': (UI.CONTROLNETS_WITH_NONE(),), 'sketch_checkpoint': (UI.CONTROLNETS_WITH_NONE(),), 'custom_checkpoint': (UI.CONTROLNETS_WITH_NONE(),)}, 'optional': {'data': ('SRG_DATA_STREAM',)}}
-    RETURN_TYPES = ('SRG_DATA_STREAM',)
-    RETURN_NAMES = ('data',)
-    FUNCTION = 'get'
-    CATEGORY = UI.CATEGORY_UI_INPUTS
-
-    @staticmethod
-    def create_dict(clip_vision, canny_checkpoint, depth_checkpoint, recolor_checkpoint, sketch_checkpoint, custom_checkpoint):
-        return {UI.F_CLIP_VISION_CHECKPOINT: clip_vision, UI.F_CANNY_CHECKPOINT: canny_checkpoint, UI.F_DEPTH_CHECKPOINT: depth_checkpoint, UI.F_RECOLOR_CHECKPOINT: recolor_checkpoint, UI.F_SKETCH_CHECKPOINT: sketch_checkpoint, UI.F_CUSTOM_CHECKPOINT: custom_checkpoint}
-
-    def get(self, clip_vision, canny_checkpoint, depth_checkpoint, recolor_checkpoint, sketch_checkpoint, custom_checkpoint, data=None):
-        if data is None:
-            data = {}
-        data[UI.S_CONTROLNET_MODELS] = self.create_dict(clip_vision, canny_checkpoint, depth_checkpoint, recolor_checkpoint, sketch_checkpoint, custom_checkpoint)
-        return (data,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

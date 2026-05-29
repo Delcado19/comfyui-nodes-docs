@@ -55,20 +55,6 @@ The PPFNCrossHatchSettings node configures settings for the cross‑hatch patter
 - Infra type: CPU
 
 # Source code
-```
-class PPFNCrossHatchSettings:
+[View source repository on GitHub](https://github.com/WASasquatch/PowerNoiseSuite)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'frequency': ('FLOAT', {'default': 320.0, 'max': 1024.0, 'min': 0.001, 'step': 0.001}), 'octaves': ('INT', {'default': 12, 'max': 32, 'min': 1, 'step': 1}), 'persistence': ('FLOAT', {'default': 1.5, 'max': 2.0, 'min': 0.001, 'step': 0.001}), 'num_colors': ('INT', {'default': 16, 'max': 256, 'min': 2, 'step': 1}), 'color_tolerance': ('FLOAT', {'default': 0.05, 'max': 1.0, 'min': 0.001, 'step': 0.001}), 'angle_degrees': ('FLOAT', {'default': 45.0, 'max': 360.0, 'min': 0.0, 'step': 0.01}), 'brightness': ('FLOAT', {'default': 0.0, 'max': 1.0, 'min': -1.0, 'step': 0.001}), 'contrast': ('FLOAT', {'default': 0.0, 'max': 1.0, 'min': -1.0, 'step': 0.001}), 'blur': ('FLOAT', {'default': 2.5, 'max': 1024, 'min': 0, 'step': 0.01})}}
-    RETURN_TYPES = ('CH_SETTINGS',)
-    RETURN_NAMES = ('ch_settings',)
-    FUNCTION = 'cross_hatch_settings'
-    CATEGORY = 'Power Noise Suite/Sampling/Settings'
-
-    def cross_hatch_settings(self, frequency, octaves, persistence, color_tolerance, num_colors, angle_degrees, brightness, contrast, blur):
-        return ({'frequency': frequency, 'octaves': octaves, 'persistence': persistence, 'color_tolerance': color_tolerance, 'num_colors': num_colors, 'angle_degrees': angle_degrees, 'brightness': brightness, 'contrast': contrast, 'blur': blur},)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

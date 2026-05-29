@@ -51,15 +51,6 @@ This node is specifically designed to load and apply LoRA (Low-Rank Adaptation) 
     - [Anything Everywhere](../../cg-use-everywhere/Nodes/Anything Everywhere.md) -->
 
 ## Source code
-```python
-class LoraLoaderWithImages(LoraLoader):
-    @classmethod
-    def INPUT_TYPES(s):
-        types = super().INPUT_TYPES()
-        names = types["required"]["lora_name"][0]
-        populate_items(names, "loras")
-        return types
+[View source repository on GitHub](https://github.com/pythongosssss/ComfyUI-Custom-Scripts)
 
-    def load_lora(self, **kwargs):
-        kwargs["lora_name"] = kwargs["lora_name"]["content"]
-        return super().load_lora(**kwargs)
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

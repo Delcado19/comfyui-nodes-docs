@@ -23,19 +23,6 @@ CombineConditionings is a utility node designed to merge multiple conditioning i
 - Infra type: CPU
 
 # Source code
-```
-class CombineConditionings:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'conditioning1': ('CONDITIONING',)}}
-    RETURN_TYPES = ('CONDITIONING',)
-    FUNCTION = 'doit'
-    CATEGORY = 'ImpactPack/Util'
-
-    def doit(self, **kwargs):
-        res = []
-        for (k, v) in kwargs.items():
-            res += v
-        return (res,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

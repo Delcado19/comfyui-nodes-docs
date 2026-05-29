@@ -35,29 +35,6 @@ The 'latent_width_height' method of the WAS_Latent_Size_To_Number node is design
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Latent_Size_To_Number:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'samples': ('LATENT',)}}
-    RETURN_TYPES = ('NUMBER', 'NUMBER', 'FLOAT', 'FLOAT', 'INT', 'INT')
-    RETURN_NAMES = ('tensor_w_num', 'tensor_h_num')
-    FUNCTION = 'latent_width_height'
-    CATEGORY = 'WAS Suite/Number/Operations'
-
-    def latent_width_height(self, samples):
-        size_dict = {}
-        i = 0
-        for tensor in samples['samples'][0]:
-            if not isinstance(tensor, torch.Tensor):
-                cstr(f'Input should be a torch.Tensor').error.print()
-            shape = tensor.shape
-            tensor_height = shape[-2]
-            tensor_width = shape[-1]
-            size_dict.update({i: [tensor_width, tensor_height]})
-        return (size_dict[0][0], size_dict[0][1], float(size_dict[0][0]), float(size_dict[0][1]), size_dict[0][0], size_dict[0][1])
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

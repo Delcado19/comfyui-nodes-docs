@@ -75,33 +75,6 @@ The KSampler_progress node is designed to facilitate the model's sampling proces
 - Infra type: GPU
 
 # Source code
-```
-class KSampler_progress(a1111_compat.KSampler_inspire):
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Inspire-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'model': ('MODEL',), 'seed': ('INT', {'default': 0, 'min': 0, 'max': 18446744073709551615}), 'steps': ('INT', {'default': 20, 'min': 1, 'max': 10000}), 'cfg': ('FLOAT', {'default': 8.0, 'min': 0.0, 'max': 100.0}), 'sampler_name': (comfy.samplers.KSampler.SAMPLERS,), 'scheduler': (comfy.samplers.KSampler.SCHEDULERS,), 'positive': ('CONDITIONING',), 'negative': ('CONDITIONING',), 'latent_image': ('LATENT',), 'denoise': ('FLOAT', {'default': 1.0, 'min': 0.0, 'max': 1.0, 'step': 0.01}), 'noise_mode': (['GPU(=A1111)', 'CPU'],), 'interval': ('INT', {'default': 1, 'min': 1, 'max': 10000}), 'omit_start_latent': ('BOOLEAN', {'default': True, 'label_on': 'True', 'label_off': 'False'})}}
-    CATEGORY = 'InspirePack/analysis'
-    RETURN_TYPES = ('LATENT', 'LATENT')
-    RETURN_NAMES = ('latent', 'progress_latent')
-
-    def sample(self, model, seed, steps, cfg, sampler_name, scheduler, positive, negative, latent_image, denoise, noise_mode, interval, omit_start_latent):
-        adv_steps = int(steps / denoise)
-        sampler = a1111_compat.KSamplerAdvanced_inspire()
-        if omit_start_latent:
-            result = []
-        else:
-            result = [latent_image['samples']]
-        for i in range(0, adv_steps + 1):
-            add_noise = i == 0
-            return_with_leftover_noise = i != adv_steps
-            latent_image = sampler.sample(model, add_noise, seed, steps, cfg, sampler_name, scheduler, positive, negative, latent_image, i, i + 1, noise_mode, return_with_leftover_noise)[0]
-            if i % interval == 0 or i == adv_steps:
-                result.append(latent_image['samples'])
-        if len(result) > 0:
-            result = torch.cat(result)
-            result = {'samples': result}
-        else:
-            result = latent_image
-        return (latent_image, result)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

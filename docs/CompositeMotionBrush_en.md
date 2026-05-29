@@ -35,38 +35,6 @@ This node integrates multiple motion layers into a single composite layer, apply
 - Infra type: CPU
 
 # Source code
-```
-class CompositeMotionBrush:
+[View source repository on GitHub](https://github.com/chaojie/ComfyUI-DragNUWA)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'model': ('DragNUWA',), 'motion_brush_layer0': ('MotionBrush',), 'motion_brush_layer1': ('MotionBrush',), 'mode': (CompositeMotionBrushMode, {'default': 'override'})}}
-    RETURN_TYPES = ('MotionBrush',)
-    FUNCTION = 'run_inference'
-    CATEGORY = 'DragNUWA'
-
-    def run_inference(self, model, motion_brush_layer0, motion_brush_layer1, mode):
-        results = motion_brush_layer0
-        for i in range(model.model_length):
-            for x in range(0, model.width):
-                masked = False
-                for y in range(0, model.height):
-                    premasked = masked
-                    masked = False
-                    if abs(float(motion_brush_layer1[i][y][x][0])) > 0.0001 or abs(float(motion_brush_layer1[i][y][x][1])) > 0.0001:
-                        masked = True
-                    elif premasked and y + 1 < model.height:
-                        y1max = model.height
-                        if y + 50 < y1max:
-                            y1max = y + 50
-                        for y1 in range(y + 1, y1max):
-                            if abs(float(motion_brush_layer1[i][y1][x][0])) > 0.0001 or abs(float(motion_brush_layer1[i][y1][x][1])) > 0.0001:
-                                masked = True
-                    if masked:
-                        results[i][y][x][0] = motion_brush_layer1[i][y][x][0]
-                        results[i][y][x][1] = motion_brush_layer1[i][y][x][1]
-                    else:
-                        results[i][y][x][0] = motion_brush_layer0[i][y][x][0]
-                        results[i][y][x][1] = motion_brush_layer0[i][y][x][1]
-        return (results,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

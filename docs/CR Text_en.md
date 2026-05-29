@@ -27,18 +27,6 @@ CR_Text node is designed to process and handle text data, providing functionalit
 - Infra type: CPU
 
 # Source code
-```
-class CR_Text:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'text': ('STRING', {'default': '', 'multiline': True})}}
-    RETURN_TYPES = (any_type, 'STRING')
-    RETURN_NAMES = ('text', 'show_help')
-    FUNCTION = 'text_multiline'
-    CATEGORY = icons.get('Comfyroll/Utils/Text')
-
-    def text_multiline(self, text):
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Other-Nodes#cr-text'
-        return (text, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

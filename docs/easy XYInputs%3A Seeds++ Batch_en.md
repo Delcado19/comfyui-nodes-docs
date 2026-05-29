@@ -25,26 +25,7 @@ This node aims to generate a batch of seed values for drawing or other batch pro
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class XYplot_SeedsBatch:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {"required": {
-            "batch_count": ("INT", {"default": 3, "min": 1, "max": 50}), },
-        }
-
-    RETURN_TYPES = ("X_Y",)
-    RETURN_NAMES = ("X or Y",)
-    FUNCTION = "xy_value"
-    CATEGORY = "EasyUse/XY Inputs"
-
-    def xy_value(self, batch_count):
-
-        axis = "advanced: Seeds++ Batch"
-        xy_values = {"axis": axis, "values": batch_count}
-        return (xy_values,)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -32,26 +32,6 @@ The 'image_blend' method of the WAS_Image_Blend node is designed to seamlessly b
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Image_Blend:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'image_a': ('IMAGE',), 'image_b': ('IMAGE',), 'blend_percentage': ('FLOAT', {'default': 0.5, 'min': 0.0, 'max': 1.0, 'step': 0.01})}}
-    RETURN_TYPES = ('IMAGE',)
-    RETURN_NAMES = ('image',)
-    FUNCTION = 'image_blend'
-    CATEGORY = 'WAS Suite/Image'
-
-    def image_blend(self, image_a, image_b, blend_percentage):
-        img_a = tensor2pil(image_a)
-        img_b = tensor2pil(image_b)
-        blend_mask = Image.new(mode='L', size=img_a.size, color=round(blend_percentage * 255))
-        blend_mask = ImageOps.invert(blend_mask)
-        img_result = Image.composite(img_a, img_b, blend_mask)
-        del img_a, img_b, blend_mask
-        return (pil2tensor(img_result),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

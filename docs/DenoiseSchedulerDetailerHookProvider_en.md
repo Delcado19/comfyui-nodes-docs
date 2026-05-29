@@ -27,18 +27,6 @@ The DenoiseSchedulerDetailerHookProvider node is designed to manage the denoisin
 - Infra type: CPU
 
 # Source code
-```
-class DenoiseSchedulerDetailerHookProvider:
-    schedules = ['simple']
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'schedule_for_cycle': (s.schedules,), 'target_denoise': ('FLOAT', {'default': 0.3, 'min': 0.0, 'max': 1.0, 'step': 0.01})}}
-    RETURN_TYPES = ('DETAILER_HOOK',)
-    FUNCTION = 'doit'
-    CATEGORY = 'ImpactPack/Detailer'
-
-    def doit(self, schedule_for_cycle, target_denoise):
-        hook = hooks.SimpleDetailerDenoiseSchedulerHook(target_denoise)
-        return (hook,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

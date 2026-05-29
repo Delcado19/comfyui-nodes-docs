@@ -59,42 +59,6 @@ The ADE_CameraPoseCombo node is designed to create complex camera control poses 
 - Common nodes: unknown
 
 ## Source code
-```python
-class CameraCtrlPoseCombo:
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {
-            "required": {
-                "motion_type1": (CAM._LIST,),
-                "motion_type2": (CAM._LIST,),
-                "motion_type3": (CAM._LIST,),
-                "motion_type4": (CAM._LIST,),
-                "motion_type5": (CAM._LIST,),
-                "motion_type6": (CAM._LIST,),
-                "speed": ("FLOAT", {"default": 1.0, "min": -100.0, "max": 100.0, "step": 0.01}),
-                "frame_length": ("INT", {"default": 16}),
-            },
-            "optional": {
-                "prev_poses": ("CAMERACTRL_POSES",),
-            }
-        }
+[View source repository on GitHub](https://github.com/Kosinkadink/ComfyUI-AnimateDiff-Evolved)
 
-    RETURN_TYPES = ("CAMERACTRL_POSES",)
-    FUNCTION = "camera_pose_combo"
-    CATEGORY = "Animate Diff 🎭🅐🅓/② Gen2 nodes ②/CameraCtrl/poses"
-
-    def camera_pose_combo(self,
-                          motion_type1: str, motion_type2: str, motion_type3: str,
-                          motion_type4: str, motion_type5: str, motion_type6: str,
-                          speed: float, frame_length: int,
-                          prev_poses: list[list[float]]=None,
-                          strength1=1.0, strength2=1.0, strength3=1.0, strength4=1.0, strength5=1.0, strength6=1.0):
-        combined_motion = CameraMotion.combine([
-            CAM.get(motion_type1).multiply(strength1), CAM.get(motion_type2).multiply(strength2), CAM.get(motion_type3).multiply(strength3),
-            CAM.get(motion_type4).multiply(strength4), CAM.get(motion_type5).multiply(strength5), CAM.get(motion_type6).multiply(strength6)
-            ])
-        RT = get_camera_motion(combined_motion.rotate, combined_motion.translate, speed, frame_length)
-        new_motion = ndarray_to_poses(RT=RT)
-        if prev_poses is not None:
-            new_motion = combine_poses(prev_poses, new_motion)
-        return (new_motion,)
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

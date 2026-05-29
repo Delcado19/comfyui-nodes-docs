@@ -49,40 +49,7 @@ The SoundReactive node is designed to process audio input and adjust its behavio
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class SoundReactive:
-    @classmethod
-    def INPUT_TYPES(s):
-        return {"required": {  
-            "sound_level": ("FLOAT", {"default": 1.0, "min": 0.0, "max": 99999, "step": 0.01}),
-            "start_range_hz": ("INT", {"default": 150, "min": 0, "max": 9999, "step": 1}),
-            "end_range_hz": ("INT", {"default": 2000, "min": 0, "max": 9999, "step": 1}),
-            "multiplier": ("FLOAT", {"default": 1.0, "min": 0.01, "max": 99999, "step": 0.01}),
-            "smoothing_factor": ("FLOAT", {"default": 0.5, "min": 0.0, "max": 1.0, "step": 0.01}),
-            "normalize": ("BOOLEAN", {"default": False}),
-            },
-            }
-    
-    RETURN_TYPES = ("FLOAT","INT",)
-    RETURN_NAMES =("sound_level", "sound_level_int",)
-    FUNCTION = "react"
-    CATEGORY = "KJNodes/audio"
-    DESCRIPTION = """
-Reacts to the sound level of the input.  
-Uses your browsers sound input options and requires.  
-Meant to be used with realtime diffusion with autoqueue.
-"""
-        
-    def react(self, sound_level, start_range_hz, end_range_hz, smoothing_factor, multiplier, normalize):
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-        sound_level *= multiplier
-
-        if normalize:
-            sound_level /= 255
-
-        sound_level_int = int(sound_level)
-        return (sound_level, sound_level_int, )     
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -23,17 +23,6 @@ The IsMaskEmptyNode class is designed to evaluate the inner content of a mask te
 - Infra type: CPU
 
 # Source code
-```
-class IsMaskEmptyNode:
+[View source repository on GitHub](https://github.com/esheep/esheep_custom_nodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'mask': ('MASK',)}}
-    RETURN_TYPES = ['NUMBER']
-    RETURN_NAMES = ['boolean_number']
-    FUNCTION = 'main'
-    CATEGORY = 'util'
-
-    def main(self, mask):
-        return (torch.all(mask == 0).int().item(),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

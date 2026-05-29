@@ -83,31 +83,6 @@ The DetailerForEachPipeForAnimateDiff node enhances image frame details by lever
 - Infra type: GPU
 
 # Source code
-```
-class DetailerForEachPipeForAnimateDiff:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'image_frames': ('IMAGE',), 'segs': ('SEGS',), 'guide_size': ('FLOAT', {'default': 384, 'min': 64, 'max': nodes.MAX_RESOLUTION, 'step': 8}), 'guide_size_for': ('BOOLEAN', {'default': True, 'label_on': 'bbox', 'label_off': 'crop_region'}), 'max_size': ('FLOAT', {'default': 1024, 'min': 64, 'max': nodes.MAX_RESOLUTION, 'step': 8}), 'seed': ('INT', {'default': 0, 'min': 0, 'max': 18446744073709551615}), 'steps': ('INT', {'default': 20, 'min': 1, 'max': 10000}), 'cfg': ('FLOAT', {'default': 8.0, 'min': 0.0, 'max': 100.0}), 'sampler_name': (comfy.samplers.KSampler.SAMPLERS,), 'scheduler': (comfy.samplers.KSampler.SCHEDULERS,), 'denoise': ('FLOAT', {'default': 0.5, 'min': 0.0001, 'max': 1.0, 'step': 0.01}), 'feather': ('INT', {'default': 5, 'min': 0, 'max': 100, 'step': 1}), 'basic_pipe': ('BASIC_PIPE',), 'refiner_ratio': ('FLOAT', {'default': 0.2, 'min': 0.0, 'max': 1.0})}, 'optional': {'detailer_hook': ('DETAILER_HOOK',), 'refiner_basic_pipe_opt': ('BASIC_PIPE',)}}
-    RETURN_TYPES = ('IMAGE', 'SEGS', 'BASIC_PIPE', 'IMAGE')
-    RETURN_NAMES = ('image', 'segs', 'basic_pipe', 'cnet_images')
-    OUTPUT_IS_LIST = (False, False, False, True)
-    FUNCTION = 'doit'
-    CATEGORY = 'ImpactPack/Detailer'
-
-    @staticmethod
-    def doit(image_frames, segs, guide_size, guide_size_for, max_size, seed, steps, cfg, sampler_name, scheduler, denoise, feather, basic_pipe, refiner_ratio=None, detailer_hook=None, refiner_basic_pipe_opt=None, inpaint_model=False, noise_mask_feather=0):
-        enhanced_segs = []
-        cnet_image_list = []
-        for sub_seg in segs[1]:
-            single_seg = (segs[0], [sub_seg])
-            (enhanced_seg, cnet_images) = SEGSDetailerForAnimateDiff().do_detail(image_frames, single_seg, guide_size, guide_size_for, max_size, seed, steps, cfg, sampler_name, scheduler, denoise, basic_pipe, refiner_ratio, refiner_basic_pipe_opt, inpaint_model, noise_mask_feather)
-            image_frames = SEGSPaste.doit(image_frames, enhanced_seg, feather, alpha=255)[0]
-            if cnet_images is not None:
-                cnet_image_list.extend(cnet_images)
-            if detailer_hook is not None:
-                detailer_hook.post_paste(image_frames)
-            enhanced_segs += enhanced_seg[1]
-        new_segs = (segs[0], enhanced_segs)
-        return (image_frames, new_segs, basic_pipe, cnet_image_list)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

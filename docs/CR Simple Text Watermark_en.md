@@ -64,53 +64,6 @@ CR_SimpleTextWatermark node overlays text as a watermark on an image. It allows 
 - Infra type: CPU
 
 # Source code
-```
-class CR_SimpleTextWatermark:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        font_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), 'fonts')
-        file_list = [f for f in os.listdir(font_dir) if os.path.isfile(os.path.join(font_dir, f)) and f.lower().endswith('.ttf')]
-        ALIGN_OPTIONS = ['center', 'top left', 'top center', 'top right', 'bottom left', 'bottom center', 'bottom right']
-        return {'required': {'image': ('IMAGE',), 'text': ('STRING', {'multiline': False, 'default': '@ your name'}), 'align': (ALIGN_OPTIONS,), 'opacity': ('FLOAT', {'default': 0.3, 'min': 0.0, 'max': 1.0, 'step': 0.01}), 'font_name': (file_list,), 'font_size': ('INT', {'default': 50, 'min': 1, 'max': 1024}), 'font_color': (COLORS,), 'x_margin': ('INT', {'default': 20, 'min': -1024, 'max': 1024}), 'y_margin': ('INT', {'default': 20, 'min': -1024, 'max': 1024})}, 'optional': {'font_color_hex': ('STRING', {'multiline': False, 'default': '#000000'})}}
-    RETURN_TYPES = ('IMAGE', 'STRING')
-    RETURN_NAMES = ('IMAGE', 'show_help')
-    FUNCTION = 'overlay_text'
-    CATEGORY = icons.get('Comfyroll/Graphics/Text')
-
-    def overlay_text(self, image, text, align, font_name, font_size, font_color, opacity, x_margin, y_margin, font_color_hex='#000000'):
-        text_color = get_color_values(font_color, font_color_hex, color_mapping)
-        total_images = []
-        for img in image:
-            img = tensor2pil(img)
-            textlayer = Image.new('RGBA', img.size)
-            draw = ImageDraw.Draw(textlayer)
-            font_file = os.path.join('fonts', str(font_name))
-            resolved_font_path = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), font_file)
-            font = ImageFont.truetype(str(resolved_font_path), size=font_size)
-            textsize = get_text_size(draw, text, font)
-            if align == 'center':
-                textpos = [(img.size[0] - textsize[0]) // 2, (img.size[1] - textsize[1]) // 2]
-            elif align == 'top left':
-                textpos = [x_margin, y_margin]
-            elif align == 'top center':
-                textpos = [(img.size[0] - textsize[0]) // 2, y_margin]
-            elif align == 'top right':
-                textpos = [img.size[0] - textsize[0] - x_margin, y_margin]
-            elif align == 'bottom left':
-                textpos = [x_margin, img.size[1] - textsize[1] - y_margin]
-            elif align == 'bottom center':
-                textpos = [(img.size[0] - textsize[0]) // 2, img.size[1] - textsize[1] - y_margin]
-            elif align == 'bottom right':
-                textpos = [img.size[0] - textsize[0] - x_margin, img.size[1] - textsize[1] - y_margin]
-            draw.text(textpos, text, font=font, fill=text_color)
-            if opacity != 1:
-                textlayer = reduce_opacity(textlayer, opacity)
-            out_image = Image.composite(textlayer, img, textlayer)
-            out_image = np.array(out_image.convert('RGB')).astype(np.float32) / 255.0
-            out_image = torch.from_numpy(out_image).unsqueeze(0)
-            total_images.append(out_image)
-        images_out = torch.cat(total_images, 0)
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Text-Nodes#cr-simple-text-watermark'
-        return (images_out, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

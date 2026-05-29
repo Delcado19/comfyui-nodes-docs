@@ -27,28 +27,6 @@ The ImageColorTransfer node recolors an image by transferring a palette from one
 - Infra type: CPU
 
 # Source code
-```
-class ImageColorTransfer:
+[View source repository on GitHub](https://github.com/shadowcz007/comfyui-mixlab-nodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'source': ('IMAGE',), 'target': ('IMAGE',)}}
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'run'
-    CATEGORY = '♾️Mixlab/Image'
-    INPUT_IS_LIST = True
-    OUTPUT_IS_LIST = (True,)
-
-    def run(self, source, target):
-        res = []
-        target = target[0][0]
-        print(target.shape)
-        target = tensor2pil(target)
-        for ims in source:
-            for im in ims:
-                image = tensor2pil(im)
-                image = color_transfer(image, target)
-                image = pil2tensor(image)
-                res.append(image)
-        return (res,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

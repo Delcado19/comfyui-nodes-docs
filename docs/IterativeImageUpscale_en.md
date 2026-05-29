@@ -52,31 +52,6 @@ The 'doit' method of the IterativeImageUpscale node is designed to perform itera
 - Infra type: CPU
 
 # Source code
-```
-class IterativeImageUpscale:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'pixels': ('IMAGE',), 'upscale_factor': ('FLOAT', {'default': 1.5, 'min': 1, 'max': 10000, 'step': 0.1}), 'steps': ('INT', {'default': 3, 'min': 1, 'max': 10000, 'step': 1}), 'temp_prefix': ('STRING', {'default': ''}), 'upscaler': ('UPSCALER',), 'vae': ('VAE',), 'step_mode': (['simple', 'geometric'], {'default': 'simple'})}, 'hidden': {'unique_id': 'UNIQUE_ID'}}
-    RETURN_TYPES = ('IMAGE',)
-    RETURN_NAMES = ('image',)
-    FUNCTION = 'doit'
-    CATEGORY = 'ImpactPack/Upscale'
-
-    def doit(self, pixels, upscale_factor, steps, temp_prefix, upscaler, vae, step_mode='simple', unique_id=None):
-        if temp_prefix == '':
-            temp_prefix = None
-        core.update_node_status(unique_id, 'VAEEncode (first)', 0)
-        if upscaler.is_tiled:
-            latent = nodes.VAEEncodeTiled().encode(vae, pixels, upscaler.tile_size)[0]
-        else:
-            latent = nodes.VAEEncode().encode(vae, pixels)[0]
-        refined_latent = IterativeLatentUpscale().doit(latent, upscale_factor, steps, temp_prefix, upscaler, step_mode, unique_id)
-        core.update_node_status(unique_id, 'VAEDecode (final)', 1.0)
-        if upscaler.is_tiled:
-            pixels = nodes.VAEDecodeTiled().decode(vae, refined_latent[0], upscaler.tile_size)[0]
-        else:
-            pixels = nodes.VAEDecode().decode(vae, refined_latent[0])[0]
-        core.update_node_status(unique_id, '', None)
-        return (pixels,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

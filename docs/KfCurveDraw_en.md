@@ -32,17 +32,6 @@ This node visualizes a given curve by plotting it and generating its image repre
 - Infra type: CPU
 
 # Source code
-```
-class KfCurveDraw:
-    CATEGORY = f'{CATEGORY}/experimental'
-    FUNCTION = 'main'
-    RETURN_TYPES = ('IMAGE',)
+[View source repository on GitHub](https://github.com/dmarx/ComfyUI-Keyframed)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'curve': ('KEYFRAMED_CURVE', {'forceInput': True}), 'n': ('INT', {'default': 64}), 'show_legend': ('BOOLEAN', {'default': True})}}
-
-    def main(self, curve, n, show_legend):
-        img_tensor = plot_curve(curve, n, show_legend, is_pgroup=False)
-        return (img_tensor,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

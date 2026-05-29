@@ -44,39 +44,6 @@ The IPAdapterEncoder node is designed to process and encode image data using a p
 - Infra type: GPU
 
 # Source code
-```
-class IPAdapterEncoder:
+[View source repository on GitHub](https://github.com/cubiq/ComfyUI_IPAdapter_plus)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'ipadapter': ('IPADAPTER',), 'image': ('IMAGE',), 'weight': ('FLOAT', {'default': 1.0, 'min': -1.0, 'max': 3.0, 'step': 0.01})}, 'optional': {'mask': ('MASK',), 'clip_vision': ('CLIP_VISION',)}}
-    RETURN_TYPES = ('EMBEDS', 'EMBEDS')
-    RETURN_NAMES = ('pos_embed', 'neg_embed')
-    FUNCTION = 'encode'
-    CATEGORY = 'ipadapter/embeds'
-
-    def encode(self, ipadapter, image, weight, mask=None, clip_vision=None):
-        if 'ipadapter' in ipadapter:
-            ipadapter_model = ipadapter['ipadapter']['model']
-            clip_vision = clip_vision if clip_vision is not None else ipadapter['clipvision']['model']
-        else:
-            ipadapter_model = ipadapter
-            clip_vision = clip_vision
-        if clip_vision is None:
-            raise Exception('Missing CLIPVision model.')
-        is_plus = 'proj.3.weight' in ipadapter_model['image_proj'] or 'latents' in ipadapter_model['image_proj'] or 'perceiver_resampler.proj_in.weight' in ipadapter_model['image_proj']
-        if mask is not None and mask.shape[1:3] != torch.Size([224, 224]):
-            mask = mask.unsqueeze(1)
-            transforms = T.Compose([T.CenterCrop(min(mask.shape[2], mask.shape[3])), T.Resize((224, 224), interpolation=T.InterpolationMode.BICUBIC, antialias=True)])
-            mask = transforms(mask).squeeze(1)
-        img_cond_embeds = encode_image_masked(clip_vision, image, mask)
-        if is_plus:
-            img_cond_embeds = img_cond_embeds.penultimate_hidden_states
-            img_uncond_embeds = encode_image_masked(clip_vision, torch.zeros([1, 224, 224, 3])).penultimate_hidden_states
-        else:
-            img_cond_embeds = img_cond_embeds.image_embeds
-            img_uncond_embeds = torch.zeros_like(img_cond_embeds)
-        if weight != 1:
-            img_cond_embeds = img_cond_embeds * weight
-        return (img_cond_embeds, img_uncond_embeds)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

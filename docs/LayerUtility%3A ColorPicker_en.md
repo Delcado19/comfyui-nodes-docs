@@ -33,32 +33,6 @@ Select a color on the color swatch and output it. Modified from the web extensio
 - Infra type: GPU
 
 # Source code
-```
-class ColorPicker:
+[View source repository on GitHub](https://github.com/chflame163/ComfyUI_LayerStyle)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(self):
-        mode_list = ['HEX', 'DEC']
-        return {
-            "required": {
-                "color": ("COLOR", {"default": "#FFFFFF"},),
-                "mode": (mode_list,),  # 输出模式
-            },
-            "optional": {
-            }
-        }
-
-    RETURN_TYPES = ("STRING",)
-    RETURN_NAMES = ("value",)
-    FUNCTION = 'picker'
-    CATEGORY = '😺dzNodes/LayerUtility'
-
-    def picker(self, color, mode):
-        ret = color
-        if mode == 'DEC':
-            ret = Hex_to_RGB(ret)
-        return (ret,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

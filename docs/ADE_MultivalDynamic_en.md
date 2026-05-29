@@ -28,41 +28,6 @@ The MultivalDynamicNode class is designed to dynamically generate and manipulate
 - Infra type: CPU
 
 # Source code
-```
-class MultivalDynamicNode:
+[View source repository on GitHub](https://github.com/Kosinkadink/ComfyUI-AnimateDiff-Evolved)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'float_val': ('FLOAT', {'default': 1.0, 'min': 0.0, 'step': 0.001})}, 'optional': {'mask_optional': ('MASK',)}}
-    RETURN_TYPES = ('MULTIVAL',)
-    CATEGORY = 'Animate Diff 🎭🅐🅓/multival'
-    FUNCTION = 'create_multival'
-
-    def create_multival(self, float_val: Union[float, list[float]]=1.0, mask_optional: Tensor=None):
-        float_is_iterable = False
-        if isinstance(float_val, Iterable):
-            float_is_iterable = True
-            float_val = list(float_val)
-            if mask_optional is not None:
-                if len(float_val) < mask_optional.shape[0]:
-                    float_val = float_val + float_val[-1] * (mask_optional.shape[0] - len(float_val))
-                if mask_optional.shape[0] < len(float_val):
-                    mask_optional = extend_to_batch_size(mask_optional, len(float_val))
-                float_val = float_val[:mask_optional.shape[0]]
-            float_val: Tensor = torch.tensor(float_val).unsqueeze(-1).unsqueeze(-1)
-        if mask_optional is not None:
-            mask_optional = mask_optional.clone()
-            if float_is_iterable:
-                mask_optional = mask_optional[:] * float_val.to(mask_optional.dtype).to(mask_optional.device)
-            else:
-                mask_optional = mask_optional * float_val
-            return (mask_optional,)
-        else:
-            if not float_is_iterable:
-                return (float_val,)
-            float_len = float_val.shape[0] if float_is_iterable else 1
-            shape = (float_len, 1, 1)
-            mask_optional = torch.ones(shape)
-            mask_optional = mask_optional[:] * float_val.to(mask_optional.dtype).to(mask_optional.device)
-            return (mask_optional,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

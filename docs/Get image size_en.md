@@ -27,23 +27,6 @@ The GetImageSize node is designed to extract the dimensions of an image, providi
 - Infra type: CPU
 
 # Source code
-```
-class GetImageSize:
+[View source repository on GitHub](https://github.com/BadCafeCode/masquerade-nodes-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'image': ('IMAGE',)}}
-    RETURN_TYPES = ('INT', 'INT')
-    RETURN_NAMES = ('width', 'height')
-    FUNCTION = 'get_size'
-    CATEGORY = 'Masquerade Nodes'
-
-    def get_size(self, image):
-        image_size = image.size()
-        image_width = int(image_size[2])
-        image_height = int(image_size[1])
-        return (image_width, image_height)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

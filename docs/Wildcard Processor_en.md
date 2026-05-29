@@ -36,22 +36,6 @@ The WildcardProcessor node is designed to manipulate and process text input by r
 - Infra type: CPU
 
 # Source code
-```
-class WildcardProcessor:
+[View source repository on GitHub](https://github.com/bash-j/mikey_nodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'prompt': ('STRING', {'multiline': True, 'placeholder': 'Prompt Text'}), 'seed': ('INT', {'default': 0, 'min': 0, 'max': 18446744073709551615})}, 'hidden': {'prompt_': 'PROMPT', 'extra_pnginfo': 'EXTRA_PNGINFO'}}
-    RETURN_TYPES = ('STRING',)
-    FUNCTION = 'process'
-    CATEGORY = 'Mikey/Text'
-
-    def process(self, prompt, seed, prompt_=None, extra_pnginfo=None):
-        if prompt_ is None:
-            prompt_ = {}
-        if extra_pnginfo is None:
-            extra_pnginfo = {}
-        prompt = search_and_replace(prompt, extra_pnginfo, prompt_)
-        prompt = find_and_replace_wildcards(prompt, seed)
-        return (prompt,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

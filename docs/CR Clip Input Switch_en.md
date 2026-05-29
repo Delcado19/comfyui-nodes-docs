@@ -36,24 +36,6 @@ CR_ClipInputSwitch is a utility node that provides a conditional switching mecha
 - Infra type: CPU
 
 # Source code
-```
-class CR_ClipInputSwitch:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'Input': ('INT', {'default': 1, 'min': 1, 'max': 2})}, 'optional': {'clip1': ('CLIP',), 'clip2': ('CLIP',)}}
-    RETURN_TYPES = ('CLIP', 'STRING')
-    RETURN_NAMES = ('CLIP', 'show_help')
-    FUNCTION = 'switch'
-    CATEGORY = icons.get('Comfyroll/Utils/Logic')
-
-    def switch(self, Input, clip1=None, clip2=None):
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Logic-Nodes#cr-clip-input-switch'
-        if Input == 1:
-            return (clip1, show_help)
-        else:
-            return (clip2, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

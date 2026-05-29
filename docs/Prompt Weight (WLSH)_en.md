@@ -28,24 +28,6 @@ This node adjusts the influence of prompts by applying weights, which is critica
 - Infra type: CPU
 
 # Source code
-```
-class WLSH_Prompt_Weight:
+[View source repository on GitHub](https://github.com/wallish77/wlsh_nodes)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'prompt': ('STRING', {'multiline': True, 'forceInput': True}), 'weight': ('FLOAT', {'default': 1.0, 'min': 0.1, 'max': 5.0, 'step': 0.1})}}
-    RETURN_TYPES = ('STRING',)
-    RETURN_NAMES = ('prompt',)
-    FUNCTION = 'add_weight'
-    CATEGORY = 'WLSH Nodes/text'
-
-    def add_weight(self, prompt, weight):
-        if weight == 1.0:
-            new_string = prompt
-        else:
-            new_string = '(' + prompt + ':' + str(weight) + ')'
-        return (new_string,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

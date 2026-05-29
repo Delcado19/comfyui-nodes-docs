@@ -43,31 +43,6 @@ The ColorAdjust node aims to modify the visual characteristics of an image by ad
 - Infra type: CPU
 
 # Source code
-```
-class ColorAdjust:
+[View source repository on GitHub](https://github.com/Ryuukeisyou/comfyui_face_parsing)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'image': ('IMAGE',), 'contrast': ('FLOAT', {'default': 1.0, 'min': 0, 'max': 255, 'step': 0.01, 'round': 0.001, 'display': 'number'}), 'brightness': ('FLOAT', {'default': 1.0, 'min': -255, 'max': 255, 'step': 0.01, 'round': 0.001, 'display': 'number'}), 'saturation': ('FLOAT', {'default': 1.0, 'min': 0, 'max': 255, 'step': 0.01, 'round': 0.001, 'display': 'number'}), 'hue': ('FLOAT', {'default': 0, 'min': -0.5, 'max': 0.5, 'step': 0.001, 'round': 0.001, 'display': 'number'}), 'gamma': ('FLOAT', {'default': 1.0, 'min': 0, 'max': 255, 'step': 0.01, 'round': 0.001, 'display': 'number'})}}
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'main'
-    CATEGORY = 'face_parsing'
-
-    def main(self, image: Tensor, contrast: float=1, brightness: float=1, saturation: float=1, hue: float=0, gamma: float=1):
-        permutedImage = image.permute(0, 3, 1, 2)
-        if contrast != 1:
-            permutedImage = functional.adjust_contrast(permutedImage, contrast)
-        if brightness != 1:
-            permutedImage = functional.adjust_brightness(permutedImage, brightness)
-        if saturation != 1:
-            permutedImage = functional.adjust_saturation(permutedImage, saturation)
-        if hue != 0:
-            permutedImage = functional.adjust_hue(permutedImage, hue)
-        if gamma != 1:
-            permutedImage = functional.adjust_gamma(permutedImage, gamma)
-        result = permutedImage.permute(0, 2, 3, 1)
-        return (result,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -32,29 +32,6 @@ The GrowMask node is designed to manipulate binary masks by expanding or eroding
 - Infra type: CPU
 
 # Source code
-```
-class GrowMask:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'mask': ('MASK',), 'expand': ('INT', {'default': 0, 'min': -MAX_RESOLUTION, 'max': MAX_RESOLUTION, 'step': 1}), 'tapered_corners': ('BOOLEAN', {'default': True})}}
-    CATEGORY = 'mask'
-    RETURN_TYPES = ('MASK',)
-    FUNCTION = 'expand_mask'
-
-    def expand_mask(self, mask, expand, tapered_corners):
-        c = 0 if tapered_corners else 1
-        kernel = np.array([[c, 1, c], [1, 1, 1], [c, 1, c]])
-        mask = mask.reshape((-1, mask.shape[-2], mask.shape[-1]))
-        out = []
-        for m in mask:
-            output = m.numpy()
-            for _ in range(abs(expand)):
-                if expand < 0:
-                    output = scipy.ndimage.grey_erosion(output, footprint=kernel)
-                else:
-                    output = scipy.ndimage.grey_dilation(output, footprint=kernel)
-            output = torch.from_numpy(output)
-            out.append(output)
-        return (torch.stack(out, dim=0),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

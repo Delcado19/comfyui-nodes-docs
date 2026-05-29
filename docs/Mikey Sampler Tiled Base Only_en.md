@@ -56,40 +56,6 @@ The MikeySamplerTiledBaseOnly node generates high-quality images from a base mod
 - Infra type: GPU
 
 # Source code
-```
-class MikeySamplerTiledBaseOnly(MikeySamplerTiled):
+[View source repository on GitHub](https://github.com/bash-j/mikey_nodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'base_model': ('MODEL',), 'samples': ('LATENT',), 'positive_cond_base': ('CONDITIONING',), 'negative_cond_base': ('CONDITIONING',), 'vae': ('VAE',), 'model_name': (folder_paths.get_filename_list('upscale_models'),), 'seed': ('INT', {'default': 0, 'min': 0, 'max': 18446744073709551615}), 'upscale_by': ('FLOAT', {'default': 1.0, 'min': 0.1, 'max': 10.0, 'step': 0.1}), 'tiler_denoise': ('FLOAT', {'default': 0.25, 'min': 0.0, 'max': 1.0, 'step': 0.05})}}
-    RETURN_TYPES = ('IMAGE',)
-    RETURN_NAMES = ('image',)
-
-    def phase_one(self, base_model, samples, positive_cond_base, negative_cond_base, upscale_by, model_name, seed, vae):
-        image_scaler = ImageScale()
-        vaedecoder = VAEDecode()
-        uml = UpscaleModelLoader()
-        upscale_model = uml.load_model(model_name)[0]
-        iuwm = ImageUpscaleWithModel()
-        sample1 = common_ksampler(base_model, seed, 30, 5, 'dpmpp_3m_sde_gpu', 'exponential', positive_cond_base, negative_cond_base, samples, start_step=0, last_step=14, force_full_denoise=False)[0]
-        sample2 = common_ksampler(base_model, seed + 1, 32, 9.5, 'dpmpp_3m_sde_gpu', 'exponential', positive_cond_base, negative_cond_base, sample1, disable_noise=True, start_step=15, force_full_denoise=True)[0]
-        pixels = vaedecoder.decode(vae, sample2)[0]
-        (org_width, org_height) = (pixels.shape[2], pixels.shape[1])
-        img = iuwm.upscale(upscale_model, image=pixels)[0]
-        (upscaled_width, upscaled_height) = (int(org_width * upscale_by // 8 * 8), int(org_height * upscale_by // 8 * 8))
-        img = image_scaler.upscale(img, 'nearest-exact', upscaled_width, upscaled_height, 'center')[0]
-        return (img, upscaled_width, upscaled_height)
-
-    def adjust_start_step(self, image_complexity, hires_strength=1.0):
-        image_complexity /= 24
-        if image_complexity > 1:
-            image_complexity = 1
-        image_complexity = min([0.55, image_complexity]) * hires_strength
-        return min([32, 32 - int(round(image_complexity * 32, 0))])
-
-    def run(self, seed, base_model, vae, samples, positive_cond_base, negative_cond_base, model_name, upscale_by=1.0, tiler_denoise=0.25, upscale_method='normal'):
-        (img, upscaled_width, upscaled_height) = self.phase_one(base_model, samples, positive_cond_base, negative_cond_base, upscale_by, model_name, seed, vae)
-        img = tensor2pil(img)
-        tiled_image = run_tiler(img, base_model, vae, seed, positive_cond_base, negative_cond_base, tiler_denoise)
-        return (tiled_image,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

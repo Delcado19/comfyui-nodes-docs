@@ -36,24 +36,6 @@ CheckpointHash node is designed to generate and retrieve cryptographic hashes fo
 - Infra type: CPU
 
 # Source code
-```
-class CheckpointHash:
+[View source repository on GitHub](https://github.com/bash-j/mikey_nodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'ckpt_name': ('STRING', {'forceInput': True})}, 'hidden': {'unique_id': 'UNIQUE_ID', 'extra_pnginfo': 'EXTRA_PNGINFO', 'prompt': 'PROMPT'}}
-    RETURN_TYPES = ('STRING',)
-    RETURN_NAMES = ('ckpt_hash',)
-    FUNCTION = 'get_hash'
-    CATEGORY = 'Mikey/Loaders'
-
-    def get_hash(self, ckpt_name, extra_pnginfo, prompt, unique_id):
-        file_list = folder_paths.get_filename_list('checkpoints')
-        matching_file = [s for s in file_list if ckpt_name in s][0]
-        ckpt_path = folder_paths.get_full_path('checkpoints', matching_file)
-        hash = get_file_hash(ckpt_path)
-        ckpt_name = os.path.basename(ckpt_name)
-        prompt.get(str(unique_id))['inputs']['output_ckpt_hash'] = hash
-        prompt.get(str(unique_id))['inputs']['output_ckpt_name'] = ckpt_name
-        return (get_file_hash(ckpt_path),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

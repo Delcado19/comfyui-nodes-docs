@@ -32,22 +32,6 @@ The HypernetworkLoader class is designed to conveniently load and integrate hype
 - Infra type: CPU
 
 # Source code
-```
-class HypernetworkLoader:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'model': ('MODEL',), 'hypernetwork_name': (folder_paths.get_filename_list('hypernetworks'),), 'strength': ('FLOAT', {'default': 1.0, 'min': -10.0, 'max': 10.0, 'step': 0.01})}}
-    RETURN_TYPES = ('MODEL',)
-    FUNCTION = 'load_hypernetwork'
-    CATEGORY = 'loaders'
-
-    def load_hypernetwork(self, model, hypernetwork_name, strength):
-        hypernetwork_path = folder_paths.get_full_path('hypernetworks', hypernetwork_name)
-        model_hypernetwork = model.clone()
-        patch = load_hypernetwork_patch(hypernetwork_path, strength)
-        if patch is not None:
-            model_hypernetwork.set_model_attn1_patch(patch)
-            model_hypernetwork.set_model_attn2_patch(patch)
-        return (model_hypernetwork,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

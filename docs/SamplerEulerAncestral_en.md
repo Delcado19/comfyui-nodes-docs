@@ -27,17 +27,6 @@ The SamplerEulerAncestral node is designed to generate an ancestral sampler usin
 - Infra type: CPU
 
 # Source code
-```
-class SamplerEulerAncestral:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'eta': ('FLOAT', {'default': 1.0, 'min': 0.0, 'max': 100.0, 'step': 0.01, 'round': False}), 's_noise': ('FLOAT', {'default': 1.0, 'min': 0.0, 'max': 100.0, 'step': 0.01, 'round': False})}}
-    RETURN_TYPES = ('SAMPLER',)
-    CATEGORY = 'sampling/custom_sampling/samplers'
-    FUNCTION = 'get_sampler'
-
-    def get_sampler(self, eta, s_noise):
-        sampler = comfy.samplers.ksampler('euler_ancestral', {'eta': eta, 's_noise': s_noise})
-        return (sampler,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

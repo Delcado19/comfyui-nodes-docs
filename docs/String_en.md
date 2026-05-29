@@ -25,25 +25,7 @@ String node is dedicated to handling and returning string values, allowing basic
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class String:
-    @classmethod
-    def INPUT_TYPES(s):
-        return {
-            "required": {"value": ("STRING", {"default": ""})},
-        }
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    RETURN_TYPES = ("STRING",)
-
-    RETURN_NAMES = ("STRING",)
-
-    FUNCTION = "execute"
-
-    CATEGORY = "Logic"
-
-    def execute(self, value):
-        return (value,)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -31,31 +31,6 @@ Reverse engineer the prompt from the image. This node is a repackaging of the UF
 - Infra type: CPU
 
 # Source code
-```python
-class QWenImage2Prompt:
-    def __init__(self):
-        self.chat_model = UformGen2QwenChat()
+[View source repository on GitHub](https://github.com/chflame163/ComfyUI_LayerStyle)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {
-            "required": {
-                "image": ("IMAGE",),
-                "question": ("STRING", {"multiline": False, "default": "describe this image",},),
-            },
-        }
-
-    RETURN_TYPES = ("STRING",)
-    RETURN_NAMES = ("text",)
-    FUNCTION = "uform_gen2_qwen_chat"
-    CATEGORY = '😺dzNodes/LayerUtility/Prompt'
-
-    def uform_gen2_qwen_chat(self, image, question):
-        history = []  # Example empty history
-        pil_image = ToPILImage()(image[0].permute(2, 0, 1))
-        temp_path = files_for_uform_gen2_qwen / "temp.png"
-        pil_image.save(temp_path)
-
-        response = self.chat_model.chat_response(question, history, temp_path)
-        return (response.split("assistant\n", 1)[1], )
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -27,20 +27,6 @@ This node resizes images by proportionally reducing their dimensions, preserving
 - Infra type: CPU
 
 # Source code
-```
-class imageScaleDownBy(imageScaleDown):
+[View source repository on GitHub](https://github.com/yolain/ComfyUI-Easy-Use)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'images': ('IMAGE',), 'scale_by': ('FLOAT', {'default': 0.5, 'min': 0.01, 'max': 1.0, 'step': 0.01})}}
-    RETURN_TYPES = ('IMAGE',)
-    CATEGORY = 'EasyUse/Image'
-    FUNCTION = 'image_scale_down_by'
-
-    def image_scale_down_by(self, images, scale_by):
-        width = images.shape[2]
-        height = images.shape[1]
-        new_width = int(width * scale_by)
-        new_height = int(height * scale_by)
-        return self.image_scale_down(images, new_width, new_height, 'center')
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

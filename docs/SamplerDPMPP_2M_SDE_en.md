@@ -35,21 +35,6 @@ SamplerDPMPP_2M_SDE class aims to provide a sampling method that generates data 
 - Infra type: GPU
 
 # Source code
-```
-class SamplerDPMPP_2M_SDE:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'solver_type': (['midpoint', 'heun'],), 'eta': ('FLOAT', {'default': 1.0, 'min': 0.0, 'max': 100.0, 'step': 0.01, 'round': False}), 's_noise': ('FLOAT', {'default': 1.0, 'min': 0.0, 'max': 100.0, 'step': 0.01, 'round': False}), 'noise_device': (['gpu', 'cpu'],)}}
-    RETURN_TYPES = ('SAMPLER',)
-    CATEGORY = 'sampling/custom_sampling/samplers'
-    FUNCTION = 'get_sampler'
-
-    def get_sampler(self, solver_type, eta, s_noise, noise_device):
-        if noise_device == 'cpu':
-            sampler_name = 'dpmpp_2m_sde'
-        else:
-            sampler_name = 'dpmpp_2m_sde_gpu'
-        sampler = comfy.samplers.ksampler(sampler_name, {'eta': eta, 's_noise': s_noise, 'solver_type': solver_type})
-        return (sampler,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

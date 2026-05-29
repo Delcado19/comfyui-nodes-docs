@@ -28,22 +28,6 @@ This node integrates curves into a parameter group, making it easier to manage a
 - Infra type: CPU
 
 # Source code
-```
-class KfAddCurveToPGroup:
-    CATEGORY = CATEGORY
-    FUNCTION = 'main'
-    RETURN_TYPES = ('PARAMETER_GROUP',)
+[View source repository on GitHub](https://github.com/dmarx/ComfyUI-Keyframed)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'curve': ('KEYFRAMED_CURVE', {'forceInput': True})}, 'optional': {'parameter_group': ('PARAMETER_GROUP', {'forceInput': True})}}
-
-    def main(self, curve, parameter_group=None):
-        curve = deepcopy(curve)
-        if parameter_group is None:
-            parameter_group = kf.ParameterGroup([curve])
-        else:
-            parameter_group = deepcopy(parameter_group)
-            parameter_group.parameters[curve.label] = curve
-        return (parameter_group,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

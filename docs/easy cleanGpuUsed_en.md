@@ -28,20 +28,6 @@ This node aims to optimize computational resources by managing GPU memory. Its m
 - Infra type: GPU
 
 # Source code
-```
-class cleanGPUUsed:
+[View source repository on GitHub](https://github.com/yolain/ComfyUI-Easy-Use)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'anything': (AlwaysEqualProxy('*'), {})}, 'optional': {}, 'hidden': {'unique_id': 'UNIQUE_ID', 'extra_pnginfo': 'EXTRA_PNGINFO'}}
-    RETURN_TYPES = ()
-    RETURN_NAMES = ()
-    OUTPUT_NODE = True
-    FUNCTION = 'empty_cache'
-    CATEGORY = 'EasyUse/Logic'
-
-    def empty_cache(self, anything, unique_id=None, extra_pnginfo=None):
-        if torch.cuda.is_available():
-            torch.cuda.empty_cache()
-        return ()
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

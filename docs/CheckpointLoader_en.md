@@ -44,18 +44,6 @@ The CheckpointLoader node efficiently manages retrieval model checkpoints. It ab
 - Infra type: CPU
 
 # Source code
-```
-class CheckpointLoader:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'config_name': (folder_paths.get_filename_list('configs'),), 'ckpt_name': (folder_paths.get_filename_list('checkpoints'),)}}
-    RETURN_TYPES = ('MODEL', 'CLIP', 'VAE')
-    FUNCTION = 'load_checkpoint'
-    CATEGORY = 'advanced/loaders'
-
-    def load_checkpoint(self, config_name, ckpt_name, output_vae=True, output_clip=True):
-        config_path = folder_paths.get_full_path('configs', config_name)
-        ckpt_path = folder_paths.get_full_path('checkpoints', ckpt_name)
-        return comfy.sd.load_checkpoint(config_path, ckpt_path, output_vae=True, output_clip=True, embedding_directory=folder_paths.get_folder_paths('embeddings'))
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

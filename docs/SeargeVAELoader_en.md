@@ -23,19 +23,6 @@ This node aims to conveniently load VAE (Variational Autoencoder) models, provid
 - Infra type: CPU
 
 # Source code
-```
-class SeargeVAELoader:
+[View source repository on GitHub](https://github.com/jobunk/SeargeSDXL)
 
-    def __init__(self):
-        self.vae_loader = nodes.VAELoader()
-
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'vae_name': ('VAE_NAME',)}}
-    RETURN_TYPES = ('VAE',)
-    FUNCTION = 'load_vae'
-    CATEGORY = 'Searge/_deprecated_/Files'
-
-    def load_vae(self, vae_name):
-        return self.vae_loader.load_vae(vae_name)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

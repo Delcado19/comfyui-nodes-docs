@@ -64,22 +64,6 @@ This node integrates multiple curves into a single parameter group, streamlining
 - Infra type: CPU
 
 # Source code
-```
-class KfAddCurveToPGroupx10:
-    CATEGORY = CATEGORY
-    FUNCTION = 'main'
-    RETURN_TYPES = ('PARAMETER_GROUP',)
+[View source repository on GitHub](https://github.com/dmarx/ComfyUI-Keyframed)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'curve0': ('KEYFRAMED_CURVE', {'forceInput': True})}, 'optional': {'parameter_group': ('PARAMETER_GROUP', {'forceInput': True}), 'curve1': ('KEYFRAMED_CURVE', {'forceInput': True}), 'curve2': ('KEYFRAMED_CURVE', {'forceInput': True}), 'curve3': ('KEYFRAMED_CURVE', {'forceInput': True}), 'curve4': ('KEYFRAMED_CURVE', {'forceInput': True}), 'curve5': ('KEYFRAMED_CURVE', {'forceInput': True}), 'curve6': ('KEYFRAMED_CURVE', {'forceInput': True}), 'curve7': ('KEYFRAMED_CURVE', {'forceInput': True}), 'curve8': ('KEYFRAMED_CURVE', {'forceInput': True}), 'curve9': ('KEYFRAMED_CURVE', {'forceInput': True})}}
-
-    def main(self, parameter_group=None, **kwargs):
-        if parameter_group is None:
-            parameter_group = kf.ParameterGroup(kwargs)
-        else:
-            parameter_group = deepcopy(parameter_group)
-            for curve in parameter_group.values():
-                parameter_group.parameters[curve.label] = curve
-        return (parameter_group,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -56,47 +56,6 @@ The WildcardAndLoraSyntaxProcessor node handles and processes complex text input
 - Infra type: CPU
 
 # Source code
-```
-class WildcardAndLoraSyntaxProcessor:
+[View source repository on GitHub](https://github.com/bash-j/mikey_nodes)
 
-    def __init__(self):
-        self.loaded_lora = None
-
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'model': ('MODEL',), 'clip': ('CLIP',), 'text': ('STRING', {'multiline': True, 'default': '<lora:filename:weight>'}), 'seed': ('INT', {'default': 0, 'min': 0, 'max': 18446744073709551615})}, 'hidden': {'extra_pnginfo': 'EXTRA_PNGINFO', 'prompt': 'PROMPT'}}
-    RETURN_TYPES = ('MODEL', 'CLIP', 'STRING', 'STRING')
-    RETURN_NAMES = ('model', 'clip', 'text', 'unprocessed_text')
-    FUNCTION = 'process'
-    CATEGORY = 'Mikey/Lora'
-
-    def extract_and_load_loras(self, text, model, clip):
-        lora_re = '<lora:(.*?)(?::(.*?))?>'
-        lora_prompts = re.findall(lora_re, text)
-        stripped_text = text
-        clip_lora = clip
-        if len(lora_prompts) > 0:
-            for lora_prompt in lora_prompts:
-                lora_filename = lora_prompt[0]
-                if '.safetensors' not in lora_filename:
-                    lora_filename += '.safetensors'
-                try:
-                    lora_multiplier = float(lora_prompt[1]) if lora_prompt[1] != '' else 1.0
-                except:
-                    lora_multiplier = 1.0
-                (model, clip) = load_lora(model, clip, lora_filename, lora_multiplier, lora_multiplier)
-        stripped_text = re.sub(lora_re, '', stripped_text)
-        return (model, clip, stripped_text)
-
-    def process(self, model, clip, text, seed, extra_pnginfo=None, prompt=None):
-        text = search_and_replace(text, extra_pnginfo, prompt)
-        text = process_random_syntax(text, seed)
-        text_ = find_and_replace_wildcards(text, seed, True)
-        if len(text_) != len(text):
-            seed = random.randint(0, 1000000)
-        else:
-            seed = 1
-        (model, clip, stripped_text) = self.extract_and_load_loras(text_, model, clip)
-        stripped_text = find_and_replace_wildcards(stripped_text, seed, True)
-        return (model, clip, stripped_text, text_)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

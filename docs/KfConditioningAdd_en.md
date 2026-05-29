@@ -27,25 +27,6 @@
 - Infra type: CPU
 
 # Source code
-```
-class KfConditioningAdd:
-    CATEGORY = CATEGORY
-    FUNCTION = 'main'
-    RETURN_TYPES = ('CONDITIONING',)
+[View source repository on GitHub](https://github.com/dmarx/ComfyUI-Keyframed)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'conditioning_1': ('CONDITIONING',), 'conditioning_2': ('CONDITIONING',)}}
-
-    def main(self, conditioning_1, conditioning_2):
-        conditioning_1 = deepcopy(conditioning_1)
-        conditioning_2 = deepcopy(conditioning_2)
-        assert len(conditioning_1) == len(conditioning_2)
-        outv = []
-        for (i, ((c1_tensor, c1_dict), (c2_tensor, c2_dict))) in enumerate(zip(conditioning_1, conditioning_2)):
-            c1_tensor += c2_tensor
-            if 'pooled_output' in c1_dict and 'pooled_output' in c2_dict:
-                c1_dict['pooled_output'] += c2_dict['pooled_output']
-            outv.append((c1_tensor, c1_dict))
-        return (outv,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -27,29 +27,6 @@ The CR_SelectFont node is designed to allow users to select a font from a predef
 - Infra type: CPU
 
 # Source code
-```
-class CR_SelectFont:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        if platform.system() == 'Windows':
-            system_root = os.environ.get('SystemRoot')
-            font_dir = os.path.join(system_root, 'Fonts') if system_root else None
-        elif platform.system() == 'Linux':
-            font_dir = '/usr/share/fonts/truetype'
-        elif platform.system() == 'Darwin':
-            font_dir = '/System/Library/Fonts'
-        file_list = [f for f in os.listdir(font_dir) if os.path.isfile(os.path.join(font_dir, f)) and f.lower().endswith('.ttf')]
-        return {'required': {'font_name': (file_list,)}}
-    RETURN_TYPES = (any_type, 'STRING')
-    RETURN_NAMES = ('font_name', 'show_help')
-    FUNCTION = 'select_font'
-    CATEGORY = icons.get('Comfyroll/Graphics/Text')
-
-    def select_font(self, font_name):
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Text-Nodes#cr-select-font'
-        return (font_name, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

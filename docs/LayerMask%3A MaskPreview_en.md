@@ -23,27 +23,6 @@ Node for generating mask preview images.
 - Infra type: CPU
 
 # Source code
-```python
-class MaskPreview(SaveImage):
-    def __init__(self):
-        self.output_dir = folder_paths.get_temp_directory()
-        self.type = "temp"
-        self.prefix_append = "_temp_" + ''.join(random.choice("abcdefghijklmnopqrstupvxyz1234567890") for x in range(5))
-        self.compress_level = 4
+[View source repository on GitHub](https://github.com/chflame163/ComfyUI_LayerStyle)
 
-    @classmethod
-    def INPUT_TYPES(self):
-        return {
-            "required": {"mask": ("MASK",), },
-        }
-
-    FUNCTION = "mask_preview"
-    CATEGORY = '😺dzNodes/LayerMask'
-    OUTPUT_NODE = True
-
-    def mask_preview(self, mask):
-        if mask.dim() == 2:
-            mask = torch.unsqueeze(mask, 0)
-        preview = mask.reshape((-1, 1, mask.shape[-2], mask.shape[-1])).movedim(1, -1).expand(-1, -1, -1, 3)
-        return self.save_images(preview, "MaskPreview")
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

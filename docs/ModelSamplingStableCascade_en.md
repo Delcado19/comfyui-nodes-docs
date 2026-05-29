@@ -27,25 +27,6 @@ The ModelSamplingStableCascade node aims to enhance the sampling process of gene
 - Infra type: GPU
 
 # Source code
-```
-class ModelSamplingStableCascade:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'model': ('MODEL',), 'shift': ('FLOAT', {'default': 2.0, 'min': 0.0, 'max': 100.0, 'step': 0.01})}}
-    RETURN_TYPES = ('MODEL',)
-    FUNCTION = 'patch'
-    CATEGORY = 'advanced/model'
-
-    def patch(self, model, shift):
-        m = model.clone()
-        sampling_base = comfy.model_sampling.StableCascadeSampling
-        sampling_type = comfy.model_sampling.EPS
-
-        class ModelSamplingAdvanced(sampling_base, sampling_type):
-            pass
-        model_sampling = ModelSamplingAdvanced(model.model.model_config)
-        model_sampling.set_parameters(shift)
-        m.add_object_patch('model_sampling', model_sampling)
-        return (m,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

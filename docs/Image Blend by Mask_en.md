@@ -36,27 +36,6 @@ WAS_Image_Blend_Mask node aims to seamlessly blend two images using a provided m
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Image_Blend_Mask:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'image_a': ('IMAGE',), 'image_b': ('IMAGE',), 'mask': ('IMAGE',), 'blend_percentage': ('FLOAT', {'default': 0.5, 'min': 0.0, 'max': 1.0, 'step': 0.01})}}
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'image_blend_mask'
-    CATEGORY = 'WAS Suite/Image'
-
-    def image_blend_mask(self, image_a, image_b, mask, blend_percentage):
-        img_a = tensor2pil(image_a)
-        img_b = tensor2pil(image_b)
-        mask = ImageOps.invert(tensor2pil(mask).convert('L'))
-        masked_img = Image.composite(img_a, img_b, mask.resize(img_a.size))
-        blend_mask = Image.new(mode='L', size=img_a.size, color=round(blend_percentage * 255))
-        blend_mask = ImageOps.invert(blend_mask)
-        img_result = Image.composite(img_a, masked_img, blend_mask)
-        del img_a, img_b, blend_mask, mask
-        return (pil2tensor(img_result),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

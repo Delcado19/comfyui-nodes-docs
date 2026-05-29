@@ -32,27 +32,6 @@ This node aims to adjust the batch size of a given set of images, ensuring the o
 - Infra type: CPU
 
 # Source code
-```
-class ChangeImageBatchSize:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Inspire-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        input_dir = folder_paths.get_input_directory()
-        files = [f for f in os.listdir(input_dir) if os.path.isfile(os.path.join(input_dir, f))]
-        return {'required': {'image': ('IMAGE',), 'batch_size': ('INT', {'default': 1, 'min': 1, 'max': 4096, 'step': 1}), 'mode': (['simple'],)}}
-    CATEGORY = 'InspirePack/image'
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'load_image'
-
-    def load_image(self, image, batch_size, mode):
-        if mode == 'simple':
-            if len(image) < batch_size:
-                last_frame = image[-1].unsqueeze(0).expand(batch_size - len(image), -1, -1, -1)
-                image = torch.concat((image, last_frame), dim=0)
-            else:
-                image = image[:batch_size, :, :, :]
-            return (image,)
-        else:
-            print(f'[WARN] ChangeImageBatchSize: Unknown mode `{mode}` - ignored')
-            return (image,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

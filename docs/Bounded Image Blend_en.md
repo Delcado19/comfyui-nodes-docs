@@ -40,47 +40,6 @@ The `bounded_image_blend` method aims to seamlessly blend a source image into a 
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Bounded_Image_Blend:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(self):
-        return {'required': {'target': ('IMAGE',), 'target_bounds': ('IMAGE_BOUNDS',), 'source': ('IMAGE',), 'blend_factor': ('FLOAT', {'default': 1.0, 'min': 0.0, 'max': 1.0}), 'feathering': ('INT', {'default': 16, 'min': 0, 'max': 18446744073709551615})}}
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'bounded_image_blend'
-    CATEGORY = 'WAS Suite/Image/Bound'
-
-    def bounded_image_blend(self, target, target_bounds, source, blend_factor, feathering):
-        target = target.unsqueeze(0) if target.dim() == 3 else target
-        source = source.unsqueeze(0) if source.dim() == 3 else source
-        tgt_len = 1 if len(target) != len(source) else len(source)
-        bounds_len = 1 if len(target_bounds) != len(source) else len(source)
-        tgt_arr = [tensor2pil(tgt) for tgt in target[:tgt_len]]
-        src_arr = [tensor2pil(src) for src in source]
-        result_tensors = []
-        for idx in range(len(src_arr)):
-            src = src_arr[idx]
-            if tgt_len == 1 and idx == 0 or tgt_len > 1:
-                tgt = tgt_arr[idx]
-            if bounds_len == 1 and idx == 0 or bounds_len > 1:
-                (rmin, rmax, cmin, cmax) = target_bounds[idx]
-                (height, width) = (rmax - rmin + 1, cmax - cmin + 1)
-                if feathering > 0:
-                    inner_mask = Image.new('L', (width - 2 * feathering, height - 2 * feathering), 255)
-                    inner_mask = ImageOps.expand(inner_mask, border=feathering, fill=0)
-                    inner_mask = inner_mask.filter(ImageFilter.GaussianBlur(radius=feathering))
-                else:
-                    inner_mask = Image.new('L', (width, height), 255)
-                inner_mask = inner_mask.point(lambda p: p * blend_factor)
-                tgt_mask = Image.new('L', tgt.size, 0)
-                tgt_mask.paste(inner_mask, (cmin, rmin))
-            src_resized = src.resize((width, height), Image.Resampling.LANCZOS)
-            src_positioned = Image.new(tgt.mode, tgt.size)
-            src_positioned.paste(src_resized, (cmin, rmin))
-            result = Image.composite(src_positioned, tgt, tgt_mask)
-            result_tensors.append(pil2tensor(result))
-        return (torch.cat(result_tensors, dim=0),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

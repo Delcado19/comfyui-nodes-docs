@@ -87,39 +87,6 @@ The node enhances diversity and quality of generated samples by iteratively mixi
 - Infra type: GPU
 
 # Source code
-```
-class IterativeMixingSamplerNode:
-    """
-    A sampler implementing iterative mixing of latents.
-    Use this with the SamplerCustom node.
-    """
-    PERLIN_MODES = ['masks', 'latents', 'matched_noise']
+[View source repository on GitHub](https://github.com/ttulttul/ComfyUI-Iterative-Mixer)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'model': ('MODEL',), 'sampler': (list(SAMPLERS_MAP.keys()), {'default': 'euler'}), 'alpha_1': ('FLOAT', {'default': 2.4, 'min': 0.05, 'max': 100.0, 'step': 0.05}), 'blending_schedule': (list(BLENDING_SCHEDULE_MAP.keys()), {'default': 'cosine'}), 'blending_function': (list(BLENDING_FUNCTION_MAP.keys()), {'default': 'addition'}), 'normalize_on_mean': ('BOOLEAN', {'default': False}), 'start_blending_at_pct': ('FLOAT', {'default': 0.0, 'min': 0.0, 'step': 0.01}), 'stop_blending_at_pct': ('FLOAT', {'default': 1.0, 'min': 0.0, 'step': 0.01}), 'clamp_blending_at_pct': ('FLOAT', {'default': 1.0, 'min': 0.0, 'max': 1.0, 'step': 0.01}), 'blend_min': ('FLOAT', {'default': 0.0, 'step': 0.01}), 'blend_max': ('FLOAT', {'default': 1.0, 'step': 0.01}), 'perlin_mode': (s.PERLIN_MODES, {'default': 'masks'}), 'perlin_strength': ('FLOAT', {'default': 0.75, 'step': 0.001}), 'perlin_scale': ('FLOAT', {'default': 10.0, 'min': 0.1, 'max': 400.0}), 'rewind': ('BOOLEAN', {'default': False}), 'rewind_min': ('FLOAT', {'default': 0.5, 'min': 0.0, 'max': 0.99}), 'rewind_max': ('FLOAT', {'default': 0.8, 'min': 0.01, 'max': 0.99})}}
-    RETURN_TYPES = ('SAMPLER',)
-    CATEGORY = 'sampling/custom_sampling/samplers'
-    FUNCTION = 'get_sampler'
-
-    def set_steps(self, steps, denoise=None):
-        self.steps = steps
-        if denoise is None or denoise > 0.9999:
-            self.sigmas = self.calculate_sigmas(steps).to(self.device)
-        else:
-            new_steps = int(steps / denoise)
-            sigmas = self.calculate_sigmas(new_steps).to(self.device)
-            self.sigmas = sigmas[-(steps + 1):]
-
-    def get_sampler(self, model, sampler, alpha_1, blending_schedule, blending_function, normalize_on_mean, start_blending_at_pct, stop_blending_at_pct, clamp_blending_at_pct, blend_min, blend_max, perlin_mode, perlin_strength, perlin_scale, rewind, rewind_min, rewind_max):
-        extras = {k: v for (k, v) in locals().items() if k != 'self'}
-        extras['model_node'] = extras['model']
-        del extras['model']
-        if sampler not in SAMPLERS_MAP:
-            raise ValueError(f'invalid sampler: {sampler}')
-        sampler_obj = SAMPLERS_MAP[sampler]()
-        sampler_fn = functools.partial(sampler_obj.__call__)
-        del extras['sampler']
-        sampler = comfy.samplers.KSAMPLER(sampler_fn, extra_options=extras)
-        return (sampler,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

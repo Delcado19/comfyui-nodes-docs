@@ -33,43 +33,7 @@ This node applies a threshold filter to the mask region, segmenting them accordi
 - Infra type: `GPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class SaltMaskThresholdRegion:
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {
-                    "required": {
-                        "masks": ("MASK",),
-                        "black_threshold": ("INT",{"default":75, "min":0, "max": 255, "step": 1}),
-                        "white_threshold": ("INT",{"default":175, "min":0, "max": 255, "step": 1}),
-                    }
-                }
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    CATEGORY = f"{NAME}/Masking/Filter"
-
-    RETURN_TYPES = ("MASK",)
-    RETURN_NAMES = ("MASKS",)
-
-    FUNCTION = "threshold_region"
-
-    def threshold_region(self, masks, black_threshold=75, white_threshold=255):
-        if not isinstance(black_threshold, list):
-            black_threshold = [black_threshold]
-        if not isinstance(white_threshold, list):
-            white_threshold = [white_threshold]
-        regions = []
-        for i, mask in enumerate(masks):
-            pil_image = mask2pil(mask.unsqueeze(0))
-            region_mask = MaskFilters.threshold_region(
-                pil_image, 
-                int(black_threshold[i if i < len(black_threshold) else -1]), 
-                int(white_threshold[i if i < len(white_threshold) else -1])
-            )
-            region_tensor = pil2mask(region_mask)
-            regions.append(region_tensor)
-        regions_tensor = torch.cat(regions, dim=0)
-        return (regions_tensor,)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

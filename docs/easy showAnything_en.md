@@ -31,35 +31,6 @@ The showAnything node class serves as a versatile interface for recording and pr
 - Infra type: CPU
 
 # Source code
-```
-class showAnything:
+[View source repository on GitHub](https://github.com/yolain/ComfyUI-Easy-Use)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {}, 'optional': {'anything': (AlwaysEqualProxy('*'), {})}, 'hidden': {'unique_id': 'UNIQUE_ID', 'extra_pnginfo': 'EXTRA_PNGINFO'}}
-    RETURN_TYPES = ()
-    INPUT_IS_LIST = True
-    OUTPUT_NODE = True
-    FUNCTION = 'log_input'
-    CATEGORY = 'EasyUse/Logic'
-
-    def log_input(self, unique_id=None, extra_pnginfo=None, **kwargs):
-        values = []
-        if 'anything' in kwargs:
-            for val in kwargs['anything']:
-                try:
-                    if type(val) is str:
-                        values.append(val)
-                    else:
-                        val = json.dumps(val)
-                        values.append(str(val))
-                except Exception:
-                    values.append(str(val))
-                    pass
-        if unique_id and extra_pnginfo and ('workflow' in extra_pnginfo[0]):
-            workflow = extra_pnginfo[0]['workflow']
-            node = next((x for x in workflow['nodes'] if str(x['id']) == unique_id[0]), None)
-            if node:
-                node['widgets_values'] = [values]
-        return {'ui': {'text': values}}
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

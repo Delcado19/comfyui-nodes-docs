@@ -36,38 +36,6 @@ The WAS_Remove_Background node is designed to process images by removing the bac
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Remove_Background:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'images': ('IMAGE',), 'mode': (['background', 'foreground'],), 'threshold': ('INT', {'default': 127, 'min': 0, 'max': 255, 'step': 1}), 'threshold_tolerance': ('INT', {'default': 2, 'min': 1, 'max': 24, 'step': 1})}}
-    RETURN_TYPES = ('IMAGE',)
-    RETURN_NAMES = ('images',)
-    FUNCTION = 'image_remove_background'
-    CATEGORY = 'WAS Suite/Image/Process'
-
-    def image_remove_background(self, images, mode='background', threshold=127, threshold_tolerance=2):
-        return (self.remove_background(images, mode, threshold, threshold_tolerance),)
-
-    def remove_background(self, image, mode, threshold, threshold_tolerance):
-        images = []
-        image = [tensor2pil(img) for img in image]
-        for img in image:
-            grayscale_image = img.convert('L')
-            if mode == 'background':
-                grayscale_image = ImageOps.invert(grayscale_image)
-                threshold = 255 - threshold
-            blurred_image = grayscale_image.filter(ImageFilter.GaussianBlur(radius=threshold_tolerance))
-            binary_image = blurred_image.point(lambda x: 0 if x < threshold else 255, '1')
-            mask = binary_image.convert('L')
-            inverted_mask = ImageOps.invert(mask)
-            transparent_image = img.copy()
-            transparent_image.putalpha(inverted_mask)
-            images.append(pil2tensor(transparent_image))
-        batch = torch.cat(images, dim=0)
-        return batch
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

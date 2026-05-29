@@ -44,33 +44,6 @@
 - Infra type: CPU
 
 # Source code
-```
-class MakeImageBatch:
-    """
-    Creates a batch of images from multiple individual images or batches.
-    """
+[View source repository on GitHub](https://github.com/BadCafeCode/masquerade-nodes-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'image1': ('IMAGE',)}, 'optional': {'image2': ('IMAGE',), 'image3': ('IMAGE',), 'image4': ('IMAGE',), 'image5': ('IMAGE',), 'image6': ('IMAGE',)}}
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'append'
-    CATEGORY = 'Masquerade Nodes'
-
-    def append(self, image1, image2=None, image3=None, image4=None, image5=None, image6=None):
-        result = image1
-        if image2 is not None:
-            result = torch.cat((result, image2), 0)
-        if image3 is not None:
-            result = torch.cat((result, image3), 0)
-        if image4 is not None:
-            result = torch.cat((result, image4), 0)
-        if image5 is not None:
-            result = torch.cat((result, image5), 0)
-        if image6 is not None:
-            result = torch.cat((result, image6), 0)
-        return (result,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -23,10 +23,6 @@ This node generates a set of eight sine curves based on the given wavelength, ea
 - Infra type: CPU
 
 # Source code
-```
-class KfSinusoidalEntangledZeroOneFromWavelengthx8(KfSinusoidalEntangledZeroOneFromWavelength):
-    RETURN_TYPES = ('KEYFRAMED_CURVE',) * 8
+[View source repository on GitHub](https://github.com/dmarx/ComfyUI-Keyframed)
 
-    def main(self, wavelength):
-        return super().main(n=8, wavelength=wavelength)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

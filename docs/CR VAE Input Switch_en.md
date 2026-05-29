@@ -36,24 +36,6 @@ CR_VAEInputSwitch is a node used to conditionally route inputs between two diffe
 - Infra type: CPU
 
 # Source code
-```
-class CR_VAEInputSwitch:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'Input': ('INT', {'default': 1, 'min': 1, 'max': 2})}, 'optional': {'VAE1': ('VAE', {'forceInput': True}), 'VAE2': ('VAE', {'forceInput': True})}}
-    RETURN_TYPES = ('VAE', 'STRING')
-    RETURN_NAMES = ('VAE', 'show_help')
-    FUNCTION = 'switch'
-    CATEGORY = icons.get('Comfyroll/Utils/Logic')
-
-    def switch(self, Input, VAE1=None, VAE2=None):
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Logic-Nodes#cr-vae-input-switch'
-        if Input == 1:
-            return (VAE1, show_help)
-        else:
-            return (VAE2, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

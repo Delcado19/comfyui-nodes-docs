@@ -40,29 +40,6 @@ This node facilitates retrieval and caching of model checkpoints, ensuring effic
 - Infra type: CPU
 
 # Source code
-```
-class CheckpointLoaderSimpleShared(nodes.CheckpointLoaderSimple):
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Inspire-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'ckpt_name': (folder_paths.get_filename_list('checkpoints'),), 'key_opt': ('STRING', {'multiline': False, 'placeholder': "If empty, use 'ckpt_name' as the key."})}}
-    RETURN_TYPES = ('MODEL', 'CLIP', 'VAE', 'STRING')
-    RETURN_NAMES = ('model', 'clip', 'vae', 'cache key')
-    FUNCTION = 'doit'
-    CATEGORY = 'InspirePack/Backend'
-
-    def doit(self, ckpt_name, key_opt):
-        if key_opt.strip() == '':
-            key = ckpt_name
-        else:
-            key = key_opt.strip()
-        if key not in cache:
-            res = self.load_checkpoint(ckpt_name)
-            cache[key] = ('ckpt', (False, res))
-            print(f"[Inspire Pack] CheckpointLoaderSimpleShared: Ckpt '{ckpt_name}' is cached to '{key}'.")
-        else:
-            (_, (_, res)) = cache[key]
-            print(f"[Inspire Pack] CheckpointLoaderSimpleShared: Cached ckpt '{key}' is loaded. (Loading skip)")
-        (model, clip, vae) = res
-        return (model, clip, vae, key)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -23,19 +23,6 @@ The `number_pi` method of the WAS_Number_PI node provides the value of the mathe
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Number_PI:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {}}
-    RETURN_TYPES = ('NUMBER', 'FLOAT')
-    FUNCTION = 'number_pi'
-    CATEGORY = 'WAS Suite/Number'
-
-    def number_pi(self):
-        return (math.pi, math.pi)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

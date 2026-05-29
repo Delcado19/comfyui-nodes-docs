@@ -31,27 +31,6 @@ The 'get_resolutions' method of the WLSH_SDXL_Resolutions node processes image r
 - Infra type: CPU
 
 # Source code
-```
-class WLSH_SDXL_Resolutions:
-    resolution = ['1024x1024', '1152x896', '1216x832', '1344x768', '1536x640']
-    direction = ['landscape', 'portrait']
+[View source repository on GitHub](https://github.com/wallish77/wlsh_nodes)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'resolution': (s.resolution,), 'direction': (s.direction,)}}
-    RETURN_TYPES = ('INT', 'INT')
-    RETURN_NAMES = ('width', 'height')
-    FUNCTION = 'get_resolutions'
-    CATEGORY = 'WLSH Nodes/number'
-
-    def get_resolutions(self, resolution, direction):
-        (width, height) = resolution.split('x')
-        width = int(width)
-        height = int(height)
-        if direction == 'portrait':
-            (width, height) = (height, width)
-        return (width, height)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

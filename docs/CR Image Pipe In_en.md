@@ -39,19 +39,6 @@ The CR_ImagePipeIn node facilitates the process of feeding images into a data pi
 - Infra type: CPU
 
 # Source code
-```
-class CR_ImagePipeIn:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {}, 'optional': {'image': ('IMAGE',), 'width': ('INT', {'default': 512, 'min': 64, 'max': 2048}), 'height': ('INT', {'default': 512, 'min': 64, 'max': 2048}), 'upscale_factor': ('FLOAT', {'default': 1, 'min': 1, 'max': 2000})}}
-    RETURN_TYPES = ('PIPE_LINE', 'STRING')
-    RETURN_NAMES = ('pipe', 'show_help')
-    FUNCTION = 'pipe_in'
-    CATEGORY = icons.get('Comfyroll/Pipe/Image')
-
-    def pipe_in(self, image=0, width=0, height=0, upscale_factor=0):
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Pipe-Nodes#cr-image-pipe-in'
-        pipe_line = (image, width, height, upscale_factor)
-        return (pipe_line, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

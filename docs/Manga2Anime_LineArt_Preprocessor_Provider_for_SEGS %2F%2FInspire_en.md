@@ -27,17 +27,6 @@ This node serves as a Manga2Anime line art preprocessor provider, specifically d
 - Infra type: CPU
 
 # Source code
-```
-class Manga2Anime_LineArt_Preprocessor_Provider_for_SEGS:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Inspire-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {}}
-    RETURN_TYPES = ('SEGS_PREPROCESSOR',)
-    FUNCTION = 'doit'
-    CATEGORY = 'InspirePack/SEGS/ControlNet'
-
-    def doit(self):
-        obj = Manga2Anime_LineArt_Preprocessor_wrapper()
-        return (obj,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

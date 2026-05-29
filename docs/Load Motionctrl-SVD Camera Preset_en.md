@@ -23,21 +23,6 @@ This node is designed to load predefined camera presets for motion control in a 
 - Infra type: CPU
 
 # Source code
-```
-class LoadMotionCtrlSVDCameraPreset:
+[View source repository on GitHub](https://github.com/chaojie/ComfyUI-MotionCtrl-SVD)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'motion_camera': (MOTION_CAMERA_OPTIONS,)}}
-    RETURN_TYPES = ('STRING',)
-    RETURN_NAMES = ('POINTS',)
-    FUNCTION = 'load_motion_camera_preset'
-    CATEGORY = 'motionctrl'
-
-    def load_motion_camera_preset(self, motion_camera):
-        data = '[]'
-        comfy_path = os.path.dirname(folder_paths.__file__)
-        with open(f'{comfy_path}/custom_nodes/ComfyUI-MotionCtrl-SVD/examples/camera_poses/test_camera_{motion_camera}.json') as f:
-            data = f.read()
-        return (data,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -27,20 +27,6 @@ The `sam_combine_parameters` method is designed to merge two sets of SAM (Semant
 - Infra type: CPU
 
 # Source code
-```
-class WAS_SAM_Combine_Parameters:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(self):
-        return {'required': {'sam_parameters_a': ('SAM_PARAMETERS',), 'sam_parameters_b': ('SAM_PARAMETERS',)}}
-    RETURN_TYPES = ('SAM_PARAMETERS',)
-    FUNCTION = 'sam_combine_parameters'
-    CATEGORY = 'WAS Suite/Image/Masking'
-
-    def sam_combine_parameters(self, sam_parameters_a, sam_parameters_b):
-        parameters = {'points': np.concatenate((sam_parameters_a['points'], sam_parameters_b['points']), axis=0), 'labels': np.concatenate((sam_parameters_a['labels'], sam_parameters_b['labels']))}
-        return (parameters,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

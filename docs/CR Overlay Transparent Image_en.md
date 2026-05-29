@@ -48,29 +48,6 @@ The CR_OverlayTransparentImage node is designed to blend a transparent overlay i
 - Infra type: CPU
 
 # Source code
-```
-class CR_OverlayTransparentImage:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'back_image': ('IMAGE',), 'overlay_image': ('IMAGE',), 'transparency': ('FLOAT', {'default': 0.0, 'min': 0.0, 'max': 1.0, 'step': 0.1}), 'offset_x': ('INT', {'default': 0, 'min': -4096, 'max': 4096}), 'offset_y': ('INT', {'default': 0, 'min': -4096, 'max': 4096}), 'rotation_angle': ('FLOAT', {'default': 0.0, 'min': -360.0, 'max': 360.0, 'step': 0.1}), 'overlay_scale_factor': ('FLOAT', {'default': 1.0, 'min': 0.0, 'max': 100.0, 'step': 0.001})}}
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'overlay_image'
-    CATEGORY = icons.get('Comfyroll/Graphics/Layout')
-
-    def overlay_image(self, back_image, overlay_image, transparency, offset_x, offset_y, rotation_angle, overlay_scale_factor=1.0):
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Layout-Nodes#cr-overlay-transparent-image'
-        back_image = tensor2pil(back_image)
-        overlay_image = tensor2pil(overlay_image)
-        overlay_image.putalpha(int(255 * (1 - transparency)))
-        overlay_image = overlay_image.rotate(rotation_angle, expand=True)
-        (overlay_width, overlay_height) = overlay_image.size
-        new_size = (int(overlay_width * overlay_scale_factor), int(overlay_height * overlay_scale_factor))
-        overlay_image = overlay_image.resize(new_size, Image.Resampling.LANCZOS)
-        center_x = back_image.width // 2
-        center_y = back_image.height // 2
-        position_x = center_x - overlay_image.width // 2 + offset_x
-        position_y = center_y - overlay_image.height // 2 + offset_y
-        back_image.paste(overlay_image, (position_x, position_y), overlay_image)
-        return (pil2tensor(back_image),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

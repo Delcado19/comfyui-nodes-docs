@@ -32,22 +32,6 @@ The DuplicateLatents node is designed to replicate input latent representations 
 - Infra type: CPU
 
 # Source code
-```
-class DuplicateLatents:
+[View source repository on GitHub](https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'latents': ('LATENT',), 'multiply_by': ('INT', {'default': 1, 'min': 1, 'max': BIGMAX, 'step': 1})}}
-    CATEGORY = 'Video Helper Suite 🎥🅥🅗🅢/latent'
-    RETURN_TYPES = ('LATENT', 'INT')
-    RETURN_NAMES = ('LATENT', 'count')
-    FUNCTION = 'duplicate_input'
-
-    def duplicate_input(self, latents: dict[str, Tensor], multiply_by: int):
-        new_latents = latents.copy()
-        full_latents = []
-        for n in range(0, multiply_by):
-            full_latents.append(new_latents['samples'])
-        new_latents['samples'] = torch.cat(full_latents, dim=0)
-        return (new_latents, new_latents['samples'].size(0))
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

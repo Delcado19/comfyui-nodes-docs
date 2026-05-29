@@ -32,23 +32,6 @@ The VAEEncodeBatched node is designed to efficiently encode a batch of video fra
 - Infra type: GPU
 
 # Source code
-```
-class VAEEncodeBatched:
+[View source repository on GitHub](https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'pixels': ('IMAGE',), 'vae': ('VAE',), 'per_batch': ('INT', {'default': 16, 'min': 1})}}
-    CATEGORY = 'Video Helper Suite 🎥🅥🅗🅢/batched nodes'
-    RETURN_TYPES = ('LATENT',)
-    FUNCTION = 'encode'
-
-    def encode(self, vae, pixels, per_batch):
-        t = []
-        for start_idx in range(0, pixels.shape[0], per_batch):
-            try:
-                sub_pixels = vae.vae_encode_crop_pixels(pixels[start_idx:start_idx + per_batch])
-            except:
-                sub_pixels = VAEEncode.vae_encode_crop_pixels(pixels[start_idx:start_idx + per_batch])
-            t.append(vae.encode(sub_pixels[:, :, :, :3]))
-        return ({'samples': torch.cat(t, dim=0)},)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

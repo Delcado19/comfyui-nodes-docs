@@ -27,16 +27,6 @@ The 'apply' method of the PCApplySettings node is designed to modify and enhance
 - Infra type: CPU
 
 # Source code
-```
-class PCApplySettings:
+[View source repository on GitHub](https://github.com/asagi4/comfyui-prompt-control)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'prompt_schedule': ('PROMPT_SCHEDULE',), 'settings': ('SCHEDULE_SETTINGS',)}}
-    RETURN_TYPES = ('PROMPT_SCHEDULE',)
-    CATEGORY = 'promptcontrol'
-    FUNCTION = 'apply'
-
-    def apply(self, prompt_schedule, settings):
-        return (prompt_schedule.with_filters(defaults=settings),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

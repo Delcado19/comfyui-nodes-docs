@@ -36,24 +36,6 @@ The SeargeModelSelector node simplifies the process of selecting and combining m
 - Infra type: CPU
 
 # Source code
-```
-class SeargeModelSelector:
+[View source repository on GitHub](https://github.com/jobunk/SeargeSDXL)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'base_checkpoint': (UI.CHECKPOINTS(),), 'refiner_checkpoint': (UI.CHECKPOINTS_WITH_NONE(),), 'vae_checkpoint': (UI.VAE_WITH_EMBEDDED(),)}, 'optional': {'data': ('SRG_DATA_STREAM',)}}
-    RETURN_TYPES = ('SRG_DATA_STREAM',)
-    RETURN_NAMES = ('data',)
-    FUNCTION = 'get'
-    CATEGORY = UI.CATEGORY_UI_INPUTS
-
-    @staticmethod
-    def create_dict(base_checkpoint, refiner_checkpoint, vae_checkpoint):
-        return {UI.F_BASE_CHECKPOINT: base_checkpoint, UI.F_REFINER_CHECKPOINT: refiner_checkpoint, UI.F_VAE_CHECKPOINT: vae_checkpoint}
-
-    def get(self, base_checkpoint, refiner_checkpoint, vae_checkpoint, data=None):
-        if data is None:
-            data = {}
-        data[UI.S_CHECKPOINTS] = self.create_dict(base_checkpoint, refiner_checkpoint, vae_checkpoint)
-        return (data,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

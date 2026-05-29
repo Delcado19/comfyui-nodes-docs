@@ -32,22 +32,6 @@ The CLIPSubtract node aims to perform subtraction operations on two CLIP models.
 - Infra type: CPU
 
 # Source code
-```
-class CLIPSubtract:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'clip1': ('CLIP',), 'clip2': ('CLIP',), 'multiplier': ('FLOAT', {'default': 1.0, 'min': -10.0, 'max': 10.0, 'step': 0.01})}}
-    RETURN_TYPES = ('CLIP',)
-    FUNCTION = 'merge'
-    CATEGORY = 'advanced/model_merging'
-
-    def merge(self, clip1, clip2, multiplier):
-        m = clip1.clone()
-        kp = clip2.get_key_patches()
-        for k in kp:
-            if k.endswith('.position_ids') or k.endswith('.logit_scale'):
-                continue
-            m.add_patches({k: kp[k]}, -multiplier, multiplier)
-        return (m,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

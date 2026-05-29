@@ -23,16 +23,6 @@ The FloatToInt node converts floating-point numbers to their integer equivalents
 - Infra type: CPU
 
 # Source code
-```
-class FloatToInt:
+[View source repository on GitHub](https://github.com/evanspearman/ComfyMath)
 
-    @classmethod
-    def INPUT_TYPES(cls) -> Mapping[str, Any]:
-        return {'required': {'a': ('FLOAT', {'default': 0.0})}}
-    RETURN_TYPES = ('INT',)
-    FUNCTION = 'op'
-    CATEGORY = 'math/conversion'
-
-    def op(self, a: float) -> tuple[int]:
-        return (int(a),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

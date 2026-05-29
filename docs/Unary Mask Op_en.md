@@ -27,30 +27,6 @@ The UnaryMaskOp node is designed to perform various unary operations on a given 
 - Infra type: CPU
 
 # Source code
-```
-class UnaryMaskOp:
+[View source repository on GitHub](https://github.com/BadCafeCode/masquerade-nodes-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'image': ('IMAGE',), 'op': (['invert', 'average', 'round', 'clamp', 'abs'],)}}
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'op_mask'
-    CATEGORY = 'Masquerade Nodes'
-
-    def op_mask(self, image, op):
-        image = tensor2mask(image)
-        if op == 'invert':
-            return (1.0 - image,)
-        elif op == 'average':
-            mean = torch.mean(torch.mean(image, dim=2), dim=1)
-            return (mean.unsqueeze(1).unsqueeze(2).repeat(1, image.shape[1], image.shape[2]),)
-        elif op == 'round':
-            return (torch.round(image),)
-        elif op == 'clamp':
-            return (torch.min(torch.max(image, torch.tensor(0.0)), torch.tensor(1.0)),)
-        elif op == 'abs':
-            return (torch.abs(image),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -31,35 +31,6 @@ The BrushMotion node dynamically adjusts visual content by scaling and interpola
 - Infra type: CPU
 
 # Source code
-```
-class BrushMotion:
+[View source repository on GitHub](https://github.com/chaojie/ComfyUI-DragNUWA)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'model': ('DragNUWA',), 'motion_brush': ('MotionBrush',), 'brush_mask': ('MASK',)}}
-    RETURN_TYPES = ('MotionBrush',)
-    FUNCTION = 'run_inference'
-    CATEGORY = 'DragNUWA'
-
-    def run_inference(self, model, motion_brush, brush_mask):
-        from torchvision.ops import masks_to_boxes
-        boxes = masks_to_boxes(brush_mask)
-        box = boxes[0].int().tolist()
-        print(box)
-        xratio = (box[2] - box[0]) / motion_brush.shape[2]
-        yratio = (box[3] - box[1]) / motion_brush.shape[1]
-        xmotionbrush = motion_brush[:, :, :, :1]
-        ymotionbrush = motion_brush[:, :, :, 1:]
-        xmotionbrush = xmotionbrush * xratio
-        ymotionbrush = ymotionbrush * yratio
-        motionbrush = torch.cat([xmotionbrush, ymotionbrush], 3)
-        results = torch.zeros(model.model_length - 1, model.height, model.width, 2)
-        for i in range(model.model_length - 1):
-            temp = F.interpolate(motionbrush[i].unsqueeze(0).permute(0, 3, 1, 2).float(), size=(box[3] - box[1], box[2] - box[0]), mode='bilinear', align_corners=True).squeeze().permute(1, 2, 0)
-            for x in range(box[0], box[2]):
-                for y in range(box[1], box[3]):
-                    if brush_mask[0][y][x]:
-                        results[i][y][x][0] = temp[y - box[1]][x - box[0]][0]
-                        results[i][y][x][1] = temp[y - box[1]][x - box[0]][1]
-        return (results,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

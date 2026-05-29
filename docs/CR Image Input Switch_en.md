@@ -36,24 +36,6 @@ The CR_ImageInputSwitch node is designed to conditionally select one of two imag
 - Infra type: CPU
 
 # Source code
-```
-class CR_ImageInputSwitch:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'Input': ('INT', {'default': 1, 'min': 1, 'max': 2})}, 'optional': {'image1': ('IMAGE',), 'image2': ('IMAGE',)}}
-    RETURN_TYPES = ('IMAGE', 'STRING')
-    RETURN_NAMES = ('IMAGE', 'show_help')
-    FUNCTION = 'switch'
-    CATEGORY = icons.get('Comfyroll/Utils/Logic')
-
-    def switch(self, Input, image1=None, image2=None):
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Logic-Nodes#cr-image-input-switch'
-        if Input == 1:
-            return (image1, show_help)
-        else:
-            return (image2, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

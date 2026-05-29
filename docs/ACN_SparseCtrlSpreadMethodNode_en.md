@@ -23,16 +23,6 @@ The SparseSpreadMethodNode class aims to generate and manage sparse index distri
 - Infra type: CPU
 
 # Source code
-```
-class SparseSpreadMethodNode:
+[View source repository on GitHub](https://github.com/Kosinkadink/ComfyUI-Advanced-ControlNet)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'spread': (SparseSpreadMethod.LIST,)}}
-    RETURN_TYPES = ('SPARSE_METHOD',)
-    FUNCTION = 'get_method'
-    CATEGORY = 'Adv-ControlNet 🛂🅐🅒🅝/SparseCtrl'
-
-    def get_method(self, spread: str):
-        return (SparseSpreadMethod(spread=spread),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

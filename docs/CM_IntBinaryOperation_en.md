@@ -31,16 +31,6 @@ The IntBinaryOperation node is designed to perform various integer binary operat
 - Infra type: CPU
 
 # Source code
-```
-class IntBinaryOperation:
+[View source repository on GitHub](https://github.com/evanspearman/ComfyMath)
 
-    @classmethod
-    def INPUT_TYPES(cls) -> Mapping[str, Any]:
-        return {'required': {'op': (list(INT_BINARY_OPERATIONS.keys()),), 'a': DEFAULT_INT, 'b': DEFAULT_INT}}
-    RETURN_TYPES = ('INT',)
-    FUNCTION = 'op'
-    CATEGORY = 'math/int'
-
-    def op(self, op: str, a: int, b: int) -> tuple[int]:
-        return (INT_BINARY_OPERATIONS[op](a, b),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

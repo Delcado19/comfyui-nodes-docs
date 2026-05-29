@@ -44,22 +44,6 @@ The ModelMergeSD1 node is designed to merge multiple models into a unified frame
 - Infra type: CPU
 
 # Source code
-```
-class ModelMergeSD1(comfy_extras.nodes_model_merging.ModelMergeBlocks):
-    CATEGORY = 'advanced/model_merging/model_specific'
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        arg_dict = {'model1': ('MODEL',), 'model2': ('MODEL',)}
-        argument = ('FLOAT', {'default': 1.0, 'min': 0.0, 'max': 1.0, 'step': 0.01})
-        arg_dict['time_embed.'] = argument
-        arg_dict['label_emb.'] = argument
-        for i in range(12):
-            arg_dict['input_blocks.{}.'.format(i)] = argument
-        for i in range(3):
-            arg_dict['middle_block.{}.'.format(i)] = argument
-        for i in range(12):
-            arg_dict['output_blocks.{}.'.format(i)] = argument
-        arg_dict['out.'] = argument
-        return {'required': arg_dict}
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

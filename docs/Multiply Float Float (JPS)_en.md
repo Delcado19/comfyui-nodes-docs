@@ -33,33 +33,7 @@ The Multiply Float Float (JPS) node performs multiplication of two floating-poin
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class Math_Multiply_FLOAT_FLOAT:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    def init(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {
-            "required": {
-                "float_a": ("FLOAT", {"default": 1,}),
-                "float_b": ("FLOAT", {"default": 1,}),
-            }
-        }
-
-    RETURN_TYPES = ("INT","FLOAT")
-    RETURN_NAMES = ("int_multiply","float_multiply")
-    FUNCTION = "get_multiply_float_float"
-
-    CATEGORY="JPS Nodes/Math"
-
-    def get_multiply_float_float(self,float_a,float_b):
-        int_multiply = float(float_a) * float(float_b)
-        float_multiply = float(float_a) * float(float_b)
-
-        return(int(int_multiply),float(float_multiply))
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

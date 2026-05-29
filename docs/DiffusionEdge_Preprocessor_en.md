@@ -38,31 +38,7 @@ The DiffusionEdge_Preprocessor node is designed to preprocess images for edge de
 - Infra type: `GPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class DiffusionEdge_Preprocessor:
-    @classmethod
-    def INPUT_TYPES(s):
-        return create_node_input_types(
-            environment=(["indoor", "urban", "natrual"], {"default": "indoor"}),
-            patch_batch_size=("INT", {"default": 4, "min": 1, "max": 16})
-        )
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "execute"
-
-    CATEGORY = "ControlNet Preprocessors/Line Extractors"
-
-    def execute(self, image, environment="indoor", patch_batch_size=4, resolution=512, **kwargs):
-        install_deps()
-        from controlnet_aux.diffusion_edge import DiffusionEdgeDetector
-
-        model = DiffusionEdgeDetector \
-            .from_pretrained(filename = f"diffusion_edge_{environment}.pt") \
-            .to(model_management.get_torch_device())
-        out = common_annotator_call(model, image, resolution=resolution, patch_batch_size=patch_batch_size)
-        del model
-        return (out, )
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

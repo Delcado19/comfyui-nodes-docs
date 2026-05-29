@@ -35,30 +35,6 @@ The UpscaleTileCalculator node efficiently calculates and manages tiling in imag
 - Infra type: CPU
 
 # Source code
-```
-class UpscaleTileCalculator:
+[View source repository on GitHub](https://github.com/bash-j/mikey_nodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'image': ('IMAGE',), 'tile_resolution': ('INT', {'default': 512, 'min': 1, 'max': 8192, 'step': 8})}}
-    RETURN_TYPES = ('IMAGE', 'INT', 'INT')
-    RETURN_NAMES = ('image', 'tile_width', 'tile_height')
-    FUNCTION = 'calculate'
-    CATEGORY = 'Mikey/Image'
-
-    def upscale(self, image, upscale_method, width, height, crop):
-        samples = image.movedim(-1, 1)
-        s = comfy.utils.common_upscale(samples, width, height, upscale_method, crop)
-        s = s.movedim(1, -1)
-        return (s,)
-
-    def resize(self, image, width, height, upscale_method, crop):
-        (w, h) = find_latent_size(image.shape[2], image.shape[1])
-        img = self.upscale(image, upscale_method, w, h, crop)[0]
-        return (img,)
-
-    def calculate(self, image, tile_resolution):
-        (width, height) = (image.shape[2], image.shape[1])
-        (tile_width, tile_height) = find_tile_dimensions(width, height, 1.0, tile_resolution)
-        return (image, tile_width, tile_height)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

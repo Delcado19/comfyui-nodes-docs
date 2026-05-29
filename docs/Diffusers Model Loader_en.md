@@ -44,28 +44,6 @@ The method `load_checkpoint` is designed to load and manage pretrained models fr
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Diffusers_Loader:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        paths = []
-        for search_path in comfy_paths.get_folder_paths('diffusers'):
-            if os.path.exists(search_path):
-                paths += next(os.walk(search_path))[1]
-        return {'required': {'model_path': (paths,)}}
-    RETURN_TYPES = ('MODEL', 'CLIP', 'VAE', TEXT_TYPE)
-    RETURN_NAMES = ('MODEL', 'CLIP', 'VAE', 'NAME_STRING')
-    FUNCTION = 'load_checkpoint'
-    CATEGORY = 'WAS Suite/Loaders/Advanced'
-
-    def load_checkpoint(self, model_path, output_vae=True, output_clip=True):
-        for search_path in comfy_paths.get_folder_paths('diffusers'):
-            if os.path.exists(search_path):
-                paths = next(os.walk(search_path))[1]
-                if model_path in paths:
-                    model_path = os.path.join(search_path, model_path)
-                    break
-        out = comfy.diffusers_convert.load_diffusers(model_path, fp16=comfy.model_management.should_use_fp16(), output_vae=output_vae, output_clip=output_clip, embedding_directory=comfy_paths.get_folder_paths('embeddings'))
-        return (out[0], out[1], out[2], os.path.basename(model_path))
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -23,18 +23,6 @@ The `load_unet` method retrieves and loads a pretrained U-Net model from a speci
 - Infra type: CPU
 
 # Source code
-```
-class UNETLoader:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'unet_name': (folder_paths.get_filename_list('unet'),)}}
-    RETURN_TYPES = ('MODEL',)
-    FUNCTION = 'load_unet'
-    CATEGORY = 'advanced/loaders'
-
-    def load_unet(self, unet_name):
-        unet_path = folder_paths.get_full_path('unet', unet_name)
-        model = comfy.sd.load_unet(unet_path)
-        return (model,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

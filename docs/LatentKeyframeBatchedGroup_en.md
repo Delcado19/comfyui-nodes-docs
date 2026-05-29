@@ -32,36 +32,6 @@ LatentKeyframeBatchedGroupNode manages and creates a batch of latent keyframes w
 - Infra type: CPU
 
 # Source code
-```
-class LatentKeyframeBatchedGroupNode:
+[View source repository on GitHub](https://github.com/Kosinkadink/ComfyUI-Advanced-ControlNet)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'float_strengths': ('FLOAT', {'default': -1, 'min': -1, 'step': 0.001, 'forceInput': True})}, 'optional': {'prev_latent_kf': ('LATENT_KEYFRAME',), 'print_keyframes': ('BOOLEAN', {'default': False})}}
-    RETURN_NAMES = ('LATENT_KF',)
-    RETURN_TYPES = ('LATENT_KEYFRAME',)
-    FUNCTION = 'load_keyframe'
-    CATEGORY = 'Adv-ControlNet 🛂🅐🅒🅝/keyframes'
-
-    def load_keyframe(self, float_strengths: Union[float, list[float]], prev_latent_kf: LatentKeyframeGroup=None, prev_latent_keyframe: LatentKeyframeGroup=None, print_keyframes=False):
-        prev_latent_keyframe = prev_latent_keyframe if prev_latent_keyframe else prev_latent_kf
-        if not prev_latent_keyframe:
-            prev_latent_keyframe = LatentKeyframeGroup()
-        else:
-            prev_latent_keyframe = prev_latent_keyframe.clone()
-        curr_latent_keyframe = LatentKeyframeGroup()
-        if type(float_strengths) in (float, int):
-            logger.info('No batched float_strengths passed into Latent Keyframe Batch Group node; will not create any new keyframes.')
-        elif isinstance(float_strengths, Iterable):
-            for (idx, strength) in enumerate(float_strengths):
-                keyframe = LatentKeyframe(idx, strength)
-                curr_latent_keyframe.add(keyframe)
-        else:
-            raise ValueError(f'Expected strengths to be an iterable input, but was {type(float_strengths).__repr__}.')
-        if print_keyframes:
-            for keyframe in curr_latent_keyframe.keyframes:
-                logger.info(f'keyframe {keyframe.batch_index}:{keyframe.strength}')
-        for latent_keyframe in prev_latent_keyframe.keyframes:
-            curr_latent_keyframe.add(latent_keyframe)
-        return (curr_latent_keyframe,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -25,22 +25,7 @@ The PrintSigmas node is a utility node used in the computation graph. Its primar
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class PrintSigmas:
-    @classmethod
-    def INPUT_TYPES(s):
-        return {"required": {
-            "sigmas": ("SIGMAS",)
-            }}
-    RETURN_TYPES = ("SIGMAS",)
-    FUNCTION = "notify"
-    OUTPUT_NODE = True
-    CATEGORY = "utils"
-    
-    def notify(self, sigmas):
-        print(sigmas)
-        return (sigmas,)
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

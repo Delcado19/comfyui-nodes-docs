@@ -55,20 +55,6 @@ The IpaConfigurationNode class encapsulates the configuration logic for a node t
 - Infra type: CPU
 
 # Source code
-```
-class IpaConfigurationNode:
-    WEIGHT_TYPES = ['linear', 'ease in', 'ease out', 'ease in-out', 'reverse in-out', 'weak input', 'weak output', 'weak middle', 'strong middle']
-    IPA_EMBEDS_SCALING_OPTIONS = ['V only', 'K+V', 'K+V w/ C penalty', 'K+mean(V) w/ C penalty']
+[View source repository on GitHub](https://github.com/banodoco/steerable-motion)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'ipa_starts_at': ('FLOAT', {'default': 0.0, 'min': 0.0, 'max': 1.0, 'step': 0.01}), 'ipa_ends_at': ('FLOAT', {'default': 1.0, 'min': 0.0, 'max': 1.0, 'step': 0.01}), 'ipa_weight_type': (cls.WEIGHT_TYPES,), 'ipa_weight': ('FLOAT', {'default': 1.0, 'min': 0.0, 'max': 2.0, 'step': 0.01}), 'ipa_embeds_scaling': (cls.IPA_EMBEDS_SCALING_OPTIONS,), 'ipa_noise_strength': ('FLOAT', {'default': 0.3, 'min': 0.0, 'max': 1.0, 'step': 0.01}), 'use_image_for_noise': ('BOOLEAN', {'default': False}), 'type_of_noise': (['fade', 'dissolve', 'gaussian', 'shuffle'],), 'noise_blur': ('INT', {'default': 0, 'min': 0, 'max': 32, 'step': 1})}, 'optional': {}}
-    FUNCTION = 'process_inputs'
-    RETURN_TYPES = ('ADVANCED_IPA_SETTINGS',)
-    RETURN_NAMES = ('configuration',)
-    CATEGORY = 'Steerable-Motion'
-
-    @classmethod
-    def process_inputs(cls, ipa_starts_at, ipa_ends_at, ipa_weight_type, ipa_weight, ipa_embeds_scaling, ipa_noise_strength, use_image_for_noise, type_of_noise, noise_blur):
-        return ({'ipa_starts_at': ipa_starts_at, 'ipa_ends_at': ipa_ends_at, 'ipa_weight_type': ipa_weight_type, 'ipa_weight': ipa_weight, 'ipa_embeds_scaling': ipa_embeds_scaling, 'ipa_noise_strength': ipa_noise_strength, 'use_image_for_noise': use_image_for_noise, 'type_of_noise': type_of_noise, 'noise_blur': noise_blur},)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -52,27 +52,6 @@ IPAdapterSimple node aims to seamlessly integrate image processing adapters into
 - Infra type: GPU
 
 # Source code
-```
-class IPAdapterSimple:
+[View source repository on GitHub](https://github.com/cubiq/ComfyUI_IPAdapter_plus)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'model': ('MODEL',), 'ipadapter': ('IPADAPTER',), 'image': ('IMAGE',), 'weight': ('FLOAT', {'default': 1.0, 'min': -1, 'max': 3, 'step': 0.05}), 'start_at': ('FLOAT', {'default': 0.0, 'min': 0.0, 'max': 1.0, 'step': 0.001}), 'end_at': ('FLOAT', {'default': 1.0, 'min': 0.0, 'max': 1.0, 'step': 0.001}), 'weight_type': (['standard', 'prompt is more important', 'style transfer'],)}, 'optional': {'attn_mask': ('MASK',)}}
-    RETURN_TYPES = ('MODEL',)
-    FUNCTION = 'apply_ipadapter'
-    CATEGORY = 'ipadapter'
-
-    def apply_ipadapter(self, model, ipadapter, image, weight, start_at, end_at, weight_type, attn_mask=None):
-        if weight_type.startswith('style'):
-            weight_type = 'style transfer'
-        elif weight_type == 'prompt is more important':
-            weight_type = 'ease out'
-        else:
-            weight_type = 'linear'
-        ipa_args = {'image': image, 'weight': weight, 'start_at': start_at, 'end_at': end_at, 'attn_mask': attn_mask, 'weight_type': weight_type, 'insightface': ipadapter['insightface']['model'] if 'insightface' in ipadapter else None}
-        if 'ipadapter' not in ipadapter:
-            raise Exception('IPAdapter model not present in the pipeline. Please load the models with the IPAdapterUnifiedLoader node.')
-        if 'clipvision' not in ipadapter:
-            raise Exception('CLIPVision model not present in the pipeline. Please load the models with the IPAdapterUnifiedLoader node.')
-        return (ipadapter_execute(model.clone(), ipadapter['ipadapter']['model'], ipadapter['clipvision']['model'], **ipa_args),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

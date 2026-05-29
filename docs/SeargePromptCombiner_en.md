@@ -31,26 +31,6 @@ This node facilitates the connection of two text prompts by aligning them with t
 - Infra type: CPU
 
 # Source code
-```
-class SeargePromptCombiner:
+[View source repository on GitHub](https://github.com/jobunk/SeargeSDXL)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'prompt1': ('STRING', {'default': '', 'multiline': True}), 'separator': ('STRING', {'default': ', ', 'multiline': False}), 'prompt2': ('STRING', {'default': '', 'multiline': True})}}
-    RETURN_TYPES = ('STRING',)
-    RETURN_NAMES = ('combined prompt',)
-    FUNCTION = 'get_value'
-    CATEGORY = 'Searge/_deprecated_/Prompting'
-
-    def get_value(self, prompt1, separator, prompt2):
-        len1 = len(prompt1)
-        len2 = len(prompt2)
-        prompt = ''
-        if len1 > 0 and len2 > 0:
-            prompt = prompt1 + separator + prompt2
-        elif len1 > 0:
-            prompt = prompt1
-        elif len2 > 0:
-            prompt = prompt2
-        return (prompt,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

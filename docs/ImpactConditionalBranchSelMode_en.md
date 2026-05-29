@@ -36,20 +36,6 @@ The 'doit' method of the ImpactConditionalBranchSelMode node acts as a condition
 - Infra type: CPU
 
 # Source code
-```
-class ImpactConditionalBranchSelMode:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'cond': ('BOOLEAN',), 'sel_mode': ('BOOLEAN', {'default': True, 'label_on': 'select_on_prompt', 'label_off': 'select_on_execution'})}, 'optional': {'tt_value': (any_typ,), 'ff_value': (any_typ,)}}
-    FUNCTION = 'doit'
-    CATEGORY = 'ImpactPack/Logic'
-    RETURN_TYPES = (any_typ,)
-
-    def doit(self, cond, sel_mode, tt_value=None, ff_value=None):
-        print(f'tt={tt_value is None}\nff={ff_value is None}')
-        if cond:
-            return (tt_value,)
-        else:
-            return (ff_value,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

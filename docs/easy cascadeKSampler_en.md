@@ -43,21 +43,6 @@ The samplerCascadeSimple node aims to simplify the image sampling process by pro
 - Infra type: GPU
 
 # Source code
-```
-class samplerCascadeSimple:
+[View source repository on GitHub](https://github.com/yolain/ComfyUI-Easy-Use)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'pipe': ('PIPE_LINE',), 'image_output': (['Hide', 'Preview', 'Save', 'Hide/Save', 'Sender', 'Sender/Save'], {'default': 'Preview'}), 'link_id': ('INT', {'default': 0, 'min': 0, 'max': sys.maxsize, 'step': 1}), 'save_prefix': ('STRING', {'default': 'ComfyUI'})}, 'optional': {'model_c': ('MODEL',)}, 'hidden': {'tile_size': 'INT', 'prompt': 'PROMPT', 'extra_pnginfo': 'EXTRA_PNGINFO', 'my_unique_id': 'UNIQUE_ID', 'embeddingsList': (folder_paths.get_filename_list('embeddings'),)}}
-    RETURN_TYPES = ('PIPE_LINE', 'IMAGE')
-    RETURN_NAMES = ('pipe', 'image')
-    OUTPUT_NODE = True
-    FUNCTION = 'run'
-    CATEGORY = 'EasyUse/Sampler'
-
-    def run(self, pipe, image_output, link_id, save_prefix, model_c=None, tile_size=None, prompt=None, extra_pnginfo=None, my_unique_id=None, force_full_denoise=False, disable_noise=False):
-        return samplerCascadeFull().run(pipe, None, None, None, None, None, None, None, image_output, link_id, save_prefix, None, None, None, model_c, tile_size, prompt, extra_pnginfo, my_unique_id, force_full_denoise, disable_noise)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

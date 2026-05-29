@@ -36,24 +36,6 @@ This node class encapsulates the operation settings for the Search and Generate 
 - Infra type: CPU
 
 # Source code
-```
-class SeargeOperatingMode:
+[View source repository on GitHub](https://github.com/jobunk/SeargeSDXL)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'workflow_mode': (UI.WORKFLOW_MODES, {'default': UI.WF_MODE_TEXT_TO_IMAGE}), 'prompting_mode': (UI.PROMPTING_MODES, {'default': UI.PROMPTING_DEFAULT}), 'batch_size': ('INT', {'default': 1, 'min': 1, 'max': 4, 'step': 1})}, 'optional': {'data': ('SRG_DATA_STREAM',)}}
-    RETURN_TYPES = ('SRG_DATA_STREAM',)
-    RETURN_NAMES = ('data',)
-    FUNCTION = 'get'
-    CATEGORY = UI.CATEGORY_UI_INPUTS
-
-    @staticmethod
-    def create_dict(workflow_mode, prompting_mode, batch_size):
-        return {UI.F_WORKFLOW_MODE: workflow_mode, UI.F_PROMPTING_MODE: prompting_mode, UI.F_BATCH_SIZE: batch_size}
-
-    def get(self, workflow_mode, prompting_mode, batch_size, data=None):
-        if data is None:
-            data = {}
-        data[UI.S_OPERATING_MODE] = self.create_dict(workflow_mode, prompting_mode, batch_size)
-        return (data,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -47,31 +47,6 @@ The CR_TextListSimple node is designed to efficiently manage and combine multipl
 - Infra type: CPU
 
 # Source code
-```
-class CR_TextListSimple:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {}, 'optional': {'text_1': ('STRING', {'multiline': False, 'default': ''}), 'text_2': ('STRING', {'multiline': False, 'default': ''}), 'text_3': ('STRING', {'multiline': False, 'default': ''}), 'text_4': ('STRING', {'multiline': False, 'default': ''}), 'text_5': ('STRING', {'multiline': False, 'default': ''}), 'text_list_simple': ('TEXT_LIST_SIMPLE',)}}
-    RETURN_TYPES = ('TEXT_LIST_SIMPLE', 'STRING')
-    RETURN_NAMES = ('TEXT_LIST_SIMPLE', 'show_help')
-    FUNCTION = 'text_list_simple'
-    CATEGORY = icons.get('Comfyroll/Animation/Legacy')
-
-    def text_list_simple(self, text_1, text_2, text_3, text_4, text_5, text_list_simple=None):
-        texts = list()
-        if text_list_simple is not None:
-            texts.extend((l for l in text_list_simple))
-        if text_1 != '' and text_1 != None:
-            (texts.append(text_1),)
-        if text_2 != '' and text_2 != None:
-            texts.append(text_2)
-        if text_3 != '' and text_3 != None:
-            texts.append(text_3)
-        if text_4 != '' and text_4 != None:
-            (texts.append(text_4),)
-        if text_5 != '' and text_5 != None:
-            (texts.append(text_5),)
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/List-Nodes#cr-text-list-simple'
-        return (texts, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

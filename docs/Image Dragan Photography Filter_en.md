@@ -56,24 +56,6 @@ The WAS_Dragon_Filter node applies a series of image processing techniques to si
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Dragon_Filter:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'image': ('IMAGE',), 'saturation': ('FLOAT', {'default': 1.0, 'min': 0.0, 'max': 16.0, 'step': 0.01}), 'contrast': ('FLOAT', {'default': 1.0, 'min': 0.0, 'max': 16.0, 'step': 0.01}), 'brightness': ('FLOAT', {'default': 1.0, 'min': 0.0, 'max': 16.0, 'step': 0.01}), 'sharpness': ('FLOAT', {'default': 1.0, 'min': 0.0, 'max': 6.0, 'step': 0.01}), 'highpass_radius': ('FLOAT', {'default': 6.0, 'min': 0.0, 'max': 255.0, 'step': 0.01}), 'highpass_samples': ('INT', {'default': 1, 'min': 0, 'max': 6.0, 'step': 1}), 'highpass_strength': ('FLOAT', {'default': 1.0, 'min': 0.0, 'max': 3.0, 'step': 0.01}), 'colorize': (['true', 'false'],)}}
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'apply_dragan_filter'
-    CATEGORY = 'WAS Suite/Image/Filter'
-
-    def apply_dragan_filter(self, image, saturation, contrast, sharpness, brightness, highpass_radius, highpass_samples, highpass_strength, colorize):
-        WTools = WAS_Tools_Class()
-        tensor_images = []
-        for img in image:
-            tensor_images.append(pil2tensor(WTools.dragan_filter(tensor2pil(img), saturation, contrast, sharpness, brightness, highpass_radius, highpass_samples, highpass_strength, colorize)))
-        tensor_images = torch.cat(tensor_images, dim=0)
-        return (tensor_images,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

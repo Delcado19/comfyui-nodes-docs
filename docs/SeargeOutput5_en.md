@@ -39,21 +39,6 @@ This node classifies input parameters and separates them into different outputs,
 - Infra type: CPU
 
 # Source code
-```
-class SeargeOutput5:
+[View source repository on GitHub](https://github.com/jobunk/SeargeSDXL)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'parameters': ('PARAMETERS',)}}
-    RETURN_TYPES = ('PARAMETERS', 'FLOAT', 'FLOAT', 'FLOAT', 'FLOAT')
-    RETURN_NAMES = ('parameters', 'base_conditioning_scale', 'refiner_conditioning_scale', 'style_prompt_power', 'negative_style_power')
-    FUNCTION = 'demux'
-    CATEGORY = 'Searge/_deprecated_/UI/Outputs'
-
-    def demux(self, parameters):
-        base_conditioning_scale = parameters['base_conditioning_scale']
-        refiner_conditioning_scale = parameters['refiner_conditioning_scale']
-        style_prompt_power = parameters['style_prompt_power']
-        negative_style_power = parameters['negative_style_power']
-        return (parameters, base_conditioning_scale, refiner_conditioning_scale, style_prompt_power, negative_style_power)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

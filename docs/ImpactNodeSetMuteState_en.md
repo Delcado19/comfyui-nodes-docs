@@ -31,19 +31,6 @@ The 'doit' method of the ImpactNodeSetMuteState node is designed to control the 
 - Infra type: CPU
 
 # Source code
-```
-class ImpactNodeSetMuteState:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'signal': (any_typ,), 'node_id': ('INT', {'default': 0, 'min': 0, 'max': 18446744073709551615}), 'set_state': ('BOOLEAN', {'default': True, 'label_on': 'active', 'label_off': 'mute'})}}
-    FUNCTION = 'doit'
-    CATEGORY = 'ImpactPack/Logic/_for_test'
-    RETURN_TYPES = (any_typ,)
-    RETURN_NAMES = ('signal_opt',)
-    OUTPUT_NODE = True
-
-    def doit(self, signal, node_id, set_state):
-        PromptServer.instance.send_sync('impact-node-mute-state', {'node_id': node_id, 'is_active': set_state})
-        return (signal,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

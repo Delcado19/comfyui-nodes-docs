@@ -40,22 +40,6 @@ The SplitLatents node aims to split a given set of latents into two distinct gro
 - Infra type: CPU
 
 # Source code
-```
-class SplitLatents:
+[View source repository on GitHub](https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'latents': ('LATENT',), 'split_index': ('INT', {'default': 0, 'step': 1, 'min': BIGMIN, 'max': BIGMAX})}}
-    CATEGORY = 'Video Helper Suite 🎥🅥🅗🅢/latent'
-    RETURN_TYPES = ('LATENT', 'INT', 'LATENT', 'INT')
-    RETURN_NAMES = ('LATENT_A', 'A_count', 'LATENT_B', 'B_count')
-    FUNCTION = 'split_latents'
-
-    def split_latents(self, latents: dict, split_index: int):
-        latents = latents.copy()
-        group_a = latents['samples'][:split_index]
-        group_b = latents['samples'][split_index:]
-        group_a_latent = {'samples': group_a}
-        group_b_latent = {'samples': group_b}
-        return (group_a_latent, group_a.size(0), group_b_latent, group_b.size(0))
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

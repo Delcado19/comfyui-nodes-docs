@@ -36,43 +36,6 @@ The WAS_True_Random_Number node aims to generate random numbers with high securi
 - Infra type: CPU
 
 # Source code
-```
-class WAS_True_Random_Number:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'api_key': ('STRING', {'default': '00000000-0000-0000-0000-000000000000', 'multiline': False}), 'minimum': ('FLOAT', {'default': 0, 'min': -18446744073709551615, 'max': 18446744073709551615}), 'maximum': ('FLOAT', {'default': 10000000, 'min': -18446744073709551615, 'max': 18446744073709551615}), 'mode': (['random', 'fixed'],)}}
-    RETURN_TYPES = ('NUMBER', 'FLOAT', 'INT')
-    FUNCTION = 'return_true_randm_number'
-    CATEGORY = 'WAS Suite/Number'
-
-    def return_true_randm_number(self, api_key=None, minimum=0, maximum=10):
-        number = self.get_random_numbers(api_key=api_key, minimum=minimum, maximum=maximum)[0]
-        return (number,)
-
-    def get_random_numbers(self, api_key=None, amount=1, minimum=0, maximum=10, mode='random'):
-        """Get random number(s) from random.org"""
-        if api_key in [None, '00000000-0000-0000-0000-000000000000', '']:
-            cstr('No API key provided! A valid RANDOM.ORG API key is required to use `True Random.org Number Generator`').error.print()
-            return [0]
-        url = 'https://api.random.org/json-rpc/2/invoke'
-        headers = {'Content-Type': 'application/json'}
-        payload = {'jsonrpc': '2.0', 'method': 'generateIntegers', 'params': {'apiKey': api_key, 'n': amount, 'min': minimum, 'max': maximum, 'replacement': True, 'base': 10}, 'id': 1}
-        response = requests.post(url, headers=headers, data=json.dumps(payload))
-        if response.status_code == 200:
-            data = response.json()
-            if 'result' in data:
-                return (data['result']['random']['data'], float(data['result']['random']['data']), int(data['result']['random']['data']))
-        return [0]
-
-    @classmethod
-    def IS_CHANGED(cls, api_key, mode, **kwargs):
-        m = hashlib.sha256()
-        m.update(api_key)
-        if mode == 'fixed':
-            return m.digest().hex()
-        return float('NaN')
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

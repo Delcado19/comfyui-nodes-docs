@@ -27,25 +27,6 @@ The LatentRotate node is designed to perform rotation operations on latent sampl
 - Infra type: CPU
 
 # Source code
-```
-class LatentRotate:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'samples': ('LATENT',), 'rotation': (['none', '90 degrees', '180 degrees', '270 degrees'],)}}
-    RETURN_TYPES = ('LATENT',)
-    FUNCTION = 'rotate'
-    CATEGORY = 'latent/transform'
-
-    def rotate(self, samples, rotation):
-        s = samples.copy()
-        rotate_by = 0
-        if rotation.startswith('90'):
-            rotate_by = 1
-        elif rotation.startswith('180'):
-            rotate_by = 2
-        elif rotation.startswith('270'):
-            rotate_by = 3
-        s['samples'] = torch.rot90(samples['samples'], k=rotate_by, dims=[3, 2])
-        return (s,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

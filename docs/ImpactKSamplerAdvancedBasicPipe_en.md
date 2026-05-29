@@ -72,26 +72,6 @@ The KSamplerAdvancedBasicPipe node is designed to facilitate advanced sampling t
 - Infra type: GPU
 
 # Source code
-```
-class KSamplerAdvancedBasicPipe:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'basic_pipe': ('BASIC_PIPE',), 'add_noise': ('BOOLEAN', {'default': True, 'label_on': 'enable', 'label_off': 'disable'}), 'noise_seed': ('INT', {'default': 0, 'min': 0, 'max': 18446744073709551615}), 'steps': ('INT', {'default': 20, 'min': 1, 'max': 10000}), 'cfg': ('FLOAT', {'default': 8.0, 'min': 0.0, 'max': 100.0}), 'sampler_name': (comfy.samplers.KSampler.SAMPLERS,), 'scheduler': (comfy.samplers.KSampler.SCHEDULERS,), 'latent_image': ('LATENT',), 'start_at_step': ('INT', {'default': 0, 'min': 0, 'max': 10000}), 'end_at_step': ('INT', {'default': 10000, 'min': 0, 'max': 10000}), 'return_with_leftover_noise': ('BOOLEAN', {'default': False, 'label_on': 'enable', 'label_off': 'disable'})}}
-    RETURN_TYPES = ('BASIC_PIPE', 'LATENT', 'VAE')
-    FUNCTION = 'sample'
-    CATEGORY = 'sampling'
-
-    def sample(self, basic_pipe, add_noise, noise_seed, steps, cfg, sampler_name, scheduler, latent_image, start_at_step, end_at_step, return_with_leftover_noise, denoise=1.0):
-        (model, clip, vae, positive, negative) = basic_pipe
-        if add_noise:
-            add_noise = 'enable'
-        else:
-            add_noise = 'disable'
-        if return_with_leftover_noise:
-            return_with_leftover_noise = 'enable'
-        else:
-            return_with_leftover_noise = 'disable'
-        latent = nodes.KSamplerAdvanced().sample(model, add_noise, noise_seed, steps, cfg, sampler_name, scheduler, positive, negative, latent_image, start_at_step, end_at_step, return_with_leftover_noise, denoise)[0]
-        return (basic_pipe, latent, vae)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

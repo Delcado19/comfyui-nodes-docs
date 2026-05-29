@@ -31,17 +31,6 @@ The SamplerLCMAlternative node aims to provide a custom sampling method for gene
 - Infra type: CPU
 
 # Source code
-```
-class SamplerLCMAlternative:
+[View source repository on GitHub](https://github.com/jojkaart/ComfyUI-sampler-lcm-alternative)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'euler_steps': ('INT', {'default': 0, 'min': -10000, 'max': 10000}), 'ancestral': ('FLOAT', {'default': 0, 'min': 0, 'max': 1.0, 'step': 0.01, 'round': False}), 'noise_mult': ('FLOAT', {'default': 1.0, 'min': 0.0, 'max': 2.0, 'step': 0.001, 'round': False})}}
-    RETURN_TYPES = ('SAMPLER',)
-    CATEGORY = 'sampling/custom_sampling/samplers'
-    FUNCTION = 'get_sampler'
-
-    def get_sampler(self, euler_steps, ancestral, noise_mult):
-        sampler = comfy.samplers.KSAMPLER(sample_lcm_alt, extra_options={'euler_steps': euler_steps, 'noise_mult': noise_mult, 'ancestral': ancestral})
-        return (sampler,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -31,23 +31,6 @@ The ImpactIfNone node is designed to evaluate the existence of an input. It retu
 - Infra type: CPU
 
 # Source code
-```
-class ImpactIfNone:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {}, 'optional': {'signal': (any_typ,), 'any_input': (any_typ,)}}
-    RETURN_TYPES = (any_typ, 'BOOLEAN')
-    RETURN_NAMES = ('signal_opt', 'bool')
-    FUNCTION = 'doit'
-    CATEGORY = 'ImpactPack/Logic'
-
-    def doit(self, signal=None, any_input=None):
-        if any_input is None:
-            return (signal, False)
-        else:
-            return (signal, True)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

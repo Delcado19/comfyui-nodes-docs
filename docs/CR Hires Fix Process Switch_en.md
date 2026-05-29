@@ -36,24 +36,6 @@ CR_HiResFixProcessSwitch node acts as a decision unit, selecting one of two upsc
 - Infra type: CPU
 
 # Source code
-```
-class CR_HiResFixProcessSwitch:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'Input': (['latent_upscale', 'image_upscale'],)}, 'optional': {'latent_upscale': ('LATENT',), 'image_upscale': ('LATENT',)}}
-    RETURN_TYPES = ('LATENT', 'STRING')
-    RETURN_NAMES = ('LATENT', 'STRING')
-    FUNCTION = 'switch'
-    CATEGORY = icons.get('Comfyroll/Utils/Process')
-
-    def switch(self, Input, latent_upscale=None, image_upscale=None):
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Process-Nodes#cr-hires-fix-process-switch'
-        if Input == 'latent_upscale':
-            return (latent_upscale, show_help)
-        else:
-            return (image_upscale, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

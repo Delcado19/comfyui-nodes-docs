@@ -25,24 +25,7 @@ The SingleString node is designed to pass a single string input directly through
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class SingleString:
+[View source repository on GitHub](https://github.com/klinter-com/ComfyUI-KLI)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {
-            "required": {
-                "string": ("STRING", {"default": '', "multiline": True}),
-            }
-        }
-    RETURN_TYPES = ("STRING",)
-    FUNCTION = "passtring"
-
-    CATEGORY = "String"
-
-    def passtring(self, string):
-        return (string, )
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

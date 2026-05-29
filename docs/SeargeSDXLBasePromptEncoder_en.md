@@ -67,36 +67,6 @@ The SeargeSDXLBasePromptEncoder class acts as an intermediary for processing and
 - Infra type: CPU
 
 # Source code
-```
-class SeargeSDXLBasePromptEncoder:
+[View source repository on GitHub](https://github.com/jobunk/SeargeSDXL)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'base_clip': ('CLIP',), 'pos_g': ('STRING', {'multiline': True, 'default': 'POS_G'}), 'pos_l': ('STRING', {'multiline': True, 'default': 'POS_L'}), 'neg_g': ('STRING', {'multiline': True, 'default': 'NEG_G'}), 'neg_l': ('STRING', {'multiline': True, 'default': 'NEG_L'}), 'base_width': ('INT', {'default': 4096, 'min': 0, 'max': nodes.MAX_RESOLUTION, 'step': 8}), 'base_height': ('INT', {'default': 4096, 'min': 0, 'max': nodes.MAX_RESOLUTION, 'step': 8}), 'crop_w': ('INT', {'default': 0, 'min': 0, 'max': nodes.MAX_RESOLUTION, 'step': 8}), 'crop_h': ('INT', {'default': 0, 'min': 0, 'max': nodes.MAX_RESOLUTION, 'step': 8}), 'target_width': ('INT', {'default': 4096, 'min': 0, 'max': nodes.MAX_RESOLUTION, 'step': 8}), 'target_height': ('INT', {'default': 4096, 'min': 0, 'max': nodes.MAX_RESOLUTION, 'step': 8})}}
-    RETURN_TYPES = ('CONDITIONING', 'CONDITIONING')
-    RETURN_NAMES = ('base_positive', 'base_negative')
-    FUNCTION = 'encode'
-    CATEGORY = 'Searge/_deprecated_/ClipEncoding'
-
-    def encode(self, base_clip, pos_g, pos_l, neg_g, neg_l, base_width, base_height, crop_w, crop_h, target_width, target_height):
-        empty = base_clip.tokenize('')
-        tokens1 = base_clip.tokenize(pos_g)
-        tokens1['l'] = base_clip.tokenize(pos_l)['l']
-        if len(tokens1['l']) != len(tokens1['g']):
-            while len(tokens1['l']) < len(tokens1['g']):
-                tokens1['l'] += empty['l']
-            while len(tokens1['l']) > len(tokens1['g']):
-                tokens1['g'] += empty['g']
-        (cond1, pooled1) = base_clip.encode_from_tokens(tokens1, return_pooled=True)
-        res1 = [[cond1, {'pooled_output': pooled1, 'width': base_width, 'height': base_height, 'crop_w': crop_w, 'crop_h': crop_h, 'target_width': target_width, 'target_height': target_height}]]
-        tokens2 = base_clip.tokenize(neg_g)
-        tokens2['l'] = base_clip.tokenize(neg_l)['l']
-        if len(tokens2['l']) != len(tokens2['g']):
-            while len(tokens2['l']) < len(tokens2['g']):
-                tokens2['l'] += empty['l']
-            while len(tokens2['l']) > len(tokens2['g']):
-                tokens2['g'] += empty['g']
-        (cond2, pooled2) = base_clip.encode_from_tokens(tokens2, return_pooled=True)
-        res2 = [[cond2, {'pooled_output': pooled2, 'width': base_width, 'height': base_height, 'crop_w': crop_w, 'crop_h': crop_h, 'target_width': target_width, 'target_height': target_height}]]
-        return (res1, res2)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

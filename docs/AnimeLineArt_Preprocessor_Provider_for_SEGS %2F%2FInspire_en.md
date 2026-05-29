@@ -28,17 +28,6 @@ This type of node converts input images into anime-style line drawings, which is
 - Infra type: GPU
 
 # Source code
-```
-class AnimeLineArt_Preprocessor_Provider_for_SEGS:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Inspire-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {}}
-    RETURN_TYPES = ('SEGS_PREPROCESSOR',)
-    FUNCTION = 'doit'
-    CATEGORY = 'InspirePack/SEGS/ControlNet'
-
-    def doit(self):
-        obj = AnimeLineArt_Preprocessor_wrapper()
-        return (obj,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

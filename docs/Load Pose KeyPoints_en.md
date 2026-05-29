@@ -23,18 +23,6 @@ This node is designed to retrieve and parse pose key point data from a specified
 - Infra type: CPU
 
 # Source code
-```
-class LoadPoseKeyPoints:
+[View source repository on GitHub](https://github.com/chaojie/ComfyUI-DragNUWA)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'file_name': (os.listdir(folder_paths.output_directory), {'default': 'PoseKeypoint_00001.json'})}}
-    RETURN_TYPES = ('POSE_KEYPOINT',)
-    FUNCTION = 'run'
-    CATEGORY = 'DragNUWA'
-
-    def run(self, file_name):
-        path = os.path.join(folder_paths.output_directory, file_name)
-        with open(path) as fr:
-            return (json.load(fr),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

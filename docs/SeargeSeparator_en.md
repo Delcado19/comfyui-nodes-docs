@@ -23,17 +23,6 @@ The SeargeSeparator node is intended to serve as a placeholder in workflows, pro
 - Infra type: CPU
 
 # Source code
-```
-class SeargeSeparator:
+[View source repository on GitHub](https://github.com/jobunk/SeargeSDXL)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {}}
-    RETURN_TYPES = ()
-    RETURN_NAMES = ()
-    FUNCTION = 'do_nothing'
-    CATEGORY = UI.CATEGORY_UI
-
-    def do_nothing(self):
-        return ()
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

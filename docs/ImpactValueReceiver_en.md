@@ -32,23 +32,6 @@ The 'doit' method of the ImpactValueReceiver node is designed to process and tra
 - Infra type: CPU
 
 # Source code
-```
-class ImpactValueReceiver:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'typ': (['STRING', 'INT', 'FLOAT', 'BOOLEAN'],), 'value': ('STRING', {'default': ''}), 'link_id': ('INT', {'default': 0, 'min': 0, 'max': sys.maxsize, 'step': 1})}}
-    FUNCTION = 'doit'
-    CATEGORY = 'ImpactPack/Logic'
-    RETURN_TYPES = (any_typ,)
-
-    def doit(self, typ, value, link_id=0):
-        if typ == 'INT':
-            return (int(value),)
-        elif typ == 'FLOAT':
-            return (float(value),)
-        elif typ == 'BOOLEAN':
-            return (value.lower() == 'true',)
-        else:
-            return (value,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

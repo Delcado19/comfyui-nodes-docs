@@ -39,23 +39,6 @@ The NoiseInjectionDetailerHookProvider node is designed to enhance the detail of
 - Infra type: GPU
 
 # Source code
-```
-class NoiseInjectionDetailerHookProvider:
-    schedules = ['skip_start', 'from_start']
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'schedule_for_cycle': (s.schedules,), 'source': (['CPU', 'GPU'],), 'seed': ('INT', {'default': 0, 'min': 0, 'max': 18446744073709551615}), 'start_strength': ('FLOAT', {'default': 2.0, 'min': 0.0, 'max': 200.0, 'step': 0.01}), 'end_strength': ('FLOAT', {'default': 1.0, 'min': 0.0, 'max': 200.0, 'step': 0.01})}}
-    RETURN_TYPES = ('DETAILER_HOOK',)
-    FUNCTION = 'doit'
-    CATEGORY = 'ImpactPack/Detailer'
-
-    def doit(self, schedule_for_cycle, source, seed, start_strength, end_strength):
-        try:
-            hook = hooks.InjectNoiseHookForDetailer(source, seed, start_strength, end_strength, from_start='from_start' in schedule_for_cycle)
-            return (hook,)
-        except Exception as e:
-            print("[ERROR] NoiseInjectionDetailerHookProvider: 'ComfyUI Noise' custom node isn't installed. You must install 'BlenderNeko/ComfyUI Noise' extension to use this node.")
-            print(f'\t{e}')
-            pass
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

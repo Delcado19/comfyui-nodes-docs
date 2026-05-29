@@ -39,32 +39,6 @@ This node is used to create LoRA hook keyframes, which is a mechanism for adjust
 - Common nodes: unknown
 
 ## Source code
-```python
-class CreateLoraHookKeyframe:
-    @classmethod
-    def INPUT_TYPES(s):
-        return {
-            "required": {
-                "strength_model": ("FLOAT", {"default": 1.0, "min": -20.0, "max": 20.0, "step": 0.01}),
-                "start_percent": ("FLOAT", {"default": 0.0, "min": 0.0, "max": 1.0, "step": 0.001}),
-                "guarantee_steps": ("INT", {"default": 1, "min": 0, "max": BIGMAX}),
-            },
-            "optional": {
-                "prev_hook_kf": ("LORA_HOOK_KEYFRAMES",),
-            }
-        }
-    
-    RETURN_TYPES = ("LORA_HOOK_KEYFRAMES",)
-    RETURN_NAMES = ("HOOK_KF",)
-    CATEGORY = "Animate Diff 🎭🅐🅓/conditioning/schedule lora hooks"
-    FUNCTION = "create_hook_keyframe"
+[View source repository on GitHub](https://github.com/Kosinkadink/ComfyUI-AnimateDiff-Evolved)
 
-    def create_hook_keyframe(self, strength_model: float, start_percent: float, guarantee_steps: float,
-                             prev_hook_kf: LoraHookKeyframeGroup=None):
-        if prev_hook_kf:
-            prev_hook_kf = prev_hook_kf.clone()
-        else:
-            prev_hook_kf = LoraHookKeyframeGroup()
-        keyframe = LoraHookKeyframe(strength=strength_model, start_percent=start_percent, guarantee_steps=guarantee_steps)
-        prev_hook_kf.add(keyframe)
-        return (prev_hook_kf,)
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

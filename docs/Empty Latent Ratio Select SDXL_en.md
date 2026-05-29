@@ -28,20 +28,6 @@ The EmptyLatentRatioSelector node is designed to generate latent representations
 - Infra type: CPU
 
 # Source code
-```
-class EmptyLatentRatioSelector:
+[View source repository on GitHub](https://github.com/bash-j/mikey_nodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        (s.ratio_sizes, s.ratio_dict) = read_ratios()
-        return {'required': {'ratio_selected': (s.ratio_sizes,), 'batch_size': ('INT', {'default': 1, 'min': 1, 'max': 64})}}
-    RETURN_TYPES = ('LATENT',)
-    FUNCTION = 'generate'
-    CATEGORY = 'Mikey/Latent'
-
-    def generate(self, ratio_selected, batch_size=1):
-        width = self.ratio_dict[ratio_selected]['width']
-        height = self.ratio_dict[ratio_selected]['height']
-        latent = torch.zeros([batch_size, 4, height // 8, width // 8])
-        return ({'samples': latent},)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

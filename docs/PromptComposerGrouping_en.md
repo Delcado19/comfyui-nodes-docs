@@ -32,23 +32,6 @@ The node creatively processes text by adjusting the weight and structure of the 
 - Infra type: CPU
 
 # Source code
-```
-class PromptComposerGrouping:
+[View source repository on GitHub](https://github.com/florestefano1975/comfyui-prompt-composer)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'text_in': ('STRING', {'forceInput': True}), 'weight': ('FLOAT', {'default': 1, 'step': 0.05, 'min': 0, 'max': 1.95, 'display': 'slider'}), 'active': ('BOOLEAN', {'default': False})}}
-    RETURN_TYPES = ('STRING',)
-    RETURN_NAMES = ('text_out',)
-    FUNCTION = 'promptComposerGrouping'
-    CATEGORY = 'AI WizArt/Prompt Composer Tools'
-
-    def promptComposerGrouping(self, text_in='', weight=0, active=True):
-        prompt = text_in
-        if text_in != '' and weight > 0 and active:
-            prompt = applyWeight(text_in, weight)
-        return (prompt,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

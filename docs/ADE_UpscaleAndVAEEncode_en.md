@@ -41,34 +41,6 @@ ADE_UpscaleAndVAEEncode node aims to process images by first upscaling them to a
 - Common nodes: unknown
 
 ## Source code
-```python
-class UpscaleAndVaeEncode:
-    @classmethod
-    def INPUT_TYPES(s):
-        return {
-            "required": {
-                "image": ("IMAGE",),
-                "vae": ("VAE",),
-                "latent_size": ("LATENT",),
-                "scale_method": (ScaleMethods._LIST_IMAGE,),
-                "crop": (CropMethods._LIST, {"default": CropMethods.CENTER},),
-            }
-        }
-    
-    RETURN_TYPES = ("LATENT",)
-    FUNCTION = "preprocess_images"
+[View source repository on GitHub](https://github.com/Kosinkadink/ComfyUI-AnimateDiff-Evolved)
 
-    CATEGORY = "Animate Diff 🎭🅐🅓/② Gen2 nodes ②/AnimateLCM-I2V"
-
-    def preprocess_images(self, image: torch.Tensor, vae: VAE, latent_size: torch.Tensor, scale_method: str, crop: str):
-        b, c, h, w = latent_size["samples"].size()
-        image = image.movedim(-1,1)
-        image = comfy.utils.common_upscale(samples=image, width=w*8, height=h*8, upscale_method=scale_method, crop=crop)
-        image = image.movedim(1,-1)
-        # now that images are the expected size, VAEEncode them
-        try:  # account for old ComfyUI versions (TODO: remove this when other changes require ComfyUI update)
-            if not hasattr(vae, "vae_encode_crop_pixels"):
-                image = VAEEncode.vae_encode_crop_pixels(image)
-        except Exception:
-            pass
-        return ({"samples": vae.encode(image[:,:,:,:3])},)
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

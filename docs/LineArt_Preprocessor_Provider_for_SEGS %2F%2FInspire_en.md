@@ -23,17 +23,6 @@ This node abstractly represents the process of generating line art from an input
 - Infra type: GPU
 
 # Source code
-```
-class LineArt_Preprocessor_Provider_for_SEGS:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Inspire-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'coarse': ('BOOLEAN', {'default': False, 'label_on': 'enable', 'label_off': 'disable'})}}
-    RETURN_TYPES = ('SEGS_PREPROCESSOR',)
-    FUNCTION = 'doit'
-    CATEGORY = 'InspirePack/SEGS/ControlNet'
-
-    def doit(self, coarse):
-        obj = LineArt_Preprocessor_wrapper(coarse)
-        return (obj,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

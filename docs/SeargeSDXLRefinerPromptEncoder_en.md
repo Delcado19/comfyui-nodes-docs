@@ -51,23 +51,6 @@ This node aims to process and refine text inputs by encoding them into a structu
 - Infra type: CPU
 
 # Source code
-```
-class SeargeSDXLRefinerPromptEncoder:
+[View source repository on GitHub](https://github.com/jobunk/SeargeSDXL)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'refiner_clip': ('CLIP',), 'pos_r': ('STRING', {'multiline': True, 'default': 'POS_R'}), 'neg_r': ('STRING', {'multiline': True, 'default': 'NEG_R'}), 'pos_ascore': ('FLOAT', {'default': 6.0, 'min': 0.0, 'max': 1000.0, 'step': 0.01}), 'neg_ascore': ('FLOAT', {'default': 2.5, 'min': 0.0, 'max': 1000.0, 'step': 0.01}), 'refiner_width': ('INT', {'default': 2048, 'min': 0, 'max': nodes.MAX_RESOLUTION, 'step': 8}), 'refiner_height': ('INT', {'default': 2048, 'min': 0, 'max': nodes.MAX_RESOLUTION, 'step': 8})}}
-    RETURN_TYPES = ('CONDITIONING', 'CONDITIONING')
-    RETURN_NAMES = ('refiner_positive', 'refiner_negative')
-    FUNCTION = 'encode'
-    CATEGORY = 'Searge/_deprecated_/ClipEncoding'
-
-    def encode(self, refiner_clip, pos_r, neg_r, pos_ascore, neg_ascore, refiner_width, refiner_height):
-        tokens1 = refiner_clip.tokenize(pos_r)
-        (cond1, pooled1) = refiner_clip.encode_from_tokens(tokens1, return_pooled=True)
-        res1 = [[cond1, {'pooled_output': pooled1, 'aesthetic_score': pos_ascore, 'width': refiner_width, 'height': refiner_height}]]
-        tokens2 = refiner_clip.tokenize(neg_r)
-        (cond2, pooled2) = refiner_clip.encode_from_tokens(tokens2, return_pooled=True)
-        res2 = [[cond2, {'pooled_output': pooled2, 'aesthetic_score': neg_ascore, 'width': refiner_width, 'height': refiner_height}]]
-        return (res1, res2)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

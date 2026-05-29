@@ -30,24 +30,7 @@ This node has no output types.
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-@register_node("JWImageLoadRGB", "Image Load RGB")
-class _:
-    CATEGORY = "jamesWalker55"
-    INPUT_TYPES = lambda: {
-        "required": {
-            "path": ("STRING", {"default": "./image.png"}),
-        }
-    }
-    RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "execute"
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    def execute(self, path: str):
-        assert isinstance(path, str)
-
-        img = load_image(path)
-        return (img,)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

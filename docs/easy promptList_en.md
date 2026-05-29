@@ -48,26 +48,6 @@ This node simplifies the process of aggregating and processing text inputs, faci
 - Infra type: CPU
 
 # Source code
-```
-class promptList:
+[View source repository on GitHub](https://github.com/yolain/ComfyUI-Easy-Use)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'prompt_1': ('STRING', {'multiline': True, 'default': ''}), 'prompt_2': ('STRING', {'multiline': True, 'default': ''}), 'prompt_3': ('STRING', {'multiline': True, 'default': ''}), 'prompt_4': ('STRING', {'multiline': True, 'default': ''}), 'prompt_5': ('STRING', {'multiline': True, 'default': ''})}, 'optional': {'optional_prompt_list': ('LIST',)}}
-    RETURN_TYPES = ('LIST', 'STRING')
-    RETURN_NAMES = ('prompt_list', 'prompt_strings')
-    OUTPUT_IS_LIST = (False, True)
-    FUNCTION = 'run'
-    CATEGORY = 'EasyUse/Prompt'
-
-    def run(self, **kwargs):
-        prompts = []
-        if 'optional_prompt_list' in kwargs:
-            for l in kwargs['optional_prompt_list']:
-                prompts.append(l)
-        for k in sorted(kwargs.keys()):
-            v = kwargs[k]
-            if isinstance(v, str) and v != '':
-                prompts.append(v)
-        return (prompts, prompts)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -23,11 +23,6 @@ The DPJinja node is designed to generate prompts using Jinja template syntax. It
 - Infra type: CPU
 
 # Source code
-```
-class DPJinja(DPGeneratorNode):
+[View source repository on GitHub](https://github.com/adieyal/comfyui-dynamicprompts)
 
-    def generate_prompt(self, text):
-        prompt_generator = JinjaGenerator()
-        all_prompts = prompt_generator.generate(text, 1) or ['']
-        return str(all_prompts[0])
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

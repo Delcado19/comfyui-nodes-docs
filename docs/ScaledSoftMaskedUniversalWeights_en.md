@@ -35,25 +35,6 @@ The `load_weights` method in the `ScaledSoftMaskedUniversalWeights` class is des
 - Infra type: CPU
 
 # Source code
-```
-class ScaledSoftMaskedUniversalWeights:
+[View source repository on GitHub](https://github.com/Kosinkadink/ComfyUI-Advanced-ControlNet)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'mask': ('MASK',), 'min_base_multiplier': ('FLOAT', {'default': 0.0, 'min': 0.0, 'max': 1.0, 'step': 0.001}), 'max_base_multiplier': ('FLOAT', {'default': 1.0, 'min': 0.0, 'max': 1.0, 'step': 0.001})}}
-    RETURN_TYPES = ('CONTROL_NET_WEIGHTS', 'TIMESTEP_KEYFRAME')
-    RETURN_NAMES = WEIGHTS_RETURN_NAMES
-    FUNCTION = 'load_weights'
-    CATEGORY = 'Adv-ControlNet 🛂🅐🅒🅝/weights'
-
-    def load_weights(self, mask: Tensor, min_base_multiplier: float, max_base_multiplier: float, lock_min=False, lock_max=False):
-        mask = mask.clone()
-        x_min = 0.0 if lock_min else mask.min()
-        x_max = 1.0 if lock_max else mask.max()
-        if x_min == x_max:
-            mask = torch.ones_like(mask) * max_base_multiplier
-        else:
-            mask = linear_conversion(mask, x_min, x_max, min_base_multiplier, max_base_multiplier)
-        weights = ControlWeights.universal_mask(weight_mask=mask)
-        return (weights, TimestepKeyframeGroup.default(TimestepKeyframe(control_weights=weights)))
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

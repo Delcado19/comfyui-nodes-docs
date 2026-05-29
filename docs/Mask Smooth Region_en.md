@@ -28,35 +28,6 @@ The WAS_Mask_Smooth_Region node is designed to process input masks and apply smo
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Mask_Smooth_Region:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        self.WT = WAS_Tools_Class()
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'masks': ('MASK',), 'sigma': ('FLOAT', {'default': 5.0, 'min': 0.0, 'max': 128.0, 'step': 0.1})}}
-    CATEGORY = 'WAS Suite/Image/Masking'
-    RETURN_TYPES = ('MASK',)
-    RETURN_NAMES = ('MASKS',)
-    FUNCTION = 'smooth_region'
-
-    def smooth_region(self, masks, sigma=128):
-        if masks.ndim > 3:
-            regions = []
-            for mask in masks:
-                mask_np = np.clip(255.0 * mask.cpu().numpy().squeeze(), 0, 255).astype(np.uint8)
-                pil_image = Image.fromarray(mask_np, mode='L')
-                region_mask = self.WT.Masking.smooth_region(pil_image, sigma)
-                region_tensor = pil2mask(region_mask).unsqueeze(0).unsqueeze(1)
-                regions.append(region_tensor)
-            regions_tensor = torch.cat(regions, dim=0)
-            return (regions_tensor,)
-        else:
-            mask_np = np.clip(255.0 * masks.cpu().numpy().squeeze(), 0, 255).astype(np.uint8)
-            pil_image = Image.fromarray(mask_np, mode='L')
-            region_mask = self.WT.Masking.smooth_region(pil_image, sigma)
-            region_tensor = pil2mask(region_mask).unsqueeze(0).unsqueeze(1)
-            return (region_tensor,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

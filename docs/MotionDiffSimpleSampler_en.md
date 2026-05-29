@@ -45,52 +45,7 @@ The MotionDiffSimpleSampler node simplifies the sampling process in motion diffu
 - Infra type: `GPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class MotionDiffSimpleSampler:
-    @classmethod
-    def INPUT_TYPES(s):
-        return {
-            "required": {
-                "sampler_name": (["ddpm", "ddim"], {"default": "ddim"}),
-                "md_model": ("MD_MODEL", ),
-                "md_clip": ("MD_CLIP", ),
-                "md_cond": ("MD_CONDITIONING", ),
-                "motion_data": ("MOTION_DATA",),
-                "seed": ("INT", {"default": 123,"min": 0, "max": 0xffffffffffffffff, "step": 1}),
-            }
-        }
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    RETURN_TYPES = ("MOTION_DATA",)
-    CATEGORY = "MotionDiff"
-    FUNCTION = "sample"
-
-    def sample(self, sampler_name, md_model: MotionDiffModelWrapper, md_clip, md_cond, motion_data, seed):
-        md_model.to(get_torch_device())
-        md_clip.to(get_torch_device())
-        for key in motion_data:
-            motion_data[key] = to_gpu(motion_data[key])
-
-        kwargs = {
-            **motion_data,
-            'inference_kwargs': {},
-            'sampler': sampler_name,
-            'seed': seed
-        }
-
-        with torch.no_grad():
-            output = md_model(md_clip.model, cond_dict=md_cond, **kwargs)[0]['pred_motion']
-            pred_motion = output * md_model.dataset.std + md_model.dataset.mean
-            pred_motion = pred_motion.cpu().detach()
-        
-        md_model.cpu(), md_clip.cpu()
-        for key in motion_data:
-            motion_data[key] = to_cpu(motion_data[key])
-        return ({
-            'motion': pred_motion,
-            'motion_mask': motion_data['motion_mask'],
-            'motion_length': motion_data['motion_length'],
-        }, )
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

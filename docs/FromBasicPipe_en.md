@@ -39,18 +39,6 @@ The 'doit' method of the FromBasicPipe node serves as a critical conduit in the 
 - Infra type: CPU
 
 # Source code
-```
-class FromBasicPipe:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'basic_pipe': ('BASIC_PIPE',)}}
-    RETURN_TYPES = ('MODEL', 'CLIP', 'VAE', 'CONDITIONING', 'CONDITIONING')
-    RETURN_NAMES = ('model', 'clip', 'vae', 'positive', 'negative')
-    FUNCTION = 'doit'
-    CATEGORY = 'ImpactPack/Pipe'
-
-    def doit(self, basic_pipe):
-        (model, clip, vae, positive, negative) = basic_pipe
-        return (model, clip, vae, positive, negative)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

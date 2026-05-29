@@ -33,32 +33,7 @@ This node aims to convert contours into a mask image while utilizing the specifi
 - Infra type: `GPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class ContourToMask:
-    @classmethod
-    def INPUT_TYPES(s):
-        return {
-            "required": {
-                "image": ("IMAGE",),
-                "contour": ("CV_CONTOUR",),
-                "output_format": (image_output_formats_options, {
-                    "default": image_output_formats_options[0]
-                })
-            }
-        }
+[View source repository on GitHub](https://github.com/bmad4ever/ComfyUI-Bmad-Custom-Nodes)
 
-    RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "draw"
-    CATEGORY = "Bmad/CV/Contour"
-
-    def draw(self, image, contour, output_format):
-        image = tensor2opencv(image, 1)
-        image = np.zeros(image.shape, dtype=np.uint8)
-        cv.drawContours(image, [contour], 0, (255), -1)
-        image = maybe_convert_img(image, 1, image_output_formats_options_map[output_format])
-        image = opencv2tensor(image)
-        return (image,)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

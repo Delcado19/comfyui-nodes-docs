@@ -43,34 +43,6 @@ The SamplerCustomAdvanced node performs advanced sampling on latent images. It u
 - Infra type: GPU
 
 # Source code
-```
-class SamplerCustomAdvanced:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'noise': ('NOISE',), 'guider': ('GUIDER',), 'sampler': ('SAMPLER',), 'sigmas': ('SIGMAS',), 'latent_image': ('LATENT',)}}
-    RETURN_TYPES = ('LATENT', 'LATENT')
-    RETURN_NAMES = ('output', 'denoised_output')
-    FUNCTION = 'sample'
-    CATEGORY = 'sampling/custom_sampling'
-
-    def sample(self, noise, guider, sampler, sigmas, latent_image):
-        latent = latent_image
-        latent_image = latent['samples']
-        noise_mask = None
-        if 'noise_mask' in latent:
-            noise_mask = latent['noise_mask']
-        x0_output = {}
-        callback = latent_preview.prepare_callback(guider.model_patcher, sigmas.shape[-1] - 1, x0_output)
-        disable_pbar = not comfy.utils.PROGRESS_BAR_ENABLED
-        samples = guider.sample(noise.generate_noise(latent), latent_image, sampler, sigmas, denoise_mask=noise_mask, callback=callback, disable_pbar=disable_pbar, seed=noise.seed)
-        samples = samples.to(comfy.model_management.intermediate_device())
-        out = latent.copy()
-        out['samples'] = samples
-        if 'x0' in x0_output:
-            out_denoised = latent.copy()
-            out_denoised['samples'] = guider.model_patcher.model.process_latent_out(x0_output['x0'].cpu())
-        else:
-            out_denoised = out
-        return (out, out_denoised)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

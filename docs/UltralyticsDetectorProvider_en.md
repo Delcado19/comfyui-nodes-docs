@@ -27,23 +27,6 @@ The UltraalyticsDetectorProvider node facilitates loading and using object detec
 - Infra type: GPU
 
 # Source code
-```
-class UltralyticsDetectorProvider:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        bboxs = ['bbox/' + x for x in folder_paths.get_filename_list('ultralytics_bbox')]
-        segms = ['segm/' + x for x in folder_paths.get_filename_list('ultralytics_segm')]
-        return {'required': {'model_name': (bboxs + segms,)}}
-    RETURN_TYPES = ('BBOX_DETECTOR', 'SEGM_DETECTOR')
-    FUNCTION = 'doit'
-    CATEGORY = 'ImpactPack'
-
-    def doit(self, model_name):
-        model_path = folder_paths.get_full_path('ultralytics', model_name)
-        model = subcore.load_yolo(model_path)
-        if model_name.startswith('bbox'):
-            return (subcore.UltraBBoxDetector(model), core.NO_SEGM_DETECTOR())
-        else:
-            return (subcore.UltraBBoxDetector(model), subcore.UltraSegmDetector(model))
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -44,20 +44,6 @@ The 'composite' method of the LatentCompositeMasked node aims to blend the sourc
 - Infra type: GPU
 
 # Source code
-```
-class LatentCompositeMasked:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'destination': ('LATENT',), 'source': ('LATENT',), 'x': ('INT', {'default': 0, 'min': 0, 'max': MAX_RESOLUTION, 'step': 8}), 'y': ('INT', {'default': 0, 'min': 0, 'max': MAX_RESOLUTION, 'step': 8}), 'resize_source': ('BOOLEAN', {'default': False})}, 'optional': {'mask': ('MASK',)}}
-    RETURN_TYPES = ('LATENT',)
-    FUNCTION = 'composite'
-    CATEGORY = 'latent'
-
-    def composite(self, destination, source, x, y, resize_source, mask=None):
-        output = destination.copy()
-        destination = destination['samples'].clone()
-        source = source['samples']
-        output['samples'] = composite(destination, source, x, y, mask, 8, resize_source)
-        return (output,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -23,17 +23,6 @@ The MaskToImage node is designed to convert binary mask data into a color image 
 - Infra type: CPU
 
 # Source code
-```
-class MaskToImage:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'mask': ('MASK',)}}
-    CATEGORY = 'mask'
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'mask_to_image'
-
-    def mask_to_image(self, mask):
-        result = mask.reshape((-1, 1, mask.shape[-2], mask.shape[-1])).movedim(1, -1).expand(-1, -1, -1, 3)
-        return (result,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

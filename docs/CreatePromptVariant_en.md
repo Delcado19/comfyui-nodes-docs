@@ -32,22 +32,6 @@ The CreatePromptVariant node is designed to generate diverse and creative text p
 - Infra type: CPU
 
 # Source code
-```
-class CreatePromptVariant:
+[View source repository on GitHub](https://github.com/AIrjen/OneButtonPrompt)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'prompt_input': ('STRING', {'default': '', 'multiline': True})}, 'optional': {'insanitylevel': ('INT', {'default': 5, 'min': 1, 'max': 10, 'step': 1}), 'seed': ('INT', {'default': 0, 'min': 0, 'max': 18446744073709551615})}}
-    RETURN_TYPES = ('STRING',)
-    RETURN_NAMES = ('prompt',)
-    FUNCTION = 'Comfy_OBP_PromptVariant'
-    CATEGORY = 'OneButtonPrompt'
-
-    def Comfy_OBP_PromptVariant(self, prompt_input, insanitylevel, seed):
-        generatedprompt = createpromptvariant(prompt_input, insanitylevel)
-        print(generatedprompt)
-        return (generatedprompt,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

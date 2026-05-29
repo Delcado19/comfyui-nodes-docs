@@ -39,26 +39,6 @@ The GradientImage node generates a gradient image from a specified start color t
 - Infra type: CPU
 
 # Source code
-```
-class GradientImage:
+[View source repository on GitHub](https://github.com/shadowcz007/comfyui-mixlab-nodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'width': ('INT', {'default': 512, 'min': 1, 'max': 8192, 'step': 1, 'display': 'number'}), 'height': ('INT', {'default': 512, 'min': 1, 'max': 8192, 'step': 1, 'display': 'number'}), 'start_color_hex': ('STRING', {'multiline': False, 'default': '#FFFFFF', 'dynamicPrompts': False}), 'end_color_hex': ('STRING', {'multiline': False, 'default': '#000000', 'dynamicPrompts': False})}}
-    RETURN_TYPES = ('IMAGE', 'MASK')
-    FUNCTION = 'run'
-    CATEGORY = '♾️Mixlab/Image'
-    INPUT_IS_LIST = False
-    OUTPUT_IS_LIST = (False, False)
-
-    def run(self, width, height, start_color_hex, end_color_hex):
-        (im, mask) = generate_gradient_image(width, height, start_color_hex, end_color_hex)
-        output_dir = folder_paths.get_temp_directory()
-        (full_output_folder, filename, counter, subfolder, _) = folder_paths.get_save_image_path('tmp_', output_dir)
-        image_file = f'{filename}_{counter:05}.png'
-        image_path = os.path.join(full_output_folder, image_file)
-        im.save(image_path, compress_level=6)
-        im = pil2tensor(im)
-        mask = pil2tensor(mask)
-        return {'ui': {'images': [{'filename': image_file, 'subfolder': subfolder, 'type': 'temp'}]}, 'result': (im, mask)}
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -43,40 +43,6 @@ The 'merge' method of the MergeImages node aims to combine two sets of images in
 - Infra type: CPU
 
 # Source code
-```
-class MergeImages:
+[View source repository on GitHub](https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'images_A': ('IMAGE',), 'images_B': ('IMAGE',), 'merge_strategy': (MergeStrategies.list_all,), 'scale_method': (ScaleMethods.list_all,), 'crop': (CropMethods.list_all,)}}
-    CATEGORY = 'Video Helper Suite 🎥🅥🅗🅢/image'
-    RETURN_TYPES = ('IMAGE', 'INT')
-    RETURN_NAMES = ('IMAGE', 'count')
-    FUNCTION = 'merge'
-
-    def merge(self, images_A: Tensor, images_B: Tensor, merge_strategy: str, scale_method: str, crop: str):
-        images = []
-        if images_A.shape[3] != images_B.shape[3] or images_A.shape[2] != images_B.shape[2]:
-            images_A = images_A.movedim(-1, 1)
-            images_B = images_B.movedim(-1, 1)
-            A_size = images_A.shape[3] * images_A.shape[2]
-            B_size = images_B.shape[3] * images_B.shape[2]
-            use_A_as_template = True
-            if merge_strategy == MergeStrategies.MATCH_A:
-                pass
-            elif merge_strategy == MergeStrategies.MATCH_B:
-                use_A_as_template = False
-            elif merge_strategy in (MergeStrategies.MATCH_SMALLER, MergeStrategies.MATCH_LARGER):
-                if A_size <= B_size:
-                    use_A_as_template = True if merge_strategy == MergeStrategies.MATCH_SMALLER else False
-            if use_A_as_template:
-                images_B = comfy.utils.common_upscale(images_B, images_A.shape[3], images_A.shape[2], scale_method, crop)
-            else:
-                images_A = comfy.utils.common_upscale(images_A, images_B.shape[3], images_B.shape[2], scale_method, crop)
-            images_A = images_A.movedim(1, -1)
-            images_B = images_B.movedim(1, -1)
-        images.append(images_A)
-        images.append(images_B)
-        all_images = torch.cat(images, dim=0)
-        return (all_images, all_images.size(0))
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

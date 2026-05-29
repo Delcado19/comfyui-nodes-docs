@@ -35,29 +35,6 @@ The CreateGradientMask node is designed to generate gradient masks for various i
 - Infra type: CPU
 
 # Source code
-```
-class CreateGradientMask:
-    RETURN_TYPES = ('MASK',)
-    FUNCTION = 'createmask'
-    CATEGORY = 'KJNodes/masking/generate'
+[View source repository on GitHub](https://github.com/kijai/ComfyUI-KJNodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'invert': ('BOOLEAN', {'default': False}), 'frames': ('INT', {'default': 0, 'min': 0, 'max': 255, 'step': 1}), 'width': ('INT', {'default': 256, 'min': 16, 'max': 4096, 'step': 1}), 'height': ('INT', {'default': 256, 'min': 16, 'max': 4096, 'step': 1})}}
-
-    def createmask(self, frames, width, height, invert):
-        batch_size = frames
-        out = []
-        image_batch = np.zeros((batch_size, height, width), dtype=np.float32)
-        for i in range(batch_size):
-            gradient = np.linspace(1.0, 0.0, width, dtype=np.float32)
-            time = i / frames
-            offset_gradient = gradient - time
-            image_batch[i] = offset_gradient.reshape(1, -1)
-        output = torch.from_numpy(image_batch)
-        mask = output
-        out.append(mask)
-        if invert:
-            return (1.0 - torch.cat(out, dim=0),)
-        return (torch.cat(out, dim=0),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

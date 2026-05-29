@@ -35,31 +35,6 @@ The CR_RandomMultilineColors node is designed to generate a multiline string con
 - Infra type: CPU
 
 # Source code
-```
-class CR_RandomMultilineColors:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        types = ['rgb', 'hex color', 'matplotlib xkcd']
-        return {'required': {'seed': ('INT', {'default': 0, 'min': 0, 'max': 18446744073709551615}), 'value_type': (types,), 'rows': ('INT', {'default': 5, 'min': 1, 'max': 2048})}}
-    RETURN_TYPES = ('STRING', 'STRING')
-    RETURN_NAMES = ('multiline_text', 'show_help')
-    FUNCTION = 'generate'
-    CATEGORY = icons.get('Comfyroll/Utils/Random')
-
-    def generate(self, value_type, rows, seed):
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Other-Nodes#cr-random-multiline-colors'
-        random.seed(seed)
-        xkcd_colors = mcolors.XKCD_COLORS
-        if value_type == 'hex color':
-            choice_str = '0123456789ABCDEF'
-        if value_type == 'hex color':
-            multiline_text = '\n'.join(['#' + ''.join((random.choice(choice_str) for _ in range(6))) for _ in range(rows)])
-        elif value_type == 'rgb':
-            multiline_text = '\n'.join([f'{random.randint(0, 255)},{random.randint(0, 255)},{random.randint(0, 255)}' for _ in range(rows)])
-        elif value_type == 'matplotlib xkcd':
-            multiline_text = '\n'.join([random.choice(list(xkcd_colors.keys())).replace('xkcd:', '') for _ in range(rows)])
-        else:
-            pass
-        return (multiline_text, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -25,9 +25,7 @@ The FromListGetMasks node is designed to retrieve a specific mask from a given l
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class FromListGetMasks(metaclass=UnMakeListMeta):  TYPE = "MASK"
+[View source repository on GitHub](https://github.com/bmad4ever/ComfyUI-Bmad-Custom-Nodes)
 
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

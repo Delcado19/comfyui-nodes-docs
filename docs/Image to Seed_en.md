@@ -23,21 +23,6 @@ The function `image_to_seed` converts a series of images into corresponding seed
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Image_To_Seed:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'images': ('IMAGE',)}}
-    RETURN_TYPES = ('INT',)
-    OUTPUT_IS_LIST = (True,)
-    FUNCTION = 'image_to_seed'
-    CATEGORY = 'WAS Suite/Image/Analyze'
-
-    def image_to_seed(self, images):
-        seeds = []
-        for image in images:
-            image = tensor2pil(image)
-            seeds.append(image2seed(image))
-        return (seeds,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

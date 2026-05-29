@@ -51,33 +51,6 @@ The ImageBatchTestPattern node is designed to generate a batch of images with te
 - Infra type: CPU
 
 # Source code
-```
-class ImageBatchTestPattern:
+[View source repository on GitHub](https://github.com/kijai/ComfyUI-KJNodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'batch_size': ('INT', {'default': 1, 'min': 1, 'max': 255, 'step': 1}), 'start_from': ('INT', {'default': 0, 'min': 0, 'max': 255, 'step': 1}), 'text_x': ('INT', {'default': 256, 'min': 0, 'max': 4096, 'step': 1}), 'text_y': ('INT', {'default': 256, 'min': 0, 'max': 4096, 'step': 1}), 'width': ('INT', {'default': 512, 'min': 16, 'max': 4096, 'step': 1}), 'height': ('INT', {'default': 512, 'min': 16, 'max': 4096, 'step': 1}), 'font': (folder_paths.get_filename_list('kjnodes_fonts'),), 'font_size': ('INT', {'default': 255, 'min': 8, 'max': 4096, 'step': 1})}}
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'generatetestpattern'
-    CATEGORY = 'KJNodes/text'
-
-    def generatetestpattern(self, batch_size, font, font_size, start_from, width, height, text_x, text_y):
-        out = []
-        numbers = np.arange(start_from, start_from + batch_size)
-        font_path = folder_paths.get_full_path('kjnodes_fonts', font)
-        for number in numbers:
-            image = Image.new('RGB', (width, height), color='black')
-            draw = ImageDraw.Draw(image)
-            font_color = (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
-            font = ImageFont.truetype(font_path, font_size)
-            text = str(number)
-            try:
-                draw.text((text_x, text_y), text, font=font, fill=font_color, features=['-liga'])
-            except:
-                draw.text((text_x, text_y), text, font=font, fill=font_color)
-            image_np = np.array(image).astype(np.float32) / 255.0
-            image_tensor = torch.from_numpy(image_np).unsqueeze(0)
-            out.append(image_tensor)
-        out_tensor = torch.cat(out, dim=0)
-        return (out_tensor,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -27,16 +27,6 @@ This node aims to evaluate a single-operand mathematical condition on a floating
 - Infra type: CPU
 
 # Source code
-```
-class FloatUnaryCondition:
+[View source repository on GitHub](https://github.com/evanspearman/ComfyMath)
 
-    @classmethod
-    def INPUT_TYPES(cls) -> Mapping[str, Any]:
-        return {'required': {'op': (list(FLOAT_UNARY_CONDITIONS.keys()),), 'a': DEFAULT_FLOAT}}
-    RETURN_TYPES = ('BOOL',)
-    FUNCTION = 'op'
-    CATEGORY = 'math/float'
-
-    def op(self, op: str, a: float) -> tuple[bool]:
-        return (FLOAT_UNARY_CONDITIONS[op](a),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

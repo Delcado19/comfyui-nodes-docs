@@ -23,13 +23,6 @@ The RandomNoise node is designed to generate random noise patterns, which can se
 - Infra type: CPU
 
 # Source code
-```
-class RandomNoise(DisableNoise):
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'noise_seed': ('INT', {'default': 0, 'min': 0, 'max': 18446744073709551615})}}
-
-    def get_noise(self, noise_seed):
-        return (Noise_RandomNoise(noise_seed),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

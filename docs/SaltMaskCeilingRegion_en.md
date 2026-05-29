@@ -25,33 +25,7 @@ The SaltMaskCeilingRegion node is specifically used to identify and extract ceil
 - Infra type: `GPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class SaltMaskCeilingRegion:
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {
-            "required": {
-                "masks": ("MASK",),
-            }
-        }
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    CATEGORY = f"{NAME}/Masking/Filter"
-
-    RETURN_TYPES = ("MASK",)
-    RETURN_NAMES = ("MASKS",)
-
-    FUNCTION = "ceiling_region"
-    
-    def ceiling_region(self, masks):
-        regions = []
-        for mask in masks:
-            pil_image = mask2pil(mask.unsqueeze(0))
-            region_mask = MaskFilters.ceiling_region(pil_image)
-            region_tensor = pil2mask(region_mask)
-            regions.append(region_tensor)
-        regions_tensor = torch.cat(regions, dim=0)
-        return (regions_tensor,)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

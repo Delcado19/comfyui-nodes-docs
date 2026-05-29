@@ -44,32 +44,6 @@ The method `image_crop_location` is designed to precisely crop an image based on
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Image_Crop_Location:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'image': ('IMAGE',), 'top': ('INT', {'default': 0, 'max': 10000000, 'min': 0, 'step': 1}), 'left': ('INT', {'default': 0, 'max': 10000000, 'min': 0, 'step': 1}), 'right': ('INT', {'default': 256, 'max': 10000000, 'min': 0, 'step': 1}), 'bottom': ('INT', {'default': 256, 'max': 10000000, 'min': 0, 'step': 1})}}
-    RETURN_TYPES = ('IMAGE', 'CROP_DATA')
-    FUNCTION = 'image_crop_location'
-    CATEGORY = 'WAS Suite/Image/Process'
-
-    def image_crop_location(self, image, top=0, left=0, right=256, bottom=256):
-        image = tensor2pil(image)
-        (img_width, img_height) = image.size
-        crop_top = max(top, 0)
-        crop_left = max(left, 0)
-        crop_bottom = min(bottom, img_height)
-        crop_right = min(right, img_width)
-        crop_width = crop_right - crop_left
-        crop_height = crop_bottom - crop_top
-        if crop_width <= 0 or crop_height <= 0:
-            raise ValueError('Invalid crop dimensions. Please check the values for top, left, right, and bottom.')
-        crop = image.crop((crop_left, crop_top, crop_right, crop_bottom))
-        crop_data = (crop.size, (crop_left, crop_top, crop_right, crop_bottom))
-        crop = crop.resize((crop.size[0] // 8 * 8, crop.size[1] // 8 * 8))
-        return (pil2tensor(crop), crop_data)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

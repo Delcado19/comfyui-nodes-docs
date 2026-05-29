@@ -28,26 +28,6 @@ This node class encapsulates the functionality of converting facial mask data in
 - Infra type: CPU
 
 # Source code
-```
-class MaskToBBox:
+[View source repository on GitHub](https://github.com/Ryuukeisyou/comfyui_face_parsing)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'mask': ('MASK',), 'pad': ('INT', {'default': 0, 'min': 0, 'step': 1})}}
-    RETURN_TYPES = ('BBOX',)
-    FUNCTION = 'main'
-    CATEGORY = 'face_parsing'
-
-    def main(self, mask: Tensor, pad: int):
-        result = ops.masks_to_boxes(mask)
-        if pad != 0:
-            for item in result:
-                item[0] = item[0] - pad
-                item[1] = item[1] - pad
-                item[2] = item[2] + pad
-                item[3] = item[3] + pad
-        return (result,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

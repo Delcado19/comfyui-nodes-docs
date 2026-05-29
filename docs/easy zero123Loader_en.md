@@ -68,39 +68,6 @@ The zero123Loader node serves as an interface for loading and managing various m
 - Infra type: CPU
 
 # Source code
-```
-class zero123Loader:
+[View source repository on GitHub](https://github.com/yolain/ComfyUI-Easy-Use)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-
-        def get_file_list(filenames):
-            return [file for file in filenames if file != 'put_models_here.txt' and 'zero123' in file.lower()]
-        return {'required': {'ckpt_name': (list(['stable_zero123.ckpt']),), 'vae_name': (['Baked VAE'] + folder_paths.get_filename_list('vae'),), 'init_image': ('IMAGE',), 'empty_latent_width': ('INT', {'default': 256, 'min': 16, 'max': MAX_RESOLUTION, 'step': 8}), 'empty_latent_height': ('INT', {'default': 256, 'min': 16, 'max': MAX_RESOLUTION, 'step': 8}), 'batch_size': ('INT', {'default': 1, 'min': 1, 'max': 64}), 'elevation': ('FLOAT', {'default': 0.0, 'min': -180.0, 'max': 180.0}), 'azimuth': ('FLOAT', {'default': 0.0, 'min': -180.0, 'max': 180.0})}, 'hidden': {'prompt': 'PROMPT', 'my_unique_id': 'UNIQUE_ID'}}
-    RETURN_TYPES = ('PIPE_LINE', 'MODEL', 'VAE')
-    RETURN_NAMES = ('pipe', 'model', 'vae')
-    FUNCTION = 'adv_pipeloader'
-    CATEGORY = 'EasyUse/Loaders'
-
-    def adv_pipeloader(self, ckpt_name, vae_name, init_image, empty_latent_width, empty_latent_height, batch_size, elevation, azimuth, prompt=None, my_unique_id=None):
-        model: ModelPatcher | None = None
-        vae: VAE | None = None
-        clip: CLIP | None = None
-        clip_vision = None
-        easyCache.update_loaded_objects(prompt)
-        (model, clip, vae, clip_vision) = easyCache.load_checkpoint(ckpt_name, 'Default', True)
-        output = clip_vision.encode_image(init_image)
-        pooled = output.image_embeds.unsqueeze(0)
-        pixels = comfy.utils.common_upscale(init_image.movedim(-1, 1), empty_latent_width, empty_latent_height, 'bilinear', 'center').movedim(1, -1)
-        encode_pixels = pixels[:, :, :, :3]
-        t = vae.encode(encode_pixels)
-        cam_embeds = camera_embeddings(elevation, azimuth)
-        cond = torch.cat([pooled, cam_embeds.repeat((pooled.shape[0], 1, 1))], dim=-1)
-        positive = [[cond, {'concat_latent_image': t}]]
-        negative = [[torch.zeros_like(pooled), {'concat_latent_image': torch.zeros_like(t)}]]
-        latent = torch.zeros([batch_size, 4, empty_latent_height // 8, empty_latent_width // 8])
-        samples = {'samples': latent}
-        image = easySampler.pil2tensor(Image.new('RGB', (1, 1), (0, 0, 0)))
-        pipe = {'model': model, 'positive': positive, 'negative': negative, 'vae': vae, 'clip': clip, 'samples': samples, 'images': image, 'seed': 0, 'loader_settings': {'ckpt_name': ckpt_name, 'vae_name': vae_name, 'positive': positive, 'positive_l': None, 'positive_g': None, 'positive_balance': None, 'negative': negative, 'negative_l': None, 'negative_g': None, 'negative_balance': None, 'empty_latent_width': empty_latent_width, 'empty_latent_height': empty_latent_height, 'batch_size': batch_size, 'seed': 0, 'empty_samples': samples}}
-        return (pipe, model, vae)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -36,17 +36,6 @@ The method 'save_images_no_display' is designed to save a series of images to a 
 - Infra type: CPU
 
 # Source code
-```
-class SaveImageNoDisplay(SaveImagesMikeyML):
+[View source repository on GitHub](https://github.com/bash-j/mikey_nodes)
 
-    def __init__(self):
-        super().__init__()
-    RETURN_TYPES = ()
-    FUNCTION = 'save_images_no_display'
-    OUTPUT_NODE = True
-    CATEGORY = 'Mikey/Image'
-
-    def save_images_no_display(self, images, sub_directory, filename_text_1, filename_text_2, filename_text_3, filename_separator, timestamp, counter_type, filename_text_1_pos, filename_text_2_pos, filename_text_3_pos, timestamp_pos, timestamp_type, counter_pos, extra_metadata, prompt=None, extra_pnginfo=None):
-        self.save_images(images, sub_directory, filename_text_1, filename_text_2, filename_text_3, filename_separator, timestamp, counter_type, filename_text_1_pos, filename_text_2_pos, filename_text_3_pos, timestamp_pos, timestamp_type, counter_pos, extra_metadata, prompt, extra_pnginfo)
-        return (None,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

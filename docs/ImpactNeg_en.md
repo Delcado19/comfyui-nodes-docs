@@ -23,16 +23,6 @@ The 'doit' method of the ImpactNeg node is designed to invert the logical state 
 - Infra type: CPU
 
 # Source code
-```
-class ImpactNeg:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'value': ('BOOLEAN', {'forceInput': True})}}
-    FUNCTION = 'doit'
-    CATEGORY = 'ImpactPack/Logic'
-    RETURN_TYPES = ('BOOLEAN',)
-
-    def doit(self, value):
-        return (not value,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

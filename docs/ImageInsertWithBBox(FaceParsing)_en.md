@@ -31,33 +31,6 @@ This node aims to insert one image into the specified bounding box position of a
 - Infra type: GPU
 
 # Source code
-```
-class ImageInsertWithBBox:
+[View source repository on GitHub](https://github.com/Ryuukeisyou/comfyui_face_parsing)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'bbox': ('BBOX', {}), 'image_src': ('IMAGE', {}), 'image': ('IMAGE', {})}}
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'main'
-    CATEGORY = 'face_parsing'
-
-    def main(self, bbox: Tensor, image_src: Tensor, image: Tensor):
-        bbox_int = bbox.int()
-        l = bbox_int[0]
-        t = bbox_int[1]
-        r = bbox_int[2]
-        b = bbox_int[3]
-        image_permuted = image.permute(0, 3, 1, 2)
-        resized = functional.resize(image_permuted, [b - t, r - l])
-        (_, h, w, c) = image_src.shape
-        padded = functional.pad(resized, [l, t, w - r, h - b])
-        src_permuted = image_src.permute(0, 3, 1, 2)
-        mask = torch.zeros(src_permuted.shape)
-        mask[:, :, t:b, l:r] = 1
-        result = torch.where(mask == 0, src_permuted, padded)
-        final = result.permute(0, 2, 3, 1)
-        return (final,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -23,23 +23,6 @@ This node uses image processing techniques to identify and isolate facial featur
 - Infra type: CPU
 
 # Source code
-```
-class FaceToMask:
+[View source repository on GitHub](https://github.com/shadowcz007/comfyui-mixlab-nodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'image': ('IMAGE',)}}
-    RETURN_TYPES = ('MASK',)
-    FUNCTION = 'run'
-    CATEGORY = '♾️Mixlab/Mask'
-    INPUT_IS_LIST = False
-    OUTPUT_IS_LIST = (False,)
-
-    def run(self, image):
-        im = tensor2pil(image)
-        mask = detect_faces(im)
-        mask = pil2tensor(mask)
-        channels = ['red', 'green', 'blue', 'alpha']
-        mask = mask[:, :, :, channels.index('green')]
-        return (mask,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

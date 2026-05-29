@@ -29,24 +29,7 @@ This node is designed to compute the generation resolution directly from the inp
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class ImageGenResolutionFromImage:
-    @classmethod
-    def INPUT_TYPES(s):
-        return {
-            "required": { "image": ("IMAGE", ) }
-        }
-    
-    RETURN_TYPES = ("INT", "INT")
-    RETURN_NAMES = ("IMAGE_GEN_WIDTH (INT)", "IMAGE_GEN_HEIGHT (INT)")
-    FUNCTION = "execute"
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    CATEGORY = "ControlNet Preprocessors"
-
-    def execute(self, image):
-        _, H, W, _ = image.shape
-        return (W, H)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

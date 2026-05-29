@@ -39,31 +39,6 @@ This node generates a series of floating-point numbers within a specified range,
 - Infra type: CPU
 
 # Source code
-```
-class FloatRange:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Inspire-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'start': ('FLOAT', {'default': 0.0, 'min': -100.0, 'max': 100.0, 'step': 1e-09}), 'stop': ('FLOAT', {'default': 1.0, 'min': -100.0, 'max': 100.0, 'step': 1e-09}), 'step': ('FLOAT', {'default': 0.01, 'min': 0.0, 'max': 100.0, 'step': 1e-09}), 'limit': ('INT', {'default': 100, 'min': 2, 'max': 4096, 'step': 1}), 'ensure_end': ('BOOLEAN', {'default': True, 'label_on': 'enable', 'label_off': 'disable'})}}
-    RETURN_TYPES = ('FLOAT',)
-    OUTPUT_IS_LIST = (True,)
-    FUNCTION = 'doit'
-    CATEGORY = 'InspirePack/Util'
-
-    def doit(self, start, stop, step, limit, ensure_end):
-        if start >= stop or step == 0:
-            return ([start],)
-        res = []
-        x = start
-        last = x
-        while x <= stop and limit > 0:
-            res.append(x)
-            last = x
-            limit -= 1
-            x += step
-        if ensure_end and last != stop:
-            if len(res) >= limit:
-                res.pop()
-            res.append(stop)
-        return (res,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

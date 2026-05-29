@@ -32,19 +32,6 @@ The VAEDecodeBatched node is designed to batch decode latent samples using a Var
 - Infra type: GPU
 
 # Source code
-```
-class VAEDecodeBatched:
+[View source repository on GitHub](https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'samples': ('LATENT',), 'vae': ('VAE',), 'per_batch': ('INT', {'default': 16, 'min': 1})}}
-    CATEGORY = 'Video Helper Suite 🎥🅥🅗🅢/batched nodes'
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'decode'
-
-    def decode(self, vae, samples, per_batch):
-        decoded = []
-        for start_idx in range(0, samples['samples'].shape[0], per_batch):
-            decoded.append(vae.decode(samples['samples'][start_idx:start_idx + per_batch]))
-        return (torch.cat(decoded, dim=0),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

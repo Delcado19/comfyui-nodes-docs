@@ -25,21 +25,6 @@ This node is designed to unload or release resources related to the AnimateDiff 
 - Common nodes: unknown
 
 ## Source code
-```python
-class AnimateDiffUnload:
-    def __init__(self) -> None:
-        pass
+[View source repository on GitHub](https://github.com/Kosinkadink/ComfyUI-AnimateDiff-Evolved)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {"required": {"model": ("MODEL",)}}
-
-    RETURN_TYPES = ("MODEL",)
-    CATEGORY = "Animate Diff 🎭🅐🅓/extras"
-    FUNCTION = "unload_motion_modules"
-
-    def unload_motion_modules(self, model: ModelPatcher):
-        # return model clone with ejected params
-        #model = eject_params_from_model(model)
-        model = get_vanilla_model_patcher(model)
-        return (model.clone(),)
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

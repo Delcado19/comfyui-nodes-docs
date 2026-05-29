@@ -29,36 +29,7 @@ The SaltMaskDilateRegion node applies a dilation filter to mask regions, effecti
 - Infra type: `GPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class SaltMaskDilateRegion:
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {
-                    "required": {
-                        "masks": ("MASK",),
-                        "iterations": ("INT", {"default":5, "min":1, "max":64, "step":1}),
-                    }
-                }
+[View source repository on GitHub](https://github.com/saltai-mlops/ComfyUI/blob/main/custom_nodes/salt_filters/salt_filters.py)
 
-    CATEGORY = f"{NAME}/Masking/Filter"
-
-    RETURN_TYPES = ("MASK",)
-    RETURN_NAMES = ("MASKS",)
-
-    FUNCTION = "dilate_region"
-
-    def dilate_region(self, masks, iterations=5):
-        if not isinstance(iterations, list):
-            iterations = [iterations]
-        regions = []
-        for i, mask in enumerate(masks):
-            pil_image = mask2pil(mask.unsqueeze(0))
-            region_mask = MaskFilters.dilate_region(pil_image, iterations[i if i < len(iterations) else -1])
-            region_tensor = pil2mask(region_mask)
-            regions.append(region_tensor)
-        regions_tensor = torch.cat(regions, dim=0)
-        return (regions_tensor,)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

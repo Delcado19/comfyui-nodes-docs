@@ -23,24 +23,6 @@ This node simplifies the process of generating a list of sampler names that can 
 - Infra type: CPU
 
 # Source code
-```
-class CreateSampler_names:
+[View source repository on GitHub](https://github.com/shadowcz007/comfyui-mixlab-nodes)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'sampler_names': ('STRING', {'multiline': True, 'default': '\n'.join(comfy.samplers.KSampler.SAMPLERS), 'dynamicPrompts': False})}}
-    RETURN_TYPES = (any_type,)
-    RETURN_NAMES = ('sampler_names',)
-    INPUT_IS_LIST = False
-    OUTPUT_IS_LIST = (True,)
-    FUNCTION = 'run'
-    CATEGORY = '♾️Mixlab/Utils'
-
-    def run(self, sampler_names):
-        sampler_names = sampler_names.split('\n')
-        sampler_names = [name for name in sampler_names if name.strip()]
-        return (sampler_names,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

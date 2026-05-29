@@ -32,30 +32,6 @@ This node class aims to provide a high-level overview of tensor shapes passing t
 - Infra type: CPU
 
 # Source code
-```
-class showTensorShape:
+[View source repository on GitHub](https://github.com/yolain/ComfyUI-Easy-Use)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'tensor': (AlwaysEqualProxy('*'),)}, 'optional': {}, 'hidden': {'unique_id': 'UNIQUE_ID', 'extra_pnginfo': 'EXTRA_PNGINFO'}}
-    RETURN_TYPES = ()
-    RETURN_NAMES = ()
-    OUTPUT_NODE = True
-    FUNCTION = 'log_input'
-    CATEGORY = 'EasyUse/Logic'
-
-    def log_input(self, tensor, unique_id=None, extra_pnginfo=None):
-        shapes = []
-
-        def tensorShape(tensor):
-            if isinstance(tensor, dict):
-                for k in tensor:
-                    tensorShape(tensor[k])
-            elif isinstance(tensor, list):
-                for i in range(len(tensor)):
-                    tensorShape(tensor[i])
-            elif hasattr(tensor, 'shape'):
-                shapes.append(list(tensor.shape))
-        tensorShape(tensor)
-        return {'ui': {'text': shapes}}
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -28,37 +28,6 @@ This node class processes and modifies text input by replacing options and wildc
 - Infra type: CPU
 
 # Source code
-```
-class wildcardsPrompt:
+[View source repository on GitHub](https://github.com/yolain/ComfyUI-Easy-Use)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(s):
-        wildcard_list = get_wildcard_list()
-        return {'required': {'text': ('STRING', {'default': '', 'multiline': True, 'dynamicPrompts': False, 'placeholder': '(Support Lora Block Weight and wildcard)'}), 'Select to add LoRA': (['Select the LoRA to add to the text'] + folder_paths.get_filename_list('loras'),), 'Select to add Wildcard': (['Select the Wildcard to add to the text'] + wildcard_list,), 'seed': ('INT', {'default': 0, 'min': 0, 'max': MAX_SEED_NUM}), 'multiline_mode': ('BOOLEAN', {'default': False})}, 'hidden': {'prompt': 'PROMPT', 'extra_pnginfo': 'EXTRA_PNGINFO', 'my_unique_id': 'UNIQUE_ID'}}
-    RETURN_TYPES = ('STRING', 'STRING')
-    RETURN_NAMES = ('text', 'populated_text')
-    OUTPUT_IS_LIST = (True, True)
-    OUTPUT_NODE = True
-    FUNCTION = 'main'
-    CATEGORY = 'EasyUse/Prompt'
-
-    @staticmethod
-    def main(*args, **kwargs):
-        prompt = kwargs['prompt'] if 'prompt' in kwargs else None
-        seed = kwargs['seed']
-        if prompt:
-            easyCache.update_loaded_objects(prompt)
-        text = kwargs['text']
-        if 'multiline_mode' in kwargs and kwargs['multiline_mode']:
-            populated_text = []
-            text = text.split('\n')
-            for t in text:
-                populated_text.append(process(t, seed))
-        else:
-            populated_text = [process(text, seed)]
-            text = [text]
-        return {'ui': {'value': [seed]}, 'result': (text, populated_text)}
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -28,17 +28,6 @@ The 'concat' method in the 'convertKeyframeKeysToBatchKeys' node efficiently com
 - Infra type: CPU
 
 # Source code
-```
-class convertKeyframeKeysToBatchKeys:
+[View source repository on GitHub](https://github.com/FizzleDorf/ComfyUI_FizzNodes)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'input': ('INT', {'forceInput': True, 'default': 0}), 'num_latents': ('INT', {'default': 16})}}
-    RETURN_TYPES = ('INT',)
-    FUNCTION = 'concat'
-    CATEGORY = 'FizzNodes 📅🅕🅝/HelperNodes'
-
-    def concat(self, input, num_latents):
-        c = input * num_latents - 1
-        return (c,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

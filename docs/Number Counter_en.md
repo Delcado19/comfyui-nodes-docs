@@ -56,39 +56,6 @@ The WAS_Number_Counter node is designed to manage and operate numerical values b
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Number_Counter:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        self.counters = {}
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'number_type': (['integer', 'float'],), 'mode': (['increment', 'decrement', 'increment_to_stop', 'decrement_to_stop'],), 'start': ('FLOAT', {'default': 0, 'min': -18446744073709551615, 'max': 18446744073709551615, 'step': 0.01}), 'stop': ('FLOAT', {'default': 0, 'min': -18446744073709551615, 'max': 18446744073709551615, 'step': 0.01}), 'step': ('FLOAT', {'default': 1, 'min': 0, 'max': 99999, 'step': 0.01})}, 'optional': {'reset_bool': ('NUMBER',)}, 'hidden': {'unique_id': 'UNIQUE_ID'}}
-
-    @classmethod
-    def IS_CHANGED(cls, **kwargs):
-        return float('NaN')
-    RETURN_TYPES = ('NUMBER', 'FLOAT', 'INT')
-    RETURN_NAMES = ('number', 'float', 'int')
-    FUNCTION = 'increment_number'
-    CATEGORY = 'WAS Suite/Number'
-
-    def increment_number(self, number_type, mode, start, stop, step, unique_id, reset_bool=0):
-        counter = int(start) if mode == 'integer' else start
-        if self.counters.__contains__(unique_id):
-            counter = self.counters[unique_id]
-        if round(reset_bool) >= 1:
-            counter = start
-        if mode == 'increment':
-            counter += step
-        elif mode == 'deccrement':
-            counter -= step
-        elif mode == 'increment_to_stop':
-            counter = counter + step if counter < stop else counter
-        elif mode == 'decrement_to_stop':
-            counter = counter - step if counter > stop else counter
-        self.counters[unique_id] = counter
-        result = int(counter) if number_type == 'integer' else float(counter)
-        return (result, float(counter), int(counter))
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

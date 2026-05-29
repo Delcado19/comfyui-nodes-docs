@@ -23,17 +23,6 @@ The SamplerLMS node is designed to generate a custom sampler for a specific samp
 - Infra type: CPU
 
 # Source code
-```
-class SamplerLMS:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'order': ('INT', {'default': 4, 'min': 1, 'max': 100})}}
-    RETURN_TYPES = ('SAMPLER',)
-    CATEGORY = 'sampling/custom_sampling/samplers'
-    FUNCTION = 'get_sampler'
-
-    def get_sampler(self, order):
-        sampler = comfy.samplers.ksampler('lms', {'order': order})
-        return (sampler,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

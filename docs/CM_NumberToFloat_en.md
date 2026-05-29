@@ -23,16 +23,6 @@ The NumberToFloat node is designed to convert an input number into floating-poin
 - Infra type: CPU
 
 # Source code
-```
-class NumberToFloat:
+[View source repository on GitHub](https://github.com/evanspearman/ComfyMath)
 
-    @classmethod
-    def INPUT_TYPES(cls) -> Mapping[str, Any]:
-        return {'required': {'a': ('NUMBER', {'default': 0.0})}}
-    RETURN_TYPES = ('FLOAT',)
-    FUNCTION = 'op'
-    CATEGORY = 'math/conversion'
-
-    def op(self, a: number) -> tuple[float]:
-        return (float(a),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

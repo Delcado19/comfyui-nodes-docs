@@ -23,10 +23,6 @@ The KfSinusoidalEntangledZeroOneFromFrequencyx9 node is designed to generate a s
 - Infra type: CPU
 
 # Source code
-```
-class KfSinusoidalEntangledZeroOneFromFrequencyx9(KfSinusoidalEntangledZeroOneFromFrequency):
-    RETURN_TYPES = ('KEYFRAMED_CURVE',) * 9
+[View source repository on GitHub](https://github.com/dmarx/ComfyUI-Keyframed)
 
-    def main(self, frequency):
-        return super().main(n=9, frequency=frequency)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

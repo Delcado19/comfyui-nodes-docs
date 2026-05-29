@@ -28,30 +28,6 @@ This node class aims to optimize image resolution by calculating the ideal numbe
 - Infra type: CPU
 
 # Source code
-```
-class imagePixelPerfect:
+[View source repository on GitHub](https://github.com/yolain/ComfyUI-Easy-Use)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        RESIZE_MODES = [ResizeMode.RESIZE.value, ResizeMode.INNER_FIT.value, ResizeMode.OUTER_FIT.value]
-        return {'required': {'image': ('IMAGE',), 'resize_mode': (RESIZE_MODES, {'default': ResizeMode.RESIZE.value})}}
-    RETURN_TYPES = ('INT',)
-    RETURN_NAMES = ('resolution',)
-    OUTPUT_NODE = True
-    FUNCTION = 'execute'
-    CATEGORY = 'EasyUse/Image'
-
-    def execute(self, image, resize_mode):
-        (_, raw_H, raw_W, _) = image.shape
-        width = raw_W
-        height = raw_H
-        k0 = float(height) / float(raw_H)
-        k1 = float(width) / float(raw_W)
-        if resize_mode == ResizeMode.OUTER_FIT.value:
-            estimation = min(k0, k1) * float(min(raw_H, raw_W))
-        else:
-            estimation = max(k0, k1) * float(min(raw_H, raw_W))
-        result = int(np.round(estimation))
-        text = f'Width:{str(width)}\nHeight:{str(height)}\nPixelPerfect:{str(result)}'
-        return {'ui': {'text': text}, 'result': (result,)}
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

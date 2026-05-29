@@ -31,25 +31,6 @@ The ImageScaleToTotalPixels node is designed to resize an image to a specified t
 - Infra type: CPU
 
 # Source code
-```
-class ImageScaleToTotalPixels:
-    upscale_methods = ['nearest-exact', 'bilinear', 'area', 'bicubic', 'lanczos']
-    crop_methods = ['disabled', 'center']
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'image': ('IMAGE',), 'upscale_method': (s.upscale_methods,), 'megapixels': ('FLOAT', {'default': 1.0, 'min': 0.01, 'max': 16.0, 'step': 0.01})}}
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'upscale'
-    CATEGORY = 'image/upscaling'
-
-    def upscale(self, image, upscale_method, megapixels):
-        samples = image.movedim(-1, 1)
-        total = int(megapixels * 1024 * 1024)
-        scale_by = math.sqrt(total / (samples.shape[3] * samples.shape[2]))
-        width = round(samples.shape[3] * scale_by)
-        height = round(samples.shape[2] * scale_by)
-        s = comfy.utils.common_upscale(samples, width, height, upscale_method, 'disabled')
-        s = s.movedim(1, -1)
-        return (s,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

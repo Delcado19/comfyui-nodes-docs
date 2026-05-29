@@ -35,18 +35,6 @@ ReencodeLatentPipe is a node that facilitates the conversion of latent space rep
 - Infra type: GPU
 
 # Source code
-```
-class ReencodeLatentPipe:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'samples': ('LATENT',), 'tile_mode': (['None', 'Both', 'Decode(input) only', 'Encode(output) only'],), 'input_basic_pipe': ('BASIC_PIPE',), 'output_basic_pipe': ('BASIC_PIPE',)}}
-    CATEGORY = 'ImpactPack/Util'
-    RETURN_TYPES = ('LATENT',)
-    FUNCTION = 'doit'
-
-    def doit(self, samples, tile_mode, input_basic_pipe, output_basic_pipe):
-        (_, _, input_vae, _, _) = input_basic_pipe
-        (_, _, output_vae, _, _) = output_basic_pipe
-        return ReencodeLatent().doit(samples, tile_mode, input_vae, output_vae)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

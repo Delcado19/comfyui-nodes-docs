@@ -28,17 +28,6 @@ The RepeatImageBatch node’s `repeat` method is designed to copy a single image
 - Infra type: CPU
 
 # Source code
-```
-class RepeatImageBatch:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'image': ('IMAGE',), 'amount': ('INT', {'default': 1, 'min': 1, 'max': 4096})}}
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'repeat'
-    CATEGORY = 'image/batch'
-
-    def repeat(self, image, amount):
-        s = image.repeat((amount, 1, 1, 1))
-        return (s,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

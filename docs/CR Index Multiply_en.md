@@ -35,19 +35,6 @@ The CR_MultiplyIndex node multiplies an index value by a given factor. This util
 - Infra type: CPU
 
 # Source code
-```
-class CR_MultiplyIndex:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'index': ('INT', {'default': 1, 'min': 0, 'max': 10000, 'forceInput': True}), 'factor': ('INT', {'default': 1, 'min': 0, 'max': 10000})}}
-    RETURN_TYPES = ('INT', 'INT', 'STRING')
-    RETURN_NAMES = ('index', 'factor', 'show_help')
-    FUNCTION = 'multiply'
-    CATEGORY = icons.get('Comfyroll/Utils/Index')
-
-    def multiply(self, index, factor):
-        index = index * factor
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Index-Nodes#cr-index-multiply'
-        return (index, factor, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -44,30 +44,6 @@ This node class encapsulates advanced functionality for performing super-resolut
 - Infra type: GPU
 
 # Source code
-```
-class LDSRUpscale:
+[View source repository on GitHub](https://github.com/flowtyone/ComfyUI-Flowty-LDSR)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'upscale_model': ('UPSCALE_MODEL',), 'images': ('IMAGE',), 'steps': (['25', '50', '100', '250', '500', '1000'], {'default': '100'}), 'pre_downscale': (['None', '1/2', '1/4'], {'default': 'None'}), 'post_downscale': (['None', 'Original Size', '1/2', '1/4'], {'default': 'None'}), 'downsample_method': (['Nearest', 'Lanczos'], {'default': 'Lanczos'})}}
-    RETURN_TYPES = ('IMAGE',)
-    RETURN_NAMES = ('images',)
-    FUNCTION = 'upscale'
-    CATEGORY = 'Flowty LDSR'
-
-    def upscale(self, upscale_model, images, steps, pre_downscale='None', post_downscale='None', downsample_method='Lanczos'):
-        pbar = ProgressBar(int(steps))
-        p = {'prev': 0}
-
-        def prog(i):
-            i = i + 1
-            if i < p['prev']:
-                p['prev'] = 0
-            pbar.update(i - p['prev'])
-            p['prev'] = i
-        ldsr = LDSR(model=upscale_model, on_progress=prog)
-        outputs = []
-        for image in images:
-            outputs.append(ldsr.superResolution(image, int(steps), pre_downscale, post_downscale, downsample_method))
-        return (torch.stack(outputs),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

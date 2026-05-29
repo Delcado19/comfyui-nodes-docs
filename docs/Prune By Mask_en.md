@@ -27,24 +27,6 @@ The PruneByMask node is designed to selectively filter images from a batch based
 - Infra type: CPU
 
 # Source code
-```
-class PruneByMask:
-    """
-    Filters out the images in a batch that don't have an associated mask with an average pixel value of at least 0.5.
-    """
+[View source repository on GitHub](https://github.com/BadCafeCode/masquerade-nodes-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'image': ('IMAGE',), 'mask': ('IMAGE',)}}
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'prune'
-    CATEGORY = 'Masquerade Nodes'
-
-    def prune(self, image, mask):
-        mask = tensor2mask(mask)
-        mean = torch.mean(torch.mean(mask, dim=2), dim=1)
-        return (image[mean >= 0.5],)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

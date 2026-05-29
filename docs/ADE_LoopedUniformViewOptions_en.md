@@ -44,17 +44,6 @@ The Loop Uniform View Options node is designed to generate a set of uniform view
 - Infra type: CPU
 
 # Source code
-```
-class LoopedUniformViewOptionsNode:
+[View source repository on GitHub](https://github.com/Kosinkadink/ComfyUI-AnimateDiff-Evolved)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'view_length': ('INT', {'default': 16, 'min': 1, 'max': LENGTH_MAX}), 'view_stride': ('INT', {'default': 1, 'min': 1, 'max': STRIDE_MAX}), 'view_overlap': ('INT', {'default': 4, 'min': 0, 'max': OVERLAP_MAX}), 'closed_loop': ('BOOLEAN', {'default': False})}, 'optional': {'fuse_method': (ContextFuseMethod.LIST,), 'use_on_equal_length': ('BOOLEAN', {'default': False})}}
-    RETURN_TYPES = ('VIEW_OPTS',)
-    CATEGORY = 'Animate Diff 🎭🅐🅓/context opts/view opts'
-    FUNCTION = 'create_options'
-
-    def create_options(self, view_length: int, view_overlap: int, view_stride: int, closed_loop: bool, fuse_method: str=ContextFuseMethod.PYRAMID, use_on_equal_length=False):
-        view_options = ContextOptions(context_length=view_length, context_stride=view_stride, context_overlap=view_overlap, context_schedule=ContextSchedules.UNIFORM_LOOPED, closed_loop=closed_loop, fuse_method=fuse_method, use_on_equal_length=use_on_equal_length)
-        return (view_options,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

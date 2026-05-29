@@ -29,31 +29,7 @@ The AnyToAny node is designed to dynamically evaluate and transform input data b
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class AnyToAny:
-    def __init__(self):
-        pass
+[View source repository on GitHub](https://github.com/bmad4ever/ComfyUI-Bmad-Custom-Nodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {"required": {
-            "v": ("*",),
-            "function": ("STRING", {"multiline": True, "default": ""}),
-        }}
-
-    FUNCTION = "eval_it"
-    CATEGORY = "Bmad/⚠️⚠️⚠️"
-    RETURN_TYPES = tuple(["*" for x in range(16)])
-
-    def eval_it(self, v, function):
-        function = prepare_text_for_eval(function)
-        expression = eval(f"lambda v: {function}", {
-            "__builtins__": {},
-            "tuple": tuple, "list": list},
-                          {})
-        result = expression(v)
-        return result
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

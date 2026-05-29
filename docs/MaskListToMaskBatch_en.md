@@ -23,30 +23,6 @@ The MaskListToMaskBatch node is designed to combine a series of mask images into
 - Infra type: CPU
 
 # Source code
-```
-class MaskListToMaskBatch:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'mask': ('MASK',)}}
-    INPUT_IS_LIST = True
-    RETURN_TYPES = ('MASK',)
-    FUNCTION = 'doit'
-    CATEGORY = 'ImpactPack/Operation'
-
-    def doit(self, mask):
-        if len(mask) == 1:
-            mask = make_3d_mask(mask[0])
-            return (mask,)
-        elif len(mask) > 1:
-            mask1 = make_3d_mask(mask[0])
-            for mask2 in mask[1:]:
-                mask2 = make_3d_mask(mask2)
-                if mask1.shape[1:] != mask2.shape[1:]:
-                    mask2 = comfy.utils.common_upscale(mask2.movedim(-1, 1), mask1.shape[2], mask1.shape[1], 'lanczos', 'center').movedim(1, -1)
-                mask1 = torch.cat((mask1, mask2), dim=0)
-            return (mask1,)
-        else:
-            empty_mask = torch.zeros((1, 64, 64), dtype=torch.float32, device='cpu').unsqueeze(0)
-            return (empty_mask,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

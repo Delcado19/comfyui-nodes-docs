@@ -31,17 +31,6 @@ This node is designed to handle and decompress prompts, facilitating content ext
 - Infra type: CPU
 
 # Source code
-```
-class UnzipPrompt:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Inspire-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'zipped_prompt': ('ZIPPED_PROMPT',)}}
-    RETURN_TYPES = ('STRING', 'STRING', 'STRING')
-    RETURN_NAMES = ('positive', 'negative', 'name')
-    FUNCTION = 'doit'
-    CATEGORY = 'InspirePack/Prompt'
-
-    def doit(self, zipped_prompt):
-        return zipped_prompt
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

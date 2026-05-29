@@ -44,34 +44,6 @@ This node aims to generate noise masks for the iterative blending process, provi
 - Infra type: GPU
 
 # Source code
-```
-class MixingMaskGeneratorNode:
-    """
-    A node that can generate different kinds of noise mask batches for
-    iterative mixing purposes.
-    """
-    MASK_TYPES = ['perlin', 'random']
-    MAX_RESOLUTION = 8192
+[View source repository on GitHub](https://github.com/ttulttul/ComfyUI-Iterative-Mixer)
 
-    def __init__(self):
-        self.device = comfy.model_management.intermediate_device()
-
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'mask_type': (s.MASK_TYPES, {'default': 'perlin'}), 'perlin_scale': ('FLOAT', {'default': 10.0, 'min': 0.1, 'max': 400.0, 'step': 0.01}), 'seed': ('INT', {'default': 0, 'min': 0, 'max': 18446744073709551615}), 'width': ('INT', {'default': 512, 'min': 16, 'max': s.MAX_RESOLUTION, 'step': 8}), 'height': ('INT', {'default': 512, 'min': 16, 'max': s.MAX_RESOLUTION, 'step': 8}), 'batch_size': ('INT', {'default': 1, 'min': 1, 'max': 4096})}}
-    RETURN_TYPES = ('MASK',)
-    CATEGORY = 'mask/generation'
-    FUNCTION = 'get_masks'
-
-    def get_masks(self, mask_type, perlin_scale, seed, width, height, batch_size):
-        mask_height = height // 8
-        mask_width = width // 8
-        if mask_type == 'perlin':
-            perlin_tensors = perlin_masks(batch_size, mask_width, mask_height, device=self.device, seed=seed, scale=perlin_scale)
-            masks = perlin_tensors.view(batch_size, 1, mask_height, mask_width)
-        elif mask_type == 'random':
-            masks = torch.randn([batch_size, width // 8, height // 8])
-        else:
-            raise ValueError('invalid mask_type')
-        return (masks,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

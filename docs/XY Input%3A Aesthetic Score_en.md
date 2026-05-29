@@ -37,33 +37,7 @@ This node generates aesthetic score values for XY plots, enabling users to visua
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class TSC_XYplot_AScore:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {
-            "required": {
-                "target_ascore": (["positive", "negative"],),
-                "batch_count": ("INT", {"default": XYPLOT_DEF, "min": 0, "max": XYPLOT_LIM}),
-                "first_ascore": ("FLOAT", {"default": 0.0, "min": 0.0, "max": 1000.0, "step": 0.01}),
-                "last_ascore": ("FLOAT", {"default": 10.0, "min": 0.0, "max": 1000.0, "step": 0.01}),
-            }
-        }
-
-    RETURN_TYPES = ("XY",)
-    RETURN_NAMES = ("X or Y",)
-    FUNCTION = "xy_value"
-    CATEGORY = "Efficiency Nodes/XY Inputs"
-
-    def xy_value(self, target_ascore, batch_count, first_ascore, last_ascore):
-        if target_ascore == "positive":
-            xy_type = "AScore+"
-        else:
-            xy_type = "AScore-"
-        xy_value = generate_floats(batch_count, first_ascore, last_ascore)
-        return ((xy_type, xy_value),) if xy_value else (None,)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

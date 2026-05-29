@@ -23,10 +23,6 @@ The KfSinusoidalEntangledZeroOneFromFrequencyx8 node generates eight entangled s
 - Infra type: CPU
 
 # Source code
-```
-class KfSinusoidalEntangledZeroOneFromFrequencyx8(KfSinusoidalEntangledZeroOneFromFrequency):
-    RETURN_TYPES = ('KEYFRAMED_CURVE',) * 8
+[View source repository on GitHub](https://github.com/dmarx/ComfyUI-Keyframed)
 
-    def main(self, frequency):
-        return super().main(n=8, frequency=frequency)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

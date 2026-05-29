@@ -106,8 +106,7 @@ The ReActorMaskHelper node is designed to assist the mask processing within the 
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-# Built-in or C extension class, unable to automatically detect source code
-```
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
+
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

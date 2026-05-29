@@ -40,30 +40,6 @@ The 'generate' method of the WLSH_SDXL_Quick_Empty_Latent node is responsible fo
 - Infra type: CPU
 
 # Source code
-```
-class WLSH_SDXL_Quick_Empty_Latent:
-    resolution = ['1024x1024', '1152x896', '1216x832', '1344x768', '1536x640']
-    direction = ['landscape', 'portrait']
+[View source repository on GitHub](https://github.com/wallish77/wlsh_nodes)
 
-    def __init__(self, device='cpu'):
-        self.device = device
-
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'resolution': (s.resolution,), 'direction': (s.direction,), 'batch_size': ('INT', {'default': 1, 'min': 1, 'max': 64})}}
-    RETURN_TYPES = ('LATENT', 'INT', 'INT')
-    RETURN_NAMES = ('latent', 'width', 'height')
-    FUNCTION = 'generate'
-    CATEGORY = 'WLSH Nodes/latent'
-
-    def generate(self, resolution, direction, batch_size=1):
-        (width, height) = resolution.split('x')
-        width = int(width)
-        height = int(height)
-        if direction == 'portrait':
-            (width, height) = (height, width)
-        adj_width = width // 8
-        adj_height = height // 8
-        latent = torch.zeros([batch_size, 4, adj_height, adj_width])
-        return ({'samples': latent}, adj_width * 8, adj_height * 8)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

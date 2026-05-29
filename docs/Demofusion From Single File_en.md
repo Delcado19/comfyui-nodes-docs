@@ -51,29 +51,6 @@ This node facilitates the execution of diffusion models for image generation, ut
 - Infra type: GPU
 
 # Source code
-```
-class DemofusionFromSingleFile:
+[View source repository on GitHub](https://github.com/deroberon/demofusion-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'ckpt_name': (folder_paths.get_filename_list('checkpoints'),), 'positive': ('STRING', {'multiline': True, 'default': ''}), 'negative': ('STRING', {'multiline': True, 'default': ''}), 'width': ('INT', {'default': 2048, 'min': 2048, 'max': 4096, 'step': 64, 'display': 'number'}), 'height': ('INT', {'default': 2048, 'min': 2048, 'max': 4096, 'step': 64, 'display': 'number'}), 'inference_steps': ('INT', {'default': 40, 'min': 1, 'max': 100, 'step': 1, 'display': 'number'}), 'cfg': ('FLOAT', {'default': 7.5, 'min': 1.0, 'max': 20.0, 'step': 0.5, 'round': 0.001, 'display': 'number'}), 'seed': ('INT', {'default': 522, 'display': 'number'})}}
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'execute'
-    CATEGORY = 'tests'
-
-    def execute(self, ckpt_name, positive, negative, width, height, inference_steps, cfg, seed):
-        ckpt_path = folder_paths.get_full_path('checkpoints', ckpt_name)
-        pipe = DemoFusionSDXLStableDiffusionPipeline.from_single_file(ckpt_path, torch_dtype=torch.float16, use_safetensors=True)
-        pipe = pipe.to('cuda')
-        generator = torch.Generator(device='cuda')
-        generator = generator.manual_seed(seed)
-        images = pipe(str(positive), negative_prompt=str(negative), height=height, width=width, view_batch_size=4, stride=64, num_inference_steps=inference_steps, guidance_scale=cfg, cosine_scale_1=3, cosine_scale_2=1, cosine_scale_3=1, sigma=0.8, multi_decoder=True, show_image=False)
-        image = images[len(images) - 1]
-        image = image.convert('RGB')
-        image = np.array(image).astype(np.float32) / 255.0
-        image = torch.from_numpy(image)[None,]
-        return (image,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

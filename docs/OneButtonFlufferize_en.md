@@ -38,43 +38,7 @@ The OneButtonFlufferize node enhances text prompts by adding "fluff" (extra word
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class OneButtonFlufferize:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    def __init__(self):
-        pass
-    
-    @classmethod
-    def INPUT_TYPES(s):
-               
-        return {
-            "required": {
-                "prompt": ("STRING", {"default": '', "multiline": True}),
-                "amount_of_fluff": (amountofflufflist, {"default": "dynamic"}),
-                "reverse_polarity": (fluff_reverse_polarity, {"default": False}),
-            },
-            "optional": {                
-                "seed": ("INT", {"default": 0, "min": 0, "max": 0xFFFFFFFFFFFFFFFF}),
-            },
-        }
-
-    RETURN_TYPES = ("STRING",)
-    RETURN_NAMES = ("fluffed_prompt",)
-
-    FUNCTION = "Comfy_OBP_Flufferize"
-
-    #OUTPUT_NODE = False
-
-    CATEGORY = "OneButtonPrompt"
-    
-    def Comfy_OBP_Flufferize(self, prompt, amount_of_fluff, reverse_polarity, seed):
-        # artify here
-        fluffed_prompt = flufferizer(prompt=prompt, amountoffluff=amount_of_fluff, reverse_polarity=reverse_polarity, seed=seed)
-        
-        print("Fluffed prompt: " + fluffed_prompt)
-        
-        return (fluffed_prompt,)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

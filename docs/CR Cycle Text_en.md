@@ -44,28 +44,6 @@ The CR_CycleText node is designed to cycle through a predefined list of text ite
 - Infra type: CPU
 
 # Source code
-```
-class CR_CycleText:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        modes = ['Sequential']
-        return {'required': {'mode': (modes,), 'text_list': ('TEXT_LIST',), 'frame_interval': ('INT', {'default': 30, 'min': 0, 'max': 999, 'step': 1}), 'loops': ('INT', {'default': 1, 'min': 1, 'max': 1000}), 'current_frame': ('INT', {'default': 0.0, 'min': 0.0, 'max': 9999.0, 'step': 1.0})}}
-    RETURN_TYPES = ('STRING', 'STRING')
-    RETURN_NAMES = ('STRING', 'show_help')
-    FUNCTION = 'cycle_text'
-    CATEGORY = icons.get('Comfyroll/Animation/Legacy')
-
-    def cycle_text(self, mode, text_list, frame_interval, loops, current_frame):
-        text_params = list()
-        if text_list:
-            for _ in range(loops):
-                text_params.extend(text_list)
-        if mode == 'Sequential':
-            current_text_index = current_frame // frame_interval % len(text_params)
-            current_text_params = text_params[current_text_index]
-            print(f'[Debug] CR Cycle Text:{current_text_params}')
-            (text_alias, current_text_item) = current_text_params
-            show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Cycler-Nodes#cr-cycle-text'
-            return (current_text_item, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

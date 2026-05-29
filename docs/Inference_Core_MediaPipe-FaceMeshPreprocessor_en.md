@@ -38,26 +38,7 @@ This node aims to preprocess images for facial mesh detection tasks using MediaP
 - Infra type: `GPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class Media_Pipe_Face_Mesh_Preprocessor:
-    @classmethod
-    def INPUT_TYPES(s):
-        return create_node_input_types(
-            max_faces=("INT", {"default": 10, "min": 1, "max": 50, "step": 1}), #Which image has more than 50 detectable faces?
-            min_confidence=("FLOAT", {"default": 0.5, "min": 0.01, "max": 1.0, "step": 0.01})
-        )
-        
-    RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "detect"
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    CATEGORY = "ControlNet Preprocessors/Faces and Poses Estimators"
-
-    def detect(self, image, max_faces, min_confidence, resolution=512):
-        #Ref: https://github.com/Fannovel16/comfy_controlnet_preprocessors/issues/70#issuecomment-1677967369
-        install_deps()
-        from controlnet_aux.mediapipe_face import MediapipeFaceDetector
-        return (common_annotator_call(MediapipeFaceDetector(), image, max_faces=max_faces, min_confidence=min_confidence, resolution=resolution), )
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

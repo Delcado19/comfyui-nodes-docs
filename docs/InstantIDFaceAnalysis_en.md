@@ -23,18 +23,6 @@ InstantIDFaceAnalysis is a node for performing advanced facial analysis, utilizi
 - Infra type: CPU
 
 # Source code
-```
-class InstantIDFaceAnalysis:
+[View source repository on GitHub](https://github.com/cubiq/ComfyUI_InstantID)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'provider': (['CPU', 'CUDA', 'ROCM'],)}}
-    RETURN_TYPES = ('FACEANALYSIS',)
-    FUNCTION = 'load_insight_face'
-    CATEGORY = 'InstantID'
-
-    def load_insight_face(self, provider):
-        model = FaceAnalysis(name='antelopev2', root=INSIGHTFACE_DIR, providers=[provider + 'ExecutionProvider'])
-        model.prepare(ctx_id=0, det_size=(640, 640))
-        return (model,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

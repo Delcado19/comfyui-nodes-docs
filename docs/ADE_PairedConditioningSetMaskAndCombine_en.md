@@ -63,35 +63,6 @@ This node is specifically designed for advanced operations on paired conditional
 - Common nodes: unknown
 
 ## Source code
-```python
-class PairedConditioningSetMaskAndCombineHooked:
-    @classmethod
-    def INPUT_TYPES(s):
-        return {
-            "required": {
-                "positive": ("CONDITIONING",),
-                "negative": ("CONDITIONING",),
-                "positive_ADD": ("CONDITIONING",),
-                "negative_ADD": ("CONDITIONING",),
-                "strength": ("FLOAT", {"default": 1.0, "min": 0.0, "max": 10.0, "step": 0.01}),
-                "set_cond_area": (COND_CONST._LIST_COND_AREA,),
-            },
-            "optional": {
-                "opt_mask": ("MASK", ),
-                "opt_lora_hook": ("LORA_HOOK",),
-                "opt_timesteps": ("TIMESTEPS_COND",)
-            }
-        }
-    
-    RETURN_TYPES = ("CONDITIONING", "CONDITIONING")
-    RETURN_NAMES = ("positive", "negative")
-    CATEGORY = "Animate Diff 🎭🅐🅓/conditioning"
-    FUNCTION = "append_and_combine"
+[View source repository on GitHub](https://github.com/Kosinkadink/ComfyUI-AnimateDiff-Evolved)
 
-    def append_and_combine(self, positive, negative, positive_ADD, negative_ADD,
-                           strength: float, set_cond_area: str,
-                           opt_mask: Tensor=None, opt_lora_hook: LoraHookGroup=None, opt_timesteps: TimestepsCond=None):
-        final_positive, final_negative = set_mask_and_combine_conds(conds=[positive, negative], new_conds=[positive_ADD, negative_ADD],
-                                                                    strength=strength, set_cond_area=set_cond_area,
-                                                                    opt_mask=opt_mask, opt_lora_hook=opt_lora_hook, opt_timesteps=opt_timesteps)
-        return (final_positive, final_negative,)
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

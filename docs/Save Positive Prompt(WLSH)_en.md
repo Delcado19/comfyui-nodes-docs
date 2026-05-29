@@ -32,38 +32,6 @@ The WLSH_Save_Positive_Prompt_File node is designed to manage the storage of tex
 - Infra type: CPU
 
 # Source code
-```
-class WLSH_Save_Positive_Prompt_File:
+[View source repository on GitHub](https://github.com/wallish77/wlsh_nodes)
 
-    def __init__(self):
-        self.output_dir = folder_paths.output_directory
-
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'filename': ('STRING', {'default': 'info', 'multiline': False}), 'path': ('STRING', {'default': '', 'multiline': False}), 'positive': ('STRING', {'default': '', 'multiline': True, 'forceInput': True})}}
-    OUTPUT_NODE = True
-    RETURN_TYPES = ()
-    FUNCTION = 'save_text_file'
-    CATEGORY = 'WLSH Nodes/IO'
-
-    def save_text_file(self, positive='', path='', filename=''):
-        output_path = os.path.join(self.output_dir, path)
-        if output_path.strip() != '':
-            if not os.path.exists(output_path.strip()):
-                print(f"The path `{output_path.strip()}` specified doesn't exist! Creating directory.")
-                os.makedirs(output_path, exist_ok=True)
-        if filename.strip == '':
-            print(f'Warning: There is no text specified to save! Text is empty.  Saving file with timestamp')
-            filename = get_timestamp('%Y%m%d%H%M%S')
-        if positive == '':
-            positive = 'No prompt data'
-        self.writeTextFile(os.path.join(output_path, filename + '.txt'), positive)
-        return (positive,)
-
-    def writeTextFile(self, file, content):
-        try:
-            with open(file, 'w') as f:
-                f.write(content)
-        except OSError:
-            print(f'Error: Unable to save file `{file}`')
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -28,21 +28,6 @@ The method 'number_multiple_of' aims to determine whether a given number is a mu
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Number_Multiple_Of:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'number': ('NUMBER',), 'multiple': ('INT', {'default': 8, 'min': -18446744073709551615, 'max': 18446744073709551615})}}
-    RETURN_TYPES = ('NUMBER', 'FLOAT', 'INT')
-    FUNCTION = 'number_multiple_of'
-    CATEGORY = 'WAS Suite/Number/Functions'
-
-    def number_multiple_of(self, number, multiple=8):
-        if number % multiple != 0:
-            return (number // multiple * multiple + multiple,)
-        return (number, number, int(number))
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

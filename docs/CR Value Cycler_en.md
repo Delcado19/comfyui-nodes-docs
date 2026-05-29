@@ -40,28 +40,6 @@ CR_ValueCycler is a node that iterates over a list of string values, converting 
 - Infra type: CPU
 
 # Source code
-```
-class CR_ValueCycler:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'values': ('STRING', {'multiline': True, 'default': ''}), 'repeats': ('INT', {'default': 1, 'min': 1, 'max': 99999}), 'loops': ('INT', {'default': 1, 'min': 1, 'max': 99999})}}
-    RETURN_TYPES = ('FLOAT', 'INT', 'STRING')
-    RETURN_NAMES = ('FLOAT', 'INT', 'show_text')
-    OUTPUT_IS_LIST = (True, True, False)
-    FUNCTION = 'cycle'
-    CATEGORY = icons.get('Comfyroll/List')
-
-    def cycle(self, values, repeats, loops=1):
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/List-Nodes#cr-value-cycler'
-        lines = values.split('\n')
-        float_list_out = []
-        int_list_out = []
-        for i in range(loops):
-            for _ in range(repeats):
-                for text_item in lines:
-                    if all((char.isdigit() or char == '.' for char in text_item.strip())):
-                        float_list_out.append(float(text_item))
-                        int_list_out.append(int(float(text_item)))
-        return (float_list_out, int_list_out, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

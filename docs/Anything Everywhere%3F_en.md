@@ -34,24 +34,7 @@ The node has no specific output type.
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class AnythingSomewhere(Base):
-    @classmethod
-    def INPUT_TYPES(s):
-        return {"required":{}, 
-                "optional": { 
-                    "anything" : ("*", {}), 
-                    "title_regex" : ("STRING", {"default":".*"}),
-                    "input_regex" : ("STRING", {"default":".*"}),
-                    "group_regex" : ("STRING", {"default":".*"}),
-                    },
-                 "hidden": {"id":"UNIQUE_ID"} }
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    def func(self, id, title_regex=None, input_regex=None, group_regex=None, **kwargs):
-        for key in kwargs:
-            message(id, kwargs[key],)
-        return ()
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

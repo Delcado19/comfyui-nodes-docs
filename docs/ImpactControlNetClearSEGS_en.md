@@ -23,20 +23,6 @@ The `doit` method of the ControlNetClearSEGS node is designed to process a colle
 - Infra type: CPU
 
 # Source code
-```
-class ControlNetClearSEGS:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'segs': ('SEGS',)}}
-    RETURN_TYPES = ('SEGS',)
-    FUNCTION = 'doit'
-    CATEGORY = 'ImpactPack/Util'
-
-    def doit(self, segs):
-        new_segs = []
-        for seg in segs[1]:
-            new_seg = SEG(seg.cropped_image, seg.cropped_mask, seg.confidence, seg.crop_region, seg.bbox, seg.label, None)
-            new_segs.append(new_seg)
-        return ((segs[0], new_segs),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

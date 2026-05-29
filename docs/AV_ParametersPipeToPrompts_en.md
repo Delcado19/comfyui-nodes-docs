@@ -41,47 +41,7 @@ The AV_ParametersPipeToPrompts node is designed to convert a parameter pipeline 
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class AVParametersPipeToPrompts:
-    @classmethod
-    def INPUT_TYPES(s):
-        return {
-            "required": {
-                "pipe": ("PIPE",),
-            },
-        }
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    RETURN_TYPES = (
-        "PIPE",
-        "STRING",
-        "STRING",
-        "IMAGE",
-        "MASK",
-    )
-    RETURN_NAMES = (
-        "pipe",
-        "positive",
-        "negative",
-        "image",
-        "mask",
-    )
-    CATEGORY = "Art Venture/Parameters"
-    FUNCTION = "parameter_pipe_to_prompt"
-
-    def parameter_pipe_to_prompt(self, pipe: Dict = {}):
-        positive = pipe.get("positive", None)
-        negative = pipe.get("negative", None)
-        image = pipe.get("image", None)
-        mask = pipe.get("mask", None)
-
-        return (
-            pipe,
-            positive,
-            negative,
-            image,
-            mask,
-        )
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

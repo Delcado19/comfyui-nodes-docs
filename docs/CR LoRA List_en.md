@@ -76,36 +76,6 @@ The CR_LoRAList node is designed to manage and compile LoRA (Low-Rank Adaptation
 - Infra type: CPU
 
 # Source code
-```
-class CR_LoRAList:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        lora_files = ['None'] + folder_paths.get_filename_list('loras')
-        return {'required': {'lora_name1': (lora_files,), 'alias1': ('STRING', {'multiline': False, 'default': ''}), 'model_strength_1': ('FLOAT', {'default': 1.0, 'min': -10.0, 'max': 10.0, 'step': 0.01}), 'clip_strength_1': ('FLOAT', {'default': 1.0, 'min': -10.0, 'max': 10.0, 'step': 0.01}), 'lora_name2': (lora_files,), 'alias2': ('STRING', {'multiline': False, 'default': ''}), 'model_strength_2': ('FLOAT', {'default': 1.0, 'min': -10.0, 'max': 10.0, 'step': 0.01}), 'clip_strength_2': ('FLOAT', {'default': 1.0, 'min': -10.0, 'max': 10.0, 'step': 0.01}), 'lora_name3': (lora_files,), 'alias3': ('STRING', {'multiline': False, 'default': ''}), 'model_strength_3': ('FLOAT', {'default': 1.0, 'min': -10.0, 'max': 10.0, 'step': 0.01}), 'clip_strength_3': ('FLOAT', {'default': 1.0, 'min': -10.0, 'max': 10.0, 'step': 0.01})}, 'optional': {'lora_list': ('lora_LIST',)}}
-    RETURN_TYPES = ('LORA_LIST', 'STRING')
-    RETURN_NAMES = ('LORA_LIST', 'show_text')
-    FUNCTION = 'lora_list'
-    CATEGORY = icons.get('Comfyroll/Animation/Legacy')
-
-    def lora_list(self, lora_name1, model_strength_1, clip_strength_1, alias1, lora_name2, model_strength_2, clip_strength_2, alias2, lora_name3, model_strength_3, clip_strength_3, alias3, lora_list=None):
-        loras = list()
-        lora_text = list()
-        if lora_list is not None:
-            loras.extend([l for l in lora_list if l[0] != None])
-            lora_text += '\n'.join(map(str, lora_list)) + '\n'
-        if lora_name1 != 'None':
-            lora1_tup = [(alias1, lora_name1, model_strength_1, clip_strength_1)]
-            (loras.extend(lora1_tup),)
-            lora_text += '\n'.join(map(str, lora1_tup)) + '\n'
-        if lora_name2 != 'None':
-            lora2_tup = [(alias2, lora_name2, model_strength_2, clip_strength_2)]
-            (loras.extend(lora2_tup),)
-            lora_text += '\n'.join(map(str, lora2_tup)) + '\n'
-        if lora_name3 != 'None':
-            lora3_tup = [(alias3, lora_name3, model_strength_3, clip_strength_3)]
-            (loras.extend(lora3_tup),)
-            lora_text += '\n'.join(map(str, lora3_tup)) + '\n'
-        show_text = ''.join(lora_text)
-        return (loras, show_text)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -64,39 +64,6 @@ This node integrates multiple types of inputs, including text, prompts, and mode
 - Infra type: CPU
 
 # Source code
-```
-class CR_CentralSchedule:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        schedule_types = ['Value', 'Text', 'Prompt', 'Prompt Weight', 'Model', 'LoRA', 'ControlNet', 'Style', 'Upscale', 'Camera', 'Job']
-        return {'required': {'schedule_1': ('STRING', {'multiline': True, 'default': 'schedule'}), 'schedule_type1': (schedule_types,), 'schedule_alias1': ('STRING', {'multiline': False, 'default': ''}), 'schedule_2': ('STRING', {'multiline': True, 'default': 'schedule'}), 'schedule_type2': (schedule_types,), 'schedule_alias2': ('STRING', {'multiline': False, 'default': ''}), 'schedule_3': ('STRING', {'multiline': True, 'default': 'schedule'}), 'schedule_type3': (schedule_types,), 'schedule_alias3': ('STRING', {'multiline': False, 'default': ''}), 'schedule_format': (['CR', 'Deforum'],)}, 'optional': {'schedule': ('SCHEDULE',)}}
-    RETURN_TYPES = ('SCHEDULE', 'STRING')
-    RETURN_NAMES = ('SCHEDULE', 'show_text')
-    FUNCTION = 'build_schedule'
-    CATEGORY = icons.get('Comfyroll/Animation/Schedule')
-
-    def build_schedule(self, schedule_1, schedule_type1, schedule_alias1, schedule_2, schedule_type2, schedule_alias2, schedule_3, schedule_type3, schedule_alias3, schedule_format, schedule=None):
-        schedules = list()
-        schedule_text = list()
-        if schedule is not None:
-            schedules.extend([l for l in schedule])
-            (schedule_text.extend([l for l in schedule]),)
-        if schedule_1 != '' and schedule_alias1 != '':
-            lines = schedule_1.split('\n')
-            for line in lines:
-                (schedules.extend([(schedule_alias1, line)]),)
-            (schedule_text.extend([schedule_alias1 + ',' + schedule_1 + '\n']),)
-        if schedule_2 != '' and schedule_alias2 != '':
-            lines = schedule_2.split('\n')
-            for line in lines:
-                (schedules.extend([(schedule_alias2, line)]),)
-            (schedule_text.extend([schedule_alias2 + ',' + schedule_2 + '\n']),)
-        if schedule_3 != '' and schedule_alias3 != '':
-            lines = schedule_3.split('\n')
-            for line in lines:
-                (schedules.extend([(schedule_alias3, line)]),)
-            (schedule_text.extend([schedule_alias3 + ',' + schedule_3 + '\n']),)
-        show_text = ''.join(schedule_text)
-        return (schedules, show_text)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

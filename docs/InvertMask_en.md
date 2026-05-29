@@ -23,17 +23,6 @@ The `invert` method of the InvertMask node is designed to perform a simple yet c
 - Infra type: CPU
 
 # Source code
-```
-class InvertMask:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'mask': ('MASK',)}}
-    CATEGORY = 'mask'
-    RETURN_TYPES = ('MASK',)
-    FUNCTION = 'invert'
-
-    def invert(self, mask):
-        out = 1.0 - mask
-        return (out,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

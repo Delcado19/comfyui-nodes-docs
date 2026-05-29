@@ -60,50 +60,6 @@ CR_CheckerPattern is a node for generating checkerboard patterns with customizab
 - Infra type: CPU
 
 # Source code
-```
-class CR_CheckerPattern:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        modes = ['regular', 'stepped']
-        return {'required': {'mode': (modes,), 'width': ('INT', {'default': 512, 'min': 64, 'max': 4096}), 'height': ('INT', {'default': 512, 'min': 64, 'max': 4096}), 'color_1': (COLORS,), 'color_2': (COLORS,), 'grid_frequency': ('INT', {'default': 8, 'min': 1, 'max': 200, 'step': 1}), 'step': ('INT', {'default': 2, 'min': 2, 'max': 200, 'step': 1})}, 'optional': {'color1_hex': ('STRING', {'multiline': False, 'default': '#000000'}), 'color2_hex': ('STRING', {'multiline': False, 'default': '#000000'})}}
-    RETURN_TYPES = ('IMAGE', 'STRING')
-    RETURN_NAMES = ('IMAGE', 'show_help')
-    FUNCTION = 'draw'
-    CATEGORY = icons.get('Comfyroll/Graphics/Pattern')
-
-    def draw(self, mode, width, height, color_1, color_2, grid_frequency, step, color1_hex='#000000', color2_hex='#000000'):
-        if color_1 == 'custom':
-            color1_rgb = hex_to_rgb(color1_hex)
-        else:
-            color1_rgb = color_mapping.get(color_1, (255, 255, 255))
-        if color_2 == 'custom':
-            color2_rgb = hex_to_rgb(color2_hex)
-        else:
-            color2_rgb = color_mapping.get(color_2, (0, 0, 0))
-        canvas = np.zeros((height, width, 3), dtype=np.uint8)
-        grid_size = width / grid_frequency
-        for i in range(width):
-            for j in range(height):
-                if mode == 'regular':
-                    if i // grid_size % 2 == j // grid_size % 2:
-                        canvas[j, i] = color1_rgb
-                    else:
-                        canvas[j, i] = color2_rgb
-                elif mode == 'stepped':
-                    if i // grid_size % step != j // grid_size % step:
-                        canvas[j, i] = color1_rgb
-                    else:
-                        canvas[j, i] = color2_rgb
-        (fig, ax) = plt.subplots(figsize=(width / 100, height / 100))
-        ax.imshow(canvas)
-        plt.axis('off')
-        plt.tight_layout(pad=0, w_pad=0, h_pad=0)
-        plt.autoscale(tight=True)
-        img_buf = io.BytesIO()
-        plt.savefig(img_buf, format='png')
-        img = Image.open(img_buf)
-        image_out = pil2tensor(img.convert('RGB'))
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Pattern-Nodes#cr-checker-pattern'
-        return (image_out, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -31,16 +31,6 @@ The FloatBinaryOperation node is designed to perform binary operations on floati
 - Infra type: CPU
 
 # Source code
-```
-class FloatBinaryOperation:
+[View source repository on GitHub](https://github.com/evanspearman/ComfyMath)
 
-    @classmethod
-    def INPUT_TYPES(cls) -> Mapping[str, Any]:
-        return {'required': {'op': (list(FLOAT_BINARY_OPERATIONS.keys()),), 'a': DEFAULT_FLOAT, 'b': DEFAULT_FLOAT}}
-    RETURN_TYPES = ('FLOAT',)
-    FUNCTION = 'op'
-    CATEGORY = 'math/float'
-
-    def op(self, op: str, a: float, b: float) -> tuple[float]:
-        return (FLOAT_BINARY_OPERATIONS[op](a, b),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

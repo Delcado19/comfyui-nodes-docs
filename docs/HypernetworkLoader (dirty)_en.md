@@ -33,27 +33,7 @@ The HypernetworkLoader node aims to dynamically modify a given model by applying
 - Infra type: `GPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class DirtyHypernetworkLoader:
-    @classmethod
-    def INPUT_TYPES(s):
-        return {"required": {"model": ("MODEL",),
-                             "hypernetwork_name": ("STRING", {"default": ""}),
-                             "strength": ("FLOAT", {"default": 1.0, "min": -10.0, "max": 10.0, "step": 0.01}),
-                             }}
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    RETURN_TYPES = ("MODEL",)
-    FUNCTION = "load_hypernetwork"
-
-    CATEGORY = "Bmad/api/dirty loaders"
-
-    def load_hypernetwork(self, model, hypernetwork_name, strength):
-        hypernetwork_name = DirtyLoaderUtils.find_matching_filename(
-            hypernetwork_name, folder_paths.get_filename_list("hypernetworks"))
-
-        loader = hyper.HypernetworkLoader()
-        return loader.load_hypernetwork(model, hypernetwork_name, strength)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

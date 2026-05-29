@@ -80,28 +80,6 @@ The CR_MaskText node is designed to overlay text onto images in a stylized manne
 - Infra type: CPU
 
 # Source code
-```
-class CR_MaskText:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        font_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), 'fonts')
-        file_list = [f for f in os.listdir(font_dir) if os.path.isfile(os.path.join(font_dir, f)) and f.lower().endswith('.ttf')]
-        return {'required': {'image': ('IMAGE',), 'text': ('STRING', {'multiline': True, 'default': 'text'}), 'font_name': (file_list,), 'font_size': ('INT', {'default': 50, 'min': 1, 'max': 1024}), 'background_color': (COLORS,), 'align': (ALIGN_OPTIONS,), 'justify': (JUSTIFY_OPTIONS,), 'margins': ('INT', {'default': 0, 'min': -1024, 'max': 1024}), 'line_spacing': ('INT', {'default': 0, 'min': -1024, 'max': 1024}), 'position_x': ('INT', {'default': 0, 'min': -4096, 'max': 4096}), 'position_y': ('INT', {'default': 0, 'min': -4096, 'max': 4096}), 'rotation_angle': ('FLOAT', {'default': 0.0, 'min': -360.0, 'max': 360.0, 'step': 0.1}), 'rotation_options': (ROTATE_OPTIONS,)}, 'optional': {'bg_color_hex': ('STRING', {'multiline': False, 'default': '#000000'})}}
-    RETURN_TYPES = ('IMAGE', 'STRING')
-    RETURN_NAMES = ('IMAGE', 'show_help')
-    FUNCTION = 'mask_text'
-    CATEGORY = icons.get('Comfyroll/Graphics/Text')
-
-    def mask_text(self, image, text, font_name, font_size, margins, line_spacing, position_x, position_y, background_color, align, justify, rotation_angle, rotation_options, bg_color_hex='#000000'):
-        bg_color = get_color_values(background_color, bg_color_hex, color_mapping)
-        image_3d = image[0, :, :, :]
-        text_image = tensor2pil(image_3d)
-        text_mask = Image.new('L', text_image.size)
-        background_image = Image.new('RGB', text_mask.size, bg_color)
-        rotated_text_mask = draw_masked_text(text_mask, text, font_name, font_size, margins, line_spacing, position_x, position_y, align, justify, rotation_angle, rotation_options)
-        text_mask = ImageOps.invert(rotated_text_mask)
-        image_out = Image.composite(background_image, text_image, text_mask)
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Text-Nodes#cr-mask-text'
-        return (pil2tensor(image_out), show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

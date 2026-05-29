@@ -35,31 +35,6 @@ This node class facilitates reorganizing input data into a structured format ali
 - Infra type: CPU
 
 # Source code
-```
-class xyAny:
+[View source repository on GitHub](https://github.com/yolain/ComfyUI-Easy-Use)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'X': (AlwaysEqualProxy('*'), {}), 'Y': (AlwaysEqualProxy('*'), {}), 'direction': (['horizontal', 'vertical'], {'default': 'horizontal'})}}
-    RETURN_TYPES = (AlwaysEqualProxy('*'), AlwaysEqualProxy('*'))
-    RETURN_NAMES = ('X', 'Y')
-    INPUT_IS_LIST = True
-    OUTPUT_IS_LIST = (True, True)
-    CATEGORY = 'EasyUse/Logic'
-    FUNCTION = 'to_xy'
-
-    def to_xy(self, X, Y, direction):
-        new_x = list()
-        new_y = list()
-        if direction[0] == 'horizontal':
-            for y in Y:
-                for x in X:
-                    new_x.append(x)
-                    new_y.append(y)
-        else:
-            for x in X:
-                for y in Y:
-                    new_x.append(x)
-                    new_y.append(y)
-        return (new_x, new_y)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

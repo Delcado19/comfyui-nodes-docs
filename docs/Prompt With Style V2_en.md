@@ -76,29 +76,6 @@ The PromptWithStyleV2 node is designed to generate and refine prompts with a spe
 - Infra type: CPU
 
 # Source code
-```
-class PromptWithStyleV2:
+[View source repository on GitHub](https://github.com/bash-j/mikey_nodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        (s.ratio_sizes, s.ratio_dict) = read_ratios()
-        (s.styles, s.pos_style, s.neg_style) = read_styles()
-        return {'required': {'positive_prompt': ('STRING', {'multiline': True, 'default': 'Positive Prompt'}), 'negative_prompt': ('STRING', {'multiline': True, 'default': 'Negative Prompt'}), 'style': (s.styles,), 'ratio_selected': (s.ratio_sizes,), 'batch_size': ('INT', {'default': 1, 'min': 1, 'max': 64}), 'seed': ('INT', {'default': 0, 'min': 0, 'max': 18446744073709551615}), 'clip_base': ('CLIP',), 'clip_refiner': ('CLIP',)}}
-    RETURN_TYPES = ('LATENT', 'CONDITIONING', 'CONDITIONING', 'CONDITIONING', 'CONDITIONING', 'STRING', 'STRING')
-    RETURN_NAMES = ('samples', 'base_pos_cond', 'base_neg_cond', 'refiner_pos_cond', 'refiner_neg_cond', 'positive_prompt', 'negative_prompt')
-    FUNCTION = 'start'
-    CATEGORY = 'Mikey'
-
-    def start(self, clip_base, clip_refiner, positive_prompt, negative_prompt, style, ratio_selected, batch_size, seed):
-        """ get output from PromptWithStyle.start """
-        (latent, pos_prompt, neg_prompt, pos_style, neg_style, width, height, refiner_width, refiner_height) = PromptWithStyle.start(self, positive_prompt, negative_prompt, style, ratio_selected, batch_size, seed)
-        ratio = min([width, height]) / max([width, height])
-        (target_width, target_height) = (4096, 4096 * ratio // 8 * 8) if width > height else (4096 * ratio // 8 * 8, 4096)
-        refiner_width = target_width
-        refiner_height = target_height
-        sdxl_pos_cond = CLIPTextEncodeSDXL.encode(self, clip_base, width, height, 0, 0, target_width, target_height, pos_prompt, pos_style)[0]
-        sdxl_neg_cond = CLIPTextEncodeSDXL.encode(self, clip_base, width, height, 0, 0, target_width, target_height, neg_prompt, neg_style)[0]
-        refiner_pos_cond = CLIPTextEncodeSDXLRefiner.encode(self, clip_refiner, 6, refiner_width, refiner_height, pos_prompt)[0]
-        refiner_neg_cond = CLIPTextEncodeSDXLRefiner.encode(self, clip_refiner, 2.5, refiner_width, refiner_height, neg_prompt)[0]
-        return (latent, sdxl_pos_cond, sdxl_neg_cond, refiner_pos_cond, refiner_neg_cond, pos_prompt, neg_prompt)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

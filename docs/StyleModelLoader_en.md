@@ -23,18 +23,6 @@ The StyleModelLoader node is designed to efficiently manage and serve style mode
 - Infra type: CPU
 
 # Source code
-```
-class StyleModelLoader:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'style_model_name': (folder_paths.get_filename_list('style_models'),)}}
-    RETURN_TYPES = ('STYLE_MODEL',)
-    FUNCTION = 'load_style_model'
-    CATEGORY = 'loaders'
-
-    def load_style_model(self, style_model_name):
-        style_model_path = folder_paths.get_full_path('style_models', style_model_name)
-        style_model = comfy.sd.load_style_model(style_model_path)
-        return (style_model,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

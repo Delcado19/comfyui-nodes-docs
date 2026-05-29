@@ -25,26 +25,7 @@ The ModelClamp node is designed to pass model data without any modification, act
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class ModelClamp:
-    def __init__(self):
-        pass
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {
-            "required": {
-                "model": ("MODEL",),
-            },
-        }
-
-    RETURN_TYPES = ("MODEL",)
-    FUNCTION = "node"
-    CATEGORY = "clamp"
-
-    def node(self, model):
-        return (model,)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

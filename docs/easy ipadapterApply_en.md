@@ -40,39 +40,6 @@ The ipadapterApply node aims to simplify the process of applying various image p
 - Infra type: GPU
 
 # Source code
-```
-class ipadapterApply(ipadapter):
+[View source repository on GitHub](https://github.com/yolain/ComfyUI-Easy-Use)
 
-    def __init__(self):
-        super().__init__()
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        presets = cls().presets
-        return {'required': {'model': ('MODEL',), 'image': ('IMAGE',), 'preset': (presets,), 'lora_strength': ('FLOAT', {'default': 0.6, 'min': 0, 'max': 1, 'step': 0.01}), 'provider': (['CPU', 'CUDA', 'ROCM', 'DirectML', 'OpenVINO', 'CoreML'],), 'weight': ('FLOAT', {'default': 1.0, 'min': -1, 'max': 3, 'step': 0.05}), 'weight_faceidv2': ('FLOAT', {'default': 1.0, 'min': -1, 'max': 5.0, 'step': 0.05}), 'start_at': ('FLOAT', {'default': 0.0, 'min': 0.0, 'max': 1.0, 'step': 0.001}), 'end_at': ('FLOAT', {'default': 1.0, 'min': 0.0, 'max': 1.0, 'step': 0.001}), 'cache_mode': (['insightface only', 'clip_vision only', 'all', 'none'], {'default': 'insightface only'}), 'use_tiled': ('BOOLEAN', {'default': False})}, 'optional': {'attn_mask': ('MASK',), 'optional_ipadapter': ('IPADAPTER',)}}
-    RETURN_TYPES = ('MODEL', 'IMAGE', 'MASK', 'IPADAPTER')
-    RETURN_NAMES = ('model', 'tiles', 'masks', 'ipadapter')
-    CATEGORY = 'EasyUse/Adapter'
-    FUNCTION = 'apply'
-
-    def apply(self, model, image, preset, lora_strength, provider, weight, weight_faceidv2, start_at, end_at, cache_mode, use_tiled, attn_mask=None, optional_ipadapter=None):
-        (tiles, masks) = (image, [None])
-        (model, ipadapter) = self.load_model(model, preset, lora_strength, provider, clip_vision=None, optional_ipadapter=optional_ipadapter, cache_mode=cache_mode)
-        if use_tiled and preset not in self.faceid_presets:
-            if 'IPAdapterTiled' not in ALL_NODE_CLASS_MAPPINGS:
-                self.error()
-            cls = ALL_NODE_CLASS_MAPPINGS['IPAdapterTiled']
-            (model, tiles, masks) = cls().apply_tiled(model, ipadapter, image, weight, 'linear', start_at, end_at, sharpening=0.0, combine_embeds='concat', image_negative=None, attn_mask=attn_mask, clip_vision=None, embeds_scaling='V only')
-        elif preset in ['FACEID PLUS V2', 'FACEID PORTRAIT (style transfer)']:
-            if 'IPAdapterAdvanced' not in ALL_NODE_CLASS_MAPPINGS:
-                self.error()
-            cls = ALL_NODE_CLASS_MAPPINGS['IPAdapterAdvanced']
-            (model,) = cls().apply_ipadapter(model, ipadapter, start_at=start_at, end_at=end_at, weight=weight, weight_type='linear', combine_embeds='concat', weight_faceidv2=weight_faceidv2, image=image, image_negative=None, clip_vision=None, attn_mask=attn_mask, insightface=None, embeds_scaling='V only')
-        else:
-            if 'IPAdapter' not in ALL_NODE_CLASS_MAPPINGS:
-                self.error()
-            cls = ALL_NODE_CLASS_MAPPINGS['IPAdapter']
-            (model,) = cls().apply_ipadapter(model, ipadapter, image, weight, start_at, end_at, attn_mask)
-        return (model, tiles, masks, ipadapter)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

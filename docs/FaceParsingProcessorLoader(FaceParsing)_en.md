@@ -23,21 +23,6 @@ FaceParsingProcessorLoader is a node for loading and initializing a face parsing
 - Infra type: CPU
 
 # Source code
-```
-class FaceParsingProcessorLoader:
+[View source repository on GitHub](https://github.com/Ryuukeisyou/comfyui_face_parsing)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {}}
-    RETURN_TYPES = ('FACE_PARSING_PROCESSOR',)
-    FUNCTION = 'main'
-    CATEGORY = 'face_parsing'
-
-    def main(self):
-        from transformers import SegformerImageProcessor
-        processor = SegformerImageProcessor.from_pretrained(face_parsing_path)
-        return (processor,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

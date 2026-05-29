@@ -27,18 +27,6 @@ The ImageToMask node extracts a specific color channel from an input image to cr
 - Infra type: CPU
 
 # Source code
-```
-class ImageToMask:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'image': ('IMAGE',), 'channel': (['red', 'green', 'blue', 'alpha'],)}}
-    CATEGORY = 'mask'
-    RETURN_TYPES = ('MASK',)
-    FUNCTION = 'image_to_mask'
-
-    def image_to_mask(self, image, channel):
-        channels = ['red', 'green', 'blue', 'alpha']
-        mask = image[:, :, :, channels.index(channel)]
-        return (mask,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

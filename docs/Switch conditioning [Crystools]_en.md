@@ -33,35 +33,7 @@ This node provides a mechanism to switch between two conditional inputs based on
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class CSwitchBooleanConditioning:
-    def __init__(self):
-        pass
+[View source repository on GitHub](https://github.com/crystian/ComfyUI-Crystools)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {
-            "required": {
-                "on_true": ("CONDITIONING",),
-                "on_false": ("CONDITIONING",),
-                "boolean": BOOLEAN,
-            }
-        }
-
-    CATEGORY = CATEGORY.MAIN.value + CATEGORY.SWITCH.value
-    RETURN_TYPES = ("CONDITIONING",)
-    RETURN_NAMES = ("conditioning",)
-
-    FUNCTION = "execute"
-
-    def execute(self, on_true, on_false, boolean=True):
-        logger.debug("Conditioning switch: " + str(boolean))
-
-        if boolean:
-            return (on_true,)
-        else:
-            return (on_false,)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

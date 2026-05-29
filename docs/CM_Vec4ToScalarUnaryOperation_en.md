@@ -27,16 +27,6 @@ This node performs mathematical operations on a four-dimensional vector, convert
 - Infra type: CPU
 
 # Source code
-```
-class Vec4ToScalarUnaryOperation:
+[View source repository on GitHub](https://github.com/evanspearman/ComfyMath)
 
-    @classmethod
-    def INPUT_TYPES(cls) -> Mapping[str, Any]:
-        return {'required': {'op': (list(VEC_TO_SCALAR_UNARY_OPERATION.keys()),), 'a': DEFAULT_VEC4}}
-    RETURN_TYPES = ('FLOAT',)
-    FUNCTION = 'op'
-    CATEGORY = 'math/vec4'
-
-    def op(self, op: str, a: Vec4) -> tuple[float]:
-        return (VEC_TO_SCALAR_UNARY_OPERATION[op](numpy.array(a)),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

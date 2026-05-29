@@ -35,35 +35,6 @@ The FaceParse node is designed to analyze and parse facial features from input i
 - Infra type: GPU
 
 # Source code
-```
-class FaceParse:
+[View source repository on GitHub](https://github.com/Ryuukeisyou/comfyui_face_parsing)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'model': ('FACE_PARSING_MODEL', {}), 'processor': ('FACE_PARSING_PROCESSOR', {}), 'image': ('IMAGE', {})}}
-    RETURN_TYPES = ('IMAGE', 'FACE_PARSING_RESULT')
-    FUNCTION = 'main'
-    CATEGORY = 'face_parsing'
-
-    def main(self, model, processor, image: Tensor):
-        images = []
-        results = []
-        transform = T.ToPILImage()
-        colormap = cm.get_cmap('viridis', 19)
-        for item in image:
-            size = item.shape[:2]
-            inputs = processor(images=transform(item.permute(2, 0, 1)), return_tensors='pt')
-            outputs = model(**inputs)
-            logits = outputs.logits.cpu()
-            upsampled_logits = nn.functional.interpolate(logits, size=size, mode='bilinear', align_corners=False)
-            pred_seg = upsampled_logits.argmax(dim=1)[0]
-            pred_seg_np = pred_seg.detach().numpy().astype(np.uint8)
-            results.append(torch.tensor(pred_seg_np))
-            colored = colormap(pred_seg_np)
-            colored_sliced = colored[:, :, :3]
-            images.append(torch.tensor(colored_sliced))
-        return (torch.cat(images, dim=0).unsqueeze(0), torch.cat(results, dim=0).unsqueeze(0))
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

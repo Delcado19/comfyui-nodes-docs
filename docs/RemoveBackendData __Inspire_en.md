@@ -30,41 +30,7 @@ The RemoveBackendData node is a component of InspirePack, designed to selectivel
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class RemoveBackendData:
-    @classmethod
-    def INPUT_TYPES(s):
-        return {
-            "required": {
-                "key": ("STRING", {"multiline": False, "placeholder": "Input data key ('*' = clear all)"}),
-            },
-            "optional": {
-                "signal_opt": (any_typ,),
-            }
-        }
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Inspire-Pack)
 
-    RETURN_TYPES = (any_typ,)
-    RETURN_NAMES = ("signal",)
-
-    FUNCTION = "doit"
-
-    CATEGORY = "InspirePack/Backend"
-
-    OUTPUT_NODE = True
-
-    @staticmethod
-    def doit(key, signal_opt=None):
-        global cache
-
-        if key == '*':
-            cache = TaggedCache(cache_settings)
-        elif key in cache:
-            del cache[key]
-        else:
-            print(f"[Inspire Pack] RemoveBackendData: invalid data key {key}")
-
-        return (signal_opt,)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

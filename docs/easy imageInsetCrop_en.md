@@ -43,36 +43,6 @@ This node facilitates precise image cropping by allowing users to define the cro
 - Infra type: CPU
 
 # Source code
-```
-class imageInsetCrop:
+[View source repository on GitHub](https://github.com/yolain/ComfyUI-Easy-Use)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'image': ('IMAGE',), 'measurement': (['Pixels', 'Percentage'],), 'left': ('INT', {'default': 0, 'min': 0, 'max': MAX_RESOLUTION, 'step': 8}), 'right': ('INT', {'default': 0, 'min': 0, 'max': MAX_RESOLUTION, 'step': 8}), 'top': ('INT', {'default': 0, 'min': 0, 'max': MAX_RESOLUTION, 'step': 8}), 'bottom': ('INT', {'default': 0, 'min': 0, 'max': MAX_RESOLUTION, 'step': 8})}}
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'crop'
-    CATEGORY = 'EasyUse/Image'
-
-    def crop(self, measurement, left, right, top, bottom, image=None):
-        """Does the crop."""
-        (_, height, width, _) = image.shape
-        if measurement == 'Percentage':
-            left = int(width - width * (100 - left) / 100)
-            right = int(width - width * (100 - right) / 100)
-            top = int(height - height * (100 - top) / 100)
-            bottom = int(height - height * (100 - bottom) / 100)
-        left = left // 8 * 8
-        right = right // 8 * 8
-        top = top // 8 * 8
-        bottom = bottom // 8 * 8
-        if left == 0 and right == 0 and (bottom == 0) and (top == 0):
-            return (image,)
-        (inset_left, inset_right, inset_top, inset_bottom) = get_new_bounds(width, height, left, right, top, bottom)
-        if inset_top > inset_bottom:
-            raise ValueError(f'Invalid cropping dimensions top ({inset_top}) exceeds bottom ({inset_bottom})')
-        if inset_left > inset_right:
-            raise ValueError(f'Invalid cropping dimensions left ({inset_left}) exceeds right ({inset_right})')
-        log_node_info('Image Inset Crop', f'Cropping image {width}x{height} width inset by {inset_left},{inset_right}, ' + f'and height inset by {inset_top}, {inset_bottom}')
-        image = image[:, inset_top:inset_bottom, inset_left:inset_right, :]
-        return (image,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

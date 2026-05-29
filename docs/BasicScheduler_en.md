@@ -35,23 +35,6 @@ The BasicScheduler node is designed to manage and compute the schedule of sigma 
 - Infra type: CPU
 
 # Source code
-```
-class BasicScheduler:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'model': ('MODEL',), 'scheduler': (comfy.samplers.SCHEDULER_NAMES,), 'steps': ('INT', {'default': 20, 'min': 1, 'max': 10000}), 'denoise': ('FLOAT', {'default': 1.0, 'min': 0.0, 'max': 1.0, 'step': 0.01})}}
-    RETURN_TYPES = ('SIGMAS',)
-    CATEGORY = 'sampling/custom_sampling/schedulers'
-    FUNCTION = 'get_sigmas'
-
-    def get_sigmas(self, model, scheduler, steps, denoise):
-        total_steps = steps
-        if denoise < 1.0:
-            if denoise <= 0.0:
-                return (torch.FloatTensor([]),)
-            total_steps = int(steps / denoise)
-        sigmas = comfy.samplers.calculate_sigmas(model.get_model_object('model_sampling'), scheduler, total_steps).cpu()
-        sigmas = sigmas[-(steps + 1):]
-        return (sigmas,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

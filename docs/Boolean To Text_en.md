@@ -23,21 +23,6 @@ The WAS_Boolean_To_Text node is designed to convert boolean values into a text r
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Boolean_To_Text:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'boolean': ('BOOLEAN', {'default': False})}}
-    RETURN_TYPES = (TEXT_TYPE,)
-    FUNCTION = 'do'
-    CATEGORY = 'WAS Suite/Logic'
-
-    def do(self, boolean):
-        if boolean:
-            return ('True',)
-        return ('False',)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

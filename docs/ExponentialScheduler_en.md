@@ -31,17 +31,6 @@ The ExponentialScheduler node is designed to generate a noise level schedule tha
 - Infra type: CPU
 
 # Source code
-```
-class ExponentialScheduler:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'steps': ('INT', {'default': 20, 'min': 1, 'max': 10000}), 'sigma_max': ('FLOAT', {'default': 14.614642, 'min': 0.0, 'max': 1000.0, 'step': 0.01, 'round': False}), 'sigma_min': ('FLOAT', {'default': 0.0291675, 'min': 0.0, 'max': 1000.0, 'step': 0.01, 'round': False})}}
-    RETURN_TYPES = ('SIGMAS',)
-    CATEGORY = 'sampling/custom_sampling/schedulers'
-    FUNCTION = 'get_sigmas'
-
-    def get_sigmas(self, steps, sigma_max, sigma_min):
-        sigmas = k_diffusion_sampling.get_sigmas_exponential(n=steps, sigma_min=sigma_min, sigma_max=sigma_max)
-        return (sigmas,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

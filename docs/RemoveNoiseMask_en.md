@@ -23,17 +23,6 @@ This node is designed to process and optimize data by removing unwanted noise fr
 - Infra type: CPU
 
 # Source code
-```
-class RemoveNoiseMask:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'samples': ('LATENT',)}}
-    RETURN_TYPES = ('LATENT',)
-    FUNCTION = 'doit'
-    CATEGORY = 'ImpactPack/Util'
-
-    def doit(self, samples):
-        res = {key: value for (key, value) in samples.items() if key != 'noise_mask'}
-        return (res,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

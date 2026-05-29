@@ -28,21 +28,6 @@ The PromptSlide node aims to adjust the influence of given prompt keywords by ap
 - Infra type: CPU
 
 # Source code
-```
-class PromptSlide:
+[View source repository on GitHub](https://github.com/shadowcz007/comfyui-mixlab-nodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'prompt_keyword': ('STRING', {'multiline': False, 'default': '', 'dynamicPrompts': False}), 'weight': ('FLOAT', {'default': 1, 'min': -3, 'max': 3, 'step': 0.01, 'display': 'slider'})}}
-    RETURN_TYPES = ('STRING',)
-    RETURN_NAMES = ('prompt',)
-    FUNCTION = 'run'
-    CATEGORY = '♾️Mixlab/Prompt'
-    INPUT_IS_LIST = False
-    OUTPUT_IS_LIST = (False,)
-    OUTPUT_NODE = False
-
-    def run(self, prompt_keyword, weight):
-        p = addWeight(prompt_keyword, weight)
-        return (p,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -42,19 +42,7 @@ The RemapReverseBarrelDistortion node applies an inverse barrel distortion effec
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class RemapReverseBarrelDistortion(RemapBase):
-    @classmethod
-    def INPUT_TYPES(s):
-        return RemapBarrelDistortion.BARREL_DIST_TYPES()
+[View source repository on GitHub](https://github.com/Suzie1/ComfyUI_Bmad_Nodes)
 
-    def send_remap(self, a, b, c, use_inverse_variant, d=None):
-        from .utils.remaps import remap_reverse_barrel_distortion
-        return ({
-                    "func": remap_reverse_barrel_distortion,
-                    "xargs": [a, b, c, d, use_inverse_variant]
-                },)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -32,35 +32,6 @@ The WAS_Constant_Number node is designed to generate a constant based on a speci
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Constant_Number:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'number_type': (['integer', 'float', 'bool'],), 'number': ('FLOAT', {'default': 0, 'min': -18446744073709551615, 'max': 18446744073709551615})}, 'optional': {'number_as_text': (TEXT_TYPE, {'forceInput': True if TEXT_TYPE == 'STRING' else False})}}
-    RETURN_TYPES = ('NUMBER', 'FLOAT', 'INT')
-    FUNCTION = 'return_constant_number'
-    CATEGORY = 'WAS Suite/Number'
-
-    def return_constant_number(self, number_type, number, number_as_text=None):
-        if number_as_text:
-            if number_type == 'integer':
-                number = int(number_as_text)
-            elif number_type == 'float':
-                number = float(number_as_text)
-            else:
-                number = bool(number_as_text)
-        if number_type:
-            if number_type == 'integer':
-                return (int(number), float(number), int(number))
-            elif number_type == 'integer':
-                return (float(number), float(number), int(number))
-            elif number_type == 'bool':
-                boolean = 1 if float(number) > 0.5 else 0
-                return (int(boolean), float(boolean), int(boolean))
-            else:
-                return (number, float(number), int(number))
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

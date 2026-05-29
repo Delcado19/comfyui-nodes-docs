@@ -27,18 +27,6 @@ This node parses a resolution string and converts it to integer width and height
 - Infra type: CPU
 
 # Source code
-```
-class SDXLResolution:
+[View source repository on GitHub](https://github.com/evanspearman/ComfyMath)
 
-    @classmethod
-    def INPUT_TYPES(cls) -> Mapping[str, Any]:
-        return {'required': {'resolution': ([f'{res[0]}x{res[1]}' for res in SDXL_SUPPORTED_RESOLUTIONS],)}}
-    RETURN_TYPES = ('INT', 'INT')
-    RETURN_NAMES = ('width', 'height')
-    FUNCTION = 'op'
-    CATEGORY = 'math/graphics'
-
-    def op(self, resolution: str) -> tuple[int, int]:
-        (width, height) = resolution.split('x')
-        return (int(width), int(height))
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

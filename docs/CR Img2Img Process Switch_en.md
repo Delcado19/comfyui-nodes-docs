@@ -36,24 +36,6 @@ The CR_Img2ImgProcessSwitch node acts as a decision component in the ComfyUI wor
 - Infra type: CPU
 
 # Source code
-```
-class CR_Img2ImgProcessSwitch:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'Input': (['txt2img', 'img2img'],)}, 'optional': {'txt2img': ('LATENT',), 'img2img': ('LATENT',)}}
-    RETURN_TYPES = ('LATENT', 'STRING')
-    RETURN_NAMES = ('LATENT', 'show_help')
-    FUNCTION = 'switch'
-    CATEGORY = icons.get('Comfyroll/Utils/Process')
-
-    def switch(self, Input, txt2img=None, img2img=None):
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Process-Nodes#cr-img2img-process-switch'
-        if Input == 'txt2img':
-            return (txt2img, show_help)
-        else:
-            return (img2img, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

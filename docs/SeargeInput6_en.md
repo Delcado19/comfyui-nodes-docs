@@ -52,28 +52,6 @@ This node serves as an interface for configuring and combining various parameter
 - Infra type: CPU
 
 # Source code
-```
-class SeargeInput6:
+[View source repository on GitHub](https://github.com/jobunk/SeargeSDXL)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'hires_fix': (SeargeParameterProcessor.STATES, {'default': SeargeParameterProcessor.STATES[1]}), 'hrf_steps': ('INT', {'default': 0, 'min': 0, 'max': 100}), 'hrf_denoise': ('FLOAT', {'default': 0.1, 'min': 0.0, 'max': 1.0, 'step': 0.01}), 'hrf_upscale_factor': ('FLOAT', {'default': 1.5, 'min': 0.25, 'max': 4.0, 'step': 0.25}), 'hrf_intensity': (SeargeParameterProcessor.REFINER_INTENSITY, {'default': SeargeParameterProcessor.REFINER_INTENSITY[1]}), 'hrf_seed_offset': (SeargeParameterProcessor.HRF_SEED_OFFSET, {'default': SeargeParameterProcessor.HRF_SEED_OFFSET[1]}), 'hrf_smoothness': ('FLOAT', {'default': 0.0, 'min': 0.0, 'max': 1.0, 'step': 0.05})}, 'optional': {'inputs': ('PARAMETER_INPUTS',)}}
-    RETURN_TYPES = ('PARAMETER_INPUTS',)
-    RETURN_NAMES = ('inputs',)
-    FUNCTION = 'mux'
-    CATEGORY = 'Searge/_deprecated_/UI/Inputs'
-
-    def mux(self, hires_fix, hrf_steps, hrf_denoise, hrf_upscale_factor, hrf_intensity, hrf_seed_offset, hrf_smoothness, inputs=None):
-        if inputs is None:
-            parameters = {}
-        else:
-            parameters = inputs
-        parameters['hires_fix'] = hires_fix
-        parameters['hrf_steps'] = hrf_steps
-        parameters['hrf_denoise'] = hrf_denoise
-        parameters['hrf_upscale_factor'] = hrf_upscale_factor
-        parameters['hrf_intensity'] = hrf_intensity
-        parameters['hrf_seed_offset'] = hrf_seed_offset
-        parameters['hrf_smoothness'] = hrf_smoothness
-        return (parameters,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

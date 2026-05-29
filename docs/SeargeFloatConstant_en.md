@@ -23,17 +23,6 @@ SeargeFloatConstant is a node designed to provide a constant floating-point valu
 - Infra type: CPU
 
 # Source code
-```
-class SeargeFloatConstant:
+[View source repository on GitHub](https://github.com/jobunk/SeargeSDXL)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'value': ('FLOAT', {'default': 0.0, 'step': 0.01})}}
-    RETURN_TYPES = ('FLOAT',)
-    RETURN_NAMES = ('value',)
-    FUNCTION = 'get_value'
-    CATEGORY = 'Searge/_deprecated_/Floats'
-
-    def get_value(self, value):
-        return (value,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

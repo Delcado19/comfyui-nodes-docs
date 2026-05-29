@@ -71,27 +71,6 @@ The samplerSimpleDownscaleUnet node is designed to facilitate image downscaling 
 - Infra type: CPU
 
 # Source code
-```
-class samplerSimpleDownscaleUnet:
+[View source repository on GitHub](https://github.com/yolain/ComfyUI-Easy-Use)
 
-    def __init__(self):
-        pass
-    upscale_methods = ['bicubic', 'nearest-exact', 'bilinear', 'area', 'bislerp']
-
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'pipe': ('PIPE_LINE',), 'downscale_mode': (['None', 'Auto', 'Custom'], {'default': 'Auto'}), 'block_number': ('INT', {'default': 3, 'min': 1, 'max': 32, 'step': 1}), 'downscale_factor': ('FLOAT', {'default': 2.0, 'min': 0.1, 'max': 9.0, 'step': 0.001}), 'start_percent': ('FLOAT', {'default': 0.0, 'min': 0.0, 'max': 1.0, 'step': 0.001}), 'end_percent': ('FLOAT', {'default': 0.35, 'min': 0.0, 'max': 1.0, 'step': 0.001}), 'downscale_after_skip': ('BOOLEAN', {'default': True}), 'downscale_method': (s.upscale_methods,), 'upscale_method': (s.upscale_methods,), 'image_output': (['Hide', 'Preview', 'Save', 'Hide/Save', 'Sender', 'Sender/Save'], {'default': 'Preview'}), 'link_id': ('INT', {'default': 0, 'min': 0, 'max': sys.maxsize, 'step': 1}), 'save_prefix': ('STRING', {'default': 'ComfyUI'})}, 'optional': {'model': ('MODEL',)}, 'hidden': {'tile_size': 'INT', 'prompt': 'PROMPT', 'extra_pnginfo': 'EXTRA_PNGINFO', 'my_unique_id': 'UNIQUE_ID', 'embeddingsList': (folder_paths.get_filename_list('embeddings'),)}}
-    RETURN_TYPES = ('PIPE_LINE', 'IMAGE')
-    RETURN_NAMES = ('pipe', 'image')
-    OUTPUT_NODE = True
-    FUNCTION = 'run'
-    CATEGORY = 'EasyUse/Sampler'
-
-    def run(self, pipe, downscale_mode, block_number, downscale_factor, start_percent, end_percent, downscale_after_skip, downscale_method, upscale_method, image_output, link_id, save_prefix, model=None, tile_size=None, prompt=None, extra_pnginfo=None, my_unique_id=None, force_full_denoise=False, disable_noise=False):
-        downscale_options = None
-        if downscale_mode == 'Auto':
-            downscale_options = {'block_number': block_number, 'downscale_factor': None, 'start_percent': 0, 'end_percent': 0.35, 'downscale_after_skip': True, 'downscale_method': 'bicubic', 'upscale_method': 'bicubic'}
-        elif downscale_mode == 'Custom':
-            downscale_options = {'block_number': block_number, 'downscale_factor': downscale_factor, 'start_percent': start_percent, 'end_percent': end_percent, 'downscale_after_skip': downscale_after_skip, 'downscale_method': downscale_method, 'upscale_method': upscale_method}
-        return samplerFull().run(pipe, None, None, None, None, None, image_output, link_id, save_prefix, None, model, None, None, None, None, None, None, tile_size, prompt, extra_pnginfo, my_unique_id, force_full_denoise, disable_noise, downscale_options)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

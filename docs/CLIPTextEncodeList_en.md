@@ -35,32 +35,6 @@ The CLIPTextEncodeSequence node is designed to encode a series of text lines int
 - Infra type: GPU
 
 # Source code
-```
-class CLIPTextEncodeSequence:
+[View source repository on GitHub](https://github.com/WASasquatch/WAS_Extras)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'clip': ('CLIP',), 'token_normalization': (['none', 'mean', 'length', 'length+mean'],), 'weight_interpretation': (['comfy', 'A1111', 'compel', 'comfy++'],), 'text': ('STRING', {'multiline': True, 'default': '0:A portrait of a rosebud\n5:A portrait of a blooming rosebud\n10:A portrait of a blooming rose\n15:A portrait of a rose'})}}
-    RETURN_TYPES = ('CONDITIONING_SEQ',)
-    RETURN_NAMES = ('conditioning_sequence',)
-    IS_LIST_OUTPUT = (True,)
-    FUNCTION = 'encode'
-    CATEGORY = 'conditioning'
-
-    def encode(self, clip, text, token_normalization, weight_interpretation):
-        text = text.strip()
-        conditionings = []
-        for l in text.splitlines():
-            match = re.match('(\\d+):', l)
-            if match:
-                idx = int(match.group(1))
-                (_, line) = l.split(':', 1)
-                line = line.strip()
-                if USE_BLK:
-                    encoded = blk_adv.encode(clip=clip, text=line, token_normalization=token_normalization, weight_interpretation=weight_interpretation)
-                else:
-                    encoded = CLIPTextEncode.encode(clip=clip, text=line)
-                conditioning = (idx, [encoded[0][0][0], encoded[0][0][1]])
-                conditionings.append(conditioning)
-        return (conditionings,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

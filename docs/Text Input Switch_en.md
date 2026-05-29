@@ -31,22 +31,6 @@ The 'text_input_switch' method of the WAS_Text_Input_Switch node is designed to 
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Text_Input_Switch:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'text_a': (TEXT_TYPE, {'forceInput': True if TEXT_TYPE == 'STRING' else False}), 'text_b': (TEXT_TYPE, {'forceInput': True if TEXT_TYPE == 'STRING' else False}), 'boolean': ('BOOLEAN', {'forceInput': True})}}
-    RETURN_TYPES = (TEXT_TYPE,)
-    FUNCTION = 'text_input_switch'
-    CATEGORY = 'WAS Suite/Logic'
-
-    def text_input_switch(self, text_a, text_b, boolean=True):
-        if boolean:
-            return (text_a,)
-        else:
-            return (text_b,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

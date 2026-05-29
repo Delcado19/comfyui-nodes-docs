@@ -23,16 +23,6 @@ The BreakoutVec3 node is designed to decompose a three-dimensional vector into i
 - Infra type: CPU
 
 # Source code
-```
-class BreakoutVec3:
+[View source repository on GitHub](https://github.com/evanspearman/ComfyMath)
 
-    @classmethod
-    def INPUT_TYPES(cls) -> Mapping[str, Any]:
-        return {'required': {'a': ('VEC3', {'default': VEC3_ZERO})}}
-    RETURN_TYPES = ('FLOAT', 'FLOAT', 'FLOAT')
-    FUNCTION = 'op'
-    CATEGORY = 'math/conversion'
-
-    def op(self, a: Vec3) -> tuple[float, float, float]:
-        return (a[0], a[1], a[2])
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -27,20 +27,6 @@ The CR_BinaryToBitList node aims to convert a binary string into a list of indiv
 - Infra type: CPU
 
 # Source code
-```
-class CR_BinaryToBitList:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'bit_string': ('STRING', {'multiline': True, 'default': ''})}}
-    RETURN_TYPES = ('STRING', 'STRING')
-    RETURN_NAMES = ('STRING', 'show_help')
-    OUTPUT_IS_LIST = (True, False)
-    FUNCTION = 'make_list'
-    CATEGORY = icons.get('Comfyroll/List')
-
-    def make_list(self, bit_string):
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/List-Nodes#cr-binary-to-list'
-        list_out = [str(bit) for bit in bit_string]
-        return (list_out, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

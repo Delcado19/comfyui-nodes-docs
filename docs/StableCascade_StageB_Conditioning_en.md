@@ -27,22 +27,6 @@ The `set_prior` method integrates prior information into the conditioning proces
 - Infra type: CPU
 
 # Source code
-```
-class StableCascade_StageB_Conditioning:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'conditioning': ('CONDITIONING',), 'stage_c': ('LATENT',)}}
-    RETURN_TYPES = ('CONDITIONING',)
-    FUNCTION = 'set_prior'
-    CATEGORY = 'conditioning/stable_cascade'
-
-    def set_prior(self, conditioning, stage_c):
-        c = []
-        for t in conditioning:
-            d = t[1].copy()
-            d['stable_cascade_prior'] = stage_c['samples']
-            n = [t[0], d]
-            c.append(n)
-        return (c,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

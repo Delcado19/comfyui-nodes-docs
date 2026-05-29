@@ -64,27 +64,6 @@ The "ImpactWildcardEncode" node is designed to integrate and manipulate text dat
 - Infra type: CPU
 
 # Source code
-```
-class ImpactWildcardEncode:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'model': ('MODEL',), 'clip': ('CLIP',), 'wildcard_text': ('STRING', {'multiline': True, 'dynamicPrompts': False}), 'populated_text': ('STRING', {'multiline': True, 'dynamicPrompts': False}), 'mode': ('BOOLEAN', {'default': True, 'label_on': 'Populate', 'label_off': 'Fixed'}), 'Select to add LoRA': (['Select the LoRA to add to the text'] + folder_paths.get_filename_list('loras'),), 'Select to add Wildcard': (['Select the Wildcard to add to the text'],), 'seed': ('INT', {'default': 0, 'min': 0, 'max': 18446744073709551615})}}
-    CATEGORY = 'ImpactPack/Prompt'
-    RETURN_TYPES = ('MODEL', 'CLIP', 'CONDITIONING', 'STRING')
-    RETURN_NAMES = ('model', 'clip', 'conditioning', 'populated_text')
-    FUNCTION = 'doit'
-
-    @staticmethod
-    def process_with_loras(**kwargs):
-        return impact.wildcards.process_with_loras(**kwargs)
-
-    @staticmethod
-    def get_wildcard_list():
-        return impact.wildcards.get_wildcard_list()
-
-    def doit(self, *args, **kwargs):
-        populated = kwargs['populated_text']
-        (model, clip, conditioning) = impact.wildcards.process_with_loras(populated, kwargs['model'], kwargs['clip'])
-        return (model, clip, conditioning, populated)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

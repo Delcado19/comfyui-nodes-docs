@@ -31,18 +31,6 @@ The CR_KeyframeList node manages and processes a list of keyframes, which are se
 - Infra type: CPU
 
 # Source code
-```
-class CR_KeyframeList:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'keyframe_list': ('STRING', {'multiline': True, 'default': 'keyframes'}), 'keyframe_format': (['Deforum', 'CR'],)}}
-    RETURN_TYPES = ('STRING', 'STRING')
-    RETURN_NAMES = ('keyframe_list', 'show_help')
-    FUNCTION = 'keyframelist'
-    CATEGORY = icons.get('Comfyroll/Animation/Prompt')
-
-    def keyframelist(self, keyframe_list, keyframe_format):
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Prompt-Nodes#cr-keyframe-list'
-        return (keyframe_list, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

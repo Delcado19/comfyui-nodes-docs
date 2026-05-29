@@ -27,17 +27,6 @@ The Canny_Preprocessor_Provider_for_SEGS node aims to preprocess images by apply
 - Infra type: CPU
 
 # Source code
-```
-class Canny_Preprocessor_Provider_for_SEGS:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Inspire-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'low_threshold': ('FLOAT', {'default': 0.4, 'min': 0.01, 'max': 0.99, 'step': 0.01}), 'high_threshold': ('FLOAT', {'default': 0.8, 'min': 0.01, 'max': 0.99, 'step': 0.01})}}
-    RETURN_TYPES = ('SEGS_PREPROCESSOR',)
-    FUNCTION = 'doit'
-    CATEGORY = 'InspirePack/SEGS/ControlNet'
-
-    def doit(self, low_threshold, high_threshold):
-        obj = Canny_Preprocessor_wrapper(low_threshold, high_threshold)
-        return (obj,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

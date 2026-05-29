@@ -51,45 +51,7 @@ The CLIPTextEncode (NSP) node specifically uses the CLIP model to encode text in
 - Infra type: `GPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class WAS_NSP_CLIPTextEncoder:
-    def __init__(self):
-        pass
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {
-            "required": {
-                "mode": (["Noodle Soup Prompts", "Wildcards"],),
-                "noodle_key": ("STRING", {"default": '__', "multiline": False}),
-                "seed": ("INT", {"default": 0, "min": 0, "max": 0xffffffffffffffff}),
-                "text": ("STRING", {"multiline": True}),
-                "clip": ("CLIP",),
-            }
-        }
-
-    OUTPUT_NODE = True
-    RETURN_TYPES = ("CONDITIONING", TEXT_TYPE, TEXT_TYPE)
-    RETURN_NAMES = ("conditioning", "parsed_text", "raw_text")
-    FUNCTION = "nsp_encode"
-
-    CATEGORY = "WAS Suite/Conditioning"
-
-    def nsp_encode(self, clip, text, mode="Noodle Soup Prompts", noodle_key='__', seed=0):
-
-        if mode == "Noodle Soup Prompts":
-            new_text = nsp_parse(text, seed, noodle_key)
-        else:
-            new_text = replace_wildcards(text, (None if seed == 0 else seed), noodle_key)
-
-        new_text = parse_dynamic_prompt(new_text, seed)
-        new_text, text_vars = parse_prompt_vars(new_text)
-        cstr(f"CLIPTextEncode Prased Prompt:\n {new_text}").msg.print()
-        CLIPTextEncode = nodes.CLIPTextEncode()
-        encoded = CLIPTextEncode.encode(clip=clip, text=new_text)
-
-        return (encoded[0], new_text, text, { "ui": { "string": new_text } })
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

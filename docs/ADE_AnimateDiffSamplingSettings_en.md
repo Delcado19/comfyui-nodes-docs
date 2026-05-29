@@ -60,18 +60,6 @@ The `create_settings` method of the SampleSettingsNode class is intended to conf
 - Infra type: CPU
 
 # Source code
-```
-class SampleSettingsNode:
+[View source repository on GitHub](https://github.com/Kosinkadink/ComfyUI-AnimateDiff-Evolved)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'batch_offset': ('INT', {'default': 0, 'min': 0, 'max': BIGMAX}), 'noise_type': (NoiseLayerType.LIST,), 'seed_gen': (SeedNoiseGeneration.LIST,), 'seed_offset': ('INT', {'default': 0, 'min': BIGMIN, 'max': BIGMAX})}, 'optional': {'noise_layers': ('NOISE_LAYERS',), 'iteration_opts': ('ITERATION_OPTS',), 'seed_override': ('INT', {'default': 0, 'min': 0, 'max': 18446744073709551615, 'forceInput': True}), 'adapt_denoise_steps': ('BOOLEAN', {'default': False}), 'custom_cfg': ('CUSTOM_CFG',), 'sigma_schedule': ('SIGMA_SCHEDULE',)}}
-    RETURN_TYPES = ('SAMPLE_SETTINGS',)
-    RETURN_NAMES = ('settings',)
-    CATEGORY = 'Animate Diff 🎭🅐🅓'
-    FUNCTION = 'create_settings'
-
-    def create_settings(self, batch_offset: int, noise_type: str, seed_gen: str, seed_offset: int, noise_layers: NoiseLayerGroup=None, iteration_opts: IterationOptions=None, seed_override: int=None, adapt_denoise_steps=False, custom_cfg: CustomCFGKeyframeGroup=None, sigma_schedule: SigmaSchedule=None):
-        sampling_settings = SampleSettings(batch_offset=batch_offset, noise_type=noise_type, seed_gen=seed_gen, seed_offset=seed_offset, noise_layers=noise_layers, iteration_opts=iteration_opts, seed_override=seed_override, adapt_denoise_steps=adapt_denoise_steps, custom_cfg=custom_cfg, sigma_schedule=sigma_schedule)
-        return (sampling_settings,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

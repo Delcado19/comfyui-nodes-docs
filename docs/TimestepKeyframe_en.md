@@ -36,25 +36,6 @@ TimestepKeyframeNode is a critical component in the process of generating advanc
 - Infra type: CPU
 
 # Source code
-```
-class TimestepKeyframeNode:
+[View source repository on GitHub](https://github.com/Kosinkadink/ComfyUI-Advanced-ControlNet)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'start_percent': ('FLOAT', {'default': 0.0, 'min': 0.0, 'max': 1.0, 'step': 0.001})}, 'optional': {'prev_timestep_kf': ('TIMESTEP_KEYFRAME',), 'strength': ('FLOAT', {'default': 1.0, 'min': 0.0, 'max': 10.0, 'step': 0.001}), 'cn_weights': ('CONTROL_NET_WEIGHTS',), 'latent_keyframe': ('LATENT_KEYFRAME',), 'null_latent_kf_strength': ('FLOAT', {'default': 0.0, 'min': 0.0, 'max': 10.0, 'step': 0.001}), 'inherit_missing': ('BOOLEAN', {'default': True}), 'guarantee_usage': ('BOOLEAN', {'default': True}), 'mask_optional': ('MASK',)}}
-    RETURN_NAMES = ('TIMESTEP_KF',)
-    RETURN_TYPES = ('TIMESTEP_KEYFRAME',)
-    FUNCTION = 'load_keyframe'
-    CATEGORY = 'Adv-ControlNet 🛂🅐🅒🅝/keyframes'
-
-    def load_keyframe(self, start_percent: float, strength: float=1.0, cn_weights: ControlWeights=None, control_net_weights: ControlWeights=None, latent_keyframe: LatentKeyframeGroup=None, prev_timestep_kf: TimestepKeyframeGroup=None, prev_timestep_keyframe: TimestepKeyframeGroup=None, null_latent_kf_strength: float=0.0, inherit_missing=True, guarantee_usage=True, mask_optional=None, interpolation: str=SI.NONE):
-        control_net_weights = control_net_weights if control_net_weights else cn_weights
-        prev_timestep_keyframe = prev_timestep_keyframe if prev_timestep_keyframe else prev_timestep_kf
-        if not prev_timestep_keyframe:
-            prev_timestep_keyframe = TimestepKeyframeGroup()
-        else:
-            prev_timestep_keyframe = prev_timestep_keyframe.clone()
-        keyframe = TimestepKeyframe(start_percent=start_percent, strength=strength, interpolation=interpolation, null_latent_kf_strength=null_latent_kf_strength, control_weights=control_net_weights, latent_keyframes=latent_keyframe, inherit_missing=inherit_missing, guarantee_usage=guarantee_usage, mask_hint_orig=mask_optional)
-        prev_timestep_keyframe.add(keyframe)
-        return (prev_timestep_keyframe,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

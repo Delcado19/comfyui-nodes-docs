@@ -27,18 +27,6 @@ CR_FloatToInteger node is designed to convert floating-point numbers to their in
 - Infra type: CPU
 
 # Source code
-```
-class CR_FloatToInteger:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'_float': ('FLOAT', {'default': 0.0, 'forceInput': True, 'forceInput': True})}}
-    RETURN_TYPES = ('INT', 'STRING')
-    RETURN_NAMES = ('INT', 'show_help')
-    FUNCTION = 'convert'
-    CATEGORY = icons.get('Comfyroll/Utils/Conversion')
-
-    def convert(self, _float):
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Conversion-Nodes#cr-float-to-integer'
-        return (int(_float), show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -25,39 +25,7 @@ The LLMTrafilaturaWebReaderAdv node is an advanced web content extraction tool. 
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class LLMTrafilaturaWebReaderAdv:
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {
-            "required": {
-                "urls": ("LIST", {}),
-            },
-        }
+[View source repository on GitHub](https://github.com/jbikker/ComfyUI-SALT)
 
-    RETURN_TYPES = ("DOCUMENT", )
-    RETURN_NAMES = ("documents",)
-
-    FUNCTION = "read_web_trafilatura"
-    CATEGORY = f"{MENU_NAME}/{SUB_MENU_NAME}/Readers"
-
-    def read_web_trafilatura(self, urls):
-
-        if not urls:
-            raise ValueError("At least one URL must be provided to LLMTrafilaturaWebReaderAdv")
-
-        valid_urls = []
-        for url in urls:
-            if not valid_url(url):
-                print("Skipping invalid URL", url)
-                continue
-            valid_urls.append(url)
-
-        print("Valided URLs:", valid_urls)
-
-        documents = TrafilaturaWebReader().load_data(valid_urls)
-        return (documents,)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

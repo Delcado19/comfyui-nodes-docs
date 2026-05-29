@@ -25,24 +25,7 @@ This node provides a pre‑processor for SEGS (Semantic Edge‑Guided Synthesis)
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class HEDPreprocessor_Provider_for_SEGS:
-    @classmethod
-    def INPUT_TYPES(s):
-        return {
-            "required": {
-                "safe": ("BOOLEAN", {"default": True, "label_on": "enable", "label_off": "disable"})
-            }
-        }
-    RETURN_TYPES = ("SEGS_PREPROCESSOR",)
-    FUNCTION = "doit"
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    CATEGORY = "InspirePack/SEGS/ControlNet"
-
-    def doit(self, safe):
-        obj = HED_Preprocessor_wrapper(safe, "HEDPreprocessor")
-        return (obj, )
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

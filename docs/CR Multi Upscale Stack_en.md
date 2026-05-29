@@ -64,29 +64,6 @@ CR_MultiUpscaleStack is a node designed to improve image quality and resolution 
 - Infra type: GPU
 
 # Source code
-```
-class CR_MultiUpscaleStack:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        mix_methods = ['Combine', 'Average', 'Concatenate']
-        up_models = ['None'] + folder_paths.get_filename_list('upscale_models')
-        return {'required': {'switch_1': (['On', 'Off'],), 'upscale_model_1': (up_models,), 'rescale_factor_1': ('FLOAT', {'default': 2, 'min': 0.01, 'max': 16.0, 'step': 0.01}), 'switch_2': (['On', 'Off'],), 'upscale_model_2': (up_models,), 'rescale_factor_2': ('FLOAT', {'default': 2, 'min': 0.01, 'max': 16.0, 'step': 0.01}), 'switch_3': (['On', 'Off'],), 'upscale_model_3': (up_models,), 'rescale_factor_3': ('FLOAT', {'default': 2, 'min': 0.01, 'max': 16.0, 'step': 0.01})}, 'optional': {'upscale_stack': ('UPSCALE_STACK',)}}
-    RETURN_TYPES = ('UPSCALE_STACK', 'STRING')
-    RETURN_NAMES = ('UPSCALE_STACK', 'show_help')
-    FUNCTION = 'stack'
-    CATEGORY = icons.get('Comfyroll/Upscale')
-
-    def stack(self, switch_1, upscale_model_1, rescale_factor_1, switch_2, upscale_model_2, rescale_factor_2, switch_3, upscale_model_3, rescale_factor_3, upscale_stack=None):
-        upscale_list = list()
-        if upscale_stack is not None:
-            upscale_list.extend([l for l in upscale_stack if l[0] != 'None'])
-        if upscale_model_1 != 'None' and switch_1 == 'On':
-            (upscale_list.extend([(upscale_model_1, rescale_factor_1)]),)
-        if upscale_model_2 != 'None' and switch_2 == 'On':
-            (upscale_list.extend([(upscale_model_2, rescale_factor_2)]),)
-        if upscale_model_3 != 'None' and switch_3 == 'On':
-            (upscale_list.extend([(upscale_model_3, rescale_factor_3)]),)
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Upscale-Nodes#cr-multi-upscale-stack'
-        return (upscale_list, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

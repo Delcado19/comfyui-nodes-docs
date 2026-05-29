@@ -27,21 +27,6 @@ The LatentSubtract node is designed to perform subtraction between two sets of l
 - Infra type: CPU
 
 # Source code
-```
-class LatentSubtract:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'samples1': ('LATENT',), 'samples2': ('LATENT',)}}
-    RETURN_TYPES = ('LATENT',)
-    FUNCTION = 'op'
-    CATEGORY = 'latent/advanced'
-
-    def op(self, samples1, samples2):
-        samples_out = samples1.copy()
-        s1 = samples1['samples']
-        s2 = samples2['samples']
-        s2 = reshape_latent_to(s1.shape, s2)
-        samples_out['samples'] = s1 - s2
-        return (samples_out,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

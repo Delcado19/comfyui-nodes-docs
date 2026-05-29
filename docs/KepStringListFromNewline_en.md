@@ -29,30 +29,7 @@ The KepStringListFromNewline node converts a multi-line text string into a list 
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class StringListFromNewline:
-    def __init__(self) -> None:
-        pass
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(self) -> Dict[str, Dict[str, Any]]:
-        return {
-            "required": {
-                "Text": ("STRING", {"multiline": True}),
-            },
-        }
-
-    RETURN_TYPES = ("STRING", "INT")
-    RETURN_NAMES = ("Strings", "Num Strings")
-    INPUT_IS_LIST = False
-    OUTPUT_IS_LIST = (True,)
-    FUNCTION = "to_string_list"
-
-    CATEGORY = "List Stuff"
-
-    def to_string_list(self, Text: str) -> Tuple[List[str], List[int]]:
-        return Text.split("\n"), [len(Text.split("\n"))]
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

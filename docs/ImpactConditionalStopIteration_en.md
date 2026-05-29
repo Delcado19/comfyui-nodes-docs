@@ -23,19 +23,6 @@ The 'doit' method of the ImpactConditionalStopIteration node is designed to cont
 - Infra type: CPU
 
 # Source code
-```
-class ImpactConditionalStopIteration:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'cond': ('BOOLEAN', {'forceInput': True})}}
-    FUNCTION = 'doit'
-    CATEGORY = 'ImpactPack/Logic'
-    RETURN_TYPES = ()
-    OUTPUT_NODE = True
-
-    def doit(self, cond):
-        if cond:
-            PromptServer.instance.send_sync('stop-iteration', {})
-        return {}
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

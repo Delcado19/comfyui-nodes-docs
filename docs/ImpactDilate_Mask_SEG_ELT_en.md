@@ -28,18 +28,6 @@ The Dilate_SEG_ELT node is designed to perform morphological dilation on segment
 - Infra type: CPU
 
 # Source code
-```
-class Dilate_SEG_ELT:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'seg_elt': ('SEG_ELT',), 'dilation': ('INT', {'default': 10, 'min': -512, 'max': 512, 'step': 1})}}
-    RETURN_TYPES = ('SEG_ELT',)
-    FUNCTION = 'doit'
-    CATEGORY = 'ImpactPack/Util'
-
-    def doit(self, seg, dilation):
-        mask = core.dilate_mask(seg.cropped_mask, dilation)
-        seg = SEG(seg.cropped_image, mask, seg.confidence, seg.crop_region, seg.bbox, seg.label, seg.control_net_wrapper)
-        return (seg,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

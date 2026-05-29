@@ -32,21 +32,6 @@ In the `WeightAdjustAllAddNode` class, the `get_weight_adjust` method is intende
 - Infra type: CPU
 
 # Source code
-```
-class WeightAdjustAllAddNode:
+[View source repository on GitHub](https://github.com/Kosinkadink/ComfyUI-AnimateDiff-Evolved)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'all_ADD': ('FLOAT', {'default': 0.0, 'min': -2.0, 'max': 2.0, 'step': 1e-06}), 'print_adjustment': ('BOOLEAN', {'default': False})}, 'optional': {'prev_weight_adjust': ('WEIGHT_ADJUST',)}}
-    RETURN_TYPES = ('WEIGHT_ADJUST',)
-    CATEGORY = 'Animate Diff 🎭🅐🅓/ad settings/weight adjust'
-    FUNCTION = 'get_weight_adjust'
-
-    def get_weight_adjust(self, all_ADD: float, print_adjustment: bool, prev_weight_adjust: AdjustGroup=None):
-        if prev_weight_adjust is None:
-            prev_weight_adjust = AdjustGroup()
-        prev_weight_adjust = prev_weight_adjust.clone()
-        adjust = AdjustWeight(all_ADD=all_ADD, print_adjustment=print_adjustment)
-        prev_weight_adjust.add(adjust)
-        return (prev_weight_adjust,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

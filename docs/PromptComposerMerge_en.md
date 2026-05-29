@@ -27,20 +27,6 @@ The PromptComposerMerge node is designed to seamlessly integrate and merge two d
 - Infra type: CPU
 
 # Source code
-```
-class PromptComposerMerge:
+[View source repository on GitHub](https://github.com/florestefano1975/comfyui-prompt-composer)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'text_a': ('STRING', {'forceInput': True}), 'text_b': ('STRING', {'forceInput': True})}}
-    RETURN_TYPES = ('STRING',)
-    RETURN_NAMES = ('text_out',)
-    FUNCTION = 'promptComposerMerge'
-    CATEGORY = 'AI WizArt/Prompt Composer Tools'
-
-    def promptComposerMerge(self, text_a='', text_b=''):
-        return (text_a + ', ' + text_b,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

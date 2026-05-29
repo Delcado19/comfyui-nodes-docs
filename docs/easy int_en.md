@@ -23,17 +23,6 @@ This node facilitates the execution of arithmetic operations by converting input
 - Infra type: CPU
 
 # Source code
-```
-class Int:
+[View source repository on GitHub](https://github.com/yolain/ComfyUI-Easy-Use)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'value': ('INT', {'default': 0})}}
-    RETURN_TYPES = ('INT',)
-    RETURN_NAMES = ('int',)
-    FUNCTION = 'execute'
-    CATEGORY = 'EasyUse/Logic/Type'
-
-    def execute(self, value):
-        return (value,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -39,20 +39,6 @@ The 'set_steps' method of the WLSH_SDXL_Steps node is designed to configure step
 - Infra type: CPU
 
 # Source code
-```
-class WLSH_SDXL_Steps:
+[View source repository on GitHub](https://github.com/wallish77/wlsh_nodes)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'precondition': ('INT', {'default': 3, 'min': 1, 'max': 10000}), 'base': ('INT', {'default': 12, 'min': 1, 'max': 10000}), 'total': ('INT', {'default': 20, 'min': 1, 'max': 10000})}}
-    RETURN_TYPES = ('INT', 'INT', 'INT')
-    RETURN_NAMES = ('pre', 'base', 'total')
-    FUNCTION = 'set_steps'
-    CATEGORY = 'WLSH Nodes/number'
-
-    def set_steps(self, precondition, base, total):
-        return (precondition, base, total)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -31,18 +31,6 @@ The `select_images` method of the SelectEveryNthImage node efficiently selects a
 - Infra type: CPU
 
 # Source code
-```
-class SelectEveryNthImage:
+[View source repository on GitHub](https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'images': ('IMAGE',), 'select_every_nth': ('INT', {'default': 1, 'min': 1, 'max': BIGMAX, 'step': 1})}}
-    CATEGORY = 'Video Helper Suite 🎥🅥🅗🅢/image'
-    RETURN_TYPES = ('IMAGE', 'INT')
-    RETURN_NAMES = ('IMAGE', 'count')
-    FUNCTION = 'select_images'
-
-    def select_images(self, images: Tensor, select_every_nth: int):
-        sub_images = images[0::select_every_nth]
-        return (sub_images, sub_images.size(0))
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

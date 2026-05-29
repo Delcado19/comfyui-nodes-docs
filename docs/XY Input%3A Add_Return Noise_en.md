@@ -25,29 +25,7 @@ The TSC_XYplot_AddReturnNoise node is designed specifically for XY input types, 
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class TSC_XYplot_AddReturnNoise:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {"required": {
-                    "XY_type": (["add_noise", "return_with_leftover_noise"],)}
-        }
-
-    RETURN_TYPES = ("XY",)
-    RETURN_NAMES = ("X or Y",)
-    FUNCTION = "xy_value"
-    CATEGORY = "Efficiency Nodes/XY Inputs"
-
-    def xy_value(self, XY_type):
-        type_mapping = {
-            "add_noise": "AddNoise",
-            "return_with_leftover_noise": "ReturnNoise"
-        }
-        xy_type = type_mapping[XY_type]
-        xy_value = ["enable", "disable"]
-        return ((xy_type, xy_value),)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

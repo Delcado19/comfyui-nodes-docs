@@ -32,27 +32,6 @@ This node leverages the capabilities of the StableSR model to increase the resol
 - Infra type: GPU
 
 # Source code
-```
-class ApplyStableSRUpscaler:
+[View source repository on GitHub](https://github.com/Arthurzhangsheng/Comfyui-StableSR)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'model': ('MODEL',), 'stablesr_model': (folder_paths.get_filename_list('stablesr'),)}, 'optional': {'latent_image': ('LATENT',)}}
-    RETURN_TYPES = ('MODEL',)
-    FUNCTION = 'apply_stable_sr_upscaler'
-    CATEGORY = 'image/upscaling'
-
-    def apply_stable_sr_upscaler(self, model, stablesr_model, latent_image=None):
-        stablesr_model_path = folder_paths.get_full_path('stablesr', stablesr_model)
-        if not os.path.isfile(stablesr_model_path):
-            raise Exception(f'[StableSR] Invalid StableSR model reference')
-        upscaler = StableSR(stablesr_model_path, dtype=comfy.model_management.unet_dtype(), device='cpu')
-        if latent_image != None:
-            latent_image = model.model.process_latent_in(latent_image['samples'])
-            upscaler.set_latent_image(latent_image)
-        else:
-            upscaler.set_auto_set_latent(True)
-        model_sr = model.clone()
-        model_sr.set_model_unet_function_wrapper(upscaler)
-        return (model_sr,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

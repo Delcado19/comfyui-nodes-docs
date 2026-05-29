@@ -59,26 +59,6 @@ This node is designed to process and demultiplex input parameters, assigning the
 - Infra type: CPU
 
 # Source code
-```
-class SeargeOutput2:
+[View source repository on GitHub](https://github.com/jobunk/SeargeSDXL)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'parameters': ('PARAMETERS',)}}
-    RETURN_TYPES = ('PARAMETERS', 'INT', 'INT', 'INT', 'INT', 'FLOAT', 'SAMPLER_NAME', 'SCHEDULER_NAME', 'ENABLE_STATE', 'SAVE_FOLDER')
-    RETURN_NAMES = ('parameters', 'seed', 'image_width', 'image_height', 'steps', 'cfg', 'sampler_name', 'scheduler', 'save_image', 'save_directory')
-    FUNCTION = 'demux'
-    CATEGORY = 'Searge/_deprecated_/UI/Outputs'
-
-    def demux(self, parameters):
-        seed = parameters['seed']
-        image_width = parameters['image_width']
-        image_height = parameters['image_height']
-        steps = parameters['steps']
-        cfg = parameters['cfg']
-        sampler_name = parameters['sampler_name']
-        scheduler = parameters['scheduler']
-        save_image = parameters['save_image']
-        save_directory = parameters['save_directory']
-        return (parameters, seed, image_width, image_height, steps, cfg, sampler_name, scheduler, save_image, save_directory)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

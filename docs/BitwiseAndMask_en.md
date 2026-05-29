@@ -27,17 +27,6 @@ The 'doit' method of the BitwiseAndMask node is designed to perform a bitwise AN
 - Infra type: CPU
 
 # Source code
-```
-class BitwiseAndMask:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'mask1': ('MASK',), 'mask2': ('MASK',)}}
-    RETURN_TYPES = ('MASK',)
-    FUNCTION = 'doit'
-    CATEGORY = 'ImpactPack/Operation'
-
-    def doit(self, mask1, mask2):
-        mask = bitwise_and_masks(mask1, mask2)
-        return (mask,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

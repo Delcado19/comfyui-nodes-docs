@@ -43,21 +43,6 @@ The CenterImage node is designed to process and center an image within a given c
 - Infra type: CPU
 
 # Source code
-```
-class CenterImage:
+[View source repository on GitHub](https://github.com/shadowcz007/comfyui-mixlab-nodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'canvas': ('IMAGE',), 'left': ('INT', {'default': 24, 'min': 0, 'max': 5000, 'step': 1, 'display': 'number'}), 'top': ('INT', {'default': 24, 'min': 0, 'max': 5000, 'step': 1, 'display': 'number'}), 'right': ('INT', {'default': 24, 'min': 0, 'max': 5000, 'step': 1, 'display': 'number'}), 'bottom': ('INT', {'default': 24, 'min': 0, 'max': 5000, 'step': 1, 'display': 'number'})}}
-    RETURN_TYPES = ('_GRID', 'MASK')
-    RETURN_NAMES = ('grid', 'mask')
-    FUNCTION = 'run'
-    CATEGORY = '♾️Mixlab/Layer'
-    INPUT_IS_LIST = False
-
-    def run(self, canvas, left, top, right, bottom):
-        canvas = tensor2pil(canvas)
-        grid = centerImage((left, top, right, bottom), canvas)
-        mask = createMask(canvas, left, top, canvas.width - left - right, canvas.height - top - bottom)
-        return (grid, pil2tensor(mask))
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

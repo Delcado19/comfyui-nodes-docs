@@ -52,34 +52,6 @@ CR_SimplePromptListKeyframes is a node for generating a series of keyframes from
 - Infra type: CPU
 
 # Source code
-```
-class CR_SimplePromptListKeyframes:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        transition_types = ['Default']
-        transition_speeds = ['Default']
-        transition_profiles = ['Default']
-        return {'required': {'simple_prompt_list': ('SIMPLE_PROMPT_LIST',), 'keyframe_interval': ('INT', {'default': 30, 'min': 0, 'max': 999, 'step': 1}), 'loops': ('INT', {'default': 1, 'min': 1, 'max': 1000}), 'transition_type': (transition_types,), 'transition_speed': (transition_speeds,), 'transition_profile': (transition_profiles,), 'keyframe_format': (['Deforum'],)}}
-    RETURN_TYPES = ('STRING', 'STRING')
-    RETURN_NAMES = ('keyframe_list', 'show_help')
-    FUNCTION = 'make_keyframes'
-    CATEGORY = icons.get('Comfyroll/Animation/Legacy')
-
-    def make_keyframes(self, simple_prompt_list, keyframe_interval, loops, transition_type, transition_speed, transition_profile, keyframe_format):
-        keyframe_format = 'Deforum'
-        keyframe_list = list()
-        i = 0
-        for j in range(1, loops + 1):
-            for (index, prompt) in enumerate(simple_prompt_list):
-                if i == 0:
-                    keyframe_list.extend(['"0": "' + prompt + '",\n'])
-                    i += keyframe_interval
-                    continue
-                new_keyframe = '"' + str(i) + '": "' + prompt + '",\n'
-                keyframe_list.extend([new_keyframe])
-                i += keyframe_interval
-        keyframes_out = ' '.join(keyframe_list)[:-2]
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Prompt-Nodes#cr-simple-prompt-list-keyframes'
-        return (keyframes_out, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -31,28 +31,6 @@ The `run` method of the MakeCircularVAE node aims to modify a Variational Autoen
 - Infra type: GPU
 
 # Source code
-```
-class MakeCircularVAE:
+[View source repository on GitHub](https://github.com/spinagon/ComfyUI-seamless-tiling)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'vae': ('VAE',), 'tiling': (['enable', 'x_only', 'y_only', 'disable'],), 'copy_vae': (['Make a copy', 'Modify in place'],)}}
-    RETURN_TYPES = ('VAE',)
-    FUNCTION = 'run'
-    CATEGORY = 'latent'
-
-    def run(self, vae, tiling, copy_vae):
-        if copy_vae == 'Modify in place':
-            vae_copy = vae
-        else:
-            vae_copy = copy.deepcopy(vae)
-        if tiling == 'enable':
-            make_circular_asymm(vae_copy.first_stage_model, True, True)
-        elif tiling == 'x_only':
-            make_circular_asymm(vae_copy.first_stage_model, True, False)
-        elif tiling == 'y_only':
-            make_circular_asymm(vae_copy.first_stage_model, False, True)
-        else:
-            make_circular_asymm(vae_copy.first_stage_model, False, False)
-        return (vae_copy,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

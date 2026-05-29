@@ -31,20 +31,7 @@ The Seed Generator node provides deterministic or randomized seed values for var
     - KSamplerAdvanced //Inspire
     - [DetailerForEach](../../ComfyUI-Impact-Pack/Nodes/DetailerForEach.md)
 
-
-
 ## Source code
-```python
-class SeedGenerator:
-    RETURN_TYPES = ("INT",)
-    FUNCTION = "get_seed"
-    CATEGORY = "ImageSaverTools/utils"
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {"required": {"seed": ("INT", {"default": 0, "min": 0, "max": 0xffffffffffffffff})}}
-
-    def get_seed(self, seed):
-        return (seed,)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

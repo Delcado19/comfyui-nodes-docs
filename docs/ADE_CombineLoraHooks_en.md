@@ -30,23 +30,6 @@ This node is designed to aggregate multiple LoRA hook groups into a single unifi
 - Common nodes: unknown
 
 ## Source code
-```python
-class CombineLoraHooks:
-    @classmethod
-    def INPUT_TYPES(s):
-        return {
-            "required": {
-            },
-            "optional": {
-                "lora_hook_A": ("LORA_HOOK",),
-                "lora_hook_B": ("LORA_HOOK",),
-            }
-        }
-    
-    RETURN_TYPES = ("LORA_HOOK",)
-    CATEGORY = "Animate Diff 🎭🅐🅓/conditioning/combine lora hooks"
-    FUNCTION = "combine_lora_hooks"
+[View source repository on GitHub](https://github.com/Kosinkadink/ComfyUI-AnimateDiff-Evolved)
 
-    def combine_lora_hooks(self, lora_hook_A: LoraHookGroup=None, lora_hook_B: LoraHookGroup=None):
-        candidates = [lora_hook_A, lora_hook_B]
-        return (LoraHookGroup.combine_all_lora_hooks(candidates),)
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

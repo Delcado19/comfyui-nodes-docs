@@ -40,42 +40,6 @@ WAS_Load_Cache node aims to efficiently manage loading cached data from specifie
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Load_Cache:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'latent_path': ('STRING', {'default': '', 'multiline': False}), 'image_path': ('STRING', {'default': '', 'multiline': False}), 'conditioning_path': ('STRING', {'default': '', 'multiline': False})}}
-    RETURN_TYPES = ('LATENT', 'IMAGE', 'CONDITIONING')
-    RETURN_NAMES = ('LATENT', 'IMAGE', 'CONDITIONING')
-    FUNCTION = 'load_cache'
-    CATEGORY = 'WAS Suite/IO'
-
-    def load_cache(self, latent_path=None, image_path=None, conditioning_path=None):
-        if 'joblib' not in packages():
-            install_package('joblib')
-        import joblib
-        input_path = os.path.join(WAS_SUITE_ROOT, 'cache')
-        latent = None
-        image = None
-        conditioning = None
-        if latent_path not in ['', None]:
-            if os.path.exists(latent_path):
-                latent = joblib.load(latent_path)
-            else:
-                cstr(f'Unable to locate cache file {latent_path}').error.print()
-        if image_path not in ['', None]:
-            if os.path.exists(image_path):
-                image = joblib.load(image_path)
-            else:
-                cstr(f'Unable to locate cache file {image_path}').msg.print()
-        if conditioning_path not in ['', None]:
-            if os.path.exists(conditioning_path):
-                conditioning = joblib.load(conditioning_path)
-            else:
-                cstr(f'Unable to locate cache file {conditioning_path}').error.print()
-        return (latent, image, conditioning)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

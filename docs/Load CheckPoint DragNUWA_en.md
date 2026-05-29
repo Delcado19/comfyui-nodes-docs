@@ -31,24 +31,6 @@ This node class encapsulates the functionality for loading and operating DragNUW
 - Infra type: GPU
 
 # Source code
-```
-class LoadCheckPointDragNUWA:
+[View source repository on GitHub](https://github.com/chaojie/ComfyUI-DragNUWA)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'ckpt_name': (['dragnuwa-svd-pruned.fp16.safetensors'], {'default': 'dragnuwa-svd-pruned.fp16.safetensors'}), 'dimension': (['576x320', '512x512', '320x576'], {'default': '576x320'}), 'model_length': ('INT', {'default': 14})}}
-    RETURN_TYPES = ('DragNUWA',)
-    RETURN_NAMES = ('model',)
-    FUNCTION = 'load_dragnuwa'
-    CATEGORY = 'DragNUWA'
-
-    def load_dragnuwa(self, ckpt_name, dimension, model_length):
-        width = int(dimension.split('x')[0])
-        height = int(dimension.split('x')[1])
-        comfy_path = os.path.dirname(folder_paths.__file__)
-        ckpt_path = folder_paths.get_full_path('checkpoints', ckpt_name)
-        current_path = os.path.abspath(os.path.dirname(__file__))
-        sys.path.append(current_path)
-        DragNUWA_net = Drag('cuda:0', ckpt_path, f'{comfy_path}/custom_nodes/ComfyUI-DragNUWA/DragNUWA_net.py', height, width, model_length)
-        return (DragNUWA_net,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

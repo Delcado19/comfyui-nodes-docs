@@ -76,28 +76,6 @@ The CR_ModelMergeStack node is designed to merge multiple model checkpoints into
 - Infra type: CPU
 
 # Source code
-```
-class CR_ModelMergeStack:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        checkpoint_files = ['None'] + folder_paths.get_filename_list('checkpoints')
-        return {'required': {'switch_1': (['Off', 'On'],), 'ckpt_name1': (checkpoint_files,), 'model_ratio1': ('FLOAT', {'default': 1.0, 'min': -100.0, 'max': 100.0, 'step': 0.01}), 'clip_ratio1': ('FLOAT', {'default': 1.0, 'min': -100.0, 'max': 100.0, 'step': 0.01}), 'switch_2': (['Off', 'On'],), 'ckpt_name2': (checkpoint_files,), 'model_ratio2': ('FLOAT', {'default': 1.0, 'min': -100.0, 'max': 100.0, 'step': 0.01}), 'clip_ratio2': ('FLOAT', {'default': 1.0, 'min': -100.0, 'max': 100.0, 'step': 0.01}), 'switch_3': (['Off', 'On'],), 'ckpt_name3': (checkpoint_files,), 'model_ratio3': ('FLOAT', {'default': 1.0, 'min': -100.0, 'max': 100.0, 'step': 0.01}), 'clip_ratio3': ('FLOAT', {'default': 1.0, 'min': -100.0, 'max': 100.0, 'step': 0.01})}, 'optional': {'model_stack': ('MODEL_STACK',)}}
-    RETURN_TYPES = ('MODEL_STACK', 'STRING')
-    RETURN_NAMES = ('MODEL_STACK', 'show_help')
-    FUNCTION = 'list_checkpoints'
-    CATEGORY = icons.get('Comfyroll/Model Merge')
-
-    def list_checkpoints(self, switch_1, ckpt_name1, model_ratio1, clip_ratio1, switch_2, ckpt_name2, model_ratio2, clip_ratio2, switch_3, ckpt_name3, model_ratio3, clip_ratio3, model_stack=None):
-        model_list = list()
-        if model_stack is not None:
-            model_list.extend([l for l in model_stack if l[0] != 'None'])
-        if ckpt_name1 != 'None' and switch_1 == 'On':
-            (model_list.extend([(ckpt_name1, model_ratio1, clip_ratio1)]),)
-        if ckpt_name2 != 'None' and switch_2 == 'On':
-            (model_list.extend([(ckpt_name2, model_ratio2, clip_ratio2)]),)
-        if ckpt_name3 != 'None' and switch_3 == 'On':
-            (model_list.extend([(ckpt_name3, model_ratio3, clip_ratio3)]),)
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Model-Merge-Nodes#cr-model-stack'
-        return (model_list, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

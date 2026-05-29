@@ -36,19 +36,6 @@ The SegmDetectorCombined node aims to seamlessly integrate segmentation and dete
 - Infra type: GPU
 
 # Source code
-```
-class SegmDetectorCombined:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'segm_detector': ('SEGM_DETECTOR',), 'image': ('IMAGE',), 'threshold': ('FLOAT', {'default': 0.5, 'min': 0.0, 'max': 1.0, 'step': 0.01}), 'dilation': ('INT', {'default': 0, 'min': -512, 'max': 512, 'step': 1})}}
-    RETURN_TYPES = ('MASK',)
-    FUNCTION = 'doit'
-    CATEGORY = 'ImpactPack/Detector'
-
-    def doit(self, segm_detector, image, threshold, dilation):
-        mask = segm_detector.detect_combined(image, threshold, dilation)
-        if mask is None:
-            mask = torch.zeros((image.shape[2], image.shape[1]), dtype=torch.float32, device='cpu')
-        return (mask.unsqueeze(0),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

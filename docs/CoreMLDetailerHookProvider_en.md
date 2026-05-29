@@ -23,17 +23,6 @@ The CoreMLDetailerHookProvider node aims to facilitate the integration of CoreML
 - Infra type: CPU
 
 # Source code
-```
-class CoreMLDetailerHookProvider:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'mode': (['512x512', '768x768', '512x768', '768x512'],)}}
-    RETURN_TYPES = ('DETAILER_HOOK',)
-    FUNCTION = 'doit'
-    CATEGORY = 'ImpactPack/Detailer'
-
-    def doit(self, mode):
-        hook = hooks.CoreMLHook(mode)
-        return (hook,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

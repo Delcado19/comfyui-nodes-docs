@@ -59,17 +59,6 @@ The SamplerDPMAdaptative node aims to generate high‑quality samples through an
 - Infra type: GPU
 
 # Source code
-```
-class SamplerDPMAdaptative:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'order': ('INT', {'default': 3, 'min': 2, 'max': 3}), 'rtol': ('FLOAT', {'default': 0.05, 'min': 0.0, 'max': 100.0, 'step': 0.01, 'round': False}), 'atol': ('FLOAT', {'default': 0.0078, 'min': 0.0, 'max': 100.0, 'step': 0.01, 'round': False}), 'h_init': ('FLOAT', {'default': 0.05, 'min': 0.0, 'max': 100.0, 'step': 0.01, 'round': False}), 'pcoeff': ('FLOAT', {'default': 0.0, 'min': 0.0, 'max': 100.0, 'step': 0.01, 'round': False}), 'icoeff': ('FLOAT', {'default': 1.0, 'min': 0.0, 'max': 100.0, 'step': 0.01, 'round': False}), 'dcoeff': ('FLOAT', {'default': 0.0, 'min': 0.0, 'max': 100.0, 'step': 0.01, 'round': False}), 'accept_safety': ('FLOAT', {'default': 0.81, 'min': 0.0, 'max': 100.0, 'step': 0.01, 'round': False}), 'eta': ('FLOAT', {'default': 0.0, 'min': 0.0, 'max': 100.0, 'step': 0.01, 'round': False}), 's_noise': ('FLOAT', {'default': 1.0, 'min': 0.0, 'max': 100.0, 'step': 0.01, 'round': False})}}
-    RETURN_TYPES = ('SAMPLER',)
-    CATEGORY = 'sampling/custom_sampling/samplers'
-    FUNCTION = 'get_sampler'
-
-    def get_sampler(self, order, rtol, atol, h_init, pcoeff, icoeff, dcoeff, accept_safety, eta, s_noise):
-        sampler = comfy.samplers.ksampler('dpm_adaptive', {'order': order, 'rtol': rtol, 'atol': atol, 'h_init': h_init, 'pcoeff': pcoeff, 'icoeff': icoeff, 'dcoeff': dcoeff, 'accept_safety': accept_safety, 'eta': eta, 's_noise': s_noise})
-        return (sampler,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -32,27 +32,6 @@ The HF_TransformersClassifierProvider node facilitates creating and using text c
 - Infra type: GPU
 
 # Source code
-```
-class HF_TransformersClassifierProvider:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        global hf_transformer_model_urls
-        return {'required': {'preset_repo_id': (hf_transformer_model_urls + ['Manual repo id'],), 'manual_repo_id': ('STRING', {'multiline': False}), 'device_mode': (['AUTO', 'Prefer GPU', 'CPU'],)}}
-    RETURN_TYPES = ('TRANSFORMERS_CLASSIFIER',)
-    FUNCTION = 'doit'
-    CATEGORY = 'ImpactPack/HuggingFace'
-
-    def doit(self, preset_repo_id, manual_repo_id, device_mode):
-        from transformers import pipeline
-        if preset_repo_id == 'Manual repo id':
-            url = manual_repo_id
-        else:
-            url = preset_repo_id
-        if device_mode != 'CPU':
-            device = comfy.model_management.get_torch_device()
-        else:
-            device = 'cpu'
-        classifier = pipeline(model=url, device=device)
-        return (classifier,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

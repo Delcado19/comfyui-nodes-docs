@@ -31,40 +31,6 @@ This node aims to split images into grid-like tiles based on specified columns a
 - Infra type: CPU
 
 # Source code
-```
-class EsheepImageSplit:
+[View source repository on GitHub](https://github.com/esheep/esheep_custom_nodes)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'images': ('IMAGE',), 'columns': ('INT', {'default': 2, 'min': 1, 'max': 100, 'step': 1, 'display': 'number'}), 'lines': ('INT', {'default': 3, 'min': 1, 'max': 100, 'step': 1, 'display': 'number'})}}
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'execute'
-    CATEGORY = 'tests'
-
-    def execute(self, images, columns, lines):
-        image = images[0]
-        i = 255.0 * image.cpu().numpy()
-        pil_image = Image.fromarray(np.clip(i, 0, 255).astype(np.uint8))
-        imgwidth = pil_image.size[0]
-        imgheight = pil_image.size[1]
-        M = int(imgwidth / columns)
-        N = int(imgheight / lines)
-        tiles = []
-        for i in range(0, imgheight - imgheight % N, N):
-            for j in range(0, imgwidth - imgwidth % M, M):
-                box = (j, i, j + M, i + N)
-                tiles.append(pil_image.crop(box))
-        t_tiles = []
-        for tile in tiles:
-            t_tile = tile.convert('RGB')
-            t_tile = np.array(t_tile).astype(np.float32) / 255.0
-            t_tile = torch.from_numpy(t_tile)[None,]
-            t_tiles.append(t_tile)
-        s = t_tiles[0]
-        for i in range(1, len(t_tiles)):
-            s = torch.cat((s, t_tiles[i]), dim=0)
-        return (s,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

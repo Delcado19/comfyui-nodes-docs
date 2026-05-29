@@ -35,17 +35,6 @@ This node processes text input and generates encoded representations for further
 - Infra type: CPU
 
 # Source code
-```
-class WLSH_CLIP_Positive_Negative:
+[View source repository on GitHub](https://github.com/wallish77/wlsh_nodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'clip': ('CLIP',), 'positive_text': ('STRING', {'default': f'', 'multiline': True}), 'negative_text': ('STRING', {'default': f'', 'multiline': True})}}
-    RETURN_TYPES = ('CONDITIONING', 'CONDITIONING')
-    RETURN_NAMES = ('positive', 'negative')
-    FUNCTION = 'encode'
-    CATEGORY = 'WLSH Nodes/conditioning'
-
-    def encode(self, clip, positive_text, negative_text):
-        return ([[clip.encode(positive_text), {}]], [[clip.encode(negative_text), {}]])
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -41,30 +41,6 @@ This node is designed to modify camera control parameters in an animation or ima
 - Common nodes: unknown
 
 ## Source code
-```python
-class CameraCtrlReplaceCameraParameters:
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {
-            "required": {
-                "poses":("CAMERACTRL_POSES",),
-                "fx": ("FLOAT", {"default": CAM.DEFAULT_FX, "min": 0, "max": 1, "step": 0.000000001}),
-                "fy": ("FLOAT", {"default": CAM.DEFAULT_FY, "min": 0, "max": 1, "step": 0.000000001}),
-                "cx": ("FLOAT", {"default": CAM.DEFAULT_CX, "min": 0, "max": 1, "step": 0.01}),
-                "cy": ("FLOAT", {"default": CAM.DEFAULT_CY, "min": 0, "max": 1, "step": 0.01}),
-            },
-        }
-    
-    RETURN_TYPES = ("CAMERACTRL_POSES",)
-    FUNCTION = "set_camera_parameters"
-    CATEGORY = "Animate Diff 🎭🅐🅓/② Gen2 nodes ②/CameraCtrl/poses"
+[View source repository on GitHub](https://github.com/Kosinkadink/ComfyUI-AnimateDiff-Evolved)
 
-    def set_camera_parameters(self, poses: list[list[float]], fx: float, fy: float, cx: float, cy: float):
-        new_poses = copy.deepcopy(poses)
-        for pose in new_poses:
-            # fx,fy,cx,fy are in indexes 1-4 of the 19-long pose list
-            pose[1] = fx
-            pose[2] = fy
-            pose[3] = cx
-            pose[4] = cy
-        return (new_poses,)
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

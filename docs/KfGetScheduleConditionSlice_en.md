@@ -36,25 +36,6 @@ This node is designed to extract and process conditional data from a given sched
 - Infra type: CPU
 
 # Source code
-```
-class KfGetScheduleConditionSlice:
-    CATEGORY = CATEGORY
-    FUNCTION = 'main'
-    RETURN_TYPES = ('CONDITIONING',)
+[View source repository on GitHub](https://github.com/dmarx/ComfyUI-Keyframed)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'schedule': ('SCHEDULE', {}), 'start': ('FLOAT', {'default': 0}), 'step': ('FLOAT', {'default': 1}), 'n': ('INT', {'default': 24})}}
-
-    def main(self, schedule, start, step, n):
-        stop = start + n * step
-        times = np.linspace(start=start, stop=stop, num=n, endpoint=True)
-        conds = [evaluate_schedule_at_time(schedule, time)[0] for time in times]
-        lerped_tokenized = [c[0] for c in conds]
-        lerped_pooled = [c[1]['pooled_output'] for c in conds]
-        lerped_tokenized_t = torch.cat(lerped_tokenized, dim=0)
-        out_dict = deepcopy(conds[0][1])
-        if isinstance(lerped_pooled[0], torch.Tensor) and isinstance(lerped_pooled[-1], torch.Tensor):
-            out_dict['pooled_output'] = torch.cat(lerped_pooled, dim=0)
-        return [[(lerped_tokenized_t, out_dict)]]
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

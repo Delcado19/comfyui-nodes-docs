@@ -28,17 +28,6 @@ This node aims to manage and modify the keyframe conditions in the plan, allowin
 - Infra type: CPU
 
 # Source code
-```
-class KfSetKeyframe:
-    CATEGORY = CATEGORY
-    FUNCTION = 'main'
-    RETURN_TYPES = ('SCHEDULE',)
+[View source repository on GitHub](https://github.com/dmarx/ComfyUI-Keyframed)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'keyframed_condition': ('KEYFRAMED_CONDITION', {})}, 'optional': {'schedule': ('SCHEDULE', {})}}
-
-    def main(self, keyframed_condition, schedule=None):
-        schedule = set_keyframed_condition(keyframed_condition, schedule)
-        return (schedule,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

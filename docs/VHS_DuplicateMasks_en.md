@@ -32,21 +32,6 @@ The DuplicateMasks node is designed to duplicate a given mask into a specified n
 - Infra type: CPU
 
 # Source code
-```
-class DuplicateMasks:
+[View source repository on GitHub](https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'mask': ('MASK',), 'multiply_by': ('INT', {'default': 1, 'min': 1, 'max': BIGMAX, 'step': 1})}}
-    CATEGORY = 'Video Helper Suite 🎥🅥🅗🅢/mask'
-    RETURN_TYPES = ('MASK', 'INT')
-    RETURN_NAMES = ('MASK', 'count')
-    FUNCTION = 'duplicate_input'
-
-    def duplicate_input(self, mask: Tensor, multiply_by: int):
-        full_masks = []
-        for n in range(0, multiply_by):
-            full_masks.append(mask)
-        new_mask = torch.cat(full_masks, dim=0)
-        return (new_mask, new_mask.size(0))
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -83,49 +83,6 @@ The preDetailerFix node is designed to enhance the preprocessing stage of an ima
 - Infra type: CPU
 
 # Source code
-```
-class preDetailerFix:
+[View source repository on GitHub](https://github.com/yolain/ComfyUI-Easy-Use)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'pipe': ('PIPE_LINE',), 'guide_size': ('FLOAT', {'default': 256, 'min': 64, 'max': MAX_RESOLUTION, 'step': 8}), 'guide_size_for': ('BOOLEAN', {'default': True, 'label_on': 'bbox', 'label_off': 'crop_region'}), 'max_size': ('FLOAT', {'default': 768, 'min': 64, 'max': MAX_RESOLUTION, 'step': 8}), 'seed': ('INT', {'default': 0, 'min': 0, 'max': 18446744073709551615}), 'steps': ('INT', {'default': 20, 'min': 1, 'max': 10000}), 'cfg': ('FLOAT', {'default': 8.0, 'min': 0.0, 'max': 100.0}), 'sampler_name': (comfy.samplers.KSampler.SAMPLERS,), 'scheduler': (comfy.samplers.KSampler.SCHEDULERS,), 'denoise': ('FLOAT', {'default': 0.5, 'min': 0.0001, 'max': 1.0, 'step': 0.01}), 'feather': ('INT', {'default': 5, 'min': 0, 'max': 100, 'step': 1}), 'noise_mask': ('BOOLEAN', {'default': True, 'label_on': 'enabled', 'label_off': 'disabled'}), 'force_inpaint': ('BOOLEAN', {'default': True, 'label_on': 'enabled', 'label_off': 'disabled'}), 'drop_size': ('INT', {'min': 1, 'max': MAX_RESOLUTION, 'step': 1, 'default': 10}), 'wildcard': ('STRING', {'multiline': True, 'dynamicPrompts': False}), 'cycle': ('INT', {'default': 1, 'min': 1, 'max': 10, 'step': 1})}, 'optional': {'bbox_segm_pipe': ('PIPE_LINE',), 'sam_pipe': ('PIPE_LINE',), 'optional_image': ('IMAGE',)}}
-    RETURN_TYPES = ('PIPE_LINE',)
-    RETURN_NAMES = ('pipe',)
-    OUTPUT_IS_LIST = (False,)
-    FUNCTION = 'doit'
-    CATEGORY = 'EasyUse/Fix'
-
-    def doit(self, pipe, guide_size, guide_size_for, max_size, seed, steps, cfg, sampler_name, scheduler, denoise, feather, noise_mask, force_inpaint, drop_size, wildcard, cycle, bbox_segm_pipe=None, sam_pipe=None, optional_image=None):
-        model = pipe['model'] if 'model' in pipe else None
-        if model is None:
-            raise Exception(f"[ERROR] pipe['model'] is missing")
-        clip = pipe['clip'] if 'clip' in pipe else None
-        if clip is None:
-            raise Exception(f"[ERROR] pipe['clip'] is missing")
-        vae = pipe['vae'] if 'vae' in pipe else None
-        if vae is None:
-            raise Exception(f"[ERROR] pipe['vae'] is missing")
-        if optional_image is not None:
-            images = optional_image
-        else:
-            images = pipe['images'] if 'images' in pipe else None
-            if images is None:
-                raise Exception(f"[ERROR] pipe['image'] is missing")
-        positive = pipe['positive'] if 'positive' in pipe else None
-        if positive is None:
-            raise Exception(f"[ERROR] pipe['positive'] is missing")
-        negative = pipe['negative'] if 'negative' in pipe else None
-        if negative is None:
-            raise Exception(f"[ERROR] pipe['negative'] is missing")
-        bbox_segm_pipe = bbox_segm_pipe or (pipe['bbox_segm_pipe'] if pipe and 'bbox_segm_pipe' in pipe else None)
-        if bbox_segm_pipe is None:
-            raise Exception(f"[ERROR] bbox_segm_pipe or pipe['bbox_segm_pipe'] is missing")
-        sam_pipe = sam_pipe or (pipe['sam_pipe'] if pipe and 'sam_pipe' in pipe else None)
-        if sam_pipe is None:
-            raise Exception(f"[ERROR] sam_pipe or pipe['sam_pipe'] is missing")
-        loader_settings = pipe['loader_settings'] if 'loader_settings' in pipe else {}
-        new_pipe = {'images': images, 'model': model, 'clip': clip, 'vae': vae, 'positive': positive, 'negative': negative, 'seed': seed, 'bbox_segm_pipe': bbox_segm_pipe, 'sam_pipe': sam_pipe, 'loader_settings': loader_settings, 'detail_fix_settings': {'guide_size': guide_size, 'guide_size_for': guide_size_for, 'max_size': max_size, 'seed': seed, 'steps': steps, 'cfg': cfg, 'sampler_name': sampler_name, 'scheduler': scheduler, 'denoise': denoise, 'feather': feather, 'noise_mask': noise_mask, 'force_inpaint': force_inpaint, 'drop_size': drop_size, 'wildcard': wildcard, 'cycle': cycle}}
-        del bbox_segm_pipe
-        del sam_pipe
-        return (new_pipe,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -32,22 +32,6 @@ The GeneralInversedSwitch node aims to selectively process input data based on a
 - Infra type: CPU
 
 # Source code
-```
-class GeneralInversedSwitch:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'select': ('INT', {'default': 1, 'min': 1, 'max': 999999, 'step': 1}), 'input': (any_typ,)}, 'hidden': {'unique_id': 'UNIQUE_ID'}}
-    RETURN_TYPES = ByPassTypeTuple((any_typ,))
-    FUNCTION = 'doit'
-    CATEGORY = 'ImpactPack/Util'
-
-    def doit(self, select, input, unique_id):
-        res = []
-        for i in range(0, select):
-            if select == i + 1:
-                res.append(input)
-            else:
-                res.append(None)
-        return res
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

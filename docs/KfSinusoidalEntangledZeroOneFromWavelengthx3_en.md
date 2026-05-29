@@ -23,10 +23,6 @@ This node generates a set of three mutually entangled sine curves based on the i
 - Infra type: CPU
 
 # Source code
-```
-class KfSinusoidalEntangledZeroOneFromWavelengthx3(KfSinusoidalEntangledZeroOneFromWavelength):
-    RETURN_TYPES = ('KEYFRAMED_CURVE',) * 3
+[View source repository on GitHub](https://github.com/dmarx/ComfyUI-Keyframed)
 
-    def main(self, wavelength):
-        return super().main(n=3, wavelength=wavelength)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

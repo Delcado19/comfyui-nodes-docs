@@ -23,17 +23,6 @@ The KfCurveConstant node is designed to generate a constant curve within the key
 - Infra type: CPU
 
 # Source code
-```
-class KfCurveConstant:
-    CATEGORY = CATEGORY
-    FUNCTION = 'main'
-    RETURN_TYPES = ('KEYFRAMED_CURVE',)
+[View source repository on GitHub](https://github.com/dmarx/ComfyUI-Keyframed)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'value': ('FLOAT', {'forceInput': True})}}
-
-    def main(self, value):
-        curve = kf.Curve(value)
-        return (curve,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

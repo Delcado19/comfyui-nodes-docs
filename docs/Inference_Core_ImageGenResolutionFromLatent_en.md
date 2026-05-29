@@ -29,24 +29,7 @@ This node aims to calculate image generation resolution based on latent space re
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class ImageGenResolutionFromLatent:
-    @classmethod
-    def INPUT_TYPES(s):
-        return {
-            "required": { "latent": ("LATENT", ) }
-        }
-    
-    RETURN_TYPES = ("INT", "INT")
-    RETURN_NAMES = ("IMAGE_GEN_WIDTH (INT)", "IMAGE_GEN_HEIGHT (INT)")
-    FUNCTION = "execute"
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    CATEGORY = "ControlNet Preprocessors"
-
-    def execute(self, latent):
-        _, _, H, W = latent["samples"].shape
-        return (W * 8, H * 8)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

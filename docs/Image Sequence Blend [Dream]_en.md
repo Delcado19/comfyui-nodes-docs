@@ -37,47 +37,7 @@ This node blends animation sequences by applying fade-in and fade-out effects ov
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class DreamSequenceBlend:
-    NODE_NAME = "Image Sequence Blend"
+[View source repository on GitHub](https://github.com/ComfyUI-extensions/ComfyUI_DreamExamples)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {
-            "required": SharedTypes.sequence | {
-                "fade_in": ("FLOAT", {"default": 0.1, "min": 0.01, "max": 0.5}),
-                "fade_out": ("FLOAT", {"default": 0.1, "min": 0.01, "max": 0.5}),
-                "iterations": ("INT", {"default": 1, "min": 1, "max": 10}),
-            },
-        }
-
-    CATEGORY = NodeCategories.ANIMATION_POSTPROCESSING
-    RETURN_TYPES = (AnimationSequence.ID,)
-    RETURN_NAMES = ("sequence",)
-    OUTPUT_NODE = False
-    FUNCTION = "process"
-
-    @classmethod
-    def IS_CHANGED(cls, sequence: AnimationSequence, **kwargs):
-        return sequence.is_defined
-
-    def process(self, sequence: AnimationSequence, fade_in, fade_out, iterations):
-        if not sequence.is_defined:
-            return (sequence,)
-
-        current_sequence = sequence
-        for i in range(iterations):
-            proc = AnimationSeqProcessor(current_sequence)
-
-            def _blur(index: int, last_index: int, images: List[DreamImage]):
-                pre_frame = images[0].blend(images[1], fade_in, 1.0)
-                post_frame = images[2].blend(images[1], fade_out, 1.0)
-                return {index: pre_frame.blend(post_frame)}
-
-            current_sequence = proc.process([-1, 0, 1], _blur)
-
-        return (current_sequence,)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

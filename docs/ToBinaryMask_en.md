@@ -28,17 +28,6 @@ The ToBinaryMask node aims to process input masks by converting them to binary f
 - Infra type: CPU
 
 # Source code
-```
-class ToBinaryMask:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'mask': ('MASK',), 'threshold': ('INT', {'default': 20, 'min': 1, 'max': 255})}}
-    RETURN_TYPES = ('MASK',)
-    FUNCTION = 'doit'
-    CATEGORY = 'ImpactPack/Operation'
-
-    def doit(self, mask, threshold):
-        mask = to_binary_mask(mask, threshold / 255.0)
-        return (mask,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

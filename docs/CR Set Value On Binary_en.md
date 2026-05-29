@@ -39,21 +39,6 @@ The CR_SetValueOnBinary node is designed to conditionally assign a value based o
 - Infra type: CPU
 
 # Source code
-```
-class CR_SetValueOnBinary:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'binary': ('INT', {'default': 1, 'min': 0, 'max': 1, 'forceInput': True}), 'value_if_1': ('FLOAT', {'default': 1, 'min': -18446744073709551615, 'max': 18446744073709551615}), 'value_if_0': ('FLOAT', {'default': 0, 'min': -18446744073709551615, 'max': 18446744073709551615})}}
-    RETURN_TYPES = ('INT', 'FLOAT', 'STRING')
-    RETURN_NAMES = ('INT', 'FLOAT', 'show_help')
-    FUNCTION = 'set_value'
-    CATEGORY = icons.get('Comfyroll/Utils/Conditional')
-
-    def set_value(self, binary, value_if_1, value_if_0):
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Other-Nodes#cr-set-value-on-boolean'
-        if binary == 1:
-            return (int(value_if_1), value_if_1, show_help)
-        else:
-            return (int(value_if_0), value_if_0, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

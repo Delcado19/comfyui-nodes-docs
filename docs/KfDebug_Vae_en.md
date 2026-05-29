@@ -32,7 +32,6 @@
 - Infra type: GPU
 
 # Source code
-```
-class KfDebug_Vae(KfDebug_Passthrough):
-    RETURN_TYPES = ('VAE',)
-```
+[View source repository on GitHub](https://github.com/dmarx/ComfyUI-Keyframed)
+
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

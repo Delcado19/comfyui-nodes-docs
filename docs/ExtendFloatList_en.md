@@ -25,9 +25,7 @@ The ExtendFloatList node is designed to concatenate multiple float lists into a 
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class ExtendFloatList(metaclass=ExtendListMeta): TYPE = "FLOAT"
+[View source repository on GitHub](https://github.com/bmad4ever/ComfyUI-Bmad-Custom-Nodes)
 
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

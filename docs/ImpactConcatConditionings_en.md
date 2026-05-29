@@ -28,28 +28,6 @@ This node is designed to merge multiple conditional inputs into a single output.
 - Infra type: CPU
 
 # Source code
-```
-class ConcatConditionings:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'conditioning1': ('CONDITIONING',)}}
-    RETURN_TYPES = ('CONDITIONING',)
-    FUNCTION = 'doit'
-    CATEGORY = 'ImpactPack/Util'
-
-    def doit(self, **kwargs):
-        conditioning_to = list(kwargs.values())[0]
-        for (k, conditioning_from) in list(kwargs.items())[1:]:
-            out = []
-            if len(conditioning_from) > 1:
-                print('Warning: ConcatConditionings {k} contains more than 1 cond, only the first one will actually be applied to conditioning1.')
-            cond_from = conditioning_from[0][0]
-            for i in range(len(conditioning_to)):
-                t1 = conditioning_to[i][0]
-                tw = torch.cat((t1, cond_from), 1)
-                n = [tw, conditioning_to[i][1].copy()]
-                out.append(n)
-            conditioning_to = out
-        return (out,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -31,23 +31,6 @@ The StableSRColorFix node aims to enhance the color quality of images by applyin
 - Infra type: GPU
 
 # Source code
-```
-class StableSRColorFix:
+[View source repository on GitHub](https://github.com/Arthurzhangsheng/Comfyui-StableSR)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'image': ('IMAGE',), 'color_map_image': ('IMAGE',), 'color_fix': (['Wavelet', 'AdaIN'],)}}
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'fix_color'
-    CATEGORY = 'image'
-
-    def fix_color(self, image, color_map_image, color_fix):
-        print(f'[StableSR] fix_color')
-        try:
-            color_fix_func = wavelet_color_fix if color_fix == 'Wavelet' else adain_color_fix
-            result_image = color_fix_func(tensor2pil(image), tensor2pil(color_map_image))
-            refined_image = pil2tensor(result_image)
-            return (refined_image,)
-        except Exception as e:
-            print(f'[StableSR] Error fix_color: {e}')
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

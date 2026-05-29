@@ -35,39 +35,6 @@ The WAS_Latent_Batch node is designed to combine multiple latent tensors togethe
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Latent_Batch:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {}, 'optional': {'latent_a': ('LATENT',), 'latent_b': ('LATENT',), 'latent_c': ('LATENT',), 'latent_d': ('LATENT',)}}
-    RETURN_TYPES = ('LATENT',)
-    RETURN_NAMES = ('latent',)
-    FUNCTION = 'latent_batch'
-    CATEGORY = 'WAS Suite/Latent'
-
-    def _check_latent_dimensions(self, tensors, names):
-        dimensions = [tensor['samples'].shape for tensor in tensors]
-        if len(set(dimensions)) > 1:
-            mismatched_indices = [i for (i, dim) in enumerate(dimensions) if dim[1] != dimensions[0][1]]
-            mismatched_latents = [names[i] for i in mismatched_indices]
-            if mismatched_latents:
-                raise ValueError(f'WAS latent Batch Warning: Input latent dimensions do not match for latents: {mismatched_latents}')
-
-    def latent_batch(self, **kwargs):
-        batched_tensors = [kwargs[key] for key in kwargs if kwargs[key] is not None]
-        latent_names = [key for key in kwargs if kwargs[key] is not None]
-        if not batched_tensors:
-            raise ValueError('At least one input latent must be provided.')
-        self._check_latent_dimensions(batched_tensors, latent_names)
-        samples_out = {}
-        samples_out['samples'] = torch.cat([tensor['samples'] for tensor in batched_tensors], dim=0)
-        samples_out['batch_index'] = []
-        for tensor in batched_tensors:
-            cindex = tensor.get('batch_index', list(range(tensor['samples'].shape[0])))
-            samples_out['batch_index'] += cindex
-        return (samples_out,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

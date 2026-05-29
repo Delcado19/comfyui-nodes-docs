@@ -36,24 +36,6 @@ The CR_ConditioningInputSwitch node manages data flow based on conditional input
 - Infra type: CPU
 
 # Source code
-```
-class CR_ConditioningInputSwitch:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'Input': ('INT', {'default': 1, 'min': 1, 'max': 2})}, 'optional': {'conditioning1': ('CONDITIONING',), 'conditioning2': ('CONDITIONING',)}}
-    RETURN_TYPES = ('CONDITIONING', 'STRING')
-    RETURN_NAMES = ('CONDITIONING', 'show_help')
-    FUNCTION = 'switch'
-    CATEGORY = icons.get('Comfyroll/Utils/Logic')
-
-    def switch(self, Input, conditioning1=None, conditioning2=None):
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Logic-Nodes#cr-conditioning-input-switch'
-        if Input == 1:
-            return (conditioning1, show_help)
-        else:
-            return (conditioning2, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

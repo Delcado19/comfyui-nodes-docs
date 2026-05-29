@@ -29,29 +29,7 @@ The LLMChatMessageConcat node is designed to concatenate two chat message lists,
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class LLMChatMessageConcat:
-    def __init__(self):
-        pass
-    
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {
-            "required": {
-                "message_a": ("LIST", ),
-                "message_b": ("LIST", ),
-            },
-        }
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    RETURN_TYPES = ("LIST",)
-    RETURN_NAMES = ("llm_message", )
-
-    FUNCTION = "concat_messages"
-    CATEGORY = f"{MENU_NAME}/{SUB_MENU_NAME}/Messages"
-
-    def concat_messages(self, message_a, message_b):
-        return (message_a + message_b, )
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -40,21 +40,6 @@ The CheckpointSave node is designed to facilitate saving model checkpoints. It e
 - Infra type: CPU
 
 # Source code
-```
-class CheckpointSave:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    def __init__(self):
-        self.output_dir = folder_paths.get_output_directory()
-
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'model': ('MODEL',), 'clip': ('CLIP',), 'vae': ('VAE',), 'filename_prefix': ('STRING', {'default': 'checkpoints/ComfyUI'})}, 'hidden': {'prompt': 'PROMPT', 'extra_pnginfo': 'EXTRA_PNGINFO'}}
-    RETURN_TYPES = ()
-    FUNCTION = 'save'
-    OUTPUT_NODE = True
-    CATEGORY = 'advanced/model_merging'
-
-    def save(self, model, clip, vae, filename_prefix, prompt=None, extra_pnginfo=None):
-        save_checkpoint(model, clip=clip, vae=vae, filename_prefix=filename_prefix, output_dir=self.output_dir, prompt=prompt, extra_pnginfo=extra_pnginfo)
-        return {}
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -48,26 +48,6 @@ The WAS_Image_Voronoi_Noise_Filter node is designed to generate Voronoi noise pa
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Image_Voronoi_Noise_Filter:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'width': ('INT', {'default': 512, 'max': 4096, 'min': 64, 'step': 1}), 'height': ('INT', {'default': 512, 'max': 4096, 'min': 64, 'step': 1}), 'density': ('INT', {'default': 50, 'max': 256, 'min': 10, 'step': 2}), 'modulator': ('INT', {'default': 0, 'max': 8, 'min': 0, 'step': 1}), 'seed': ('INT', {'default': 0, 'min': 0, 'max': 18446744073709551615})}, 'optional': {'flat': (['False', 'True'],), 'RGB_output': (['True', 'False'],)}}
-    RETURN_TYPES = ('IMAGE',)
-    RETURN_NAMES = ('image',)
-    FUNCTION = 'voronoi_noise_filter'
-    CATEGORY = 'WAS Suite/Image/Generate/Noise'
-
-    def voronoi_noise_filter(self, width, height, density, modulator, seed, flat='False', RGB_output='True'):
-        WTools = WAS_Tools_Class()
-        image = WTools.worley_noise(height=height, width=width, density=density, option=modulator, use_broadcast_ops=True, seed=seed, flat=flat == 'True').image
-        if RGB_output == 'True':
-            image = image.convert('RGB')
-        else:
-            image = image.convert('L')
-        return (pil2tensor(image),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

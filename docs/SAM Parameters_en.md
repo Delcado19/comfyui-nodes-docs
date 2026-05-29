@@ -27,20 +27,6 @@ The WAS_SAM_Parameters node is designed to process and format input data for ima
 - Infra type: CPU
 
 # Source code
-```
-class WAS_SAM_Parameters:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(self):
-        return {'required': {'points': ('STRING', {'default': '[128, 128]; [0, 0]', 'multiline': False}), 'labels': ('STRING', {'default': '[1, 0]', 'multiline': False})}}
-    RETURN_TYPES = ('SAM_PARAMETERS',)
-    FUNCTION = 'sam_parameters'
-    CATEGORY = 'WAS Suite/Image/Masking'
-
-    def sam_parameters(self, points, labels):
-        parameters = {'points': np.asarray(np.matrix(points)), 'labels': np.array(np.matrix(labels))[0]}
-        return (parameters,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

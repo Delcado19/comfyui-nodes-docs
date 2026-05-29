@@ -23,23 +23,6 @@ This node facilitates loading and preparing the face recognition model, which is
 - Infra type: CPU
 
 # Source code
-```
-class LoadFaceModel:
+[View source repository on GitHub](https://github.com/Gourieff/comfyui-reactor-node)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'face_model': (get_model_names(get_facemodels),)}}
-    RETURN_TYPES = ('FACE_MODEL',)
-    FUNCTION = 'load_model'
-    CATEGORY = '🌌 ReActor'
-
-    def load_model(self, face_model):
-        self.face_model = face_model
-        self.face_models_path = FACE_MODELS_PATH
-        if self.face_model != 'none':
-            face_model_path = os.path.join(self.face_models_path, self.face_model)
-            out = load_face_model(face_model_path)
-        else:
-            out = None
-        return (out,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

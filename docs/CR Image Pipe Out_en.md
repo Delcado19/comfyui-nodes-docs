@@ -43,19 +43,6 @@ The CR_ImagePipeOut node facilitates the output of image data in a pipeline arch
 - Infra type: CPU
 
 # Source code
-```
-class CR_ImagePipeOut:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'pipe': ('PIPE_LINE',)}}
-    RETURN_TYPES = ('PIPE_LINE', 'IMAGE', 'INT', 'INT', 'FLOAT', 'STRING')
-    RETURN_NAMES = ('pipe', 'image', 'width', 'height', 'upscale_factor', 'show_help')
-    FUNCTION = 'pipe_out'
-    CATEGORY = icons.get('Comfyroll/Pipe/Image')
-
-    def pipe_out(self, pipe):
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Pipe-Nodes#cr-image-pipe-out'
-        (image, width, height, upscale_factor) = pipe
-        return (pipe, image, width, height, upscale_factor, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

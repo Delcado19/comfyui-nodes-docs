@@ -23,16 +23,6 @@ This node facilitates the creation of motion brushes by interpreting tracking po
 - Infra type: CPU
 
 # Source code
-```
-class LoadMotionBrushFromTrackingPoints:
+[View source repository on GitHub](https://github.com/chaojie/ComfyUI-DragNUWA)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'model': ('DragNUWA',), 'tracking_points': ('STRING', {'multiline': True, 'default': '[[[25,25],[128,128]]]'})}}
-    RETURN_TYPES = ('MotionBrush',)
-    FUNCTION = 'run_inference'
-    CATEGORY = 'DragNUWA'
-
-    def run_inference(self, model, tracking_points):
-        return (model.load_motionbrush_from_tracking_points(tracking_points),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

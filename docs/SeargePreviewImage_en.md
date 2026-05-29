@@ -36,27 +36,6 @@ This node facilitates image preview by saving images to a temporary directory, a
 - Infra type: CPU
 
 # Source code
-```
-class SeargePreviewImage(nodes.SaveImage):
+[View source repository on GitHub](https://github.com/jobunk/SeargeSDXL)
 
-    def __init__(self):
-        super().__init__()
-        self.output_dir = folder_paths.get_temp_directory()
-        self.type = 'temp'
-        self.prefix_append = '_temp_' + ''.join((random.choice('abcdefghijklmnopqrstupvxyz') for _ in range(5)))
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'enabled': ('BOOLEAN', {'default': True})}, 'optional': {'images': ('IMAGE',)}, 'hidden': {'prompt': 'PROMPT', 'extra_pnginfo': 'EXTRA_PNGINFO'}}
-    RETURN_TYPES = ('IMAGE',)
-    RETURN_NAMES = ('images',)
-    FUNCTION = 'preview_images'
-    CATEGORY = UI.CATEGORY_UI
-
-    def preview_images(self, enabled, images=None, prompt=None, extra_pnginfo=None):
-        if images is None or not enabled:
-            return {'result': (images,), 'ui': {'images': list()}}
-        saved_images = nodes.SaveImage.save_images(self, images, 'srg_sdxl_preview', prompt, extra_pnginfo)
-        saved_images['result'] = (images,)
-        return saved_images
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

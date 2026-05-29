@@ -40,30 +40,6 @@ ADE_CustomCFGKeyframe node is designed to create and manage custom configuration
 - Common nodes: unknown
 
 ## Source code
-```python
-class CustomCFGKeyframeNode:
-    @classmethod
-    def INPUT_TYPES(s):
-        return {
-            "required": {
-                "cfg_multival": ("MULTIVAL",),
-                "start_percent": ("FLOAT", {"default": 0.0, "min": 0.0, "max": 1.0, "step": 0.001}),
-                "guarantee_steps": ("INT", {"default": 1, "min": 0, "max": BIGMAX}),
-            },
-            "optional": {
-                "prev_custom_cfg": ("CUSTOM_CFG",),
-            }
-        }
+[View source repository on GitHub](https://github.com/Kosinkadink/ComfyUI-AnimateDiff-Evolved)
 
-    RETURN_TYPES = ("CUSTOM_CFG",)
-    CATEGORY = "Animate Diff 🎭🅐🅓/sample settings"
-    FUNCTION = "create_custom_cfg"
-
-    def create_custom_cfg(self, cfg_multival: Union[float, Tensor], start_percent: float=0.0, guarantee_steps: int=1,
-                          prev_custom_cfg: CustomCFGKeyframeGroup=None):
-        if not prev_custom_cfg:
-            prev_custom_cfg = CustomCFGKeyframeGroup()
-        prev_custom_cfg = prev_custom_cfg.clone()
-        keyframe = CustomCFGKeyframe(cfg_multival=cfg_multival, start_percent=start_percent, guarantee_steps=guarantee_steps)
-        prev_custom_cfg.add(keyframe)
-        return (prev_custom_cfg,)
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

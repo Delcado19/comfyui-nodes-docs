@@ -31,16 +31,6 @@ The IntBinaryCondition node evaluates a binary condition between two integer val
 - Infra type: CPU
 
 # Source code
-```
-class IntBinaryCondition:
+[View source repository on GitHub](https://github.com/evanspearman/ComfyMath)
 
-    @classmethod
-    def INPUT_TYPES(cls) -> Mapping[str, Any]:
-        return {'required': {'op': (list(INT_BINARY_CONDITIONS.keys()),), 'a': DEFAULT_INT, 'b': DEFAULT_INT}}
-    RETURN_TYPES = ('BOOL',)
-    FUNCTION = 'op'
-    CATEGORY = 'math/int'
-
-    def op(self, op: str, a: int, b: int) -> tuple[bool]:
-        return (INT_BINARY_CONDITIONS[op](a, b),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

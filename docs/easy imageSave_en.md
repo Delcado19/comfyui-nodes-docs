@@ -32,27 +32,6 @@ This node simplifies the process of saving image data, providing a mechanism to 
 - Infra type: CPU
 
 # Source code
-```
-class imageSaveSimple:
+[View source repository on GitHub](https://github.com/yolain/ComfyUI-Easy-Use)
 
-    def __init__(self):
-        self.output_dir = folder_paths.get_output_directory()
-        self.type = 'output'
-        self.prefix_append = ''
-        self.compress_level = 4
-
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'images': ('IMAGE',), 'filename_prefix': ('STRING', {'default': 'ComfyUI'}), 'only_preview': ('BOOLEAN', {'default': False})}, 'hidden': {'prompt': 'PROMPT', 'extra_pnginfo': 'EXTRA_PNGINFO'}}
-    RETURN_TYPES = ()
-    FUNCTION = 'save'
-    OUTPUT_NODE = True
-    CATEGORY = 'EasyUse/Image'
-
-    def save(self, images, filename_prefix='ComfyUI', only_preview=False, prompt=None, extra_pnginfo=None):
-        if only_preview:
-            PreviewImage().save_images(images, filename_prefix, prompt, extra_pnginfo)
-            return ()
-        else:
-            return SaveImage().save_images(images, filename_prefix, prompt, extra_pnginfo)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

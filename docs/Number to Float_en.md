@@ -23,19 +23,6 @@ The WAS_Number_To_Float node is designed to convert input numbers into their flo
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Number_To_Float:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'number': ('NUMBER',)}}
-    RETURN_TYPES = ('FLOAT',)
-    FUNCTION = 'number_to_float'
-    CATEGORY = 'WAS Suite/Number/Operations'
-
-    def number_to_float(self, number):
-        return (float(number),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

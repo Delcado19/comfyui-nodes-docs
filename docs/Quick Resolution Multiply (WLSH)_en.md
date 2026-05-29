@@ -35,22 +35,6 @@ The WLSH_Res_Multiply node performs multiplication on width and height values, s
 - Infra type: CPU
 
 # Source code
-```
-class WLSH_Res_Multiply:
+[View source repository on GitHub](https://github.com/wallish77/wlsh_nodes)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'width': ('INT', {'default': 512, 'min': 16, 'max': MAX_RESOLUTION, 'forceInput': True}), 'height': ('INT', {'default': 512, 'min': 16, 'max': MAX_RESOLUTION, 'forceInput': True}), 'multiplier': ('INT', {'default': 2, 'min': 1, 'max': 10000})}}
-    RETURN_TYPES = ('INT', 'INT')
-    RETURN_NAMES = ('width', 'height')
-    FUNCTION = 'multiply'
-    CATEGORY = 'WLSH Nodes/number'
-
-    def multiply(self, width, height, multiplier):
-        adj_width = width * multiplier
-        adj_height = height * multiplier
-        return (int(adj_width), int(adj_height))
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -35,24 +35,6 @@ This node integrates with the Ultralytics detector, processing bounding box and 
 - Infra type: CPU
 
 # Source code
-```
-class ultralyticsDetectorForDetailerFix:
+[View source repository on GitHub](https://github.com/yolain/ComfyUI-Easy-Use)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        bboxs = ['bbox/' + x for x in folder_paths.get_filename_list('ultralytics_bbox')]
-        segms = ['segm/' + x for x in folder_paths.get_filename_list('ultralytics_segm')]
-        return {'required': {'model_name': (bboxs + segms,), 'bbox_threshold': ('FLOAT', {'default': 0.5, 'min': 0.0, 'max': 1.0, 'step': 0.01}), 'bbox_dilation': ('INT', {'default': 10, 'min': -512, 'max': 512, 'step': 1}), 'bbox_crop_factor': ('FLOAT', {'default': 3.0, 'min': 1.0, 'max': 10, 'step': 0.1})}}
-    RETURN_TYPES = ('PIPE_LINE',)
-    RETURN_NAMES = ('bbox_segm_pipe',)
-    FUNCTION = 'doit'
-    CATEGORY = 'EasyUse/Fix'
-
-    def doit(self, model_name, bbox_threshold, bbox_dilation, bbox_crop_factor):
-        if 'UltralyticsDetectorProvider' not in ALL_NODE_CLASS_MAPPINGS:
-            raise Exception(f"[ERROR] To use UltralyticsDetectorProvider, you need to install 'Impact Pack'")
-        cls = ALL_NODE_CLASS_MAPPINGS['UltralyticsDetectorProvider']
-        (bbox_detector, segm_detector) = cls().doit(model_name)
-        pipe = (bbox_detector, bbox_threshold, bbox_dilation, bbox_crop_factor, segm_detector)
-        return (pipe,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

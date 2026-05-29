@@ -40,22 +40,6 @@ The StableCascade_EmptyLatentImage node is designed to generate latent represent
 - Infra type: CPU
 
 # Source code
-```
-class StableCascade_EmptyLatentImage:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    def __init__(self, device='cpu'):
-        self.device = device
-
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'width': ('INT', {'default': 1024, 'min': 256, 'max': nodes.MAX_RESOLUTION, 'step': 8}), 'height': ('INT', {'default': 1024, 'min': 256, 'max': nodes.MAX_RESOLUTION, 'step': 8}), 'compression': ('INT', {'default': 42, 'min': 4, 'max': 128, 'step': 1}), 'batch_size': ('INT', {'default': 1, 'min': 1, 'max': 4096})}}
-    RETURN_TYPES = ('LATENT', 'LATENT')
-    RETURN_NAMES = ('stage_c', 'stage_b')
-    FUNCTION = 'generate'
-    CATEGORY = 'latent/stable_cascade'
-
-    def generate(self, width, height, compression, batch_size=1):
-        c_latent = torch.zeros([batch_size, 16, height // compression, width // compression])
-        b_latent = torch.zeros([batch_size, 4, height // 4, width // 4])
-        return ({'samples': c_latent}, {'samples': b_latent})
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

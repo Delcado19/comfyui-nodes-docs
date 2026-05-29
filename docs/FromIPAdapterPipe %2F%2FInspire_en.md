@@ -35,18 +35,6 @@ This node coordinates the integration of various components, such as IP adapters
 - Infra type: CPU
 
 # Source code
-```
-class FromIPAdapterPipe:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Inspire-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'ipadapter_pipe': ('IPADAPTER_PIPE',)}}
-    RETURN_TYPES = ('IPADAPTER', 'MODEL', 'CLIP_VISION', 'INSIGHTFACE')
-    RETURN_NAMES = ('ipadapter', 'model', 'clip_vision', 'insight_face')
-    FUNCTION = 'doit'
-    CATEGORY = 'InspirePack/Util'
-
-    def doit(self, ipadapter_pipe):
-        (ipadapter, model, clip_vision, insightface, _) = ipadapter_pipe
-        return (ipadapter, model, clip_vision, insightface)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

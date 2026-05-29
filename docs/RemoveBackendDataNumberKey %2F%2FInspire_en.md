@@ -28,18 +28,6 @@ This node is designed to delete data entries associated with a specific numeric 
 - Infra type: CPU
 
 # Source code
-```
-class RemoveBackendDataNumberKey(RemoveBackendData):
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Inspire-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'key': ('INT', {'default': 0, 'min': 0, 'max': 18446744073709551615})}, 'optional': {'signal_opt': (any_typ,)}}
-
-    def doit(self, key, signal_opt=None):
-        global cache
-        if key in cache:
-            del cache[key]
-        else:
-            print(f'[Inspire Pack] RemoveBackendDataNumberKey: invalid data key {key}')
-        return (signal_opt,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

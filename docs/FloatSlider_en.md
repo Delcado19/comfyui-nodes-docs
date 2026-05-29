@@ -35,23 +35,6 @@ The FloatSlider node aims to normalize a given number to a specified range, ensu
 - Infra type: CPU
 
 # Source code
-```
-class FloatSlider:
+[View source repository on GitHub](https://github.com/shadowcz007/comfyui-mixlab-nodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'number': ('FLOAT', {'default': 0, 'min': 0, 'max': 18446744073709551615, 'step': 0.001, 'display': 'slider'}), 'min_value': ('FLOAT', {'default': 0, 'min': -18446744073709551615, 'max': 18446744073709551615, 'step': 0.001, 'display': 'number'}), 'max_value': ('FLOAT', {'default': 1, 'min': -18446744073709551615, 'max': 18446744073709551615, 'step': 0.001, 'display': 'number'}), 'step': ('FLOAT', {'default': 0.001, 'min': -18446744073709551615, 'max': 18446744073709551615, 'step': 0.001, 'display': 'number'})}}
-    RETURN_TYPES = ('FLOAT',)
-    FUNCTION = 'run'
-    CATEGORY = '♾️Mixlab/Utils'
-    INPUT_IS_LIST = False
-    OUTPUT_IS_LIST = (False,)
-
-    def run(self, number, min_value, max_value, step):
-        if number < min_value:
-            number = min_value
-        elif number > max_value:
-            number = max_value
-        scaled_number = (number - min_value) / (max_value - min_value)
-        return (scaled_number,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

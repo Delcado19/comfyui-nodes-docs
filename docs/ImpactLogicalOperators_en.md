@@ -31,21 +31,6 @@ The `doit` method of the ImpactLogicalOperators node is intended to perform a lo
 - Infra type: CPU
 
 # Source code
-```
-class ImpactLogicalOperators:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'operator': (['and', 'or', 'xor'],), 'bool_a': ('BOOLEAN', {'forceInput': True}), 'bool_b': ('BOOLEAN', {'forceInput': True})}}
-    FUNCTION = 'doit'
-    CATEGORY = 'ImpactPack/Logic'
-    RETURN_TYPES = ('BOOLEAN',)
-
-    def doit(self, operator, bool_a, bool_b):
-        if operator == 'and':
-            return (bool_a and bool_b,)
-        elif operator == 'or':
-            return (bool_a or bool_b,)
-        else:
-            return (bool_a != bool_b,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

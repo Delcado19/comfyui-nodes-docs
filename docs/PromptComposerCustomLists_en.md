@@ -63,39 +63,7 @@ The PromptComposerCustomLists node aims to integrate user-defined list options i
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class PromptComposerCustomLists:
-    def __init__(self):
-        pass
-    @classmethod
-    def INPUT_TYPES(s):
-        return {
-            "optional": {
-                "text_in_opt": ("STRING", {"forceInput": True}),
-            },
-            "required": custom_lists
-        }
-    RETURN_TYPES = ("STRING",)
-    RETURN_NAMES = ("text_out",)
-    FUNCTION = "promptComposerCustomLists"
-    CATEGORY = "AI WizArt/Prompt Composer Tools"
-    
-    def promptComposerCustomLists(self, text_in_opt="", **kwargs):
-        prompt = []
-        if text_in_opt != "":
-            prompt.append(text_in_opt)
-        if kwargs["active"] == True:
-            for key in kwargs.keys():
-                if "_weight" not in str(key) and "active" not in str(key):
-                    if kwargs[key] != "-" and kwargs[key + "_weight"] > 0:
-                        prompt.append(applyWeight(kwargs[key], kwargs[key + "_weight"]))
-        if len(prompt) > 0:
-            prompt = ", ".join(prompt)
-            prompt = prompt.lower()
-            return(prompt,)
-        else:
-            return("",)
+[View source repository on GitHub](https://github.com/jaschaek/AI-WizArt-ComfyUI/custom_nodes/)
 
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

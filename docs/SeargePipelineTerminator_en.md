@@ -23,19 +23,6 @@ The SeargePipelineTerminator node is designed to manage and terminate ongoing da
 - Infra type: CPU
 
 # Source code
-```
-class SeargePipelineTerminator:
+[View source repository on GitHub](https://github.com/jobunk/SeargeSDXL)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {}, 'optional': {'data': ('SRG_DATA_STREAM',)}}
-    RETURN_TYPES = ()
-    FUNCTION = 'trigger'
-    OUTPUT_NODE = True
-    CATEGORY = UI.CATEGORY_MAGIC
-
-    def trigger(self, data=None):
-        access = PipelineAccess(data)
-        access.terminate_pipeline()
-        return {}
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

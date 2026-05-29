@@ -27,21 +27,6 @@ The CR_SimpleList node is designed to process and manipulate string lists. Its p
 - Infra type: CPU
 
 # Source code
-```
-class CR_SimpleList:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'list_values': ('STRING', {'multiline': True, 'default': 'text'})}}
-    RETURN_TYPES = (any_type, 'STRING')
-    RETURN_NAMES = ('LIST', 'show_help')
-    OUTPUT_IS_LIST = (True, False)
-    FUNCTION = 'cross_join'
-    CATEGORY = icons.get('Comfyroll/List')
-
-    def cross_join(self, list_values):
-        lines = list_values.split('\n')
-        list_out = [i.strip() for i in lines if i.strip()]
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/List-Nodes#cr-simple-list'
-        return (list_out, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

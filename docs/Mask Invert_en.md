@@ -23,20 +23,6 @@ The WAS_Mask_Invert node is designed to invert the input mask, providing a means
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Mask_Invert:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'masks': ('MASK',)}}
-    CATEGORY = 'WAS Suite/Image/Masking'
-    RETURN_TYPES = ('MASK',)
-    RETURN_NAMES = ('MASKS',)
-    FUNCTION = 'add_masks'
-
-    def add_masks(self, masks):
-        return (1.0 - masks,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

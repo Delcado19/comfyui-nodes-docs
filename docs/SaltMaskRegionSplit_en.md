@@ -45,45 +45,7 @@ The SaltMaskRegionSplit node is designed to isolate and segment distinct regions
 - Infra type: `GPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class SaltMaskRegionSplit:
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {
-            "required": {
-                "masks": ("MASK",),
-            }
-        }
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    CATEGORY = f"{NAME}/Masking/Filter"
-
-    RETURN_TYPES = ("MASK", "MASK", "MASK", "MASK", "MASK", "MASK")
-    RETURN_NAMES = ("region1", "region2", "region3", "region4", "region5", "region6")
-
-    FUNCTION = "isolate_regions"
-
-    def isolate_regions(self, masks):
-        region_outputs = []
-
-        for mask in masks:
-            pil_image = ImageOps.invert(mask2pil(mask.unsqueeze(0)))
-            mask_array = np.array(pil_image.convert('L'))
-
-            num_labels, labels_im = cv2.connectedComponents(mask_array)
-
-            outputs = [np.zeros_like(mask_array) for _ in range(6)]
-
-            for i in range(1, min(num_labels, 7)):
-                outputs[i-1][labels_im == i] = 255
-
-            for output in outputs:
-                output_pil = Image.fromarray(output)
-                region_tensor = pil2mask(output_pil)
-                region_outputs.append(region_tensor)
-
-        regions_tensor = torch.stack(region_outputs, dim=0).view(len(masks), 6, *mask.size())
-        return tuple(regions_tensor.unbind(dim=1))
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

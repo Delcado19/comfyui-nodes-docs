@@ -32,24 +32,6 @@ This node is designed to manage and operate keyframes in the control network, fo
 - Infra type: CPU
 
 # Source code
-```
-class LatentKeyframeNode:
+[View source repository on GitHub](https://github.com/Kosinkadink/ComfyUI-Advanced-ControlNet)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'batch_index': ('INT', {'default': 0, 'min': BIGMIN, 'max': BIGMAX, 'step': 1}), 'strength': ('FLOAT', {'default': 1.0, 'min': 0.0, 'max': 10.0, 'step': 0.001})}, 'optional': {'prev_latent_kf': ('LATENT_KEYFRAME',)}}
-    RETURN_NAMES = ('LATENT_KF',)
-    RETURN_TYPES = ('LATENT_KEYFRAME',)
-    FUNCTION = 'load_keyframe'
-    CATEGORY = 'Adv-ControlNet 🛂🅐🅒🅝/keyframes'
-
-    def load_keyframe(self, batch_index: int, strength: float, prev_latent_kf: LatentKeyframeGroup=None, prev_latent_keyframe: LatentKeyframeGroup=None):
-        prev_latent_keyframe = prev_latent_keyframe if prev_latent_keyframe else prev_latent_kf
-        if not prev_latent_keyframe:
-            prev_latent_keyframe = LatentKeyframeGroup()
-        else:
-            prev_latent_keyframe = prev_latent_keyframe.clone()
-        keyframe = LatentKeyframe(batch_index, strength)
-        prev_latent_keyframe.add(keyframe)
-        return (prev_latent_keyframe,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

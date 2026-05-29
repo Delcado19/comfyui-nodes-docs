@@ -61,53 +61,7 @@ Revision Settings (JPS) node is used to configure and apply revision settings fo
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class Revision_Settings:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(s):
-        return {
-            "required": {
-                "rev1_strength": ("FLOAT", {"default": 1, "min": 0, "max": 10, "step": 0.1}),
-                "rev2_strength": ("FLOAT", {"default": 1, "min": 0, "max": 10, "step": 0.1}),
-
-                "rev1_noiseaug": ("FLOAT", {"default": 0, "min": 0, "max": 1, "step": 0.1}),
-                "rev2_noiseaug": ("FLOAT", {"default": 0, "min": 0, "max": 1, "step": 0.1}),
-
-                "rev1_crop": (["center","top", "bottom", "left", "right"],),
-                "rev1_offset": ("INT", { "default": 0, "min": -2048, "max": 2048, "step": 1, "display": "number" }),
-
-                "rev2_crop": (["center","top", "bottom", "left", "right"],),
-                "rev2_offset": ("INT", { "default": 0, "min": -2048, "max": 2048, "step": 1, "display": "number" }),                
-
-                "crop_intpol": (["lanczos", "nearest", "bilinear", "bicubic", "area", "nearest-exact"],),                
-                "crop_res": ("INT", { "default": 224 , "min": 224, "max": 1792, "step": 224, "display": "number" }),
-            }
-        }
-    RETURN_TYPES = ("BASIC_PIPE",)
-    RETURN_NAMES = ("revision_settings",)
-    FUNCTION = "get_revmode"
-
-    CATEGORY="JPS Nodes/Settings"
-
-    def get_revmode(self,crop_res,crop_intpol,rev1_crop,rev1_offset,rev2_crop,rev2_offset,rev1_strength,rev2_strength,rev1_noiseaug,rev2_noiseaug,):
-        rev1strength = 0
-        rev1noiseaug = 0 
-        rev2strength = 0
-        rev2noiseaug = 0 
- 
-        rev1strength = rev1_strength
-        rev1noiseaug = rev1_noiseaug
-        rev2strength = rev2_strength
-        rev2noiseaug = rev2_noiseaug
-
-        revision_settings = crop_res,crop_intpol,rev1_crop,rev1_offset,rev2_crop,rev2_offset,rev1strength,rev2strength,rev1noiseaug,rev2_noiseaug
-
-        return(revision_settings,)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

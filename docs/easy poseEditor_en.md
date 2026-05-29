@@ -23,37 +23,6 @@ The poseEditor node is designed to process and manipulate image data, facilitati
 - Infra type: CPU
 
 # Source code
-```
-class poseEditor:
+[View source repository on GitHub](https://github.com/yolain/ComfyUI-Easy-Use)
 
-    @classmethod
-    def INPUT_TYPES(self):
-        temp_dir = folder_paths.get_temp_directory()
-        if not os.path.isdir(temp_dir):
-            os.makedirs(temp_dir)
-        temp_dir = folder_paths.get_temp_directory()
-        return {'required': {}, 'optional': {'image': (sorted(os.listdir(temp_dir)),)}}
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'output_pose'
-    CATEGORY = 'EasyUse/Image'
-
-    def output_pose(self, image):
-        if image.startswith('http'):
-            from worker.components.utils import util
-            i = util.get_image_from_uri(image)
-        else:
-            image_path = os.path.join(folder_paths.get_temp_directory(), image)
-            i = Image.open(image_path)
-        image = i.convert('RGB')
-        image = np.array(image).astype(np.float32) / 255.0
-        image = torch.from_numpy(image)[None,]
-        return (image,)
-
-    @classmethod
-    def IS_CHANGED(self, image):
-        image_path = os.path.join(folder_paths.get_temp_directory(), image)
-        m = hashlib.sha256()
-        with open(image_path, 'rb') as f:
-            m.update(f.read())
-        return m.digest().hex()
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

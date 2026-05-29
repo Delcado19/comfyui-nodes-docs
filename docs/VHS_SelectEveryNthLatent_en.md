@@ -31,18 +31,6 @@ This node is used to filter a series of latent representations, retaining every 
 - Infra type: CPU
 
 # Source code
-```
-class SelectEveryNthLatent:
+[View source repository on GitHub](https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'latents': ('LATENT',), 'select_every_nth': ('INT', {'default': 1, 'min': 1, 'max': BIGMAX, 'step': 1})}}
-    CATEGORY = 'Video Helper Suite 🎥🅥🅗🅢/latent'
-    RETURN_TYPES = ('LATENT', 'INT')
-    RETURN_NAMES = ('LATENT', 'count')
-    FUNCTION = 'select_latents'
-
-    def select_latents(self, latents: dict, select_every_nth: int):
-        sub_latents = latents.copy()['samples'][0::select_every_nth]
-        return ({'samples': sub_latents}, sub_latents.size(0))
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

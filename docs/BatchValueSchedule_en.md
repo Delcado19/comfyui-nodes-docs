@@ -36,19 +36,6 @@ The BatchValueSchedule node is designed to manage and interpolate keyframe value
 - Infra type: CPU
 
 # Source code
-```
-class BatchValueSchedule:
+[View source repository on GitHub](https://github.com/FizzleDorf/ComfyUI_FizzNodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'text': ('STRING', {'multiline': True, 'default': defaultValue}), 'max_frames': ('INT', {'default': 120.0, 'min': 1.0, 'max': 999999.0, 'step': 1.0}), 'print_output': ('BOOLEAN', {'default': False})}}
-    RETURN_TYPES = ('FLOAT', 'INT')
-    FUNCTION = 'animate'
-    CATEGORY = 'FizzNodes 📅🅕🅝/BatchScheduleNodes'
-
-    def animate(self, text, max_frames, print_output):
-        t = batch_get_inbetweens(batch_parse_key_frames(text, max_frames), max_frames)
-        if print_output is True:
-            print('ValueSchedule: ', t)
-        return (t, list(map(int, t)))
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

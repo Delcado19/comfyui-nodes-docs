@@ -43,25 +43,6 @@ The CR_IncrementInteger node is designed to increment an integer value over a sp
 - Infra type: CPU
 
 # Source code
-```
-class CR_IncrementInteger:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'start_value': ('INT', {'default': 1.0, 'min': 0.0, 'max': 9999.0, 'step': 1.0}), 'step': ('INT', {'default': 1.0, 'min': -9999.0, 'max': 9999.0, 'step': 1.0}), 'start_frame': ('INT', {'default': 0.0, 'min': 0.0, 'max': 9999.0, 'step': 1.0}), 'frame_duration': ('INT', {'default': 1.0, 'min': 0.0, 'max': 9999.0, 'step': 1.0}), 'current_frame': ('INT', {'default': 0.0, 'min': 0.0, 'max': 9999.0, 'step': 1.0})}}
-    RETURN_TYPES = ('INT', 'STRING')
-    RETURN_NAMES = ('INT', 'show_help')
-    OUTPUT_NODE = True
-    FUNCTION = 'increment'
-    CATEGORY = icons.get('Comfyroll/Animation/Interpolate')
-
-    def increment(self, start_value, step, start_frame, frame_duration, current_frame):
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Interpolation-Nodes#cr-increment-integer'
-        if current_frame < start_frame:
-            return (start_value, show_help)
-        current_value = start_value + (current_frame - start_frame) * step
-        if current_frame <= start_frame + frame_duration:
-            current_value += step
-            return (current_value, show_help)
-        return (current_value, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

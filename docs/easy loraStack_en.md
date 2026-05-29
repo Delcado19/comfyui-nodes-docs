@@ -52,43 +52,6 @@ The loraStackLoader node aims to simplify the process of loading and configuring
 - Infra type: CPU
 
 # Source code
-```
-class loraStackLoader:
+[View source repository on GitHub](https://github.com/yolain/ComfyUI-Easy-Use)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(s):
-        max_lora_num = 10
-        inputs = {'required': {'toggle': ([True, False],), 'mode': (['simple', 'advanced'],), 'num_loras': ('INT', {'default': 1, 'min': 0, 'max': max_lora_num})}, 'optional': {'optional_lora_stack': ('LORA_STACK',)}}
-        for i in range(1, max_lora_num + 1):
-            inputs['optional'][f'lora_{i}_name'] = (['None'] + folder_paths.get_filename_list('loras'), {'default': 'None'})
-            inputs['optional'][f'lora_{i}_strength'] = ('FLOAT', {'default': 1.0, 'min': -10.0, 'max': 10.0, 'step': 0.01})
-            inputs['optional'][f'lora_{i}_model_strength'] = ('FLOAT', {'default': 1.0, 'min': -10.0, 'max': 10.0, 'step': 0.01})
-            inputs['optional'][f'lora_{i}_clip_strength'] = ('FLOAT', {'default': 1.0, 'min': -10.0, 'max': 10.0, 'step': 0.01})
-        return inputs
-    RETURN_TYPES = ('LORA_STACK',)
-    RETURN_NAMES = ('lora_stack',)
-    FUNCTION = 'stack'
-    CATEGORY = 'EasyUse/Loaders'
-
-    def stack(self, toggle, mode, num_loras, lora_stack=None, **kwargs):
-        if toggle in [False, None, 'False'] or not kwargs:
-            return (None,)
-        loras = []
-        if lora_stack is not None:
-            loras.extend([l for l in lora_stack if l[0] != 'None'])
-        for i in range(1, num_loras + 1):
-            lora_name = kwargs.get(f'lora_{i}_name')
-            if not lora_name or lora_name == 'None':
-                continue
-            if mode == 'simple':
-                lora_strength = float(kwargs.get(f'lora_{i}_strength'))
-                loras.append((lora_name, lora_strength, lora_strength))
-            elif mode == 'advanced':
-                model_strength = float(kwargs.get(f'lora_{i}_model_strength'))
-                clip_strength = float(kwargs.get(f'lora_{i}_clip_strength'))
-                loras.append((lora_name, model_strength, clip_strength))
-        return (loras,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

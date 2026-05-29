@@ -48,50 +48,6 @@ The CR_MultilineText node is designed to process and manipulate text data, provi
 - Infra type: CPU
 
 # Source code
-```
-class CR_MultilineText:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'text': ('STRING', {'default': '', 'multiline': True}), 'convert_from_csv': ('BOOLEAN', {'default': False}), 'csv_quote_char': ('STRING', {'default': "'", 'choices': ["'", '"']}), 'remove_chars': ('BOOLEAN', {'default': False}), 'chars_to_remove': ('STRING', {'multiline': False, 'default': ''}), 'split_string': ('BOOLEAN', {'default': False})}}
-    RETURN_TYPES = (any_type, 'STRING')
-    RETURN_NAMES = ('multiline_text', 'show_help')
-    FUNCTION = 'text_multiline'
-    CATEGORY = icons.get('Comfyroll/Utils/Text')
-
-    def text_multiline(self, text, chars_to_remove, split_string=False, remove_chars=False, convert_from_csv=False, csv_quote_char="'"):
-        new_text = []
-        text = text.rstrip(',')
-        if convert_from_csv:
-            csv_reader = csv.reader(io.StringIO(text), quotechar=csv_quote_char)
-            for row in csv_reader:
-                new_text.extend(row)
-        if split_string:
-            if text.startswith("'") and text.endswith("'"):
-                text = text[1:-1]
-                values = [value.strip() for value in text.split("', '")]
-                new_text.extend(values)
-            elif text.startswith('"') and text.endswith('"'):
-                text = text[1:-1]
-                values = [value.strip() for value in text.split('", "')]
-                new_text.extend(values)
-            elif ',' in text and text.count("'") % 2 == 0:
-                text = text.replace("'", '')
-                values = [value.strip() for value in text.split(',')]
-                new_text.extend(values)
-            elif ',' in text and text.count('"') % 2 == 0:
-                text = text.replace('"', '')
-                values = [value.strip() for value in text.split(',')]
-                new_text.extend(values)
-        if convert_from_csv == False and split_string == False:
-            for line in io.StringIO(text):
-                if not line.strip().startswith('#'):
-                    if not line.strip().startswith('\n'):
-                        line = line.replace('\n', '')
-                    if remove_chars:
-                        line = line.replace(chars_to_remove, '')
-                    new_text.append(line)
-        new_text = '\n'.join(new_text)
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Other-Nodes#cr-multiline-text'
-        return (new_text, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

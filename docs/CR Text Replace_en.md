@@ -52,21 +52,6 @@ CR_TextReplace is a node that performs text replacement operations. It can effic
 - Infra type: CPU
 
 # Source code
-```
-class CR_TextReplace:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'text': ('STRING', {'multiline': True, 'default': '', 'forceInput': True})}, 'optional': {'find1': ('STRING', {'multiline': False, 'default': ''}), 'replace1': ('STRING', {'multiline': False, 'default': ''}), 'find2': ('STRING', {'multiline': False, 'default': ''}), 'replace2': ('STRING', {'multiline': False, 'default': ''}), 'find3': ('STRING', {'multiline': False, 'default': ''}), 'replace3': ('STRING', {'multiline': False, 'default': ''})}}
-    RETURN_TYPES = (any_type, 'STRING')
-    RETURN_NAMES = ('STRING', 'show_help')
-    FUNCTION = 'replace_text'
-    CATEGORY = icons.get('Comfyroll/Utils/Text')
-
-    def replace_text(self, text, find1='', replace1='', find2='', replace2='', find3='', replace3=''):
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/List-Nodes#cr-text-replace'
-        text = text.replace(find1, replace1)
-        text = text.replace(find2, replace2)
-        text = text.replace(find3, replace3)
-        return (text, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

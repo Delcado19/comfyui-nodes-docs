@@ -35,27 +35,6 @@ This node facilitates precise padding of images with bounding boxes, ensuring th
 - Infra type: CPU
 
 # Source code
-```
-class ImagePadWithBBox:
+[View source repository on GitHub](https://github.com/Ryuukeisyou/comfyui_face_parsing)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'bbox': ('BBOX', {}), 'width': ('INT', {}), 'height': ('INT', {}), 'image': ('IMAGE', {})}}
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'main'
-    CATEGORY = 'face_parsing'
-
-    def main(self, bbox: Tensor, width: int, height: int, image: Tensor):
-        image_permuted = image.permute(0, 3, 1, 2)
-        bbox_int = bbox.int()
-        l = bbox_int[0]
-        t = bbox_int[1]
-        r = bbox_int[2]
-        b = bbox_int[3]
-        cropped_image = functional.pad(image_permuted, [l, t, width - r, height - b])
-        final = cropped_image.permute(0, 2, 3, 1)
-        return (final,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

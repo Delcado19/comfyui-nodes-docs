@@ -36,31 +36,6 @@ The WAS_Image_Monitor_Distortion_Filter node applies various distortion effects 
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Image_Monitor_Distortion_Filter:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'image': ('IMAGE',), 'mode': (['Digital Distortion', 'Signal Distortion', 'TV Distortion'],), 'amplitude': ('INT', {'default': 5, 'min': 1, 'max': 255, 'step': 1}), 'offset': ('INT', {'default': 10, 'min': 1, 'max': 255, 'step': 1})}}
-    RETURN_TYPES = ('IMAGE',)
-    RETURN_NAMES = ('image',)
-    FUNCTION = 'image_monitor_filters'
-    CATEGORY = 'WAS Suite/Image/Filter'
-
-    def image_monitor_filters(self, image, mode='Digital Distortion', amplitude=5, offset=5):
-        image = tensor2pil(image)
-        WTools = WAS_Tools_Class()
-        if mode:
-            if mode == 'Digital Distortion':
-                image = WTools.digital_distortion(image, amplitude, offset)
-            elif mode == 'Signal Distortion':
-                image = WTools.signal_distortion(image, amplitude)
-            elif mode == 'TV Distortion':
-                image = WTools.tv_vhs_distortion(image, amplitude)
-            else:
-                image = image
-        return (pil2tensor(image),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

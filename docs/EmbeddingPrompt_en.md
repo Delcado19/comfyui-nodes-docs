@@ -28,22 +28,6 @@ This node class generates prompts based on embeddings and associated weights, al
 - Infra type: CPU
 
 # Source code
-```
-class EmbeddingPrompt:
+[View source repository on GitHub](https://github.com/shadowcz007/comfyui-mixlab-nodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'embedding': (get_files_with_extension(embeddings_path, '.pt'),), 'weight': ('FLOAT', {'default': 1, 'min': -2, 'max': 2, 'step': 0.01, 'display': 'slider'})}}
-    RETURN_TYPES = ('STRING',)
-    FUNCTION = 'run'
-    CATEGORY = '♾️Mixlab/Prompt'
-    OUTPUT_IS_LIST = (False,)
-
-    def run(self, embedding, weight):
-        weight = round(weight, 3)
-        prompt = 'embedding:' + embedding
-        if weight != 1:
-            prompt = '(' + prompt + ':' + str(weight) + ')'
-        prompt = ' ' + prompt + ' '
-        return (prompt,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

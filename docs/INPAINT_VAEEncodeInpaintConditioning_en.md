@@ -51,19 +51,6 @@ Use a Variational Autoencoder (VAE) to encode input images into latent represent
 - Infra type: GPU
 
 # Source code
-```
-class VAEEncodeInpaintConditioning:
+[View source repository on GitHub](https://github.com/Acly/comfyui-inpaint-nodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'positive': ('CONDITIONING',), 'negative': ('CONDITIONING',), 'vae': ('VAE',), 'pixels': ('IMAGE',), 'mask': ('MASK',)}}
-    RETURN_TYPES = ('CONDITIONING', 'CONDITIONING', 'LATENT', 'LATENT')
-    RETURN_NAMES = ('positive', 'negative', 'latent_inpaint', 'latent_samples')
-    FUNCTION = 'encode'
-    CATEGORY = 'inpaint'
-
-    def encode(self, positive, negative, vae, pixels, mask):
-        (positive, negative, latent) = nodes.InpaintModelConditioning().encode(positive, negative, pixels, vae, mask)
-        latent_inpaint = dict(samples=positive[0][1]['concat_latent_image'], noise_mask=latent['noise_mask'].round())
-        return (positive, negative, latent_inpaint, latent)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

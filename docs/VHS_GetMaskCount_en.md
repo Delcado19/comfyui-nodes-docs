@@ -23,17 +23,6 @@ The GetMaskCount node is designed to process and calculate the number of masks p
 - Infra type: CPU
 
 # Source code
-```
-class GetMaskCount:
+[View source repository on GitHub](https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'mask': ('MASK',)}}
-    CATEGORY = 'Video Helper Suite 🎥🅥🅗🅢/mask'
-    RETURN_TYPES = ('INT',)
-    RETURN_NAMES = ('count',)
-    FUNCTION = 'count_input'
-
-    def count_input(self, mask: Tensor):
-        return (mask.size(0),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

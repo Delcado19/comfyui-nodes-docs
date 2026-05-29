@@ -47,23 +47,6 @@ This node facilitates separating and identifying various model components in com
 - Infra type: CPU
 
 # Source code
-```
-class SeargeOutput4:
+[View source repository on GitHub](https://github.com/jobunk/SeargeSDXL)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'model_names': ('MODEL_NAMES',)}}
-    RETURN_TYPES = ('MODEL_NAMES', 'CHECKPOINT_NAME', 'CHECKPOINT_NAME', 'VAE_NAME', 'UPSCALER_NAME', 'UPSCALER_NAME', 'LORA_NAME')
-    RETURN_NAMES = ('model_names', 'base_model', 'refiner_model', 'vae_model', 'main_upscale_model', 'support_upscale_model', 'lora_model')
-    FUNCTION = 'demux'
-    CATEGORY = 'Searge/_deprecated_/UI/Outputs'
-
-    def demux(self, model_names):
-        base_model = model_names['base_model']
-        refiner_model = model_names['refiner_model']
-        vae_model = model_names['vae_model']
-        main_upscale_model = model_names['main_upscale_model']
-        support_upscale_model = model_names['support_upscale_model']
-        lora_model = model_names['lora_model']
-        return (model_names, base_model, refiner_model, vae_model, main_upscale_model, support_upscale_model, lora_model)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -44,53 +44,6 @@ The CR_GetParameterFromPrompt node aims to extract specific parameters from a gi
 - Infra type: CPU
 
 # Source code
-```
-class CR_GetParameterFromPrompt:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'prompt': ('STRING', {'multiline': True, 'default': 'prompt', 'forceInput': True}), 'search_string': ('STRING', {'multiline': False, 'default': '!findme'})}}
-    RETURN_TYPES = ('STRING', any_type, 'FLOAT', 'BOOLEAN', 'STRING')
-    RETURN_NAMES = ('prompt', 'text', 'float', 'boolean', 'show_help')
-    FUNCTION = 'get_string'
-    CATEGORY = icons.get('Comfyroll/Utils/Other')
-
-    def get_string(self, prompt, search_string):
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Other-Nodes#cr-find-string-in-prompt'
-        return_string = ''
-        return_value = 0
-        return_boolean = False
-        return_prompt = prompt
-        index = prompt.find(search_string)
-        if index != -1:
-            if prompt[index + len(search_string)] == '=':
-                if prompt[index + len(search_string) + 1] == '"':
-                    start_quote = index + len(search_string) + 2
-                    end_quote = prompt.find('"', start_quote + 1)
-                    if end_quote != -1:
-                        return_string = prompt[start_quote:end_quote]
-                        print(return_string)
-                else:
-                    space_index = prompt.find(' ', index + len(search_string))
-                    if space_index != -1:
-                        return_string = prompt[index + len(search_string):space_index]
-                    else:
-                        return_string = prompt[index + len(search_string):]
-            else:
-                return_string = search_string[1:]
-        if return_string == '':
-            return (return_prompt, return_string, return_value, return_boolean, show_help)
-        if return_string.startswith('='):
-            return_string = return_string[1:]
-        return_boolean = return_string.lower() == 'true'
-        try:
-            return_value = int(return_string)
-        except ValueError:
-            try:
-                return_value = float(return_string)
-            except ValueError:
-                return_value = 0
-        remove_string = ' ' + search_string + '=' + return_string
-        return_prompt = prompt.replace(remove_string, '')
-        return (return_prompt, return_string, return_value, return_boolean, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

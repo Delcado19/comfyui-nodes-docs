@@ -32,15 +32,6 @@ The LoraLoaderModelOnly node is designed to efficiently load and integrate Lora 
 - Infra type: CPU
 
 # Source code
-```
-class LoraLoaderModelOnly(LoraLoader):
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'model': ('MODEL',), 'lora_name': (folder_paths.get_filename_list('loras'),), 'strength_model': ('FLOAT', {'default': 1.0, 'min': -20.0, 'max': 20.0, 'step': 0.01})}}
-    RETURN_TYPES = ('MODEL',)
-    FUNCTION = 'load_lora_model_only'
-
-    def load_lora_model_only(self, model, lora_name, strength_model):
-        return (self.load_lora(model, None, lora_name, strength_model, 0)[0],)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

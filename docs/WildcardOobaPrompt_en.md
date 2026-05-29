@@ -32,39 +32,6 @@ The 'process' method of the WildcardOobaPrompt node is designed to dynamically g
 - Infra type: CPU
 
 # Source code
-```
-class WildcardOobaPrompt:
+[View source repository on GitHub](https://github.com/bash-j/mikey_nodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'input_prompt': ('STRING', {'multiline': True, 'default': 'Prompt Text Here', 'dynamicPrompts': False}), 'seed': ('INT', {'default': 0, 'min': 0, 'max': 18446744073709551615})}, 'hidden': {'unique_id': 'UNIQUE_ID', 'extra_pnginfo': 'EXTRA_PNGINFO', 'prompt': 'PROMPT'}}
-    RETURN_TYPES = ('STRING',)
-    RETURN_NAMES = ('text',)
-    FUNCTION = 'process'
-    OUTPUT_NODE = True
-    CATEGORY = 'Mikey/AI'
-
-    def process(self, input_prompt, seed, prompt=None, unique_id=None, extra_pnginfo=None):
-        input_prompt = search_and_replace(input_prompt, extra_pnginfo, prompt)
-        wc_re = re.compile('{([^}]+)}')
-
-        def repl(m):
-            return random.choice(m.group(1).split('|'))
-        for m in wc_re.finditer(input_prompt):
-            input_prompt = input_prompt.replace(m.group(0), repl(m))
-        input_prompt = find_and_replace_wildcards(input_prompt, seed, debug=True)
-        llm_re = re.compile('<llm:(.*?):(.*?)>')
-        for m in llm_re.finditer(input_prompt):
-            mode = m.group(1)
-            if '.json' in mode:
-                custom_history = mode
-                mode = 'custom'
-            else:
-                custom_history = None
-            prompt_text = m.group(2)
-            ooba = OobaPrompt()
-            result = ooba.api_request(prompt_text, seed, mode, custom_history)
-            input_prompt = input_prompt.replace(m.group(0), result)
-        prompt.get(str(unique_id))['inputs']['output_text'] = input_prompt
-        return (input_prompt,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

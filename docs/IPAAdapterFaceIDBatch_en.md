@@ -23,9 +23,6 @@ The IPAAdapterFaceIDBatch node acts as an intermediary between input data and th
 - Infra type: CPU
 
 # Source code
-```
-class IPAAdapterFaceIDBatch(IPAdapterFaceID):
+[View source repository on GitHub](https://github.com/cubiq/ComfyUI_IPAdapter_plus)
 
-    def __init__(self):
-        self.unfold_batch = True
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

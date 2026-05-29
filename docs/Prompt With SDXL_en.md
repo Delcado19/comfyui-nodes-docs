@@ -80,32 +80,6 @@ The PromptWithSDXL node is designed to process and generate prompts for style an
 - Infra type: CPU
 
 # Source code
-```
-class PromptWithSDXL:
+[View source repository on GitHub](https://github.com/bash-j/mikey_nodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        (s.ratio_sizes, s.ratio_dict) = read_ratios()
-        return {'required': {'positive_prompt': ('STRING', {'multiline': True, 'default': 'Positive Prompt'}), 'negative_prompt': ('STRING', {'multiline': True, 'default': 'Negative Prompt'}), 'positive_style': ('STRING', {'multiline': True, 'default': 'Positive Style'}), 'negative_style': ('STRING', {'multiline': True, 'default': 'Negative Style'}), 'ratio_selected': (s.ratio_sizes,), 'batch_size': ('INT', {'default': 1, 'min': 1, 'max': 64}), 'seed': ('INT', {'default': 0, 'min': 0, 'max': 18446744073709551615})}, 'hidden': {'prompt': 'PROMPT', 'extra_pnginfo': 'EXTRA_PNGINFO'}}
-    RETURN_TYPES = ('LATENT', 'STRING', 'STRING', 'STRING', 'STRING', 'INT', 'INT', 'INT', 'INT')
-    RETURN_NAMES = ('samples', 'positive_prompt_text_g', 'negative_prompt_text_g', 'positive_style_text_l', 'negative_style_text_l', 'width', 'height', 'refiner_width', 'refiner_height')
-    FUNCTION = 'start'
-    CATEGORY = 'Mikey'
-    OUTPUT_NODE = True
-
-    def start(self, positive_prompt, negative_prompt, positive_style, negative_style, ratio_selected, batch_size, seed, prompt=None, extra_pnginfo=None):
-        positive_prompt = search_and_replace(positive_prompt, extra_pnginfo, prompt)
-        negative_prompt = search_and_replace(negative_prompt, extra_pnginfo, prompt)
-        positive_prompt = process_random_syntax(positive_prompt, seed)
-        negative_prompt = process_random_syntax(negative_prompt, seed)
-        positive_prompt = find_and_replace_wildcards(positive_prompt, seed)
-        negative_prompt = find_and_replace_wildcards(negative_prompt, seed)
-        width = self.ratio_dict[ratio_selected]['width']
-        height = self.ratio_dict[ratio_selected]['height']
-        latent = torch.zeros([batch_size, 4, height // 8, width // 8])
-        ratio = min([width, height]) / max([width, height])
-        (target_width, target_height) = (4096, 4096 * ratio // 8 * 8) if width > height else (4096 * ratio // 8 * 8, 4096)
-        refiner_width = target_width
-        refiner_height = target_height
-        return ({'samples': latent}, str(positive_prompt), str(negative_prompt), str(positive_style), str(negative_style), width, height, refiner_width, refiner_height)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

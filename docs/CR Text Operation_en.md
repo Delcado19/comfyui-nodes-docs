@@ -31,35 +31,6 @@ The CR_TextOperation node is designed to perform various text operations. It acc
 - Infra type: CPU
 
 # Source code
-```
-class CR_TextOperation:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        operations = ['uppercase', 'lowercase', 'capitalize', 'invert_case', 'reverse', 'trim', 'remove_spaces']
-        return {'required': {'text': ('STRING', {'multiline': False, 'default': '', 'forceInput': True}), 'operation': (operations,)}}
-    RETURN_TYPES = (any_type, 'STRING')
-    RETURN_NAMES = ('STRING', 'show_help')
-    FUNCTION = 'text_operation'
-    CATEGORY = icons.get('Comfyroll/Utils/Text')
-
-    def text_operation(self, text, operation):
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/List-Nodes#cr-text_operation'
-        if operation == 'uppercase':
-            text_out = text.upper()
-        elif operation == 'lowercase':
-            text_out = text.lower()
-        elif operation == 'capitalize':
-            text_out = text.capitalize()
-        elif operation == 'invert_case':
-            text_out = text.swapcase()
-        elif operation == 'reverse':
-            text_out = text[::-1]
-        elif operation == 'trim':
-            text_out = text.strip()
-        elif operation == 'remove_spaces':
-            text_out = text.replace(' ', '')
-        else:
-            return 'CR Text Operation: Invalid operation.'
-        return (text_out, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

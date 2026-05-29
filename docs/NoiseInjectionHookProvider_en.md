@@ -39,25 +39,6 @@ The NoiseInjectionHookProvider node injects noise into the image generation proc
 - Infra type: GPU
 
 # Source code
-```
-class NoiseInjectionHookProvider:
-    schedules = ['simple']
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'schedule_for_iteration': (s.schedules,), 'source': (['CPU', 'GPU'],), 'seed': ('INT', {'default': 0, 'min': 0, 'max': 18446744073709551615}), 'start_strength': ('FLOAT', {'default': 1.0, 'min': 0.0, 'max': 200.0, 'step': 0.01}), 'end_strength': ('FLOAT', {'default': 1.0, 'min': 0.0, 'max': 200.0, 'step': 0.01})}}
-    RETURN_TYPES = ('PK_HOOK',)
-    FUNCTION = 'doit'
-    CATEGORY = 'ImpactPack/Upscale'
-
-    def doit(self, schedule_for_iteration, source, seed, start_strength, end_strength):
-        try:
-            hook = None
-            if schedule_for_iteration == 'simple':
-                hook = hooks.InjectNoiseHook(source, seed, start_strength, end_strength)
-            return (hook,)
-        except Exception as e:
-            print("[ERROR] NoiseInjectionHookProvider: 'ComfyUI Noise' custom node isn't installed. You must install 'BlenderNeko/ComfyUI Noise' extension to use this node.")
-            print(f'\t{e}')
-            pass
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

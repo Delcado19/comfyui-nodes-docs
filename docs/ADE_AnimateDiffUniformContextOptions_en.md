@@ -64,17 +64,6 @@ LegacyLoopedUniformContextOptionsNode aims to provide convenience for creating c
 - Infra type: CPU
 
 # Source code
-```
-class LegacyLoopedUniformContextOptionsNode:
+[View source repository on GitHub](https://github.com/Kosinkadink/ComfyUI-AnimateDiff-Evolved)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'context_length': ('INT', {'default': 16, 'min': 1, 'max': LENGTH_MAX}), 'context_stride': ('INT', {'default': 1, 'min': 1, 'max': STRIDE_MAX}), 'context_overlap': ('INT', {'default': 4, 'min': 0, 'max': OVERLAP_MAX}), 'context_schedule': (ContextSchedules.LEGACY_UNIFORM_SCHEDULE_LIST,), 'closed_loop': ('BOOLEAN', {'default': False})}, 'optional': {'fuse_method': (ContextFuseMethod.LIST, {'default': ContextFuseMethod.FLAT}), 'use_on_equal_length': ('BOOLEAN', {'default': False}), 'start_percent': ('FLOAT', {'default': 0.0, 'min': 0.0, 'max': 1.0, 'step': 0.001}), 'guarantee_steps': ('INT', {'default': 1, 'min': 0, 'max': BIGMAX}), 'prev_context': ('CONTEXT_OPTIONS',), 'view_opts': ('VIEW_OPTS',)}}
-    RETURN_TYPES = ('CONTEXT_OPTIONS',)
-    RETURN_NAMES = ('CONTEXT_OPTS',)
-    CATEGORY = ''
-    FUNCTION = 'create_options'
-
-    def create_options(self, fuse_method: str=ContextFuseMethod.FLAT, context_schedule: str=None, **kwargs):
-        return LoopedUniformContextOptionsNode.create_options(self, fuse_method=fuse_method, **kwargs)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -28,25 +28,6 @@ The method `tensor_batch_to_image` converts a batch of tensor images into a sing
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Tensor_Batch_to_Image:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'images_batch': ('IMAGE',), 'batch_image_number': ('INT', {'default': 0, 'min': 0, 'max': 64, 'step': 1})}}
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'tensor_batch_to_image'
-    CATEGORY = 'WAS Suite/Latent/Transform'
-
-    def tensor_batch_to_image(self, images_batch=[], batch_image_number=0):
-        count = 0
-        for _ in images_batch:
-            if batch_image_number == count:
-                return (images_batch[batch_image_number].unsqueeze(0),)
-            count = count + 1
-        cstr(f'Batch number `{batch_image_number}` is not defined, returning last image').error.print()
-        return (images_batch[-1].unsqueeze(0),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -23,16 +23,6 @@ The NumberToInt node is designed to convert a numerical input into an integer fo
 - Infra type: CPU
 
 # Source code
-```
-class NumberToInt:
+[View source repository on GitHub](https://github.com/evanspearman/ComfyMath)
 
-    @classmethod
-    def INPUT_TYPES(cls) -> Mapping[str, Any]:
-        return {'required': {'a': ('NUMBER', {'default': 0.0})}}
-    RETURN_TYPES = ('INT',)
-    FUNCTION = 'op'
-    CATEGORY = 'math/conversion'
-
-    def op(self, a: number) -> tuple[int]:
-        return (int(a),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

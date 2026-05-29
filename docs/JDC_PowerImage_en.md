@@ -31,41 +31,6 @@ This node enhances images by adjusting brightness and contrast according to spec
 - Infra type: CPU
 
 # Source code
-```
-class PowerImage:
+[View source repository on GitHub](https://github.com/Jordach/comfy-plasma)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'IMAGE': ('IMAGE',), 'power_of': ('FLOAT', {'default': 1, 'min': 1, 'max': 65536, 'step': 0.01}), 'mode': (['darken', 'lighten', 'emphasize both'],)}}
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'process_image'
-    CATEGORY = 'image/postprocessing'
-
-    def process_image(self, IMAGE, power_of, mode):
-        cimg = conv_tensor_pil(IMAGE)
-        (w, h) = cimg.size
-        pbar = comfy.utils.ProgressBar(h)
-        step = 0
-        for y in range(h):
-            for x in range(w):
-                (r, g, b) = cimg.getpixel((x, y))
-                if mode == 'lighten':
-                    r *= 1 + pow(r / 255, power_of)
-                    g *= 1 + pow(g / 255, power_of)
-                    b *= 1 + pow(b / 255, power_of)
-                elif mode == 'emphasize both':
-                    r *= 0.5 + pow(r / 255, power_of)
-                    g *= 0.5 + pow(g / 255, power_of)
-                    b *= 0.5 + pow(b / 255, power_of)
-                else:
-                    r *= pow(r / 255, power_of)
-                    g *= pow(g / 255, power_of)
-                    b *= pow(b / 255, power_of)
-                r = clamp(r, 0, 255)
-                g = clamp(g, 0, 255)
-                b = clamp(b, 0, 255)
-                cimg.putpixel((x, y), (int(r), int(g), int(b)))
-            step += 1
-            pbar.update_absolute(step, h)
-        return conv_pil_tensor(cimg)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

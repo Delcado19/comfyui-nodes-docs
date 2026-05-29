@@ -34,38 +34,7 @@ The LLMMarkdownRepair node aims to fix malformed Markdown text, ensuring it is c
 - Infra type: `GPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class LLMMarkdownRepair:
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {
-            "required": {
-                "llm_model": ("LLM_MODEL",),
-                "text_input": ("STRING", {"multiline": True, "dynamicPrompts": False, "placeholder": "Malformed Markdown..."}),
-            },
-            "optional": {
-                "extra_directions": ("STRING", {"multiline": True, "dynamicPrompts": False, "placeholder": "Extra directions for the LLM to follow..."}),
-            }
-        }
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Ltdrdata)
 
-    RETURN_TYPES = ("STRING",)
-    RETURN_NAMES = ("markdown_output",)
-
-    FUNCTION = "repair_markdown"
-    CATEGORY = f"{MENU_NAME}/{SUB_MENU_NAME}/Tools/Markdown"
-
-    def repair_markdown(self, llm_model, text_input, extra_directions=""):
-        prompt = (
-            f"{text_input}\n\n###\n\n"
-            "Given the above malformed Markdown, please inspect it and repair it so that it's valid Markdown, without changing or losing any data if possible."
-            f"{extra_directions}\n\n"
-            "Please ensure the Markdown output is well-structured, and does not omit any data."
-        )
-        
-        response = llm_model['llm'].complete(prompt)
-        
-        return (response.text,)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

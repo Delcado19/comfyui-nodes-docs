@@ -35,25 +35,6 @@ The CR_InputSwitchPipe node is designed to manage data flow between different pr
 - Infra type: CPU
 
 # Source code
-```
-class CR_InputSwitchPipe:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'Input': ('INT', {'default': 1, 'min': 1, 'max': 2}), 'pipe1': ('PIPE_LINE',), 'pipe2': ('PIPE_LINE',)}}
-    RETURN_TYPES = ('PIPE_LINE', 'STRING')
-    RETURN_NAMES = ('PIPE_LINE', 'show_help')
-    OUTPUT_NODE = True
-    FUNCTION = 'switch_pipe'
-    CATEGORY = icons.get('Comfyroll/Pipe')
-
-    def switch_pipe(self, Input, pipe1, pipe2):
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Pipe-Nodes#cr-pipe-switch'
-        if Input == 1:
-            return (pipe1, show_help)
-        else:
-            return (pipe2, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

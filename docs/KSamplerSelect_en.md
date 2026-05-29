@@ -23,17 +23,6 @@ The KSamplerSelect node is designed to provide a selection mechanism for differe
 - Infra type: CPU
 
 # Source code
-```
-class KSamplerSelect:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'sampler_name': (comfy.samplers.SAMPLER_NAMES,)}}
-    RETURN_TYPES = ('SAMPLER',)
-    CATEGORY = 'sampling/custom_sampling/samplers'
-    FUNCTION = 'get_sampler'
-
-    def get_sampler(self, sampler_name):
-        sampler = comfy.samplers.sampler_object(sampler_name)
-        return (sampler,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

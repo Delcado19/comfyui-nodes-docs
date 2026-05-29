@@ -51,24 +51,6 @@ This node class serves as an interface for demultiplexing input parameters into 
 - Infra type: CPU
 
 # Source code
-```
-class SeargeOutput1:
+[View source repository on GitHub](https://github.com/jobunk/SeargeSDXL)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'parameters': ('PARAMETERS',)}}
-    RETURN_TYPES = ('PARAMETERS', 'STRING', 'STRING', 'STRING', 'STRING', 'STRING', 'IMAGE', 'MASK')
-    RETURN_NAMES = ('parameters', 'main_prompt', 'secondary_prompt', 'style_prompt', 'negative_prompt', 'negative_style', 'image', 'mask')
-    FUNCTION = 'demux'
-    CATEGORY = 'Searge/_deprecated_/UI/Outputs'
-
-    def demux(self, parameters):
-        main_prompt = parameters['main_prompt']
-        secondary_prompt = parameters['secondary_prompt']
-        style_prompt = parameters['style_prompt']
-        negative_prompt = parameters['negative_prompt']
-        negative_style = parameters['negative_style']
-        image = parameters['image']
-        mask = parameters['mask']
-        return (parameters, main_prompt, secondary_prompt, style_prompt, negative_prompt, negative_style, image, mask)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

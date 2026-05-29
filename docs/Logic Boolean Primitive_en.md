@@ -23,19 +23,6 @@ The `do` method of the WAS_Boolean_Primitive node is designed to process and ret
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Boolean_Primitive:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'boolean': ('BOOLEAN', {'default': False})}}
-    RETURN_TYPES = ('BOOLEAN',)
-    FUNCTION = 'do'
-    CATEGORY = 'WAS Suite/Logic'
-
-    def do(self, boolean):
-        return (boolean,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

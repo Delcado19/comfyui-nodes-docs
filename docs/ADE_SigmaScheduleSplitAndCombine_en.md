@@ -33,27 +33,6 @@ This node is designed to operate sigma schedules by splitting and combining them
 - Common nodes: unknown
 
 ## Source code
-```python
-class SplitAndCombineSigmaScheduleNode:
-    @classmethod
-    def INPUT_TYPES(s):
-        return {
-            "required": {
-                "schedule_Start": ("SIGMA_SCHEDULE",),
-                "schedule_End": ("SIGMA_SCHEDULE",),
-                "idx_split_percent": ("FLOAT", {"default": 0.5, "min": 0.0, "max": 1.0, "step": 0.001})
-            }
-        }
-    
-    RETURN_TYPES = ("SIGMA_SCHEDULE",)
-    CATEGORY = "Animate Diff 🎭🅐🅓/sample settings/sigma schedule"
-    FUNCTION = "get_sigma_schedule"
+[View source repository on GitHub](https://github.com/Kosinkadink/ComfyUI-AnimateDiff-Evolved)
 
-    def get_sigma_schedule(self, schedule_Start: SigmaSchedule, schedule_End: SigmaSchedule, idx_split_percent: float):
-        validate_sigma_schedule_compatibility(schedule_Start, schedule_End)
-        # first, calculate index to act as split; get diff from 1.0 since sigmas are flipped at this stage
-        idx = int((1.0-idx_split_percent) * schedule_Start.total_sigmas())
-        new_sigmas = torch.cat([schedule_End.model_sampling.sigmas[:idx], schedule_Start.model_sampling.sigmas[idx:]], dim=0)
-        new_schedule = schedule_Start.clone()
-        new_schedule.model_sampling.set_sigmas(new_sigmas)
-        return (new_schedule,)
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

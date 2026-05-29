@@ -35,17 +35,6 @@ This node creates a sampler specifically designed to handle complex sampling tas
 - Infra type: CPU
 
 # Source code
-```
-class SamplerLCMCycle:
+[View source repository on GitHub](https://github.com/jojkaart/ComfyUI-sampler-lcm-alternative)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'euler_steps': ('INT', {'default': 1, 'min': 1, 'max': 50}), 'lcm_steps': ('INT', {'default': 2, 'min': 1, 'max': 50}), 'tweak_sigmas': ('BOOLEAN', {'default': False}), 'ancestral': ('FLOAT', {'default': 0, 'min': 0, 'max': 1.0, 'step': 0.01, 'round': False})}}
-    RETURN_TYPES = ('SAMPLER',)
-    CATEGORY = 'sampling/custom_sampling/samplers'
-    FUNCTION = 'get_sampler'
-
-    def get_sampler(self, euler_steps, lcm_steps, tweak_sigmas, ancestral):
-        sampler = comfy.samplers.KSAMPLER(sample_lcm_cycle, extra_options={'euler_steps': euler_steps, 'lcm_steps': lcm_steps, 'tweak_sigmas': tweak_sigmas, 'ancestral': ancestral})
-        return (sampler,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

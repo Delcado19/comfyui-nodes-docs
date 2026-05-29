@@ -32,22 +32,6 @@ The `vae_switch` method in the `WAS_VAE_Input_Switch` node is designed to condit
 - Infra type: CPU
 
 # Source code
-```
-class WAS_VAE_Input_Switch:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'vae_a': ('VAE',), 'vae_b': ('VAE',), 'boolean': ('BOOLEAN', {'forceInput': True})}}
-    RETURN_TYPES = ('VAE',)
-    FUNCTION = 'vae_switch'
-    CATEGORY = 'WAS Suite/Logic'
-
-    def vae_switch(self, vae_a, vae_b, boolean=True):
-        if boolean:
-            return (vae_a,)
-        else:
-            return (vae_b,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

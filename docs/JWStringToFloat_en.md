@@ -25,18 +25,7 @@ The JWStringToFloat node is designed to convert a string representation of a flo
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-        @register_node(identifier, display_name)
-        class _:
-            CATEGORY = category
-            INPUT_TYPES = lambda: {"required": required_inputs}
-            RETURN_TYPES = tuple(return_types)
-            OUTPUT_NODE = output_node
-            FUNCTION = "execute"
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-            def execute(self, *args, **kwargs):
-                return func(*args, **kwargs)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

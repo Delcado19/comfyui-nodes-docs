@@ -52,22 +52,6 @@ The `create_options` method of StandardStaticContextOptionsNode aims to generate
 - Infra type: CPU
 
 # Source code
-```
-class StandardStaticContextOptionsNode:
+[View source repository on GitHub](https://github.com/Kosinkadink/ComfyUI-AnimateDiff-Evolved)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'context_length': ('INT', {'default': 16, 'min': 1, 'max': LENGTH_MAX}), 'context_overlap': ('INT', {'default': 4, 'min': 0, 'max': OVERLAP_MAX})}, 'optional': {'fuse_method': (ContextFuseMethod.LIST_STATIC,), 'use_on_equal_length': ('BOOLEAN', {'default': False}), 'start_percent': ('FLOAT', {'default': 0.0, 'min': 0.0, 'max': 1.0, 'step': 0.001}), 'guarantee_steps': ('INT', {'default': 1, 'min': 0, 'max': BIGMAX}), 'prev_context': ('CONTEXT_OPTIONS',), 'view_opts': ('VIEW_OPTS',)}}
-    RETURN_TYPES = ('CONTEXT_OPTIONS',)
-    RETURN_NAMES = ('CONTEXT_OPTS',)
-    CATEGORY = 'Animate Diff 🎭🅐🅓/context opts'
-    FUNCTION = 'create_options'
-
-    def create_options(self, context_length: int, context_overlap: int, fuse_method: str=ContextFuseMethod.PYRAMID, use_on_equal_length=False, start_percent: float=0.0, guarantee_steps: int=1, view_opts: ContextOptions=None, prev_context: ContextOptionsGroup=None):
-        if prev_context is None:
-            prev_context = ContextOptionsGroup()
-        prev_context = prev_context.clone()
-        context_options = ContextOptions(context_length=context_length, context_stride=None, context_overlap=context_overlap, context_schedule=ContextSchedules.STATIC_STANDARD, fuse_method=fuse_method, use_on_equal_length=use_on_equal_length, start_percent=start_percent, guarantee_steps=guarantee_steps, view_options=view_opts)
-        prev_context.add(context_options)
-        return (prev_context,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

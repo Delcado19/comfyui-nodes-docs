@@ -36,26 +36,6 @@ MultivalScaledMaskNode class aims to transform a given mask tensor by scaling it
 - Infra type: CPU
 
 # Source code
-```
-class MultivalScaledMaskNode:
+[View source repository on GitHub](https://github.com/Kosinkadink/ComfyUI-AnimateDiff-Evolved)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'min_float_val': ('FLOAT', {'default': 0.0, 'min': 0.0, 'step': 0.001}), 'max_float_val': ('FLOAT', {'default': 1.0, 'min': 0.0, 'step': 0.001}), 'mask': ('MASK',)}, 'optional': {'scaling': (ScaleType.LIST,)}}
-    RETURN_TYPES = ('MULTIVAL',)
-    CATEGORY = 'Animate Diff 🎭🅐🅓/multival'
-    FUNCTION = 'create_multival'
-
-    def create_multival(self, min_float_val: float, max_float_val: float, mask: Tensor, scaling: str=ScaleType.ABSOLUTE):
-        if isinstance(min_float_val, Iterable):
-            raise ValueError(f'min_float_val must be type float (no lists allowed here), not {type(min_float_val).__name__}.')
-        if isinstance(max_float_val, Iterable):
-            raise ValueError(f'max_float_val must be type float (no lists allowed here), not {type(max_float_val).__name__}.')
-        if scaling == ScaleType.ABSOLUTE:
-            mask = linear_conversion(mask.clone(), new_min=min_float_val, new_max=max_float_val)
-        elif scaling == ScaleType.RELATIVE:
-            mask = normalize_min_max(mask.clone(), new_min=min_float_val, new_max=max_float_val)
-        else:
-            raise ValueError(f"scaling '{scaling}' not recognized.")
-        return MultivalDynamicNode.create_multival(self, mask_optional=mask)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

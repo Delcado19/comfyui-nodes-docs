@@ -31,16 +31,6 @@ Vec3BinaryCondition node performs a binary operation on two 3D vectors. It evalu
 - Infra type: CPU
 
 # Source code
-```
-class Vec3BinaryCondition:
+[View source repository on GitHub](https://github.com/evanspearman/ComfyMath)
 
-    @classmethod
-    def INPUT_TYPES(cls) -> Mapping[str, Any]:
-        return {'required': {'op': (list(VEC_BINARY_CONDITIONS.keys()),), 'a': DEFAULT_VEC3, 'b': DEFAULT_VEC3}}
-    RETURN_TYPES = ('BOOL',)
-    FUNCTION = 'op'
-    CATEGORY = 'math/vec3'
-
-    def op(self, op: str, a: Vec3, b: Vec3) -> tuple[bool]:
-        return (VEC_BINARY_CONDITIONS[op](numpy.array(a), numpy.array(b)),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

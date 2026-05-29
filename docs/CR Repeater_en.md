@@ -31,26 +31,6 @@ CR_Repeater is a utility node that repeats items in a list a specified number of
 - Infra type: CPU
 
 # Source code
-```
-class CR_Repeater:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'input_data': (any_type,), 'repeats': ('INT', {'default': 1, 'min': 1, 'max': 99999})}}
-    RETURN_TYPES = (any_type, 'STRING')
-    RETURN_NAMES = ('list', 'show_help')
-    OUTPUT_IS_LIST = (True, False)
-    FUNCTION = 'repeat_list_items'
-    CATEGORY = icons.get('Comfyroll/List/Utils')
-
-    def repeat_list_items(self, input_data, repeats):
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/List-Nodes#cr-repeater'
-        new_list = []
-        if isinstance(input_data, list):
-            new_list = []
-            for item in input_data:
-                new_list.extend([item] * repeats)
-            return (new_list, show_help)
-        else:
-            return ([input_data] * repeats, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

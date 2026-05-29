@@ -35,28 +35,6 @@ The 'get_resolutions' method of the WLSH_Resolutions_by_Ratio node calculates im
 - Infra type: CPU
 
 # Source code
-```
-class WLSH_Resolutions_by_Ratio:
-    aspects = ['1:1', '6:5', '5:4', '4:3', '3:2', '16:10', '16:9', '21:9', '2:1', '3:1', '4:1']
-    direction = ['landscape', 'portrait']
+[View source repository on GitHub](https://github.com/wallish77/wlsh_nodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'aspect': (s.aspects,), 'direction': (s.direction,), 'shortside': ('INT', {'default': 512, 'min': 64, 'max': MAX_RESOLUTION, 'step': 64})}}
-    RETURN_TYPES = ('INT', 'INT')
-    RETURN_NAMES = ('width', 'height')
-    FUNCTION = 'get_resolutions'
-    CATEGORY = 'WLSH Nodes/number'
-
-    def get_resolutions(self, aspect, direction, shortside):
-        (x, y) = aspect.split(':')
-        x = int(x)
-        y = int(y)
-        ratio = x / y
-        width = int(shortside * ratio)
-        width = width + 63 & -64
-        height = shortside
-        if direction == 'portrait':
-            (width, height) = (height, width)
-        return (width, height)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

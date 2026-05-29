@@ -35,17 +35,6 @@ This node generates a sine curve with adjustable frequency, phase, and amplitude
 - Infra type: CPU
 
 # Source code
-```
-class KfSinusoidalWithFrequency:
-    CATEGORY = CATEGORY
-    FUNCTION = 'main'
-    RETURN_TYPES = ('KEYFRAMED_CURVE', 'SINUSOIDAL_CURVE')
+[View source repository on GitHub](https://github.com/dmarx/ComfyUI-Keyframed)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'frequency': ('FLOAT', {'default': 1 / 12, 'step': 0.01}), 'phase': ('FLOAT', {'default': 0.0, 'step': 0.1308996939}), 'amplitude': ('FLOAT', {'default': 1, 'step': 0.01})}}
-
-    def main(self, frequency, phase, amplitude):
-        curve = kf.SinusoidalCurve(frequency=frequency, phase=phase, amplitude=amplitude)
-        return (curve, curve)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -23,16 +23,6 @@ This node converts integer input into a numeric format suitable for further proc
 - Infra type: CPU
 
 # Source code
-```
-class IntToNumber:
+[View source repository on GitHub](https://github.com/evanspearman/ComfyMath)
 
-    @classmethod
-    def INPUT_TYPES(cls) -> Mapping[str, Any]:
-        return {'required': {'a': ('INT', {'default': 0})}}
-    RETURN_TYPES = ('NUMBER',)
-    FUNCTION = 'op'
-    CATEGORY = 'math/conversion'
-
-    def op(self, a: int) -> tuple[number]:
-        return (a,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -32,44 +32,6 @@ Perform Boolean operations on two values and output the result*. Supported opera
 - Infra type: CPU
 
 # Source code
-```
+[View source repository on GitHub](https://github.com/chflame163/ComfyUI_LayerStyle)
 
-class BooleanOperator:
-    def __init__(self):
-        pass
-    @classmethod
-    def INPUT_TYPES(self):
-        operator_list = ["==", "!=", "and", "or", "xor", "not(a)", "min", "max"]
-        return {"required": {
-                "a": (any, {}),
-                "b": (any, {}),
-                "operator": (operator_list,),
-            },}
-
-    RETURN_TYPES = ("BOOLEAN",)
-    RETURN_NAMES = ("output",)
-    FUNCTION = 'bool_operator_node'
-    CATEGORY = '😺dzNodes/LayerUtility/Data'
-
-    def bool_operator_node(self, a, b, operator):
-        ret_value = False
-        if operator == "==":
-            ret_value = a == b
-        if operator == "!=":
-            ret_value = a != b
-        if operator == "and":
-            ret_value = a and b
-        if operator == "or":
-            ret_value = a or b
-        if operator == "xor":
-            ret_value = not(a == b)
-        if operator == "not(a)":
-            ret_value = not a
-        if operator == "min":
-            ret_value = a or b
-        if operator == "max":
-            ret_value = a and b
-
-        return (ret_value,)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -32,24 +32,6 @@ The EmptyLatentRatioCustom node is designed to generate latent representations f
 - Infra type: CPU
 
 # Source code
-```
-class EmptyLatentRatioCustom:
+[View source repository on GitHub](https://github.com/bash-j/mikey_nodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        (s.ratio_sizes, s.ratio_dict) = read_ratios()
-        return {'required': {'width': ('INT', {'default': 1024, 'min': 1, 'max': 8192, 'step': 1}), 'height': ('INT', {'default': 1024, 'min': 1, 'max': 8192, 'step': 1}), 'batch_size': ('INT', {'default': 1, 'min': 1, 'max': 64})}}
-    RETURN_TYPES = ('LATENT',)
-    FUNCTION = 'generate'
-    CATEGORY = 'Mikey/Latent'
-
-    def generate(self, width, height, batch_size=1):
-        if width == 1 and height == 1 or width == height:
-            (w, h) = (1024, 1024)
-        if f'{width}:{height}' in self.ratio_dict:
-            (w, h) = self.ratio_dict[f'{width}:{height}']
-        else:
-            (w, h) = find_latent_size(width, height)
-        latent = torch.zeros([batch_size, 4, h // 8, w // 8])
-        return ({'samples': latent},)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

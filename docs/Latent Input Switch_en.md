@@ -32,22 +32,6 @@ The 'latent_input_switch' method of the WAS_Latent_Input_Switch node is designed
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Latent_Input_Switch:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'latent_a': ('LATENT',), 'latent_b': ('LATENT',), 'boolean': ('BOOLEAN', {'forceInput': True})}}
-    RETURN_TYPES = ('LATENT',)
-    FUNCTION = 'latent_input_switch'
-    CATEGORY = 'WAS Suite/Logic'
-
-    def latent_input_switch(self, latent_a, latent_b, boolean=True):
-        if boolean:
-            return (latent_a,)
-        else:
-            return (latent_b,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

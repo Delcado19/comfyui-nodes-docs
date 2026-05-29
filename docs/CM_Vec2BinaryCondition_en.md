@@ -31,16 +31,6 @@ The Vec2BinaryCondition node is designed to perform binary operations on 2D vect
 - Infra type: CPU
 
 # Source code
-```
-class Vec2BinaryCondition:
+[View source repository on GitHub](https://github.com/evanspearman/ComfyMath)
 
-    @classmethod
-    def INPUT_TYPES(cls) -> Mapping[str, Any]:
-        return {'required': {'op': (list(VEC_BINARY_CONDITIONS.keys()),), 'a': DEFAULT_VEC2, 'b': DEFAULT_VEC2}}
-    RETURN_TYPES = ('BOOL',)
-    FUNCTION = 'op'
-    CATEGORY = 'math/vec2'
-
-    def op(self, op: str, a: Vec2, b: Vec2) -> tuple[bool]:
-        return (VEC_BINARY_CONDITIONS[op](numpy.array(a), numpy.array(b)),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -25,9 +25,7 @@ The ExtendStringList node is designed to concatenate multiple string lists into 
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class ExtendStringList(metaclass=ExtendListMeta): TYPE = "STRING"
+[View source repository on GitHub](https://github.com/bmad4ever/Bmad-Comfy-Nodes)
 
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

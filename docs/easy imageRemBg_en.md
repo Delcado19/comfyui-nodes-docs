@@ -47,48 +47,6 @@ The imageRemBg node is designed to remove the background from an image, providin
 - Infra type: GPU
 
 # Source code
-```
-class imageRemBg:
+[View source repository on GitHub](https://github.com/yolain/ComfyUI-Easy-Use)
 
-    @classmethod
-    def INPUT_TYPES(self):
-        return {'required': {'images': ('IMAGE',), 'rem_mode': (('RMBG-1.4',),), 'image_output': (['Hide', 'Preview', 'Save', 'Hide/Save'], {'default': 'Preview'}), 'save_prefix': ('STRING', {'default': 'ComfyUI'})}, 'hidden': {'prompt': 'PROMPT', 'extra_pnginfo': 'EXTRA_PNGINFO'}}
-    RETURN_TYPES = ('IMAGE', 'MASK')
-    RETURN_NAMES = ('image', 'mask')
-    FUNCTION = 'remove'
-    OUTPUT_NODE = True
-    CATEGORY = 'EasyUse/Image'
-
-    def remove(self, rem_mode, images, image_output, save_prefix, prompt=None, extra_pnginfo=None):
-        if rem_mode == 'RMBG-1.4':
-            model_url = REMBG_MODELS[rem_mode]['model_url']
-            suffix = model_url.split('.')[-1]
-            model_path = get_local_filepath(model_url, REMBG_DIR, rem_mode + '.' + suffix)
-            net = BriaRMBG()
-            device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-            net.load_state_dict(torch.load(model_path, map_location=device))
-            net.to(device)
-            net.eval()
-            model_input_size = [1024, 1024]
-            new_images = list()
-            masks = list()
-            for image in images:
-                orig_im = tensor2pil(image)
-                (w, h) = orig_im.size
-                image = preprocess_image(orig_im, model_input_size).to(device)
-                result = net(image)
-                result_image = postprocess_image(result[0][0], (h, w))
-                mask_im = Image.fromarray(result_image)
-                new_im = Image.new('RGBA', mask_im.size, (0, 0, 0, 0))
-                new_im.paste(orig_im, mask=mask_im)
-                new_images.append(pil2tensor(new_im))
-                masks.append(pil2tensor(mask_im))
-            new_images = torch.cat(new_images, dim=0)
-            masks = torch.cat(masks, dim=0)
-            results = easySave(new_images, save_prefix, image_output, prompt, extra_pnginfo)
-            if image_output in ('Hide', 'Hide/Save'):
-                return {'ui': {}, 'result': (new_images, masks)}
-            return {'ui': {'images': results}, 'result': (new_images, masks)}
-        else:
-            return (None, None)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

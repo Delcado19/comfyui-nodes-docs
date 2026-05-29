@@ -27,18 +27,6 @@ The PromptBuilder node is designed to conveniently construct and manipulate prom
 - Infra type: CPU
 
 # Source code
-```
-class PromptBuilder:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Inspire-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        global prompt_builder_preset
-        presets = ['#PRESET']
-        return {'required': {'category': (list(prompt_builder_preset.keys()) + ['#PLACEHOLDER'],), 'preset': (presets,), 'text': ('STRING', {'multiline': True})}}
-    RETURN_TYPES = ('STRING',)
-    FUNCTION = 'doit'
-    CATEGORY = 'InspirePack/Prompt'
-
-    def doit(self, **kwargs):
-        return (kwargs['text'],)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

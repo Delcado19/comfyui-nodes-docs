@@ -36,21 +36,6 @@ pipeBatchIndex节点便于在流水线中操作批次数据，能够选择和处
 - Infra type: CPU
 
 # Source code
-```
-class pipeBatchIndex:
+[View source repository on GitHub](https://github.com/yolain/ComfyUI-Easy-Use)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'pipe': ('PIPE_LINE',), 'batch_index': ('INT', {'default': 0, 'min': 0, 'max': 63}), 'length': ('INT', {'default': 1, 'min': 1, 'max': 64})}, 'hidden': {'my_unique_id': 'UNIQUE_ID'}}
-    RETURN_TYPES = ('PIPE_LINE',)
-    RETURN_NAMES = ('pipe',)
-    FUNCTION = 'doit'
-    CATEGORY = 'EasyUse/Pipe'
-
-    def doit(self, pipe, batch_index, length, my_unique_id=None):
-        samples = pipe['samples']
-        (new_samples,) = LatentFromBatch().frombatch(samples, batch_index, length)
-        new_pipe = {**pipe, 'samples': new_samples}
-        del pipe
-        return (new_pipe,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

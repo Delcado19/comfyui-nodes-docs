@@ -39,24 +39,6 @@ This node splits text data based on specified delimiters, enabling extraction of
 - Infra type: CPU
 
 # Source code
-```
-class TextSplitByDelimiter:
+[View source repository on GitHub](https://github.com/shadowcz007/comfyui-mixlab-nodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'text': ('STRING', {'multiline': True, 'dynamicPrompts': False}), 'delimiter': (['newline', 'comma'],), 'start_index': ('INT', {'default': 0, 'min': 0, 'max': 1000, 'step': 1, 'display': 'number'}), 'skip_every': ('INT', {'default': 0, 'min': 0, 'max': 10, 'step': 1, 'display': 'number'}), 'max_count': ('INT', {'default': 10, 'min': 1, 'max': 1000, 'step': 1, 'display': 'number'})}}
-    INPUT_IS_LIST = False
-    RETURN_TYPES = ('STRING',)
-    FUNCTION = 'run'
-    OUTPUT_IS_LIST = (True,)
-    CATEGORY = '♾️Mixlab/GPT'
-
-    def run(self, text, delimiter, start_index, skip_every, max_count):
-        arr = []
-        if delimiter == 'newline':
-            arr = [line for line in text.split('\n') if line.strip()]
-        elif delimiter == 'comma':
-            arr = [line for line in text.split(',') if line.strip()]
-        arr = arr[start_index:start_index + max_count * (skip_every + 1):skip_every + 1]
-        return (arr,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

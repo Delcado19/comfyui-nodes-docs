@@ -31,22 +31,6 @@ The imageSwitch node conditionally selects between two images based on a Boolean
 - Infra type: CPU
 
 # Source code
-```
-class imageSwitch:
+[View source repository on GitHub](https://github.com/yolain/ComfyUI-Easy-Use)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'image_a': ('IMAGE',), 'image_b': ('IMAGE',), 'boolean': ('BOOLEAN', {'default': False})}}
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'image_switch'
-    CATEGORY = 'EasyUse/Logic/Switch'
-
-    def image_switch(self, image_a, image_b, boolean):
-        if boolean:
-            return (image_a,)
-        else:
-            return (image_b,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

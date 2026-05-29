@@ -31,34 +31,7 @@ The DF_To_text_(Debug) node is a debugging tool that allows users to print and i
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class ShowDataDebug:
-    CATEGORY = TREE_DEBUG
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {
-            "required": {
-                "ANY": Field.any(),
-            },
-        }
-
-    RETURN_TYPES = (ANY, "STRING", )
-    RETURN_NAMES = ("SAME AS INPUT", "STRING", )
-    OUTPUT_NODE = True
-    IS_CHANGED = True
-    FUNCTION = "func"
-
-    def func(self, ANY = None):
-        out = ANY
-        try:
-            out = str(out)
-            print(colorize(f"[DEBUG]: {ANY}", ConsoleColor.blue.value))
-        except Exception as e:
-            print(colorize(f"[DEBUG-EXCEPTION]: {e}", ConsoleColor.bold_red.value))
-            out = str(e)
-        return {"ui": {"text": [out]}, "result": (ANY, out)}
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

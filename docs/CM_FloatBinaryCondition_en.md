@@ -31,16 +31,6 @@ This node provides a mechanism to perform binary operations on floating‑point 
 - Infra type: CPU
 
 # Source code
-```
-class FloatBinaryCondition:
+[View source repository on GitHub](https://github.com/evanspearman/ComfyMath)
 
-    @classmethod
-    def INPUT_TYPES(cls) -> Mapping[str, Any]:
-        return {'required': {'op': (list(FLOAT_BINARY_CONDITIONS.keys()),), 'a': DEFAULT_FLOAT, 'b': DEFAULT_FLOAT}}
-    RETURN_TYPES = ('BOOL',)
-    FUNCTION = 'op'
-    CATEGORY = 'math/float'
-
-    def op(self, op: str, a: float, b: float) -> tuple[bool]:
-        return (FLOAT_BINARY_CONDITIONS[op](a, b),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -35,38 +35,7 @@ The LLMHtmlRepair node uses a language model to analyze and fix malformed HTML c
 - Infra type: `GPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class LLMHtmlRepair:
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {
-            "required": {
-                "llm_model": ("LLM_MODEL",),
-                "text_input": ("STRING", {"multiline": True, "dynamicPrompts": False, "placeholder": "Malformed HTML..."}),
-            },
-            "optional": {
-                "extra_directions": ("STRING", {"multiline": True, "dynamicPrompts": False, "placeholder": "Extra directions for the LLM to follow..."}),
-            }
-        }
+[View source repository on GitHub](https://github.com/saltlang/salt-ComfyUI)
 
-    RETURN_TYPES = ("STRING",)
-    RETURN_NAMES = ("html_output",)
-
-    FUNCTION = "repair_html"
-    CATEGORY = f"{MENU_NAME}/{SUB_MENU_NAME}/Tools/HTML"
-
-    def repair_html(self, llm_model, text_input, extra_directions=""):
-        prompt = (
-            f"{text_input}\n\n###\n\n"
-            "Given the above malformed HTML, please inspect it and repair it so that it's valid HTML, without changing or losing any data if possible."
-            f"{extra_directions}\n\n"
-            "Please ensure the HTML output is well-structured, valid,, and does not omit any data."
-        )
-        
-        response = llm_model['llm'].complete(prompt)
-        
-        return (response.text,)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

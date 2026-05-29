@@ -52,35 +52,6 @@ This node aims to save text data to a file, providing a means of persisting info
 - Infra type: CPU
 
 # Source code
-```
-class WLSH_Save_Prompt_File:
+[View source repository on GitHub](https://github.com/wallish77/wlsh_nodes)
 
-    def __init__(self):
-        self.output_dir = folder_paths.output_directory
-
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'filename': ('STRING', {'default': 'info', 'multiline': False}), 'path': ('STRING', {'default': '', 'multiline': False}), 'positive': ('STRING', {'default': '', 'multiline': True, 'forceInput': True})}, 'optional': {'negative': ('STRING', {'default': '', 'multiline': True, 'forceInput': True}), 'modelname': ('STRING', {'default': '', 'multiline': False, 'forceInput': True}), 'seed': ('INT', {'default': 0, 'min': 0, 'max': 18446744073709551615, 'forceInput': True}), 'counter': ('INT', {'default': 0, 'min': 0, 'max': 18446744073709551615}), 'time_format': ('STRING', {'default': '%Y-%m-%d-%H%M%S', 'multiline': False})}}
-    OUTPUT_NODE = True
-    RETURN_TYPES = ()
-    FUNCTION = 'save_text_file'
-    CATEGORY = 'WLSH Nodes/IO'
-
-    def save_text_file(self, positive='', negative='', seed=-1, modelname='unknown', path='', counter=0, time_format='%Y-%m-%d-%H%M%S', filename=''):
-        output_path = os.path.join(self.output_dir, path)
-        if output_path.strip() != '':
-            if not os.path.exists(output_path.strip()):
-                print(f"The path `{output_path.strip()}` specified doesn't exist! Creating directory.")
-                os.makedirs(output_path, exist_ok=True)
-        text_data = make_comment(positive, negative, modelname, seed, info=None)
-        filename = make_filename(filename, seed, modelname, counter, time_format)
-        self.writeTextFile(os.path.join(output_path, filename + '.txt'), text_data)
-        return (text_data,)
-
-    def writeTextFile(self, file, content):
-        try:
-            with open(file, 'w') as f:
-                f.write(content)
-        except OSError:
-            print(f'Error: Unable to save file `{file}`')
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

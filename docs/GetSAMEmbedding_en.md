@@ -34,39 +34,7 @@ This node aims to generate SAM embeddings from images using a specified SAM mode
 - Infra type: `GPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class GetSAMEmbedding:
-    @classmethod
-    def INPUT_TYPES(s):
-        return {
-            "required": {
-                "sam_model": ("AV_SAM_MODEL",),
-                "image": ("IMAGE",),
-            },
-            "optional": {"device_mode": (["AUTO", "Prefer GPU", "CPU"],)},
-        }
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    RETURN_TYPES = ("SAM_EMBEDDING",)
-    CATEGORY = "Art Venture/Segmentation"
-    FUNCTION = "get_sam_embedding"
-
-    def get_sam_embedding(self, image, sam_model, device_mode="AUTO"):
-        device = gpu if device_mode != "CPU" else cpu
-        sam_model.to(device)
-
-        try:
-            predictor = SamPredictor(sam_model)
-            image = tensor2pil(image)
-            image = image.convert("RGB")
-            image = np.array(image)
-            predictor.set_image(image, "RGB")
-            embedding = predictor.get_image_embedding().cpu().numpy()
-
-            return (embedding,)
-        finally:
-            if device_mode == "AUTO":
-                sam_model.to(cpu)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

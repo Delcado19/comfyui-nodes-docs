@@ -27,9 +27,6 @@ The WAS_Logical_XOR node performs a logical exclusive-or operation on two Boolea
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Logical_XOR(WAS_Logical_Comparisons):
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def do(self, boolean_a, boolean_b):
-        return (boolean_a != boolean_b,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

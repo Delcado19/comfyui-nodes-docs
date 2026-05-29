@@ -25,38 +25,7 @@ The Display Any node is designed to display data of any type, gracefully handlin
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class RgthreeDisplayAny:
-  """Display any data node."""
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-  NAME = get_name('Display Any')
-  CATEGORY = get_category()
-
-  @classmethod
-  def INPUT_TYPES(cls):  # pylint: disable = invalid-name, missing-function-docstring
-    return {
-      "required": {
-        "source": (any, {}),
-      },
-    }
-
-  RETURN_TYPES = ()
-  FUNCTION = "main"
-  OUTPUT_NODE = True
-
-  def main(self, source=None):
-    value = 'None'
-    if source is not None:
-      try:
-        value = json.dumps(source)
-      except Exception:
-        try:
-          value = str(source)
-        except Exception:
-          value = 'source exists, but could not be serialized.'
-
-    return {"ui": {"text": (value,)}}
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

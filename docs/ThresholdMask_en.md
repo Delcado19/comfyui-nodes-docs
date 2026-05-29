@@ -28,17 +28,6 @@ The ThresholdMask node converts an image into a binary mask based on a specified
 - Infra type: CPU
 
 # Source code
-```
-class ThresholdMask:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'mask': ('MASK',), 'value': ('FLOAT', {'default': 0.5, 'min': 0.0, 'max': 1.0, 'step': 0.01})}}
-    CATEGORY = 'mask'
-    RETURN_TYPES = ('MASK',)
-    FUNCTION = 'image_to_mask'
-
-    def image_to_mask(self, mask, value):
-        mask = (mask > value).float()
-        return (mask,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -27,17 +27,6 @@ The LCMScheduler node aims to generate a schedule of sigma values for diffusion 
 - Infra type: CPU
 
 # Source code
-```
-class LCMScheduler:
+[View source repository on GitHub](https://github.com/jojkaart/ComfyUI-sampler-lcm-alternative)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'model': ('MODEL',), 'steps': ('INT', {'default': 8, 'min': 1, 'max': 10000})}}
-    RETURN_TYPES = ('SIGMAS',)
-    CATEGORY = 'sampling/custom_sampling/schedulers'
-    FUNCTION = 'get_sigmas'
-
-    def get_sigmas(self, model, steps):
-        sigmas = comfy.samplers.calculate_sigmas_scheduler(model.model, 'sgm_uniform', steps).cpu()
-        return (sigmas,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

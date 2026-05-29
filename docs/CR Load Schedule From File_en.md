@@ -35,33 +35,6 @@ CR_LoadScheduleFromFile is a node for importing schedule data from a file, facil
 - Infra type: CPU
 
 # Source code
-```
-class CR_LoadScheduleFromFile:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'input_file_path': ('STRING', {'multiline': False, 'default': ''}), 'file_name': ('STRING', {'multiline': False, 'default': ''}), 'file_extension': (['txt', 'csv'],)}}
-    RETURN_TYPES = ('SCHEDULE', 'STRING')
-    RETURN_NAMES = ('SCHEDULE', 'show_text')
-    FUNCTION = 'csvinput'
-    CATEGORY = icons.get('Comfyroll/Animation/Schedule')
-
-    def csvinput(self, input_file_path, file_name, file_extension):
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Schedule-Nodes#cr-load-schedule-from-file'
-        filepath = input_file_path + '\\' + file_name + '.' + file_extension
-        print(f'CR Load Schedule From File: Loading {filepath}')
-        lists = []
-        if file_extension == 'csv':
-            with open(filepath, 'r') as csv_file:
-                reader = csv.reader(csv_file)
-                for row in reader:
-                    lists.append(row)
-        else:
-            with open(filepath, 'r') as txt_file:
-                for row in txt_file:
-                    parts = row.strip().split(',', 1)
-                    if len(parts) >= 2:
-                        second_part = parts[1].strip('"')
-                        lists.append([parts[0], second_part])
-        return (lists, str(lists))
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -36,44 +36,6 @@ Apply LUT to image. Only .cube format LUT files are supported.
 - Infra type: GPU
 
 # Source code
-```
-class ColorCorrectLUTapply:
+[View source repository on GitHub](https://github.com/chflame163/ComfyUI_LayerStyle)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(self):
-        color_space_list = ['linear', 'log']
-        return {
-            "required": {
-                "image": ("IMAGE", ),  #
-                "LUT": (LUT_LIST,),  # LUT文件
-                "color_space":  (color_space_list,),
-            },
-            "optional": {
-            }
-        }
-
-    RETURN_TYPES = ("IMAGE",)
-    RETURN_NAMES = ("image",)
-    FUNCTION = 'color_correct_LUTapply'
-    CATEGORY = '😺dzNodes/LayerColor'
-
-    def color_correct_LUTapply(self, image, LUT, color_space):
-        ret_images = []
-        for i in image:
-            i = torch.unsqueeze(i, 0)
-            _image = tensor2pil(i)
-
-            lut_file = LUT_DICT[LUT]
-            ret_image = apply_lut(_image, lut_file, log=(color_space == 'log'))
-
-            if _image.mode == 'RGBA':
-                ret_image = RGB2RGBA(ret_image, _image.split()[-1])
-            ret_images.append(pil2tensor(ret_image))
-
-        log(f"{NODE_NAME} Processed {len(ret_images)} image(s).", message_type='finish')
-        return (torch.cat(ret_images, dim=0),)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

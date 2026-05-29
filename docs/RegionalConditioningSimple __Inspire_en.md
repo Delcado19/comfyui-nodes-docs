@@ -41,30 +41,7 @@ This node is specifically used to apply regional conditions to a given input, le
 - Infra type: `GPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class RegionalConditioningSimple:
-    @classmethod
-    def INPUT_TYPES(s):
-        return {
-            "required": {
-                "clip": ("CLIP", ),
-                "mask": ("MASK",),
-                "strength": ("FLOAT", {"default": 1.0, "min": 0.0, "max": 10.0, "step": 0.01}),
-                "set_cond_area": (["default", "mask bounds"],),
-                "prompt": ("STRING", {"multiline": True, "placeholder": "prompt"}),
-            },
-        }
+[View source repository on GitHub](https://github.com/AlekPet/ComfyUI_Custom_Nodes_AlekPet)
 
-    RETURN_TYPES = ("CONDITIONING", )
-    FUNCTION = "doit"
-
-    CATEGORY = "InspirePack/Regional"
-
-    def doit(self, clip, mask, strength, set_cond_area, prompt):
-        conditioning = nodes.CLIPTextEncode().encode(clip, prompt)[0]
-        conditioning = nodes.ConditioningSetMask().append(conditioning, mask, set_cond_area, strength)[0]
-        return (conditioning, )
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

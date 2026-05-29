@@ -40,37 +40,6 @@ This node dynamically adjusts the intensity of conditioning data according to a 
 - Infra type: CPU
 
 # Source code
-```
-class KfApplyCurveToCond:
-    CATEGORY = CATEGORY
-    FUNCTION = 'main'
-    RETURN_TYPES = ('CONDITIONING',)
+[View source repository on GitHub](https://github.com/dmarx/ComfyUI-Keyframed)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'curve': ('KEYFRAMED_CURVE', {'forceInput': True}), 'cond': ('CONDITIONING', {'forceInput': True})}, 'optional': {'latents': ('LATENT', {}), 'start_t': ('INT', {'default': 0}), 'n': ('INT', {})}}
-
-    def main(self, curve, cond, latents=None, start_t=0, n=0):
-        curve = deepcopy(curve)
-        cond = deepcopy(cond)
-        if isinstance(latents, dict):
-            if 'samples' in latents:
-                n = latents['samples'].shape[0]
-        cond_out = []
-        for (c_tensor, c_dict) in cond:
-            m = c_tensor.shape[0]
-            if c_tensor.shape[0] == 1:
-                c_tensor = c_tensor.repeat(n, 1, 1)
-                m = n
-            weights = [curve[start_t + i] for i in range(m)]
-            weights = torch.tensor(weights, device=c_tensor.device)
-            c_tensor = c_tensor * weights.view(m, 1, 1)
-            if 'pooled_output' in c_dict:
-                c_dict = deepcopy(c_dict)
-                pooled = c_dict['pooled_output']
-                if pooled.shape[0] == 1:
-                    pooled = pooled.repeat(m, 1)
-                c_dict['pooled_output'] = pooled * weights.view(m, 1)
-            cond_out.append((c_tensor, c_dict))
-        return (cond_out,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

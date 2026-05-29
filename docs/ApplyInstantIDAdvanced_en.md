@@ -72,10 +72,6 @@ ApplyInstantIDAdvanced node uses a control network and modulation inputs to appl
 - Infra type: GPU
 
 # Source code
-```
-class ApplyInstantIDAdvanced(ApplyInstantID):
+[View source repository on GitHub](https://github.com/cubiq/ComfyUI_InstantID)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'instantid': ('INSTANTID',), 'insightface': ('FACEANALYSIS',), 'control_net': ('CONTROL_NET',), 'image': ('IMAGE',), 'model': ('MODEL',), 'positive': ('CONDITIONING',), 'negative': ('CONDITIONING',), 'ip_weight': ('FLOAT', {'default': 0.8, 'min': 0.0, 'max': 3.0, 'step': 0.01}), 'cn_strength': ('FLOAT', {'default': 0.8, 'min': 0.0, 'max': 10.0, 'step': 0.01}), 'start_at': ('FLOAT', {'default': 0.0, 'min': 0.0, 'max': 1.0, 'step': 0.001}), 'end_at': ('FLOAT', {'default': 1.0, 'min': 0.0, 'max': 1.0, 'step': 0.001}), 'noise': ('FLOAT', {'default': 0.0, 'min': 0.0, 'max': 1.0, 'step': 0.1})}, 'optional': {'image_kps': ('IMAGE',), 'mask': ('MASK',)}}
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

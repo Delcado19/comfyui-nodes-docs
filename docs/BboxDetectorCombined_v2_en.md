@@ -36,16 +36,6 @@ The BboxDetectorCombined node is designed to detect and segment objects in image
 - Infra type: GPU
 
 # Source code
-```
-class BboxDetectorCombined(SegmDetectorCombined):
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'bbox_detector': ('BBOX_DETECTOR',), 'image': ('IMAGE',), 'threshold': ('FLOAT', {'default': 0.5, 'min': 0.0, 'max': 1.0, 'step': 0.01}), 'dilation': ('INT', {'default': 4, 'min': -512, 'max': 512, 'step': 1})}}
-
-    def doit(self, bbox_detector, image, threshold, dilation):
-        mask = bbox_detector.detect_combined(image, threshold, dilation)
-        if mask is None:
-            mask = torch.zeros((image.shape[2], image.shape[1]), dtype=torch.float32, device='cpu')
-        return (mask.unsqueeze(0),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

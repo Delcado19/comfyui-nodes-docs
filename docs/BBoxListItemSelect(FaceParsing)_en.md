@@ -27,20 +27,6 @@ This node selects a specific bounding box from a list based on a provided index,
 - Infra type: CPU
 
 # Source code
-```
-class BBoxListItemSelect:
+[View source repository on GitHub](https://github.com/Ryuukeisyou/comfyui_face_parsing)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'bbox_list': ('BBOX_LIST', {}), 'index': ('INT', {'default': 0, 'min': 0, 'step': 1})}}
-    RETURN_TYPES = ('BBOX',)
-    FUNCTION = 'main'
-    CATEGORY = 'face_parsing'
-
-    def main(self, bbox_list: list, index: int):
-        item = bbox_list[index if index < len(bbox_list) - 1 else len(bbox_list) - 1]
-        return (item,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

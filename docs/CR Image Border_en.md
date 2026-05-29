@@ -60,28 +60,6 @@ The CR_ImageBorder node is designed to add decorative borders to images to enhan
 - Infra type: CPU
 
 # Source code
-```
-class CR_ImageBorder:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'image': ('IMAGE',), 'top_thickness': ('INT', {'default': 0, 'min': 0, 'max': 4096}), 'bottom_thickness': ('INT', {'default': 0, 'min': 0, 'max': 4096}), 'left_thickness': ('INT', {'default': 0, 'min': 0, 'max': 4096}), 'right_thickness': ('INT', {'default': 0, 'min': 0, 'max': 4096}), 'border_color': (COLORS,), 'outline_thickness': ('INT', {'default': 0, 'min': 0, 'max': 1024}), 'outline_color': (COLORS[1:],)}, 'optional': {'border_color_hex': ('STRING', {'multiline': False, 'default': '#000000'})}}
-    RETURN_TYPES = ('IMAGE', 'STRING')
-    RETURN_NAMES = ('image', 'show_help')
-    FUNCTION = 'make_panel'
-    CATEGORY = icons.get('Comfyroll/Graphics/Layout')
-
-    def make_panel(self, image, top_thickness, bottom_thickness, left_thickness, right_thickness, border_color, outline_thickness, outline_color, border_color_hex='#000000'):
-        images = []
-        border_color = get_color_values(border_color, border_color_hex, color_mapping)
-        for img in image:
-            img = tensor2pil(img)
-            if outline_thickness > 0:
-                img = ImageOps.expand(img, outline_thickness, fill=outline_color)
-            if left_thickness > 0 or right_thickness > 0 or top_thickness > 0 or (bottom_thickness > 0):
-                img = ImageOps.expand(img, (left_thickness, top_thickness, right_thickness, bottom_thickness), fill=border_color)
-            images.append(pil2tensor(img))
-        images = torch.cat(images, dim=0)
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Layout-Nodes#cr-image-border'
-        return (images, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

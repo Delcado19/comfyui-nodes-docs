@@ -23,33 +23,6 @@ FrameConcatenate is a node designed to merge frame data into a single string rep
 - Infra type: CPU
 
 # Source code
-```
-class FrameConcatenate:
+[View source repository on GitHub](https://github.com/FizzleDorf/ComfyUI_FizzNodes)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'frame': ('FIZZFRAME', {'forceInput': True})}}
-    RETURN_TYPES = ('STRING',)
-    FUNCTION = 'frame_concatenate'
-    CATEGORY = 'FizzNodes 📅🅕🅝/FrameNodes'
-
-    def frame_concatenate(self, frame):
-        text_list = ''
-        for frame_digit in frame.frames:
-            new_frame = frame.frames[frame_digit]
-            text_list += f'''"{frame_digit}": "{new_frame['positive_text']}'''
-            if new_frame.get('general_positive'):
-                text_list += f", {new_frame['general_positive']}"
-            if new_frame.get('negative_text') or new_frame.get('general_negative'):
-                text_list += f', --neg '
-                if new_frame.get('negative_text'):
-                    text_list += f", {new_frame['negative_text']}"
-                if new_frame.get('general_negative'):
-                    text_list += f", {new_frame['general_negative']}"
-            text_list += f'",\n'
-        text_list = text_list[:-2]
-        return (text_list,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

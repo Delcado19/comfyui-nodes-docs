@@ -23,18 +23,6 @@ The 'SegsToCombinedMask' node is designed to merge multiple segmentations into a
 - Infra type: CPU
 
 # Source code
-```
-class SegsToCombinedMask:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'segs': ('SEGS',)}}
-    RETURN_TYPES = ('MASK',)
-    FUNCTION = 'doit'
-    CATEGORY = 'ImpactPack/Operation'
-
-    def doit(self, segs):
-        mask = core.segs_to_combined_mask(segs)
-        mask = utils.make_3d_mask(mask)
-        return (mask,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

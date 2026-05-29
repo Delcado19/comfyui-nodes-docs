@@ -31,31 +31,7 @@ This node aims to compare two JSON objects, identifying differences between them
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class CUtilsCompareJsons:
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {
-            "required": {
-                "json_old": JSON_WIDGET,
-                "json_new": JSON_WIDGET,
-            },
-            "optional": {
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-            }
-        }
-
-    CATEGORY = CATEGORY.MAIN.value + CATEGORY.UTILS.value
-    RETURN_TYPES = ("JSON",)
-    RETURN_NAMES = ("json_compared",)
-    OUTPUT_NODE = True
-
-    FUNCTION = "execute"
-
-    def execute(self, json_old, json_new):
-        json = findJsonStrDiff(json_old, json_new)
-        return (str(json),)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

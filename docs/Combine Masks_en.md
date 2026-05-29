@@ -39,42 +39,6 @@ The MaskCombineOp node is designed to perform various operations on two input im
 - Infra type: CPU
 
 # Source code
-```
-class MaskCombineOp:
+[View source repository on GitHub](https://github.com/BadCafeCode/masquerade-nodes-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'image1': ('IMAGE',), 'image2': ('IMAGE',), 'op': (['union (max)', 'intersection (min)', 'difference', 'multiply', 'multiply_alpha', 'add', 'greater_or_equal', 'greater'],), 'clamp_result': (['yes', 'no'],), 'round_result': (['no', 'yes'],)}}
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'combine'
-    CATEGORY = 'Masquerade Nodes'
-
-    def combine(self, image1, image2, op, clamp_result, round_result):
-        (image1, image2) = tensors2common(image1, image2)
-        if op == 'union (max)':
-            result = torch.max(image1, image2)
-        elif op == 'intersection (min)':
-            result = torch.min(image1, image2)
-        elif op == 'difference':
-            result = image1 - image2
-        elif op == 'multiply':
-            result = image1 * image2
-        elif op == 'multiply_alpha':
-            image1 = tensor2rgba(image1)
-            image2 = tensor2mask(image2)
-            result = torch.cat((image1[:, :, :, :3], (image1[:, :, :, 3] * image2).unsqueeze(3)), dim=3)
-        elif op == 'add':
-            result = image1 + image2
-        elif op == 'greater_or_equal':
-            result = torch.where(image1 >= image2, 1.0, 0.0)
-        elif op == 'greater':
-            result = torch.where(image1 > image2, 1.0, 0.0)
-        if clamp_result == 'yes':
-            result = torch.min(torch.max(result, torch.tensor(0.0)), torch.tensor(1.0))
-        if round_result == 'yes':
-            result = torch.round(result)
-        return (result,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

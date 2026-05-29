@@ -23,16 +23,6 @@ The 'doit' method of the ImpactNotEmptySEGS node checks whether a given list of 
 - Infra type: CPU
 
 # Source code
-```
-class ImpactNotEmptySEGS:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'segs': ('SEGS',)}}
-    FUNCTION = 'doit'
-    CATEGORY = 'ImpactPack/Logic'
-    RETURN_TYPES = ('BOOLEAN',)
-
-    def doit(self, segs):
-        return (segs[1] != [],)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

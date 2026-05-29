@@ -44,28 +44,6 @@ The CR_CycleImages node is designed to cycle through a list of images, providing
 - Infra type: CPU
 
 # Source code
-```
-class CR_CycleImages:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        modes = ['Sequential']
-        return {'required': {'mode': (modes,), 'image_list': ('IMAGE_LIST',), 'frame_interval': ('INT', {'default': 30, 'min': 0, 'max': 999, 'step': 1}), 'loops': ('INT', {'default': 1, 'min': 1, 'max': 1000}), 'current_frame': ('INT', {'default': 0.0, 'min': 0.0, 'max': 9999.0, 'step': 1.0})}}
-    RETURN_TYPES = ('IMAGE', 'STRING')
-    RETURN_NAMES = ('IMAGE', 'show_help')
-    FUNCTION = 'cycle'
-    CATEGORY = icons.get('Comfyroll/Animation/Legacy')
-
-    def cycle(self, mode, image_list, frame_interval, loops, current_frame):
-        image_params = list()
-        if image_list:
-            for _ in range(loops):
-                image_params.extend(image_list)
-        if mode == 'Sequential':
-            current_image_index = current_frame // frame_interval % len(image_params)
-            print(f'[Debug] CR Cycle Image:{current_image_index}')
-            current_image_params = image_params[current_image_index]
-            (image_alias, current_image_item) = current_image_params
-            show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Cycler-Nodes#cr-cycle-images'
-            return (current_image_item, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

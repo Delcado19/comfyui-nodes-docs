@@ -41,39 +41,7 @@ This node calculates the frame count from images found in a specified directory,
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class DreamDirectoryBackedFrameCounter:
-    NODE_NAME = "Frame Counter (Directory)"
-    ICON = "⚋"
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {
-            "required": {
-                "directory_path": ("STRING", {"default": '', "multiline": False}),
-                "pattern": ("STRING", {"default": '*', "multiline": False}),
-                "indexing": (["numeric", "alphabetic order"],),
-                "total_frames": ("INT", {"default": 100, "min": 2, "max": 24 * 3600 * 60}),
-                "frames_per_second": ("INT", {"min": 1, "default": 30}),
-            },
-        }
-
-    CATEGORY = NodeCategories.ANIMATION
-    RETURN_TYPES = (FrameCounter.ID,)
-    RETURN_NAMES = ("frame_counter",)
-    FUNCTION = "result"
-
-    @classmethod
-    def IS_CHANGED(cls, *values):
-        return ALWAYS_CHANGED_FLAG
-
-    def result(self, directory_path, pattern, indexing, total_frames, frames_per_second):
-        results = list_images_in_directory(directory_path, pattern, indexing == "alphabetic order")
-        if not results:
-            return (FrameCounter(0, total_frames, frames_per_second),)
-        n = max(results.keys()) + 1
-        return (FrameCounter(n, total_frames, frames_per_second),)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -39,20 +39,6 @@ The EvalFloats node is designed to evaluate mathematical expressions provided as
 - Infra type: CPU
 
 # Source code
-```
-class EvalFloats:
+[View source repository on GitHub](https://github.com/bash-j/mikey_nodes)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'a': ('FLOAT', {'default': 0.0}), 'b': ('FLOAT', {'default': 0.0}), 'formula': ('STRING', {'multiline': False, 'default': 'a + b'})}}
-    RETURN_TYPES = ('FLOAT',)
-    RETURN_NAMES = ('result_float', 'result_int', 'result_str')
-    FUNCTION = 'process'
-    CATEGORY = 'Mikey/Math'
-
-    def process(self, a, b, formula):
-        formula = formula.replace('a', str(a))
-        formula = formula.replace('b', str(b))
-        result = eval(formula)
-        return (result, int(result), str(result))
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

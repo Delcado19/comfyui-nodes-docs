@@ -44,35 +44,6 @@ The CreateQRCodeNode class is designed to generate QR codes from text input. It 
 - Infra type: CPU
 
 # Source code
-```
-class CreateQRCodeNode:
+[View source repository on GitHub](https://github.com/BadCafeCode/masquerade-nodes-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'text': ('STRING', {'multiline': True}), 'size': ('INT', {'default': 512, 'min': 64, 'max': 4096, 'step': 64}), 'qr_version': ('INT', {'default': 1, 'min': 1, 'max': 40, 'step': 1}), 'error_correction': (['L', 'M', 'Q', 'H'], {'default': 'H'}), 'box_size': ('INT', {'default': 10, 'min': 1, 'max': 100, 'step': 1}), 'border': ('INT', {'default': 4, 'min': 0, 'max': 100, 'step': 1})}}
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'create_qr_code'
-    CATEGORY = 'Masquerade Nodes'
-
-    def create_qr_code(self, text, size, qr_version, error_correction, box_size, border):
-        ensure_package('qrcode')
-        import qrcode
-        if error_correction == 'L':
-            error_level = qrcode.constants.ERROR_CORRECT_L
-        elif error_correction == 'M':
-            error_level = qrcode.constants.ERROR_CORRECT_M
-        elif error_correction == 'Q':
-            error_level = qrcode.constants.ERROR_CORRECT_Q
-        else:
-            error_level = qrcode.constants.ERROR_CORRECT_H
-        qr = qrcode.QRCode(version=qr_version, error_correction=error_level, box_size=box_size, border=border)
-        qr.add_data(text)
-        qr.make(fit=True)
-        img = qr.make_image(fill_color='black', back_color='white')
-        img = img.resize((size, size))
-        tensor = torch.from_numpy(np.array(img))
-        return (tensor2rgb(tensor.unsqueeze(0)),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

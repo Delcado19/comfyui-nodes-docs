@@ -67,34 +67,6 @@ This node aims to enhance text presentation through advanced styling techniques 
 - Infra type: CPU
 
 # Source code
-```
-class SDXLPromptStylerAdvanced:
+[View source repository on GitHub](https://github.com/twri/sdxl_prompt_styler)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(self):
-        current_directory = os.path.dirname(os.path.realpath(__file__))
-        (self.json_data, styles) = load_styles_from_directory(current_directory)
-        return {'required': {'text_positive_g': ('STRING', {'default': '', 'multiline': True}), 'text_positive_l': ('STRING', {'default': '', 'multiline': True}), 'text_negative': ('STRING', {'default': '', 'multiline': True}), 'style': (styles,), 'negative_prompt_to': (['Both', 'G only', 'L only'], {'default': 'Both'}), 'copy_to_l': ('BOOLEAN', {'default': False, 'label_on': 'yes', 'label_off': 'no'}), 'log_prompt': ('BOOLEAN', {'default': False, 'label_on': 'yes', 'label_off': 'no'})}}
-    RETURN_TYPES = ('STRING', 'STRING', 'STRING', 'STRING', 'STRING', 'STRING')
-    RETURN_NAMES = ('text_positive_g', 'text_positive_l', 'text_positive', 'text_negative_g', 'text_negative_l', 'text_negative')
-    FUNCTION = 'prompt_styler_advanced'
-    CATEGORY = 'utils'
-
-    def prompt_styler_advanced(self, text_positive_g, text_positive_l, text_negative, style, negative_prompt_to, copy_to_l, log_prompt):
-        (text_positive_g_styled, text_positive_l_styled, text_positive_styled, text_negative_g_styled, text_negative_l_styled, text_negative_styled) = read_sdxl_templates_replace_and_combine_advanced(self.json_data, style, text_positive_g, text_positive_l, text_negative, negative_prompt_to, copy_to_l)
-        if log_prompt:
-            print(f'style: {style}')
-            print(f'text_positive_g: {text_positive_g}')
-            print(f'text_positive_l: {text_positive_l}')
-            print(f'text_negative: {text_negative}')
-            print(f'text_positive_g_styled: {text_positive_g_styled}')
-            print(f'text_positive_l_styled: {text_positive_l_styled}')
-            print(f'text_positive_styled: {text_positive_styled}')
-            print(f'text_negative_g_styled: {text_negative_g_styled}')
-            print(f'text_negative_l_styled: {text_negative_l_styled}')
-            print(f'text_negative_styled: {text_negative_styled}')
-        return (text_positive_g_styled, text_positive_l_styled, text_positive_styled, text_negative_g_styled, text_negative_l_styled, text_negative_styled)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

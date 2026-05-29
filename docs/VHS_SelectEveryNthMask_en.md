@@ -31,18 +31,6 @@ The `select_masks` method of the SelectEveryNthMask node aims to process a seque
 - Infra type: CPU
 
 # Source code
-```
-class SelectEveryNthMask:
+[View source repository on GitHub](https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'mask': ('MASK',), 'select_every_nth': ('INT', {'default': 1, 'min': 1, 'max': BIGMAX, 'step': 1})}}
-    CATEGORY = 'Video Helper Suite 🎥🅥🅗🅢/mask'
-    RETURN_TYPES = ('MASK', 'INT')
-    RETURN_NAMES = ('MASK', 'count')
-    FUNCTION = 'select_masks'
-
-    def select_masks(self, mask: Tensor, select_every_nth: int):
-        sub_mask = mask[0::select_every_nth]
-        return (sub_mask, sub_mask.size(0))
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

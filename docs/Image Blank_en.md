@@ -39,22 +39,6 @@ The WAS_Image_Blank node generates a blank image with specified dimensions and c
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Image_Blank:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'width': ('INT', {'default': 512, 'min': 8, 'max': 4096, 'step': 1}), 'height': ('INT', {'default': 512, 'min': 8, 'max': 4096, 'step': 1}), 'red': ('INT', {'default': 255, 'min': 0, 'max': 255, 'step': 1}), 'green': ('INT', {'default': 255, 'min': 0, 'max': 255, 'step': 1}), 'blue': ('INT', {'default': 255, 'min': 0, 'max': 255, 'step': 1})}}
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'blank_image'
-    CATEGORY = 'WAS Suite/Image'
-
-    def blank_image(self, width, height, red, green, blue):
-        width = width // 8 * 8
-        height = height // 8 * 8
-        blank = Image.new(mode='RGB', size=(width, height), color=(red, green, blue))
-        return (pil2tensor(blank),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

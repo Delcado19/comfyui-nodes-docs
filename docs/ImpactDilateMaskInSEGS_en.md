@@ -27,21 +27,6 @@ The DilateMaskInSEGS node is designed to perform morphological dilation on segme
 - Infra type: CPU
 
 # Source code
-```
-class DilateMaskInSEGS:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'segs': ('SEGS',), 'dilation': ('INT', {'default': 10, 'min': -512, 'max': 512, 'step': 1})}}
-    RETURN_TYPES = ('SEGS',)
-    FUNCTION = 'doit'
-    CATEGORY = 'ImpactPack/Util'
-
-    def doit(self, segs, dilation):
-        new_segs = []
-        for seg in segs[1]:
-            mask = core.dilate_mask(seg.cropped_mask, dilation)
-            seg = SEG(seg.cropped_image, mask, seg.confidence, seg.crop_region, seg.bbox, seg.label, seg.control_net_wrapper)
-            new_segs.append(seg)
-        return ((segs[0], new_segs),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

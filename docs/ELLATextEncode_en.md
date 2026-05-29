@@ -33,34 +33,7 @@ The ELLATextEncode node encodes text input using the ELLA model with additional 
 - Infra type: `GPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class ELLATextEncode:
-    @classmethod
-    def INPUT_TYPES(s):
-        return {
-            "required": {
-                "text": ("STRING", {"multiline": True}), 
-                "sigma": ("FLOAT", {"default": 1}, ),
-                "ella": ("ELLA", ),
-            }
-        }
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    RETURN_TYPES = ("CONDITIONING",)
-    FUNCTION = "encode"
-
-    CATEGORY = "ella/conditioning"
-
-    def encode(self, text, ella: dict, sigma):
-        ella_dict = ella
-
-        ella: ELLA = ella_dict.get("ELLA")
-        t5: T5TextEmbedder = ella_dict.get("T5")
-
-        cond = t5(text)
-        cond_ella = ella(cond, timesteps=torch.from_numpy(sigma))
-        
-        return ([[cond_ella, {"pooled_output": cond_ella}]], ) # Output twice as we don't use pooled output
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

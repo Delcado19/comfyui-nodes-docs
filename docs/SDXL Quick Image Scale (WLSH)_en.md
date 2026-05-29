@@ -39,30 +39,6 @@ The 'upscale' method of the WLSH_SDXL_Quick_Image_Scale node efficiently increas
 - Infra type: GPU
 
 # Source code
-```
-class WLSH_SDXL_Quick_Image_Scale:
-    upscale_methods = ['nearest-exact', 'bilinear', 'area']
-    resolution = ['1024x1024', '1152x896', '1216x832', '1344x768', '1536x640']
-    direction = ['landscape', 'portrait']
-    crop_methods = ['disabled', 'center']
+[View source repository on GitHub](https://github.com/wallish77/wlsh_nodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'original': ('IMAGE',), 'upscale_method': (s.upscale_methods,), 'resolution': (s.resolution,), 'direction': (s.direction,), 'crop': (s.crop_methods,)}}
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'upscale'
-    CATEGORY = 'WLSH Nodes/upscaling'
-
-    def upscale(self, original, upscale_method, resolution, direction, crop):
-        (width, height) = resolution.split('x')
-        new_width = int(width)
-        new_height = int(height)
-        if direction == 'portrait':
-            (new_width, new_height) = (new_height, new_width)
-        old_width = original.shape[2]
-        old_height = original.shape[1]
-        samples = original.movedim(-1, 1)
-        s = comfy.utils.common_upscale(samples, new_width, new_height, upscale_method, crop)
-        s = s.movedim(1, -1)
-        return (s,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

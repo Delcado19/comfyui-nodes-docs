@@ -35,39 +35,6 @@ The SEGSLabelFilter node is designed to process and filter segments based on a p
 - Infra type: CPU
 
 # Source code
-```
-class SEGSLabelFilter:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'segs': ('SEGS',), 'preset': (['all'] + defs.detection_labels,), 'labels': ('STRING', {'multiline': True, 'placeholder': 'List the types of segments to be allowed, separated by commas'})}}
-    RETURN_TYPES = ('SEGS', 'SEGS')
-    RETURN_NAMES = ('filtered_SEGS', 'remained_SEGS')
-    FUNCTION = 'doit'
-    CATEGORY = 'ImpactPack/Util'
-
-    @staticmethod
-    def filter(segs, labels):
-        labels = set([label.strip() for label in labels])
-        if 'all' in labels:
-            return (segs, (segs[0], []))
-        else:
-            res_segs = []
-            remained_segs = []
-            for x in segs[1]:
-                if x.label in labels:
-                    res_segs.append(x)
-                elif 'eyes' in labels and x.label in ['left_eye', 'right_eye']:
-                    res_segs.append(x)
-                elif 'eyebrows' in labels and x.label in ['left_eyebrow', 'right_eyebrow']:
-                    res_segs.append(x)
-                elif 'pupils' in labels and x.label in ['left_pupil', 'right_pupil']:
-                    res_segs.append(x)
-                else:
-                    remained_segs.append(x)
-        return ((segs[0], res_segs), (segs[0], remained_segs))
-
-    def doit(self, segs, preset, labels):
-        labels = labels.split(',')
-        return SEGSLabelFilter.filter(segs, labels)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

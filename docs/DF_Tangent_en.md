@@ -33,34 +33,7 @@ The DF_Tangent node computes the tangent or arctangent of a given value. It prov
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class tgNode:
-    def __init__(self):
-        pass
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(self):
-        return {
-            "required": {
-                "value": Field.float(),
-                "type_": Field.combo(["RAD", "DEG"],),
-                "arcTan": Field.combo([False, True],)
-            }
-        }
-
-    RETURN_TYPES = ("FLOAT",)
-    FUNCTION = "get_value"
-    CATEGORY = TREE_TRIGONOMETRY
-
-    def get_value(self, value, type_="RAD", arcTan=False):
-        if type_ == "DEG":
-            value = math.radians(value)
-        if arcTan == True:
-            value = math.atan(value)
-        else:
-            value = math.tan(value)
-        return (value,)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

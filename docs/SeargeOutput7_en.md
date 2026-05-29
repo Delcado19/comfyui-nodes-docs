@@ -27,18 +27,6 @@ This node acts as a data demultiplexing interface, separating input data into di
 - Infra type: CPU
 
 # Source code
-```
-class SeargeOutput7:
+[View source repository on GitHub](https://github.com/jobunk/SeargeSDXL)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'parameters': ('PARAMETERS',)}}
-    RETURN_TYPES = ('PARAMETERS', 'FLOAT')
-    RETURN_NAMES = ('parameters', 'lora_strength')
-    FUNCTION = 'demux'
-    CATEGORY = 'Searge/_deprecated_/UI/Outputs'
-
-    def demux(self, parameters):
-        lora_strength = parameters['lora_strength']
-        return (parameters, lora_strength)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

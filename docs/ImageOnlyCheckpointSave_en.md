@@ -44,15 +44,6 @@ The ImageOnlyCheckpointSave node is designed to simplify the process of saving i
 - Infra type: CPU
 
 # Source code
-```
-class ImageOnlyCheckpointSave(comfy_extras.nodes_model_merging.CheckpointSave):
-    CATEGORY = '_for_testing'
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'model': ('MODEL',), 'clip_vision': ('CLIP_VISION',), 'vae': ('VAE',), 'filename_prefix': ('STRING', {'default': 'checkpoints/ComfyUI'})}, 'hidden': {'prompt': 'PROMPT', 'extra_pnginfo': 'EXTRA_PNGINFO'}}
-
-    def save(self, model, clip_vision, vae, filename_prefix, prompt=None, extra_pnginfo=None):
-        comfy_extras.nodes_model_merging.save_checkpoint(model, clip_vision=clip_vision, vae=vae, filename_prefix=filename_prefix, output_dir=self.output_dir, prompt=prompt, extra_pnginfo=extra_pnginfo)
-        return {}
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

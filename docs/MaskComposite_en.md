@@ -39,36 +39,6 @@ The MaskComposite node is designed to perform various operations on mask images,
 - Infra type: GPU
 
 # Source code
-```
-class MaskComposite:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'destination': ('MASK',), 'source': ('MASK',), 'x': ('INT', {'default': 0, 'min': 0, 'max': MAX_RESOLUTION, 'step': 1}), 'y': ('INT', {'default': 0, 'min': 0, 'max': MAX_RESOLUTION, 'step': 1}), 'operation': (['multiply', 'add', 'subtract', 'and', 'or', 'xor'],)}}
-    CATEGORY = 'mask'
-    RETURN_TYPES = ('MASK',)
-    FUNCTION = 'combine'
-
-    def combine(self, destination, source, x, y, operation):
-        output = destination.reshape((-1, destination.shape[-2], destination.shape[-1])).clone()
-        source = source.reshape((-1, source.shape[-2], source.shape[-1]))
-        (left, top) = (x, y)
-        (right, bottom) = (min(left + source.shape[-1], destination.shape[-1]), min(top + source.shape[-2], destination.shape[-2]))
-        (visible_width, visible_height) = (right - left, bottom - top)
-        source_portion = source[:, :visible_height, :visible_width]
-        destination_portion = destination[:, top:bottom, left:right]
-        if operation == 'multiply':
-            output[:, top:bottom, left:right] = destination_portion * source_portion
-        elif operation == 'add':
-            output[:, top:bottom, left:right] = destination_portion + source_portion
-        elif operation == 'subtract':
-            output[:, top:bottom, left:right] = destination_portion - source_portion
-        elif operation == 'and':
-            output[:, top:bottom, left:right] = torch.bitwise_and(destination_portion.round().bool(), source_portion.round().bool()).float()
-        elif operation == 'or':
-            output[:, top:bottom, left:right] = torch.bitwise_or(destination_portion.round().bool(), source_portion.round().bool()).float()
-        elif operation == 'xor':
-            output[:, top:bottom, left:right] = torch.bitwise_xor(destination_portion.round().bool(), source_portion.round().bool()).float()
-        output = torch.clamp(output, 0.0, 1.0)
-        return (output,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

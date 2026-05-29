@@ -23,28 +23,6 @@
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Text_Parse_Embeddings_By_Name:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'text': (TEXT_TYPE, {'forceInput': True if TEXT_TYPE == 'STRING' else False})}}
-    RETURN_TYPES = (TEXT_TYPE,)
-    FUNCTION = 'text_parse_embeddings'
-    CATEGORY = 'WAS Suite/Text/Parse'
-
-    def text_parse_embeddings(self, text):
-        return (self.convert_a1111_embeddings(text),)
-
-    def convert_a1111_embeddings(self, text):
-        for embeddings_path in comfy_paths.folder_names_and_paths['embeddings'][0]:
-            for filename in os.listdir(embeddings_path):
-                (basename, ext) = os.path.splitext(filename)
-                pattern = re.compile('\\b{}\\b'.format(re.escape(basename)))
-                replacement = 'embedding:{}'.format(basename)
-                text = re.sub(pattern, replacement, text)
-        return text
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

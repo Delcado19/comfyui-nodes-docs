@@ -40,19 +40,6 @@ This node encapsulates the process of encoding and diffusing data in a tiled man
 - Infra type: GPU
 
 # Source code
-```
-class VAEEncodeTiled_TiledDiffusion(TiledVAE):
+[View source repository on GitHub](https://github.com/shiimizu/ComfyUI-TiledDiffusion)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        fast = True
-        tile_size = get_rcmd_enc_tsize()
-        return {'required': {'pixels': ('IMAGE',), 'vae': ('VAE',), 'tile_size': ('INT', {'default': tile_size, 'min': 256, 'max': 4096, 'step': 16}), 'fast': ('BOOLEAN', {'default': fast}), 'color_fix': ('BOOLEAN', {'default': fast})}}
-    RETURN_TYPES = ('LATENT',)
-    FUNCTION = 'process'
-    CATEGORY = '_for_testing'
-
-    def __init__(self):
-        self.is_decoder = False
-        super().__init__()
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

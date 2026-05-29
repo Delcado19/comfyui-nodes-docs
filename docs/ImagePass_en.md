@@ -25,25 +25,7 @@ The ImagePass node acts as a direct pass-through channel for image data, allowin
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class ImagePass:
-    @classmethod
-    def INPUT_TYPES(s):
-        return {
-            "required": {
-                "image": ("IMAGE",),
-            },
-        }
-    RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "passthrough"
-    CATEGORY = "KJNodes/misc"
-    DESCRIPTION = """
-Passes the image through without modifying it.
-"""
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    def passthrough(self, image):
-        return image,
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

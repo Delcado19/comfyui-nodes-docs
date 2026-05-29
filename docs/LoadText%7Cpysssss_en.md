@@ -29,42 +29,6 @@ The LoadText node loads text content from files in a specified directory. It hel
 - Common nodes: unknown
 
 ## Source code
-```python
-class LoadText(TextFileNode):
-    @classmethod
-    def IS_CHANGED(self, **kwargs):
-        return os.path.getmtime(self.file)
+[View source repository on GitHub](https://github.com/pythongosssss/ComfyUI-Custom-Scripts)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {
-            "required": {
-                "root_dir": (list(get_valid_dirs()), {}),
-                "file": (["[none]"], {
-                    "pysssss.binding": [{
-                        "source": "root_dir",
-                        "callback": [{
-                            "type": "set",
-                            "target": "$this.disabled",
-                            "value": True
-                        }, {
-                            "type": "fetch",
-                            "url": "/pysssss/text-file/{$source.value}",
-                            "then": [{
-                                "type": "set",
-                                "target": "$this.options.values",
-                                "value": "$result"
-                            }, {
-                                "type": "validate-combo"
-                            }, {
-                                "type": "set",
-                                "target": "$this.disabled",
-                                "value": False
-                            }]
-                        }],
-                    }]
-                })
-            },
-        }
-
-    FUNCTION = "load_text"
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

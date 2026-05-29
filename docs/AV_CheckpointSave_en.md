@@ -39,35 +39,7 @@ This node has no output types.
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class AVCheckpointSave(CheckpointSave):
-    CATEGORY = "Art Venture/Model Merging"
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        inputs = CheckpointSave.INPUT_TYPES()
-        inputs["optional"] = {
-            "dtype": (["float16", "float32"], {"default": "float16"}),
-        }
-
-        return inputs
-
-    def save(self, *args, dtype="float16", **kwargs):
-        comfy_save_checkpoint = comfy.sd.save_checkpoint
-
-        if dtype == "float16":
-
-            def save_checkpoint(output_path, model, clip, vae, metadata=None):
-                model.model.half()
-                return comfy_save_checkpoint(output_path, model, clip, vae, metadata)
-
-            comfy.sd.save_checkpoint = save_checkpoint
-
-        try:
-            return super().save(*args, **kwargs)
-        finally:
-            comfy.sd.save_checkpoint = comfy_save_checkpoint
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

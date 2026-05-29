@@ -105,49 +105,7 @@ The KSamplerAdvancedInspire node aims to enhance the inspiration process by prov
 - Infra type: `GPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class KSamplerAdvanced_inspire_pipe:
-    @classmethod
-    def INPUT_TYPES(s):
-        return {"required":
-                    {"basic_pipe": ("BASIC_PIPE",),
-                     "add_noise": ("BOOLEAN", {"default": True, "label_on": "enable", "label_off": "disable"}),
-                     "noise_seed": ("INT", {"default": 0, "min": 0, "max": 0xffffffffffffffff}),
-                     "steps": ("INT", {"default": 20, "min": 1, "max": 10000}),
-                     "cfg": ("FLOAT", {"default": 8.0, "min": 0.0, "max": 100.0, "step":0.5, "round": 0.01}),
-                     "sampler_name": (comfy.samplers.KSampler.SAMPLERS, ),
-                     "scheduler": (common.SCHEDULERS, ),
-                     "latent_image": ("LATENT", ),
-                     "start_at_step": ("INT", {"default": 0, "min": 0, "max": 10000}),
-                     "end_at_step": ("INT", {"default": 10000, "min": 0, "max": 10000}),
-                     "noise_mode": (["GPU(=A1111)", "CPU"],),
-                     "return_with_leftover_noise": ("BOOLEAN", {"default": False, "label_on": "enable", "label_off": "disable"}),
-                     "batch_seed_mode": (["incremental", "comfy", "variation str inc:0.01", "variation str inc:0.05"],),
-                     "variation_seed": ("INT", {"default": 0, "min": 0, "max": 0xffffffffffffffff}),
-                     "variation_strength": ("FLOAT", {"default": 0.0, "min": 0.0, "max": 1.0, "step": 0.01}),
-                     },
-                "optional":
-                    {
-                        "noise_opt": ("NOISE",),
-                    }
-                }
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    RETURN_TYPES = ("LATENT", "VAE", )
-    FUNCTION = "sample"
-
-    CATEGORY = "InspirePack/a1111_compat"
-
-    def sample(self, basic_pipe, add_noise, noise_seed, steps, cfg, sampler_name, scheduler, latent_image, start_at_step, end_at_step, noise_mode, return_with_leftover_noise, denoise=1.0, batch_seed_mode="comfy", variation_seed=None, variation_strength=None, noise_opt=None):
-        model, clip, vae, positive, negative = basic_pipe
-        latent = KSamplerAdvanced_inspire().sample(model=model, add_noise=add_noise, noise_seed=noise_seed,
-                                                   steps=steps, cfg=cfg, sampler_name=sampler_name, scheduler=scheduler,
-                                                   positive=positive, negative=negative, latent_image=latent_image,
-                                                   start_at_step=start_at_step, end_at_step=end_at_step,
-                                                   noise_mode=noise_mode, return_with_leftover_noise=return_with_leftover_noise,
-                                                   denoise=denoise, batch_seed_mode=batch_seed_mode, variation_seed=variation_seed,
-                                                   variation_strength=variation_strength, noise_opt=noise_opt)[0]
-        return (latent, vae)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -27,18 +27,6 @@ The IntegerAndString node is designed to convert an integer input into its corre
 - Infra type: CPU
 
 # Source code
-```
-class IntegerAndString:
+[View source repository on GitHub](https://github.com/bash-j/mikey_nodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'seed': ('INT', {'default': 0, 'min': 0, 'max': 18446744073709551615})}}
-    RETURN_TYPES = ('INT', 'STRING')
-    RETURN_NAMES = ('seed', 'seed_string')
-    FUNCTION = 'output'
-    CATEGORY = 'Mikey/Utils'
-
-    def output(self, seed):
-        seed_string = str(seed)
-        return (seed, seed_string)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

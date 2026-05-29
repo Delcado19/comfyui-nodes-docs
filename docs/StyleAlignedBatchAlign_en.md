@@ -36,22 +36,6 @@ StyleAlignedBatchAlign class aims to modify a given model by aligning its style 
 - Infra type: CPU
 
 # Source code
-```
-class StyleAlignedBatchAlign:
+[View source repository on GitHub](https://github.com/brianfitzgerald/style_aligned_comfy)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'model': ('MODEL',), 'share_norm': (SHARE_NORM_OPTIONS,), 'share_attn': (SHARE_ATTN_OPTIONS,), 'scale': ('FLOAT', {'default': 1, 'min': 0, 'max': 1.0, 'step': 0.1})}}
-    RETURN_TYPES = ('MODEL',)
-    FUNCTION = 'patch'
-    CATEGORY = 'style_aligned'
-
-    def patch(self, model: ModelPatcher, share_norm: str, share_attn: str, scale: float):
-        m = model.clone()
-        share_group_norm = share_norm in ['group', 'both']
-        share_layer_norm = share_norm in ['layer', 'both']
-        register_shared_norm(model, share_group_norm, share_layer_norm)
-        args = StyleAlignedArgs(share_attn)
-        m.set_model_attn1_patch(SharedAttentionProcessor(args, scale))
-        return (m,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

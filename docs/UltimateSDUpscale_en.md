@@ -119,24 +119,6 @@ The UltimateSDUpscale node aims to enhance image resolution using advanced techn
 - Infra type: GPU
 
 # Source code
-```
-class UltimateSDUpscale:
+[View source repository on GitHub](https://github.com/ssitu/ComfyUI_UltimateSDUpscale)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return prepare_inputs(USDU_base_inputs())
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'upscale'
-    CATEGORY = 'image/upscaling'
-
-    def upscale(self, image, model, positive, negative, vae, upscale_by, seed, steps, cfg, sampler_name, scheduler, denoise, upscale_model, mode_type, tile_width, tile_height, mask_blur, tile_padding, seam_fix_mode, seam_fix_denoise, seam_fix_mask_blur, seam_fix_width, seam_fix_padding, force_uniform_tiles, tiled_decode):
-        shared.sd_upscalers[0] = UpscalerData()
-        shared.actual_upscaler = upscale_model
-        shared.batch = [tensor_to_pil(image, i) for i in range(len(image))]
-        sdprocessing = StableDiffusionProcessing(tensor_to_pil(image), model, positive, negative, vae, seed, steps, cfg, sampler_name, scheduler, denoise, upscale_by, force_uniform_tiles, tiled_decode)
-        script = usdu.Script()
-        processed = script.run(p=sdprocessing, _=None, tile_width=tile_width, tile_height=tile_height, mask_blur=mask_blur, padding=tile_padding, seams_fix_width=seam_fix_width, seams_fix_denoise=seam_fix_denoise, seams_fix_padding=seam_fix_padding, upscaler_index=0, save_upscaled_image=False, redraw_mode=MODES[mode_type], save_seams_fix_image=False, seams_fix_mask_blur=seam_fix_mask_blur, seams_fix_type=SEAM_FIX_MODES[seam_fix_mode], target_size_type=2, custom_width=None, custom_height=None, custom_scale=upscale_by)
-        images = [pil_to_tensor(img) for img in shared.batch]
-        tensor = torch.cat(images, dim=0)
-        return (tensor,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

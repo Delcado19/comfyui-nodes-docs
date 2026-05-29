@@ -40,34 +40,6 @@ This node encodes image data using a Variational Autoencoder (VAE) model for ima
 - Infra type: GPU
 
 # Source code
-```
-class WLSH_VAE_Encode_For_Inpaint_Padding:
+[View source repository on GitHub](https://github.com/wallish77/wlsh_nodes)
 
-    def __init__(self, device='cpu'):
-        self.device = device
-
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'pixels': ('IMAGE',), 'vae': ('VAE',), 'mask': ('MASK',), 'mask_padding': ('INT', {'default': 24, 'min': 6, 'max': 128, 'step': 2})}}
-    RETURN_TYPES = ('LATENT',)
-    FUNCTION = 'encode'
-    CATEGORY = 'WLSH Nodes/inpainting'
-
-    def encode(self, vae, pixels, mask, mask_padding=3):
-        x = pixels.shape[1] // 64 * 64
-        y = pixels.shape[2] // 64 * 64
-        mask = torch.nn.functional.interpolate(mask[None, None], size=(pixels.shape[1], pixels.shape[2]), mode='bilinear')[0][0]
-        pixels = pixels.clone()
-        if pixels.shape[1] != x or pixels.shape[2] != y:
-            pixels = pixels[:, :x, :y, :]
-            mask = mask[:x, :y]
-        kernel_tensor = torch.ones((1, 1, mask_padding, mask_padding))
-        mask_erosion = torch.clamp(torch.nn.functional.conv2d(mask.round()[None], kernel_tensor, padding=3), 0, 1)
-        m = 1.0 - mask.round()
-        for i in range(3):
-            pixels[:, :, :, i] -= 0.5
-            pixels[:, :, :, i] *= m
-            pixels[:, :, :, i] += 0.5
-        t = vae.encode(pixels)
-        return ({'samples': t, 'noise_mask': mask_erosion[0][:x, :y].round()},)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

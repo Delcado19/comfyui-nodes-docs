@@ -39,17 +39,6 @@ The LayeredDiffusionDecodeRGBA node decodes RGBA images from a given set of pixe
 - Infra type: GPU
 
 # Source code
-```
-class LayeredDiffusionDecodeRGBA(LayeredDiffusionDecode):
-    """
-    Decode alpha channel value from pixel value.
-    [B, C=3, H, W] => [B, C=4, H, W]
-    Outputs RGBA image.
-    """
-    RETURN_TYPES = ('IMAGE',)
+[View source repository on GitHub](https://github.com/huchenlei/ComfyUI-layerdiffuse)
 
-    def decode(self, samples, images, sd_version: str, sub_batch_size: int):
-        (image, mask) = super().decode(samples, images, sd_version, sub_batch_size)
-        alpha = 1.0 - mask
-        return JoinImageWithAlpha().join_image_with_alpha(image, alpha)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

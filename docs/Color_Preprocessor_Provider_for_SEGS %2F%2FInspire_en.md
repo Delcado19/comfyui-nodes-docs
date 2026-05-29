@@ -28,17 +28,6 @@ The Color_Preprocessor_Provider_for_SEGS class is designed to enhance image segm
 - Infra type: CPU
 
 # Source code
-```
-class Color_Preprocessor_Provider_for_SEGS:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Inspire-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {}}
-    RETURN_TYPES = ('SEGS_PREPROCESSOR',)
-    FUNCTION = 'doit'
-    CATEGORY = 'InspirePack/SEGS/ControlNet'
-
-    def doit(self):
-        obj = Color_Preprocessor_wrapper()
-        return (obj,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

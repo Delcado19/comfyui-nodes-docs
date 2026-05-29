@@ -40,26 +40,6 @@ The EmptyLatentImagePresets node is designed to generate presets for latent imag
 - Infra type: CPU
 
 # Source code
-```
-class EmptyLatentImagePresets:
+[View source repository on GitHub](https://github.com/kijai/ComfyUI-KJNodes)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'dimensions': (['512 x 512', '768 x 512', '960 x 512', '1024 x 512', '1536 x 640', '1344 x 768', '1216 x 832', '1152 x 896', '1024 x 1024'], {'default': '512 x 512'}), 'invert': ('BOOLEAN', {'default': False}), 'batch_size': ('INT', {'default': 1, 'min': 1, 'max': 4096})}}
-    RETURN_TYPES = ('LATENT', 'INT', 'INT')
-    RETURN_NAMES = ('Latent', 'Width', 'Height')
-    FUNCTION = 'generate'
-    CATEGORY = 'KJNodes'
-
-    def generate(self, dimensions, invert, batch_size):
-        from nodes import EmptyLatentImage
-        result = [x.strip() for x in dimensions.split('x')]
-        if invert:
-            width = int(result[1].split(' ')[0])
-            height = int(result[0])
-        else:
-            width = int(result[0])
-            height = int(result[1].split(' ')[0])
-        latent = EmptyLatentImage().generate(width, height, batch_size)[0]
-        return (latent, int(width), int(height))
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

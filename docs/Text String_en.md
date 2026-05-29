@@ -36,24 +36,6 @@ The `text_string` method is designed to process and tokenize input strings, repl
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Text_String:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'text': ('STRING', {'default': '', 'multiline': False})}, 'optional': {'text_b': ('STRING', {'default': '', 'multiline': False}), 'text_c': ('STRING', {'default': '', 'multiline': False}), 'text_d': ('STRING', {'default': '', 'multiline': False})}}
-    RETURN_TYPES = (TEXT_TYPE, TEXT_TYPE, TEXT_TYPE, TEXT_TYPE)
-    FUNCTION = 'text_string'
-    CATEGORY = 'WAS Suite/Text'
-
-    def text_string(self, text='', text_b='', text_c='', text_d=''):
-        tokens = TextTokens()
-        text = tokens.parseTokens(text)
-        text_b = tokens.parseTokens(text_b)
-        text_c = tokens.parseTokens(text_c)
-        text_d = tokens.parseTokens(text_d)
-        return (text, text_b, text_c, text_d)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

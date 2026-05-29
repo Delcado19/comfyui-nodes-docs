@@ -35,32 +35,6 @@ The CR_LoadTextList node loads text data from a file into a list format. It hand
 - Infra type: CPU
 
 # Source code
-```
-class CR_LoadTextList:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'input_file_path': ('STRING', {'multiline': False, 'default': ''}), 'file_name': ('STRING', {'multiline': False, 'default': ''}), 'file_extension': (['txt', 'csv'],)}}
-    RETURN_TYPES = ('STRING', 'STRING')
-    RETURN_NAMES = ('STRING', 'show_help')
-    OUTPUT_IS_LIST = (True, False)
-    FUNCTION = 'load_list'
-    CATEGORY = icons.get('Comfyroll/List')
-
-    def load_list(self, input_file_path, file_name, file_extension):
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/List-Nodes#cr-load-value-list'
-        filepath = input_file_path + '\\' + file_name + '.' + file_extension
-        print(f'CR Load Values: Loading {filepath}')
-        list = []
-        if file_extension == 'csv':
-            with open(filepath, 'r') as csv_file:
-                for row in csv_file:
-                    list.append(row)
-        elif file_extension == 'txt':
-            with open(filepath, 'r') as txt_file:
-                for row in txt_file:
-                    list.append(row)
-        else:
-            pass
-        return (list, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -36,37 +36,6 @@ This node is designed to enhance image resolution using a specified model, focus
 - Infra type: GPU
 
 # Source code
-```
-class APISR_Lterative_Zho:
+[View source repository on GitHub](https://github.com/ZHO-ZHO-ZHO/ComfyUI-APISR)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'pipe': ('APISRMODEL',), 'image': ('IMAGE',), 'crop_for_4x': ('BOOLEAN', {'default': True}), 'dtype': (['float32', 'float16'],)}}
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'sr_image'
-    CATEGORY = '🔎APISR'
-
-    def sr_image(self, pipe, image, crop_for_4x, dtype):
-        if dtype == 'float32':
-            weight_dtype = torch.float32
-        elif dtype == 'float16':
-            weight_dtype = torch.float16
-        pipe = pipe.to(device=device, dtype=weight_dtype)
-        processed_images = []
-        for img_tensor in image:
-            img_tensor = img_tensor.to(device=device, dtype=weight_dtype).unsqueeze(0).permute(0, 3, 1, 2)
-            if crop_for_4x:
-                (_, _, h, w) = img_tensor.shape
-                if h % 4 != 0:
-                    img_tensor = img_tensor[:, :, :4 * (h // 4), :]
-                if w % 4 != 0:
-                    img_tensor = img_tensor[:, :, :, :4 * (w // 4)]
-            with torch.no_grad():
-                super_resolved_img = pipe(img_tensor)
-            super_resolved_img_nhwc = super_resolved_img.permute(0, 2, 3, 1).squeeze(0).cpu()
-            processed_images.append(super_resolved_img_nhwc)
-        return (processed_images,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -72,23 +72,6 @@ The WildcardEncodeInspire node processes and encodes text input containing wildc
 - Infra type: GPU
 
 # Source code
-```
-class WildcardEncodeInspire:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Inspire-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'model': ('MODEL',), 'clip': ('CLIP',), 'token_normalization': (['none', 'mean', 'length', 'length+mean'],), 'weight_interpretation': (['comfy', 'A1111', 'compel', 'comfy++', 'down_weight'], {'default': 'comfy++'}), 'wildcard_text': ('STRING', {'multiline': True, 'dynamicPrompts': False, 'placeholder': 'Wildcard Prompt (User Input)'}), 'populated_text': ('STRING', {'multiline': True, 'dynamicPrompts': False, 'placeholder': 'Populated Prompt (Will be generated automatically)'}), 'mode': ('BOOLEAN', {'default': True, 'label_on': 'Populate', 'label_off': 'Fixed'}), 'Select to add LoRA': (['Select the LoRA to add to the text'] + folder_paths.get_filename_list('loras'),), 'Select to add Wildcard': (['Select the Wildcard to add to the text'],), 'seed': ('INT', {'default': 0, 'min': 0, 'max': 18446744073709551615})}}
-    CATEGORY = 'InspirePack/Prompt'
-    RETURN_TYPES = ('MODEL', 'CLIP', 'CONDITIONING', 'STRING')
-    RETURN_NAMES = ('model', 'clip', 'conditioning', 'populated_text')
-    FUNCTION = 'doit'
-
-    def doit(self, *args, **kwargs):
-        populated = kwargs['populated_text']
-        clip_encoder = BNK_EncoderWrapper(kwargs['token_normalization'], kwargs['weight_interpretation'])
-        if 'ImpactWildcardEncode' not in nodes.NODE_CLASS_MAPPINGS:
-            utils.try_install_custom_node('https://github.com/ltdrdata/ComfyUI-Impact-Pack', "To use 'Wildcard Encode (Inspire)' node, 'Impact Pack' extension is required.")
-            raise Exception(f"[ERROR] To use 'Wildcard Encode (Inspire)', you need to install 'Impact Pack'")
-        (model, clip, conditioning) = nodes.NODE_CLASS_MAPPINGS['ImpactWildcardEncode'].process_with_loras(wildcard_opt=populated, model=kwargs['model'], clip=kwargs['clip'], clip_encoder=clip_encoder)
-        return (model, clip, conditioning, populated)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

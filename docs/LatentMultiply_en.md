@@ -27,19 +27,6 @@ This node performs multiplication on latent space samples. It receives a set of 
 - Infra type: CPU
 
 # Source code
-```
-class LatentMultiply:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'samples': ('LATENT',), 'multiplier': ('FLOAT', {'default': 1.0, 'min': -10.0, 'max': 10.0, 'step': 0.01})}}
-    RETURN_TYPES = ('LATENT',)
-    FUNCTION = 'op'
-    CATEGORY = 'latent/advanced'
-
-    def op(self, samples, multiplier):
-        samples_out = samples.copy()
-        s1 = samples['samples']
-        samples_out['samples'] = s1 * multiplier
-        return (samples_out,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

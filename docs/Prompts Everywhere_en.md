@@ -26,16 +26,7 @@ The node has no output type.
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class AnythingEverywherePrompts(Base):
-    @classmethod
-    def INPUT_TYPES(s):
-        return {"required":{}, 
-                "optional": { "+ve" : ("*", {}), "-ve" : ("*", {}), } }
-    
-    def func(self, **kwargs):
-        return ()
+[View source repository on GitHub](https://github.com/Formfox/comfy-nodes)
 
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -76,39 +76,6 @@ The CR_XYList node is designed to perform cross join operations on two lists, ge
 - Infra type: CPU
 
 # Source code
-```
-class CR_XYList:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'index': ('INT', {'default': 0.0, 'min': 0.0, 'max': 9999.0, 'step': 1.0}), 'list1': ('STRING', {'multiline': True, 'default': 'x'}), 'x_prepend': ('STRING', {'multiline': False, 'default': ''}), 'x_append': ('STRING', {'multiline': False, 'default': ''}), 'x_annotation_prepend': ('STRING', {'multiline': False, 'default': ''}), 'list2': ('STRING', {'multiline': True, 'default': 'y'}), 'y_prepend': ('STRING', {'multiline': False, 'default': ''}), 'y_append': ('STRING', {'multiline': False, 'default': ''}), 'y_annotation_prepend': ('STRING', {'multiline': False, 'default': ''})}}
-    RETURN_TYPES = ('STRING', 'STRING', 'STRING', 'STRING', 'BOOLEAN', 'STRING')
-    RETURN_NAMES = ('X', 'Y', 'x_annotation', 'y_annotation', 'trigger', 'show_help')
-    FUNCTION = 'cross_join'
-    CATEGORY = icons.get('Comfyroll/XY Grid')
-
-    def cross_join(self, list1, list2, x_prepend, x_append, x_annotation_prepend, y_prepend, y_append, y_annotation_prepend, index):
-        index -= 1
-        trigger = False
-        listx = re.split(',(?=(?:[^"]*"[^"]*")*[^"]*$)', list1)
-        listy = re.split(',(?=(?:[^"]*"[^"]*")*[^"]*$)', list2)
-        listx = [item.strip() for item in listx]
-        listy = [item.strip() for item in listy]
-        lenx = len(listx)
-        leny = len(listy)
-        grid_size = lenx * leny
-        x = index % lenx
-        y = int(index / lenx)
-        x_out = x_prepend + listx[x] + x_append
-        y_out = y_prepend + listy[y] + y_append
-        x_ann_out = ''
-        y_ann_out = ''
-        if index + 1 == grid_size:
-            x_ann_out = [x_annotation_prepend + item + ';' for item in listx]
-            y_ann_out = [y_annotation_prepend + item + ';' for item in listy]
-            x_ann_out = ''.join([str(item) for item in x_ann_out])
-            y_ann_out = ''.join([str(item) for item in y_ann_out])
-            trigger = True
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/XY-Grid-Nodes#cr-xy-list'
-        return (x_out, y_out, x_ann_out, y_ann_out, trigger, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

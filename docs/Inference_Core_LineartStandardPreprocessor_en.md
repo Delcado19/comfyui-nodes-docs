@@ -38,24 +38,7 @@ The Inference_Core_LineartStandardPreprocessor node is an image preprocessing to
 - Infra type: `GPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class Lineart_Standard_Preprocessor:
-    @classmethod
-    def INPUT_TYPES(s):
-        return create_node_input_types(
-            guassian_sigma=("FLOAT", {"default": 6.0, "min": 0.0, "max": 100.0}),
-            intensity_threshold=("INT", {"default": 8, "min": 0, "max": 16})
-        )
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "execute"
-
-    CATEGORY = "ControlNet Preprocessors/Line Extractors"
-
-    def execute(self, image, guassian_sigma, intensity_threshold, resolution=512, **kwargs):
-        from controlnet_aux.lineart_standard import LineartStandardDetector
-        return (common_annotator_call(LineartStandardDetector(), image, guassian_sigma=guassian_sigma, intensity_threshold=intensity_threshold, resolution=resolution), )
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

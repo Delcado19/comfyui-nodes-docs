@@ -47,25 +47,6 @@ The LLLiteLoader class is designed to efficiently load and process models, enabl
 - Infra type: CPU
 
 # Source code
-```
-class LLLiteLoader:
+[View source repository on GitHub](https://github.com/kohya-ss/ControlNet-LLLite-ComfyUI)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'model': ('MODEL',), 'model_name': (get_file_list(os.path.join(CURRENT_DIR, 'models')),), 'cond_image': ('IMAGE',), 'strength': ('FLOAT', {'default': 1.0, 'min': 0.0, 'max': 10.0, 'step': 0.01}), 'steps': ('INT', {'default': 0, 'min': 0, 'max': 200, 'step': 1}), 'start_percent': ('FLOAT', {'default': 0.0, 'min': 0.0, 'max': 100.0, 'step': 0.1}), 'end_percent': ('FLOAT', {'default': 0.0, 'min': 0.0, 'max': 100.0, 'step': 0.1})}}
-    RETURN_TYPES = ('MODEL',)
-    FUNCTION = 'load_lllite'
-    CATEGORY = 'loaders'
-
-    def load_lllite(self, model, model_name, cond_image, strength, steps, start_percent, end_percent):
-        model_path = os.path.join(CURRENT_DIR, os.path.join(CURRENT_DIR, 'models', model_name))
-        model_lllite = model.clone()
-        patch = load_control_net_lllite_patch(model_path, cond_image, strength, steps, start_percent, end_percent)
-        if patch is not None:
-            model_lllite.set_model_attn1_patch(patch)
-            model_lllite.set_model_attn2_patch(patch)
-        return (model_lllite,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

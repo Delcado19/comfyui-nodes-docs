@@ -47,35 +47,6 @@ This node is designed to process and organize image data and its corresponding t
 - Infra type: CPU
 
 # Source code
-```
-class BindImageListPromptList:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Inspire-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'images': ('IMAGE',), 'zipped_prompts': ('ZIPPED_PROMPT',), 'default_positive': ('STRING', {'multiline': True, 'placeholder': 'default positive'}), 'default_negative': ('STRING', {'multiline': True, 'placeholder': 'default negative'})}}
-    INPUT_IS_LIST = True
-    RETURN_TYPES = ('IMAGE', 'STRING', 'STRING', 'STRING')
-    RETURN_NAMES = ('image', 'positive', 'negative', 'prompt_label')
-    OUTPUT_IS_LIST = (True, True, True)
-    FUNCTION = 'doit'
-    CATEGORY = 'InspirePack/Prompt'
-
-    def doit(self, images, zipped_prompts, default_positive, default_negative):
-        positives = []
-        negatives = []
-        prompt_labels = []
-        if len(images) < len(zipped_prompts):
-            zipped_prompts = zipped_prompts[:len(images)]
-        elif len(images) > len(zipped_prompts):
-            lack = len(images) - len(zipped_prompts)
-            default_prompt = (default_positive[0], default_negative[0], 'default')
-            zipped_prompts = zipped_prompts[:]
-            for i in range(lack):
-                zipped_prompts.append(default_prompt)
-        for prompt in zipped_prompts:
-            (a, b, c) = prompt
-            positives.append(a)
-            negatives.append(b)
-            prompt_labels.append(c)
-        return (images, positives, negatives, prompt_labels)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

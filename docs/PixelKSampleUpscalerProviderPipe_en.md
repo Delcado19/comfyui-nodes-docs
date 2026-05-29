@@ -60,19 +60,6 @@ PixelKSampleUpscalerProviderPipe is a node for increasing image resolution using
 - Infra type: GPU
 
 # Source code
-```
-class PixelKSampleUpscalerProviderPipe(PixelKSampleUpscalerProvider):
-    upscale_methods = ['nearest-exact', 'bilinear', 'lanczos', 'area']
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'scale_method': (s.upscale_methods,), 'seed': ('INT', {'default': 0, 'min': 0, 'max': 18446744073709551615}), 'steps': ('INT', {'default': 20, 'min': 1, 'max': 10000}), 'cfg': ('FLOAT', {'default': 8.0, 'min': 0.0, 'max': 100.0}), 'sampler_name': (comfy.samplers.KSampler.SAMPLERS,), 'scheduler': (comfy.samplers.KSampler.SCHEDULERS,), 'denoise': ('FLOAT', {'default': 1.0, 'min': 0.0, 'max': 1.0, 'step': 0.01}), 'use_tiled_vae': ('BOOLEAN', {'default': False, 'label_on': 'enabled', 'label_off': 'disabled'}), 'basic_pipe': ('BASIC_PIPE',), 'tile_size': ('INT', {'default': 512, 'min': 320, 'max': 4096, 'step': 64})}, 'optional': {'upscale_model_opt': ('UPSCALE_MODEL',), 'pk_hook_opt': ('PK_HOOK',)}}
-    RETURN_TYPES = ('UPSCALER',)
-    FUNCTION = 'doit_pipe'
-    CATEGORY = 'ImpactPack/Upscale'
-
-    def doit_pipe(self, scale_method, seed, steps, cfg, sampler_name, scheduler, denoise, use_tiled_vae, basic_pipe, upscale_model_opt=None, pk_hook_opt=None, tile_size=512):
-        (model, _, vae, positive, negative) = basic_pipe
-        upscaler = core.PixelKSampleUpscaler(scale_method, model, vae, seed, steps, cfg, sampler_name, scheduler, positive, negative, denoise, use_tiled_vae, upscale_model_opt, pk_hook_opt, tile_size=tile_size)
-        return (upscaler,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

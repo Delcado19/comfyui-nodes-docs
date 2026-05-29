@@ -31,22 +31,6 @@ SeargeStylePreprocessor is designed to process and manipulate style-related inpu
 - Infra type: CPU
 
 # Source code
-```
-class SeargeStylePreprocessor:
+[View source repository on GitHub](https://github.com/jobunk/SeargeSDXL)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'inputs': ('PARAMETER_INPUTS',), 'active_style_name': ('STRING', {'multiline': False, 'default': ''}), 'style_definitions': ('STRING', {'multiline': True, 'default': '[unfinished work in progress]'})}}
-    RETURN_TYPES = ('PARAMETER_INPUTS',)
-    RETURN_NAMES = ('inputs',)
-    FUNCTION = 'process'
-    CATEGORY = 'Searge/_deprecated_/UI'
-
-    def process(self, inputs, active_style_name, style_definitions):
-        if inputs is None:
-            inputs = {}
-        style_template = inputs['style_template']
-        if style_template is None or style_template != SeargeParameterProcessor.STYLE_TEMPLATE[1]:
-            return (inputs,)
-        return (inputs,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

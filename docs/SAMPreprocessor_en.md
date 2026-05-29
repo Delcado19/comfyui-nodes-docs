@@ -30,25 +30,7 @@ The SAMPreprocessor node is designed to segment images using the SAM(Segment Any
 - Infra type: `GPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class SAM_Preprocessor:
-    @classmethod
-    def INPUT_TYPES(s):
-        return create_node_input_types()
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "execute"
-
-    CATEGORY = "ControlNet Preprocessors/others"
-
-    def execute(self, image, resolution=512, **kwargs):
-        from controlnet_aux.sam import SamDetector
-
-        mobile_sam = SamDetector.from_pretrained().to(model_management.get_torch_device())
-        out = common_annotator_call(mobile_sam, image, resolution=resolution)
-        del mobile_sam
-        return (out, )
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

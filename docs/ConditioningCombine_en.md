@@ -27,16 +27,6 @@ The ConditioningCombine node is designed to merge two condition inputs into a si
 - Infra type: CPU
 
 # Source code
-```
-class ConditioningCombine:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'conditioning_1': ('CONDITIONING',), 'conditioning_2': ('CONDITIONING',)}}
-    RETURN_TYPES = ('CONDITIONING',)
-    FUNCTION = 'combine'
-    CATEGORY = 'conditioning'
-
-    def combine(self, conditioning_1, conditioning_2):
-        return (conditioning_1 + conditioning_2,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

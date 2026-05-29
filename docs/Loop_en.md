@@ -23,16 +23,6 @@ The Loop node class encapsulates the iterative processing procedure, enabling th
 - Infra type: CPU
 
 # Source code
-```
-class Loop:
+[View source repository on GitHub](https://github.com/chaojie/ComfyUI-DragNUWA)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {}}
-    RETURN_TYPES = ('LOOP',)
-    FUNCTION = 'run'
-    CATEGORY = 'DragNUWA'
-
-    def run(self):
-        return (self,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

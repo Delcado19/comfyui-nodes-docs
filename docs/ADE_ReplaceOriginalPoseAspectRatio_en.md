@@ -41,21 +41,6 @@ This node is designed to adjust the aspect ratio of the original poses within th
 - Common nodes: unknown
 
 ## Source code
-```python
-class CameraCtrlSetOriginalAspectRatio:
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {
-            "required": {
-                "poses":("CAMERACTRL_POSES",),
-                "orig_pose_width": ("INT", {"default": 1280, "min": 1, "max": BIGMAX}),
-                "orig_pose_height": ("INT", {"default": 720, "min": 1, "max": BIGMAX}),
-            }
-        }
-    
-    RETURN_TYPES = ("CAMERACTRL_POSES",)
-    FUNCTION = "set_aspect_ratio"
-    CATEGORY = "Animate Diff 🎭🅐🅓/② Gen2 nodes ②/CameraCtrl/poses"
+[View source repository on GitHub](https://github.com/Kosinkadink/ComfyUI-AnimateDiff-Evolved)
 
-    def set_aspect_ratio(self, poses: list[list[float]], orig_pose_width: int, orig_pose_height: int):
-        return (set_original_pose_dims(poses, pose_width=orig_pose_width, pose_height=orig_pose_height),)
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

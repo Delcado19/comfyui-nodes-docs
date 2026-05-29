@@ -56,29 +56,6 @@ This node acts as a multiplexer for various input parameters, simplifying the pr
 - Infra type: CPU
 
 # Source code
-```
-class SeargeInput3:
+[View source repository on GitHub](https://github.com/jobunk/SeargeSDXL)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'base_ratio': ('FLOAT', {'default': 0.8, 'min': 0.0, 'max': 1.0, 'step': 0.01}), 'refiner_strength': ('FLOAT', {'default': 1.0, 'min': 0.1, 'max': 1.0, 'step': 0.05}), 'refiner_intensity': (SeargeParameterProcessor.REFINER_INTENSITY, {'default': SeargeParameterProcessor.REFINER_INTENSITY[1]}), 'precondition_steps': ('INT', {'default': 0, 'min': 0, 'max': 10}), 'batch_size': ('INT', {'default': 1, 'min': 1, 'max': 4}), 'upscale_resolution_factor': ('FLOAT', {'default': 2.0, 'min': 0.25, 'max': 4.0, 'step': 0.25}), 'save_upscaled_image': (SeargeParameterProcessor.STATES, {'default': SeargeParameterProcessor.STATES[1]})}, 'optional': {'inputs': ('PARAMETER_INPUTS',), 'denoise': ('FLOAT', {'default': 1.0, 'min': 0.0, 'max': 1.0, 'step': 0.01})}}
-    RETURN_TYPES = ('PARAMETER_INPUTS',)
-    RETURN_NAMES = ('inputs',)
-    FUNCTION = 'mux'
-    CATEGORY = 'Searge/_deprecated_/UI/Inputs'
-
-    def mux(self, base_ratio, refiner_strength, refiner_intensity, precondition_steps, batch_size, upscale_resolution_factor, save_upscaled_image, inputs=None, denoise=None):
-        if inputs is None:
-            parameters = {}
-        else:
-            parameters = inputs
-        parameters['denoise'] = denoise
-        parameters['base_ratio'] = base_ratio
-        parameters['refiner_strength'] = refiner_strength
-        parameters['refiner_intensity'] = refiner_intensity
-        parameters['precondition_steps'] = precondition_steps
-        parameters['batch_size'] = batch_size
-        parameters['upscale_resolution_factor'] = upscale_resolution_factor
-        parameters['save_upscaled_image'] = save_upscaled_image
-        return (parameters,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

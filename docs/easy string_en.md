@@ -23,17 +23,6 @@ This node facilitates processing and manipulation of string data, enabling users
 - Infra type: CPU
 
 # Source code
-```
-class String:
+[View source repository on GitHub](https://github.com/yolain/ComfyUI-Easy-Use)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'value': ('STRING', {'default': ''})}}
-    RETURN_TYPES = ('STRING',)
-    RETURN_NAMES = ('string',)
-    FUNCTION = 'execute'
-    CATEGORY = 'EasyUse/Logic/Type'
-
-    def execute(self, value):
-        return (value,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

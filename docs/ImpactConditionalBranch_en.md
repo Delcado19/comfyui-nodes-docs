@@ -31,19 +31,6 @@ The 'doit' method of the ImpactConditionalBranch node is intended to execute log
 - Infra type: CPU
 
 # Source code
-```
-class ImpactConditionalBranch:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'cond': ('BOOLEAN',), 'tt_value': (any_typ,), 'ff_value': (any_typ,)}}
-    FUNCTION = 'doit'
-    CATEGORY = 'ImpactPack/Logic'
-    RETURN_TYPES = (any_typ,)
-
-    def doit(self, cond, tt_value, ff_value):
-        if cond:
-            return (tt_value,)
-        else:
-            return (ff_value,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

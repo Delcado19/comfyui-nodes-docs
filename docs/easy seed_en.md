@@ -36,18 +36,6 @@ This node generates random seeds for various workflows, ensuring reproducibility
 - Infra type: CPU
 
 # Source code
-```
-class easySeed:
+[View source repository on GitHub](https://github.com/yolain/ComfyUI-Easy-Use)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'seed': ('INT', {'default': 0, 'min': 0, 'max': MAX_SEED_NUM})}, 'hidden': {'prompt': 'PROMPT', 'extra_pnginfo': 'EXTRA_PNGINFO', 'my_unique_id': 'UNIQUE_ID'}}
-    RETURN_TYPES = ('INT',)
-    RETURN_NAMES = ('seed',)
-    FUNCTION = 'doit'
-    CATEGORY = 'EasyUse/Seed'
-    OUTPUT_NODE = True
-
-    def doit(self, seed=0, prompt=None, extra_pnginfo=None, my_unique_id=None):
-        return (seed,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

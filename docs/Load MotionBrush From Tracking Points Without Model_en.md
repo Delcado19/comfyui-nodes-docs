@@ -35,18 +35,6 @@ This node abstracts the process of generating motion data from tracking points w
 - Infra type: CPU
 
 # Source code
-```
-class LoadMotionBrushFromTrackingPointsWithoutModel:
+[View source repository on GitHub](https://github.com/chaojie/ComfyUI-DragNUWA)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'model_length': ('INT', {'default': 14}), 'width': ('INT', {'default': 36}), 'height': ('INT', {'default': 20}), 'tracking_points': ('STRING', {'multiline': True, 'default': '[[[1,1],[2,2]]]'})}}
-    RETURN_TYPES = ('MotionBrush',)
-    FUNCTION = 'run_inference'
-    CATEGORY = 'DragNUWA'
-
-    def run_inference(self, model_length, width, height, tracking_points):
-        tracking_points = json.loads(tracking_points)
-        motionbrush = load_motionbrush_from_tracking_points_without_model(model_length, width, height, tracking_points)
-        return (motionbrush,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

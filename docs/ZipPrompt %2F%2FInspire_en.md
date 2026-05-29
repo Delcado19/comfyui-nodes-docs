@@ -32,16 +32,6 @@ The ZipPrompt node efficiently merges positive and negative prompts into a singl
 - Infra type: CPU
 
 # Source code
-```
-class ZipPrompt:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Inspire-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'positive': ('STRING', {'forceInput': True, 'multiline': True}), 'negative': ('STRING', {'forceInput': True, 'multiline': True})}, 'optional': {'name_opt': ('STRING', {'forceInput': True, 'multiline': False})}}
-    RETURN_TYPES = ('ZIPPED_PROMPT',)
-    FUNCTION = 'doit'
-    CATEGORY = 'InspirePack/Prompt'
-
-    def doit(self, positive, negative, name_opt=''):
-        return ((positive, negative, name_opt),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

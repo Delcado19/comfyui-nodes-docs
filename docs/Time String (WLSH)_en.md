@@ -23,23 +23,6 @@ WLSH_Time_String node generates a timestamp string based on the provided time fo
 - Infra type: CPU
 
 # Source code
-```
-class WLSH_Time_String:
-    time_format = ['%Y%m%d%H%M%S', '%Y%m%d%H%M', '%Y%m%d', '%Y-%m-%d-%H%M%S', '%Y-%m-%d-%H%M', '%Y-%m-%d']
+[View source repository on GitHub](https://github.com/wallish77/wlsh_nodes)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'style': (s.time_format,)}}
-    RETURN_TYPES = ('STRING',)
-    RETURN_NAMES = ('time_format',)
-    FUNCTION = 'get_time'
-    CATEGORY = 'WLSH Nodes/text'
-
-    def get_time(self, style):
-        now = datetime.now()
-        timestamp = now.strftime(style)
-        return (timestamp,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

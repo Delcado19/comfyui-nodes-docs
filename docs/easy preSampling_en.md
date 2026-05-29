@@ -68,35 +68,6 @@ The samplerSettings class encapsulates the configuration process of the sampling
 - Infra type: CPU
 
 # Source code
-```
-class samplerSettings:
+[View source repository on GitHub](https://github.com/yolain/ComfyUI-Easy-Use)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'pipe': ('PIPE_LINE',), 'steps': ('INT', {'default': 20, 'min': 1, 'max': 10000}), 'cfg': ('FLOAT', {'default': 8.0, 'min': 0.0, 'max': 100.0}), 'sampler_name': (comfy.samplers.KSampler.SAMPLERS,), 'scheduler': (comfy.samplers.KSampler.SCHEDULERS,), 'denoise': ('FLOAT', {'default': 1.0, 'min': 0.0, 'max': 1.0, 'step': 0.01}), 'seed': ('INT', {'default': 0, 'min': 0, 'max': MAX_SEED_NUM})}, 'optional': {'image_to_latent': ('IMAGE',), 'latent': ('LATENT',)}, 'hidden': {'prompt': 'PROMPT', 'extra_pnginfo': 'EXTRA_PNGINFO', 'my_unique_id': 'UNIQUE_ID'}}
-    RETURN_TYPES = ('PIPE_LINE',)
-    RETURN_NAMES = ('pipe',)
-    OUTPUT_NODE = True
-    FUNCTION = 'settings'
-    CATEGORY = 'EasyUse/PreSampling'
-
-    def settings(self, pipe, steps, cfg, sampler_name, scheduler, denoise, seed, image_to_latent=None, latent=None, prompt=None, extra_pnginfo=None, my_unique_id=None):
-        vae = pipe['vae']
-        batch_size = pipe['loader_settings']['batch_size'] if 'batch_size' in pipe['loader_settings'] else 1
-        if image_to_latent is not None:
-            samples = {'samples': vae.encode(image_to_latent[:, :, :, :3])}
-            samples = RepeatLatentBatch().repeat(samples, batch_size)[0]
-            images = image_to_latent
-        elif latent is not None:
-            samples = latent
-            images = pipe['images']
-        else:
-            samples = pipe['samples']
-            images = pipe['images']
-        new_pipe = {'model': pipe['model'], 'positive': pipe['positive'], 'negative': pipe['negative'], 'vae': pipe['vae'], 'clip': pipe['clip'], 'samples': samples, 'images': images, 'seed': seed, 'loader_settings': {**pipe['loader_settings'], 'steps': steps, 'cfg': cfg, 'sampler_name': sampler_name, 'scheduler': scheduler, 'denoise': denoise, 'add_noise': 'enabled'}}
-        del pipe
-        return {'ui': {'value': [seed]}, 'result': (new_pipe,)}
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

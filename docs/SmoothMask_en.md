@@ -28,22 +28,6 @@ SmoothMask is a node that processes image masks to reduce noise and detail, prov
 - Infra type: CPU
 
 # Source code
-```
-class SmoothMask:
+[View source repository on GitHub](https://github.com/shadowcz007/comfyui-mixlab-nodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'mask': ('MASK',), 'smoothness': ('INT', {'default': 1, 'min': 0, 'max': 150, 'step': 1, 'display': 'slider'})}}
-    RETURN_TYPES = ('MASK',)
-    FUNCTION = 'run'
-    CATEGORY = '♾️Mixlab/Mask'
-    INPUT_IS_LIST = False
-    OUTPUT_IS_LIST = (False,)
-
-    def run(self, mask, smoothness):
-        print('SmoothMask', mask.shape)
-        mask = tensor2pil(mask)
-        feathered_image = mask.filter(ImageFilter.GaussianBlur(smoothness))
-        mask = pil2tensor(feathered_image)
-        return (mask,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

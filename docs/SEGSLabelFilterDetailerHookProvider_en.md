@@ -27,17 +27,6 @@ SEGSLabelFilterDetailerHookProvider node is designed to filter segmentation labe
 - Infra type: CPU
 
 # Source code
-```
-class SEGSLabelFilterDetailerHookProvider:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'segs': ('SEGS',), 'preset': (['all'] + defs.detection_labels,), 'labels': ('STRING', {'multiline': True, 'placeholder': 'List the types of segments to be allowed, separated by commas'})}}
-    RETURN_TYPES = ('DETAILER_HOOK',)
-    FUNCTION = 'doit'
-    CATEGORY = 'ImpactPack/Util'
-
-    def doit(self, preset, labels):
-        hook = hooks.SEGSLabelFilterDetailerHook(labels)
-        return (hook,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

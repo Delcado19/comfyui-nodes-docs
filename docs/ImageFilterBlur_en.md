@@ -33,34 +33,7 @@ The ImageFilterBlur node applies a simple blur effect to an image using specifie
 - Infra type: `GPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class ImageFilterBlur:
-    def __init__(self):
-        pass
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {
-            "required": {
-                "images": ("IMAGE",),
-                "size_x": ("INT", {
-                    "default": 10,
-                    "min": 1,
-                }),
-                "size_y": ("INT", {
-                    "default": 10,
-                    "min": 1,
-                }),
-            },
-        }
-
-    RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "node"
-    CATEGORY = "image/filter"
-
-    def node(self, images, size_x, size_y):
-        return (cv2_layer(images, lambda x: cv2.blur(x, (size_x, size_y))),)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

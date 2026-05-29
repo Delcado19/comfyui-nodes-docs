@@ -32,18 +32,6 @@ The CR_TextConcatenate node is designed to merge two separate text strings into 
 - Infra type: CPU
 
 # Source code
-```
-class CR_TextConcatenate:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {}, 'optional': {'text1': ('STRING', {'multiline': False, 'default': '', 'forceInput': True}), 'text2': ('STRING', {'multiline': False, 'default': '', 'forceInput': True}), 'separator': ('STRING', {'multiline': False, 'default': ''})}}
-    RETURN_TYPES = (any_type, 'STRING')
-    RETURN_NAMES = ('STRING', 'show_help')
-    FUNCTION = 'concat_text'
-    CATEGORY = icons.get('Comfyroll/Utils/Text')
-
-    def concat_text(self, text1='', text2='', separator=''):
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/List-Nodes#cr-save-text-to-file'
-        return (text1 + separator + text2,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

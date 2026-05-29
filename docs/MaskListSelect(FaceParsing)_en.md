@@ -27,19 +27,6 @@ MaskListSelect node is designed to select and manipulate specific elements from 
 - Infra type: CPU
 
 # Source code
-```
-class MaskListSelect:
+[View source repository on GitHub](https://github.com/Ryuukeisyou/comfyui_face_parsing)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'mask': ('MASK', {}), 'index': ('INT', {'default': 0, 'min': 0, 'step': 1})}}
-    RETURN_TYPES = ('MASK',)
-    FUNCTION = 'main'
-    CATEGORY = 'face_parsing'
-
-    def main(self, mask: Tensor, index: int):
-        return (mask[index].unsqueeze(0),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -27,19 +27,6 @@ The Disguise Increment Node performs a simple yet crucial operation in the data 
 - Infra type: CPU
 
 # Source code
-```
-class MaqueradeIncrementerNode:
+[View source repository on GitHub](https://github.com/BadCafeCode/masquerade-nodes-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'seed': ('INT', {'default': 0, 'min': -1, 'max': 18446744073709551615, 'step': 1}), 'max_value': ('INT', {'default': 1, 'min': 1, 'max': 18446744073709551615, 'step': 1})}}
-    RETURN_TYPES = ('INT',)
-    FUNCTION = 'increment'
-    CATEGORY = 'Masquerade Nodes'
-
-    def increment(self, seed, max_value):
-        return (seed % max_value,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

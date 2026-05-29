@@ -59,19 +59,6 @@ CR_ModulePipeLoader is a node designed to unify the loading and integration of v
 - Infra type: CPU
 
 # Source code
-```
-class CR_ModulePipeLoader:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {}, 'optional': {'model': ('MODEL',), 'pos': ('CONDITIONING',), 'neg': ('CONDITIONING',), 'latent': ('LATENT',), 'vae': ('VAE',), 'clip': ('CLIP',), 'controlnet': ('CONTROL_NET',), 'image': ('IMAGE',), 'seed': ('INT', {'default': 0, 'min': 0, 'max': 18446744073709551615})}}
-    RETURN_TYPES = ('PIPE_LINE', 'STRING')
-    RETURN_NAMES = ('pipe', 'show_help')
-    FUNCTION = 'pipe_input'
-    CATEGORY = icons.get('Comfyroll/Pipe/Module')
-
-    def pipe_input(self, model=0, pos=0, neg=0, latent=0, vae=0, clip=0, controlnet=0, image=0, seed=0):
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Pipe-Nodes#cr-module-pipe-loader'
-        pipe_line = (model, pos, neg, latent, vae, clip, controlnet, image, seed)
-        return (pipe_line, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -48,20 +48,6 @@ The output `NAME_STRING` returns the basic name of the checkpoint without file e
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Checkpoint_Loader:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'config_name': (comfy_paths.get_filename_list('configs'),), 'ckpt_name': (comfy_paths.get_filename_list('checkpoints'),)}}
-    RETURN_TYPES = ('MODEL', 'CLIP', 'VAE', TEXT_TYPE)
-    RETURN_NAMES = ('MODEL', 'CLIP', 'VAE', 'NAME_STRING')
-    FUNCTION = 'load_checkpoint'
-    CATEGORY = 'WAS Suite/Loaders/Advanced'
-
-    def load_checkpoint(self, config_name, ckpt_name, output_vae=True, output_clip=True):
-        config_path = comfy_paths.get_full_path('configs', config_name)
-        ckpt_path = comfy_paths.get_full_path('checkpoints', ckpt_name)
-        out = comfy.sd.load_checkpoint(config_path, ckpt_path, output_vae=True, output_clip=True, embedding_directory=comfy_paths.get_folder_paths('embeddings'))
-        return (out[0], out[1], out[2], os.path.splitext(os.path.basename(ckpt_name))[0])
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

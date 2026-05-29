@@ -31,22 +31,6 @@ The GaussianBlurMaskInSEGS node applies Gaussian blur to the mask portion of eac
 - Infra type: GPU
 
 # Source code
-```
-class GaussianBlurMaskInSEGS:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'segs': ('SEGS',), 'kernel_size': ('INT', {'default': 10, 'min': 0, 'max': 100, 'step': 1}), 'sigma': ('FLOAT', {'default': 10.0, 'min': 0.1, 'max': 100.0, 'step': 0.1})}}
-    RETURN_TYPES = ('SEGS',)
-    FUNCTION = 'doit'
-    CATEGORY = 'ImpactPack/Util'
-
-    def doit(self, segs, kernel_size, sigma):
-        new_segs = []
-        for seg in segs[1]:
-            mask = utils.tensor_gaussian_blur_mask(seg.cropped_mask, kernel_size, sigma)
-            mask = torch.squeeze(mask, dim=-1).squeeze(0).numpy()
-            seg = SEG(seg.cropped_image, mask, seg.confidence, seg.crop_region, seg.bbox, seg.label, seg.control_net_wrapper)
-            new_segs.append(seg)
-        return ((segs[0], new_segs),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -36,26 +36,6 @@ The WAS_Text_Parse_NSP node is designed to process and transform text according 
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Text_Parse_NSP:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'mode': (['Noodle Soup Prompts', 'Wildcards'],), 'noodle_key': ('STRING', {'default': '__', 'multiline': False}), 'seed': ('INT', {'default': 0, 'min': 0, 'max': 18446744073709551615}), 'text': (TEXT_TYPE, {'forceInput': True if TEXT_TYPE == 'STRING' else False})}}
-    OUTPUT_NODE = True
-    RETURN_TYPES = (TEXT_TYPE,)
-    FUNCTION = 'text_parse_nsp'
-    CATEGORY = 'WAS Suite/Text/Parse'
-
-    def text_parse_nsp(self, text, mode='Noodle Soup Prompts', noodle_key='__', seed=0):
-        if mode == 'Noodle Soup Prompts':
-            new_text = nsp_parse(text, seed, noodle_key)
-            cstr(f'Text Parse NSP:\n{new_text}').msg.print()
-        else:
-            new_text = replace_wildcards(text, None if seed == 0 else seed, noodle_key)
-            cstr(f'CLIPTextEncode Wildcards:\n{new_text}').msg.print()
-        return (new_text,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

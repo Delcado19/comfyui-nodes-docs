@@ -33,50 +33,7 @@ The Superprompt node uses a T5 model fine-tuned on the SuperPrompt dataset to en
 - Infra type: `GPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class Superprompt:
-    @classmethod
-    def INPUT_TYPES(s):
-        return {
-            "required": {
-                "instruction_prompt": ("STRING", {"default": 'Expand the following prompt to add more detail', "multiline": True}),
-                "prompt": ("STRING", {"default": '', "multiline": True, "forceInput": True}),
-                "max_new_tokens": ("INT", {"default": 128, "min": 1, "max": 4096, "step": 1}),
-            } 
-        }
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    RETURN_TYPES = ("STRING",)
-    FUNCTION = "process"
-    CATEGORY = "KJNodes/text"
-    DESCRIPTION = """
-# SuperPrompt
-A T5 model fine-tuned on the SuperPrompt dataset for  
-upsampling text prompts to more detailed descriptions.  
-Meant to be used as a pre-generation step for text-to-image  
-models that benefit from more detailed prompts.  
-https://huggingface.co/roborovski/superprompt-v1
-"""
-
-    def process(self, instruction_prompt, prompt, max_new_tokens):
-        device = model_management.get_torch_device()
-        from transformers import T5Tokenizer, T5ForConditionalGeneration
-
-        checkpoint_path = os.path.join(script_directory, "models","superprompt-v1")
-        tokenizer = T5Tokenizer.from_pretrained("google/flan-t5-small", legacy=False)
-
-        model = T5ForConditionalGeneration.from_pretrained(checkpoint_path, device_map=device)
-        model.to(device)
-        input_text = instruction_prompt + ": " + prompt
-        print(input_text)
-        input_ids = tokenizer(input_text, return_tensors="pt").input_ids.to(device)
-        outputs = model.generate(input_ids,  max_new_tokens=max_new_tokens)
-        out = (tokenizer.decode(outputs[0]))
-        out = out.replace('<pad>', '')
-        out = out.replace('</s>', '')
-        print(out)
-        
-        return (out, )
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

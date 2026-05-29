@@ -35,26 +35,6 @@ This node is specifically designed for advanced conditional data operations on m
 - Common nodes: unknown
 
 ## Source code
-```python
-class ConditioningSetUnmaskedAndCombineHooked:
-    @classmethod
-    def INPUT_TYPES(s):
-        return {
-            "required": {
-                "cond": ("CONDITIONING",),
-                "cond_DEFAULT": ("CONDITIONING",),
-            },
-            "optional": {
-                "opt_lora_hook": ("LORA_HOOK",),
-            }
-        }
-    
-    RETURN_TYPES = ("CONDITIONING",)
-    CATEGORY = "Animate Diff 🎭🅐🅓/conditioning/single cond ops"
-    FUNCTION = "append_and_combine"
+[View source repository on GitHub](https://github.com/Kosinkadink/ComfyUI-AnimateDiff-Evolved)
 
-    def append_and_combine(self, cond, cond_DEFAULT,
-                           opt_lora_hook: LoraHookGroup=None):
-        (final_conditioning,) = set_unmasked_and_combine_conds(conds=[cond], new_conds=[cond_DEFAULT],
-                                                                        opt_lora_hook=opt_lora_hook)
-        return (final_conditioning,)
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

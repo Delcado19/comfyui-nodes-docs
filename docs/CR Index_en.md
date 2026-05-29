@@ -32,20 +32,6 @@ The CR_Index node manages and retrieves a specific index from a given dataset. I
 - Infra type: CPU
 
 # Source code
-```
-class CR_Index:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'index': ('INT', {'default': 1, 'min': 0, 'max': 10000}), 'print_to_console': (['Yes', 'No'],)}}
-    RETURN_TYPES = ('INT', 'STRING')
-    RETURN_NAMES = ('INT', 'show_help')
-    FUNCTION = 'index'
-    CATEGORY = icons.get('Comfyroll/Utils/Index')
-
-    def index(self, index, print_to_console):
-        if print_to_console == 'Yes':
-            print(f'[Info] CR Index:{index}')
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Index-Nodes#cr-index'
-        return (index, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

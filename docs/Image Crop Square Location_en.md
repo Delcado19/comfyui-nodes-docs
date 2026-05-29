@@ -40,39 +40,6 @@ The WAS_Image_Crop_Square_Location node processes images by cropping them into a
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Image_Crop_Square_Location:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'image': ('IMAGE',), 'x': ('INT', {'default': 0, 'max': 24576, 'min': 0, 'step': 1}), 'y': ('INT', {'default': 0, 'max': 24576, 'min': 0, 'step': 1}), 'size': ('INT', {'default': 256, 'max': 4096, 'min': 5, 'step': 1})}}
-    RETURN_TYPES = ('IMAGE', 'CROP_DATA')
-    FUNCTION = 'image_crop_location'
-    CATEGORY = 'WAS Suite/Image/Process'
-
-    def image_crop_location(self, image, x=256, y=256, size=512):
-        image = tensor2pil(image)
-        (img_width, img_height) = image.size
-        exp_size = size // 2
-        left = max(x - exp_size, 0)
-        top = max(y - exp_size, 0)
-        right = min(x + exp_size, img_width)
-        bottom = min(y + exp_size, img_height)
-        if right - left < size:
-            if right < img_width:
-                right = min(right + size - (right - left), img_width)
-            elif left > 0:
-                left = max(left - (size - (right - left)), 0)
-        if bottom - top < size:
-            if bottom < img_height:
-                bottom = min(bottom + size - (bottom - top), img_height)
-            elif top > 0:
-                top = max(top - (size - (bottom - top)), 0)
-        crop = image.crop((left, top, right, bottom))
-        crop_data = (crop.size, (left, top, right, bottom))
-        crop = crop.resize((crop.size[0] // 8 * 8, crop.size[1] // 8 * 8))
-        return (pil2tensor(crop), crop_data)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

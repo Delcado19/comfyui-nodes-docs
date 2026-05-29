@@ -32,22 +32,6 @@ The method 'save_image_if_true' is designed to save an image to a file based on 
 - Infra type: CPU
 
 # Source code
-```
-class SaveImageIfTrue:
+[View source repository on GitHub](https://github.com/bash-j/mikey_nodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'image': ('IMAGE',), 'save_condition': ('INT', {'default': 0, 'min': 0, 'max': 1}), 'filename_prefix': ('STRING', {'default': ''})}, 'hidden': {'prompt': 'PROMPT', 'extra_pnginfo': 'EXTRA_PNGINFO'}}
-    RETURN_TYPES = ()
-    FUNCTION = 'save_image_if_true'
-    OUTPUT_NODE = True
-    CATEGORY = 'Mikey/Image'
-
-    def save_image_if_true(self, image, save_condition, filename_prefix, prompt=None, extra_pnginfo=None):
-        if save_condition == 1:
-            save_images = SaveImagesMikey()
-            result = save_images.save_images(image, filename_prefix, prompt, extra_pnginfo, positive_prompt='', negative_prompt='')
-            return result
-        else:
-            return {'save_image_if_true': {'filename': '', 'subfolder': ''}}
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

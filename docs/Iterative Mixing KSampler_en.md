@@ -67,26 +67,6 @@ This node refines a batch of latent representations by progressively introducing
 - Infra type: CPU
 
 # Source code
-```
-class IterativeMixingKSampler:
-    """
-    Take a batch of latents, z_prime, and progressively de-noise them
-    step by step from z_prime[0] to z_prime[steps], mixing in a weighted
-    fraction of z_prime[i] at each step so that de-noising is guided by
-    the z_prime latents. This batch sampler assumes that the number of steps
-    is just the length of z_prime, so there is no steps parameter. The parameter
-    latent_image_batch should come from the Batch Unsampler node.
-    """
+[View source repository on GitHub](https://github.com/deroberon/demofusion-comfyui)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'model': ('MODEL',), 'seed': ('INT', {'default': 0, 'min': 0, 'max': 18446744073709551615}), 'cfg': ('FLOAT', {'default': 8.0, 'min': 0.0, 'max': 100.0, 'step': 0.1, 'round': 0.01}), 'sampler_name': (comfy.samplers.KSampler.SAMPLERS,), 'scheduler': (comfy.samplers.KSampler.SCHEDULERS,), 'step_increment': ('INT', {'default': 1, 'min': 1, 'max': 10000}), 'positive': ('CONDITIONING',), 'negative': ('CONDITIONING',), 'latent_image_batch': ('LATENT',), 'denoise': ('FLOAT', {'default': 1.0, 'min': 0.0, 'max': 1.0, 'step': 0.01}), 'alpha_1': ('FLOAT', {'default': 3.0, 'min': 0.1, 'max': 10.0}), 'reverse_batch': ('BOOLEAN', {'default': True})}}
-    RETURN_TYPES = ('LATENT',)
-    FUNCTION = 'sample'
-    CATEGORY = 'test'
-
-    def sample(self, model, seed, cfg, sampler_name, scheduler, step_increment, positive, negative, latent_image_batch, denoise=1.0, alpha_1=3.0, reverse_batch=True):
-        if reverse_batch:
-            latent_image_batch['samples'] = torch.flip(latent_image_batch['samples'], [0])
-        return batched_ksampler(model, seed, cfg, sampler_name, scheduler, step_increment, positive, negative, latent_image_batch, denoise=denoise, alpha_1=alpha_1)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

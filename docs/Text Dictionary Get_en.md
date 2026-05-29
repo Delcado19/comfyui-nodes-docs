@@ -32,19 +32,6 @@ The WAS_Dictionary_Get node is designed to retrieve a specific entry from a dict
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Dictionary_Get:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'dictionary': ('DICT',), 'key': ('STRING', {'default': '', 'multiline': False})}, 'optional': {'default_value': ('STRING', {'default': '', 'multiline': False})}}
-    RETURN_TYPES = (TEXT_TYPE,)
-    FUNCTION = 'dictionary_get'
-    CATEGORY = 'WAS Suite/Text'
-
-    def dictionary_get(self, dictionary, key, default_value=''):
-        return (str(dictionary.get(key, default_value)),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

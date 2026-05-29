@@ -36,18 +36,6 @@ This node decodes and reconstructs images from latent representations using a Va
 - Infra type: GPU
 
 # Source code
-```
-class VAEDecodeTiled_TiledDiffusion(TiledVAE):
+[View source repository on GitHub](https://github.com/shiimizu/ComfyUI-TiledDiffusion)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        tile_size = get_rcmd_dec_tsize() * opt_f
-        return {'required': {'samples': ('LATENT',), 'vae': ('VAE',), 'tile_size': ('INT', {'default': tile_size, 'min': 48 * opt_f, 'max': 4096, 'step': 16}), 'fast': ('BOOLEAN', {'default': True})}}
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'process'
-    CATEGORY = '_for_testing'
-
-    def __init__(self):
-        self.is_decoder = True
-        super().__init__()
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

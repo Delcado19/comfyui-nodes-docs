@@ -28,21 +28,6 @@ This node allows fine-tuning of the frequency of a sine curve, providing control
 - Infra type: CPU
 
 # Source code
-```
-class KfSinusoidalAdjustFrequency:
-    CATEGORY = CATEGORY
-    FUNCTION = 'main'
-    RETURN_TYPES = ('KEYFRAMED_CURVE', 'SINUSOIDAL_CURVE')
+[View source repository on GitHub](https://github.com/dmarx/ComfyUI-Keyframed)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'curve': ('SINUSOIDAL_CURVE', {'forceInput': True}), 'adjustment': ('FLOAT', {'default': 0, 'step': 0.01})}}
-
-    def main(self, curve, adjustment):
-        (wavelength, phase, amplitude) = (curve.wavelength, curve.phase, curve.amplitude)
-        frequency = 1 / wavelength
-        frequency += adjustment
-        wavelength = 1 / frequency
-        curve = kf.SinusoidalCurve(wavelength=wavelength, phase=phase, amplitude=amplitude)
-        return (curve, curve)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

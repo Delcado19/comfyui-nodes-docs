@@ -23,17 +23,6 @@ This node class aims to retrieve and manage system state, serving as an interfac
 - Infra type: CPU
 
 # Source code
-```
-class SeargeEnablerInputs:
+[View source repository on GitHub](https://github.com/jobunk/SeargeSDXL)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'state': (SeargeParameterProcessor.STATES, {'default': SeargeParameterProcessor.STATES[1]})}}
-    RETURN_TYPES = ('ENABLE_STATE',)
-    RETURN_NAMES = ('state',)
-    FUNCTION = 'get_value'
-    CATEGORY = 'Searge/_deprecated_/Inputs'
-
-    def get_value(self, state):
-        return (state,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

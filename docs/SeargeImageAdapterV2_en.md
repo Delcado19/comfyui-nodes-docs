@@ -39,24 +39,6 @@ The SeargeImageAdapterV2 class is designed to facilitate the conversion and adap
 - Infra type: CPU
 
 # Source code
-```
-class SeargeImageAdapterV2:
+[View source repository on GitHub](https://github.com/jobunk/SeargeSDXL)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {}, 'optional': {'data': ('SRG_DATA_STREAM',), 'source_image': ('IMAGE',), 'image_mask': ('MASK',), 'uploaded_mask': ('MASK',)}}
-    RETURN_TYPES = ('SRG_DATA_STREAM', 'SRG_DATA_STREAM')
-    RETURN_NAMES = ('data', UI.S_IMAGE_INPUTS)
-    FUNCTION = 'get_value'
-    CATEGORY = UI.CATEGORY_UI_PROMPTING
-
-    @staticmethod
-    def create_dict(source_image, image_mask, uploaded_mask):
-        return {UI.F_SOURCE_IMAGE_CHANGED: True, UI.F_SOURCE_IMAGE: source_image, UI.F_IMAGE_MASK_CHANGED: True, UI.F_IMAGE_MASK: image_mask, UI.F_UPLOADED_MASK_CHANGED: True, UI.F_UPLOADED_MASK: uploaded_mask}
-
-    def get_value(self, source_image=None, image_mask=None, uploaded_mask=None, data=None):
-        if data is None:
-            data = {}
-        data[UI.S_IMAGE_INPUTS] = self.create_dict(source_image, image_mask, uploaded_mask)
-        return (data, data[UI.S_IMAGE_INPUTS])
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

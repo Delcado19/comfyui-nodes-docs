@@ -55,57 +55,6 @@ The CreateFadeMask node is designed to generate a sequence of fade masks that sm
 - Infra type: CPU
 
 # Source code
-```
-class CreateFadeMask:
-    RETURN_TYPES = ('MASK',)
-    FUNCTION = 'createfademask'
-    CATEGORY = 'KJNodes/deprecated'
+[View source repository on GitHub](https://github.com/kijai/ComfyUI-KJNodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'invert': ('BOOLEAN', {'default': False}), 'frames': ('INT', {'default': 2, 'min': 2, 'max': 255, 'step': 1}), 'width': ('INT', {'default': 256, 'min': 16, 'max': 4096, 'step': 1}), 'height': ('INT', {'default': 256, 'min': 16, 'max': 4096, 'step': 1}), 'interpolation': (['linear', 'ease_in', 'ease_out', 'ease_in_out'],), 'start_level': ('FLOAT', {'default': 1.0, 'min': 0.0, 'max': 1.0, 'step': 0.01}), 'midpoint_level': ('FLOAT', {'default': 0.5, 'min': 0.0, 'max': 1.0, 'step': 0.01}), 'end_level': ('FLOAT', {'default': 0.0, 'min': 0.0, 'max': 1.0, 'step': 0.01}), 'midpoint_frame': ('INT', {'default': 0, 'min': 0, 'max': 4096, 'step': 1})}}
-
-    def createfademask(self, frames, width, height, invert, interpolation, start_level, midpoint_level, end_level, midpoint_frame):
-
-        def ease_in(t):
-            return t * t
-
-        def ease_out(t):
-            return 1 - (1 - t) * (1 - t)
-
-        def ease_in_out(t):
-            return 3 * t * t - 2 * t * t * t
-        batch_size = frames
-        out = []
-        image_batch = np.zeros((batch_size, height, width), dtype=np.float32)
-        if midpoint_frame == 0:
-            midpoint_frame = batch_size // 2
-        for i in range(batch_size):
-            if i <= midpoint_frame:
-                t = i / midpoint_frame
-                if interpolation == 'ease_in':
-                    t = ease_in(t)
-                elif interpolation == 'ease_out':
-                    t = ease_out(t)
-                elif interpolation == 'ease_in_out':
-                    t = ease_in_out(t)
-                color = start_level - t * (start_level - midpoint_level)
-            else:
-                t = (i - midpoint_frame) / (batch_size - midpoint_frame)
-                if interpolation == 'ease_in':
-                    t = ease_in(t)
-                elif interpolation == 'ease_out':
-                    t = ease_out(t)
-                elif interpolation == 'ease_in_out':
-                    t = ease_in_out(t)
-                color = midpoint_level - t * (midpoint_level - end_level)
-            color = np.clip(color, 0, 255)
-            image = np.full((height, width), color, dtype=np.float32)
-            image_batch[i] = image
-        output = torch.from_numpy(image_batch)
-        mask = output
-        out.append(mask)
-        if invert:
-            return (1.0 - torch.cat(out, dim=0),)
-        return (torch.cat(out, dim=0),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

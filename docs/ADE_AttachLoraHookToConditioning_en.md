@@ -29,25 +29,6 @@ This node aims to attach LoRA hooks to condition data, thereby dynamically modif
 - Common nodes: unknown
 
 ## Source code
-```python
-class SetModelLoraHook:
-    @classmethod
-    def INPUT_TYPES(s):
-        return {
-            "required": {
-                "conditioning": ("CONDITIONING",),
-                "lora_hook": ("LORA_HOOK",),
-            }
-        }
-    
-    RETURN_TYPES = ("CONDITIONING",)
-    CATEGORY = "Animate Diff 🎭🅐🅓/conditioning/single cond ops"
-    FUNCTION = "attach_lora_hook"
+[View source repository on GitHub](https://github.com/Kosinkadink/ComfyUI-AnimateDiff-Evolved)
 
-    def attach_lora_hook(self, conditioning, lora_hook: LoraHookGroup):
-        c = []
-        for t in conditioning:
-            n = [t[0], t[1].copy()]
-            n[1]["lora_hook"] = lora_hook
-            c.append(n)
-        return (c, )
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

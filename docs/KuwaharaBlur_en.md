@@ -31,27 +31,6 @@ The KuwaharaBlur class aims to apply the Kuwahara filter to images, a nonlinear 
 - Infra type: CPU
 
 # Source code
-```
-class KuwaharaBlur:
+[View source repository on GitHub](https://github.com/EllangoK/ComfyUI-post-processing-nodes)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'image': ('IMAGE',), 'blur_radius': ('INT', {'default': 3, 'min': 0, 'max': 31, 'step': 1}), 'method': (['mean', 'gaussian'],)}}
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'apply_kuwahara_filter'
-    CATEGORY = 'postprocessing/Filters'
-
-    def apply_kuwahara_filter(self, image: np.ndarray, blur_radius: int, method: str):
-        if blur_radius == 0:
-            return (image,)
-        out = torch.zeros_like(image)
-        (batch_size, height, width, channels) = image.shape
-        for b in range(batch_size):
-            image = image[b].cpu().numpy() * 255.0
-            image = image.astype(np.uint8)
-            out[b] = torch.from_numpy(kuwahara(image, method=method, radius=blur_radius)) / 255.0
-        return (out,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

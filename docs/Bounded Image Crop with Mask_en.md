@@ -48,36 +48,6 @@ The method `bounded_image_crop_with_mask` aims to intelligently crop an image ba
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Bounded_Image_Crop_With_Mask:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(self):
-        return {'required': {'image': ('IMAGE',), 'mask': ('MASK',), 'padding_left': ('INT', {'default': 64, 'min': 0, 'max': 18446744073709551615}), 'padding_right': ('INT', {'default': 64, 'min': 0, 'max': 18446744073709551615}), 'padding_top': ('INT', {'default': 64, 'min': 0, 'max': 18446744073709551615}), 'padding_bottom': ('INT', {'default': 64, 'min': 0, 'max': 18446744073709551615})}}
-    RETURN_TYPES = ('IMAGE', 'IMAGE_BOUNDS')
-    FUNCTION = 'bounded_image_crop_with_mask'
-    CATEGORY = 'WAS Suite/Image/Bound'
-
-    def bounded_image_crop_with_mask(self, image, mask, padding_left, padding_right, padding_top, padding_bottom):
-        image = image.unsqueeze(0) if image.dim() == 3 else image
-        mask = mask.unsqueeze(0) if mask.dim() == 2 else mask
-        mask_len = 1 if len(image) != len(mask) else len(image)
-        cropped_images = []
-        all_bounds = []
-        for i in range(len(image)):
-            if mask_len == 1 and i == 0 or mask_len > 0:
-                rows = torch.any(mask[i], dim=1)
-                cols = torch.any(mask[i], dim=0)
-                (rmin, rmax) = torch.where(rows)[0][[0, -1]]
-                (cmin, cmax) = torch.where(cols)[0][[0, -1]]
-                rmin = max(rmin - padding_top, 0)
-                rmax = min(rmax + padding_bottom, mask[i].shape[0] - 1)
-                cmin = max(cmin - padding_left, 0)
-                cmax = min(cmax + padding_right, mask[i].shape[1] - 1)
-            all_bounds.append([rmin, rmax, cmin, cmax])
-            cropped_images.append(image[i][rmin:rmax + 1, cmin:cmax + 1, :])
-            return (torch.stack(cropped_images), all_bounds)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

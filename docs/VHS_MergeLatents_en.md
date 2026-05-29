@@ -43,38 +43,6 @@ The MergeLatents node aims to merge two sets of latent representations into a si
 - Infra type: CPU
 
 # Source code
-```
-class MergeLatents:
+[View source repository on GitHub](https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'latents_A': ('LATENT',), 'latents_B': ('LATENT',), 'merge_strategy': (MergeStrategies.list_all,), 'scale_method': (ScaleMethods.list_all,), 'crop': (CropMethods.list_all,)}}
-    CATEGORY = 'Video Helper Suite 🎥🅥🅗🅢/latent'
-    RETURN_TYPES = ('LATENT', 'INT')
-    RETURN_NAMES = ('LATENT', 'count')
-    FUNCTION = 'merge'
-
-    def merge(self, latents_A: dict, latents_B: dict, merge_strategy: str, scale_method: str, crop: str):
-        latents = []
-        latents_A = latents_A.copy()['samples']
-        latents_B = latents_B.copy()['samples']
-        if latents_A.shape[3] != latents_B.shape[3] or latents_A.shape[2] != latents_B.shape[2]:
-            A_size = latents_A.shape[3] * latents_A.shape[2]
-            B_size = latents_B.shape[3] * latents_B.shape[2]
-            use_A_as_template = True
-            if merge_strategy == MergeStrategies.MATCH_A:
-                pass
-            elif merge_strategy == MergeStrategies.MATCH_B:
-                use_A_as_template = False
-            elif merge_strategy in (MergeStrategies.MATCH_SMALLER, MergeStrategies.MATCH_LARGER):
-                if A_size <= B_size:
-                    use_A_as_template = True if merge_strategy == MergeStrategies.MATCH_SMALLER else False
-            if use_A_as_template:
-                latents_B = comfy.utils.common_upscale(latents_B, latents_A.shape[3], latents_A.shape[2], scale_method, crop)
-            else:
-                latents_A = comfy.utils.common_upscale(latents_A, latents_B.shape[3], latents_B.shape[2], scale_method, crop)
-        latents.append(latents_A)
-        latents.append(latents_B)
-        merged = {'samples': torch.cat(latents, dim=0)}
-        return (merged, len(merged['samples']))
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

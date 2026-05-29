@@ -35,25 +35,6 @@ The iterative mixed scheduler node aims to generate a series of noise levels, i.
 - Infra type: CPU
 
 # Source code
-```
-class IterativeMixingScheduler:
+[View source repository on GitHub](https://github.com/ttulttul/ComfyUI-Iterative-Mixer)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'model': ('MODEL',), 'scheduler': (comfy.samplers.SCHEDULER_NAMES,), 'steps': ('INT', {'default': 20, 'min': 1, 'max': 10000}), 'denoise': ('FLOAT', {'default': 1.0, 'min': 0.0, 'max': 1.0, 'step': 0.01})}}
-    RETURN_TYPES = ('SIGMAS',)
-    CATEGORY = 'sampling/custom_sampling/schedulers'
-    FUNCTION = 'get_sigmas'
-
-    @torch.no_grad()
-    def get_sigmas(self, model, scheduler, steps, denoise):
-        sigmas = None
-        cs = comfy.samplers.calculate_sigmas_scheduler
-        if denoise is None or denoise > 0.9999:
-            sigmas = cs(model.model, scheduler, steps).cpu()
-        else:
-            new_steps = int(steps / denoise)
-            sigmas = cs(model.model, scheduler, new_steps).cpu()
-            sigmas = sigmas[-(steps + 1):]
-        return (sigmas,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

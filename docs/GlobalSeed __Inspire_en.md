@@ -34,30 +34,7 @@ This node has no output types.
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class GlobalSeed:
-    @classmethod
-    def INPUT_TYPES(s):
-        return {
-            "required": {
-                "value": ("INT", {"default": 0, "min": 0, "max": 0xffffffffffffffff}),
-                "mode": ("BOOLEAN", {"default": True, "label_on": "control_before_generate", "label_off": "control_after_generate"}),
-                "action": (["fixed", "increment", "decrement", "randomize",
-                            "increment for each node", "decrement for each node", "randomize for each node"], ),
-                "last_seed": ("STRING", {"default": ""}),
-            }
-        }
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    RETURN_TYPES = ()
-    FUNCTION = "doit"
-
-    CATEGORY = "InspirePack/Prompt"
-
-    OUTPUT_NODE = True
-
-    def doit(self, **kwargs):
-        return {}
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

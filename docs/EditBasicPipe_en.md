@@ -44,29 +44,6 @@ The 'doit' method of the EditBasicPipe class aims to modify the components of th
 - Infra type: CPU
 
 # Source code
-```
-class EditBasicPipe:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'basic_pipe': ('BASIC_PIPE',)}, 'optional': {'model': ('MODEL',), 'clip': ('CLIP',), 'vae': ('VAE',), 'positive': ('CONDITIONING',), 'negative': ('CONDITIONING',)}}
-    RETURN_TYPES = ('BASIC_PIPE',)
-    RETURN_NAMES = ('basic_pipe',)
-    FUNCTION = 'doit'
-    CATEGORY = 'ImpactPack/Pipe'
-
-    def doit(self, basic_pipe, model=None, clip=None, vae=None, positive=None, negative=None):
-        (res_model, res_clip, res_vae, res_positive, res_negative) = basic_pipe
-        if model is not None:
-            res_model = model
-        if clip is not None:
-            res_clip = clip
-        if vae is not None:
-            res_vae = vae
-        if positive is not None:
-            res_positive = positive
-        if negative is not None:
-            res_negative = negative
-        pipe = (res_model, res_clip, res_vae, res_positive, res_negative)
-        return (pipe,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -23,10 +23,6 @@ This node generates five sets of intertwined sine curves based on a given freque
 - Infra type: CPU
 
 # Source code
-```
-class KfSinusoidalEntangledZeroOneFromFrequencyx5(KfSinusoidalEntangledZeroOneFromFrequency):
-    RETURN_TYPES = ('KEYFRAMED_CURVE',) * 5
+[View source repository on GitHub](https://github.com/dmarx/ComfyUI-Keyframed)
 
-    def main(self, frequency):
-        return super().main(n=5, frequency=frequency)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

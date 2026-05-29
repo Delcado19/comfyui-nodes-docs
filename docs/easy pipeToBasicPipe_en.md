@@ -27,19 +27,6 @@ The 'pipeToBasicPipe' node is designed to convert complex pipeline configuration
 - Infra type: CPU
 
 # Source code
-```
-class pipeToBasicPipe:
+[View source repository on GitHub](https://github.com/yolain/ComfyUI-Easy-Use)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'pipe': ('PIPE_LINE',)}, 'hidden': {'my_unique_id': 'UNIQUE_ID'}}
-    RETURN_TYPES = ('BASIC_PIPE',)
-    RETURN_NAMES = ('basic_pipe',)
-    FUNCTION = 'doit'
-    CATEGORY = 'EasyUse/Pipe'
-
-    def doit(self, pipe, my_unique_id=None):
-        new_pipe = (pipe.get('model'), pipe.get('clip'), pipe.get('vae'), pipe.get('positive'), pipe.get('negative'))
-        del pipe
-        return (new_pipe,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

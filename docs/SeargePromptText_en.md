@@ -23,17 +23,6 @@ The SeargePromptText node is designed to manage and process text prompts. It is 
 - Infra type: CPU
 
 # Source code
-```
-class SeargePromptText:
+[View source repository on GitHub](https://github.com/jobunk/SeargeSDXL)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'prompt': ('STRING', {'default': '', 'multiline': True})}}
-    RETURN_TYPES = ('STRING',)
-    RETURN_NAMES = ('prompt',)
-    FUNCTION = 'get_value'
-    CATEGORY = 'Searge/_deprecated_/Prompting'
-
-    def get_value(self, prompt):
-        return (prompt,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

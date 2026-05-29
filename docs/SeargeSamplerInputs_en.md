@@ -31,17 +31,6 @@ This node class encapsulates the process of retrieving and configuring samplers 
 - Infra type: CPU
 
 # Source code
-```
-class SeargeSamplerInputs:
+[View source repository on GitHub](https://github.com/jobunk/SeargeSDXL)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'sampler_name': (comfy.samplers.KSampler.SAMPLERS, {'default': 'ddim'}), 'scheduler': (comfy.samplers.KSampler.SCHEDULERS, {'default': 'ddim_uniform'})}}
-    RETURN_TYPES = ('SAMPLER_NAME', 'SCHEDULER_NAME')
-    RETURN_NAMES = ('sampler_name', 'scheduler')
-    FUNCTION = 'get_value'
-    CATEGORY = 'Searge/_deprecated_/Inputs'
-
-    def get_value(self, sampler_name, scheduler):
-        return (sampler_name, scheduler)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

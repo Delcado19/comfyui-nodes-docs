@@ -56,33 +56,6 @@ The SV3D_Conditioning node is designed to process and encode visual and spatial 
 - Infra type: GPU
 
 # Source code
-```
-class SV3D_Conditioning:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'clip_vision': ('CLIP_VISION',), 'init_image': ('IMAGE',), 'vae': ('VAE',), 'width': ('INT', {'default': 576, 'min': 16, 'max': nodes.MAX_RESOLUTION, 'step': 8}), 'height': ('INT', {'default': 576, 'min': 16, 'max': nodes.MAX_RESOLUTION, 'step': 8}), 'video_frames': ('INT', {'default': 21, 'min': 1, 'max': 4096}), 'elevation': ('FLOAT', {'default': 0.0, 'min': -90.0, 'max': 90.0, 'step': 0.1, 'round': False})}}
-    RETURN_TYPES = ('CONDITIONING', 'CONDITIONING', 'LATENT')
-    RETURN_NAMES = ('positive', 'negative', 'latent')
-    FUNCTION = 'encode'
-    CATEGORY = 'conditioning/3d_models'
-
-    def encode(self, clip_vision, init_image, vae, width, height, video_frames, elevation):
-        output = clip_vision.encode_image(init_image)
-        pooled = output.image_embeds.unsqueeze(0)
-        pixels = comfy.utils.common_upscale(init_image.movedim(-1, 1), width, height, 'bilinear', 'center').movedim(1, -1)
-        encode_pixels = pixels[:, :, :, :3]
-        t = vae.encode(encode_pixels)
-        azimuth = 0
-        azimuth_increment = 360 / (max(video_frames, 2) - 1)
-        elevations = []
-        azimuths = []
-        for i in range(video_frames):
-            elevations.append(elevation)
-            azimuths.append(azimuth)
-            azimuth += azimuth_increment
-        positive = [[pooled, {'concat_latent_image': t, 'elevation': elevations, 'azimuth': azimuths}]]
-        negative = [[torch.zeros_like(pooled), {'concat_latent_image': torch.zeros_like(t), 'elevation': elevations, 'azimuth': azimuths}]]
-        latent = torch.zeros([video_frames, 4, height // 8, width // 8])
-        return (positive, negative, {'samples': latent})
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -59,23 +59,6 @@ The 'get_video_info' method of the VideoInfo node aims to extract and return key
 - Infra type: CPU
 
 # Source code
-```
-class VideoInfo:
+[View source repository on GitHub](https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'video_info': ('VHS_VIDEOINFO',)}}
-    CATEGORY = 'Video Helper Suite 🎥🅥🅗🅢'
-    RETURN_TYPES = ('FLOAT', 'INT', 'FLOAT', 'INT', 'INT', 'FLOAT', 'INT', 'FLOAT', 'INT', 'INT')
-    RETURN_NAMES = ('source_fps🟨', 'source_frame_count🟨', 'source_duration🟨', 'source_width🟨', 'source_height🟨', 'loaded_fps🟦', 'loaded_frame_count🟦', 'loaded_duration🟦', 'loaded_width🟦', 'loaded_height🟦')
-    FUNCTION = 'get_video_info'
-
-    def get_video_info(self, video_info):
-        keys = ['fps', 'frame_count', 'duration', 'width', 'height']
-        source_info = []
-        loaded_info = []
-        for key in keys:
-            source_info.append(video_info[f'source_{key}'])
-            loaded_info.append(video_info[f'loaded_{key}'])
-        return (*source_info, *loaded_info)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

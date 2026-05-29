@@ -31,16 +31,6 @@ The Vec3ScalarOperation node performs various scalar operations on a three‑dim
 - Infra type: CPU
 
 # Source code
-```
-class Vec3ScalarOperation:
+[View source repository on GitHub](https://github.com/evanspearman/ComfyMath)
 
-    @classmethod
-    def INPUT_TYPES(cls) -> Mapping[str, Any]:
-        return {'required': {'op': (list(VEC_SCALAR_OPERATION.keys()),), 'a': DEFAULT_VEC3, 'b': ('FLOAT',)}}
-    RETURN_TYPES = ('VEC3',)
-    FUNCTION = 'op'
-    CATEGORY = 'math/vec3'
-
-    def op(self, op: str, a: Vec3, b: float) -> tuple[Vec3]:
-        return (_vec3_from_numpy(VEC_SCALAR_OPERATION[op](numpy.array(a), b)),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

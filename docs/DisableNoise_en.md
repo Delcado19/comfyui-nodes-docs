@@ -23,16 +23,6 @@ The DisableNoise node suppresses noise during the sampling process, ensuring the
 - Infra type: CPU
 
 # Source code
-```
-class DisableNoise:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {}}
-    RETURN_TYPES = ('NOISE',)
-    FUNCTION = 'get_noise'
-    CATEGORY = 'sampling/custom_sampling/noise'
-
-    def get_noise(self):
-        return (Noise_EmptyNoise(),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

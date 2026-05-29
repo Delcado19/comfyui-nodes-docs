@@ -44,41 +44,6 @@ The WAS_Video_Frame_Dump node is designed to process video files by extracting i
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Video_Frame_Dump:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'video_path': ('STRING', {'default': './ComfyUI/input/MyVideo.mp4', 'multiline': False}), 'output_path': ('STRING', {'default': './ComfyUI/input/MyVideo', 'multiline': False}), 'prefix': ('STRING', {'default': 'frame_', 'multiline': False}), 'filenumber_digits': ('INT', {'default': 4, 'min': -1, 'max': 8, 'step': 1}), 'extension': (['png', 'jpg', 'gif', 'tiff'],)}}
-
-    @classmethod
-    def IS_CHANGED(cls, **kwargs):
-        return float('NaN')
-    RETURN_TYPES = (TEXT_TYPE, 'NUMBER')
-    RETURN_NAMES = ('output_path', 'processed_count')
-    FUNCTION = 'dump_video_frames'
-    CATEGORY = 'WAS Suite/Animation'
-
-    def dump_video_frames(self, video_path, output_path, prefix='fame_', extension='png', filenumber_digits=-1):
-        conf = getSuiteConfig()
-        if not conf.__contains__('ffmpeg_bin_path'):
-            cstr(f'Unable to use dump frames because the `ffmpeg_bin_path` is not set in `{WAS_CONFIG_FILE}`').error.print()
-            return ('', 0)
-        if conf.__contains__('ffmpeg_bin_path'):
-            if conf['ffmpeg_bin_path'] != '/path/to/ffmpeg':
-                sys.path.append(conf['ffmpeg_bin_path'])
-                os.environ['OPENCV_FFMPEG_CAPTURE_OPTIONS'] = 'rtsp_transport;udp'
-                os.environ['OPENCV_FFMPEG_BINARY'] = conf['ffmpeg_bin_path']
-        if output_path.strip() in [None, '', '.']:
-            output_path = './ComfyUI/input/frames'
-        tokens = TextTokens()
-        output_path = os.path.abspath(os.path.join(*tokens.parseTokens(output_path).split('/')))
-        prefix = tokens.parseTokens(prefix)
-        WTools = WAS_Tools_Class()
-        MP4Writer = WTools.VideoWriter()
-        processed = MP4Writer.extract(video_path, output_path, prefix, extension, filenumber_digits)
-        return (output_path, processed)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

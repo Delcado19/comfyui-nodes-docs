@@ -27,20 +27,6 @@ The CR_Seed node is designed to initialize and manage seeds for random number ge
 - Infra type: CPU
 
 # Source code
-```
-class CR_Seed:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'seed': ('INT', {'default': 0, 'min': 0, 'max': 18446744073709551615})}}
-    RETURN_TYPES = ('INT', 'STRING')
-    RETURN_NAMES = ('seed', 'show_help')
-    FUNCTION = 'seedint'
-    OUTPUT_NODE = True
-    CATEGORY = icons.get('Comfyroll/Essential/Core')
-
-    @staticmethod
-    def seedint(seed):
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Core-Nodes#cr-seed'
-        return (seed, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

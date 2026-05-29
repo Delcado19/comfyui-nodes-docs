@@ -23,19 +23,6 @@ The WAS_Dictionary_Keys node extracts keys from a given dictionary. It serves as
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Dictionary_Keys:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'dictionary': ('DICT',)}, 'optional': {}}
-    RETURN_TYPES = ('LIST',)
-    FUNCTION = 'dictionary_keys'
-    CATEGORY = 'WAS Suite/Text'
-
-    def dictionary_keys(self, dictionary):
-        return (dictionary.keys(),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -40,17 +40,6 @@ The AdvancedCLIPTextEncode node is designed to process and encode text input int
 - Infra type: CPU
 
 # Source code
-```
-class AdvancedCLIPTextEncode:
+[View source repository on GitHub](https://github.com/BlenderNeko/ComfyUI_ADV_CLIP_emb)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'text': ('STRING', {'multiline': True}), 'clip': ('CLIP',), 'token_normalization': (['none', 'mean', 'length', 'length+mean'],), 'weight_interpretation': (['comfy', 'A1111', 'compel', 'comfy++', 'down_weight'],)}}
-    RETURN_TYPES = ('CONDITIONING',)
-    FUNCTION = 'encode'
-    CATEGORY = 'conditioning/advanced'
-
-    def encode(self, clip, text, token_normalization, weight_interpretation, affect_pooled='disable'):
-        (embeddings_final, pooled) = advanced_encode(clip, text, token_normalization, weight_interpretation, w_max=1.0, apply_to_pooled=affect_pooled == 'enable')
-        return ([[embeddings_final, {'pooled_output': pooled}]],)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

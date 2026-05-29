@@ -36,36 +36,6 @@ The CLIPSeg_image method aims to perform image segmentation using text prompts. 
 - Infra type: GPU
 
 # Source code
-```
-class WAS_CLIPSeg:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'image': ('IMAGE',), 'text': ('STRING', {'default': '', 'multiline': False})}, 'optional': {'clipseg_model': ('CLIPSEG_MODEL',)}}
-    RETURN_TYPES = ('MASK', 'IMAGE')
-    RETURN_NAMES = ('MASK', 'MASK_IMAGE')
-    FUNCTION = 'CLIPSeg_image'
-    CATEGORY = 'WAS Suite/Image/Masking'
-
-    def CLIPSeg_image(self, image, text=None, clipseg_model=None):
-        from transformers import CLIPSegProcessor, CLIPSegForImageSegmentation
-        image = tensor2pil(image)
-        cache = os.path.join(MODELS_DIR, 'clipseg')
-        if clipseg_model:
-            inputs = clipseg_model[0]
-            model = clipseg_model[1]
-        else:
-            inputs = CLIPSegProcessor.from_pretrained('CIDAS/clipseg-rd64-refined', cache_dir=cache)
-            model = CLIPSegForImageSegmentation.from_pretrained('CIDAS/clipseg-rd64-refined', cache_dir=cache)
-        with torch.no_grad():
-            result = model(**inputs(text=text, images=image, padding=True, return_tensors='pt'))
-        tensor = torch.sigmoid(result[0])
-        mask = 1.0 - (tensor - tensor.min()) / tensor.max()
-        mask = mask.unsqueeze(0)
-        mask = tensor2pil(mask).convert('L')
-        mask = mask.resize(image.size)
-        return (pil2mask(mask), pil2tensor(ImageOps.invert(mask.convert('RGB'))))
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -28,24 +28,6 @@ The RGB_Picker node facilitates color value conversion and selection. It handles
 - Infra type: CPU
 
 # Source code
-```
-class RGB_Picker:
+[View source repository on GitHub](https://github.com/chflame163/ComfyUI_WordCloud)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(self):
-        return {'required': {'color': ('COLOR', {'default': 'white'}), 'mode': (mode_list,)}, 'optional': {}}
-    RETURN_TYPES = ('STRING',)
-    RETURN_NAMES = ('value',)
-    FUNCTION = 'picker'
-    CATEGORY = '😺dzNodes/WordCloud'
-    OUTPUT_NODE = True
-
-    def picker(self, color, mode):
-        ret = color
-        if mode == 'DEC':
-            ret = hex_to_dec(color)
-        return (ret,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -23,21 +23,6 @@ The negativePrompt node is designed to manage and process negative prompts withi
 - Infra type: CPU
 
 # Source code
-```
-class negativePrompt:
+[View source repository on GitHub](https://github.com/yolain/ComfyUI-Easy-Use)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'negative': ('STRING', {'default': '', 'multiline': True, 'placeholder': 'Negative'})}}
-    RETURN_TYPES = ('STRING',)
-    RETURN_NAMES = ('negative',)
-    FUNCTION = 'main'
-    CATEGORY = 'EasyUse/Prompt'
-
-    @staticmethod
-    def main(negative):
-        return (negative,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

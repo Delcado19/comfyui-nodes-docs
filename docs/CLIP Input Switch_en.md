@@ -32,22 +32,6 @@ The `clip_switch` method conditionally selects one of two CLIP objects based on 
 - Infra type: CPU
 
 # Source code
-```
-class WAS_CLIP_Input_Switch:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'clip_a': ('CLIP',), 'clip_b': ('CLIP',), 'boolean': ('BOOLEAN', {'forceInput': True})}}
-    RETURN_TYPES = ('CLIP',)
-    FUNCTION = 'clip_switch'
-    CATEGORY = 'WAS Suite/Logic'
-
-    def clip_switch(self, clip_a, clip_b, boolean=True):
-        if boolean:
-            return (clip_a,)
-        else:
-            return (clip_b,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

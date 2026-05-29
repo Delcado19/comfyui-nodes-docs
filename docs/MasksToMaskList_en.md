@@ -23,25 +23,6 @@ The MasksToMaskList node is designed to process a series of mask images, convert
 - Infra type: CPU
 
 # Source code
-```
-class MasksToMaskList:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'masks': ('MASK',)}}
-    RETURN_TYPES = ('MASK',)
-    OUTPUT_IS_LIST = (True,)
-    FUNCTION = 'doit'
-    CATEGORY = 'ImpactPack/Operation'
-
-    def doit(self, masks):
-        if masks is None:
-            empty_mask = torch.zeros((64, 64), dtype=torch.float32, device='cpu')
-            return ([empty_mask],)
-        res = []
-        for mask in masks:
-            res.append(mask)
-        print(f'mask len: {len(res)}')
-        res = [make_3d_mask(x) for x in res]
-        return (res,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

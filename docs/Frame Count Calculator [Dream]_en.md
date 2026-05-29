@@ -41,36 +41,7 @@ The Frame Count Calculator node calculates the total number of frames based on a
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class DreamFrameCountCalculator:
-    NODE_NAME = "Frame Count Calculator"
-    ICON = "⌛"
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {
-            "required": {
-                "hours": ("INT", {"min": 0, "default": 0, "max": 23}),
-                "minutes": ("INT", {"min": 0, "default": 0, "max": 59}),
-                "seconds": ("INT", {"min": 0, "default": 10, "max": 59}),
-                "milliseconds": ("INT", {"min": 0, "default": 0, "max": 59}),
-                "frames_per_second": ("INT", {"min": 1, "default": 30})
-            },
-        }
-
-    CATEGORY = NodeCategories.ANIMATION
-    RETURN_TYPES = ("INT",)
-    RETURN_NAMES = ("TOTAL",)
-    FUNCTION = "result"
-
-    @classmethod
-    def IS_CHANGED(cls, *v):
-        return ALWAYS_CHANGED_FLAG
-
-    def result(self, hours, minutes, seconds, milliseconds, frames_per_second):
-        total_s = seconds + 0.001 * milliseconds + minutes * 60 + hours * 3600
-        return (round(total_s * frames_per_second),)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

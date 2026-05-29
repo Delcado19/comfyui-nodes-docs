@@ -34,27 +34,7 @@ The Inference_Core_DepthAnythingPreprocessor node is an image preprocessing tool
 - Infra type: `GPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class Depth_Anything_Preprocessor:
-    @classmethod
-    def INPUT_TYPES(s):
-        return create_node_input_types(
-            ckpt_name=(["depth_anything_vitl14.pth", "depth_anything_vitb14.pth", "depth_anything_vits14.pth"], {"default": "depth_anything_vitl14.pth"})
-        )
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "execute"
-
-    CATEGORY = "ControlNet Preprocessors/Normal and Depth Estimators"
-
-    def execute(self, image, ckpt_name, resolution=512, **kwargs):
-        from controlnet_aux.depth_anything import DepthAnythingDetector
-
-        model = DepthAnythingDetector.from_pretrained(filename=ckpt_name).to(model_management.get_torch_device())
-        out = common_annotator_call(model, image, resolution=resolution)
-        del model
-        return (out, )
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

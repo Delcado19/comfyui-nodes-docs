@@ -23,19 +23,6 @@ This node aims to convert the provided text into human-like speech, enabling app
 - Infra type: CPU
 
 # Source code
-```
-class SpeechSynthesis:
+[View source repository on GitHub](https://github.com/shadowcz007/comfyui-mixlab-nodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'text': ('STRING', {'forceInput': True})}}
-    INPUT_IS_LIST = True
-    RETURN_TYPES = ('STRING',)
-    FUNCTION = 'run'
-    OUTPUT_NODE = True
-    OUTPUT_IS_LIST = (True,)
-    CATEGORY = '♾️Mixlab/Audio'
-
-    def run(self, text):
-        return {'ui': {'text': text}, 'result': (text,)}
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

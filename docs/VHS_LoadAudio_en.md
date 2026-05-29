@@ -28,28 +28,6 @@ The LoadAudio node is designed to efficiently load and process audio files. It h
 - Infra type: CPU
 
 # Source code
-```
-class LoadAudio:
+[View source repository on GitHub](https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'audio_file': ('STRING', {'default': 'input/', 'vhs_path_extensions': ['wav', 'mp3', 'ogg', 'm4a', 'flac']})}, 'optional': {'seek_seconds': ('FLOAT', {'default': 0, 'min': 0})}}
-    RETURN_TYPES = ('VHS_AUDIO',)
-    RETURN_NAMES = ('audio',)
-    CATEGORY = 'Video Helper Suite 🎥🅥🅗🅢'
-    FUNCTION = 'load_audio'
-
-    def load_audio(self, audio_file, seek_seconds):
-        if audio_file is None or validate_path(audio_file) != True:
-            raise Exception('audio_file is not a valid path: ' + audio_file)
-        audio = get_audio(audio_file, start_time=seek_seconds)
-        return (lambda : audio,)
-
-    @classmethod
-    def IS_CHANGED(s, audio_file, seek_seconds):
-        return hash_path(audio_file)
-
-    @classmethod
-    def VALIDATE_INPUTS(s, audio_file, **kwargs):
-        return validate_path(audio_file, allow_none=True)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

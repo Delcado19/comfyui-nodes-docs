@@ -44,26 +44,6 @@ The SeargeInput5 node serves as a central hub for processing and integrating var
 - Infra type: CPU
 
 # Source code
-```
-class SeargeInput5:
+[View source repository on GitHub](https://github.com/jobunk/SeargeSDXL)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'base_conditioning_scale': ('FLOAT', {'default': 2.0, 'min': 0.25, 'max': 4.0, 'step': 0.25}), 'refiner_conditioning_scale': ('FLOAT', {'default': 2.0, 'min': 0.25, 'max': 4.0, 'step': 0.25}), 'style_prompt_power': ('FLOAT', {'default': 0.33, 'min': 0.0, 'max': 1.0, 'step': 0.01}), 'negative_style_power': ('FLOAT', {'default': 0.67, 'min': 0.0, 'max': 1.0, 'step': 0.01}), 'style_template': (SeargeParameterProcessor.STYLE_TEMPLATE, {'default': SeargeParameterProcessor.STYLE_TEMPLATE[0]})}, 'optional': {'inputs': ('PARAMETER_INPUTS',)}}
-    RETURN_TYPES = ('PARAMETER_INPUTS',)
-    RETURN_NAMES = ('inputs',)
-    FUNCTION = 'mux'
-    CATEGORY = 'Searge/_deprecated_/UI/Inputs'
-
-    def mux(self, base_conditioning_scale, refiner_conditioning_scale, style_prompt_power, negative_style_power, style_template, inputs=None):
-        if inputs is None:
-            parameters = {}
-        else:
-            parameters = inputs
-        parameters['base_conditioning_scale'] = base_conditioning_scale
-        parameters['refiner_conditioning_scale'] = refiner_conditioning_scale
-        parameters['style_prompt_power'] = style_prompt_power
-        parameters['negative_style_power'] = negative_style_power
-        parameters['style_template'] = style_template
-        return (parameters,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

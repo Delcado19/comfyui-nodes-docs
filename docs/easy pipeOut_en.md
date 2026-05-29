@@ -60,28 +60,6 @@ The pipeOut node is designed to simplify the output process of the pipeline, ens
 - Infra type: CPU
 
 # Source code
-```
-class pipeOut:
+[View source repository on GitHub](https://github.com/yolain/ComfyUI-Easy-Use)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'pipe': ('PIPE_LINE',)}, 'hidden': {'my_unique_id': 'UNIQUE_ID'}}
-    RETURN_TYPES = ('PIPE_LINE', 'MODEL', 'CONDITIONING', 'CONDITIONING', 'LATENT', 'VAE', 'CLIP', 'IMAGE', 'INT')
-    RETURN_NAMES = ('pipe', 'model', 'pos', 'neg', 'latent', 'vae', 'clip', 'image', 'seed')
-    FUNCTION = 'flush'
-    CATEGORY = 'EasyUse/Pipe'
-
-    def flush(self, pipe, my_unique_id=None):
-        model = pipe.get('model')
-        pos = pipe.get('positive')
-        neg = pipe.get('negative')
-        latent = pipe.get('samples')
-        vae = pipe.get('vae')
-        clip = pipe.get('clip')
-        image = pipe.get('images')
-        seed = pipe.get('seed')
-        return (pipe, model, pos, neg, latent, vae, clip, image, seed)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

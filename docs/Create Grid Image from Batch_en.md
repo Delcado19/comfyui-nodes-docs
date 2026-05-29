@@ -52,53 +52,6 @@ The 'smart_grid_image' function of the WAS_Image_Grid_Image_Batch node aims to i
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Image_Grid_Image_Batch:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'images': ('IMAGE',), 'border_width': ('INT', {'default': 3, 'min': 0, 'max': 100, 'step': 1}), 'number_of_columns': ('INT', {'default': 6, 'min': 1, 'max': 24, 'step': 1}), 'max_cell_size': ('INT', {'default': 256, 'min': 32, 'max': 2048, 'step': 1}), 'border_red': ('INT', {'default': 0, 'min': 0, 'max': 255, 'step': 1}), 'border_green': ('INT', {'default': 0, 'min': 0, 'max': 255, 'step': 1}), 'border_blue': ('INT', {'default': 0, 'min': 0, 'max': 255, 'step': 1})}}
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'smart_grid_image'
-    CATEGORY = 'WAS Suite/Image/Process'
-
-    def smart_grid_image(self, images, number_of_columns=6, max_cell_size=256, add_border=False, border_red=255, border_green=255, border_blue=255, border_width=3):
-        cols = number_of_columns
-        border_color = (border_red, border_green, border_blue)
-        images_resized = []
-        max_row_height = 0
-        for tensor_img in images:
-            img = tensor2pil(tensor_img)
-            (img_w, img_h) = img.size
-            aspect_ratio = img_w / img_h
-            if img_w > img_h:
-                cell_w = min(img_w, max_cell_size)
-                cell_h = int(cell_w / aspect_ratio)
-            else:
-                cell_h = min(img_h, max_cell_size)
-                cell_w = int(cell_h * aspect_ratio)
-            img_resized = img.resize((cell_w, cell_h))
-            if add_border:
-                img_resized = ImageOps.expand(img_resized, border=border_width // 2, fill=border_color)
-            images_resized.append(img_resized)
-            max_row_height = max(max_row_height, cell_h)
-        max_row_height = int(max_row_height)
-        total_images = len(images_resized)
-        rows = math.ceil(total_images / cols)
-        grid_width = cols * max_cell_size + (cols - 1) * border_width
-        grid_height = rows * max_row_height + (rows - 1) * border_width
-        new_image = Image.new('RGB', (grid_width, grid_height), border_color)
-        for (i, img) in enumerate(images_resized):
-            x = i % cols * (max_cell_size + border_width)
-            y = i // cols * (max_row_height + border_width)
-            (img_w, img_h) = img.size
-            paste_x = x + (max_cell_size - img_w) // 2
-            paste_y = y + (max_row_height - img_h) // 2
-            new_image.paste(img, (paste_x, paste_y, paste_x + img_w, paste_y + img_h))
-        if add_border:
-            new_image = ImageOps.expand(new_image, border=border_width, fill=border_color)
-        return (pil2tensor(new_image),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

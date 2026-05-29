@@ -30,47 +30,7 @@ The ControlNet Switch node is designed to dynamically select one among multiple 
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class ControlNet_Switch:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    CATEGORY = 'JPS Nodes/Switches'
-    RETURN_TYPES = ("CONTROL_NET",)
-    RETURN_NAMES = ("ctrlnet_out",)
-    FUNCTION = "get_ctrlnet"
-
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {
-            "required": {
-                "select": ("INT", {}),
-            },
-            "optional": {
-                "ctrlnet_1": ("CONTROL_NET",),
-                "ctrlnet_2": ("CONTROL_NET",),
-                "ctrlnet_3": ("CONTROL_NET",),
-                "ctrlnet_4": ("CONTROL_NET",),
-                "ctrlnet_5": ("CONTROL_NET",),
-            }
-        }
-
-    def get_ctrlnet(self,select,ctrlnet_1=None,ctrlnet_2=None,ctrlnet_3=None,ctrlnet_4=None,ctrlnet_5=None,):
-        
-        ctrlnet_out = ctrlnet_1
-
-        if (select == 2):
-            ctrlnet_out = ctrlnet_2
-        elif (select == 3):
-            ctrlnet_out = ctrlnet_3
-        elif (select == 4):
-            ctrlnet_out = ctrlnet_4
-        elif (select == 5):
-            ctrlnet_out = ctrlnet_5
-
-        return (ctrlnet_out,)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

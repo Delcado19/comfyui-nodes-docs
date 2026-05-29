@@ -27,34 +27,6 @@ The ImageCropWithBBox node is designed to process images based on bounding box c
 - Infra type: CPU
 
 # Source code
-```
-class ImageCropWithBBox:
+[View source repository on GitHub](https://github.com/Ryuukeisyou/comfyui_face_parsing)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'bbox': ('BBOX', {}), 'image': ('IMAGE', {})}}
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'main'
-    CATEGORY = 'face_parsing'
-
-    def main(self, bbox: Tensor, image: Tensor):
-        results = []
-        image_permuted = image.permute(0, 3, 1, 2)
-        for image_item in image_permuted:
-            bbox_int = bbox.int()
-            l = bbox_int[0]
-            t = bbox_int[1]
-            r = bbox_int[2]
-            b = bbox_int[3]
-            cropped_image = functional.crop(image_item, t, l, b - t, r - l)
-            result = cropped_image.permute(1, 2, 0).unsqueeze(0)
-            results.append(result)
-        try:
-            final = torch.cat(results, dim=0)
-        except:
-            final = results
-        return (final,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

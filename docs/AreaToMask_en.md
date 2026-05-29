@@ -23,19 +23,6 @@ This node converts images with RGBA channels into masks, focusing on isolating s
 - Infra type: CPU
 
 # Source code
-```
-class AreaToMask:
+[View source repository on GitHub](https://github.com/shadowcz007/comfyui-mixlab-nodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'RGBA': ('RGBA',)}}
-    RETURN_TYPES = ('MASK',)
-    FUNCTION = 'run'
-    CATEGORY = '♾️Mixlab/Mask'
-    INPUT_IS_LIST = False
-    OUTPUT_IS_LIST = (False,)
-
-    def run(self, RGBA):
-        mask = AreaToMask_run(RGBA)
-        return (mask,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

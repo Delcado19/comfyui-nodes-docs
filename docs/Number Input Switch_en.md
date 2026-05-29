@@ -32,22 +32,6 @@ The `number_input_switch` method processes numerical input based on a boolean co
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Number_Input_Switch:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'number_a': ('NUMBER',), 'number_b': ('NUMBER',), 'boolean': ('BOOLEAN', {'forceInput': True})}}
-    RETURN_TYPES = ('NUMBER', 'FLOAT', 'INT')
-    FUNCTION = 'number_input_switch'
-    CATEGORY = 'WAS Suite/Logic'
-
-    def number_input_switch(self, number_a, number_b, boolean=True):
-        if boolean:
-            return (number_a, float(number_a), int(number_a))
-        else:
-            return (number_b, float(number_b), int(number_b))
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

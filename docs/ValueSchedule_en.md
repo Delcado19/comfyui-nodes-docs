@@ -40,20 +40,6 @@ The ValueSchedule node is designed to animate and interpolate based on a given k
 - Infra type: CPU
 
 # Source code
-```
-class ValueSchedule:
+[View source repository on GitHub](https://github.com/FizzleDorf/ComfyUI_FizzNodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'text': ('STRING', {'multiline': True, 'default': defaultValue}), 'max_frames': ('INT', {'default': 120.0, 'min': 1.0, 'max': 999999.0, 'step': 1.0}), 'current_frame': ('INT', {'default': 0.0, 'min': 0.0, 'max': 999999.0, 'step': 1.0}), 'print_output': ('BOOLEAN', {'default': False})}}
-    RETURN_TYPES = ('FLOAT', 'INT')
-    FUNCTION = 'animate'
-    CATEGORY = 'FizzNodes 📅🅕🅝/ScheduleNodes'
-
-    def animate(self, text, max_frames, current_frame, print_output):
-        current_frame = current_frame % max_frames
-        t = get_inbetweens(parse_key_frames(text, max_frames), max_frames)
-        if print_output is True:
-            print('ValueSchedule: ', current_frame, '\n', 'current_frame: ', current_frame)
-        return (t[current_frame], int(t[current_frame]))
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

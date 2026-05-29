@@ -29,33 +29,7 @@ The LLMChatMessagesAdv node aims to prepare chat messages by encapsulating syste
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class LLMChatMessagesAdv:
-    def __init__(self):
-        pass
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {
-            "required": {
-                "system_prompt": ("STRING", {"multiline": True, "dynamicPrompts": False, "placeholder": "You are a dog, you cannot speak, only woof, and react as a dog would."}),
-                "user_prompt": ("STRING", {"multiline": True, "dynamicPrompts": False, "plaeholder": "What is your name?"}),
-            },
-        }
-
-    RETURN_TYPES = ("LIST", )
-    RETURN_NAMES = ("llm_message", )
-
-    FUNCTION = "prepare_messages"
-    CATEGORY = f"{MENU_NAME}/{SUB_MENU_NAME}/Messages"
-
-    def prepare_messages(self, system_prompt, user_prompt):
-        messages = [
-                ChatMessage(role=MessageRole.SYSTEM, content=system_prompt ),
-                ChatMessage(role=MessageRole.USER, content=user_prompt ),
-        ]
-        return (messages,)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -32,17 +32,6 @@ The SRFloatPromptInput node is designed to process and manage floating-point val
 - Infra type: CPU
 
 # Source code
-```
-class SRFloatPromptInput:
+[View source repository on GitHub](https://github.com/bash-j/mikey_nodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'input_float': ('FLOAT', {'forceInput': True})}, 'hidden': {'unique_id': 'UNIQUE_ID', 'prompt': 'PROMPT'}}
-    RETURN_TYPES = ('FLOAT',)
-    FUNCTION = 'add'
-    CATEGORY = 'Mikey/Meta'
-
-    def add(self, input_float, unique_id=None, prompt=None):
-        prompt.get(str(unique_id))['inputs']['sr_val'] = str(input_float)
-        return (input_float,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

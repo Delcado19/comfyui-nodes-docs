@@ -49,55 +49,7 @@ This node aims to encode text inputs using a CLIP model customized for the SDXL 
 - Infra type: `GPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class CLIPTextEncodeSDXL_Plus:
-    @classmethod
-    def INPUT_TYPES(s):
-        return {"required": {
-            "width": ("INT", {"default": 1024.0, "min": 0, "max": 12288}),
-            "height": ("INT", {"default": 1024.0, "min": 0, "max": 12288}),
-            "res_factor": ("INT", {"default": 4, "min": 1, "max": 8}),
-            "text_pos": ("STRING", {"multiline": True, "default": "", "dynamicPrompts": True}),
-            "text_neg": ("STRING", {"multiline": True, "default": "", "dynamicPrompts": True}),
-            "clip": ("CLIP", ),
-            }}
-    RETURN_TYPES = ("CONDITIONING","CONDITIONING",)
-    RETURN_NAMES = ("cond_pos", "cond_neg",)
-    FUNCTION = "execute"
-    CATEGORY = "JPS Nodes/Conditioning"
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    def execute(self, clip, width, height, res_factor, text_pos, text_neg):
-        crop_w = 0
-        crop_h = 0
-        width = width*res_factor
-        height = height*res_factor
-        target_width = width
-        target_height = height
-        text_g_pos = text_l_pos = text_pos
-        text_g_neg = text_l_neg = text_neg
-
-        tokens_pos = clip.tokenize(text_g_pos)
-        tokens_pos["l"] = clip.tokenize(text_l_pos)["l"]
-        if len(tokens_pos["l"]) != len(tokens_pos["g"]):
-            empty_pos = clip.tokenize("")
-            while len(tokens_pos["l"]) < len(tokens_pos["g"]):
-                tokens_pos["l"] += empty_pos["l"]
-            while len(tokens_pos["l"]) > len(tokens_pos["g"]):
-                tokens_pos["g"] += empty_pos["g"]
-        cond_pos, pooled_pos = clip.encode_from_tokens(tokens_pos, return_pooled=True)
-
-        tokens_neg = clip.tokenize(text_g_neg)
-        tokens_neg["l"] = clip.tokenize(text_l_neg)["l"]
-        if len(tokens_neg["l"]) != len(tokens_neg["g"]):
-            empty_neg = clip.tokenize("")
-            while len(tokens_neg["l"]) < len(tokens_neg["g"]):
-                tokens_neg["l"] += empty_neg["l"]
-            while len(tokens_pos["l"]) > len(tokens_pos["g"]):
-                tokens_neg["g"] += empty_neg["g"]
-        cond_neg, pooled_neg = clip.encode_from_tokens(tokens_neg, return_pooled=True)
-
-        return ([[cond_pos, {"pooled_output": pooled_pos, "width": width, "height": height, "crop_w": crop_w, "crop_h": crop_h, "target_width": target_width, "target_height": target_height}]], [[cond_neg, {"pooled_output": pooled_neg, "width": width, "height": height, "crop_w": crop_w, "crop_h": crop_h, "target_width": target_width, "target_height": target_height}]])
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

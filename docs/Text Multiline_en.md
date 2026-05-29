@@ -23,29 +23,6 @@ The WAS_Text_Multiline node is designed to process and format multiline text inp
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Text_Multiline:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'text': ('STRING', {'default': '', 'multiline': True})}}
-    RETURN_TYPES = (TEXT_TYPE,)
-    FUNCTION = 'text_multiline'
-    CATEGORY = 'WAS Suite/Text'
-
-    def text_multiline(self, text):
-        import io
-        new_text = []
-        for line in io.StringIO(text):
-            if not line.strip().startswith('#'):
-                if not line.strip().startswith('\n'):
-                    line = line.replace('\n', '')
-                new_text.append(line)
-        new_text = '\n'.join(new_text)
-        tokens = TextTokens()
-        new_text = tokens.parseTokens(new_text)
-        return (new_text,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

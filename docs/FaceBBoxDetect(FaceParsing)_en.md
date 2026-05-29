@@ -35,35 +35,6 @@ The FaceBBoxDetect node is designed to identify and locate faces in images using
 - Infra type: CPU
 
 # Source code
-```
-class FaceBBoxDetect:
+[View source repository on GitHub](https://github.com/Ryuukeisyou/comfyui_face_parsing)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'bbox_detector': ('BBOX_DETECTOR', {}), 'image': ('IMAGE', {}), 'threshold': ('FLOAT', {'default': 0.3, 'min': 0, 'max': 1, 'step': 0.01}), 'dilation': ('INT', {'default': 8, 'min': -512, 'max': 512, 'step': 1})}}
-    RETURN_TYPES = ('BBOX_LIST',)
-    FUNCTION = 'main'
-    CATEGORY = 'face_parsing'
-
-    def main(self, bbox_detector: YOLO, image: Tensor, threshold: float, dilation: int):
-        results = []
-        transform = T.ToPILImage()
-        for item in image:
-            image_pil = transform(item.permute(2, 0, 1))
-            pred = bbox_detector(image_pil, conf=threshold)
-            bboxes = pred[0].boxes.xyxy.cpu()
-            for bbox in bboxes:
-                bbox[0] = bbox[0] - dilation
-                bbox[1] = bbox[1] - dilation
-                bbox[2] = bbox[2] + dilation
-                bbox[3] = bbox[3] + dilation
-                bbox[0] = bbox[0] if bbox[0] > 0 else 0
-                bbox[1] = bbox[1] if bbox[1] > 0 else 0
-                bbox[2] = bbox[2] if bbox[2] < item.shape[1] else item.shape[1]
-                bbox[3] = bbox[3] if bbox[3] < item.shape[0] else item.shape[0]
-                results.append(bbox)
-        return (results,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

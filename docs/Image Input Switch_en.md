@@ -32,22 +32,6 @@ The method `image_input_switch` is designed to conditionally select between two 
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Image_Input_Switch:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'image_a': ('IMAGE',), 'image_b': ('IMAGE',), 'boolean': ('BOOLEAN', {'forceInput': True})}}
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'image_input_switch'
-    CATEGORY = 'WAS Suite/Logic'
-
-    def image_input_switch(self, image_a, image_b, boolean=True):
-        if boolean:
-            return (image_a,)
-        else:
-            return (image_b,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

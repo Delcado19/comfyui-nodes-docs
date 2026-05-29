@@ -40,25 +40,6 @@ The AddMetaData node is designed to enrich image data by attaching textual infor
 - Infra type: CPU
 
 # Source code
-```
-class AddMetaData:
+[View source repository on GitHub](https://github.com/bash-j/mikey_nodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'image': ('IMAGE',), 'label': ('STRING', {'multiline': False, 'placeholder': 'Label for metadata'}), 'text_value': ('STRING', {'multiline': True, 'placeholder': 'Text to add to metadata'})}, 'hidden': {'prompt': 'PROMPT', 'extra_pnginfo': 'EXTRA_PNGINFO'}}
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'add_metadata'
-    CATEGORY = 'Mikey/Meta'
-    OUTPUT_NODE = True
-
-    def add_metadata(self, image, label, text_value, prompt=None, extra_pnginfo=None):
-        label = search_and_replace(label, extra_pnginfo, prompt)
-        text_value = search_and_replace(text_value, extra_pnginfo, prompt)
-        if extra_pnginfo is None:
-            extra_pnginfo = {}
-        if label in extra_pnginfo:
-            extra_pnginfo[label] += ', ' + text_value
-        else:
-            extra_pnginfo[label] = text_value
-        return (image,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

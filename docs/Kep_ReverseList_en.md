@@ -25,28 +25,7 @@ The Kep_ReverseList node is used to reverse the order of elements in a list. It 
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class ReverseList:
-    def __init__(self) -> None:
-        pass
+[View source repository on GitHub](https://github.com/city96/ComfyUI_ExtraFormatNodes)
 
-    @classmethod
-    def INPUT_TYPES(self) -> Dict[str, Dict[str, Any]]:
-        return {
-            "required": {"In": (any_type, {})},
-        }
-
-    RETURN_TYPES = (any_type,)
-    RETURN_NAMES = ("Reversed",)
-    INPUT_IS_LIST = True
-    OUTPUT_IS_LIST = (True,)
-    FUNCTION = "reverse_list"
-
-    CATEGORY = "List Stuff"
-
-    def reverse_list(self, In: List[Any]) -> Tuple[List[Any]]:
-        return (In[::-1],)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

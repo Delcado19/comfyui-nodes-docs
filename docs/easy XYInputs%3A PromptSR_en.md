@@ -41,48 +41,7 @@ The PromptSR node is specifically designed for processing text prompts, adjustin
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class XYplot_PromptSR:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        inputs = {
-            "required": {
-                "target_prompt": (["positive", "negative"],),
-                "search_txt": ("STRING", {"default": "", "multiline": False}),
-                "replace_all_text": ("BOOLEAN", {"default": False}),
-                "replace_count": ("INT", {"default": 3, "min": 1, "max": 30 - 1}),
-            }
-        }
-
-        # Dynamically add replace_X inputs
-        for i in range(1, 30):
-            replace_key = f"replace_{i}"
-            inputs["required"][replace_key] = ("STRING", {"default": "", "multiline": False, "placeholder": replace_key})
-
-        return inputs
-
-    RETURN_TYPES = ("X_Y",)
-    RETURN_NAMES = ("X or Y",)
-    FUNCTION = "xy_value"
-    CATEGORY = "EasyUse/XY Inputs"
-
-    def xy_value(self, target_prompt, search_txt, replace_all_text, replace_count, **kwargs):
-        axis = None
-
-        if target_prompt == "positive":
-            axis = "advanced: Positive Prompt S/R"
-        elif target_prompt == "negative":
-            axis = "advanced: Negative Prompt S/R"
-
-        # Create base entry
-        values = [(search_txt, None, replace_all_text)]
-
-        if replace_count > 0:
-            # Append additional entries based on replace_count
-            values.extend([(search_txt, kwargs.get(f"replace_{i+1}"), replace_all_text) for i in range(replace_count)])
-        return ({"axis": axis, "values": values},) if values is not None else (None,)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

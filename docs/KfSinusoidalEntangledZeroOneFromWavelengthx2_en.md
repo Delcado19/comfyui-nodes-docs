@@ -23,10 +23,6 @@ This node generates a pair of entangled sinusoidal curves based on the given wav
 - Infra type: CPU
 
 # Source code
-```
-class KfSinusoidalEntangledZeroOneFromWavelengthx2(KfSinusoidalEntangledZeroOneFromWavelength):
-    RETURN_TYPES = ('KEYFRAMED_CURVE',) * 2
+[View source repository on GitHub](https://github.com/dmarx/ComfyUI-Keyframed)
 
-    def main(self, wavelength):
-        return super().main(n=2, wavelength=wavelength)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

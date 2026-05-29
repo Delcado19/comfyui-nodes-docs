@@ -32,18 +32,6 @@ The SplitSigmas node is designed to divide a given set of sigma values into two 
 - Infra type: CPU
 
 # Source code
-```
-class SplitSigmas:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'sigmas': ('SIGMAS',), 'step': ('INT', {'default': 0, 'min': 0, 'max': 10000})}}
-    RETURN_TYPES = ('SIGMAS', 'SIGMAS')
-    CATEGORY = 'sampling/custom_sampling/sigmas'
-    FUNCTION = 'get_sigmas'
-
-    def get_sigmas(self, sigmas, step):
-        sigmas1 = sigmas[:step + 1]
-        sigmas2 = sigmas[step:]
-        return (sigmas1, sigmas2)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

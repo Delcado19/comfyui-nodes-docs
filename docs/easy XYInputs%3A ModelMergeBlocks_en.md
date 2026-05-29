@@ -37,49 +37,7 @@ The easy XYInputs: ModelMergeBlocks node provides an easy-to-use interface for m
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class XYplot_ModelMergeBlocks:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        checkpoints = folder_paths.get_filename_list("checkpoints")
-        vae = ["Use Model 1", "Use Model 2"] + folder_paths.get_filename_list("vae")
-
-        preset = ["Preset"]  # 20
-        preset += load_preset("mmb-preset.txt")
-        preset += load_preset("mmb-preset.custom.txt")
-
-        default_vectors = "1,0,0; \n0,1,0; \n0,0,1; \n1,1,0; \n1,0,1; \n0,1,1; "
-        return {
-            "required": {
-                "ckpt_name_1": (checkpoints,),
-                "ckpt_name_2": (checkpoints,),
-                "vae_use": (vae, {"default": "Use Model 1"}),
-                "preset": (preset, {"default": "preset"}),
-                "values": ("STRING", {"default": default_vectors, "multiline": True, "placeholder": 'Support 2 methods:\n\n1.input, middle, out in same line and insert values seperated by "; "\n\n2.model merge block number seperated by ", " in same line and insert values seperated by "; "'}),
-            },
-            "hidden": {"my_unique_id": "UNIQUE_ID"}
-        }
-
-    RETURN_TYPES = ("X_Y",)
-    RETURN_NAMES = ("X or Y",)
-    FUNCTION = "xy_value"
-
-    CATEGORY = "EasyUse/XY Inputs"
-
-    def xy_value(self, ckpt_name_1, ckpt_name_2, vae_use, preset, values, my_unique_id=None):
-
-        axis = "advanced: ModelMergeBlocks"
-        if ckpt_name_1 is None:
-            raise Exception("ckpt_name_1 is not found")
-        if ckpt_name_2 is None:
-            raise Exception("ckpt_name_2 is not found")
-
-        models = (ckpt_name_1, ckpt_name_2)
-
-        xy_values = {"axis":axis, "values":values, "models":models, "vae_use": vae_use}
-        return (xy_values,)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

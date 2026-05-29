@@ -27,9 +27,6 @@ The WAS_Logical_OR node performs a logical OR operation on two boolean inputs. I
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Logical_OR(WAS_Logical_Comparisons):
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def do(self, boolean_a, boolean_b):
-        return (boolean_a or boolean_b,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

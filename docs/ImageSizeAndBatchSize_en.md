@@ -31,18 +31,6 @@ These nodes extract and return key image attributes such as size and batch dimen
 - Infra type: CPU
 
 # Source code
-```
-class ImageSizeAndBatchSize:
+[View source repository on GitHub](https://github.com/ArtVentureX/comfyui-animatediff)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'image': ('IMAGE',)}}
-    CATEGORY = 'Animate Diff/Utils'
-    RETURN_TYPES = ('INT', 'INT', 'INT')
-    RETURN_NAMES = ('width', 'height', 'batch_size')
-    FUNCTION = 'batch_size'
-
-    def batch_size(self, image: Tensor):
-        (batch_size, height, width) = image.shape[0:3]
-        return (width, height, batch_size)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

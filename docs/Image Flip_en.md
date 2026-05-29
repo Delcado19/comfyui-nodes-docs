@@ -27,29 +27,6 @@ The image flipping method aims to transform a set of images by flipping them hor
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Image_Flip:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'images': ('IMAGE',), 'mode': (['horizontal', 'vertical'],)}}
-    RETURN_TYPES = ('IMAGE',)
-    RETURN_NAMES = ('images',)
-    FUNCTION = 'image_flip'
-    CATEGORY = 'WAS Suite/Image/Transform'
-
-    def image_flip(self, images, mode):
-        batch_tensor = []
-        for image in images:
-            image = tensor2pil(image)
-            if mode == 'horizontal':
-                image = image.transpose(0)
-            if mode == 'vertical':
-                image = image.transpose(1)
-            batch_tensor.append(pil2tensor(image))
-        batch_tensor = torch.cat(batch_tensor, dim=0)
-        return (batch_tensor,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

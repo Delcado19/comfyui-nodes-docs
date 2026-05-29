@@ -47,26 +47,6 @@ The CR_GradientFloat node is designed to generate a smooth transition between tw
 - Infra type: CPU
 
 # Source code
-```
-class CR_GradientFloat:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        gradient_profiles = ['Lerp']
-        return {'required': {'start_value': ('FLOAT', {'default': 1.0, 'min': 0.0, 'max': 9999.0, 'step': 0.01}), 'end_value': ('FLOAT', {'default': 1.0, 'min': 0.0, 'max': 9999.0, 'step': 0.01}), 'start_frame': ('INT', {'default': 0.0, 'min': 0.0, 'max': 9999.0, 'step': 1.0}), 'frame_duration': ('INT', {'default': 1.0, 'min': 0.0, 'max': 9999.0, 'step': 1.0}), 'current_frame': ('INT', {'default': 0.0, 'min': 0.0, 'max': 9999.0, 'step': 1.0}), 'gradient_profile': (gradient_profiles,)}}
-    RETURN_TYPES = ('FLOAT', 'STRING')
-    RETURN_NAMES = ('FLOAT', 'show_help')
-    FUNCTION = 'gradient'
-    CATEGORY = icons.get('Comfyroll/Animation/Interpolate')
-
-    def gradient(self, start_value, end_value, start_frame, frame_duration, current_frame, gradient_profile):
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Interpolation-Nodes#cr-gradient-float'
-        if current_frame < start_frame:
-            return (start_value, show_help)
-        if current_frame > start_frame + frame_duration:
-            return (end_value, show_help)
-        step = (end_value - start_value) / frame_duration
-        current_step = current_frame - start_frame
-        float_out = start_value + current_step * step
-        return (float_out, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

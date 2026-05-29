@@ -42,37 +42,7 @@ The RemapBarrelDistortion node is used to adjust images, which can be used to co
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class RemapBarrelDistortion(RemapBase):
-    @staticmethod
-    def BARREL_DIST_TYPES():
-        return {
-            "required":
-                {
-                    "a": ("FLOAT", {"default": 0, "min": -10, "max": 10, "step": 0.00001}),
-                    "b": ("FLOAT", {"default": 0, "min": -10, "max": 10, "step": 0.00001}),
-                    "c": ("FLOAT", {"default": 0, "min": -10, "max": 10, "step": 0.00001}),
-                    "use_inverse_variant": ("BOOLEAN", {"default": True})
-                },
-            "optional": {
-                "d": ("FLOAT", {"forceInput": True})
-            }
-        }
+[View source repository on GitHub](https://github.com/bmad4ever/ComfyUI-Bmad-Custom-Nodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return RemapBarrelDistortion.BARREL_DIST_TYPES()
-        # inputs = RemapBarrelDistortion.BARREL_DIST_F_TYPES()
-        # inputs["required"]["use_inverse_variant"] = ("BOOLEAN", {"default": True})
-        # return inputs
-
-    def send_remap(self, a, b, c, use_inverse_variant, d=None):
-        from .utils.remaps import remap_barrel_distortion
-        return ({
-                    "func": remap_barrel_distortion,
-                    "xargs": [a, b, c, d, use_inverse_variant]
-                },)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

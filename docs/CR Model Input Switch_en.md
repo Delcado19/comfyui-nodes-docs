@@ -36,24 +36,6 @@ CR_ModelInputSwitch node selects between two provided models based on the input 
 - Infra type: CPU
 
 # Source code
-```
-class CR_ModelInputSwitch:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'Input': ('INT', {'default': 1, 'min': 1, 'max': 2})}, 'optional': {'model1': ('MODEL',), 'model2': ('MODEL',)}}
-    RETURN_TYPES = ('MODEL', 'STRING')
-    RETURN_NAMES = ('MODEL', 'show_help')
-    FUNCTION = 'switch'
-    CATEGORY = icons.get('Comfyroll/Utils/Logic')
-
-    def switch(self, Input, model1=None, model2=None):
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Logic-Nodes#cr-model-input-switch'
-        if Input == 1:
-            return (model1, show_help)
-        else:
-            return (model2, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

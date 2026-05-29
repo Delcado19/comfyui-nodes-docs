@@ -23,25 +23,6 @@ This node aims to load and prepare an LDSR model for use, abstracting away the c
 - Infra type: CPU
 
 # Source code
-```
-class LDSRModelLoader:
+[View source repository on GitHub](https://github.com/flowtyone/ComfyUI-Flowty-LDSR)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        model_list = get_filename_list('upscale_models')
-        candidates = [name for name in model_list if 'last.ckpt' in name]
-        if len(candidates) > 0:
-            default_path = candidates[0]
-        else:
-            default_path = 'last.ckpt'
-        return {'required': {'model': (model_list, {'default': default_path})}}
-    RETURN_TYPES = ('UPSCALE_MODEL',)
-    FUNCTION = 'load'
-    CATEGORY = 'Flowty LDSR'
-
-    def load(self, model):
-        model_path = get_full_path('upscale_models', model)
-        model = LDSR.load_model_from_path(model_path)
-        model['model'].cpu()
-        return (model,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

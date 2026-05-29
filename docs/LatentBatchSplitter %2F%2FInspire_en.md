@@ -28,36 +28,6 @@
 - Infra type: CPU
 
 # Source code
-```
-class LatentBatchSplitter:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Inspire-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'latent': ('LATENT',), 'split_count': ('INT', {'default': 4, 'min': 0, 'max': 50, 'step': 1})}}
-    RETURN_TYPES = ByPassTypeTuple(('LATENT',))
-    FUNCTION = 'doit'
-    CATEGORY = 'InspirePack/Util'
-
-    def doit(self, latent, split_count):
-        samples = latent['samples']
-        latent_base = latent.copy()
-        del latent_base['samples']
-        cnt = min(split_count, len(samples))
-        res = []
-        for single_samples in samples[:cnt]:
-            item = latent_base.copy()
-            item['samples'] = single_samples.unsqueeze(0)
-            res.append(item)
-        if split_count >= len(samples):
-            lack_cnt = split_count - cnt + 1
-            item = latent_base.copy()
-            item['samples'] = empty_latent()
-            for x in range(0, lack_cnt):
-                res.append(item)
-        elif cnt < len(samples):
-            remained_cnt = len(samples) - cnt
-            remained_latent = latent_base.copy()
-            remained_latent['samples'] = samples[-remained_cnt:]
-            res.append(remained_latent)
-        return tuple(res)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

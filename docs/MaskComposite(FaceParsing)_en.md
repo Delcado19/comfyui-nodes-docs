@@ -31,32 +31,6 @@ The MaskComposite node aims to perform various logical and arithmetic operations
 - Infra type: CPU
 
 # Source code
-```
-class MaskComposite:
+[View source repository on GitHub](https://github.com/Ryuukeisyou/comfyui_face_parsing)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'destination': ('MASK', {}), 'source': ('MASK', {}), 'operation': (['multiply', 'add', 'subtract', 'and', 'or', 'xor'],)}}
-    RETURN_TYPES = ('MASK',)
-    FUNCTION = 'main'
-    CATEGORY = 'face_parsing'
-
-    def main(self, destination: Tensor, source: Tensor, operation: str):
-        mask_result = destination
-        if operation == 'multiply':
-            mask_result = mask_result * source
-        if operation == 'add':
-            mask_result = mask_result + source
-        if operation == 'subtract':
-            mask_result = mask_result - source
-        if operation == 'and':
-            mask_result = mask_result & source
-        if operation == 'or':
-            mask_result = mask_result | source
-        if operation == 'xor':
-            mask_result = mask_result ^ source
-        return (mask_result,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

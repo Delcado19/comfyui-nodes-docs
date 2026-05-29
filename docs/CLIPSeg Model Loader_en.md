@@ -23,24 +23,6 @@ The WAS_CLIPSeg_Model_Loader node is a critical component in the workflow, desig
 - Infra type: CPU
 
 # Source code
-```
-class WAS_CLIPSeg_Model_Loader:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'model': ('STRING', {'default': 'CIDAS/clipseg-rd64-refined', 'multiline': False})}}
-    RETURN_TYPES = ('CLIPSEG_MODEL',)
-    RETURN_NAMES = ('clipseg_model',)
-    FUNCTION = 'clipseg_model'
-    CATEGORY = 'WAS Suite/Loaders'
-
-    def clipseg_model(self, model):
-        from transformers import CLIPSegProcessor, CLIPSegForImageSegmentation
-        cache = os.path.join(MODELS_DIR, 'clipseg')
-        inputs = CLIPSegProcessor.from_pretrained(model, cache_dir=cache)
-        model = CLIPSegForImageSegmentation.from_pretrained(model, cache_dir=cache)
-        return ((inputs, model),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

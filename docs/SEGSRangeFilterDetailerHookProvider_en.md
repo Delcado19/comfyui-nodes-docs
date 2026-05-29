@@ -35,17 +35,6 @@ SEGSRangeFilterDetailerHookProvider node aims to apply a filtering mechanism to 
 - Infra type: CPU
 
 # Source code
-```
-class SEGSRangeFilterDetailerHookProvider:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'target': (['area(=w*h)', 'width', 'height', 'x1', 'y1', 'x2', 'y2', 'length_percent'],), 'mode': ('BOOLEAN', {'default': True, 'label_on': 'inside', 'label_off': 'outside'}), 'min_value': ('INT', {'default': 0, 'min': 0, 'max': sys.maxsize, 'step': 1}), 'max_value': ('INT', {'default': 67108864, 'min': 0, 'max': sys.maxsize, 'step': 1})}}
-    RETURN_TYPES = ('DETAILER_HOOK',)
-    FUNCTION = 'doit'
-    CATEGORY = 'ImpactPack/Util'
-
-    def doit(self, target, mode, min_value, max_value):
-        hook = hooks.SEGSRangeFilterDetailerHook(target, mode, min_value, max_value)
-        return (hook,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

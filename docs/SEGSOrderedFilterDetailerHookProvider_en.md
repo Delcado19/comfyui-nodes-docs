@@ -36,17 +36,6 @@ The SEGSOrderedFilterDetailerHookProvider node aims to apply specific filtering 
 - Infra type: CPU
 
 # Source code
-```
-class SEGSOrderedFilterDetailerHookProvider:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'target': (['area(=w*h)', 'width', 'height', 'x1', 'y1', 'x2', 'y2'],), 'order': ('BOOLEAN', {'default': True, 'label_on': 'descending', 'label_off': 'ascending'}), 'take_start': ('INT', {'default': 0, 'min': 0, 'max': sys.maxsize, 'step': 1}), 'take_count': ('INT', {'default': 1, 'min': 0, 'max': sys.maxsize, 'step': 1})}}
-    RETURN_TYPES = ('DETAILER_HOOK',)
-    FUNCTION = 'doit'
-    CATEGORY = 'ImpactPack/Util'
-
-    def doit(self, target, order, take_start, take_count):
-        hook = hooks.SEGSOrderedFilterDetailerHook(target, order, take_start, take_count)
-        return (hook,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

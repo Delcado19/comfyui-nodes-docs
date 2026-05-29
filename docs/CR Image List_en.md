@@ -35,32 +35,6 @@ The CR_ImageList node is designed to manage and organize image lists. It allows 
 - Infra type: CPU
 
 # Source code
-```
-class CR_ImageList:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {}, 'optional': {'image_1': ('IMAGE',), 'alias1': ('STRING', {'multiline': False, 'default': ''}), 'image_2': ('IMAGE',), 'alias2': ('STRING', {'multiline': False, 'default': ''}), 'image_3': ('IMAGE',), 'alias3': ('STRING', {'multiline': False, 'default': ''}), 'image_4': ('IMAGE',), 'alias4': ('STRING', {'multiline': False, 'default': ''}), 'image_5': ('IMAGE',), 'alias5': ('STRING', {'multiline': False, 'default': ''}), 'image_list': ('image_LIST',)}}
-    RETURN_TYPES = ('IMAGE_LIST', 'STRING')
-    RETURN_NAMES = ('IMAGE_LIST', 'show_help')
-    FUNCTION = 'image_list'
-    CATEGORY = icons.get('Comfyroll/Animation/Legacy')
-
-    def image_list(self, image_1=None, alias1=None, image_2=None, alias2=None, image_3=None, alias3=None, image_4=None, alias4=None, image_5=None, alias5=None, image_list=None):
-        images = list()
-        if image_list is not None:
-            image_tup = [(alias1, image_1)]
-            images.extend([l for l in image_list])
-        if image_1 != None:
-            (images.extend([(alias1, image_1)]),)
-        if image_2 != None:
-            (images.extend([(alias2, image_2)]),)
-        if image_3 != None:
-            (images.extend([(alias3, image_3)]),)
-        if image_4 != None:
-            (images.extend([(alias4, image_4)]),)
-        if image_5 != None:
-            (images.extend([(alias5, image_5)]),)
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/List-Nodes#cr-image-list'
-        return (images, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

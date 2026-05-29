@@ -28,20 +28,7 @@ The Width/Height Literal node provides a simple, direct way to specify and pass 
     - Generate Noise Image
     - [Image Perlin Noise](../../was-node-suite-comfyui/Nodes/Image Perlin Noise.md)
 
-
-
 ## Source code
-```python
-class SizeLiteral:
-    RETURN_TYPES = ("INT",)
-    FUNCTION = "get_int"
-    CATEGORY = "ImageSaverTools/utils"
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {"required": {"int": ("INT", {"default": 512, "min": 1, "max": MAX_RESOLUTION, "step": 8})}}
-
-    def get_int(self, int):
-        return (int,)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

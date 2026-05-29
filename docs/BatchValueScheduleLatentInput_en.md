@@ -40,21 +40,6 @@ The BatchValueScheduleLatentInput node is designed to process and animate a batc
 - Infra type: CPU
 
 # Source code
-```
-class BatchValueScheduleLatentInput:
+[View source repository on GitHub](https://github.com/FizzleDorf/ComfyUI_FizzNodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'text': ('STRING', {'multiline': True, 'default': defaultValue}), 'num_latents': ('LATENT',), 'print_output': ('BOOLEAN', {'default': False})}}
-    RETURN_TYPES = ('FLOAT', 'INT', 'LATENT')
-    FUNCTION = 'animate'
-    CATEGORY = 'FizzNodes 📅🅕🅝/BatchScheduleNodes'
-
-    def animate(self, text, num_latents, print_output):
-        num_elements = sum((tensor.size(0) for tensor in num_latents.values()))
-        max_frames = num_elements
-        t = batch_get_inbetweens(batch_parse_key_frames(text, max_frames), max_frames)
-        if print_output is True:
-            print('ValueSchedule: ', t)
-        return (t, list(map(int, t)), num_latents)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -32,39 +32,6 @@ The 'doit' method of the DefaultImageForSEGS node aims to process segmentation (
 - Infra type: CPU
 
 # Source code
-```
-class DefaultImageForSEGS:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'segs': ('SEGS',), 'image': ('IMAGE',), 'override': ('BOOLEAN', {'default': True})}}
-    RETURN_TYPES = ('SEGS',)
-    FUNCTION = 'doit'
-    CATEGORY = 'ImpactPack/Util'
-
-    def doit(self, segs, image, override):
-        results = []
-        segs = core.segs_scale_match(segs, image.shape)
-        if len(segs[1]) > 0:
-            if segs[1][0].cropped_image is not None:
-                batch_count = len(segs[1][0].cropped_image)
-            else:
-                batch_count = len(image)
-            for seg in segs[1]:
-                if seg.cropped_image is not None and (not override):
-                    cropped_image = seg.cropped_image
-                else:
-                    cropped_image = None
-                    for i in range(0, batch_count):
-                        ref_image = image[i].unsqueeze(0)
-                        cropped_image2 = crop_image(ref_image, seg.crop_region)
-                        if cropped_image is None:
-                            cropped_image = cropped_image2
-                        else:
-                            cropped_image = torch.cat((cropped_image, cropped_image2), dim=0)
-                new_seg = SEG(cropped_image, seg.cropped_mask, seg.confidence, seg.crop_region, seg.bbox, seg.label, seg.control_net_wrapper)
-                results.append(new_seg)
-            return ((segs[0], results),)
-        else:
-            return (segs,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

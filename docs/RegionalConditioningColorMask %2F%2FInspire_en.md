@@ -48,19 +48,6 @@ The RegionalConditioningColorMask node aims to apply a color mask to the text en
 - Infra type: GPU
 
 # Source code
-```
-class RegionalConditioningColorMask:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Inspire-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'clip': ('CLIP',), 'color_mask': ('IMAGE',), 'mask_color': ('STRING', {'multiline': False, 'default': '#FFFFFF'}), 'strength': ('FLOAT', {'default': 1.0, 'min': 0.0, 'max': 10.0, 'step': 0.01}), 'set_cond_area': (['default', 'mask bounds'],), 'prompt': ('STRING', {'multiline': True, 'placeholder': 'prompt'})}}
-    RETURN_TYPES = ('CONDITIONING', 'MASK')
-    FUNCTION = 'doit'
-    CATEGORY = 'InspirePack/Regional'
-
-    def doit(self, clip, color_mask, mask_color, strength, set_cond_area, prompt):
-        mask = color_to_mask(color_mask, mask_color)
-        conditioning = nodes.CLIPTextEncode().encode(clip, prompt)[0]
-        conditioning = nodes.ConditioningSetMask().append(conditioning, mask, set_cond_area, strength)[0]
-        return (conditioning, mask)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

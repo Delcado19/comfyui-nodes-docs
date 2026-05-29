@@ -36,25 +36,6 @@ The make_seamless method processes a set of images and converts them into seamle
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Image_Make_Seamless:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'images': ('IMAGE',), 'blending': ('FLOAT', {'default': 0.4, 'max': 1.0, 'min': 0.0, 'step': 0.01}), 'tiled': (['true', 'false'],), 'tiles': ('INT', {'default': 2, 'max': 6, 'min': 2, 'step': 2})}}
-    RETURN_TYPES = ('IMAGE',)
-    RETURN_NAMES = ('images',)
-    FUNCTION = 'make_seamless'
-    CATEGORY = 'WAS Suite/Image/Process'
-
-    def make_seamless(self, images, blending, tiled, tiles):
-        WTools = WAS_Tools_Class()
-        seamless_images = []
-        for image in images:
-            seamless_images.append(pil2tensor(WTools.make_seamless(tensor2pil(image), blending, tiled, tiles)))
-        seamless_images = torch.cat(seamless_images, dim=0)
-        return (seamless_images,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

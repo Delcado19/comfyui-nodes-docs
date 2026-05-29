@@ -41,8 +41,7 @@ The Banana Styles Styler node dynamically applies various style options to text 
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-# Could not find class definition, unable to automatically detect source code
-```
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
+
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

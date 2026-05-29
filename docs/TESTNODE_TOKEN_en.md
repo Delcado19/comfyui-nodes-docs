@@ -28,22 +28,6 @@ This node uses the CLIP model to process text input, converting text into a stru
 - Infra type: CPU
 
 # Source code
-```
-class TESTNODE_TOKEN:
+[View source repository on GitHub](https://github.com/shadowcz007/comfyui-mixlab-nodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'text': ('STRING', {'forceInput': True}), 'clip': ('CLIP',)}}
-    RETURN_TYPES = ('STRING',)
-    FUNCTION = 'run'
-    CATEGORY = '♾️Mixlab/__TEST'
-    OUTPUT_NODE = True
-    INPUT_IS_LIST = False
-    OUTPUT_IS_LIST = (False,)
-
-    def run(self, text, clip=None):
-        tokens = clip.tokenize(text)
-        tokens = [v for v in tokens.values()][0][0]
-        tokens = json.dumps(tokens)
-        return (tokens,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

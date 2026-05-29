@@ -27,30 +27,6 @@ The UnaryImageOp node is designed to perform various single-input image operatio
 - Infra type: GPU
 
 # Source code
-```
-class UnaryImageOp:
+[View source repository on GitHub](https://github.com/BadCafeCode/masquerade-nodes-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'image': ('IMAGE',), 'op': (['invert', 'average', 'round', 'clamp', 'abs'],)}}
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'op_image'
-    CATEGORY = 'Masquerade Nodes'
-
-    def op_image(self, image, op):
-        image = tensor2rgb(image)
-        if op == 'invert':
-            return (1.0 - image,)
-        elif op == 'average':
-            mean = torch.mean(torch.mean(image, dim=2), dim=1)
-            return (mean.unsqueeze(1).unsqueeze(2).repeat(1, image.shape[1], image.shape[2], 1),)
-        elif op == 'round':
-            return (torch.round(image),)
-        elif op == 'clamp':
-            return (torch.min(torch.max(image, torch.tensor(0.0)), torch.tensor(1.0)),)
-        elif op == 'abs':
-            return (torch.abs(image),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -27,16 +27,6 @@ The ComposeVec2 node is designed to combine two scalar values into a single two-
 - Infra type: CPU
 
 # Source code
-```
-class ComposeVec2:
+[View source repository on GitHub](https://github.com/evanspearman/ComfyMath)
 
-    @classmethod
-    def INPUT_TYPES(cls) -> Mapping[str, Any]:
-        return {'required': {'x': ('FLOAT', {'default': 0.0}), 'y': ('FLOAT', {'default': 0.0})}}
-    RETURN_TYPES = ('VEC2',)
-    FUNCTION = 'op'
-    CATEGORY = 'math/conversion'
-
-    def op(self, x: float, y: float) -> tuple[Vec2]:
-        return ((x, y),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

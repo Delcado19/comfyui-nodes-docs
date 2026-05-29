@@ -23,21 +23,6 @@ The FlipSigmas node is designed to manipulate the sigma values used in the sampl
 - Infra type: CPU
 
 # Source code
-```
-class FlipSigmas:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'sigmas': ('SIGMAS',)}}
-    RETURN_TYPES = ('SIGMAS',)
-    CATEGORY = 'sampling/custom_sampling/sigmas'
-    FUNCTION = 'get_sigmas'
-
-    def get_sigmas(self, sigmas):
-        if len(sigmas) == 0:
-            return (sigmas,)
-        sigmas = sigmas.flip(0)
-        if sigmas[0] == 0:
-            sigmas[0] = 0.0001
-        return (sigmas,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

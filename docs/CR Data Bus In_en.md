@@ -43,26 +43,6 @@ CR_DataBusIn is a node for managing and routing data streams. It transmits vario
 - Infra type: CPU
 
 # Source code
-```
-class CR_DataBusIn:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {}, 'optional': {'pipe': (any_type,), 'any1': (any_type,), 'any2': (any_type,), 'any3': (any_type,), 'any4': (any_type,)}}
-    RETURN_TYPES = ('PIPE_LINE', 'STRING')
-    RETURN_NAMES = ('pipe', 'show_help')
-    FUNCTION = 'load_data'
-    CATEGORY = icons.get('Comfyroll/Pipe/Bus')
-
-    def load_data(self, any1=None, any2=None, any3=None, any4=None, pipe=None):
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Pipe-Nodes#cr-data-bus-in'
-        (new_any1, new_any2, new_any3, new_any4) = (None, None, None, None)
-        if pipe is not None:
-            (new_any1, new_any2, new_any3, new_any4) = pipe
-        new_any1 = any1 if any1 is not None else new_any1
-        new_any2 = any2 if any2 is not None else new_any2
-        new_any3 = any3 if any3 is not None else new_any3
-        new_any4 = any4 if any4 is not None else new_any4
-        new_pipe = (new_any1, new_any2, new_any3, new_any4)
-        return (new_pipe, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -27,27 +27,6 @@ The TESTNODE_ node is designed to analyze and process a list of elements of any 
 - Infra type: CPU
 
 # Source code
-```
-class TESTNODE_:
+[View source repository on GitHub](https://github.com/shadowcz007/comfyui-mixlab-nodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'ANY': (any_type,)}}
-    RETURN_TYPES = (any_type,)
-    FUNCTION = 'run'
-    CATEGORY = '♾️Mixlab/__TEST'
-    OUTPUT_NODE = True
-    INPUT_IS_LIST = True
-    OUTPUT_IS_LIST = (True,)
-
-    def run(self, ANY):
-        list_stats = ListStatistics()
-        result = list_stats.count_types(ANY)
-        module_path = os.path.join(os.path.dirname(__file__), 'test.py')
-        spec = importlib.util.spec_from_file_location('test', module_path)
-        module = importlib.util.module_from_spec(spec)
-        spec.loader.exec_module(module)
-        functions = getattr(module, 'run')
-        functions(ANY)
-        return {'ui': {'data': result, 'type': [str(type(ANY[0]))]}, 'result': (ANY,)}
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

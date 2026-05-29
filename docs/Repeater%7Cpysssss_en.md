@@ -37,31 +37,6 @@ The Repeater node is designed to repeat a given input source a specified number 
 - Common nodes: unknown
 
 ## Source code
-```python
-class Repeater:
-    @classmethod
-    def INPUT_TYPES(s):
-        return {"required": {
-            "source": (any, {}),
-            "repeats": ("INT", {"min": 0, "max": 5000, "default": 2}),
-            "output": (["single", "multi"], {}),
-            "node_mode": (["reuse", "create"], {}),
-        }}
+[View source repository on GitHub](https://github.com/pythongosssss/ComfyUI-Custom-Scripts)
 
-    RETURN_TYPES = (any,)
-    FUNCTION = "repeat"
-    OUTPUT_NODE = False
-    OUTPUT_IS_LIST = (True,)
-
-    CATEGORY = "utils"
-
-    def repeat(self, repeats, output, node_mode, **kwargs):
-        if output == "multi":
-            # Multi outputs are split to indiviual nodes on the frontend when serializing
-            return ([kwargs["source"]],)
-        elif node_mode == "reuse":
-            # When reusing we have a single input node, repeat that N times
-            return ([kwargs["source"]] * repeats,)
-        else:
-            # When creating new nodes, they'll be added dynamically when the graph is serialized
-            return ((list(kwargs.values())),)
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

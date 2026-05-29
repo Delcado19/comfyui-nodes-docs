@@ -64,26 +64,6 @@ The IPAdapterEmbeds node aims to integrate and apply IPAdapter modifications to 
 - Infra type: GPU
 
 # Source code
-```
-class IPAdapterEmbeds:
+[View source repository on GitHub](https://github.com/cubiq/ComfyUI_IPAdapter_plus)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'model': ('MODEL',), 'ipadapter': ('IPADAPTER',), 'pos_embed': ('EMBEDS',), 'weight': ('FLOAT', {'default': 1.0, 'min': -1, 'max': 3, 'step': 0.05}), 'weight_type': (WEIGHT_TYPES,), 'start_at': ('FLOAT', {'default': 0.0, 'min': 0.0, 'max': 1.0, 'step': 0.001}), 'end_at': ('FLOAT', {'default': 1.0, 'min': 0.0, 'max': 1.0, 'step': 0.001}), 'embeds_scaling': (['V only', 'K+V', 'K+V w/ C penalty', 'K+mean(V) w/ C penalty'],)}, 'optional': {'neg_embed': ('EMBEDS',), 'attn_mask': ('MASK',), 'clip_vision': ('CLIP_VISION',)}}
-    RETURN_TYPES = ('MODEL',)
-    FUNCTION = 'apply_ipadapter'
-    CATEGORY = 'ipadapter/embeds'
-
-    def apply_ipadapter(self, model, ipadapter, pos_embed, weight, weight_type, start_at, end_at, neg_embed=None, attn_mask=None, clip_vision=None, embeds_scaling='V only'):
-        ipa_args = {'pos_embed': pos_embed, 'neg_embed': neg_embed, 'weight': weight, 'weight_type': weight_type, 'start_at': start_at, 'end_at': end_at, 'attn_mask': attn_mask, 'embeds_scaling': embeds_scaling}
-        if 'ipadapter' in ipadapter:
-            ipadapter_model = ipadapter['ipadapter']['model']
-            clip_vision = clip_vision if clip_vision is not None else ipadapter['clipvision']['model']
-        else:
-            ipadapter_model = ipadapter
-            clip_vision = clip_vision
-        if clip_vision is None and neg_embed is None:
-            raise Exception('Missing CLIPVision model.')
-        del ipadapter
-        return (ipadapter_execute(model.clone(), ipadapter_model, clip_vision, **ipa_args),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

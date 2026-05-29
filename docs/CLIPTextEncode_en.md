@@ -27,18 +27,6 @@ The CLIPTextEncode node processes text input with a CLIP model to generate a con
 - Infra type: GPU
 
 # Source code
-```
-class CLIPTextEncode:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'text': ('STRING', {'multiline': True, 'dynamicPrompts': True}), 'clip': ('CLIP',)}}
-    RETURN_TYPES = ('CONDITIONING',)
-    FUNCTION = 'encode'
-    CATEGORY = 'conditioning'
-
-    def encode(self, clip, text):
-        tokens = clip.tokenize(text)
-        (cond, pooled) = clip.encode_from_tokens(tokens, return_pooled=True)
-        return ([[cond, {'pooled_output': pooled}]],)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

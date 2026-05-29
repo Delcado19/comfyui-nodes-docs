@@ -36,18 +36,6 @@ The FilterSchedule class provides a method to refine and narrow down a set of pr
 - Infra type: CPU
 
 # Source code
-```
-class FilterSchedule:
+[View source repository on GitHub](https://github.com/asagi4/comfyui-prompt-control)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'prompt_schedule': ('PROMPT_SCHEDULE',)}, 'optional': {'tags': ('STRING', {'default': ''}), 'start': ('FLOAT', {'min': 0.0, 'max': 1.0, 'default': 0.0, 'step': 0.01}), 'end': ('FLOAT', {'min': 0.0, 'max': 1.0, 'default': 1.0, 'step': 0.01})}}
-    RETURN_TYPES = ('PROMPT_SCHEDULE',)
-    CATEGORY = 'promptcontrol'
-    FUNCTION = 'apply'
-
-    def apply(self, prompt_schedule, tags='', start=0.0, end=1.0):
-        p = prompt_schedule.with_filters(tags, start=start, end=end)
-        log.debug(f'Filtered {prompt_schedule.parsed_prompt} with: ({tags}, {start}, {end}); the result is %s', p.parsed_prompt)
-        return (p,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

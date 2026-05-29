@@ -29,23 +29,6 @@ This node is designed to attach a LoRA hook to the CLIP model, enhancing its fun
 - Common nodes: unknown
 
 ## Source code
-```python
-class SetClipLoraHook:
-    @classmethod
-    def INPUT_TYPES(s):
-        return {
-            "required": {
-                "clip": ("CLIP",),
-                "lora_hook": ("LORA_HOOK",),
-            }
-        }
-    
-    RETURN_TYPES = ("CLIP",)
-    RETURN_NAMES = ("hook_CLIP",)
-    CATEGORY = "Animate Diff 🎭🅐🅓/conditioning"
-    FUNCTION = "apply_lora_hook"
+[View source repository on GitHub](https://github.com/Kosinkadink/ComfyUI-AnimateDiff-Evolved)
 
-    def apply_lora_hook(self, clip: CLIP, lora_hook: LoraHookGroup):
-        new_clip = CLIPWithHooks(clip)
-        new_clip.set_desired_hooks(lora_hooks=lora_hook)
-        return (new_clip, )
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

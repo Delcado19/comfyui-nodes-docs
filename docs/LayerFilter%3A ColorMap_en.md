@@ -37,43 +37,6 @@ Pseudo-color heatmap effect.
 - Infra type: GPU
 
 # Source code
-```
-class ColorMap:
+[View source repository on GitHub](https://github.com/chflame163/ComfyUI_LayerStyle)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(self):
-
-        return {
-            "required": {
-                "image": ("IMAGE", ),
-                "color_map": (colormap_list,),
-                "opacity": ("INT", {"default": 100, "min": 0, "max": 100, "step": 1}),  # 透明度
-            },
-            "optional": {
-            }
-        }
-
-    RETURN_TYPES = ("IMAGE",)
-    RETURN_NAMES = ("image",)
-    FUNCTION = 'color_map'
-    CATEGORY = '😺dzNodes/LayerFilter'
-
-    def color_map(self, image, color_map, opacity
-                  ):
-
-        ret_images = []
-
-        for i in image:
-            i = torch.unsqueeze(i, 0)
-            _canvas = tensor2pil(i)
-            _image = image_to_colormap(_canvas, colormap_list.index(color_map))
-            ret_image = chop_image(_canvas, _image, 'normal', opacity)
-
-            ret_images.append(pil2tensor(ret_image))
-
-        log(f"{NODE_NAME} Processed {len(ret_images)} image(s).", message_type='finish')
-        return (torch.cat(ret_images, dim=0),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

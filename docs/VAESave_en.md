@@ -36,33 +36,6 @@ The VAESave node is responsible for saving the state of a Variational Autoencode
 - Infra type: CPU
 
 # Source code
-```
-class VAESave:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    def __init__(self):
-        self.output_dir = folder_paths.get_output_directory()
-
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'vae': ('VAE',), 'filename_prefix': ('STRING', {'default': 'vae/ComfyUI_vae'})}, 'hidden': {'prompt': 'PROMPT', 'extra_pnginfo': 'EXTRA_PNGINFO'}}
-    RETURN_TYPES = ()
-    FUNCTION = 'save'
-    OUTPUT_NODE = True
-    CATEGORY = 'advanced/model_merging'
-
-    def save(self, vae, filename_prefix, prompt=None, extra_pnginfo=None):
-        (full_output_folder, filename, counter, subfolder, filename_prefix) = folder_paths.get_save_image_path(filename_prefix, self.output_dir)
-        prompt_info = ''
-        if prompt is not None:
-            prompt_info = json.dumps(prompt)
-        metadata = {}
-        if not args.disable_metadata:
-            metadata['prompt'] = prompt_info
-            if extra_pnginfo is not None:
-                for x in extra_pnginfo:
-                    metadata[x] = json.dumps(extra_pnginfo[x])
-        output_checkpoint = f'{filename}_{counter:05}_.safetensors'
-        output_checkpoint = os.path.join(full_output_folder, output_checkpoint)
-        comfy.utils.save_torch_file(vae.get_sd(), output_checkpoint, metadata=metadata)
-        return {}
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -36,53 +36,6 @@ This node aims to preprocess images for the ClipVision model, ensuring they are 
 - Infra type: CPU
 
 # Source code
-```
-class PrepImageForClipVision:
+[View source repository on GitHub](https://github.com/cubiq/ComfyUI_IPAdapter_plus)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'image': ('IMAGE',), 'interpolation': (['LANCZOS', 'BICUBIC', 'HAMMING', 'BILINEAR', 'BOX', 'NEAREST'],), 'crop_position': (['top', 'bottom', 'left', 'right', 'center', 'pad'],), 'sharpening': ('FLOAT', {'default': 0.0, 'min': 0, 'max': 1, 'step': 0.05})}}
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'prep_image'
-    CATEGORY = 'ipadapter/utils'
-
-    def prep_image(self, image, interpolation='LANCZOS', crop_position='center', sharpening=0.0):
-        size = (224, 224)
-        (_, oh, ow, _) = image.shape
-        output = image.permute([0, 3, 1, 2])
-        if crop_position == 'pad':
-            if oh != ow:
-                if oh > ow:
-                    pad = (oh - ow) // 2
-                    pad = (pad, 0, pad, 0)
-                elif ow > oh:
-                    pad = (ow - oh) // 2
-                    pad = (0, pad, 0, pad)
-                output = T.functional.pad(output, pad, fill=0)
-        else:
-            crop_size = min(oh, ow)
-            x = (ow - crop_size) // 2
-            y = (oh - crop_size) // 2
-            if 'top' in crop_position:
-                y = 0
-            elif 'bottom' in crop_position:
-                y = oh - crop_size
-            elif 'left' in crop_position:
-                x = 0
-            elif 'right' in crop_position:
-                x = ow - crop_size
-            x2 = x + crop_size
-            y2 = y + crop_size
-            output = output[:, :, y:y2, x:x2]
-        imgs = []
-        for img in output:
-            img = T.ToPILImage()(img)
-            img = img.resize(size, resample=Image.Resampling[interpolation])
-            imgs.append(T.ToTensor()(img))
-        output = torch.stack(imgs, dim=0)
-        del imgs, img
-        if sharpening > 0:
-            output = contrast_adaptive_sharpening(output, sharpening)
-        output = output.permute([0, 2, 3, 1])
-        return (output,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -23,24 +23,6 @@ The FaceBBoxDetectorLoader node is designed to load and manage face detection mo
 - Infra type: CPU
 
 # Source code
-```
-class FaceBBoxDetectorLoader:
+[View source repository on GitHub](https://github.com/Ryuukeisyou/comfyui_face_parsing)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        files = folder_paths.get_filename_list('ultralytics_bbox')
-        face_detect_models = list(filter(lambda x: 'face' in x, files))
-        bboxs = ['bbox/' + x for x in face_detect_models]
-        return {'required': {'model_name': (bboxs, {})}}
-    RETURN_TYPES = ('BBOX_DETECTOR',)
-    FUNCTION = 'main'
-    CATEGORY = 'face_parsing'
-
-    def main(self, model_name):
-        model_path = folder_paths.get_full_path('ultralytics', model_name)
-        model = YOLO(model_path)
-        return (model,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

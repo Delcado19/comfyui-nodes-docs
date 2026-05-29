@@ -65,34 +65,7 @@ The SMPLShapeParameters node aims to adjust the shape parameters of the SMPL mod
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class SMPLShapeParameters:
-    @classmethod
-    def INPUT_TYPES(s):
-        return {
-            "required": {
-                "smpl": ("SMPL", ),
-                "size": ("FLOAT", {"default": 0, "min": -100, "max": 100, "step": 0.01}),
-                "thickness": ("FLOAT", {"default": 0, "min": -100, "max": 100, "step": 0.01}),
-                "upper_body_height": ("FLOAT", {"default": 0, "min": -100, "max": 100, "step": 0.01}),
-                "lower_body_height": ("FLOAT", {"default": 0, "min": -100, "max": 100, "step": 0.01}),
-                "muscle_mass": ("FLOAT", {"default": 0, "min": -100, "max": 100, "step": 0.01}),
-                "legs": ("FLOAT", {"default": 0, "min": -100, "max": 100, "step": 0.01}),
-                "chest": ("FLOAT", {"default": 0, "min": -100, "max": 100, "step": 0.01}),
-                "waist_height": ("FLOAT", {"default": 0, "min": -100, "max": 100, "step": 0.01}),
-                "waist_width": ("FLOAT", {"default": 0, "min": -100, "max": 100, "step": 0.01}),
-                "arms": ("FLOAT", {"default": 0, "min": -100, "max": 100, "step": 0.01}),
-            },
-        }
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    RETURN_TYPES = ("SMPL",)
-    CATEGORY = "MotionDiff/smpl"
-    FUNCTION = "setparams"
-    def setparams(self, smpl, size, thickness, upper_body_height, lower_body_height, muscle_mass, legs, chest, waist_height, waist_width, arms):
-        shape_parameters = [size, thickness, upper_body_height, lower_body_height, muscle_mass, legs, chest, waist_height, waist_width, arms]
-        smpl[2]["shape_parameters"] = shape_parameters
-        return (smpl,)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

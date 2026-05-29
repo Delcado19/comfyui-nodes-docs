@@ -40,29 +40,6 @@ The SplitImage node divides the input image into a smaller image grid and genera
 - Infra type: CPU
 
 # Source code
-```
-class SplitImage:
+[View source repository on GitHub](https://github.com/shadowcz007/comfyui-mixlab-nodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'image': ('IMAGE',), 'num': ('INT', {'default': 4, 'min': 1, 'max': 500, 'step': 1, 'display': 'number'}), 'seed': ('INT', {'default': 4, 'min': 1, 'max': 500, 'step': 1, 'display': 'number'})}}
-    RETURN_TYPES = ('_GRID', '_GRID', 'MASK')
-    RETURN_NAMES = ('grids', 'grid', 'mask')
-    FUNCTION = 'run'
-    CATEGORY = '♾️Mixlab/Layer'
-    INPUT_IS_LIST = False
-
-    def run(self, image, num, seed):
-        image = tensor2pil(image)
-        grids = splitImage(image, num)
-        if seed > num:
-            num = int(seed / 500 * num) - 1
-        else:
-            num = seed - 1
-        num = max(0, num)
-        g = grids[num]
-        (x, y, w, h) = g
-        mask = createMask(image, x, y, w, h)
-        mask = pil2tensor(mask)
-        return (grids, g, mask)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

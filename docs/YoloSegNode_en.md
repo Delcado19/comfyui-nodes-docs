@@ -36,36 +36,6 @@ This node aims to perform semantic segmentation using a YOLO-based model, identi
 - Infra type: GPU
 
 # Source code
-```
-class YoloSegNode:
+[View source repository on GitHub](https://github.com/jags111/ComfyUI_Jags_VectorMagic)
 
-    def __init__(self) -> None:
-        ...
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'image': ('IMAGE',), 'model_name': (folder_paths.get_filename_list('yolov8'),), 'class_id': ('INT', {'default': 0})}}
-    RETURN_TYPES = ('IMAGE', 'MASK')
-    RETURN_NAMES = ('SEG_IMAGE', 'SEG_MASK')
-    FUNCTION = 'seg'
-    CATEGORY = 'Jags_vector/yoloSEG'
-
-    def seg(self, image, model_name, class_id):
-        image_tensor = image
-        image_np = image_tensor.cpu().numpy()
-        image = Image.fromarray((image_np.squeeze(0) * 255).astype(np.uint8))
-        print(f"model_path: {os.path.join(folder_paths.models_dir, 'yolov8')}/{model_name}")
-        model = YOLO(f"{os.path.join(folder_paths.models_dir, 'yolov8')}/{model_name}")
-        results = model(image)
-        masks = results[0].masks.data
-        boxes = results[0].boxes.data
-        clss = boxes[:, 5]
-        people_indices = torch.where(clss == class_id)
-        people_masks = masks[people_indices]
-        people_mask = torch.any(people_masks, dim=0).int() * 255
-        im_array = results[0].plot()
-        im = Image.fromarray(im_array[..., ::-1])
-        image_tensor_out = torch.tensor(np.array(im).astype(np.float32) / 255.0)
-        image_tensor_out = torch.unsqueeze(image_tensor_out, 0)
-        return (image_tensor_out, people_mask)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

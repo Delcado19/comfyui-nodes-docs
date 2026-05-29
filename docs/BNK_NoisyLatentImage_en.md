@@ -39,22 +39,6 @@ This node generates noisy latent variables, which are essential for various gene
 - Infra type: GPU
 
 # Source code
-```
-class NoisyLatentImage:
+[View source repository on GitHub](https://github.com/BlenderNeko/ComfyUI_Noise)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'source': (['CPU', 'GPU'],), 'seed': ('INT', {'default': 0, 'min': 0, 'max': 18446744073709551615}), 'width': ('INT', {'default': 512, 'min': 64, 'max': MAX_RESOLUTION, 'step': 8}), 'height': ('INT', {'default': 512, 'min': 64, 'max': MAX_RESOLUTION, 'step': 8}), 'batch_size': ('INT', {'default': 1, 'min': 1, 'max': 64})}}
-    RETURN_TYPES = ('LATENT',)
-    FUNCTION = 'create_noisy_latents'
-    CATEGORY = 'latent/noise'
-
-    def create_noisy_latents(self, source, seed, width, height, batch_size):
-        torch.manual_seed(seed)
-        if source == 'CPU':
-            device = 'cpu'
-        else:
-            device = comfy.model_management.get_torch_device()
-        noise = torch.randn((batch_size, 4, height // 8, width // 8), dtype=torch.float32, device=device).cpu()
-        return ({'samples': noise},)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

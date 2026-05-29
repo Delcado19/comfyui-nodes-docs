@@ -27,18 +27,6 @@ This node prepares the model's convolutional layers for the Variational Autoenco
 - Infra type: GPU
 
 # Source code
-```
-class CircularVAEDecode:
+[View source repository on GitHub](https://github.com/jags111/ComfyUI_Jags_VectorMagic)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'samples': ('LATENT',), 'vae': ('VAE',)}}
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'decode'
-    CATEGORY = 'Jags_vector/latent'
-
-    def decode(self, vae, samples):
-        for layer in [layer for layer in vae.first_stage_model.modules() if isinstance(layer, torch.nn.Conv2d)]:
-            layer.padding_mode = 'circular'
-        return (vae.decode(samples['samples']),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

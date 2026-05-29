@@ -29,32 +29,7 @@ The Batch Load Images node is designed to load images in bulk from a specified d
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class BatchLoadImages:
-    @classmethod
-    def INPUT_TYPES(s):
-        return {"required": {"image_directory": ("STRING", {"multiline": False, "placeholder": "Image Directory"}),
-                             "subdirectories": (['true', 'false'], {"default": 'false'})}}
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    RETURN_TYPES = ('IMAGE',)
-    RETURN_NAMES = ('image',)
-    FUNCTION = 'batch'
-    CATEGORY = 'Mikey/Image'
-    OUTPUT_IS_LIST = (True, )
-
-    def batch(self, image_directory, subdirectories):
-        if not os.path.exists(image_directory):
-            raise Exception(f"Image directory {image_directory} does not exist")
-
-        images = []
-        for file in os.listdir(image_directory):
-            if file.endswith('.png') or file.endswith('.jpg') or file.endswith('.jpeg') or file.endswith('.webp') or file.endswith('.bmp') or file.endswith('.gif'):
-                img = Image.open(os.path.join(image_directory, file))
-                img = pil2tensor(img)
-                images.append(img)
-        #print(f'Loaded {len(images)} images')
-        return (images,)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -31,17 +31,6 @@ If node acts as a conditional execution unit, evaluates the input condition, and
 - Infra type: CPU
 
 # Source code
-```
-class If:
+[View source repository on GitHub](https://github.com/yolain/ComfyUI-Easy-Use)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'any': (AlwaysEqualProxy('*'),), 'if': (AlwaysEqualProxy('*'),), 'else': (AlwaysEqualProxy('*'),)}}
-    RETURN_TYPES = (AlwaysEqualProxy('*'),)
-    RETURN_NAMES = ('?',)
-    FUNCTION = 'execute'
-    CATEGORY = 'EasyUse/Logic/Math'
-
-    def execute(self, *args, **kwargs):
-        return (kwargs['if'] if kwargs['any'] else kwargs['else'],)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

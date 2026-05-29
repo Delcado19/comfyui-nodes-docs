@@ -32,17 +32,6 @@ The VAEEncodeTiled node is designed to efficiently and in parallel encode image 
 - Infra type: GPU
 
 # Source code
-```
-class VAEEncodeTiled:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'pixels': ('IMAGE',), 'vae': ('VAE',), 'tile_size': ('INT', {'default': 512, 'min': 320, 'max': 4096, 'step': 64})}}
-    RETURN_TYPES = ('LATENT',)
-    FUNCTION = 'encode'
-    CATEGORY = '_for_testing'
-
-    def encode(self, vae, pixels, tile_size):
-        t = vae.encode_tiled(pixels[:, :, :, :3], tile_x=tile_size, tile_y=tile_size)
-        return ({'samples': t},)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

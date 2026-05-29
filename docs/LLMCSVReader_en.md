@@ -34,45 +34,7 @@ The LLMCSVReader node is specifically designed to read CSV files and convert the
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class LLMCSVReader(CSVReader):
-    """
-    @NOTE: Reads CSV files into a llama_index Document
-    @Source: https://github.com/run-llama/llama_index/blob/main/llama-index-integrations/readers/llama-index-readers-file/llama_index/readers/file/tabular/base.py
-    @Documentation: https://docs.llamaindex.ai/en/latest/api_reference/readers/file/#llama_index.readers.file.CSVReader
-    """
+[View source repository on GitHub](https://github.com/jmiller641/SALT/blob/dev/ComfyUI-SALT/saltDocumentation.md)
 
-    def __init__(self):
-        super().__init__()
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {
-            "required": {
-                "path": ("STRING", {"default": ""}),
-                "concat_rows": ([False,True], {"default":True}),
-            },
-            "optional": {
-                "extra_info": ("STRING", {"multiline": True, "dynamicPrompts": False, "default": "{}"}),
-            }
-        }
-
-    RETURN_TYPES = ("DOCUMENT", )
-    RETURN_NAMES = ("documents",)
-
-    FUNCTION = "execute"
-    CATEGORY = f"{MENU_NAME}/{SUB_MENU_NAME}/Readers"
-
-    def execute(self, path:str, concat_rows:bool, extra_info:str):
-        get_full_path(1, path)
-        if not os.path.exists(path):
-            raise FileNotFoundError(f"No file available at: {path}")
-        path = Path(path)
-        self.concat_rows = concat_rows
-        extra_info = read_extra_info(extra_info)
-        data = self.load_data(path, extra_info)
-        return (data, )
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

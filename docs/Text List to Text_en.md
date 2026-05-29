@@ -27,22 +27,6 @@ The WAS_Text_List_to_Text node is designed to merge a series of text strings int
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Text_List_to_Text:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'delimiter': ('STRING', {'default': ', '}), 'text_list': ('LIST', {'forceInput': True})}}
-    RETURN_TYPES = (TEXT_TYPE,)
-    FUNCTION = 'text_list_to_text'
-    CATEGORY = 'WAS Suite/Text'
-
-    def text_list_to_text(self, delimiter, text_list):
-        if delimiter == '\\n':
-            delimiter = '\n'
-        merged_text = delimiter.join(text_list)
-        return (merged_text,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

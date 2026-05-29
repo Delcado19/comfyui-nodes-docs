@@ -32,39 +32,6 @@ This node displays cache information, categorizing cache contents by string and 
 - Infra type: CPU
 
 # Source code
-```
-class ShowCachedInfo:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Inspire-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'cache_info': ('STRING', {'multiline': True, 'default': ''}), 'key': ('STRING', {'multiline': False, 'default': ''})}, 'hidden': {'unique_id': 'UNIQUE_ID'}}
-    RETURN_TYPES = ()
-    FUNCTION = 'doit'
-    CATEGORY = 'InspirePack/Backend'
-    OUTPUT_NODE = True
-
-    @staticmethod
-    def get_data():
-        global cache
-        text1 = '---- [String Key Caches] ----\n'
-        text2 = '---- [Number Key Caches] ----\n'
-        for (k, v) in cache.items():
-            if v[0] == '':
-                tag = 'N/A(tag)'
-            else:
-                tag = v[0]
-            if isinstance(k, str):
-                text1 += f'{k}: {tag}\n'
-            else:
-                text2 += f'{k}: {tag}\n'
-        return text1 + '\n' + text2
-
-    def doit(self, cache_info, key, unique_id):
-        text = ShowCachedInfo.get_data()
-        PromptServer.instance.send_sync('inspire-node-feedback', {'node_id': unique_id, 'widget_name': 'cache_info', 'type': 'text', 'data': text})
-        return {}
-
-    @classmethod
-    def IS_CHANGED(cls, **kwargs):
-        return float('NaN')
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

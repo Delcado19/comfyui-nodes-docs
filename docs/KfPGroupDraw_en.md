@@ -32,17 +32,6 @@ This node visualizes a set of parameter groups as a curve graph, enabling the an
 - Infra type: CPU
 
 # Source code
-```
-class KfPGroupDraw:
-    CATEGORY = f'{CATEGORY}/experimental'
-    FUNCTION = 'main'
-    RETURN_TYPES = ('IMAGE',)
+[View source repository on GitHub](https://github.com/dmarx/ComfyUI-Keyframed)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'parameter_group': ('PARAMETER_GROUP', {'forceInput': True}), 'n': ('INT', {'default': 64}), 'show_legend': ('BOOLEAN', {'default': True})}}
-
-    def main(self, parameter_group, n, show_legend):
-        img_tensor = plot_curve(parameter_group, n, show_legend, is_pgroup=True)
-        return (img_tensor,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

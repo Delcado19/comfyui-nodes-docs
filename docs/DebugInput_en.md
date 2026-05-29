@@ -23,25 +23,6 @@ The 'debug' method in the 'WAS_DebugThis' node serves as a fundamental tool for 
 - Infra type: CPU
 
 # Source code
-```
-class WAS_DebugThis:
+[View source repository on GitHub](https://github.com/WASasquatch/WAS_Extras)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'input': (wildcard, {})}}
-    RETURN_TYPES = ()
-    OUTPUT_NODE = True
-    FUNCTION = 'debug'
-    CATEGORY = 'debug'
-
-    def debug(self, input):
-        print('Debug:')
-        print(input)
-        if isinstance(input, object) and (not isinstance(input, (str, int, float, bool, list, dict, tuple))):
-            print('Objects directory listing:')
-            pprint(dir(input), indent=4)
-        return ()
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -23,7 +23,6 @@ This node is designed to visualize and analyze the curvature of keyframe paths, 
 - Infra type: CPU
 
 # Source code
-```
-class KfDebug_Curve(KfDebug_Passthrough):
-    RETURN_TYPES = ('KEYFRAMED_CURVE',)
-```
+[View source repository on GitHub](https://github.com/dmarx/ComfyUI-Keyframed)
+
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

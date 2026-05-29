@@ -23,16 +23,6 @@ The 'doit' method of the ImpactInt node is designed to perform a basic logical o
 - Infra type: CPU
 
 # Source code
-```
-class ImpactInt:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'value': ('INT', {'default': 0, 'min': 0, 'max': sys.maxsize, 'step': 1})}}
-    FUNCTION = 'doit'
-    CATEGORY = 'ImpactPack/Logic'
-    RETURN_TYPES = ('INT',)
-
-    def doit(self, value):
-        return (value,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

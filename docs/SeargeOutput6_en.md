@@ -51,24 +51,6 @@ The SeargeOutput6 node is designed to facilitate the demultiplexing process, all
 - Infra type: CPU
 
 # Source code
-```
-class SeargeOutput6:
+[View source repository on GitHub](https://github.com/jobunk/SeargeSDXL)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'parameters': ('PARAMETERS',)}}
-    RETURN_TYPES = ('PARAMETERS', 'INT', 'FLOAT', 'FLOAT', 'INT', 'INT', 'ENABLE_STATE', 'FLOAT')
-    RETURN_NAMES = ('parameters', 'hrf_steps', 'hrf_denoise', 'hrf_upscale_factor', 'hrf_noise_offset', 'hrf_seed', 'hires_fix', 'hrf_smoothness')
-    FUNCTION = 'demux'
-    CATEGORY = 'Searge/_deprecated_/UI/Outputs'
-
-    def demux(self, parameters):
-        hrf_steps = parameters['hrf_steps']
-        hrf_denoise = parameters['hrf_denoise']
-        hrf_upscale_factor = parameters['hrf_upscale_factor']
-        hrf_noise_offset = parameters['hrf_noise_offset']
-        hrf_seed = parameters['hrf_seed']
-        hires_fix = parameters['hires_fix']
-        hrf_smoothness = parameters['hrf_smoothness']
-        return (parameters, hrf_steps, hrf_denoise, hrf_upscale_factor, hrf_noise_offset, hrf_seed, hires_fix, hrf_smoothness)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

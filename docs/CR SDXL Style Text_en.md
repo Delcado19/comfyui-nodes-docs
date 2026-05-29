@@ -35,18 +35,6 @@ The CR_SDXLStyleText node is designed to process and manage style-related text i
 - Infra type: CPU
 
 # Source code
-```
-class CR_SDXLStyleText:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'positive_style': ('STRING', {'default': 'POS_STYLE', 'multiline': True}), 'negative_style': ('STRING', {'default': 'NEG_STYLE', 'multiline': True})}}
-    RETURN_TYPES = ('STRING', 'STRING', 'STRING')
-    RETURN_NAMES = ('positive_prompt_text_l', 'negative_prompt_text_l', 'show_help')
-    FUNCTION = 'get_value'
-    CATEGORY = icons.get('Comfyroll/SDXL')
-
-    def get_value(self, positive_style, negative_style):
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/SDXL-Nodes#cr-sdxl-style-text'
-        return (positive_style, negative_style, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -63,44 +63,6 @@ This node combines the AnimateDiff model with camera control, integrating motion
 - Common nodes: unknown
 
 ## Source code
-```python
-class ApplyAnimateDiffWithCameraCtrl:
-    @classmethod
-    def INPUT_TYPES(s):
-        return {
-            "required": {
-                "motion_model": ("MOTION_MODEL_ADE",),
-                "cameractrl_poses": ("CAMERACTRL_POSES",),
-                "start_percent": ("FLOAT", {"default": 0.0, "min": 0.0, "max": 1.0, "step": 0.001}),
-                "end_percent": ("FLOAT", {"default": 1.0, "min": 0.0, "max": 1.0, "step": 0.001}),
-            },
-            "optional": {
-                "motion_lora": ("MOTION_LORA",),
-                "scale_multival": ("MULTIVAL",),
-                "effect_multival": ("MULTIVAL",),
-                "cameractrl_multival": ("MULTIVAL",),
-                "ad_keyframes": ("AD_KEYFRAMES",),
-                "prev_m_models": ("M_MODELS",),
-            }
-        }
-    
-    RETURN_TYPES = ("M_MODELS",)
-    CATEGORY = "Animate Diff 🎭🅐🅓/② Gen2 nodes ②/CameraCtrl"
-    FUNCTION = "apply_motion_model"
+[View source repository on GitHub](https://github.com/Kosinkadink/ComfyUI-AnimateDiff-Evolved)
 
-    def apply_motion_model(self, motion_model: MotionModelPatcher, cameractrl_poses: list[list[float]], start_percent: float=0.0, end_percent: float=1.0,
-                           motion_lora: MotionLoraList=None, ad_keyframes: ADKeyframeGroup=None,
-                           scale_multival=None, effect_multival=None, cameractrl_multival=None,
-                           prev_m_models: MotionModelGroup=None,):
-        new_m_models = ApplyAnimateDiffModelNode.apply_motion_model(self, motion_model, start_percent=start_percent, end_percent=end_percent,
-                                                                    motion_lora=motion_lora, ad_keyframes=ad_keyframes,
-                                                                    scale_multival=scale_multival, effect_multival=effect_multival, prev_m_models=prev_m_models)
-        # most recent added model will always be first in list;
-        curr_model = new_m_models[0].models[0]
-        # confirm that model contains camera_encoder
-        if curr_model.model.camera_encoder is None:
-            raise Exception(f"Motion model '{curr_model.model.mm_info.mm_name}' does not contain a camera_encoder; cannot be used with Apply AnimateDiff-CameraCtrl Model node.")
-        camera_entries = [CameraEntry(entry) for entry in cameractrl_poses]
-        curr_model.orig_camera_entries = camera_entries
-        curr_model.cameractrl_multival = cameractrl_multival
-        return new_m_models
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -56,36 +56,6 @@ The 'sample' method of the StyleAlignedSampleReferenceLatents node generates a r
 - Infra type: GPU
 
 # Source code
-```
-class StyleAlignedSampleReferenceLatents:
+[View source repository on GitHub](https://github.com/brianfitzgerald/style_aligned_comfy)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'model': ('MODEL',), 'noise_seed': ('INT', {'default': 0, 'min': 0, 'max': 18446744073709551615}), 'cfg': ('FLOAT', {'default': 8.0, 'min': 0.0, 'max': 100.0, 'step': 0.1, 'round': 0.01}), 'positive': ('CONDITIONING',), 'negative': ('CONDITIONING',), 'sampler': ('SAMPLER',), 'sigmas': ('SIGMAS',), 'latent_image': ('LATENT',)}}
-    RETURN_TYPES = ('STEP_LATENTS', 'LATENT')
-    RETURN_NAMES = ('ref_latents', 'noised_output')
-    FUNCTION = 'sample'
-    CATEGORY = 'style_aligned'
-
-    def sample(self, model, noise_seed, cfg, positive, negative, sampler, sigmas, latent_image):
-        sigmas = sigmas.flip(0)
-        if sigmas[0] == 0:
-            sigmas[0] = 0.0001
-        latent = latent_image
-        latent_image = latent['samples']
-        noise = torch.zeros(latent_image.size(), dtype=latent_image.dtype, layout=latent_image.layout, device='cpu')
-        noise_mask = None
-        if 'noise_mask' in latent:
-            noise_mask = latent['noise_mask']
-        ref_latents = []
-
-        def callback(step: int, x0: T, x: T, steps: int):
-            ref_latents.insert(0, x[0])
-        disable_pbar = not comfy.utils.PROGRESS_BAR_ENABLED
-        samples = comfy.sample.sample_custom(model, noise, cfg, sampler, sigmas, positive, negative, latent_image, noise_mask=noise_mask, callback=callback, disable_pbar=disable_pbar, seed=noise_seed)
-        out = latent.copy()
-        out['samples'] = samples
-        out_noised = out
-        ref_latents = torch.stack(ref_latents)
-        return (ref_latents, out_noised)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

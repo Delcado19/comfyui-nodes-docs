@@ -30,47 +30,7 @@ The VAE Switch node is designed to select and output one from multiple provided 
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class VAE_Switch:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    CATEGORY = 'JPS Nodes/Switches'
-    RETURN_TYPES = ("VAE",)
-    RETURN_NAMES = ("vae_out",)
-    FUNCTION = "get_vae"
-
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {
-            "required": {
-                "select": ("INT", {}),
-            },
-            "optional": {
-                "vae_1": ("VAE",),
-                "vae_2": ("VAE",),
-                "vae_3": ("VAE",),
-                "vae_4": ("VAE",),
-                "vae_5": ("VAE",),
-            }
-        }
-
-    def get_vae(self,select,vae_1=None,vae_2=None,vae_3=None,vae_4=None,vae_5=None,):
-        
-        vae_out = vae_1
-
-        if (select == 2):
-            vae_out = vae_2
-        elif (select == 3):
-            vae_out = vae_3
-        elif (select == 4):
-            vae_out = vae_4
-        elif (select == 5):
-            vae_out = vae_5
-
-        return (vae_out,)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

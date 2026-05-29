@@ -27,41 +27,6 @@ PixelKSampleHookCombine is a node designed to apply two independent hooks in seq
 - Infra type: CPU
 
 # Source code
-```
-class PixelKSampleHookCombine(PixelKSampleHook):
-    hook1 = None
-    hook2 = None
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    def __init__(self, hook1, hook2):
-        super().__init__()
-        self.hook1 = hook1
-        self.hook2 = hook2
-
-    def set_steps(self, info):
-        self.hook1.set_steps(info)
-        self.hook2.set_steps(info)
-
-    def pre_decode(self, samples):
-        return self.hook2.pre_decode(self.hook1.pre_decode(samples))
-
-    def post_decode(self, pixels):
-        return self.hook2.post_decode(self.hook1.post_decode(pixels))
-
-    def post_upscale(self, pixels):
-        return self.hook2.post_upscale(self.hook1.post_upscale(pixels))
-
-    def post_encode(self, samples):
-        return self.hook2.post_encode(self.hook1.post_encode(samples))
-
-    def post_crop_region(self, w, h, item_bbox, crop_region):
-        crop_region = self.hook1.post_crop_region(w, h, item_bbox, crop_region)
-        return self.hook2.post_crop_region(w, h, item_bbox, crop_region)
-
-    def touch_scaled_size(self, w, h):
-        (w, h) = self.hook1.touch_scaled_size(w, h)
-        return self.hook2.touch_scaled_size(w, h)
-
-    def pre_ksample(self, model, seed, steps, cfg, sampler_name, scheduler, positive, negative, upscaled_latent, denoise):
-        (model, seed, steps, cfg, sampler_name, scheduler, positive, negative, upscaled_latent, denoise) = self.hook1.pre_ksample(model, seed, steps, cfg, sampler_name, scheduler, positive, negative, upscaled_latent, denoise)
-        return self.hook2.pre_ksample(model, seed, steps, cfg, sampler_name, scheduler, positive, negative, upscaled_latent, denoise)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

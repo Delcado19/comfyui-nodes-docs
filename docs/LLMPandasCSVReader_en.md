@@ -43,50 +43,7 @@ The LLMPandasCSVReader node is specifically designed to read CSV files and conve
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class LLMPandasCSVReader(PandasCSVReader):
-    """
-    @NOTE: Reads CSV files into a llama_index Document, with some additional joiner config
-    @Source: https://github.com/run-llama/llama_index/blob/main/llama-index-integrations/readers/llama-index-readers-file/llama_index/readers/file/tabular/base.py
-    @Documentation: https://docs.llamaindex.ai/en/latest/api_reference/readers/file/#llama_index.readers.file.PandasCSVReader
-    """
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    def __init__(self):
-        super().__init__()
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {
-            "required": {
-                "path": ("STRING", {"default": ""}),
-                "concat_rows": ([False, True], {"default": True}),
-                "col_joiner": ("STRING", {"default":""}),
-                "row_joiner": ("STRING", {"default":""}),
-            },
-            "optional": {
-                "extra_info": ("STRING", {"multiline": True, "dynamicPrompts": False, "default": "{}"}),
-    			#"pandas_config": ("STRING", {"multiline": True, "dynamicPrompts": False, "default": "{}"}),
-            }
-        }
-
-    RETURN_TYPES = ("DOCUMENT", )
-    RETURN_NAMES = ("documents",)
-
-    FUNCTION = "execute"
-    CATEGORY = f"{MENU_NAME}/{SUB_MENU_NAME}/Readers"
-
-    def execute(self, path, concat_rows, col_joiner, row_joiner, extra_info:str="{}", fs = None):
-        get_full_path(1, path)
-        if not os.path.exists(path):
-            raise FileNotFoundError(f"No file available at: {path}")
-        path = Path(path)
-        self._concat_rows=concat_rows
-        self._col_joiner=col_joiner
-        self._row_joiner=row_joiner
-        extra_info = read_extra_info(extra_info)
-        data = self.load_data(path, extra_info)
-        return (data, )
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -34,27 +34,7 @@ The Zoe Depth Anything Preprocessor node preprocesses images for depth estimatio
 - Infra type: `GPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class Zoe_Depth_Anything_Preprocessor:
-    @classmethod
-    def INPUT_TYPES(s):
-        return create_node_input_types(
-            environment=(["indoor", "outdoor"], {"default": "indoor"})
-        )
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    RETURN_TYPES = ("IMAGE",)
-    FUNCTION = "execute"
-
-    CATEGORY = "ControlNet Preprocessors/Normal and Depth Estimators"
-
-    def execute(self, image, environment, resolution=512, **kwargs):
-        from controlnet_aux.zoe import ZoeDepthAnythingDetector
-        ckpt_name = "depth_anything_metric_depth_indoor.pt" if environment == "indoor" else "depth_anything_metric_depth_outdoor.pt"
-        model = ZoeDepthAnythingDetector.from_pretrained(filename=ckpt_name).to(model_management.get_torch_device())
-        out = common_annotator_call(model, image, resolution=resolution)
-        del model
-        return (out, )
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

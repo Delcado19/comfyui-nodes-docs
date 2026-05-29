@@ -27,22 +27,6 @@ The CR_MakeBatchFromImageList node aims to receive a series of images and effici
 - Infra type: CPU
 
 # Source code
-```
-class CR_MakeBatchFromImageList:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'image_list': ('IMAGE',)}}
-    RETURN_TYPES = ('IMAGE', 'STRING')
-    RETURN_NAMES = ('image_batch', 'show_help')
-    INPUT_IS_LIST = True
-    FUNCTION = 'make_batch'
-    CATEGORY = icons.get('Comfyroll/List/Utils')
-
-    def make_batch(self, image_list):
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/List-Nodes#cr-binary-to-list'
-        if len(image_list) <= 1:
-            return (image_list,)
-        batched_images = torch.cat(image_list, dim=0)
-        return (batched_images, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

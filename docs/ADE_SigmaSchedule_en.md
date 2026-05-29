@@ -25,22 +25,6 @@ The ADE_SigmaSchedule node is designed to generate a sigma schedule based on a g
 - Common nodes: unknown
 
 ## Source code
-```python
-class SigmaScheduleNode:
-    @classmethod
-    def INPUT_TYPES(s):
-        return {
-            "required": {
-                "beta_schedule": (BetaSchedules.ALIAS_ACTIVE_LIST,),
-            }
-        }
-    
-    RETURN_TYPES = ("SIGMA_SCHEDULE",)
-    CATEGORY = "Animate Diff 🎭🅐🅓/sample settings/sigma schedule"
-    FUNCTION = "get_sigma_schedule"
+[View source repository on GitHub](https://github.com/Kosinkadink/ComfyUI-AnimateDiff-Evolved)
 
-    def get_sigma_schedule(self, beta_schedule: str):
-        model_type = ModelSamplingType.from_alias(ModelSamplingType.EPS)
-        new_model_sampling = BetaSchedules._to_model_sampling(alias=beta_schedule,
-                                                              model_type=model_type)
-        return (SigmaSchedule(model_sampling=new_model_sampling, model_type=model_type),)
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -23,17 +23,6 @@ Interprets and converts a string representation of a mathematical curve into a f
 - Infra type: CPU
 
 # Source code
-```
-class KfCurveFromString:
-    CATEGORY = CATEGORY
-    FUNCTION = 'main'
-    RETURN_TYPES = ('KEYFRAMED_CURVE',)
+[View source repository on GitHub](https://github.com/dmarx/ComfyUI-Keyframed)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'chigozie_string': ('STRING', {'multiline': True, 'default': '0:(1)'})}}
-
-    def main(self, chigozie_string):
-        curve = curve_from_cn_string(chigozie_string)
-        return (curve,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

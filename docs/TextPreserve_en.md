@@ -40,33 +40,6 @@ The TextPreserve node is designed to process and retain original text while allo
 - Infra type: CPU
 
 # Source code
-```
-class TextPreserve:
+[View source repository on GitHub](https://github.com/bash-j/mikey_nodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'text': ('STRING', {'multiline': True, 'default': 'Input Text Here', 'dynamicPrompts': False}), 'result_text': ('STRING', {'multiline': True, 'default': 'Result Text Here (will be replaced)'})}, 'hidden': {'unique_id': 'UNIQUE_ID', 'extra_pnginfo': 'EXTRA_PNGINFO', 'prompt': 'PROMPT'}}
-    RETURN_TYPES = ('STRING',)
-    RETURN_NAMES = ('text',)
-    FUNCTION = 'process'
-    OUTPUT_NODE = True
-    CATEGORY = 'Mikey/Text'
-
-    def process(self, text, result_text, unique_id=None, extra_pnginfo=None, prompt=None):
-        random.seed()
-        preserve_text = text
-        text = search_and_replace(text, extra_pnginfo, prompt)
-        wc_re = re.compile('{([^}]+)}')
-
-        def repl(m):
-            return random.choice(m.group(1).split('|'))
-        for m in wc_re.finditer(text):
-            text = text.replace(m.group(0), repl(m))
-        prompt.get(str(unique_id))['inputs']['text'] = preserve_text
-        for (i, node_dict) in enumerate(extra_pnginfo['workflow']['nodes']):
-            if node_dict['id'] == int(unique_id):
-                node_dict['widgets_values'] = [preserve_text, text]
-                extra_pnginfo['workflow']['nodes'][i] = node_dict
-        prompt.get(str(unique_id))['inputs']['result_text'] = text
-        return (text,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

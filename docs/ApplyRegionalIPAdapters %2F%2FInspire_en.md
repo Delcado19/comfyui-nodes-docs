@@ -28,22 +28,6 @@ The ‘ApplyRegionalIPAdapters’ node is designed to integrate a set of regiona
 - Infra type: CPU
 
 # Source code
-```
-class ApplyRegionalIPAdapters:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Inspire-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'ipadapter_pipe': ('IPADAPTER_PIPE',), 'regional_ipadapter1': ('REGIONAL_IPADAPTER',)}}
-    RETURN_TYPES = ('MODEL',)
-    FUNCTION = 'doit'
-    CATEGORY = 'InspirePack/Regional'
-
-    def doit(self, **kwargs):
-        ipadapter_pipe = kwargs['ipadapter_pipe']
-        (ipadapter, model, clip_vision, insightface, lora_loader) = ipadapter_pipe
-        del kwargs['ipadapter_pipe']
-        for (k, v) in kwargs.items():
-            ipadapter_pipe = (ipadapter, model, clip_vision, insightface, lora_loader)
-            model = v.doit(ipadapter_pipe)
-        return (model,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

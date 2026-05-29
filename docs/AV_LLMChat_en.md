@@ -37,28 +37,7 @@ The AV_LLMChat node utilizes a language model API to generate conversations. It 
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class LLMChatNode:
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {
-            "required": {
-                "messages": ("LLM_MESSAGE",),
-                "api": ("LLM_API",),
-                "config": ("LLM_CONFIG",),
-                "seed": ("INT", {"default": 0, "min": 0, "max": 0x1FFFFFFFFFFFFF}),
-            },
-        }
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    RETURN_TYPES = ("STRING",)
-    RETURN_NAMES = ("response",)
-    FUNCTION = "chat"
-    CATEGORY = "ArtVenture/LLM"
-
-    def chat(self, messages: List[LLMMessage], api: LLMApi, config: LLMConfig, seed):
-        response = api.completion(messages, config, seed)
-        return (response,)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

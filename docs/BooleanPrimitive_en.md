@@ -33,27 +33,7 @@ The BooleanPrimitive node operates on boolean values, directly passing the input
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class UtilBooleanPrimitive:
-    @classmethod
-    def INPUT_TYPES(s):
-        return {
-            "required": {
-                "value": ("BOOLEAN", {"default": False}),
-                "reverse": ("BOOLEAN", {"default": False}),
-            }
-        }
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    RETURN_TYPES = ("BOOLEAN", "STRING")
-    CATEGORY = "Art Venture/Utils"
-    FUNCTION = "boolean_primitive"
-
-    def boolean_primitive(self, value: bool, reverse: bool):
-        if reverse:
-            value = not value
-
-        return (value, str(value))
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

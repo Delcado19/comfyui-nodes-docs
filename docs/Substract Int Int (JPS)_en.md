@@ -33,33 +33,7 @@ The Subtract Int Int (JPS) node performs subtraction between two integer inputs 
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class Math_Substract_INT_INT:
+[View source repository on GitHub](Unknown)
 
-    def init(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {
-            "required": {
-                "int_a": ("INT", {"default": 1,}),
-                "int_b": ("INT", {"default": 1,}),
-            }
-        }
-
-    RETURN_TYPES = ("INT","FLOAT")
-    RETURN_NAMES = ("int_substract","float_substract")
-    FUNCTION = "get_substract_int_int"
-
-    CATEGORY="JPS Nodes/Math"
-
-    def get_substract_int_int(self,int_a,int_b):
-        int_substract = int(int_a) - int(int_b)
-        float_substract = int(int_a) - int(int_b)
-
-        return(int(int_substract),float(float_substract))
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

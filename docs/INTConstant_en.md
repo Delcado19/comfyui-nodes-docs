@@ -23,17 +23,6 @@ The INTConstant node is designed to provide a constant integer value within the 
 - Infra type: CPU
 
 # Source code
-```
-class INTConstant:
+[View source repository on GitHub](https://github.com/kijai/ComfyUI-KJNodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'value': ('INT', {'default': 0, 'min': 0, 'max': 18446744073709551615})}}
-    RETURN_TYPES = ('INT',)
-    RETURN_NAMES = ('value',)
-    FUNCTION = 'get_value'
-    CATEGORY = 'KJNodes/constants'
-
-    def get_value(self, value):
-        return (value,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

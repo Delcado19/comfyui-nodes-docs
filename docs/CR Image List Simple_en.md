@@ -47,31 +47,6 @@ The CR_ImageListSimple node is designed to compile multiple image inputs into a 
 - Infra type: CPU
 
 # Source code
-```
-class CR_ImageListSimple:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {}, 'optional': {'image_1': ('IMAGE',), 'image_2': ('IMAGE',), 'image_3': ('IMAGE',), 'image_4': ('IMAGE',), 'image_5': ('IMAGE',), 'image_list_simple': ('IMAGE_LIST_SIMPLE',)}}
-    RETURN_TYPES = ('IMAGE_LIST_SIMPLE', 'STRING')
-    RETURN_NAMES = ('IMAGE_LIST_SIMPLE', 'show_help')
-    FUNCTION = 'image_list_simple'
-    CATEGORY = icons.get('Comfyroll/Animation/Legacy')
-
-    def image_list_simple(self, image_1=None, image_2=None, image_3=None, image_4=None, image_5=None, image_list_simple=None):
-        images = list()
-        if image_list_simple is not None:
-            images.append((l for l in image_list_simple))
-        if image_1 != None:
-            (images.append(image_1),)
-        if image_2 != None:
-            images.append(image_2)
-        if image_3 != None:
-            images.append(image_3)
-        if image_4 != None:
-            (images.append(image_4),)
-        if image_5 != None:
-            (images.append(image_5),)
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/List-Nodes#cr-image-list-simple'
-        return (images, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

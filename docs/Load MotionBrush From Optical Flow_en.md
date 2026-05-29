@@ -27,16 +27,6 @@ This node can generate motion brushes from optical flow data, enabling users to 
 - Infra type: GPU
 
 # Source code
-```
-class LoadMotionBrushFromOpticalFlow:
+[View source repository on GitHub](https://github.com/chaojie/ComfyUI-DragNUWA)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'model': ('DragNUWA',), 'optical_flow': ('OPTICAL_FLOW',)}}
-    RETURN_TYPES = ('MotionBrush',)
-    FUNCTION = 'run_inference'
-    CATEGORY = 'DragNUWA'
-
-    def run_inference(self, model, optical_flow):
-        return (model.load_motionbrush_from_optical_flow(optical_flow),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

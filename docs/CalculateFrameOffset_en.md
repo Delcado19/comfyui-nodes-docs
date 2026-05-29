@@ -35,20 +35,6 @@ CalculateFrameOffset node aims to calculate and assign frame numbers in a sequen
 - Infra type: CPU
 
 # Source code
-```
-class CalculateFrameOffset:
+[View source repository on GitHub](https://github.com/FizzleDorf/ComfyUI_FizzNodes)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'current_frame': ('INT', {'default': 0, 'min': 0}), 'max_frames': ('INT', {'default': 18, 'min': 0}), 'num_latent_inputs': ('INT', {'default': 4, 'min': 0}), 'index': ('INT', {'default': 4, 'min': 0})}}
-    RETURN_TYPES = ('INT',)
-    FUNCTION = 'assignFrameNum'
-    CATEGORY = 'FizzNodes 📅🅕🅝/HelperNodes'
-
-    def assignFrameNum(self, current_frame, max_frames, num_latent_inputs, index):
-        if current_frame == 0:
-            return (index,)
-        else:
-            start_frame = (current_frame - 1) * (num_latent_inputs - 1) + (num_latent_inputs - 1)
-            return ((start_frame + index) % max_frames,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

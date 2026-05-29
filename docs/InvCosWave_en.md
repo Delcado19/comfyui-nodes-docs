@@ -43,18 +43,6 @@ The InvCosWave node generates waveforms based on the inverse cosine function. It
 - Infra type: CPU
 
 # Source code
-```
-class InvCosWave:
+[View source repository on GitHub](https://github.com/FizzleDorf/ComfyUI_FizzNodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'phase': ('FLOAT', {'default': 1.0, 'min': 0.0, 'max': 9999.0, 'step': 1.0}), 'amplitude': ('FLOAT', {'default': 0.5, 'min': 0.0, 'max': 9999.0, 'step': 0.1}), 'x_translation': ('FLOAT', {'default': 0.0, 'min': 0.0, 'max': 9999.0, 'step': 1.0}), 'y_translation': ('FLOAT', {'default': 0.5, 'min': 0.0, 'max': 9999.0, 'step': 0.05}), 'current_frame': ('INT', {'default': 1.0, 'min': 0.0, 'max': 9999.0, 'step': 1.0})}}
-    RETURN_TYPES = ('FLOAT', 'INT')
-    FUNCTION = 'Wave'
-    CATEGORY = 'FizzNodes 📅🅕🅝/WaveNodes'
-
-    def Wave(self, phase, amplitude, x_translation, y_translation, current_frame):
-        output = y_translation + amplitude * -np.cos(-1 * (2 * np.pi * current_frame / phase - x_translation))
-        print(output)
-        return (output, int(output))
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

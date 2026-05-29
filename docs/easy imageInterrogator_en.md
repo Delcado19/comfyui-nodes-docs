@@ -33,29 +33,7 @@ The easy imageInterrogator node aims to generate a descriptive prompt from the i
 - Infra type: `GPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class imageInterrogator:
-    @classmethod
-    def INPUT_TYPES(self):
-        return {
-          "required": {
-              "image": ("IMAGE",),
-              "mode": (['fast','classic','best','negative'],),
-              "use_lowvram": ("BOOLEAN", {"default": True}),
-          }
-        }
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    RETURN_TYPES = ("STRING",)
-    RETURN_NAMES = ("prompt",)
-    FUNCTION = "interrogate"
-    CATEGORY = "EasyUse/Image"
-    OUTPUT_NODE = True
-    OUTPUT_IS_LIST = (True,)
-
-    def interrogate(self, image, mode, use_lowvram=False):
-      prompt = ci.image_to_prompt(image, mode, low_vram=use_lowvram)
-      return {"ui":{"text":prompt},"result":(prompt,)}
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -27,19 +27,6 @@ This node generates a seed and integer value pair based on a given seed, used fo
 - Infra type: CPU
 
 # Source code
-```
-class WLSH_Seed_and_Int:
+[View source repository on GitHub](https://github.com/wallish77/wlsh_nodes)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'seed': ('INT', {'default': 0, 'min': 0, 'max': 18446744073709551615})}}
-    RETURN_TYPES = ('INT', 'SEED')
-    FUNCTION = 'seed_and_int'
-    CATEGORY = 'WLSH Nodes/number'
-
-    def seed_and_int(self, seed):
-        return (seed, {'seed': seed})
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

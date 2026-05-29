@@ -27,21 +27,6 @@ Output a string。
 - Infra type: CPU
 
 # Source code
-```
-class TextBoxNode:
-    def __init__(self):
-        pass
-    @classmethod
-    def INPUT_TYPES(self):
-        return {"required": {
-                "text": ("STRING", {"multiline": True}),
-            },}
+[View source repository on GitHub](https://github.com/chflame163/ComfyUI_LayerStyle)
 
-    RETURN_TYPES = ("STRING",)
-    RETURN_NAMES = ("text",)
-    FUNCTION = 'text_box_node'
-    CATEGORY = '😺dzNodes/LayerUtility/Data'
-
-    def text_box_node(self, text):
-        return (text,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

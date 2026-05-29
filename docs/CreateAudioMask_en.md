@@ -47,45 +47,6 @@ The CreateAudioMask node is designed to convert audio signals into a visual repr
 - Infra type: CPU
 
 # Source code
-```
-class CreateAudioMask:
+[View source repository on GitHub](https://github.com/kijai/ComfyUI-KJNodes)
 
-    def __init__(self):
-        try:
-            import librosa
-            self.librosa = librosa
-        except ImportError:
-            print("Can not import librosa. Install it with 'pip install librosa'")
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'createaudiomask'
-    CATEGORY = 'KJNodes/deprecated'
-
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'invert': ('BOOLEAN', {'default': False}), 'frames': ('INT', {'default': 16, 'min': 1, 'max': 255, 'step': 1}), 'scale': ('FLOAT', {'default': 0.5, 'min': 0.0, 'max': 2.0, 'step': 0.01}), 'audio_path': ('STRING', {'default': 'audio.wav'}), 'width': ('INT', {'default': 256, 'min': 16, 'max': 4096, 'step': 1}), 'height': ('INT', {'default': 256, 'min': 16, 'max': 4096, 'step': 1})}}
-
-    def createaudiomask(self, frames, width, height, invert, audio_path, scale):
-        batch_size = frames
-        out = []
-        masks = []
-        if audio_path == 'audio.wav':
-            audio_path = os.path.join(script_directory, audio_path)
-        (audio, sr) = self.librosa.load(audio_path)
-        spectrogram = np.abs(self.librosa.stft(audio))
-        for i in range(batch_size):
-            image = Image.new('RGB', (width, height), 'black')
-            draw = ImageDraw.Draw(image)
-            frame = spectrogram[:, i]
-            circle_radius = int(height * np.mean(frame))
-            circle_radius *= scale
-            circle_center = (width // 2, height // 2)
-            draw.ellipse([(circle_center[0] - circle_radius, circle_center[1] - circle_radius), (circle_center[0] + circle_radius, circle_center[1] + circle_radius)], fill='white')
-            image = np.array(image).astype(np.float32) / 255.0
-            image = torch.from_numpy(image)[None,]
-            mask = image[:, :, :, 0]
-            masks.append(mask)
-            out.append(image)
-        if invert:
-            return (1.0 - torch.cat(out, dim=0),)
-        return (torch.cat(out, dim=0), torch.cat(masks, dim=0))
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

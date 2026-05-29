@@ -28,23 +28,6 @@ The SplitLongMask node splits a single large mask into multiple smaller masks ba
 - Infra type: CPU
 
 # Source code
-```
-class SplitLongMask:
+[View source repository on GitHub](https://github.com/shadowcz007/comfyui-mixlab-nodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'long_mask': ('MASK',), 'count': ('INT', {'default': 1, 'min': 1, 'max': 1024, 'step': 1})}}
-    RETURN_TYPES = ('MASK',)
-    FUNCTION = 'run'
-    CATEGORY = '♾️Mixlab/Mask'
-    OUTPUT_IS_LIST = (True,)
-
-    def run(self, long_mask, count):
-        masks = []
-        nh = long_mask.shape[0] // count
-        if nh * count == long_mask.shape[0]:
-            masks = split_mask_by_new_height(long_mask, nh)
-        else:
-            masks = split_mask_by_new_height(long_mask, long_mask.shape[0])
-        return (masks,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

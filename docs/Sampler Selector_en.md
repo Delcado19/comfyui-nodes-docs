@@ -29,21 +29,7 @@ The Sampler Selector node is designed to dynamically select and configure sampli
     - [KSampler](../../Comfy/Nodes/KSampler.md)
     - [KSamplerAdvanced](../../Comfy/Nodes/KSamplerAdvanced.md)
 
-
-
 ## Source code
-```python
-class SamplerSelector:
-    CATEGORY = 'ImageSaverTools/utils'
-    RETURN_TYPES = (comfy.samplers.KSampler.SAMPLERS,)
-    RETURN_NAMES = ("sampler_name",)
-    FUNCTION = "get_names"
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {"required": {"sampler_name": (comfy.samplers.KSampler.SAMPLERS,)}}
-
-    def get_names(self, sampler_name):
-        return (sampler_name,)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

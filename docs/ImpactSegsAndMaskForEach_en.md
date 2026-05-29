@@ -27,16 +27,6 @@ The 'doit' method of the SegsBitwiseAndMaskForEach node performs a bitwise AND o
 - Infra type: CPU
 
 # Source code
-```
-class SegsBitwiseAndMaskForEach:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'segs': ('SEGS',), 'masks': ('MASK',)}}
-    RETURN_TYPES = ('SEGS',)
-    FUNCTION = 'doit'
-    CATEGORY = 'ImpactPack/Operation'
-
-    def doit(self, segs, masks):
-        return (core.apply_mask_to_each_seg(segs, masks),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

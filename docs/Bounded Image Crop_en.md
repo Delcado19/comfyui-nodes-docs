@@ -27,28 +27,6 @@ The function `bounded_image_crop` is designed to intelligently crop an image bas
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Bounded_Image_Crop:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(self):
-        return {'required': {'image': ('IMAGE',), 'image_bounds': ('IMAGE_BOUNDS',)}}
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'bounded_image_crop'
-    CATEGORY = 'WAS Suite/Image/Bound'
-
-    def bounded_image_crop(self, image, image_bounds):
-        image = image.unsqueeze(0) if image.dim() == 3 else image
-        bounds_len = 1 if len(image_bounds) != len(image) else len(image)
-        cropped_images = []
-        for idx in range(len(image)):
-            if bounds_len == 1 and idx == 0 or bounds_len > 1:
-                (rmin, rmax, cmin, cmax) = image_bounds[idx]
-                if rmin > rmax or cmin > cmax:
-                    raise ValueError('Invalid bounds provided. Please make sure the bounds are within the image dimensions.')
-            cropped_images.append(image[idx][rmin:rmax + 1, cmin:cmax + 1, :])
-        return (torch.stack(cropped_images, dim=0),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

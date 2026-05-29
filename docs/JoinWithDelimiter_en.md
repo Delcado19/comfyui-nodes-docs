@@ -27,30 +27,6 @@ This node concatenates a list of text strings into a single string, using the sp
 - Infra type: CPU
 
 # Source code
-```
-class JoinWithDelimiter:
+[View source repository on GitHub](https://github.com/shadowcz007/comfyui-mixlab-nodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'text_list': (any_type,), 'delimiter': (['newline', 'comma', 'backslash', 'space'],)}}
-    RETURN_TYPES = ('STRING',)
-    FUNCTION = 'run'
-    CATEGORY = '♾️Mixlab/Prompt'
-    INPUT_IS_LIST = True
-    OUTPUT_IS_LIST = (False,)
-
-    def run(self, text_list, delimiter):
-        delimiter = delimiter[0]
-        if delimiter == 'newline':
-            delimiter = '\n'
-        elif delimiter == 'comma':
-            delimiter = ','
-        elif delimiter == 'backslash':
-            delimiter = '\\'
-        elif delimiter == 'space':
-            delimiter = ' '
-        t = ''
-        if isinstance(text_list, list):
-            t = join_with_(text_list, delimiter)
-        return (t,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

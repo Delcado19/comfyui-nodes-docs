@@ -32,17 +32,6 @@ This node processes text input and converts it into a structured format usable b
 - Infra type: CPU
 
 # Source code
-```
-class EditableCLIPEncode:
+[View source repository on GitHub](https://github.com/asagi4/comfyui-prompt-control)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'clip': ('CLIP',), 'text': ('STRING', {'multiline': True})}, 'optional': {'filter_tags': ('STRING', {'default': ''})}}
-    RETURN_TYPES = ('CONDITIONING',)
-    CATEGORY = 'promptcontrol/old'
-    FUNCTION = 'parse'
-
-    def parse(self, clip, text, filter_tags=''):
-        parsed = parse_prompt_schedules(text).with_filters(filter_tags)
-        return (control_to_clip_common(clip, parsed),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

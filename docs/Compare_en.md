@@ -33,48 +33,7 @@ The Compare node is designed to evaluate the relationship between two inputs bas
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class Compare:
-    """
-    This nodes compares the two inputs and outputs the result of the comparison.
-    """
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        """
-        Comparison node takes two inputs, a and b, and compares them.
-        """
-        s.compare_functions = list(COMPARE_FUNCTIONS.keys())
-        return {
-            "required": {
-                "a": (AlwaysEqualProxy("*"), {"default": 0}),
-                "b": (AlwaysEqualProxy("*"), {"default": 0}),
-                "comparison": (s.compare_functions, {"default": "a == b"}),
-            },
-        }
-
-    RETURN_TYPES = ("BOOLEAN",)
-
-    RETURN_NAMES = "BOOLEAN"
-
-    FUNCTION = "compare"
-
-    CATEGORY = "Logic"
-
-    def compare(self, a, b, comparison):
-        """
-        Compare two inputs and return the result of the comparison.
-
-        Args:
-            a (UNKNOWN): The first input.
-            b (UNKNOWN): The second input.
-            comparison (STRING): The comparison to perform. Can be one of "==", "!=", "<", ">", "<=", ">=".
-
-        Returns:
-            : The result of the comparison.
-        """
-        return (COMPARE_FUNCTIONS[comparison](a, b),)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

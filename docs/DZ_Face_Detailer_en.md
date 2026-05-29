@@ -87,21 +87,6 @@ FaceDetailer is a node designed to enhance facial features in images using advan
 - Infra type: GPU
 
 # Source code
-```
-class FaceDetailer:
+[View source repository on GitHub](https://github.com/friendlymilo/DZ-FaceDetailer)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'model': ('MODEL',), 'seed': ('INT', {'default': 0, 'min': 0, 'max': 18446744073709551615}), 'steps': ('INT', {'default': 20, 'min': 1, 'max': 10000}), 'cfg': ('FLOAT', {'default': 8.0, 'min': 0.0, 'max': 100.0, 'step': 0.1, 'round': 0.01}), 'sampler_name': (comfy.samplers.KSampler.SAMPLERS,), 'scheduler': (comfy.samplers.KSampler.SCHEDULERS,), 'positive': ('CONDITIONING',), 'negative': ('CONDITIONING',), 'latent_image': ('LATENT',), 'denoise': ('FLOAT', {'default': 1.0, 'min': 0.0, 'max': 1.0, 'step': 0.01}), 'latent_image': ('LATENT',), 'vae': ('VAE',), 'mask_blur': ('INT', {'default': 0, 'min': 0, 'max': 100}), 'mask_type': (MASK_TYPE,), 'mask_control': (MASK_CONTROL,), 'dilate_mask_value': ('INT', {'default': 3, 'min': 0, 'max': 100}), 'erode_mask_value': ('INT', {'default': 3, 'min': 0, 'max': 100})}}
-    RETURN_TYPES = ('LATENT', 'MASK')
-    FUNCTION = 'detailer'
-    CATEGORY = 'face_detailer'
-
-    def detailer(self, model, seed, steps, cfg, sampler_name, scheduler, positive, negative, latent_image, denoise, vae, mask_blur, mask_type, mask_control, dilate_mask_value, erode_mask_value):
-        tensor_img = vae.decode(latent_image['samples'])
-        batch_size = tensor_img.shape[0]
-        mask = Detection().detect_faces(tensor_img, batch_size, mask_type, mask_control, mask_blur, dilate_mask_value, erode_mask_value)
-        latent_mask = set_mask(latent_image, mask)
-        latent = nodes.common_ksampler(model, seed, steps, cfg, sampler_name, scheduler, positive, negative, latent_mask, denoise=denoise)
-        return (latent[0], latent[0]['noise_mask'])
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -23,19 +23,6 @@ This node is designed to calculate the number of digits in an integer value. It 
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Integer_Place_Counter:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'int_input': ('INT', {'default': 0, 'min': 0, 'max': 10000000, 'step': 1})}}
-    RETURN_TYPES = ('INT',)
-    RETURN_NAMES = ('INT_PLACES',)
-    FUNCTION = 'count_places'
-    CATEGORY = 'WAS Suite/Integer'
-
-    def count_places(self, int_input):
-        output = len(str(int_input))
-        cstr('\nInteger Places Count: ' + str(output)).msg.print()
-        return (output,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -71,45 +71,6 @@ VHS_LoadVideoPath node is used to load video files from a specified path to inte
 - Common nodes: unknown
 
 ## Source code
-```python
-class LoadVideoPath:
-    @classmethod
-    def INPUT_TYPES(s):
-        return {
-            "required": {
-                "video": ("STRING", {"default": "X://insert/path/here.mp4", "vhs_path_extensions": video_extensions}),
-                "force_rate": ("INT", {"default": 0, "min": 0, "max": 60, "step": 1}),
-                 "force_size": (["Disabled", "Custom Height", "Custom Width", "Custom", "256x?", "?x256", "256x256", "512x?", "?x512", "512x512"],),
-                 "custom_width": ("INT", {"default": 512, "min": 0, "max": DIMMAX, "step": 8}),
-                 "custom_height": ("INT", {"default": 512, "min": 0, "max": DIMMAX, "step": 8}),
-                "frame_load_cap": ("INT", {"default": 0, "min": 0, "max": BIGMAX, "step": 1}),
-                "skip_first_frames": ("INT", {"default": 0, "min": 0, "max": BIGMAX, "step": 1}),
-                "select_every_nth": ("INT", {"default": 1, "min": 1, "max": BIGMAX, "step": 1}),
-            },
-            "optional": {
-                "meta_batch": ("VHS_BatchManager",)
-            },
-            "hidden": {
-                "unique_id": "UNIQUE_ID"
-            },
-        }
+[View source repository on GitHub](https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite)
 
-    CATEGORY = "Video Helper Suite 🎥🅥🅗🅢"
-
-    RETURN_TYPES = ("IMAGE", "INT", "VHS_AUDIO", "VHS_VIDEOINFO",)
-    RETURN_NAMES = ("IMAGE", "frame_count", "audio", "video_info",)
-
-    FUNCTION = "load_video"
-
-    def load_video(self, **kwargs):
-        if kwargs['video'] is None or validate_path(kwargs['video']) != True:
-            raise Exception("video is not a valid path: " + kwargs['video'])
-        return load_video_cv(**kwargs)
-
-    @classmethod
-    def IS_CHANGED(s, video, **kwargs):
-        return hash_path(video)
-
-    @classmethod
-    def VALIDATE_INPUTS(s, video, **kwargs):
-        return validate_path(video, allow_none=True)
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

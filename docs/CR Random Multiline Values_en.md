@@ -48,37 +48,6 @@ The CR_RandomMultilineValues node is designed to generate random multiline text 
 - Infra type: CPU
 
 # Source code
-```
-class CR_RandomMultilineValues:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        types = ['binary', 'decimal', 'natural', 'hexadecimal', 'alphabetic', 'alphanumeric', 'custom']
-        return {'required': {'seed': ('INT', {'default': 0, 'min': 0, 'max': 18446744073709551615}), 'value_type': (types,), 'rows': ('INT', {'default': 5, 'min': 1, 'max': 2048}), 'string_length': ('INT', {'default': 5, 'min': 1, 'max': 1024}), 'custom_values': ('STRING', {'multiline': False, 'default': '123ABC'}), 'prepend_text': ('STRING', {'multiline': False, 'default': ''})}}
-    RETURN_TYPES = (any_type, 'STRING')
-    RETURN_NAMES = ('multiline_text', 'show_help')
-    FUNCTION = 'generate'
-    CATEGORY = icons.get('Comfyroll/Utils/Random')
-
-    def generate(self, value_type, rows, string_length, custom_values, seed, prepend_text):
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Other-Nodes#cr-random-multiline-values'
-        random.seed(seed)
-        if value_type == 'binary':
-            choice_str = '01'
-        elif value_type == 'decimal':
-            choice_str = '0123456789'
-        elif value_type == 'natural':
-            choice_str = '123456789'
-        elif value_type == 'hexadecimal':
-            choice_str = '0123456789ABCDEF'
-        elif value_type == 'alphabetic':
-            choice_str = string.ascii_letters
-        elif value_type == 'alphanumeric':
-            choice_str = string.ascii_letters + string.digits
-        elif value_type == 'custom':
-            choice_str = custom_values
-        else:
-            pass
-        multiline_text = '\n'.join([prepend_text + ''.join((random.choice(choice_str) for _ in range(string_length))) for _ in range(rows)])
-        return (multiline_text, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

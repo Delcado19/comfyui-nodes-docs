@@ -27,20 +27,6 @@ The `merge` method of the ModelAdd node aims to merge two different models into 
 - Infra type: CPU
 
 # Source code
-```
-class ModelAdd:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'model1': ('MODEL',), 'model2': ('MODEL',)}}
-    RETURN_TYPES = ('MODEL',)
-    FUNCTION = 'merge'
-    CATEGORY = 'advanced/model_merging'
-
-    def merge(self, model1, model2):
-        m = model1.clone()
-        kp = model2.get_key_patches('diffusion_model.')
-        for k in kp:
-            m.add_patches({k: kp[k]}, 1.0, 1.0)
-        return (m,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

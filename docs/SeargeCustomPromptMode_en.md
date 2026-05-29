@@ -23,24 +23,6 @@ This node aims to facilitate customization of prompt patterns in the user interf
 - Infra type: CPU
 
 # Source code
-```
-class SeargeCustomPromptMode:
+[View source repository on GitHub](https://github.com/jobunk/SeargeSDXL)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {}, 'optional': {'data': ('SRG_DATA_STREAM',)}}
-    RETURN_TYPES = ('SRG_DATA_STREAM',)
-    RETURN_NAMES = ('data',)
-    FUNCTION = 'get'
-    CATEGORY = UI.CATEGORY_UI_INPUTS
-
-    @staticmethod
-    def create_dict(example):
-        return {UI.EXAMPLE: example}
-
-    def get(self, data=None):
-        if data is None:
-            data = {}
-        data[UI.S_CUSTOM_PROMPTING] = self.create_dict('example')
-        return (data,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

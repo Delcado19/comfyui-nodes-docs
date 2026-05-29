@@ -83,47 +83,6 @@ The CR_PageLayout node is designed to generate structured image layouts by addin
 - Infra type: CPU
 
 # Source code
-```
-class CR_PageLayout:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        font_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), 'fonts')
-        file_list = [f for f in os.listdir(font_dir) if os.path.isfile(os.path.join(font_dir, f)) and f.lower().endswith('.ttf')]
-        layout_options = ['header', 'footer', 'header and footer', 'no header or footer']
-        return {'required': {'layout_options': (layout_options,), 'image_panel': ('IMAGE',), 'header_height': ('INT', {'default': 0, 'min': 0, 'max': 1024}), 'header_text': ('STRING', {'multiline': True, 'default': 'text'}), 'header_align': (JUSTIFY_OPTIONS,), 'footer_height': ('INT', {'default': 0, 'min': 0, 'max': 1024}), 'footer_text': ('STRING', {'multiline': True, 'default': 'text'}), 'footer_align': (JUSTIFY_OPTIONS,), 'font_name': (file_list,), 'font_color': (COLORS,), 'header_font_size': ('INT', {'default': 150, 'min': 0, 'max': 1024}), 'footer_font_size': ('INT', {'default': 50, 'min': 0, 'max': 1024}), 'border_thickness': ('INT', {'default': 0, 'min': 0, 'max': 1024}), 'border_color': (COLORS,), 'background_color': (COLORS,)}, 'optional': {'font_color_hex': ('STRING', {'multiline': False, 'default': '#000000'}), 'border_color_hex': ('STRING', {'multiline': False, 'default': '#000000'}), 'bg_color_hex': ('STRING', {'multiline': False, 'default': '#000000'})}}
-    RETURN_TYPES = ('IMAGE', 'STRING')
-    RETURN_NAMES = ('image', 'show_help')
-    FUNCTION = 'layout'
-    CATEGORY = icons.get('Comfyroll/Graphics/Layout')
-
-    def layout(self, layout_options, image_panel, border_thickness, border_color, background_color, header_height, header_text, header_align, footer_height, footer_text, footer_align, font_name, font_color, header_font_size, footer_font_size, font_color_hex='#000000', border_color_hex='#000000', bg_color_hex='#000000'):
-        font_color = get_color_values(font_color, font_color_hex, color_mapping)
-        border_color = get_color_values(border_color, border_color_hex, color_mapping)
-        bg_color = get_color_values(background_color, bg_color_hex, color_mapping)
-        main_panel = tensor2pil(image_panel)
-        image_width = main_panel.width
-        image_height = main_panel.height
-        margins = 50
-        line_spacing = 0
-        position_x = 0
-        position_y = 0
-        align = 'center'
-        rotation_angle = 0
-        rotation_options = 'image center'
-        font_outline_thickness = 0
-        font_outline_color = 'black'
-        images = []
-        if layout_options == 'header' or layout_options == 'header and footer':
-            header_panel = text_panel(image_width, header_height, header_text, font_name, header_font_size, font_color, font_outline_thickness, font_outline_color, bg_color, margins, line_spacing, position_x, position_y, align, header_align, rotation_angle, rotation_options)
-            images.append(header_panel)
-        images.append(main_panel)
-        if layout_options == 'footer' or layout_options == 'header and footer':
-            footer_panel = text_panel(image_width, footer_height, footer_text, font_name, footer_font_size, font_color, font_outline_thickness, font_outline_color, bg_color, margins, line_spacing, position_x, position_y, align, footer_align, rotation_angle, rotation_options)
-            images.append(footer_panel)
-        combined_image = combine_images(images, 'vertical')
-        if border_thickness > 0:
-            combined_image = ImageOps.expand(combined_image, border_thickness, border_color)
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Layout-Nodes#cr-page-layout'
-        return (pil2tensor(combined_image), show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

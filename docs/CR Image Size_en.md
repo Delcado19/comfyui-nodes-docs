@@ -44,21 +44,6 @@ The CR_ImageSize node is designed to adjust the dimensions of an image. It provi
 - Infra type: CPU
 
 # Source code
-```
-class CR_ImageSize:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'width': ('INT', {'default': 512, 'min': 64, 'max': 2048}), 'height': ('INT', {'default': 512, 'min': 64, 'max': 2048}), 'upscale_factor': ('FLOAT', {'default': 1, 'min': 1, 'max': 2000})}}
-    RETURN_TYPES = ('INT', 'INT', 'FLOAT', 'STRING')
-    RETURN_NAMES = ('Width', 'Height', 'upscale_factor', 'show_help')
-    FUNCTION = 'ImageSize'
-    CATEGORY = icons.get('Comfyroll/Essential/Legacy')
-
-    def ImageSize(self, width, height, upscale_factor):
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Legacy-Nodes#cr-image-size'
-        return (width, height, upscale_factor, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

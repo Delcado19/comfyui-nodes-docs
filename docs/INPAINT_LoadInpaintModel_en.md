@@ -23,28 +23,6 @@ The LoadInpaintModel class is designed to facilitate loading inpainting modelsâ€
 - Infra type: CPU
 
 # Source code
-```
-class LoadInpaintModel:
+[View source repository on GitHub](https://github.com/Acly/comfyui-inpaint-nodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'model_name': (folder_paths.get_filename_list('inpaint'),)}}
-    RETURN_TYPES = ('INPAINT_MODEL',)
-    CATEGORY = 'inpaint'
-    FUNCTION = 'load'
-
-    def load(self, model_name: str):
-        model_file = folder_paths.get_full_path('inpaint', model_name)
-        if model_file is None:
-            raise RuntimeError(f'Model file not found: {model_name}')
-        if model_file.endswith('.pt'):
-            sd = torch.jit.load(model_file, map_location='cpu').state_dict()
-        else:
-            sd = comfy.utils.load_torch_file(model_file, safe_load=True)
-        if 'synthesis.first_stage.conv_first.conv.resample_filter' in sd:
-            model = mat.load(sd)
-        else:
-            model = comfy_extras.chainner_models.model_loading.load_state_dict(sd)
-        model = model.eval()
-        return (model,)
-```
+*Source code is not embedded in this doc â€” browse the pack's repository at the link above.*

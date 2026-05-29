@@ -40,21 +40,6 @@ The ControlNetApplySEGS node aims to enhance the segmentation process by applyin
 - Infra type: CPU
 
 # Source code
-```
-class ControlNetApplySEGS:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'segs': ('SEGS',), 'control_net': ('CONTROL_NET',), 'strength': ('FLOAT', {'default': 1.0, 'min': 0.0, 'max': 10.0, 'step': 0.01})}, 'optional': {'segs_preprocessor': ('SEGS_PREPROCESSOR',), 'control_image': ('IMAGE',)}}
-    RETURN_TYPES = ('SEGS',)
-    FUNCTION = 'doit'
-    CATEGORY = 'ImpactPack/Util'
-
-    def doit(self, segs, control_net, strength, segs_preprocessor=None, control_image=None):
-        new_segs = []
-        for seg in segs[1]:
-            control_net_wrapper = core.ControlNetWrapper(control_net, strength, segs_preprocessor, seg.control_net_wrapper, original_size=segs[0], crop_region=seg.crop_region, control_image=control_image)
-            new_seg = SEG(seg.cropped_image, seg.cropped_mask, seg.confidence, seg.crop_region, seg.bbox, seg.label, control_net_wrapper)
-            new_segs.append(new_seg)
-        return ((segs[0], new_segs),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

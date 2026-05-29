@@ -35,27 +35,6 @@ The `StableCascade_StageC_VAEEncode` node is designed to encode images into late
 - Infra type: GPU
 
 # Source code
-```
-class StableCascade_StageC_VAEEncode:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    def __init__(self, device='cpu'):
-        self.device = device
-
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'image': ('IMAGE',), 'vae': ('VAE',), 'compression': ('INT', {'default': 42, 'min': 4, 'max': 128, 'step': 1})}}
-    RETURN_TYPES = ('LATENT', 'LATENT')
-    RETURN_NAMES = ('stage_c', 'stage_b')
-    FUNCTION = 'generate'
-    CATEGORY = 'latent/stable_cascade'
-
-    def generate(self, image, vae, compression):
-        width = image.shape[-2]
-        height = image.shape[-3]
-        out_width = width // compression * vae.downscale_ratio
-        out_height = height // compression * vae.downscale_ratio
-        s = comfy.utils.common_upscale(image.movedim(-1, 1), out_width, out_height, 'bicubic', 'center').movedim(1, -1)
-        c_latent = vae.encode(s[:, :, :, :3])
-        b_latent = torch.zeros([c_latent.shape[0], 4, height // 8 * 2, width // 8 * 2])
-        return ({'samples': c_latent}, {'samples': b_latent})
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

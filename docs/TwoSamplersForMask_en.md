@@ -35,22 +35,6 @@ This node coordinates the sampling process by integrating two distinct sampling 
 - Infra type: GPU
 
 # Source code
-```
-class TwoSamplersForMask:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'latent_image': ('LATENT',), 'base_sampler': ('KSAMPLER',), 'mask_sampler': ('KSAMPLER',), 'mask': ('MASK',)}}
-    RETURN_TYPES = ('LATENT',)
-    FUNCTION = 'doit'
-    CATEGORY = 'ImpactPack/Sampler'
-
-    def doit(self, latent_image, base_sampler, mask_sampler, mask):
-        inv_mask = torch.where(mask != 1.0, torch.tensor(1.0), torch.tensor(0.0))
-        latent_image['noise_mask'] = inv_mask
-        new_latent_image = base_sampler.sample(latent_image)
-        new_latent_image['noise_mask'] = mask
-        new_latent_image = mask_sampler.sample(new_latent_image)
-        del new_latent_image['noise_mask']
-        return (new_latent_image,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

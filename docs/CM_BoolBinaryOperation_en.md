@@ -31,16 +31,6 @@ The BoolBinaryOperation node performs binary operations on boolean values. It ta
 - Infra type: CPU
 
 # Source code
-```
-class BoolBinaryOperation:
+[View source repository on GitHub](https://github.com/evanspearman/ComfyMath)
 
-    @classmethod
-    def INPUT_TYPES(cls) -> Mapping[str, Any]:
-        return {'required': {'op': (list(BOOL_BINARY_OPERATIONS.keys()),), 'a': DEFAULT_BOOL, 'b': DEFAULT_BOOL}}
-    RETURN_TYPES = ('BOOL',)
-    FUNCTION = 'op'
-    CATEGORY = 'math/bool'
-
-    def op(self, op: str, a: bool, b: bool) -> tuple[bool]:
-        return (BOOL_BINARY_OPERATIONS[op](a, b),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

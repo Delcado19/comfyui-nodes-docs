@@ -32,31 +32,6 @@ CR_SimplePromptList is a node designed to efficiently aggregate and manage promp
 - Infra type: CPU
 
 # Source code
-```
-class CR_SimplePromptList:
+[View source repository on GitHub](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'prompt_1': ('STRING', {'multiline': True, 'default': 'prompt'}), 'prompt_2': ('STRING', {'multiline': True, 'default': 'prompt'}), 'prompt_3': ('STRING', {'multiline': True, 'default': 'prompt'}), 'prompt_4': ('STRING', {'multiline': True, 'default': 'prompt'}), 'prompt_5': ('STRING', {'multiline': True, 'default': 'prompt'})}, 'optional': {'simple_prompt_list': ('SIMPLE_PROMPT_LIST',)}}
-    RETURN_TYPES = ('SIMPLE_PROMPT_LIST', 'STRING')
-    RETURN_NAMES = ('SIMPLE_PROMPT_LIST', 'show_help')
-    FUNCTION = 'prompt_stacker'
-    CATEGORY = icons.get('Comfyroll/Animation/Legacy')
-
-    def prompt_stacker(self, prompt_1, prompt_2, prompt_3, prompt_4, prompt_5, simple_prompt_list=None):
-        prompts = list()
-        if simple_prompt_list is not None:
-            prompts.extend([l for l in simple_prompt_list])
-        if prompt_1 != '':
-            (prompts.extend([prompt_1]),)
-        if prompt_2 != '':
-            (prompts.extend([prompt_2]),)
-        if prompt_3 != '':
-            (prompts.extend([prompt_3]),)
-        if prompt_4 != '':
-            (prompts.extend([prompt_4]),)
-        if prompt_5 != '':
-            (prompts.extend([prompt_5]),)
-        show_help = 'https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Prompt-Nodes#cr-simple-prompt-list'
-        return (prompts, show_help)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

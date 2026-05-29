@@ -48,21 +48,6 @@ The LatentPixelScale node is designed to upsample the latent representation of a
 - Infra type: CPU
 
 # Source code
-```
-class LatentPixelScale:
-    upscale_methods = ['nearest-exact', 'bilinear', 'lanczos', 'area']
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'samples': ('LATENT',), 'scale_method': (s.upscale_methods,), 'scale_factor': ('FLOAT', {'default': 1.5, 'min': 0.1, 'max': 10000, 'step': 0.1}), 'vae': ('VAE',), 'use_tiled_vae': ('BOOLEAN', {'default': False, 'label_on': 'enabled', 'label_off': 'disabled'})}, 'optional': {'upscale_model_opt': ('UPSCALE_MODEL',)}}
-    RETURN_TYPES = ('LATENT', 'IMAGE')
-    FUNCTION = 'doit'
-    CATEGORY = 'ImpactPack/Upscale'
-
-    def doit(self, samples, scale_method, scale_factor, vae, use_tiled_vae, upscale_model_opt=None):
-        if upscale_model_opt is None:
-            latimg = core.latent_upscale_on_pixel_space2(samples, scale_method, scale_factor, vae, use_tile=use_tiled_vae)
-        else:
-            latimg = core.latent_upscale_on_pixel_space_with_model2(samples, scale_method, upscale_model_opt, scale_factor, vae, use_tile=use_tiled_vae)
-        return latimg
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

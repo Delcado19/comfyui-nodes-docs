@@ -39,21 +39,6 @@ DetailerHookCombine node acts as a coordinator for two independent hooks during 
 - Infra type: CPU
 
 # Source code
-```
-class DetailerHookCombine(PixelKSampleHookCombine):
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    def cycle_latent(self, latent):
-        latent = self.hook1.cycle_latent(latent)
-        latent = self.hook2.cycle_latent(latent)
-        return latent
-
-    def post_detection(self, segs):
-        segs = self.hook1.post_detection(segs)
-        segs = self.hook2.post_detection(segs)
-        return segs
-
-    def post_paste(self, image):
-        image = self.hook1.post_paste(image)
-        image = self.hook2.post_paste(image)
-        return image
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

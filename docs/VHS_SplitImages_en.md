@@ -40,19 +40,6 @@ The SplitImages node aims to split a series of images into two distinct groups a
 - Infra type: CPU
 
 # Source code
-```
-class SplitImages:
+[View source repository on GitHub](https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'images': ('IMAGE',), 'split_index': ('INT', {'default': 0, 'step': 1, 'min': BIGMIN, 'max': BIGMAX})}}
-    CATEGORY = 'Video Helper Suite 🎥🅥🅗🅢/image'
-    RETURN_TYPES = ('IMAGE', 'INT', 'IMAGE', 'INT')
-    RETURN_NAMES = ('IMAGE_A', 'A_count', 'IMAGE_B', 'B_count')
-    FUNCTION = 'split_images'
-
-    def split_images(self, images: Tensor, split_index: int):
-        group_a = images[:split_index]
-        group_b = images[split_index:]
-        return (group_a, group_a.size(0), group_b, group_b.size(0))
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

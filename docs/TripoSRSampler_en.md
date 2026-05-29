@@ -40,34 +40,6 @@ The TripoSRSampler class leverages deep learning models to interpret scene code 
 - Infra type: GPU
 
 # Source code
-```
-class TripoSRSampler:
+[View source repository on GitHub](https://github.com/flowtyone/ComfyUI-Flowty-TripoSR)
 
-    def __init__(self):
-        self.initialized_model = None
-
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'model': ('TRIPOSR_MODEL',), 'reference_image': ('IMAGE',), 'geometry_resolution': ('INT', {'default': 256, 'min': 128, 'max': 12288}), 'threshold': ('FLOAT', {'default': 25.0, 'min': 0.0, 'step': 0.01})}, 'optional': {'reference_mask': ('MASK',)}}
-    RETURN_TYPES = ('MESH',)
-    FUNCTION = 'sample'
-    CATEGORY = 'Flowty TripoSR'
-
-    def sample(self, model, reference_image, geometry_resolution, threshold, reference_mask=None):
-        device = get_torch_device()
-        if not torch.cuda.is_available():
-            device = 'cpu'
-        image = reference_image[0]
-        if reference_mask is not None:
-            mask = reference_mask[0].unsqueeze(2)
-            image = torch.cat((image, mask), dim=2).detach().cpu().numpy()
-        else:
-            image = image.detach().cpu().numpy()
-        image = Image.fromarray(np.clip(255.0 * image, 0, 255).astype(np.uint8))
-        if reference_mask is not None:
-            image = fill_background(image)
-        image = image.convert('RGB')
-        scene_codes = model([image], device)
-        meshes = model.extract_mesh(scene_codes, resolution=geometry_resolution, threshold=threshold)
-        return ([meshes[0]],)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

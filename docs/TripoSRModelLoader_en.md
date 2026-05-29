@@ -28,27 +28,6 @@ TripoSRModelLoader efficiently manages and initializes TripoSR models, ensuring 
 - Infra type: GPU
 
 # Source code
-```
-class TripoSRModelLoader:
+[View source repository on GitHub](https://github.com/flowtyone/ComfyUI-Flowty-TripoSR)
 
-    def __init__(self):
-        self.initialized_model = None
-
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'model': (get_filename_list('checkpoints'),), 'chunk_size': ('INT', {'default': 8192, 'min': 1, 'max': 10000})}}
-    RETURN_TYPES = ('TRIPOSR_MODEL',)
-    FUNCTION = 'load'
-    CATEGORY = 'Flowty TripoSR'
-
-    def load(self, model, chunk_size):
-        device = get_torch_device()
-        if not torch.cuda.is_available():
-            device = 'cpu'
-        if not self.initialized_model:
-            print('Loading TripoSR model')
-            self.initialized_model = TSR.from_pretrained_custom(weight_path=get_full_path('checkpoints', model), config_path=path.join(path.dirname(__file__), 'config.yaml'))
-            self.initialized_model.renderer.set_chunk_size(chunk_size)
-            self.initialized_model.to(device)
-        return (self.initialized_model,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

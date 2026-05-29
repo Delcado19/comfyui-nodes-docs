@@ -33,25 +33,6 @@ This node creates a new sigma plan by computing the weighted average of two prov
 - Common nodes: unknown
 
 ## Source code
-```python
-class WeightedAverageSigmaScheduleNode:
-    @classmethod
-    def INPUT_TYPES(s):
-        return {
-            "required": {
-                "schedule_A": ("SIGMA_SCHEDULE",),
-                "schedule_B": ("SIGMA_SCHEDULE",),
-                "weight_A": ("FLOAT", {"default": 0.5, "min": 0.0, "max": 1.0, "step": 0.001}),
-            }
-        }
-    
-    RETURN_TYPES = ("SIGMA_SCHEDULE",)
-    CATEGORY = "Animate Diff 🎭🅐🅓/sample settings/sigma schedule"
-    FUNCTION = "get_sigma_schedule"
+[View source repository on GitHub](https://github.com/Kosinkadink/ComfyUI-AnimateDiff-Evolved)
 
-    def get_sigma_schedule(self, schedule_A: SigmaSchedule, schedule_B: SigmaSchedule, weight_A: float):
-        validate_sigma_schedule_compatibility(schedule_A, schedule_B)
-        new_sigmas = schedule_A.model_sampling.sigmas * weight_A + schedule_B.model_sampling.sigmas * (1-weight_A)
-        combo_schedule = schedule_A.clone()
-        combo_schedule.model_sampling.set_sigmas(new_sigmas)
-        return (combo_schedule,)
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

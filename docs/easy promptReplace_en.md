@@ -48,20 +48,6 @@ This node facilitates the text transformation process by identifying and replaci
 - Infra type: CPU
 
 # Source code
-```
-class promptReplace:
+[View source repository on GitHub](https://github.com/yolain/ComfyUI-Easy-Use)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'prompt': ('STRING', {'multiline': True, 'default': '', 'forceInput': True})}, 'optional': {'find1': ('STRING', {'multiline': False, 'default': ''}), 'replace1': ('STRING', {'multiline': False, 'default': ''}), 'find2': ('STRING', {'multiline': False, 'default': ''}), 'replace2': ('STRING', {'multiline': False, 'default': ''}), 'find3': ('STRING', {'multiline': False, 'default': ''}), 'replace3': ('STRING', {'multiline': False, 'default': ''})}}
-    RETURN_TYPES = ('STRING',)
-    RETURN_NAMES = ('prompt',)
-    FUNCTION = 'replace_text'
-    CATEGORY = 'EasyUse/Prompt'
-
-    def replace_text(self, text, find1='', replace1='', find2='', replace2='', find3='', replace3=''):
-        text = text.replace(find1, replace1)
-        text = text.replace(find2, replace2)
-        text = text.replace(find3, replace3)
-        return (text,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -23,19 +23,6 @@ The `dictionary_convert` method aims to convert the string representation of a d
 - Infra type: CPU
 
 # Source code
-```
-class WAS_Dictionary_Convert:
+[View source repository on GitHub](https://github.com/WASasquatch/was-node-suite-comfyui)
 
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'dictionary_text': (TEXT_TYPE, {'forceInput': True if TEXT_TYPE == 'STRING' else False})}}
-    RETURN_TYPES = ('DICT',)
-    FUNCTION = 'dictionary_convert'
-    CATEGORY = 'WAS Suite/Text'
-
-    def dictionary_convert(self, dictionary_text):
-        return (ast.literal_eval(dictionary_text),)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

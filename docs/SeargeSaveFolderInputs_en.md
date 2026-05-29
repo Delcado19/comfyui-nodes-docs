@@ -23,17 +23,6 @@ This node class is designed to facilitate the process of saving data to a specif
 - Infra type: CPU
 
 # Source code
-```
-class SeargeSaveFolderInputs:
+[View source repository on GitHub](https://github.com/jobunk/SeargeSDXL)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'save_to': (SeargeParameterProcessor.SAVE_TO, {'default': SeargeParameterProcessor.SAVE_TO[0]})}}
-    RETURN_TYPES = ('SAVE_FOLDER',)
-    RETURN_NAMES = ('save_to',)
-    FUNCTION = 'get_value'
-    CATEGORY = 'Searge/_deprecated_/Inputs'
-
-    def get_value(self, save_to):
-        return (save_to,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

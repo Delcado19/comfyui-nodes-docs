@@ -25,28 +25,7 @@ The Primitive integer node is specifically used to handle integer values, provid
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class CInteger:
-    def __init__(self):
-        pass
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {
-            "required": {
-                "int": INT,
-            }
-        }
-
-    CATEGORY = CATEGORY.MAIN.value + CATEGORY.PRIMITIVE.value
-    RETURN_TYPES = ("INT",)
-    RETURN_NAMES = ("int",)
-
-    FUNCTION = "execute"
-
-    def execute(self, int=True):
-        return (int,)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

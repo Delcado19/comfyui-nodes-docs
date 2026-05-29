@@ -31,19 +31,6 @@ This node aims to retrieve and load previously saved model checkpoints, enabling
 - Infra type: CPU
 
 # Source code
-```
-class SeargeCheckpointLoader:
+[View source repository on GitHub](https://github.com/jobunk/SeargeSDXL)
 
-    def __init__(self):
-        self.chkp_loader = nodes.CheckpointLoaderSimple()
-
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'ckpt_name': ('CHECKPOINT_NAME',)}}
-    RETURN_TYPES = ('MODEL', 'CLIP', 'VAE')
-    FUNCTION = 'load_checkpoint'
-    CATEGORY = 'Searge/_deprecated_/Files'
-
-    def load_checkpoint(self, ckpt_name):
-        return self.chkp_loader.load_checkpoint(ckpt_name)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

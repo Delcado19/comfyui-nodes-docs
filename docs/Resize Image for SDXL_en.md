@@ -31,26 +31,6 @@ ResizeImageSDXL node aims to adjust and upscale image dimensions using multiple 
 - Infra type: CPU
 
 # Source code
-```
-class ResizeImageSDXL:
-    crop_methods = ['disabled', 'center']
-    upscale_methods = ['nearest-exact', 'bilinear', 'area', 'bicubic']
+[View source repository on GitHub](https://github.com/bash-j/mikey_nodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'image': ('IMAGE',), 'upscale_method': (s.upscale_methods,), 'crop': (s.crop_methods,)}}
-    RETURN_TYPES = ('IMAGE',)
-    FUNCTION = 'resize'
-    CATEGORY = 'Mikey/Image'
-
-    def upscale(self, image, upscale_method, width, height, crop):
-        samples = image.movedim(-1, 1)
-        s = comfy.utils.common_upscale(samples, width, height, upscale_method, crop)
-        s = s.movedim(1, -1)
-        return (s,)
-
-    def resize(self, image, upscale_method, crop):
-        (w, h) = find_latent_size(image.shape[2], image.shape[1])
-        img = self.upscale(image, upscale_method, w, h, crop)[0]
-        return (img,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

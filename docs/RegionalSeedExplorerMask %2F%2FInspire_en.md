@@ -48,36 +48,6 @@ The RegionalSeedExplorerMask node aims to enhance the creative process by introd
 - Infra type: GPU
 
 # Source code
-```
-class RegionalSeedExplorerMask:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Inspire-Pack)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'mask': ('MASK',), 'noise': ('NOISE',), 'seed_prompt': ('STRING', {'multiline': True, 'dynamicPrompts': False, 'pysssss.autocomplete': False}), 'enable_additional': ('BOOLEAN', {'default': True, 'label_on': 'true', 'label_off': 'false'}), 'additional_seed': ('INT', {'default': 0, 'min': 0, 'max': 18446744073709551615}), 'additional_strength': ('FLOAT', {'default': 0.0, 'min': 0.0, 'max': 1.0, 'step': 0.01}), 'noise_mode': (['GPU(=A1111)', 'CPU'],)}}
-    RETURN_TYPES = ('NOISE',)
-    FUNCTION = 'doit'
-    CATEGORY = 'InspirePack/Regional'
-
-    def doit(self, mask, noise, seed_prompt, enable_additional, additional_seed, additional_strength, noise_mode):
-        device = comfy.model_management.get_torch_device()
-        noise_device = 'cpu' if noise_mode == 'CPU' else device
-        noise = noise.to(device)
-        mask = mask.to(device)
-        if len(mask.shape) == 2:
-            mask = mask.unsqueeze(0)
-        mask = torch.nn.functional.interpolate(mask.reshape((-1, 1, mask.shape[-2], mask.shape[-1])), size=(noise.shape[2], noise.shape[3]), mode='bilinear').squeeze(0)
-        try:
-            seed_prompt = seed_prompt.replace('\n', '')
-            items = seed_prompt.strip().split(',')
-            if items == ['']:
-                items = []
-            if enable_additional:
-                items.append((additional_seed, additional_strength))
-            noise = prompt_support.SeedExplorer.apply_variation(noise, items, noise_device, mask)
-        except Exception:
-            print(f'[ERROR] IGNORED: RegionalSeedExplorerColorMask is failed.')
-            traceback.print_exc()
-        noise = noise.cpu()
-        mask.cpu()
-        return (noise,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

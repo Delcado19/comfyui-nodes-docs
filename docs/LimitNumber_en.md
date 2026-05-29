@@ -31,30 +31,6 @@ This node clamps a given number within a specified range, ensuring it does not e
 - Infra type: CPU
 
 # Source code
-```
-class LimitNumber:
+[View source repository on GitHub](https://github.com/shadowcz007/comfyui-mixlab-nodes)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'number': (any_type,), 'min_value': ('INT', {'default': 0, 'min': 0, 'max': 18446744073709551615, 'step': 1, 'display': 'number'}), 'max_value': ('INT', {'default': 1, 'min': 1, 'max': 18446744073709551615, 'step': 1, 'display': 'number'})}}
-    RETURN_TYPES = (any_type,)
-    RETURN_NAMES = ('number',)
-    FUNCTION = 'run'
-    CATEGORY = '♾️Mixlab/Utils'
-    INPUT_IS_LIST = False
-    OUTPUT_IS_LIST = (False,)
-
-    def run(self, number, min_value, max_value):
-        nn = number
-        if isinstance(number, int):
-            min_value = int(min_value)
-            max_value = int(max_value)
-        if isinstance(number, float):
-            min_value = float(min_value)
-            max_value = float(max_value)
-        if number < min_value:
-            nn = min_value
-        elif number > max_value:
-            nn = max_value
-        return (nn,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

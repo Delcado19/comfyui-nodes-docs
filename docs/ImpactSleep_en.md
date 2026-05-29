@@ -27,19 +27,6 @@ The 'doit' method of the ImpactSleep node is designed to introduce a delay in th
 - Infra type: CPU
 
 # Source code
-```
-class ImpactSleep:
+[View source repository on GitHub](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'signal': (any_typ,), 'seconds': ('FLOAT', {'default': 0.5, 'min': 0, 'max': 3600})}}
-    FUNCTION = 'doit'
-    CATEGORY = 'ImpactPack/Logic/_for_test'
-    RETURN_TYPES = (any_typ,)
-    RETURN_NAMES = ('signal_opt',)
-    OUTPUT_NODE = True
-
-    def doit(self, signal, seconds):
-        time.sleep(seconds)
-        return (signal,)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

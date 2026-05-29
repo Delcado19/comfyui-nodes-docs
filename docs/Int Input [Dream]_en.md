@@ -25,31 +25,7 @@ The Int Input node provides users with a straightforward integer input interface
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class DreamInputInt:
-    NODE_NAME = "Int Input"
-    ICON = "✍"
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {
-            "required": {
-                "value": ("INT", {"default": 0}),
-            },
-        }
-
-    CATEGORY = NodeCategories.UTILS
-    RETURN_TYPES = ("INT",)
-    RETURN_NAMES = ("INT",)
-    FUNCTION = "noop"
-
-    @classmethod
-    def IS_CHANGED(cls, *values):
-        return hashed_as_strings(*values)
-
-    def noop(self, value):
-        return (value,)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

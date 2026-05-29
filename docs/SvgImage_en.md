@@ -27,25 +27,6 @@ This node processes SVG images, converting them into tensor format suitable for 
 - Infra type: CPU
 
 # Source code
-```
-class SvgImage:
+[View source repository on GitHub](https://github.com/shadowcz007/comfyui-mixlab-nodes)
 
-    @classmethod
-    def INPUT_TYPES(s):
-        return {'required': {'upload': ('SVG',)}}
-    RETURN_TYPES = ('IMAGE', 'LAYER')
-    RETURN_NAMES = ('IMAGE', 'layers')
-    FUNCTION = 'run'
-    CATEGORY = '♾️Mixlab/Image'
-    INPUT_IS_LIST = False
-    OUTPUT_IS_LIST = (False, True)
-
-    def run(self, upload):
-        layers = []
-        image = base64_to_image(upload['image'])
-        image = image.convert('RGB')
-        image = pil2tensor(image)
-        for layer in upload['data']:
-            layers.append(layer)
-        return (image, layers)
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

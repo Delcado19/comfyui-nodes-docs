@@ -63,45 +63,6 @@ The ChatGPTNode class is designed to generate context-aware text using large lan
 - Infra type: CPU
 
 # Source code
-```
-class ChatGPTNode:
+[View source repository on GitHub](https://github.com/shadowcz007/comfyui-mixlab-nodes)
 
-    def __init__(self):
-        self.session_history = []
-        self.system_content = 'You are ChatGPT, a large language model trained by OpenAI. Answer as concisely as possible.'
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {'required': {'api_key': ('KEY', {'default': '', 'multiline': True, 'dynamicPrompts': False}), 'api_url': ('URL', {'default': '', 'multiline': True, 'dynamicPrompts': False}), 'prompt': ('STRING', {'multiline': True, 'dynamicPrompts': False}), 'system_content': ('STRING', {'default': 'You are ChatGPT, a large language model trained by OpenAI. Answer as concisely as possible.', 'multiline': True, 'dynamicPrompts': False}), 'model': (['gpt-3.5-turbo', 'gpt-35-turbo', 'gpt-3.5-turbo-16k', 'gpt-3.5-turbo-16k-0613', 'gpt-4-0613', 'gpt-4-1106-preview', 'glm-4'], {'default': 'gpt-3.5-turbo'}), 'seed': ('INT', {'default': 0, 'min': 0, 'max': 18446744073709551615, 'step': 1}), 'context_size': ('INT', {'default': 1, 'min': 0, 'max': 30, 'step': 1})}, 'hidden': {'unique_id': 'UNIQUE_ID', 'extra_pnginfo': 'EXTRA_PNGINFO'}}
-    RETURN_TYPES = ('STRING', 'STRING', 'STRING')
-    RETURN_NAMES = ('text', 'messages', 'session_history')
-    FUNCTION = 'generate_contextual_text'
-    CATEGORY = '♾️Mixlab/GPT'
-    INPUT_IS_LIST = False
-    OUTPUT_IS_LIST = (False, False, False)
-
-    def generate_contextual_text(self, api_key, api_url, prompt, system_content, model, seed, context_size, unique_id=None, extra_pnginfo=None):
-        if system_content:
-            self.system_content = system_content
-        if is_azure_url(api_url):
-            client = azure_client(api_key, api_url)
-        elif model == 'glm-4':
-            client = ZhipuAI_client(api_key)
-            print('using Zhipuai interface')
-        else:
-            client = openai_client(api_key, api_url)
-            print('using ChatGPT interface')
-
-        def crop_list_tail(lst, size):
-            if size >= len(lst):
-                return lst
-            elif size == 0:
-                return []
-            else:
-                return lst[-size:]
-        session_history = crop_list_tail(self.session_history, context_size)
-        messages = [{'role': 'system', 'content': self.system_content}] + session_history + [{'role': 'user', 'content': prompt}]
-        response_content = chat(client, model, messages)
-        self.session_history = self.session_history + [{'role': 'user', 'content': prompt}] + [{'role': 'assistant', 'content': response_content}]
-        return (response_content, json.dumps(messages, indent=4), json.dumps(self.session_history, indent=4))
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

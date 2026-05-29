@@ -37,33 +37,7 @@ XY Input: The Clip Skip node is specifically used to process and validate clip s
 - Infra type: `CPU`
 - Common nodes: unknown
 
-
 ## Source code
-```python
-class TSC_XYplot_ClipSkip:
+[View source repository on GitHub](https://github.com/comfyanonymous/ComfyUI)
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {
-            "required": {
-                "target_ckpt": (["Base","Refiner"],),
-                "batch_count": ("INT", {"default": XYPLOT_DEF, "min": 0, "max": XYPLOT_LIM}),
-                "first_clip_skip": ("INT", {"default": -1, "min": -24, "max": -1, "step": 1}),
-                "last_clip_skip": ("INT", {"default": -3, "min": -24, "max": -1, "step": 1}),
-            },
-        }
-
-    RETURN_TYPES = ("XY",)
-    RETURN_NAMES = ("X or Y",)
-    FUNCTION = "xy_value"
-    CATEGORY = "Efficiency Nodes/XY Inputs"
-
-    def xy_value(self, target_ckpt, batch_count, first_clip_skip, last_clip_skip):
-        if target_ckpt == "Base":
-            xy_type = "Clip Skip"
-        else:
-            xy_type = "Clip Skip (Refiner)"
-        xy_value = generate_ints(batch_count, first_clip_skip, last_clip_skip)
-        return ((xy_type, xy_value),) if xy_value else (None,)
-
-```
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*
