@@ -1,6 +1,6 @@
 <!-- markdownlint-disable -->
 <p align="center">
-  <img width="600" src="logo.png" style="text-align: center;"/>
+  <img width="800" src="logo.png" style="text-align: center;"/>
 </p>
 <h1 align="center">comfyui-nodes-docs</h1>
 <h4 align="center">Documentation plugin for 1900+ comfyui nodes ✨ / 1900+ComfyUI节点文档✨</h4>
