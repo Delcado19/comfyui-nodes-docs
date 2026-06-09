@@ -28,39 +28,39 @@ export const hideActiveDocs = function() {
 // source when a translation is missing). Defensive fallbacks keep this working
 // even if the setting API is unavailable.
 const getDocLang = function() {
-    try {
-      const fromSetting = app?.ui?.settings?.getSettingValue?.('Comfy.Locale')
-      // Guard against stores that return the raw defaultValue *function* when no
-      // explicit locale was chosen: only trust a real string, else fall back to
-      // navigator.language (what ComfyUI's own default evaluates to anyway).
-      if (typeof fromSetting === 'string' && fromSetting) return fromSetting
-    } catch (e) { /* fall through to navigator-based default */ }
-    return (navigator.language || '').split('-')[0] || 'en'
-  }
+  try {
+    const fromSetting = app?.ui?.settings?.getSettingValue?.('Comfy.Locale')
+    // Guard against stores that return the raw defaultValue *function* when no
+    // explicit locale was chosen: only trust a real string, else fall back to
+    // navigator.language (what ComfyUI's own default evaluates to anyway).
+    if (typeof fromSetting === 'string' && fromSetting) return fromSetting
+  } catch (e) { /* fall through to navigator-based default */ }
+  return (navigator.language || '').split('-')[0] || 'en'
+}
 
-  // 缓存到本地
-  const fetchCacheDNodeDoc = async function(nodeName, lang) {
-    const res = await fetch('/customnode/cacheNodeInfo?nodeName=' + nodeName + '&lang=' + encodeURIComponent(lang))
-    const jsonData = await res.json()
-    return jsonData
-  }
+// 缓存到本地
+const fetchCacheDNodeDoc = async function(nodeName, lang) {
+  const res = await fetch('/customnode/cacheNodeInfo?nodeName=' + nodeName + '&lang=' + encodeURIComponent(lang))
+  const jsonData = await res.json()
+  return jsonData
+}
 
-  // 保存文档到本地
-  const saveNodeDoc = async function(nodeName, content, lang) {
-    const res = await fetch('/customnode/updateNodeInfo', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        nodeName,
-        content,
-        lang
-      })
+// 保存文档到本地
+const saveNodeDoc = async function(nodeName, content, lang) {
+  const res = await fetch('/customnode/updateNodeInfo', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      nodeName,
+      content,
+      lang
     })
+  })
 
-    return await res.json()
-  }
+  return await res.json()
+}
 
 
 let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0

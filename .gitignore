@@ -14,8 +14,3 @@ node_modules/
 -Added a switch in the settings for whether to participate in co construction. You can choose whether to participate in co construction or not. By default, it will be turned on, and the locally modified records will be recorded in the cloud DB. After review, they will be merged into the main branch
 -Add the functions of exporting and importing documents. Exporting documents will export and download locally modified records and documents provided by the warehouse. Importing documents will import the exported documents locally without affecting the documents in the main warehouse.
 -Fixed some bugs
-# Translation test artifacts
-_test_docs/
-.cache/router-translation-cache.json
-.cache/router-translation-cache.test.json
-.cache/router-translation-manifest.json
