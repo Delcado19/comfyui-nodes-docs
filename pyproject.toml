@@ -1,17 +1,24 @@
 [project]
-name = "comfyui-nodes-docs"
-description = "In-app documentation for 3500+ ComfyUI nodes, in English and Chinese. The doc panel language follows ComfyUI's Comfy.Locale setting."
+# Registry node id — must be globally unique. The original "comfyui-nodes-docs"
+# id is already registered upstream (CavinHuang), so this fork publishes under a
+# distinct id. Change this line before publishing if you prefer another id.
+name = "comfyui-nodes-docs-en"
 version = "1.1.1"
-license = "LICENSE"
+description = "In-app documentation for 3500+ ComfyUI nodes, in English and Chinese. The doc panel language follows ComfyUI's Comfy.Locale setting."
+license = { file = "LICENSE" }
+requires-python = ">=3.10"
 keywords = ["comfyui", "documentation", "docs", "nodes", "english", "chinese", "i18n", "tooltip"]
+classifiers = [
+    "Operating System :: OS Independent",
+]
 
 [project.urls]
 Repository = "https://github.com/Delcado19/comfyui-nodes-docs"
+Documentation = "https://github.com/Delcado19/comfyui-nodes-docs#readme"
+"Bug Tracker" = "https://github.com/Delcado19/comfyui-nodes-docs/issues"
 #  Used by Comfy Registry https://comfyregistry.org
 
 [tool.comfy]
-# NOTE: PublisherId must match your registered Comfy Registry publisher handle.
-# Set to the fork owner; verify it matches your publisher before publishing.
-PublisherId = "delcado19"
+PublisherId = "delcado"
 DisplayName = "comfyui-nodes-docs (EN + 中文)"
-Icon = ""
+Icon = "https://raw.githubusercontent.com/Delcado19/comfyui-nodes-docs/main/logo.png"
