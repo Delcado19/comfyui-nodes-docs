@@ -1,14 +1,17 @@
 [project]
 name = "comfyui-nodes-docs"
-description = "This is a plugin for displaying documentation for each comfyui node. "
+description = "In-app documentation for 3500+ ComfyUI nodes, in English and Chinese. The doc panel language follows ComfyUI's Comfy.Locale setting."
 version = "1.1.1"
 license = "LICENSE"
+keywords = ["comfyui", "documentation", "docs", "nodes", "english", "chinese", "i18n", "tooltip"]
 
 [project.urls]
-Repository = "https://github.com/CavinHuang/comfyui-nodes-docs"
+Repository = "https://github.com/Delcado19/comfyui-nodes-docs"
 #  Used by Comfy Registry https://comfyregistry.org
 
 [tool.comfy]
-PublisherId = "cavinhuang"
-DisplayName = "comfyui-nodes-docs"
+# NOTE: PublisherId must match your registered Comfy Registry publisher handle.
+# Set to the fork owner; verify it matches your publisher before publishing.
+PublisherId = "delcado19"
+DisplayName = "comfyui-nodes-docs (EN + 中文)"
 Icon = ""
