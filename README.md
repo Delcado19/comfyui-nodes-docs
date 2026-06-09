@@ -1,6 +1,6 @@
 <!-- markdownlint-disable -->
 <p align="center">
-  <img width="800" src="logo.png" style="text-align: center;"/>
+  <img src="logo.png" style="text-align: center;"/>
 </p>
 <h1 align="center">comfyui-nodes-docs</h1>
 <h4 align="center">In-app documentation for 3500+ ComfyUI nodes — now in English & 中文 ✨</h4>
