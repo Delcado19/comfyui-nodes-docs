@@ -28,7 +28,11 @@ const drawDocIcon = function(node, orig, restArgs) {
     const sz = ctx.measureText(docIcon);
     ctx.beginPath();
     ctx.fillStyle = fgColor;
-    const x = node.size[0] - sz.width - 6;
+    // Stays in the title bar (the node body's top-right corner is where the
+    // first output slot sits on most nodes) but pulled 34px further left
+    // than the flush-right edge, clear of ComfyUI's own title-bar corner
+    // buttons (e.g. "convert to subgraph"), which occupy the extreme corner.
+    const x = node.size[0] - sz.width - 34;
     const y = -LiteGraph.NODE_TITLE_HEIGHT + 22;
     ctx.fillText(docIcon, x, y);
     ctx.restore();
@@ -61,9 +65,9 @@ LGraphCanvas.prototype.processMouseDown = function(e) {
   for(let i = 0; i < nodes.length; i++) {
     const node = nodes[i]
     const [nL, nT, nW, nH] = node.getBounding()
-    const iconX = nL + nW - 22
+    const iconX = nL + nW - 56
     const iconY = nT
-    const iconX1 = nL + nW
+    const iconX1 = nL + nW - 34
     const iconY1 = nT + 22
 
     if(canvasX >= iconX && canvasX <= iconX1 && canvasY >= iconY && canvasY <= iconY1) {
@@ -114,11 +118,10 @@ app.registerExtension({
 
         // 通过node的位置信息判断是否点击了文档图标
         const [nLeft, nTop, nWidth, nHeight] = node.getBounding()
-        const iconX = nLeft + nWidth - 22
+        const iconX = nLeft + nWidth - 56
         const iconY = nTop
-        const iconX1 = nLeft + nWidth
+        const iconX1 = nLeft + nWidth - 34
         const iconY1 = nTop + 22
-        console.log(canvasX, canvasY, iconX, iconY, iconX1, iconY1)
         if(canvasX >= iconX && canvasX <= iconX1 && canvasY >= iconY && canvasY <= iconY1) {
           console.log('打开文档')
           showNodeDocs(node)
