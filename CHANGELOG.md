@@ -7,9 +7,10 @@ left untouched; all changes below are additive or English-only.
 ## [Unreleased]
 
 ### Added
-- **English documentation for every node.** Parallel `*_en.md` files for all
-  ~3553 node docs (a machine-translated first pass). The original Chinese docs
-  are unchanged.
+- **Expanded English documentation from a live ComfyUI install.** Parallel
+  `*_en.md` files now cover 5800+ node docs. The original Chinese docs are
+  unchanged; newly added English docs use live `/object_info` metadata plus
+  Comfy Registry or installed-repo links where available.
 - **Language-aware doc serving.** Doc language now follows ComfyUI's existing
   `Comfy.Locale` setting instead of a dedicated switch:
   - `zh*` locales serve the Chinese source (`docs/<NodeType>.md`);
@@ -29,11 +30,9 @@ left untouched; all changes below are additive or English-only.
 ### Changed
 - **Source-code blocks in English docs are now repository links.** The embedded
   Python snippet under each `Source code` heading (`#` or `##`) is replaced with
-  a link to the node pack's GitHub repository, derived from the doc's
-  `Repo Ref:` metadata. 2515 English docs were converted; docs without a
-  `Repo Ref:` keep their embedded source (no repository to link to). Live links
-  stay current as packs evolve and keep the docs lean. Chinese sources are not
-  modified.
+  a link to the node pack's repository, derived from the doc's `Repo Ref:`
+  metadata. Live links stay current as packs evolve and keep the docs lean.
+  Chinese sources are not modified.
 
 ### Notes
 - Link targets are only as accurate as the upstream `Repo Ref:` metadata, which

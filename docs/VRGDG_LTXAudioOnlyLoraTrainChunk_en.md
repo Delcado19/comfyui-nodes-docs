@@ -1,0 +1,205 @@
+# Documentation
+- Class name: VRGDG_LTXAudioOnlyLoraTrainChunk
+- Category: VRGDG/Training
+- Output node: False
+- Repo Ref: https://github.com/vrgamegirl19/comfyui-vrgamedevgirl
+
+Runs one LTX-2.3 audio-only LoRA training chunk using musubi-tuner on spoken dialogue or music clips.
+
+# Input types
+## Required
+- model
+    - Base model to return downstream with the latest trained LoRA optionally applied.
+    - Comfy dtype: MODEL
+    - Python dtype: torch.nn.Module
+- workspace_dir
+    - Working folder for cache, logs, config files, checkpoints, and training state.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- run_name
+    - Name prefix used for the log file.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- output_name
+    - Name prefix used for saved LoRA files and state folders.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- audio_profile
+    - voice_test is a short spoken-dialogue sanity check. voice is the spoken-dialogue preset. music uses a larger temporal budget and more capacity. voice_fast and voice_balanced are legacy aliases.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- use_profile_defaults
+    - When enabled, the selected profile controls the audio recipe bundle instead of the manual fields below.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- audio_only_target_resolution
+    - Square target resolution used for audio-only latent geometry.
+    - Comfy dtype: INT
+    - Python dtype: int
+- audio_only_target_fps
+    - Target FPS used to derive frame count from audio duration during caching.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- audio_only_sequence_resolution
+    - Virtual sequence resolution used for shifted_logit_normal in audio mode. Set 0 to use cached virtual geometry.
+    - Comfy dtype: INT
+    - Python dtype: int
+- steps_per_run
+    - How many steps to train before saving and stopping this chunk.
+    - Comfy dtype: INT
+    - Python dtype: int
+- total_target_steps
+    - Total training budget across all chunks.
+    - Comfy dtype: INT
+    - Python dtype: int
+- network_dim
+    - LoRA rank.
+    - Comfy dtype: INT
+    - Python dtype: int
+- network_alpha
+    - LoRA alpha.
+    - Comfy dtype: INT
+    - Python dtype: int
+- blocks_to_swap
+    - How many transformer blocks to offload to CPU.
+    - Comfy dtype: INT
+    - Python dtype: int
+- lora_target_preset
+    - audio is the intended preset for audio-only training.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- fp8_base
+    - Use the FP8 base-model loading path.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- fp8_scaled
+    - Quantize non-FP8 checkpoints into FP8 at load time.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- ltx2_audio_only_model
+    - Force loading the physically audio-only transformer variant. Keep this on for audio-only training.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- clear_memory_before_gemma
+    - Unloads ComfyUI models and clears memory before Gemma caching.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- gemma_recovery_mode
+    - Experimental. If enabled, the node will try alternate Gemma cache settings after the normal path fails.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- learning_rate_preset
+    - Quick preset for the training learning rate.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- learning_rate
+    - Custom learning rate used only when the preset is set to Custom.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- num_repeats
+    - How many times each audio-caption pair is repeated in the dataset.
+    - Comfy dtype: INT
+    - Python dtype: int
+- audio_bucket_strategy
+    - Audio duration bucketing strategy.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- audio_bucket_interval
+    - Audio bucket step size in seconds.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- cache_strategy
+    - Auto rebuilds cache only when the node detects it is missing or stale.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- copy_latest_to_comfy_loras
+    - Copies the latest Comfy-compatible LoRA into the ComfyUI loras folder after training.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- keep_only_comfy_lora
+    - Deletes the standard .safetensors LoRA files after a matching .comfy.safetensors file exists.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- strength_model
+    - Strength used if the node applies the latest LoRA back onto the output model.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- create_captions
+    - Creates missing .txt caption files automatically from the caption_text field.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- caption_text
+    - Fallback caption text used when a source audio clip has no caption file.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- add_trigger_word
+    - Prepends trigger_text to every caption.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- trigger_text
+    - Trigger word or phrase to prepend to captions when add_trigger_word is enabled.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- musubi_root
+    - Root folder of your musubi-tuner-ltx2 install.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- ltx2_checkpoint
+    - Path to the base LTX checkpoint used for caching and training.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- gemma_root
+    - Folder containing the Gemma model files used for text encoder caching.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- gemma_load_in_4bit
+    - Loads Gemma in 4-bit mode instead of 8-bit.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+## Optional
+- audio
+    - Optional connected AUDIO input. If provided, it is copied into a managed audio dataset folder and used instead of audio_directory.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_directory
+    - Optional folder containing audio files with matching .txt captions. Leave empty if you connect an AUDIO input.
+    - Comfy dtype: STRING
+    - Python dtype: str
+
+# Output types
+- model
+    - The model output is produced by this node.
+    - Comfy dtype: MODEL
+    - Python dtype: torch.nn.Module
+- latest_state_path
+    - The latest_state_path output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- log_path
+    - The log_path output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- dataset_audio_dir
+    - The dataset_audio_dir output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- output_name
+    - The output_name output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- completed_steps
+    - The completed_steps output is produced by this node.
+    - Comfy dtype: INT
+    - Python dtype: int
+- total_target_steps
+    - The total_target_steps output is produced by this node.
+    - Comfy dtype: INT
+    - Python dtype: int
+
+# Usage tips
+- Infra type: unknown
+
+# Source code
+[View source repository](https://github.com/vrgamegirl19/comfyui-vrgamedevgirl)
+
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

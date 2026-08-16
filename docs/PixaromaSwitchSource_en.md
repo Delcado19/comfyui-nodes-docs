@@ -1,0 +1,219 @@
+# Documentation
+- Class name: PixaromaSwitchSource
+- Category: 👑 Pixaroma/🔀 Logic & Flow
+- Output node: False
+- Repo Ref: https://gitlab.com/pixaroma/ComfyUI-Pixaroma
+
+Switch Source Pixaroma - flip a whole set of wires between two sources (A and B) with one toggle. Each row has an A input and a B input and sends ONE of them to that row's output; the A/B toggle picks the side for every row at once. Wire your 'local' nodes into the A inputs and your 'api' nodes into the B inputs (or any two setups), then flip between them in a single click instead of toggling several separate switches.
+
+Set how many rows you need with the Rows field. Works for any wire type (MODEL, CLIP, VAE, IMAGE, LATENT, STRING, ...). The active side is the only one that runs - the other side's upstream nodes are skipped. The toggle below the A/B switch decides what happens when the active side has no wire on a row: 'Allow empty' silently leaves that output empty (handy when banks have asymmetric wiring, e.g. 3 wired on B and only 1 on A); 'Show error' raises a clear error when the OTHER side was wired (catches the case where you dropped a wire on the wrong bank by mistake).
+
+# Input types
+## Optional
+- a_1
+    - Source A for row 1. Flows to output_1 when the toggle is on A.
+    - Comfy dtype: *
+    - Python dtype: object
+- a_2
+    - Source A for row 2. Flows to output_2 when the toggle is on A.
+    - Comfy dtype: *
+    - Python dtype: object
+- a_3
+    - Source A for row 3. Flows to output_3 when the toggle is on A.
+    - Comfy dtype: *
+    - Python dtype: object
+- a_4
+    - Source A for row 4. Flows to output_4 when the toggle is on A.
+    - Comfy dtype: *
+    - Python dtype: object
+- a_5
+    - Source A for row 5. Flows to output_5 when the toggle is on A.
+    - Comfy dtype: *
+    - Python dtype: object
+- a_6
+    - Source A for row 6. Flows to output_6 when the toggle is on A.
+    - Comfy dtype: *
+    - Python dtype: object
+- a_7
+    - Source A for row 7. Flows to output_7 when the toggle is on A.
+    - Comfy dtype: *
+    - Python dtype: object
+- a_8
+    - Source A for row 8. Flows to output_8 when the toggle is on A.
+    - Comfy dtype: *
+    - Python dtype: object
+- a_9
+    - Source A for row 9. Flows to output_9 when the toggle is on A.
+    - Comfy dtype: *
+    - Python dtype: object
+- a_10
+    - Source A for row 10. Flows to output_10 when the toggle is on A.
+    - Comfy dtype: *
+    - Python dtype: object
+- a_11
+    - Source A for row 11. Flows to output_11 when the toggle is on A.
+    - Comfy dtype: *
+    - Python dtype: object
+- a_12
+    - Source A for row 12. Flows to output_12 when the toggle is on A.
+    - Comfy dtype: *
+    - Python dtype: object
+- a_13
+    - Source A for row 13. Flows to output_13 when the toggle is on A.
+    - Comfy dtype: *
+    - Python dtype: object
+- a_14
+    - Source A for row 14. Flows to output_14 when the toggle is on A.
+    - Comfy dtype: *
+    - Python dtype: object
+- a_15
+    - Source A for row 15. Flows to output_15 when the toggle is on A.
+    - Comfy dtype: *
+    - Python dtype: object
+- a_16
+    - Source A for row 16. Flows to output_16 when the toggle is on A.
+    - Comfy dtype: *
+    - Python dtype: object
+- b_1
+    - Source B for row 1. Flows to output_1 when the toggle is on B.
+    - Comfy dtype: *
+    - Python dtype: object
+- b_2
+    - Source B for row 2. Flows to output_2 when the toggle is on B.
+    - Comfy dtype: *
+    - Python dtype: object
+- b_3
+    - Source B for row 3. Flows to output_3 when the toggle is on B.
+    - Comfy dtype: *
+    - Python dtype: object
+- b_4
+    - Source B for row 4. Flows to output_4 when the toggle is on B.
+    - Comfy dtype: *
+    - Python dtype: object
+- b_5
+    - Source B for row 5. Flows to output_5 when the toggle is on B.
+    - Comfy dtype: *
+    - Python dtype: object
+- b_6
+    - Source B for row 6. Flows to output_6 when the toggle is on B.
+    - Comfy dtype: *
+    - Python dtype: object
+- b_7
+    - Source B for row 7. Flows to output_7 when the toggle is on B.
+    - Comfy dtype: *
+    - Python dtype: object
+- b_8
+    - Source B for row 8. Flows to output_8 when the toggle is on B.
+    - Comfy dtype: *
+    - Python dtype: object
+- b_9
+    - Source B for row 9. Flows to output_9 when the toggle is on B.
+    - Comfy dtype: *
+    - Python dtype: object
+- b_10
+    - Source B for row 10. Flows to output_10 when the toggle is on B.
+    - Comfy dtype: *
+    - Python dtype: object
+- b_11
+    - Source B for row 11. Flows to output_11 when the toggle is on B.
+    - Comfy dtype: *
+    - Python dtype: object
+- b_12
+    - Source B for row 12. Flows to output_12 when the toggle is on B.
+    - Comfy dtype: *
+    - Python dtype: object
+- b_13
+    - Source B for row 13. Flows to output_13 when the toggle is on B.
+    - Comfy dtype: *
+    - Python dtype: object
+- b_14
+    - Source B for row 14. Flows to output_14 when the toggle is on B.
+    - Comfy dtype: *
+    - Python dtype: object
+- b_15
+    - Source B for row 15. Flows to output_15 when the toggle is on B.
+    - Comfy dtype: *
+    - Python dtype: object
+- b_16
+    - Source B for row 16. Flows to output_16 when the toggle is on B.
+    - Comfy dtype: *
+    - Python dtype: object
+## Hidden
+- SwitchSourceState
+    - The SwitchSourceState input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+
+# Output types
+- output_1
+    - Row 1: carries the A or B input for this row, depending on the toggle.
+    - Comfy dtype: *
+    - Python dtype: object
+- output_2
+    - Row 2: carries the A or B input for this row, depending on the toggle.
+    - Comfy dtype: *
+    - Python dtype: object
+- output_3
+    - Row 3: carries the A or B input for this row, depending on the toggle.
+    - Comfy dtype: *
+    - Python dtype: object
+- output_4
+    - Row 4: carries the A or B input for this row, depending on the toggle.
+    - Comfy dtype: *
+    - Python dtype: object
+- output_5
+    - Row 5: carries the A or B input for this row, depending on the toggle.
+    - Comfy dtype: *
+    - Python dtype: object
+- output_6
+    - Row 6: carries the A or B input for this row, depending on the toggle.
+    - Comfy dtype: *
+    - Python dtype: object
+- output_7
+    - Row 7: carries the A or B input for this row, depending on the toggle.
+    - Comfy dtype: *
+    - Python dtype: object
+- output_8
+    - Row 8: carries the A or B input for this row, depending on the toggle.
+    - Comfy dtype: *
+    - Python dtype: object
+- output_9
+    - Row 9: carries the A or B input for this row, depending on the toggle.
+    - Comfy dtype: *
+    - Python dtype: object
+- output_10
+    - Row 10: carries the A or B input for this row, depending on the toggle.
+    - Comfy dtype: *
+    - Python dtype: object
+- output_11
+    - Row 11: carries the A or B input for this row, depending on the toggle.
+    - Comfy dtype: *
+    - Python dtype: object
+- output_12
+    - Row 12: carries the A or B input for this row, depending on the toggle.
+    - Comfy dtype: *
+    - Python dtype: object
+- output_13
+    - Row 13: carries the A or B input for this row, depending on the toggle.
+    - Comfy dtype: *
+    - Python dtype: object
+- output_14
+    - Row 14: carries the A or B input for this row, depending on the toggle.
+    - Comfy dtype: *
+    - Python dtype: object
+- output_15
+    - Row 15: carries the A or B input for this row, depending on the toggle.
+    - Comfy dtype: *
+    - Python dtype: object
+- output_16
+    - Row 16: carries the A or B input for this row, depending on the toggle.
+    - Comfy dtype: *
+    - Python dtype: object
+
+# Usage tips
+- Infra type: unknown
+
+# Source code
+[View source repository](https://gitlab.com/pixaroma/ComfyUI-Pixaroma)
+
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -1,0 +1,204 @@
+# Documentation
+- Class name: VRGDG_LTXAudioVideoLoraTrainChunk
+- Category: VRGDG/Training
+- Output node: False
+- Repo Ref: https://github.com/vrgamegirl19/comfyui-vrgamedevgirl
+
+Runs one LTX-2.3 audio-video LoRA training chunk using musubi-tuner on short videos with embedded audio.
+
+# Input types
+## Required
+- model
+    - Base model to return downstream with the latest trained LoRA optionally applied.
+    - Comfy dtype: MODEL
+    - Python dtype: torch.nn.Module
+- dataset_videos_dir
+    - Folder containing your training videos, or a parent folder that will be organized into a videos subfolder.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- workspace_dir
+    - Working folder for cache, logs, config files, checkpoints, and training state.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- run_name
+    - Name prefix used for the log file.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- output_name
+    - Name prefix used for saved LoRA files and state folders.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- av_profile
+    - Training recipe switch. fast_short_clip is the default quick test for one short video. step200 keeps the same fast_short_clip recipe but sets a 200-step chunk budget with lighter repeats. balanced is a stronger middle ground. full_video trains on the whole clip and is the slowest. overnight_full_video is tuned for a longer clip using smaller frame windows, lower resolution, and light swapping so it can run overnight on a midrange GPU.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- use_profile_defaults
+    - When enabled, the selected profile controls the AV recipe bundle instead of the manual fields below. Turn this off if you want to hand-tune every value.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- resolution_width
+    - Training bucket width in pixels. 768 is a good fast default for a single short clip. Smaller values like 512 are faster; larger values cost more VRAM and time.
+    - Comfy dtype: INT
+    - Python dtype: int
+- resolution_height
+    - Training bucket height in pixels. 512 pairs well with 768x512 for a quick short-clip run. Use a lower height for faster experiments.
+    - Comfy dtype: INT
+    - Python dtype: int
+- target_frames
+    - Comma-separated frame buckets to train on. For a 10-second clip, 17 and 33 frames are a good fast starting point. The trainer rounds values to the required N*4+1 frame buckets.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- frame_extraction
+    - How frames are selected from each video. head uses only the first target_frames window and is the fastest choice for a short single-clip LoRA. full uses the entire video, but is much slower and should be capped with max_frames.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- max_frames
+    - Safety cap used when frame_extraction is full. 49 keeps the run short and prevents a 10-second clip from turning into a long heavy sample. It does not affect head/chunk/slide/uniform.
+    - Comfy dtype: INT
+    - Python dtype: int
+- target_fps
+    - Target FPS used during caching/training. 25.0 is the standard LTX rate and works well for most short clips with audio.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- steps_per_run
+    - How many steps to train before saving and stopping this chunk. 100 is a fast check-run default for a single short clip.
+    - Comfy dtype: INT
+    - Python dtype: int
+- total_target_steps
+    - Total training budget across all chunks. 400 is a fast starter value for one short video; increase later only if you need more adaptation.
+    - Comfy dtype: INT
+    - Python dtype: int
+- network_dim
+    - LoRA rank. 16 is a good quick-training default for one short clip. Use 32 if the result is too weak.
+    - Comfy dtype: INT
+    - Python dtype: int
+- network_alpha
+    - LoRA alpha. Usually keep this equal to the rank for a simple fast baseline.
+    - Comfy dtype: INT
+    - Python dtype: int
+- blocks_to_swap
+    - How many transformer blocks to offload to CPU. Lower is faster if you have enough VRAM. Raise this only if you run out of memory.
+    - Comfy dtype: INT
+    - Python dtype: int
+- separate_audio_buckets
+    - Keeps audio and non-audio items in separate batches. Safe to leave on and useful if your dataset ever mixes audio and silent clips.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- clear_memory_before_gemma
+    - Unloads ComfyUI models and clears memory before Gemma caching. Leave this on unless you know your workspace is already empty.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- lora_target_preset
+    - Which transformer layers get LoRA adapters. t2v is the fastest useful baseline. v2v adds FFN layers. full is the heaviest and produces the largest adapter.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- fp8_base
+    - Use the FP8 base-model loading path. Leave this on for speed and lower VRAM.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- fp8_scaled
+    - Quantize non-FP8 checkpoints into FP8 at load time. Turn this off if your checkpoint file is already FP8, usually visible from the filename.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- learning_rate_preset
+    - Quick preset for the training learning rate. 1e-4 is a strong starter value for a short 10-second clip.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- learning_rate
+    - Custom learning rate used only when the preset is set to Custom.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- num_repeats
+    - How many times each video-caption pair is repeated in the dataset. Higher repeats help a single clip produce enough training signal without needing a huge number of source videos.
+    - Comfy dtype: INT
+    - Python dtype: int
+- cache_strategy
+    - Auto rebuilds cache only when the node detects the cache is missing or stale. Force always rebuilds. Skip assumes the cache is already correct.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- copy_latest_to_comfy_loras
+    - Copies the latest Comfy-compatible LoRA into the ComfyUI loras folder after training.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- keep_only_comfy_lora
+    - If enabled, deletes the standard .safetensors LoRA files after a matching .comfy.safetensors file exists.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- strength_model
+    - Strength used if the node applies the latest LoRA back onto the output model.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- create_captions
+    - Creates missing .txt caption files automatically from the caption_text field. Leave this off if your videos already have captions.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- caption_text
+    - Fallback caption text used only when create_captions is on and a video has no caption file.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- add_trigger_word
+    - Prepends trigger_text to every caption. Useful when you want a fixed concept token.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- trigger_text
+    - Trigger word or phrase to prepend to captions when add_trigger_word is enabled.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- musubi_root
+    - Root folder of your musubi-tuner-ltx2 install.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- ltx2_checkpoint
+    - Path to the base LTX audio-video checkpoint used for caching and training.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- gemma_root
+    - Folder containing the Gemma model files used for text encoder caching.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- gemma_load_in_4bit
+    - Loads Gemma in 4-bit mode instead of 8-bit. This reduces VRAM further, but can be slower or a little less stable.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- gemma_recovery_mode
+    - Experimental. If enabled, the node will try alternate Gemma cache settings after the normal path fails.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+
+# Output types
+- model
+    - The model output is produced by this node.
+    - Comfy dtype: MODEL
+    - Python dtype: torch.nn.Module
+- latest_state_path
+    - The latest_state_path output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- log_path
+    - The log_path output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- video_filename_prefix
+    - The video_filename_prefix output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- output_name
+    - The output_name output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- completed_steps
+    - The completed_steps output is produced by this node.
+    - Comfy dtype: INT
+    - Python dtype: int
+- total_target_steps
+    - The total_target_steps output is produced by this node.
+    - Comfy dtype: INT
+    - Python dtype: int
+
+# Usage tips
+- Infra type: unknown
+
+# Source code
+[View source repository](https://github.com/vrgamegirl19/comfyui-vrgamedevgirl)
+
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

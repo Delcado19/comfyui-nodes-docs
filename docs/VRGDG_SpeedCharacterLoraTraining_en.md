@@ -1,0 +1,273 @@
+# Documentation
+- Class name: VRGDG_SpeedCharacterLoraTraining
+- Category: VRGDG/Training
+- Output node: False
+- Repo Ref: https://github.com/vrgamegirl19/comfyui-vrgamedevgirl
+
+Runs the LTX trainer with a fast character-LoRA preset using dynamic IMAGE and caption inputs.
+
+# Input types
+## Required
+- model
+    - The model input is used by this node during execution.
+    - Comfy dtype: MODEL
+    - Python dtype: torch.nn.Module
+- workspace_dir
+    - Workspace folder for cache, output, logs, config, and the managed dynamic dataset.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- run_name
+    - Run name used for logs.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- output_name
+    - LoRA output name used for checkpoints and downstream preview naming.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- image_count
+    - How many dynamic image inputs and caption fields to show.
+    - Comfy dtype: INT
+    - Python dtype: int
+- resolution_width
+    - Training bucket width. Pick the resolution preset you want to train at.
+    - Comfy dtype: INT
+    - Python dtype: int
+- resolution_height
+    - Training bucket height. Pick the resolution preset you want to train at.
+    - Comfy dtype: INT
+    - Python dtype: int
+- blocks_to_swap
+    - How many transformer blocks to swap to CPU. 0 is fastest if VRAM allows it.
+    - Comfy dtype: INT
+    - Python dtype: int
+- clear_memory_before_gemma
+    - Clears Comfy and CUDA memory before the Gemma cache stage.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- cache_strategy
+    - Cache behavior. auto reuses cache when present, force rebuilds, skip bypasses cache creation.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- strength_model
+    - Strength used when applying the newest trained LoRA back onto the returned MODEL.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- musubi_root
+    - Root folder of your musubi install.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- ltx2_checkpoint
+    - Path to the LTX-2.3 DiT checkpoint.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- gemma_root
+    - Path to the Gemma model root used by this preset.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- gemma_recovery_mode
+    - Experimental. If enabled, the node will try alternate Gemma cache settings after the normal path fails.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- gemma_load_in_4bit
+    - Loads Gemma in 4-bit mode during text encoder caching. This lowers VRAM more than 8-bit, but can be slower or less stable.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+## Optional
+- image1
+    - The image1 input is used by this node during execution.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image2
+    - The image2 input is used by this node during execution.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image3
+    - The image3 input is used by this node during execution.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image4
+    - The image4 input is used by this node during execution.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image5
+    - The image5 input is used by this node during execution.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image6
+    - The image6 input is used by this node during execution.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image7
+    - The image7 input is used by this node during execution.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image8
+    - The image8 input is used by this node during execution.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image9
+    - The image9 input is used by this node during execution.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image10
+    - The image10 input is used by this node during execution.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image11
+    - The image11 input is used by this node during execution.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image12
+    - The image12 input is used by this node during execution.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image13
+    - The image13 input is used by this node during execution.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image14
+    - The image14 input is used by this node during execution.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image15
+    - The image15 input is used by this node during execution.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image16
+    - The image16 input is used by this node during execution.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image17
+    - The image17 input is used by this node during execution.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image18
+    - The image18 input is used by this node during execution.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image19
+    - The image19 input is used by this node during execution.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image20
+    - The image20 input is used by this node during execution.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- caption_1
+    - The caption_1 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- caption_2
+    - The caption_2 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- caption_3
+    - The caption_3 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- caption_4
+    - The caption_4 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- caption_5
+    - The caption_5 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- caption_6
+    - The caption_6 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- caption_7
+    - The caption_7 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- caption_8
+    - The caption_8 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- caption_9
+    - The caption_9 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- caption_10
+    - The caption_10 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- caption_11
+    - The caption_11 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- caption_12
+    - The caption_12 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- caption_13
+    - The caption_13 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- caption_14
+    - The caption_14 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- caption_15
+    - The caption_15 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- caption_16
+    - The caption_16 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- caption_17
+    - The caption_17 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- caption_18
+    - The caption_18 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- caption_19
+    - The caption_19 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- caption_20
+    - The caption_20 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+
+# Output types
+- model
+    - The model output is produced by this node.
+    - Comfy dtype: MODEL
+    - Python dtype: torch.nn.Module
+- latest_state_path
+    - The latest_state_path output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- log_path
+    - The log_path output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- video_filename_prefix
+    - The video_filename_prefix output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- output_name
+    - The output_name output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- completed_steps
+    - The completed_steps output is produced by this node.
+    - Comfy dtype: INT
+    - Python dtype: int
+- total_target_steps
+    - The total_target_steps output is produced by this node.
+    - Comfy dtype: INT
+    - Python dtype: int
+
+# Usage tips
+- Infra type: unknown
+
+# Source code
+[View source repository](https://github.com/vrgamegirl19/comfyui-vrgamedevgirl)
+
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

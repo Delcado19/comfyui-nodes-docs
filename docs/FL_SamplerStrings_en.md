@@ -1,0 +1,276 @@
+# Documentation
+- Class name: FL_SamplerStrings
+- Category: 🏵️Fill Nodes/Ksamplers
+- Output node: False
+- Repo Ref: https://github.com/filliptm/ComfyUI_Fill-Nodes
+
+Fill-Nodes is a versatile collection of custom nodes for ComfyUI that extends functionality across multiple domains. Features include advanced image processing (pixelation, slicing, masking), visual effects generation (glitch, halftone, pixel art), comprehensive file handling (PDF creation/extraction, Google Drive integration), AI model interfaces (GPT, DALL-E, Hugging Face), utility nodes for workflow enhancement, and specialized tools for video processing, captioning, and batch operations. The pack provides both practical workflow solutions and creative tools within a unified node collection.
+
+# Input types
+## Required
+- euler
+    - The euler input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- euler_cfg_pp
+    - The euler_cfg_pp input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- euler_ancestral
+    - The euler_ancestral input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- euler_ancestral_cfg_pp
+    - The euler_ancestral_cfg_pp input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- heun
+    - The heun input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- heunpp2
+    - The heunpp2 input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- exp_heun_2_x0
+    - The exp_heun_2_x0 input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- exp_heun_2_x0_sde
+    - The exp_heun_2_x0_sde input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- dpm_2
+    - The dpm_2 input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- dpm_2_ancestral
+    - The dpm_2_ancestral input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- lms
+    - The lms input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- dpm_fast
+    - The dpm_fast input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- dpm_adaptive
+    - The dpm_adaptive input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- dpmpp_2s_ancestral
+    - The dpmpp_2s_ancestral input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- dpmpp_2s_ancestral_cfg_pp
+    - The dpmpp_2s_ancestral_cfg_pp input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- dpmpp_sde
+    - The dpmpp_sde input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- dpmpp_sde_gpu
+    - The dpmpp_sde_gpu input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- dpmpp_2m
+    - The dpmpp_2m input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- dpmpp_2m_cfg_pp
+    - The dpmpp_2m_cfg_pp input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- dpmpp_2m_sde
+    - The dpmpp_2m_sde input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- dpmpp_2m_sde_gpu
+    - The dpmpp_2m_sde_gpu input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- dpmpp_2m_sde_heun
+    - The dpmpp_2m_sde_heun input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- dpmpp_2m_sde_heun_gpu
+    - The dpmpp_2m_sde_heun_gpu input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- dpmpp_3m_sde
+    - The dpmpp_3m_sde input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- dpmpp_3m_sde_gpu
+    - The dpmpp_3m_sde_gpu input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- ddpm
+    - The ddpm input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- lcm
+    - The lcm input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- ipndm
+    - The ipndm input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- ipndm_v
+    - The ipndm_v input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- deis
+    - The deis input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- res_multistep
+    - The res_multistep input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- res_multistep_cfg_pp
+    - The res_multistep_cfg_pp input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- res_multistep_ancestral
+    - The res_multistep_ancestral input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- res_multistep_ancestral_cfg_pp
+    - The res_multistep_ancestral_cfg_pp input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- gradient_estimation
+    - The gradient_estimation input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- gradient_estimation_cfg_pp
+    - The gradient_estimation_cfg_pp input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- er_sde
+    - The er_sde input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- seeds_2
+    - The seeds_2 input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- seeds_3
+    - The seeds_3 input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- sa_solver
+    - The sa_solver input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- sa_solver_pece
+    - The sa_solver_pece input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- ddim
+    - The ddim input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- uni_pc
+    - The uni_pc input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- uni_pc_bh2
+    - The uni_pc_bh2 input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- legacy_rk
+    - The legacy_rk input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- rk
+    - The rk input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- rk_beta
+    - The rk_beta input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- deis_3m_ode
+    - The deis_3m_ode input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- deis_2m_ode
+    - The deis_2m_ode input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- deis_3m
+    - The deis_3m input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- deis_2m
+    - The deis_2m input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- res_6s_ode
+    - The res_6s_ode input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- res_5s_ode
+    - The res_5s_ode input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- res_3s_ode
+    - The res_3s_ode input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- res_2s_ode
+    - The res_2s_ode input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- res_3m_ode
+    - The res_3m_ode input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- res_2m_ode
+    - The res_2m_ode input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- res_6s
+    - The res_6s input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- res_5s
+    - The res_5s input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- res_3s
+    - The res_3s input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- res_2s
+    - The res_2s input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- res_3m
+    - The res_3m input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- res_2m
+    - The res_2m input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+
+# Output types
+- STRING
+    - The STRING output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+
+# Usage tips
+- Infra type: unknown
+
+# Source code
+[View source repository](https://github.com/filliptm/ComfyUI_Fill-Nodes)
+
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

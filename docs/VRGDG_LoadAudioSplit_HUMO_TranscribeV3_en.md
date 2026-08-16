@@ -1,0 +1,306 @@
+# Documentation
+- Class name: VRGDG_LoadAudioSplit_HUMO_TranscribeV3
+- Category: VRGDG
+- Output node: False
+- Repo Ref: https://github.com/vrgamegirl19/comfyui-vrgamedevgirl
+
+🎙️ VRGDG Load Audio Split HUMO Transcribe V3 is a ComfyUI node registered by `custom_nodes.comfyui-vrgamedevgirl`. The live metadata did not provide a longer description.
+
+# Input types
+## Required
+- audio
+    - The audio input is used by this node during execution.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- trigger
+    - The trigger input is used by this node during execution.
+    - Comfy dtype: *
+    - Python dtype: object
+- scene_duration_seconds
+    - The scene_duration_seconds input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- folder_path
+    - The folder_path input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- enable_auto_queue
+    - The enable_auto_queue input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- language
+    - The language input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- enable_lyrics
+    - The enable_lyrics input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- use_context_only
+    - The use_context_only input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- overlap_lyric_seconds
+    - The overlap_lyric_seconds input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- fallback_words
+    - The fallback_words input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+## Optional
+- context_1
+    - The context_1 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- context_2
+    - The context_2 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- context_3
+    - The context_3 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- context_4
+    - The context_4 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- context_5
+    - The context_5 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- context_6
+    - The context_6 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- context_7
+    - The context_7 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- context_8
+    - The context_8 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- context_9
+    - The context_9 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- context_10
+    - The context_10 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- context_11
+    - The context_11 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- context_12
+    - The context_12 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- context_13
+    - The context_13 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- context_14
+    - The context_14 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- context_15
+    - The context_15 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- context_16
+    - The context_16 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+## Hidden
+- play_1
+    - The play_1 input is used by this node during execution.
+    - Comfy dtype: BUTTON
+    - Python dtype: object
+- play_2
+    - The play_2 input is used by this node during execution.
+    - Comfy dtype: BUTTON
+    - Python dtype: object
+- play_3
+    - The play_3 input is used by this node during execution.
+    - Comfy dtype: BUTTON
+    - Python dtype: object
+- play_4
+    - The play_4 input is used by this node during execution.
+    - Comfy dtype: BUTTON
+    - Python dtype: object
+- play_5
+    - The play_5 input is used by this node during execution.
+    - Comfy dtype: BUTTON
+    - Python dtype: object
+- play_6
+    - The play_6 input is used by this node during execution.
+    - Comfy dtype: BUTTON
+    - Python dtype: object
+- play_7
+    - The play_7 input is used by this node during execution.
+    - Comfy dtype: BUTTON
+    - Python dtype: object
+- play_8
+    - The play_8 input is used by this node during execution.
+    - Comfy dtype: BUTTON
+    - Python dtype: object
+- play_9
+    - The play_9 input is used by this node during execution.
+    - Comfy dtype: BUTTON
+    - Python dtype: object
+- play_10
+    - The play_10 input is used by this node during execution.
+    - Comfy dtype: BUTTON
+    - Python dtype: object
+- play_11
+    - The play_11 input is used by this node during execution.
+    - Comfy dtype: BUTTON
+    - Python dtype: object
+- play_12
+    - The play_12 input is used by this node during execution.
+    - Comfy dtype: BUTTON
+    - Python dtype: object
+- play_13
+    - The play_13 input is used by this node during execution.
+    - Comfy dtype: BUTTON
+    - Python dtype: object
+- play_14
+    - The play_14 input is used by this node during execution.
+    - Comfy dtype: BUTTON
+    - Python dtype: object
+- play_15
+    - The play_15 input is used by this node during execution.
+    - Comfy dtype: BUTTON
+    - Python dtype: object
+- play_16
+    - The play_16 input is used by this node during execution.
+    - Comfy dtype: BUTTON
+    - Python dtype: object
+
+# Output types
+- meta
+    - The meta output is produced by this node.
+    - Comfy dtype: DICT
+    - Python dtype: object
+- total_duration
+    - The total_duration output is produced by this node.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- lyrics_string
+    - The lyrics_string output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- index
+    - The index output is produced by this node.
+    - Comfy dtype: INT
+    - Python dtype: int
+- start_time
+    - The start_time output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- end_time
+    - The end_time output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- instructions
+    - The instructions output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- total_sets
+    - The total_sets output is produced by this node.
+    - Comfy dtype: INT
+    - Python dtype: int
+- groups_in_last_set
+    - The groups_in_last_set output is produced by this node.
+    - Comfy dtype: INT
+    - Python dtype: int
+- frames_per_scene
+    - The frames_per_scene output is produced by this node.
+    - Comfy dtype: INT
+    - Python dtype: int
+- audio_meta
+    - The audio_meta output is produced by this node.
+    - Comfy dtype: DICT
+    - Python dtype: object
+- output_folder
+    - The output_folder output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- audio_1
+    - The audio_1 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_2
+    - The audio_2 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_3
+    - The audio_3 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_4
+    - The audio_4 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_5
+    - The audio_5 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_6
+    - The audio_6 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_7
+    - The audio_7 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_8
+    - The audio_8 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_9
+    - The audio_9 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_10
+    - The audio_10 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_11
+    - The audio_11 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_12
+    - The audio_12 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_13
+    - The audio_13 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_14
+    - The audio_14 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_15
+    - The audio_15 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_16
+    - The audio_16 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- signal_out
+    - The signal_out output is produced by this node.
+    - Comfy dtype: *
+    - Python dtype: object
+
+# Usage tips
+- Infra type: unknown
+
+# Source code
+[View source repository](https://github.com/vrgamegirl19/comfyui-vrgamedevgirl)
+
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

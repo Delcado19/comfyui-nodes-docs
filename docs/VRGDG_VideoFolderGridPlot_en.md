@@ -1,0 +1,229 @@
+# Documentation
+- Class name: VRGDG_VideoFolderGridPlot
+- Category: VRGDG/Video
+- Output node: False
+- Repo Ref: https://github.com/vrgamegirl19/comfyui-vrgamedevgirl
+
+Creates a simple labeled grid image sequence from videos in a folder or connected inputs.
+
+# Input types
+## Required
+- video_folder
+    - Folder containing the videos to place into the grid. Leave this as the source, or connect explicit video inputs below if you want to include only selected videos.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- output_name
+    - Base filename prefix to send downstream into a video combine node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- filename_prefix
+    - Filename prefix to pass downstream to a video combine node. Example: VRGDG/MyGrid or tests/compare_grid.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- video_count
+    - How many explicit video input slots and matching label fields to show. If any connected video inputs are present, those are used instead of scanning the folder.
+    - Comfy dtype: INT
+    - Python dtype: int
+- cell_width
+    - Width of each tile. Use 0 to auto-detect from the first video.
+    - Comfy dtype: INT
+    - Python dtype: int
+- cell_height
+    - Height of each tile. Use 0 to auto-detect from the first video. If labels are enabled, the label band is added automatically.
+    - Comfy dtype: INT
+    - Python dtype: int
+- label_tiles
+    - Adds a label above each tile using the video filename.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- output_fps
+    - FPS to pass downstream to a video combine node.
+    - Comfy dtype: INT
+    - Python dtype: int
+## Optional
+- video1
+    - The video1 input is used by this node during execution.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- video2
+    - The video2 input is used by this node during execution.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- video3
+    - The video3 input is used by this node during execution.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- video4
+    - The video4 input is used by this node during execution.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- video5
+    - The video5 input is used by this node during execution.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- video6
+    - The video6 input is used by this node during execution.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- video7
+    - The video7 input is used by this node during execution.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- video8
+    - The video8 input is used by this node during execution.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- video9
+    - The video9 input is used by this node during execution.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- video10
+    - The video10 input is used by this node during execution.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- video11
+    - The video11 input is used by this node during execution.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- video12
+    - The video12 input is used by this node during execution.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- video13
+    - The video13 input is used by this node during execution.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- video14
+    - The video14 input is used by this node during execution.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- video15
+    - The video15 input is used by this node during execution.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- video16
+    - The video16 input is used by this node during execution.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- video17
+    - The video17 input is used by this node during execution.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- video18
+    - The video18 input is used by this node during execution.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- video19
+    - The video19 input is used by this node during execution.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- video20
+    - The video20 input is used by this node during execution.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- label_1
+    - The label_1 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- label_2
+    - The label_2 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- label_3
+    - The label_3 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- label_4
+    - The label_4 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- label_5
+    - The label_5 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- label_6
+    - The label_6 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- label_7
+    - The label_7 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- label_8
+    - The label_8 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- label_9
+    - The label_9 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- label_10
+    - The label_10 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- label_11
+    - The label_11 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- label_12
+    - The label_12 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- label_13
+    - The label_13 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- label_14
+    - The label_14 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- label_15
+    - The label_15 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- label_16
+    - The label_16 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- label_17
+    - The label_17 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- label_18
+    - The label_18 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- label_19
+    - The label_19 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- label_20
+    - The label_20 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+
+# Output types
+- images
+    - The images output is produced by this node.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- filename_prefix
+    - The filename_prefix output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- output_fps
+    - The output_fps output is produced by this node.
+    - Comfy dtype: INT
+    - Python dtype: int
+- status
+    - The status output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+
+# Usage tips
+- Infra type: unknown
+
+# Source code
+[View source repository](https://github.com/vrgamegirl19/comfyui-vrgamedevgirl)
+
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

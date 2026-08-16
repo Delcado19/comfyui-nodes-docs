@@ -1,0 +1,208 @@
+# Documentation
+- Class name: VRGDG_OptionalMultiLoraModelOnly
+- Category: VRGDG/Loaders
+- Output node: False
+- Repo Ref: https://github.com/vrgamegirl19/comfyui-vrgamedevgirl
+
+Safely applies optional model-only LoRAs. Defaults to [none], so shared workflows do not warn about missing LoRA files.
+
+# Input types
+## Required
+- model
+    - The model input is used by this node during execution.
+    - Comfy dtype: MODEL
+    - Python dtype: torch.nn.Module
+- use_custom_loras
+    - Off passes the model through unchanged and ignores all LoRA slots.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- lora_count
+    - How many LoRA slots to show and apply. Zero applies none.
+    - Comfy dtype: INT
+    - Python dtype: int
+- ltx_two_pass_mode
+    - When enabled, first_pass_model uses half strength and second_pass_model uses full strength.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- lora_1
+    - Choose [none] to leave this slot unused.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- strength_1
+    - Full-strength value. In LTX two-pass mode, first pass uses half of this.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- lora_2
+    - Choose [none] to leave this slot unused.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- strength_2
+    - Full-strength value. In LTX two-pass mode, first pass uses half of this.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- lora_3
+    - Choose [none] to leave this slot unused.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- strength_3
+    - Full-strength value. In LTX two-pass mode, first pass uses half of this.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- lora_4
+    - Choose [none] to leave this slot unused.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- strength_4
+    - Full-strength value. In LTX two-pass mode, first pass uses half of this.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- lora_5
+    - Choose [none] to leave this slot unused.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- strength_5
+    - Full-strength value. In LTX two-pass mode, first pass uses half of this.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- lora_6
+    - Choose [none] to leave this slot unused.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- strength_6
+    - Full-strength value. In LTX two-pass mode, first pass uses half of this.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- lora_7
+    - Choose [none] to leave this slot unused.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- strength_7
+    - Full-strength value. In LTX two-pass mode, first pass uses half of this.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- lora_8
+    - Choose [none] to leave this slot unused.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- strength_8
+    - Full-strength value. In LTX two-pass mode, first pass uses half of this.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- lora_9
+    - Choose [none] to leave this slot unused.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- strength_9
+    - Full-strength value. In LTX two-pass mode, first pass uses half of this.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- lora_10
+    - Choose [none] to leave this slot unused.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- strength_10
+    - Full-strength value. In LTX two-pass mode, first pass uses half of this.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- lora_11
+    - Choose [none] to leave this slot unused.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- strength_11
+    - Full-strength value. In LTX two-pass mode, first pass uses half of this.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- lora_12
+    - Choose [none] to leave this slot unused.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- strength_12
+    - Full-strength value. In LTX two-pass mode, first pass uses half of this.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- lora_13
+    - Choose [none] to leave this slot unused.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- strength_13
+    - Full-strength value. In LTX two-pass mode, first pass uses half of this.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- lora_14
+    - Choose [none] to leave this slot unused.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- strength_14
+    - Full-strength value. In LTX two-pass mode, first pass uses half of this.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- lora_15
+    - Choose [none] to leave this slot unused.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- strength_15
+    - Full-strength value. In LTX two-pass mode, first pass uses half of this.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- lora_16
+    - Choose [none] to leave this slot unused.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- strength_16
+    - Full-strength value. In LTX two-pass mode, first pass uses half of this.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- lora_17
+    - Choose [none] to leave this slot unused.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- strength_17
+    - Full-strength value. In LTX two-pass mode, first pass uses half of this.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- lora_18
+    - Choose [none] to leave this slot unused.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- strength_18
+    - Full-strength value. In LTX two-pass mode, first pass uses half of this.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- lora_19
+    - Choose [none] to leave this slot unused.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- strength_19
+    - Full-strength value. In LTX two-pass mode, first pass uses half of this.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- lora_20
+    - Choose [none] to leave this slot unused.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- strength_20
+    - Full-strength value. In LTX two-pass mode, first pass uses half of this.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+
+# Output types
+- first_pass_model
+    - The first_pass_model output is produced by this node.
+    - Comfy dtype: MODEL
+    - Python dtype: torch.nn.Module
+- second_pass_model
+    - The second_pass_model output is produced by this node.
+    - Comfy dtype: MODEL
+    - Python dtype: torch.nn.Module
+- lora_names
+    - The lora_names output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+
+# Usage tips
+- Infra type: unknown
+
+# Source code
+[View source repository](https://github.com/vrgamegirl19/comfyui-vrgamedevgirl)
+
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

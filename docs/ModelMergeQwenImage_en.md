@@ -1,0 +1,296 @@
+# Documentation
+- Class name: ModelMergeQwenImage
+- Category: model/merging/model specific
+- Output node: False
+- Repo Ref: https://github.com/comfyanonymous/ComfyUI
+
+ModelMergeQwenImage is a ComfyUI node registered by `comfy_extras.nodes_model_merging_model_specific`. The live metadata did not provide a longer description.
+
+# Input types
+## Required
+- model1
+    - The model1 input is used by this node during execution.
+    - Comfy dtype: MODEL
+    - Python dtype: torch.nn.Module
+- model2
+    - The model2 input is used by this node during execution.
+    - Comfy dtype: MODEL
+    - Python dtype: torch.nn.Module
+- pos_embeds.
+    - The pos_embeds. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- img_in.
+    - The img_in. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- txt_norm.
+    - The txt_norm. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- txt_in.
+    - The txt_in. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- time_text_embed.
+    - The time_text_embed. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- transformer_blocks.0.
+    - The transformer_blocks.0. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- transformer_blocks.1.
+    - The transformer_blocks.1. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- transformer_blocks.2.
+    - The transformer_blocks.2. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- transformer_blocks.3.
+    - The transformer_blocks.3. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- transformer_blocks.4.
+    - The transformer_blocks.4. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- transformer_blocks.5.
+    - The transformer_blocks.5. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- transformer_blocks.6.
+    - The transformer_blocks.6. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- transformer_blocks.7.
+    - The transformer_blocks.7. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- transformer_blocks.8.
+    - The transformer_blocks.8. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- transformer_blocks.9.
+    - The transformer_blocks.9. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- transformer_blocks.10.
+    - The transformer_blocks.10. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- transformer_blocks.11.
+    - The transformer_blocks.11. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- transformer_blocks.12.
+    - The transformer_blocks.12. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- transformer_blocks.13.
+    - The transformer_blocks.13. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- transformer_blocks.14.
+    - The transformer_blocks.14. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- transformer_blocks.15.
+    - The transformer_blocks.15. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- transformer_blocks.16.
+    - The transformer_blocks.16. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- transformer_blocks.17.
+    - The transformer_blocks.17. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- transformer_blocks.18.
+    - The transformer_blocks.18. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- transformer_blocks.19.
+    - The transformer_blocks.19. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- transformer_blocks.20.
+    - The transformer_blocks.20. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- transformer_blocks.21.
+    - The transformer_blocks.21. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- transformer_blocks.22.
+    - The transformer_blocks.22. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- transformer_blocks.23.
+    - The transformer_blocks.23. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- transformer_blocks.24.
+    - The transformer_blocks.24. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- transformer_blocks.25.
+    - The transformer_blocks.25. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- transformer_blocks.26.
+    - The transformer_blocks.26. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- transformer_blocks.27.
+    - The transformer_blocks.27. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- transformer_blocks.28.
+    - The transformer_blocks.28. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- transformer_blocks.29.
+    - The transformer_blocks.29. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- transformer_blocks.30.
+    - The transformer_blocks.30. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- transformer_blocks.31.
+    - The transformer_blocks.31. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- transformer_blocks.32.
+    - The transformer_blocks.32. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- transformer_blocks.33.
+    - The transformer_blocks.33. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- transformer_blocks.34.
+    - The transformer_blocks.34. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- transformer_blocks.35.
+    - The transformer_blocks.35. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- transformer_blocks.36.
+    - The transformer_blocks.36. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- transformer_blocks.37.
+    - The transformer_blocks.37. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- transformer_blocks.38.
+    - The transformer_blocks.38. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- transformer_blocks.39.
+    - The transformer_blocks.39. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- transformer_blocks.40.
+    - The transformer_blocks.40. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- transformer_blocks.41.
+    - The transformer_blocks.41. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- transformer_blocks.42.
+    - The transformer_blocks.42. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- transformer_blocks.43.
+    - The transformer_blocks.43. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- transformer_blocks.44.
+    - The transformer_blocks.44. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- transformer_blocks.45.
+    - The transformer_blocks.45. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- transformer_blocks.46.
+    - The transformer_blocks.46. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- transformer_blocks.47.
+    - The transformer_blocks.47. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- transformer_blocks.48.
+    - The transformer_blocks.48. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- transformer_blocks.49.
+    - The transformer_blocks.49. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- transformer_blocks.50.
+    - The transformer_blocks.50. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- transformer_blocks.51.
+    - The transformer_blocks.51. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- transformer_blocks.52.
+    - The transformer_blocks.52. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- transformer_blocks.53.
+    - The transformer_blocks.53. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- transformer_blocks.54.
+    - The transformer_blocks.54. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- transformer_blocks.55.
+    - The transformer_blocks.55. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- transformer_blocks.56.
+    - The transformer_blocks.56. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- transformer_blocks.57.
+    - The transformer_blocks.57. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- transformer_blocks.58.
+    - The transformer_blocks.58. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- transformer_blocks.59.
+    - The transformer_blocks.59. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- proj_out.
+    - The proj_out. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+
+# Output types
+- MODEL
+    - The MODEL output is produced by this node.
+    - Comfy dtype: MODEL
+    - Python dtype: torch.nn.Module
+
+# Usage tips
+- Infra type: unknown
+
+# Source code
+[View source repository](https://github.com/comfyanonymous/ComfyUI)
+
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -1,0 +1,189 @@
+# Documentation
+- Class name: VRGDG_GeneralVLM
+- Category: VRGDG/LLM
+- Output node: False
+- Repo Ref: https://github.com/vrgamegirl19/comfyui-vrgamedevgirl
+
+🧠 VRGDG General VLM 🧠 is a ComfyUI node registered by `custom_nodes.comfyui-vrgamedevgirl`. The live metadata did not provide a longer description.
+
+# Input types
+## Required
+- model_preset
+    - Choose a model preset. Use custom_model_id to override this.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- custom_model_id
+    - Optional override. Can be a Hugging Face repo id or a local model folder path.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- task_preset
+    - Select a task preset with built-in instructions.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- custom_instructions
+    - Used only when task_preset is custom. Enter your own full instruction block.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- user_input
+    - Your task details and creative direction for the selected preset.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- trigger_word
+    - Optional LoRA/training trigger token. Used only by Captioner preset.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- image_count
+    - How many optional image inputs to show on the node.
+    - Comfy dtype: INT
+    - Python dtype: int
+- download_if_missing
+    - If enabled, missing models can be downloaded to ComfyUI/models/LLM/Qwen.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- device
+    - Inference device selection.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- dtype
+    - Inference precision. Auto is recommended.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- temperature
+    - Higher = more creative variation, lower = more deterministic output.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- top_p
+    - Nucleus sampling cutoff.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- max_new_tokens
+    - Maximum number of output tokens.
+    - Comfy dtype: INT
+    - Python dtype: int
+- hf_token
+    - Optional Hugging Face access token for gated/private repos.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- allow_custom_model_code
+    - Enable only for trusted model repos that require custom code (for example Phi-3.5 Vision).
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+## Optional
+- image1
+    - Optional reference image input.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image2
+    - Optional reference image input.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image3
+    - Optional reference image input.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image4
+    - Optional reference image input.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image5
+    - Optional reference image input.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image6
+    - Optional reference image input.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image7
+    - Optional reference image input.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image8
+    - Optional reference image input.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image9
+    - Optional reference image input.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image10
+    - Optional reference image input.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image11
+    - Optional reference image input.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image12
+    - Optional reference image input.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image13
+    - Optional reference image input.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image14
+    - Optional reference image input.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image15
+    - Optional reference image input.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image16
+    - Optional reference image input.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image17
+    - Optional reference image input.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image18
+    - Optional reference image input.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image19
+    - Optional reference image input.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image20
+    - Optional reference image input.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image21
+    - Optional reference image input.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image22
+    - Optional reference image input.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image23
+    - Optional reference image input.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image24
+    - Optional reference image input.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+
+# Output types
+- text
+    - The text output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- used_model
+    - The used_model output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- status
+    - The status output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+
+# Usage tips
+- Infra type: unknown
+
+# Source code
+[View source repository](https://github.com/vrgamegirl19/comfyui-vrgamedevgirl)
+
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -1,0 +1,189 @@
+# Documentation
+- Class name: WanVideoLoraBlockEdit
+- Category: WanVideoWrapper
+- Output node: False
+- Repo Ref: https://github.com/kijai/ComfyUI-WanVideoWrapper
+
+ComfyUI wrapper nodes for WanVideo
+
+# Input types
+## Required
+- blocks.0.
+    - The blocks.0. input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- blocks.1.
+    - The blocks.1. input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- blocks.2.
+    - The blocks.2. input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- blocks.3.
+    - The blocks.3. input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- blocks.4.
+    - The blocks.4. input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- blocks.5.
+    - The blocks.5. input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- blocks.6.
+    - The blocks.6. input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- blocks.7.
+    - The blocks.7. input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- blocks.8.
+    - The blocks.8. input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- blocks.9.
+    - The blocks.9. input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- blocks.10.
+    - The blocks.10. input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- blocks.11.
+    - The blocks.11. input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- blocks.12.
+    - The blocks.12. input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- blocks.13.
+    - The blocks.13. input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- blocks.14.
+    - The blocks.14. input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- blocks.15.
+    - The blocks.15. input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- blocks.16.
+    - The blocks.16. input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- blocks.17.
+    - The blocks.17. input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- blocks.18.
+    - The blocks.18. input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- blocks.19.
+    - The blocks.19. input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- blocks.20.
+    - The blocks.20. input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- blocks.21.
+    - The blocks.21. input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- blocks.22.
+    - The blocks.22. input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- blocks.23.
+    - The blocks.23. input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- blocks.24.
+    - The blocks.24. input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- blocks.25.
+    - The blocks.25. input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- blocks.26.
+    - The blocks.26. input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- blocks.27.
+    - The blocks.27. input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- blocks.28.
+    - The blocks.28. input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- blocks.29.
+    - The blocks.29. input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- blocks.30.
+    - The blocks.30. input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- blocks.31.
+    - The blocks.31. input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- blocks.32.
+    - The blocks.32. input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- blocks.33.
+    - The blocks.33. input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- blocks.34.
+    - The blocks.34. input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- blocks.35.
+    - The blocks.35. input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- blocks.36.
+    - The blocks.36. input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- blocks.37.
+    - The blocks.37. input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- blocks.38.
+    - The blocks.38. input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- blocks.39.
+    - The blocks.39. input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+## Optional
+- layer_filter
+    - The layer_filter input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+
+# Output types
+- blocks
+    - The modified lora model
+    - Comfy dtype: SELECTEDBLOCKS
+    - Python dtype: object
+
+# Usage tips
+- Infra type: unknown
+
+# Source code
+[View source repository](https://github.com/kijai/ComfyUI-WanVideoWrapper)
+
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -1,0 +1,202 @@
+# Documentation
+- Class name: easy forLoopStart
+- Category: EasyUse/Logic/For Loop
+- Output node: False
+- Repo Ref: https://github.com/yolain/ComfyUI-Easy-Use
+
+To enhance the usability of ComfyUI, optimizations and integrations have been implemented for several commonly used nodes.
+
+# Input types
+## Required
+- total
+    - The total input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+## Optional
+- initial_value1
+    - The initial_value1 input is used by this node during execution.
+    - Comfy dtype: *
+    - Python dtype: object
+- initial_value2
+    - The initial_value2 input is used by this node during execution.
+    - Comfy dtype: *
+    - Python dtype: object
+- initial_value3
+    - The initial_value3 input is used by this node during execution.
+    - Comfy dtype: *
+    - Python dtype: object
+- initial_value4
+    - The initial_value4 input is used by this node during execution.
+    - Comfy dtype: *
+    - Python dtype: object
+- initial_value5
+    - The initial_value5 input is used by this node during execution.
+    - Comfy dtype: *
+    - Python dtype: object
+- initial_value6
+    - The initial_value6 input is used by this node during execution.
+    - Comfy dtype: *
+    - Python dtype: object
+- initial_value7
+    - The initial_value7 input is used by this node during execution.
+    - Comfy dtype: *
+    - Python dtype: object
+- initial_value8
+    - The initial_value8 input is used by this node during execution.
+    - Comfy dtype: *
+    - Python dtype: object
+- initial_value9
+    - The initial_value9 input is used by this node during execution.
+    - Comfy dtype: *
+    - Python dtype: object
+- initial_value10
+    - The initial_value10 input is used by this node during execution.
+    - Comfy dtype: *
+    - Python dtype: object
+- initial_value11
+    - The initial_value11 input is used by this node during execution.
+    - Comfy dtype: *
+    - Python dtype: object
+- initial_value12
+    - The initial_value12 input is used by this node during execution.
+    - Comfy dtype: *
+    - Python dtype: object
+- initial_value13
+    - The initial_value13 input is used by this node during execution.
+    - Comfy dtype: *
+    - Python dtype: object
+- initial_value14
+    - The initial_value14 input is used by this node during execution.
+    - Comfy dtype: *
+    - Python dtype: object
+- initial_value15
+    - The initial_value15 input is used by this node during execution.
+    - Comfy dtype: *
+    - Python dtype: object
+- initial_value16
+    - The initial_value16 input is used by this node during execution.
+    - Comfy dtype: *
+    - Python dtype: object
+- initial_value17
+    - The initial_value17 input is used by this node during execution.
+    - Comfy dtype: *
+    - Python dtype: object
+- initial_value18
+    - The initial_value18 input is used by this node during execution.
+    - Comfy dtype: *
+    - Python dtype: object
+- initial_value19
+    - The initial_value19 input is used by this node during execution.
+    - Comfy dtype: *
+    - Python dtype: object
+## Hidden
+- initial_value0
+    - The initial_value0 input is used by this node during execution.
+    - Comfy dtype: *
+    - Python dtype: object
+- prompt
+    - The prompt input is used by this node during execution.
+    - Comfy dtype: PROMPT
+    - Python dtype: object
+- extra_pnginfo
+    - The extra_pnginfo input is used by this node during execution.
+    - Comfy dtype: EXTRA_PNGINFO
+    - Python dtype: object
+- unique_id
+    - The unique_id input is used by this node during execution.
+    - Comfy dtype: UNIQUE_ID
+    - Python dtype: object
+
+# Output types
+- flow
+    - The flow output is produced by this node.
+    - Comfy dtype: FLOW_CONTROL
+    - Python dtype: object
+- index
+    - The index output is produced by this node.
+    - Comfy dtype: INT
+    - Python dtype: int
+- value1
+    - The value1 output is produced by this node.
+    - Comfy dtype: *
+    - Python dtype: object
+- value2
+    - The value2 output is produced by this node.
+    - Comfy dtype: *
+    - Python dtype: object
+- value3
+    - The value3 output is produced by this node.
+    - Comfy dtype: *
+    - Python dtype: object
+- value4
+    - The value4 output is produced by this node.
+    - Comfy dtype: *
+    - Python dtype: object
+- value5
+    - The value5 output is produced by this node.
+    - Comfy dtype: *
+    - Python dtype: object
+- value6
+    - The value6 output is produced by this node.
+    - Comfy dtype: *
+    - Python dtype: object
+- value7
+    - The value7 output is produced by this node.
+    - Comfy dtype: *
+    - Python dtype: object
+- value8
+    - The value8 output is produced by this node.
+    - Comfy dtype: *
+    - Python dtype: object
+- value9
+    - The value9 output is produced by this node.
+    - Comfy dtype: *
+    - Python dtype: object
+- value10
+    - The value10 output is produced by this node.
+    - Comfy dtype: *
+    - Python dtype: object
+- value11
+    - The value11 output is produced by this node.
+    - Comfy dtype: *
+    - Python dtype: object
+- value12
+    - The value12 output is produced by this node.
+    - Comfy dtype: *
+    - Python dtype: object
+- value13
+    - The value13 output is produced by this node.
+    - Comfy dtype: *
+    - Python dtype: object
+- value14
+    - The value14 output is produced by this node.
+    - Comfy dtype: *
+    - Python dtype: object
+- value15
+    - The value15 output is produced by this node.
+    - Comfy dtype: *
+    - Python dtype: object
+- value16
+    - The value16 output is produced by this node.
+    - Comfy dtype: *
+    - Python dtype: object
+- value17
+    - The value17 output is produced by this node.
+    - Comfy dtype: *
+    - Python dtype: object
+- value18
+    - The value18 output is produced by this node.
+    - Comfy dtype: *
+    - Python dtype: object
+- value19
+    - The value19 output is produced by this node.
+    - Comfy dtype: *
+    - Python dtype: object
+
+# Usage tips
+- Infra type: unknown
+
+# Source code
+[View source repository](https://github.com/yolain/ComfyUI-Easy-Use)
+
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

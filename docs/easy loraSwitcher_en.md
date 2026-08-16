@@ -1,0 +1,249 @@
+# Documentation
+- Class name: easy loraSwitcher
+- Category: EasyUse/Loaders
+- Output node: False
+- Repo Ref: https://github.com/yolain/ComfyUI-Easy-Use
+
+To enhance the usability of ComfyUI, optimizations and integrations have been implemented for several commonly used nodes.
+
+# Input types
+## Required
+- toggle
+    - The toggle input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- select
+    - The select input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- num_loras
+    - The num_loras input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- lora_strength
+    - The lora_strength input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+## Optional
+- optional_lora_stack
+    - The optional_lora_stack input is used by this node during execution.
+    - Comfy dtype: LORA_STACK
+    - Python dtype: object
+- lora_1_name
+    - The lora_1_name input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- lora_2_name
+    - The lora_2_name input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- lora_3_name
+    - The lora_3_name input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- lora_4_name
+    - The lora_4_name input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- lora_5_name
+    - The lora_5_name input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- lora_6_name
+    - The lora_6_name input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- lora_7_name
+    - The lora_7_name input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- lora_8_name
+    - The lora_8_name input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- lora_9_name
+    - The lora_9_name input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- lora_10_name
+    - The lora_10_name input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- lora_11_name
+    - The lora_11_name input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- lora_12_name
+    - The lora_12_name input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- lora_13_name
+    - The lora_13_name input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- lora_14_name
+    - The lora_14_name input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- lora_15_name
+    - The lora_15_name input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- lora_16_name
+    - The lora_16_name input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- lora_17_name
+    - The lora_17_name input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- lora_18_name
+    - The lora_18_name input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- lora_19_name
+    - The lora_19_name input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- lora_20_name
+    - The lora_20_name input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- lora_21_name
+    - The lora_21_name input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- lora_22_name
+    - The lora_22_name input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- lora_23_name
+    - The lora_23_name input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- lora_24_name
+    - The lora_24_name input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- lora_25_name
+    - The lora_25_name input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- lora_26_name
+    - The lora_26_name input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- lora_27_name
+    - The lora_27_name input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- lora_28_name
+    - The lora_28_name input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- lora_29_name
+    - The lora_29_name input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- lora_30_name
+    - The lora_30_name input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- lora_31_name
+    - The lora_31_name input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- lora_32_name
+    - The lora_32_name input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- lora_33_name
+    - The lora_33_name input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- lora_34_name
+    - The lora_34_name input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- lora_35_name
+    - The lora_35_name input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- lora_36_name
+    - The lora_36_name input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- lora_37_name
+    - The lora_37_name input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- lora_38_name
+    - The lora_38_name input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- lora_39_name
+    - The lora_39_name input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- lora_40_name
+    - The lora_40_name input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- lora_41_name
+    - The lora_41_name input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- lora_42_name
+    - The lora_42_name input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- lora_43_name
+    - The lora_43_name input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- lora_44_name
+    - The lora_44_name input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- lora_45_name
+    - The lora_45_name input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- lora_46_name
+    - The lora_46_name input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- lora_47_name
+    - The lora_47_name input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- lora_48_name
+    - The lora_48_name input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- lora_49_name
+    - The lora_49_name input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- lora_50_name
+    - The lora_50_name input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+
+# Output types
+- lora_stack
+    - The lora_stack output is produced by this node.
+    - Comfy dtype: LORA_STACK
+    - Python dtype: object
+- lora_name
+    - The lora_name output is produced by this node.
+    - Comfy dtype: *
+    - Python dtype: object
+
+# Usage tips
+- Infra type: unknown
+
+# Source code
+[View source repository](https://github.com/yolain/ComfyUI-Easy-Use)
+
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

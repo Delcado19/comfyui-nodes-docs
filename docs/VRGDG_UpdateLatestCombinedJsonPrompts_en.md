@@ -1,0 +1,1497 @@
+# Documentation
+- Class name: VRGDG_UpdateLatestCombinedJsonPrompts
+- Category: VRGDG/General
+- Output node: False
+- Repo Ref: https://github.com/vrgamegirl19/comfyui-vrgamedevgirl
+
+VRGDG_UpdateLatestCombinedJsonPrompts is a ComfyUI node registered by `custom_nodes.comfyui-vrgamedevgirl`. The live metadata did not provide a longer description.
+
+# Input types
+## Required
+- remake_mode
+    - The remake_mode input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- batch_type
+    - The batch_type input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- combined_json_file
+    - The combined_json_file input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- prompt_count
+    - The prompt_count input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+## Optional
+- folder_path
+    - The folder_path input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_1
+    - The prompt_number_1 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_1
+    - The prompt_text_1 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_1
+    - The prompt_image_index_1 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_2
+    - The prompt_number_2 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_2
+    - The prompt_text_2 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_2
+    - The prompt_image_index_2 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_3
+    - The prompt_number_3 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_3
+    - The prompt_text_3 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_3
+    - The prompt_image_index_3 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_4
+    - The prompt_number_4 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_4
+    - The prompt_text_4 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_4
+    - The prompt_image_index_4 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_5
+    - The prompt_number_5 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_5
+    - The prompt_text_5 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_5
+    - The prompt_image_index_5 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_6
+    - The prompt_number_6 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_6
+    - The prompt_text_6 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_6
+    - The prompt_image_index_6 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_7
+    - The prompt_number_7 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_7
+    - The prompt_text_7 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_7
+    - The prompt_image_index_7 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_8
+    - The prompt_number_8 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_8
+    - The prompt_text_8 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_8
+    - The prompt_image_index_8 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_9
+    - The prompt_number_9 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_9
+    - The prompt_text_9 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_9
+    - The prompt_image_index_9 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_10
+    - The prompt_number_10 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_10
+    - The prompt_text_10 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_10
+    - The prompt_image_index_10 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_11
+    - The prompt_number_11 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_11
+    - The prompt_text_11 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_11
+    - The prompt_image_index_11 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_12
+    - The prompt_number_12 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_12
+    - The prompt_text_12 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_12
+    - The prompt_image_index_12 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_13
+    - The prompt_number_13 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_13
+    - The prompt_text_13 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_13
+    - The prompt_image_index_13 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_14
+    - The prompt_number_14 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_14
+    - The prompt_text_14 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_14
+    - The prompt_image_index_14 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_15
+    - The prompt_number_15 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_15
+    - The prompt_text_15 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_15
+    - The prompt_image_index_15 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_16
+    - The prompt_number_16 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_16
+    - The prompt_text_16 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_16
+    - The prompt_image_index_16 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_17
+    - The prompt_number_17 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_17
+    - The prompt_text_17 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_17
+    - The prompt_image_index_17 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_18
+    - The prompt_number_18 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_18
+    - The prompt_text_18 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_18
+    - The prompt_image_index_18 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_19
+    - The prompt_number_19 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_19
+    - The prompt_text_19 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_19
+    - The prompt_image_index_19 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_20
+    - The prompt_number_20 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_20
+    - The prompt_text_20 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_20
+    - The prompt_image_index_20 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_21
+    - The prompt_number_21 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_21
+    - The prompt_text_21 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_21
+    - The prompt_image_index_21 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_22
+    - The prompt_number_22 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_22
+    - The prompt_text_22 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_22
+    - The prompt_image_index_22 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_23
+    - The prompt_number_23 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_23
+    - The prompt_text_23 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_23
+    - The prompt_image_index_23 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_24
+    - The prompt_number_24 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_24
+    - The prompt_text_24 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_24
+    - The prompt_image_index_24 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_25
+    - The prompt_number_25 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_25
+    - The prompt_text_25 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_25
+    - The prompt_image_index_25 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_26
+    - The prompt_number_26 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_26
+    - The prompt_text_26 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_26
+    - The prompt_image_index_26 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_27
+    - The prompt_number_27 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_27
+    - The prompt_text_27 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_27
+    - The prompt_image_index_27 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_28
+    - The prompt_number_28 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_28
+    - The prompt_text_28 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_28
+    - The prompt_image_index_28 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_29
+    - The prompt_number_29 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_29
+    - The prompt_text_29 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_29
+    - The prompt_image_index_29 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_30
+    - The prompt_number_30 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_30
+    - The prompt_text_30 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_30
+    - The prompt_image_index_30 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_31
+    - The prompt_number_31 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_31
+    - The prompt_text_31 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_31
+    - The prompt_image_index_31 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_32
+    - The prompt_number_32 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_32
+    - The prompt_text_32 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_32
+    - The prompt_image_index_32 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_33
+    - The prompt_number_33 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_33
+    - The prompt_text_33 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_33
+    - The prompt_image_index_33 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_34
+    - The prompt_number_34 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_34
+    - The prompt_text_34 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_34
+    - The prompt_image_index_34 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_35
+    - The prompt_number_35 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_35
+    - The prompt_text_35 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_35
+    - The prompt_image_index_35 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_36
+    - The prompt_number_36 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_36
+    - The prompt_text_36 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_36
+    - The prompt_image_index_36 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_37
+    - The prompt_number_37 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_37
+    - The prompt_text_37 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_37
+    - The prompt_image_index_37 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_38
+    - The prompt_number_38 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_38
+    - The prompt_text_38 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_38
+    - The prompt_image_index_38 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_39
+    - The prompt_number_39 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_39
+    - The prompt_text_39 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_39
+    - The prompt_image_index_39 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_40
+    - The prompt_number_40 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_40
+    - The prompt_text_40 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_40
+    - The prompt_image_index_40 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_41
+    - The prompt_number_41 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_41
+    - The prompt_text_41 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_41
+    - The prompt_image_index_41 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_42
+    - The prompt_number_42 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_42
+    - The prompt_text_42 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_42
+    - The prompt_image_index_42 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_43
+    - The prompt_number_43 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_43
+    - The prompt_text_43 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_43
+    - The prompt_image_index_43 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_44
+    - The prompt_number_44 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_44
+    - The prompt_text_44 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_44
+    - The prompt_image_index_44 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_45
+    - The prompt_number_45 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_45
+    - The prompt_text_45 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_45
+    - The prompt_image_index_45 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_46
+    - The prompt_number_46 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_46
+    - The prompt_text_46 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_46
+    - The prompt_image_index_46 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_47
+    - The prompt_number_47 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_47
+    - The prompt_text_47 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_47
+    - The prompt_image_index_47 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_48
+    - The prompt_number_48 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_48
+    - The prompt_text_48 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_48
+    - The prompt_image_index_48 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_49
+    - The prompt_number_49 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_49
+    - The prompt_text_49 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_49
+    - The prompt_image_index_49 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_50
+    - The prompt_number_50 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_50
+    - The prompt_text_50 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_50
+    - The prompt_image_index_50 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_51
+    - The prompt_number_51 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_51
+    - The prompt_text_51 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_51
+    - The prompt_image_index_51 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_52
+    - The prompt_number_52 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_52
+    - The prompt_text_52 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_52
+    - The prompt_image_index_52 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_53
+    - The prompt_number_53 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_53
+    - The prompt_text_53 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_53
+    - The prompt_image_index_53 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_54
+    - The prompt_number_54 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_54
+    - The prompt_text_54 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_54
+    - The prompt_image_index_54 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_55
+    - The prompt_number_55 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_55
+    - The prompt_text_55 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_55
+    - The prompt_image_index_55 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_56
+    - The prompt_number_56 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_56
+    - The prompt_text_56 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_56
+    - The prompt_image_index_56 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_57
+    - The prompt_number_57 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_57
+    - The prompt_text_57 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_57
+    - The prompt_image_index_57 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_58
+    - The prompt_number_58 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_58
+    - The prompt_text_58 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_58
+    - The prompt_image_index_58 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_59
+    - The prompt_number_59 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_59
+    - The prompt_text_59 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_59
+    - The prompt_image_index_59 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_60
+    - The prompt_number_60 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_60
+    - The prompt_text_60 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_60
+    - The prompt_image_index_60 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_61
+    - The prompt_number_61 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_61
+    - The prompt_text_61 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_61
+    - The prompt_image_index_61 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_62
+    - The prompt_number_62 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_62
+    - The prompt_text_62 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_62
+    - The prompt_image_index_62 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_63
+    - The prompt_number_63 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_63
+    - The prompt_text_63 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_63
+    - The prompt_image_index_63 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_64
+    - The prompt_number_64 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_64
+    - The prompt_text_64 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_64
+    - The prompt_image_index_64 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_65
+    - The prompt_number_65 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_65
+    - The prompt_text_65 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_65
+    - The prompt_image_index_65 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_66
+    - The prompt_number_66 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_66
+    - The prompt_text_66 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_66
+    - The prompt_image_index_66 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_67
+    - The prompt_number_67 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_67
+    - The prompt_text_67 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_67
+    - The prompt_image_index_67 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_68
+    - The prompt_number_68 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_68
+    - The prompt_text_68 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_68
+    - The prompt_image_index_68 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_69
+    - The prompt_number_69 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_69
+    - The prompt_text_69 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_69
+    - The prompt_image_index_69 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_70
+    - The prompt_number_70 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_70
+    - The prompt_text_70 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_70
+    - The prompt_image_index_70 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_71
+    - The prompt_number_71 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_71
+    - The prompt_text_71 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_71
+    - The prompt_image_index_71 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_72
+    - The prompt_number_72 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_72
+    - The prompt_text_72 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_72
+    - The prompt_image_index_72 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_73
+    - The prompt_number_73 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_73
+    - The prompt_text_73 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_73
+    - The prompt_image_index_73 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_74
+    - The prompt_number_74 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_74
+    - The prompt_text_74 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_74
+    - The prompt_image_index_74 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_75
+    - The prompt_number_75 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_75
+    - The prompt_text_75 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_75
+    - The prompt_image_index_75 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_76
+    - The prompt_number_76 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_76
+    - The prompt_text_76 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_76
+    - The prompt_image_index_76 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_77
+    - The prompt_number_77 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_77
+    - The prompt_text_77 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_77
+    - The prompt_image_index_77 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_78
+    - The prompt_number_78 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_78
+    - The prompt_text_78 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_78
+    - The prompt_image_index_78 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_79
+    - The prompt_number_79 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_79
+    - The prompt_text_79 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_79
+    - The prompt_image_index_79 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_80
+    - The prompt_number_80 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_80
+    - The prompt_text_80 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_80
+    - The prompt_image_index_80 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_81
+    - The prompt_number_81 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_81
+    - The prompt_text_81 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_81
+    - The prompt_image_index_81 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_82
+    - The prompt_number_82 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_82
+    - The prompt_text_82 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_82
+    - The prompt_image_index_82 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_83
+    - The prompt_number_83 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_83
+    - The prompt_text_83 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_83
+    - The prompt_image_index_83 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_84
+    - The prompt_number_84 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_84
+    - The prompt_text_84 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_84
+    - The prompt_image_index_84 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_85
+    - The prompt_number_85 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_85
+    - The prompt_text_85 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_85
+    - The prompt_image_index_85 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_86
+    - The prompt_number_86 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_86
+    - The prompt_text_86 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_86
+    - The prompt_image_index_86 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_87
+    - The prompt_number_87 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_87
+    - The prompt_text_87 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_87
+    - The prompt_image_index_87 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_88
+    - The prompt_number_88 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_88
+    - The prompt_text_88 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_88
+    - The prompt_image_index_88 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_89
+    - The prompt_number_89 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_89
+    - The prompt_text_89 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_89
+    - The prompt_image_index_89 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_90
+    - The prompt_number_90 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_90
+    - The prompt_text_90 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_90
+    - The prompt_image_index_90 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_91
+    - The prompt_number_91 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_91
+    - The prompt_text_91 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_91
+    - The prompt_image_index_91 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_92
+    - The prompt_number_92 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_92
+    - The prompt_text_92 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_92
+    - The prompt_image_index_92 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_93
+    - The prompt_number_93 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_93
+    - The prompt_text_93 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_93
+    - The prompt_image_index_93 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_94
+    - The prompt_number_94 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_94
+    - The prompt_text_94 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_94
+    - The prompt_image_index_94 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_95
+    - The prompt_number_95 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_95
+    - The prompt_text_95 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_95
+    - The prompt_image_index_95 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_96
+    - The prompt_number_96 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_96
+    - The prompt_text_96 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_96
+    - The prompt_image_index_96 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_97
+    - The prompt_number_97 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_97
+    - The prompt_text_97 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_97
+    - The prompt_image_index_97 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_98
+    - The prompt_number_98 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_98
+    - The prompt_text_98 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_98
+    - The prompt_image_index_98 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_99
+    - The prompt_number_99 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_99
+    - The prompt_text_99 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_99
+    - The prompt_image_index_99 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_100
+    - The prompt_number_100 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_100
+    - The prompt_text_100 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_100
+    - The prompt_image_index_100 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_101
+    - The prompt_number_101 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_101
+    - The prompt_text_101 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_101
+    - The prompt_image_index_101 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_102
+    - The prompt_number_102 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_102
+    - The prompt_text_102 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_102
+    - The prompt_image_index_102 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_103
+    - The prompt_number_103 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_103
+    - The prompt_text_103 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_103
+    - The prompt_image_index_103 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_104
+    - The prompt_number_104 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_104
+    - The prompt_text_104 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_104
+    - The prompt_image_index_104 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_105
+    - The prompt_number_105 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_105
+    - The prompt_text_105 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_105
+    - The prompt_image_index_105 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_106
+    - The prompt_number_106 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_106
+    - The prompt_text_106 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_106
+    - The prompt_image_index_106 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_107
+    - The prompt_number_107 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_107
+    - The prompt_text_107 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_107
+    - The prompt_image_index_107 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_108
+    - The prompt_number_108 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_108
+    - The prompt_text_108 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_108
+    - The prompt_image_index_108 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_109
+    - The prompt_number_109 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_109
+    - The prompt_text_109 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_109
+    - The prompt_image_index_109 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_110
+    - The prompt_number_110 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_110
+    - The prompt_text_110 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_110
+    - The prompt_image_index_110 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_111
+    - The prompt_number_111 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_111
+    - The prompt_text_111 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_111
+    - The prompt_image_index_111 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_112
+    - The prompt_number_112 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_112
+    - The prompt_text_112 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_112
+    - The prompt_image_index_112 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_113
+    - The prompt_number_113 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_113
+    - The prompt_text_113 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_113
+    - The prompt_image_index_113 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_114
+    - The prompt_number_114 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_114
+    - The prompt_text_114 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_114
+    - The prompt_image_index_114 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_115
+    - The prompt_number_115 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_115
+    - The prompt_text_115 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_115
+    - The prompt_image_index_115 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_116
+    - The prompt_number_116 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_116
+    - The prompt_text_116 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_116
+    - The prompt_image_index_116 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_117
+    - The prompt_number_117 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_117
+    - The prompt_text_117 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_117
+    - The prompt_image_index_117 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_118
+    - The prompt_number_118 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_118
+    - The prompt_text_118 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_118
+    - The prompt_image_index_118 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_119
+    - The prompt_number_119 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_119
+    - The prompt_text_119 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_119
+    - The prompt_image_index_119 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_number_120
+    - The prompt_number_120 input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- prompt_text_120
+    - The prompt_text_120 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- prompt_image_index_120
+    - The prompt_image_index_120 input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+
+# Output types
+- updated_json_text
+    - The updated_json_text output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- file_path
+    - The file_path output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- updated_count
+    - The updated_count output is produced by this node.
+    - Comfy dtype: INT
+    - Python dtype: int
+- ignored
+    - The ignored output is produced by this node.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+
+# Usage tips
+- Infra type: unknown
+
+# Source code
+[View source repository](https://github.com/vrgamegirl19/comfyui-vrgamedevgirl)
+
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

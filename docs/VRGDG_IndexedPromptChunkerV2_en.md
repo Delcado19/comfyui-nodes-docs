@@ -1,0 +1,240 @@
+# Documentation
+- Class name: VRGDG_IndexedPromptChunkerV2
+- Category: VRGDG
+- Output node: False
+- Repo Ref: https://github.com/vrgamegirl19/comfyui-vrgamedevgirl
+
+VRGDG_IndexedPromptChunkerV2 is a ComfyUI node registered by `custom_nodes.comfyui-vrgamedevgirl`. The live metadata did not provide a longer description.
+
+# Input types
+## Required
+- prompt_text
+    - The prompt_text input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- scene_count
+    - The scene_count input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- index
+    - The index input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- total_sets
+    - The total_sets input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- any
+    - The any input is used by this node during execution.
+    - Comfy dtype: *
+    - Python dtype: object
+
+# Output types
+- text_output_1
+    - The text_output_1 output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- text_output_2
+    - The text_output_2 output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- text_output_3
+    - The text_output_3 output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- text_output_4
+    - The text_output_4 output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- text_output_5
+    - The text_output_5 output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- text_output_6
+    - The text_output_6 output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- text_output_7
+    - The text_output_7 output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- text_output_8
+    - The text_output_8 output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- text_output_9
+    - The text_output_9 output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- text_output_10
+    - The text_output_10 output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- text_output_11
+    - The text_output_11 output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- text_output_12
+    - The text_output_12 output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- text_output_13
+    - The text_output_13 output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- text_output_14
+    - The text_output_14 output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- text_output_15
+    - The text_output_15 output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- text_output_16
+    - The text_output_16 output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- text_output_17
+    - The text_output_17 output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- text_output_18
+    - The text_output_18 output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- text_output_19
+    - The text_output_19 output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- text_output_20
+    - The text_output_20 output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- text_output_21
+    - The text_output_21 output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- text_output_22
+    - The text_output_22 output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- text_output_23
+    - The text_output_23 output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- text_output_24
+    - The text_output_24 output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- text_output_25
+    - The text_output_25 output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- text_output_26
+    - The text_output_26 output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- text_output_27
+    - The text_output_27 output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- text_output_28
+    - The text_output_28 output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- text_output_29
+    - The text_output_29 output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- text_output_30
+    - The text_output_30 output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- text_output_31
+    - The text_output_31 output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- text_output_32
+    - The text_output_32 output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- text_output_33
+    - The text_output_33 output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- text_output_34
+    - The text_output_34 output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- text_output_35
+    - The text_output_35 output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- text_output_36
+    - The text_output_36 output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- text_output_37
+    - The text_output_37 output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- text_output_38
+    - The text_output_38 output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- text_output_39
+    - The text_output_39 output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- text_output_40
+    - The text_output_40 output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- text_output_41
+    - The text_output_41 output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- text_output_42
+    - The text_output_42 output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- text_output_43
+    - The text_output_43 output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- text_output_44
+    - The text_output_44 output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- text_output_45
+    - The text_output_45 output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- text_output_46
+    - The text_output_46 output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- text_output_47
+    - The text_output_47 output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- text_output_48
+    - The text_output_48 output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- text_output_49
+    - The text_output_49 output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- text_output_50
+    - The text_output_50 output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+
+# Usage tips
+- Infra type: unknown
+
+# Source code
+[View source repository](https://github.com/vrgamegirl19/comfyui-vrgamedevgirl)
+
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

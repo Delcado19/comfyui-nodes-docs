@@ -1,0 +1,176 @@
+# Documentation
+- Class name: VRGDG_ZImageLoraTrainChunk
+- Category: VRGDG/Training
+- Output node: False
+- Repo Ref: https://github.com/vrgamegirl19/comfyui-vrgamedevgirl
+
+Runs one Z-Image LoRA training chunk using musubi-tuner, optionally caches if needed, converts the latest LoRA to ComfyUI format, and can apply it to the returned MODEL.
+
+# Input types
+## Required
+- model
+    - Base model to return downstream with the latest trained LoRA optionally applied.
+    - Comfy dtype: MODEL
+    - Python dtype: torch.nn.Module
+- dataset_images_dir
+    - Folder containing your training images, or a parent folder that will be organized into an images subfolder.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- workspace_dir
+    - Working folder for cache, logs, config files, checkpoints, and training state.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- run_name
+    - Name prefix used for the log file.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- output_name
+    - Name prefix used for saved LoRA files and state folders.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- resolution_width
+    - Training bucket width written to the musubi dataset config.
+    - Comfy dtype: INT
+    - Python dtype: int
+- resolution_height
+    - Training bucket height written to the musubi dataset config.
+    - Comfy dtype: INT
+    - Python dtype: int
+- steps_per_run
+    - How many steps to train per run, and also when to save the LoRA/state at the end of that run.
+    - Comfy dtype: INT
+    - Python dtype: int
+- total_target_steps
+    - Training stops once the latest saved step reaches this total.
+    - Comfy dtype: INT
+    - Python dtype: int
+- network_dim
+    - LoRA rank.
+    - Comfy dtype: INT
+    - Python dtype: int
+- network_alpha
+    - LoRA alpha scaling value.
+    - Comfy dtype: INT
+    - Python dtype: int
+- blocks_to_swap
+    - Higher values reduce VRAM usage but usually slow training.
+    - Comfy dtype: INT
+    - Python dtype: int
+- clear_memory_before_text_encoder
+    - Tries to unload ComfyUI models and clear VRAM/RAM before text encoder caching.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- learning_rate_preset
+    - Quick preset for the training learning rate. Choose Custom to use the float input below.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- learning_rate
+    - Custom learning rate used only when the preset is set to Custom.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- num_repeats
+    - How many times each image-caption pair is repeated in the dataset.
+    - Comfy dtype: INT
+    - Python dtype: int
+- cache_strategy
+    - Auto builds cache only when needed, Force always rebuilds it, Skip goes straight to training.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- copy_latest_to_comfy_loras
+    - Copies the latest Comfy-compatible LoRA into the ComfyUI loras folder after training.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- keep_only_comfy_lora
+    - If enabled, deletes the standard .safetensors LoRA files after a matching .comfy.safetensors file exists.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- strength_model
+    - Strength used if the node applies the latest LoRA back onto the output model.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- create_captions
+    - If enabled, missing caption txt files are created automatically using the caption text input.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- caption_text
+    - Base caption text used when create_captions is enabled and an image has no caption file.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- add_trigger_word
+    - If enabled, the trigger text is prepended to each caption.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- trigger_text
+    - Trigger word or phrase to prepend to captions when add_trigger_word is enabled.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- musubi_root
+    - Root folder of your musubi-tuner-ltx2 install.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- zimage_checkpoint
+    - Path to the base Z-Image DiT checkpoint used for caching and training.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- vae
+    - Path to the Z-Image VAE checkpoint.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- text_encoder
+    - Path to the Qwen3 text encoder checkpoint or directory.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- fp8_base
+    - Enable fp8 base model weights during Z-Image training.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- fp8_scaled
+    - Enable scaled fp8 weights during Z-Image training. Requires fp8_base.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- fp8_llm
+    - Loads the text encoder in fp8 mode during caching to reduce VRAM usage.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- use_32bit_attention
+    - Use 32-bit precision for attention computations in the Z-Image model.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+
+# Output types
+- model
+    - The model output is produced by this node.
+    - Comfy dtype: MODEL
+    - Python dtype: torch.nn.Module
+- latest_state_path
+    - The latest_state_path output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- log_path
+    - The log_path output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- latest_comfy_lora_path
+    - The latest_comfy_lora_path output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- output_name
+    - The output_name output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- completed_steps
+    - The completed_steps output is produced by this node.
+    - Comfy dtype: INT
+    - Python dtype: int
+- total_target_steps
+    - The total_target_steps output is produced by this node.
+    - Comfy dtype: INT
+    - Python dtype: int
+
+# Usage tips
+- Infra type: unknown
+
+# Source code
+[View source repository](https://github.com/vrgamegirl19/comfyui-vrgamedevgirl)
+
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

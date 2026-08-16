@@ -1,0 +1,169 @@
+# Documentation
+- Class name: VRGDG_LTXICIngredientsGrid
+- Category: VRGDG/LTX
+- Output node: False
+- Repo Ref: https://github.com/vrgamegirl19/comfyui-vrgamedevgirl
+
+Builds an LTX IC-LoRA Ingredients-style reference sheet from dynamic image inputs.
+
+# Input types
+## Required
+- image_count
+    - How many dynamic image inputs to show and compose.
+    - Comfy dtype: INT
+    - Python dtype: int
+- layout
+    - The layout input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- output_width
+    - The output_width input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- output_height
+    - The output_height input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- columns
+    - Uniform grid columns. Use 0 for auto. Some presets ignore this.
+    - Comfy dtype: INT
+    - Python dtype: int
+- gutter
+    - The gutter input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- outer_padding
+    - The outer_padding input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- corner_radius
+    - The corner_radius input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- fit_mode
+    - The fit_mode input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- batch_mode
+    - The batch_mode input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- background_color
+    - The background_color input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- cell_background_color
+    - The cell_background_color input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+## Optional
+- image1
+    - Ingredient image 1.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image2
+    - Ingredient image 2.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image3
+    - Ingredient image 3.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image4
+    - Ingredient image 4.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image5
+    - Ingredient image 5.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image6
+    - Ingredient image 6.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image7
+    - Ingredient image 7.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image8
+    - Ingredient image 8.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image9
+    - Ingredient image 9.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image10
+    - Ingredient image 10.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image11
+    - Ingredient image 11.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image12
+    - Ingredient image 12.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image13
+    - Ingredient image 13.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image14
+    - Ingredient image 14.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image15
+    - Ingredient image 15.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image16
+    - Ingredient image 16.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image17
+    - Ingredient image 17.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image18
+    - Ingredient image 18.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image19
+    - Ingredient image 19.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image20
+    - Ingredient image 20.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image21
+    - Ingredient image 21.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image22
+    - Ingredient image 22.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image23
+    - Ingredient image 23.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image24
+    - Ingredient image 24.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+
+# Output types
+- reference_sheet
+    - The reference_sheet output is produced by this node.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+
+# Usage tips
+- Infra type: unknown
+
+# Source code
+[View source repository](https://github.com/vrgamegirl19/comfyui-vrgamedevgirl)
+
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

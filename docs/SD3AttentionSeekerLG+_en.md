@@ -1,0 +1,220 @@
+# Documentation
+- Class name: SD3AttentionSeekerLG+
+- Category: essentials/conditioning
+- Output node: False
+- Repo Ref: https://github.com/MinorBoy/ComfyUI_essentials_mb
+
+Essential nodes. Fork from ComfyUI_essentials
+
+# Input types
+## Required
+- clip
+    - The clip input is used by this node during execution.
+    - Comfy dtype: CLIP
+    - Python dtype: object
+- apply_to_query
+    - The apply_to_query input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- apply_to_key
+    - The apply_to_key input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- apply_to_value
+    - The apply_to_value input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- apply_to_out
+    - The apply_to_out input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- clip_l_0
+    - The clip_l_0 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- clip_l_1
+    - The clip_l_1 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- clip_l_2
+    - The clip_l_2 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- clip_l_3
+    - The clip_l_3 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- clip_l_4
+    - The clip_l_4 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- clip_l_5
+    - The clip_l_5 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- clip_l_6
+    - The clip_l_6 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- clip_l_7
+    - The clip_l_7 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- clip_l_8
+    - The clip_l_8 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- clip_l_9
+    - The clip_l_9 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- clip_l_10
+    - The clip_l_10 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- clip_l_11
+    - The clip_l_11 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- clip_g_0
+    - The clip_g_0 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- clip_g_1
+    - The clip_g_1 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- clip_g_2
+    - The clip_g_2 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- clip_g_3
+    - The clip_g_3 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- clip_g_4
+    - The clip_g_4 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- clip_g_5
+    - The clip_g_5 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- clip_g_6
+    - The clip_g_6 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- clip_g_7
+    - The clip_g_7 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- clip_g_8
+    - The clip_g_8 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- clip_g_9
+    - The clip_g_9 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- clip_g_10
+    - The clip_g_10 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- clip_g_11
+    - The clip_g_11 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- clip_g_12
+    - The clip_g_12 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- clip_g_13
+    - The clip_g_13 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- clip_g_14
+    - The clip_g_14 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- clip_g_15
+    - The clip_g_15 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- clip_g_16
+    - The clip_g_16 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- clip_g_17
+    - The clip_g_17 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- clip_g_18
+    - The clip_g_18 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- clip_g_19
+    - The clip_g_19 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- clip_g_20
+    - The clip_g_20 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- clip_g_21
+    - The clip_g_21 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- clip_g_22
+    - The clip_g_22 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- clip_g_23
+    - The clip_g_23 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- clip_g_24
+    - The clip_g_24 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- clip_g_25
+    - The clip_g_25 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- clip_g_26
+    - The clip_g_26 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- clip_g_27
+    - The clip_g_27 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- clip_g_28
+    - The clip_g_28 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- clip_g_29
+    - The clip_g_29 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- clip_g_30
+    - The clip_g_30 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- clip_g_31
+    - The clip_g_31 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+
+# Output types
+- CLIP
+    - The CLIP output is produced by this node.
+    - Comfy dtype: CLIP
+    - Python dtype: object
+
+# Usage tips
+- Infra type: unknown
+
+# Source code
+[View source repository](https://github.com/MinorBoy/ComfyUI_essentials_mb)
+
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

@@ -1,0 +1,233 @@
+# Documentation
+- Class name: VRGDG_ImageSwitchMultiDynamic
+- Category: VRGDG/Switch
+- Output node: False
+- Repo Ref: https://github.com/vrgamegirl19/comfyui-vrgamedevgirl
+
+Dynamic image switch. Set image_count, click Refresh Inputs, then select image indices (e.g. 1,2,5 or all).
+
+# Input types
+## Required
+- index
+    - The index input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- image_count
+    - The image_count input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+## Optional
+- image1
+    - The image1 input is used by this node during execution.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image2
+    - The image2 input is used by this node during execution.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image3
+    - The image3 input is used by this node during execution.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image4
+    - The image4 input is used by this node during execution.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image5
+    - The image5 input is used by this node during execution.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image6
+    - The image6 input is used by this node during execution.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image7
+    - The image7 input is used by this node during execution.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image8
+    - The image8 input is used by this node during execution.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image9
+    - The image9 input is used by this node during execution.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image10
+    - The image10 input is used by this node during execution.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image11
+    - The image11 input is used by this node during execution.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image12
+    - The image12 input is used by this node during execution.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image13
+    - The image13 input is used by this node during execution.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image14
+    - The image14 input is used by this node during execution.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image15
+    - The image15 input is used by this node during execution.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image16
+    - The image16 input is used by this node during execution.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image17
+    - The image17 input is used by this node during execution.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image18
+    - The image18 input is used by this node during execution.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image19
+    - The image19 input is used by this node during execution.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image20
+    - The image20 input is used by this node during execution.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image21
+    - The image21 input is used by this node during execution.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image22
+    - The image22 input is used by this node during execution.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image23
+    - The image23 input is used by this node during execution.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image24
+    - The image24 input is used by this node during execution.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image25
+    - The image25 input is used by this node during execution.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image26
+    - The image26 input is used by this node during execution.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image27
+    - The image27 input is used by this node during execution.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image28
+    - The image28 input is used by this node during execution.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image29
+    - The image29 input is used by this node during execution.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image30
+    - The image30 input is used by this node during execution.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image31
+    - The image31 input is used by this node during execution.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image32
+    - The image32 input is used by this node during execution.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image33
+    - The image33 input is used by this node during execution.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image34
+    - The image34 input is used by this node during execution.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image35
+    - The image35 input is used by this node during execution.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image36
+    - The image36 input is used by this node during execution.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image37
+    - The image37 input is used by this node during execution.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image38
+    - The image38 input is used by this node during execution.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image39
+    - The image39 input is used by this node during execution.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image40
+    - The image40 input is used by this node during execution.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image41
+    - The image41 input is used by this node during execution.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image42
+    - The image42 input is used by this node during execution.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image43
+    - The image43 input is used by this node during execution.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image44
+    - The image44 input is used by this node during execution.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image45
+    - The image45 input is used by this node during execution.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image46
+    - The image46 input is used by this node during execution.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image47
+    - The image47 input is used by this node during execution.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image48
+    - The image48 input is used by this node during execution.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image49
+    - The image49 input is used by this node during execution.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- image50
+    - The image50 input is used by this node during execution.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+
+# Output types
+- image
+    - The image output is produced by this node.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+
+# Usage tips
+- Infra type: unknown
+
+# Source code
+[View source repository](https://github.com/vrgamegirl19/comfyui-vrgamedevgirl)
+
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

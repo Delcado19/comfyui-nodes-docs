@@ -1,0 +1,168 @@
+# Documentation
+- Class name: ModelMergeCosmos7B
+- Category: model/merging/model specific
+- Output node: False
+- Repo Ref: https://github.com/comfyanonymous/ComfyUI
+
+ModelMergeCosmos7B is a ComfyUI node registered by `comfy_extras.nodes_model_merging_model_specific`. The live metadata did not provide a longer description.
+
+# Input types
+## Required
+- model1
+    - The model1 input is used by this node during execution.
+    - Comfy dtype: MODEL
+    - Python dtype: torch.nn.Module
+- model2
+    - The model2 input is used by this node during execution.
+    - Comfy dtype: MODEL
+    - Python dtype: torch.nn.Module
+- pos_embedder.
+    - The pos_embedder. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- extra_pos_embedder.
+    - The extra_pos_embedder. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- x_embedder.
+    - The x_embedder. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- t_embedder.
+    - The t_embedder. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- affline_norm.
+    - The affline_norm. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- blocks.block0.
+    - The blocks.block0. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- blocks.block1.
+    - The blocks.block1. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- blocks.block2.
+    - The blocks.block2. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- blocks.block3.
+    - The blocks.block3. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- blocks.block4.
+    - The blocks.block4. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- blocks.block5.
+    - The blocks.block5. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- blocks.block6.
+    - The blocks.block6. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- blocks.block7.
+    - The blocks.block7. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- blocks.block8.
+    - The blocks.block8. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- blocks.block9.
+    - The blocks.block9. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- blocks.block10.
+    - The blocks.block10. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- blocks.block11.
+    - The blocks.block11. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- blocks.block12.
+    - The blocks.block12. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- blocks.block13.
+    - The blocks.block13. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- blocks.block14.
+    - The blocks.block14. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- blocks.block15.
+    - The blocks.block15. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- blocks.block16.
+    - The blocks.block16. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- blocks.block17.
+    - The blocks.block17. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- blocks.block18.
+    - The blocks.block18. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- blocks.block19.
+    - The blocks.block19. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- blocks.block20.
+    - The blocks.block20. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- blocks.block21.
+    - The blocks.block21. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- blocks.block22.
+    - The blocks.block22. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- blocks.block23.
+    - The blocks.block23. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- blocks.block24.
+    - The blocks.block24. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- blocks.block25.
+    - The blocks.block25. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- blocks.block26.
+    - The blocks.block26. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- blocks.block27.
+    - The blocks.block27. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- final_layer.
+    - The final_layer. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+
+# Output types
+- MODEL
+    - The MODEL output is produced by this node.
+    - Comfy dtype: MODEL
+    - Python dtype: torch.nn.Module
+
+# Usage tips
+- Infra type: unknown
+
+# Source code
+[View source repository](https://github.com/comfyanonymous/ComfyUI)
+
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

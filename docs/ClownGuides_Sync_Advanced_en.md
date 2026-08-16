@@ -1,0 +1,349 @@
+# Documentation
+- Class name: ClownGuides_Sync_Advanced
+- Category: RES4LYF/sampler_extensions
+- Output node: False
+- Repo Ref: https://github.com/ClownsharkBatwing/RES4LYF
+
+ClownGuides Sync_Advanced is a ComfyUI node registered by `custom_nodes.RES4LYF`. The live metadata did not provide a longer description.
+
+# Input types
+## Required
+- weight_masked
+    - Set the strength of the guide.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- weight_unmasked
+    - Set the strength of the guide_bkg.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- weight_scheduler_masked
+    - The weight_scheduler_masked input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- weight_scheduler_unmasked
+    - The weight_scheduler_unmasked input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- weight_start_step_masked
+    - The weight_start_step_masked input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- weight_start_step_unmasked
+    - The weight_start_step_unmasked input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- weight_end_step_masked
+    - The weight_end_step_masked input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- weight_end_step_unmasked
+    - The weight_end_step_unmasked input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- sync_masked
+    - Set the strength of the guide.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- sync_unmasked
+    - Set the strength of the guide_bkg.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- sync_scheduler_masked
+    - The sync_scheduler_masked input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- sync_scheduler_unmasked
+    - The sync_scheduler_unmasked input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- sync_start_step_masked
+    - The sync_start_step_masked input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- sync_start_step_unmasked
+    - The sync_start_step_unmasked input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- sync_end_step_masked
+    - The sync_end_step_masked input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- sync_end_step_unmasked
+    - The sync_end_step_unmasked input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- drift_x_data
+    - Set the strength of the guide.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- drift_x_sync
+    - Set the strength of the guide.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- drift_x_masked
+    - Set the strength of the guide.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- drift_x_unmasked
+    - Set the strength of the guide_bkg.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- drift_x_scheduler_masked
+    - The drift_x_scheduler_masked input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- drift_x_scheduler_unmasked
+    - The drift_x_scheduler_unmasked input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- drift_x_start_step_masked
+    - The drift_x_start_step_masked input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- drift_x_start_step_unmasked
+    - The drift_x_start_step_unmasked input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- drift_x_end_step_masked
+    - The drift_x_end_step_masked input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- drift_x_end_step_unmasked
+    - The drift_x_end_step_unmasked input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- drift_y_data
+    - Set the strength of the guide.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- drift_y_sync
+    - Set the strength of the guide.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- drift_y_guide
+    - Set the strength of the guide.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- drift_y_masked
+    - Set the strength of the guide.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- drift_y_unmasked
+    - Set the strength of the guide_bkg.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- drift_y_scheduler_masked
+    - The drift_y_scheduler_masked input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- drift_y_scheduler_unmasked
+    - The drift_y_scheduler_unmasked input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- drift_y_start_step_masked
+    - The drift_y_start_step_masked input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- drift_y_start_step_unmasked
+    - The drift_y_start_step_unmasked input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- drift_y_end_step_masked
+    - The drift_y_end_step_masked input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- drift_y_end_step_unmasked
+    - The drift_y_end_step_unmasked input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- lure_x_masked
+    - Set the strength of the guide.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- lure_x_unmasked
+    - Set the strength of the guide_bkg.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- lure_x_scheduler_masked
+    - The lure_x_scheduler_masked input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- lure_x_scheduler_unmasked
+    - The lure_x_scheduler_unmasked input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- lure_x_start_step_masked
+    - The lure_x_start_step_masked input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- lure_x_start_step_unmasked
+    - The lure_x_start_step_unmasked input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- lure_x_end_step_masked
+    - The lure_x_end_step_masked input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- lure_x_end_step_unmasked
+    - The lure_x_end_step_unmasked input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- lure_y_masked
+    - Set the strength of the guide.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- lure_y_unmasked
+    - Set the strength of the guide_bkg.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- lure_y_scheduler_masked
+    - The lure_y_scheduler_masked input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- lure_y_scheduler_unmasked
+    - The lure_y_scheduler_unmasked input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- lure_y_start_step_masked
+    - The lure_y_start_step_masked input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- lure_y_start_step_unmasked
+    - The lure_y_start_step_unmasked input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- lure_y_end_step_masked
+    - The lure_y_end_step_masked input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- lure_y_end_step_unmasked
+    - The lure_y_end_step_unmasked input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- lure_iter
+    - The lure_iter input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- lure_sequence
+    - The lure_sequence input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- invert_mask
+    - The invert_mask input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- invert_mask_sync
+    - The invert_mask_sync input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- invert_mask_drift_x
+    - The invert_mask_drift_x input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- invert_mask_drift_y
+    - The invert_mask_drift_y input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- invert_mask_lure_x
+    - The invert_mask_lure_x input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- invert_mask_lure_y
+    - The invert_mask_lure_y input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+## Optional
+- guide_masked
+    - The guide_masked input is used by this node during execution.
+    - Comfy dtype: LATENT
+    - Python dtype: dict
+- guide_unmasked
+    - The guide_unmasked input is used by this node during execution.
+    - Comfy dtype: LATENT
+    - Python dtype: dict
+- mask
+    - The mask input is used by this node during execution.
+    - Comfy dtype: MASK
+    - Python dtype: torch.Tensor
+- mask_sync
+    - The mask_sync input is used by this node during execution.
+    - Comfy dtype: MASK
+    - Python dtype: torch.Tensor
+- mask_drift_x
+    - The mask_drift_x input is used by this node during execution.
+    - Comfy dtype: MASK
+    - Python dtype: torch.Tensor
+- mask_drift_y
+    - The mask_drift_y input is used by this node during execution.
+    - Comfy dtype: MASK
+    - Python dtype: torch.Tensor
+- mask_lure_x
+    - The mask_lure_x input is used by this node during execution.
+    - Comfy dtype: MASK
+    - Python dtype: torch.Tensor
+- mask_lure_y
+    - The mask_lure_y input is used by this node during execution.
+    - Comfy dtype: MASK
+    - Python dtype: torch.Tensor
+- weights_masked
+    - The weights_masked input is used by this node during execution.
+    - Comfy dtype: SIGMAS
+    - Python dtype: object
+- weights_unmasked
+    - The weights_unmasked input is used by this node during execution.
+    - Comfy dtype: SIGMAS
+    - Python dtype: object
+- syncs_masked
+    - The syncs_masked input is used by this node during execution.
+    - Comfy dtype: SIGMAS
+    - Python dtype: object
+- syncs_unmasked
+    - The syncs_unmasked input is used by this node during execution.
+    - Comfy dtype: SIGMAS
+    - Python dtype: object
+- drift_xs_masked
+    - The drift_xs_masked input is used by this node during execution.
+    - Comfy dtype: SIGMAS
+    - Python dtype: object
+- drift_xs_unmasked
+    - The drift_xs_unmasked input is used by this node during execution.
+    - Comfy dtype: SIGMAS
+    - Python dtype: object
+- drift_ys_masked
+    - The drift_ys_masked input is used by this node during execution.
+    - Comfy dtype: SIGMAS
+    - Python dtype: object
+- drift_ys_unmasked
+    - The drift_ys_unmasked input is used by this node during execution.
+    - Comfy dtype: SIGMAS
+    - Python dtype: object
+- lure_xs_masked
+    - The lure_xs_masked input is used by this node during execution.
+    - Comfy dtype: SIGMAS
+    - Python dtype: object
+- lure_xs_unmasked
+    - The lure_xs_unmasked input is used by this node during execution.
+    - Comfy dtype: SIGMAS
+    - Python dtype: object
+- lure_ys_masked
+    - The lure_ys_masked input is used by this node during execution.
+    - Comfy dtype: SIGMAS
+    - Python dtype: object
+- lure_ys_unmasked
+    - The lure_ys_unmasked input is used by this node during execution.
+    - Comfy dtype: SIGMAS
+    - Python dtype: object
+
+# Output types
+- guides
+    - The guides output is produced by this node.
+    - Comfy dtype: GUIDES
+    - Python dtype: object
+
+# Usage tips
+- Infra type: unknown
+
+# Source code
+[View source repository](https://github.com/ClownsharkBatwing/RES4LYF)
+
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

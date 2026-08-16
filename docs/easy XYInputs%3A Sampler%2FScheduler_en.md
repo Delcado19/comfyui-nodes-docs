@@ -1,0 +1,272 @@
+# Documentation
+- Class name: easy XYInputs: Sampler/Scheduler
+- Category: EasyUse/XY Inputs
+- Output node: False
+- Repo Ref: https://github.com/yolain/ComfyUI-Easy-Use
+
+To enhance the usability of ComfyUI, optimizations and integrations have been implemented for several commonly used nodes.
+
+# Input types
+## Required
+- target_parameter
+    - The target_parameter input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- input_count
+    - The input_count input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- sampler_1
+    - The sampler_1 input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- scheduler_1
+    - The scheduler_1 input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- sampler_2
+    - The sampler_2 input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- scheduler_2
+    - The scheduler_2 input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- sampler_3
+    - The sampler_3 input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- scheduler_3
+    - The scheduler_3 input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- sampler_4
+    - The sampler_4 input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- scheduler_4
+    - The scheduler_4 input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- sampler_5
+    - The sampler_5 input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- scheduler_5
+    - The scheduler_5 input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- sampler_6
+    - The sampler_6 input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- scheduler_6
+    - The scheduler_6 input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- sampler_7
+    - The sampler_7 input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- scheduler_7
+    - The scheduler_7 input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- sampler_8
+    - The sampler_8 input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- scheduler_8
+    - The scheduler_8 input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- sampler_9
+    - The sampler_9 input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- scheduler_9
+    - The scheduler_9 input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- sampler_10
+    - The sampler_10 input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- scheduler_10
+    - The scheduler_10 input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- sampler_11
+    - The sampler_11 input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- scheduler_11
+    - The scheduler_11 input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- sampler_12
+    - The sampler_12 input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- scheduler_12
+    - The scheduler_12 input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- sampler_13
+    - The sampler_13 input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- scheduler_13
+    - The scheduler_13 input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- sampler_14
+    - The sampler_14 input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- scheduler_14
+    - The scheduler_14 input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- sampler_15
+    - The sampler_15 input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- scheduler_15
+    - The scheduler_15 input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- sampler_16
+    - The sampler_16 input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- scheduler_16
+    - The scheduler_16 input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- sampler_17
+    - The sampler_17 input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- scheduler_17
+    - The scheduler_17 input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- sampler_18
+    - The sampler_18 input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- scheduler_18
+    - The scheduler_18 input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- sampler_19
+    - The sampler_19 input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- scheduler_19
+    - The scheduler_19 input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- sampler_20
+    - The sampler_20 input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- scheduler_20
+    - The scheduler_20 input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- sampler_21
+    - The sampler_21 input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- scheduler_21
+    - The scheduler_21 input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- sampler_22
+    - The sampler_22 input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- scheduler_22
+    - The scheduler_22 input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- sampler_23
+    - The sampler_23 input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- scheduler_23
+    - The scheduler_23 input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- sampler_24
+    - The sampler_24 input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- scheduler_24
+    - The scheduler_24 input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- sampler_25
+    - The sampler_25 input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- scheduler_25
+    - The scheduler_25 input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- sampler_26
+    - The sampler_26 input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- scheduler_26
+    - The scheduler_26 input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- sampler_27
+    - The sampler_27 input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- scheduler_27
+    - The scheduler_27 input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- sampler_28
+    - The sampler_28 input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- scheduler_28
+    - The scheduler_28 input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- sampler_29
+    - The sampler_29 input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- scheduler_29
+    - The scheduler_29 input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- sampler_30
+    - The sampler_30 input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- scheduler_30
+    - The scheduler_30 input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+
+# Output types
+- X or Y
+    - The X or Y output is produced by this node.
+    - Comfy dtype: X_Y
+    - Python dtype: object
+
+# Usage tips
+- Infra type: unknown
+
+# Source code
+[View source repository](https://github.com/yolain/ComfyUI-Easy-Use)
+
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

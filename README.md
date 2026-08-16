@@ -3,11 +3,11 @@
   <img src="logo.png" style="text-align: center;"/>
 </p>
 <h1 align="center">comfyui-nodes-docs</h1>
-<h4 align="center">In-app documentation for 3500+ ComfyUI nodes — now in English & 中文 ✨</h4>
+<h4 align="center">In-app documentation for 5800+ ComfyUI nodes — now in English & 中文 ✨</h4>
 
 <p align="center">
   <a href="https://github.com/comfyanonymous/ComfyUI"><img src="https://img.shields.io/badge/ComfyUI-blue.svg?style=for-the-badge" alt="ComfyUI"/></a>
-  <img src="https://img.shields.io/badge/docs-3500%2B%20nodes-green.svg?style=for-the-badge" alt="3500+ nodes"/>
+  <img src="https://img.shields.io/badge/docs-5800%2B%20nodes-green.svg?style=for-the-badge" alt="5800+ nodes"/>
   <img src="https://img.shields.io/badge/languages-English%20%7C%20%E4%B8%AD%E6%96%87-orange.svg?style=for-the-badge" alt="English | 中文"/>
 </p>
 
@@ -15,7 +15,7 @@
 
 [中文文档](README_zh.md) ｜ English Document
 
-A ComfyUI plugin that shows rich, per-node documentation right inside the graph — select a node and read what every input, output, and option does without leaving the canvas. This fork adds a **full English translation** of all 3500+ node docs alongside the original Chinese, picked automatically from your ComfyUI language setting.
+A ComfyUI plugin that shows rich, per-node documentation right inside the graph — select a node and read what every input, output, and option does without leaving the canvas. This fork adds **English documentation for 5800+ nodes** alongside the original Chinese, picked automatically from your ComfyUI language setting.
 
 > Fork of the original [CavinHuang/comfyui-nodes-docs](https://github.com/CavinHuang/comfyui-nodes-docs) (created by 水门Minato & Leo). The Chinese documentation is theirs and is kept untouched; this fork adds the parallel English docs and language-aware serving.
 
@@ -55,7 +55,7 @@ You can edit a node's doc locally from the panel; local edits are stored on your
 
 ## English documentation
 
-All ~3553 node docs ship with a parallel English `*_en.md` file (a machine-translated first pass — improvements welcome). The Chinese sources are left untouched; English lives beside them. The feature touches only two code files:
+All 5800+ English node docs ship as `*_en.md` files beside the original Chinese sources. Most are a machine-translated first pass; docs added from a live ComfyUI install use the node's `/object_info` metadata plus Comfy Registry or installed-repo links where available. Improvements welcome. The language-aware serving feature touches only two code files:
 
 - `server/request.py` — language-aware doc lookup (a `lang` query/body parameter, plus a guard so English edits are never co-built into the Chinese cloud DB)
 - `web/comfyui/creatDocsElement.js` — reads `Comfy.Locale`, passes `lang` to the doc endpoints, and localizes the doc-panel labels
@@ -64,7 +64,7 @@ Everything else is additive `*_en.md` content.
 
 ### Source-code links
 
-In the English docs, the embedded source-code snippet that used to sit under each `# Source code` heading is replaced with a link to the node pack's GitHub repository (derived from the doc's `Repo Ref:` metadata). Embedded snippets go stale on every pack update, whereas a repository link stays current and keeps the docs lean. 2515 English docs link to their repo; docs without a `Repo Ref:` keep their embedded source (there is nothing to link to). Chinese sources are unchanged.
+In the English docs, the embedded source-code snippet that used to sit under each `# Source code` heading is replaced with a link to the node pack's repository (derived from the doc's `Repo Ref:` metadata). Embedded snippets go stale on every pack update, whereas a repository link stays current and keeps the docs lean. Chinese sources are unchanged.
 
 ## Translation & doc-generation tooling
 
@@ -83,7 +83,7 @@ The script writes a matching `_en.md` file for each source document, preserves c
 
 ## Node list
 
-Being compiled — the `docs/` folder currently holds 3500+ node documents.
+Being compiled — the `docs/` folder currently holds 9400+ Markdown documents, including 5800+ English node docs.
 
 ## Contributing
 

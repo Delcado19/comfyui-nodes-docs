@@ -1,0 +1,204 @@
+# Documentation
+- Class name: ModelMergeAuraflow
+- Category: model/merging/model specific
+- Output node: False
+- Repo Ref: https://github.com/comfyanonymous/ComfyUI
+
+ModelMergeAuraflow is a ComfyUI node registered by `comfy_extras.nodes_model_merging_model_specific`. The live metadata did not provide a longer description.
+
+# Input types
+## Required
+- model1
+    - The model1 input is used by this node during execution.
+    - Comfy dtype: MODEL
+    - Python dtype: torch.nn.Module
+- model2
+    - The model2 input is used by this node during execution.
+    - Comfy dtype: MODEL
+    - Python dtype: torch.nn.Module
+- init_x_linear.
+    - The init_x_linear. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- positional_encoding
+    - The positional_encoding input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- cond_seq_linear.
+    - The cond_seq_linear. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- register_tokens
+    - The register_tokens input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- t_embedder.
+    - The t_embedder. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- double_layers.0.
+    - The double_layers.0. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- double_layers.1.
+    - The double_layers.1. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- double_layers.2.
+    - The double_layers.2. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- double_layers.3.
+    - The double_layers.3. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- single_layers.0.
+    - The single_layers.0. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- single_layers.1.
+    - The single_layers.1. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- single_layers.2.
+    - The single_layers.2. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- single_layers.3.
+    - The single_layers.3. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- single_layers.4.
+    - The single_layers.4. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- single_layers.5.
+    - The single_layers.5. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- single_layers.6.
+    - The single_layers.6. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- single_layers.7.
+    - The single_layers.7. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- single_layers.8.
+    - The single_layers.8. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- single_layers.9.
+    - The single_layers.9. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- single_layers.10.
+    - The single_layers.10. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- single_layers.11.
+    - The single_layers.11. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- single_layers.12.
+    - The single_layers.12. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- single_layers.13.
+    - The single_layers.13. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- single_layers.14.
+    - The single_layers.14. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- single_layers.15.
+    - The single_layers.15. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- single_layers.16.
+    - The single_layers.16. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- single_layers.17.
+    - The single_layers.17. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- single_layers.18.
+    - The single_layers.18. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- single_layers.19.
+    - The single_layers.19. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- single_layers.20.
+    - The single_layers.20. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- single_layers.21.
+    - The single_layers.21. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- single_layers.22.
+    - The single_layers.22. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- single_layers.23.
+    - The single_layers.23. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- single_layers.24.
+    - The single_layers.24. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- single_layers.25.
+    - The single_layers.25. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- single_layers.26.
+    - The single_layers.26. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- single_layers.27.
+    - The single_layers.27. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- single_layers.28.
+    - The single_layers.28. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- single_layers.29.
+    - The single_layers.29. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- single_layers.30.
+    - The single_layers.30. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- single_layers.31.
+    - The single_layers.31. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- modF.
+    - The modF. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- final_linear.
+    - The final_linear. input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+
+# Output types
+- MODEL
+    - The MODEL output is produced by this node.
+    - Comfy dtype: MODEL
+    - Python dtype: torch.nn.Module
+
+# Usage tips
+- Infra type: unknown
+
+# Source code
+[View source repository](https://github.com/comfyanonymous/ComfyUI)
+
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

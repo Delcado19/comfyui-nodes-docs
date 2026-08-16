@@ -1,0 +1,240 @@
+# Documentation
+- Class name: VRGDG_LoadAudioSplit_HUMO
+- Category: VRGDG
+- Output node: False
+- Repo Ref: https://github.com/vrgamegirl19/comfyui-vrgamedevgirl
+
+VRGDG_LoadAudioSplit_HUMO is a ComfyUI node registered by `custom_nodes.comfyui-vrgamedevgirl`. The live metadata did not provide a longer description.
+
+# Input types
+## Required
+- audio
+    - The audio input is used by this node during execution.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- offset_seconds
+    - The offset_seconds input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- scene_count
+    - The scene_count input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+
+# Output types
+- meta
+    - The meta output is produced by this node.
+    - Comfy dtype: DICT
+    - Python dtype: object
+- total_duration
+    - The total_duration output is produced by this node.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- audio_1
+    - The audio_1 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_2
+    - The audio_2 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_3
+    - The audio_3 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_4
+    - The audio_4 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_5
+    - The audio_5 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_6
+    - The audio_6 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_7
+    - The audio_7 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_8
+    - The audio_8 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_9
+    - The audio_9 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_10
+    - The audio_10 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_11
+    - The audio_11 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_12
+    - The audio_12 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_13
+    - The audio_13 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_14
+    - The audio_14 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_15
+    - The audio_15 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_16
+    - The audio_16 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_17
+    - The audio_17 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_18
+    - The audio_18 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_19
+    - The audio_19 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_20
+    - The audio_20 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_21
+    - The audio_21 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_22
+    - The audio_22 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_23
+    - The audio_23 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_24
+    - The audio_24 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_25
+    - The audio_25 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_26
+    - The audio_26 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_27
+    - The audio_27 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_28
+    - The audio_28 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_29
+    - The audio_29 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_30
+    - The audio_30 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_31
+    - The audio_31 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_32
+    - The audio_32 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_33
+    - The audio_33 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_34
+    - The audio_34 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_35
+    - The audio_35 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_36
+    - The audio_36 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_37
+    - The audio_37 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_38
+    - The audio_38 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_39
+    - The audio_39 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_40
+    - The audio_40 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_41
+    - The audio_41 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_42
+    - The audio_42 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_43
+    - The audio_43 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_44
+    - The audio_44 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_45
+    - The audio_45 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_46
+    - The audio_46 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_47
+    - The audio_47 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_48
+    - The audio_48 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_49
+    - The audio_49 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_50
+    - The audio_50 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+
+# Usage tips
+- Infra type: unknown
+
+# Source code
+[View source repository](https://github.com/vrgamegirl19/comfyui-vrgamedevgirl)
+
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

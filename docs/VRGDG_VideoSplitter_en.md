@@ -1,0 +1,232 @@
+# Documentation
+- Class name: VRGDG_VideoSplitter
+- Category: image/filters/frames
+- Output node: False
+- Repo Ref: https://github.com/vrgamegirl19/comfyui-vrgamedevgirl
+
+Split an IMAGE batch into fixed-size chunks. Unused outputs return empty IMAGE batches.
+
+# Input types
+## Required
+- images
+    - The images input is used by this node during execution.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- chunk_count
+    - The chunk_count input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- frames_per_chunk
+    - The frames_per_chunk input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+
+# Output types
+- chunk_1
+    - The chunk_1 output is produced by this node.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- chunk_2
+    - The chunk_2 output is produced by this node.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- chunk_3
+    - The chunk_3 output is produced by this node.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- chunk_4
+    - The chunk_4 output is produced by this node.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- chunk_5
+    - The chunk_5 output is produced by this node.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- chunk_6
+    - The chunk_6 output is produced by this node.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- chunk_7
+    - The chunk_7 output is produced by this node.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- chunk_8
+    - The chunk_8 output is produced by this node.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- chunk_9
+    - The chunk_9 output is produced by this node.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- chunk_10
+    - The chunk_10 output is produced by this node.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- chunk_11
+    - The chunk_11 output is produced by this node.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- chunk_12
+    - The chunk_12 output is produced by this node.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- chunk_13
+    - The chunk_13 output is produced by this node.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- chunk_14
+    - The chunk_14 output is produced by this node.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- chunk_15
+    - The chunk_15 output is produced by this node.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- chunk_16
+    - The chunk_16 output is produced by this node.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- chunk_17
+    - The chunk_17 output is produced by this node.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- chunk_18
+    - The chunk_18 output is produced by this node.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- chunk_19
+    - The chunk_19 output is produced by this node.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- chunk_20
+    - The chunk_20 output is produced by this node.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- chunk_21
+    - The chunk_21 output is produced by this node.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- chunk_22
+    - The chunk_22 output is produced by this node.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- chunk_23
+    - The chunk_23 output is produced by this node.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- chunk_24
+    - The chunk_24 output is produced by this node.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- chunk_25
+    - The chunk_25 output is produced by this node.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- chunk_26
+    - The chunk_26 output is produced by this node.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- chunk_27
+    - The chunk_27 output is produced by this node.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- chunk_28
+    - The chunk_28 output is produced by this node.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- chunk_29
+    - The chunk_29 output is produced by this node.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- chunk_30
+    - The chunk_30 output is produced by this node.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- chunk_31
+    - The chunk_31 output is produced by this node.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- chunk_32
+    - The chunk_32 output is produced by this node.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- chunk_33
+    - The chunk_33 output is produced by this node.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- chunk_34
+    - The chunk_34 output is produced by this node.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- chunk_35
+    - The chunk_35 output is produced by this node.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- chunk_36
+    - The chunk_36 output is produced by this node.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- chunk_37
+    - The chunk_37 output is produced by this node.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- chunk_38
+    - The chunk_38 output is produced by this node.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- chunk_39
+    - The chunk_39 output is produced by this node.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- chunk_40
+    - The chunk_40 output is produced by this node.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- chunk_41
+    - The chunk_41 output is produced by this node.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- chunk_42
+    - The chunk_42 output is produced by this node.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- chunk_43
+    - The chunk_43 output is produced by this node.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- chunk_44
+    - The chunk_44 output is produced by this node.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- chunk_45
+    - The chunk_45 output is produced by this node.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- chunk_46
+    - The chunk_46 output is produced by this node.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- chunk_47
+    - The chunk_47 output is produced by this node.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- chunk_48
+    - The chunk_48 output is produced by this node.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- chunk_49
+    - The chunk_49 output is produced by this node.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+- chunk_50
+    - The chunk_50 output is produced by this node.
+    - Comfy dtype: IMAGE
+    - Python dtype: torch.Tensor
+
+# Usage tips
+- Infra type: unknown
+
+# Source code
+[View source repository](https://github.com/vrgamegirl19/comfyui-vrgamedevgirl)
+
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

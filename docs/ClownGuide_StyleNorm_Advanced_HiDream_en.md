@@ -1,0 +1,265 @@
+# Documentation
+- Class name: ClownGuide_StyleNorm_Advanced_HiDream
+- Category: RES4LYF/sampler_extensions
+- Output node: False
+- Repo Ref: https://github.com/ClownsharkBatwing/RES4LYF
+
+ClownGuide_StyleNorm_Advanced_HiDream is a ComfyUI node registered by `custom_nodes.RES4LYF`. The live metadata did not provide a longer description.
+
+# Input types
+## Required
+- weight
+    - Set the strength of the guide by multiplying all other weights by this value.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- weight_scheduler
+    - The weight_scheduler input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- double_blocks
+    - The double_blocks input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- double_weights
+    - The double_weights input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- single_blocks
+    - The single_blocks input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- single_weights
+    - The single_weights input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- mode
+    - The mode input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- noise_mode
+    - The noise_mode input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- ff_1
+    - The ff_1 input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- ff_1_silu
+    - The ff_1_silu input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- ff_3
+    - The ff_3 input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- ff_13
+    - The ff_13 input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- ff_2
+    - The ff_2 input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- moe_gate
+    - The moe_gate input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- topk_weight
+    - The topk_weight input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- moe_ff_1
+    - The moe_ff_1 input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- moe_ff_1_silu
+    - The moe_ff_1_silu input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- moe_ff_3
+    - The moe_ff_3 input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- moe_ff_13
+    - The moe_ff_13 input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- moe_ff_2
+    - The moe_ff_2 input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- moe_sum
+    - The moe_sum input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- moe_out
+    - The moe_out input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- double_img_io
+    - The double_img_io input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- double_img_norm0
+    - The double_img_norm0 input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- double_img_attn
+    - The double_img_attn input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- double_img_attn_gated
+    - The double_img_attn_gated input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- double_img
+    - The double_img input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- double_img_norm1
+    - The double_img_norm1 input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- double_img_ff_i
+    - The double_img_ff_i input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- double_txt_io
+    - The double_txt_io input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- double_txt_norm0
+    - The double_txt_norm0 input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- double_txt_attn
+    - The double_txt_attn input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- double_txt_attn_gated
+    - The double_txt_attn_gated input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- double_txt
+    - The double_txt input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- double_txt_norm1
+    - The double_txt_norm1 input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- double_txt_ff_t
+    - The double_txt_ff_t input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- single_img_io
+    - The single_img_io input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- single_img_norm0
+    - The single_img_norm0 input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- single_img_attn
+    - The single_img_attn input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- single_img_attn_gated
+    - The single_img_attn_gated input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- single_img
+    - The single_img input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- single_img_norm1
+    - The single_img_norm1 input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- single_img_ff_i
+    - The single_img_ff_i input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- attn_img_q_norm
+    - The attn_img_q_norm input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- attn_img_k_norm
+    - The attn_img_k_norm input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- attn_img_v_norm
+    - The attn_img_v_norm input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- attn_txt_q_norm
+    - The attn_txt_q_norm input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- attn_txt_k_norm
+    - The attn_txt_k_norm input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- attn_txt_v_norm
+    - The attn_txt_v_norm input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- attn_img_double
+    - The attn_img_double input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- attn_txt_double
+    - The attn_txt_double input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- attn_img_single
+    - The attn_img_single input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- proj_out
+    - The proj_out input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- start_step
+    - The start_step input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- end_step
+    - The end_step input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- invert_mask
+    - The invert_mask input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+## Optional
+- guide
+    - The guide input is used by this node during execution.
+    - Comfy dtype: LATENT
+    - Python dtype: dict
+- mask
+    - The mask input is used by this node during execution.
+    - Comfy dtype: MASK
+    - Python dtype: torch.Tensor
+- weights
+    - The weights input is used by this node during execution.
+    - Comfy dtype: SIGMAS
+    - Python dtype: object
+- guides
+    - The guides input is used by this node during execution.
+    - Comfy dtype: GUIDES
+    - Python dtype: object
+
+# Output types
+- guides
+    - The guides output is produced by this node.
+    - Comfy dtype: GUIDES
+    - Python dtype: object
+
+# Usage tips
+- Infra type: unknown
+
+# Source code
+[View source repository](https://github.com/ClownsharkBatwing/RES4LYF)
+
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

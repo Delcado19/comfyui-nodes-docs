@@ -1,0 +1,757 @@
+# Documentation
+- Class name: VRGDG_MultiCyclingTextPicker
+- Category: VRGDG/General
+- Output node: False
+- Repo Ref: https://github.com/vrgamegirl19/comfyui-vrgamedevgirl
+
+VRGDG Multi Cycling Text Picker is a ComfyUI node registered by `custom_nodes.comfyui-vrgamedevgirl`. The live metadata did not provide a longer description.
+
+# Input types
+## Required
+- picker_count
+    - How many independent cycling text pickers to use. Set 0 to disable advanced prompt details.
+    - Comfy dtype: INT
+    - Python dtype: int
+- joiner
+    - How to combine the active formatted_text outputs into combined_formatted_text.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- preset_1
+    - Picker 1: choose a preset label/list, or Custom for your own label and editable list.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- items_1
+    - Picker 1: list of text choices. Supports lines, blank-line chunks, comma, pipe, JSON/Python lists, or objects with items/values/motions.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- label_1
+    - Picker 1: optional label placed before this picker output.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- selection_mode_1
+    - Picker 1: choose by wrapped index, seeded random, or seeded random no-repeat.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- two_item_template_1
+    - Picker 1: sentence template used when this picker selects exactly two items.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- pick_count_1
+    - Picker 1: how many items to select from this picker at once.
+    - Comfy dtype: INT
+    - Python dtype: int
+- preset_2
+    - Picker 2: choose a preset label/list, or Custom for your own label and editable list.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- items_2
+    - Picker 2: list of text choices. Supports lines, blank-line chunks, comma, pipe, JSON/Python lists, or objects with items/values/motions.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- label_2
+    - Picker 2: optional label placed before this picker output.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- selection_mode_2
+    - Picker 2: choose by wrapped index, seeded random, or seeded random no-repeat.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- two_item_template_2
+    - Picker 2: sentence template used when this picker selects exactly two items.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- pick_count_2
+    - Picker 2: how many items to select from this picker at once.
+    - Comfy dtype: INT
+    - Python dtype: int
+- preset_3
+    - Picker 3: choose a preset label/list, or Custom for your own label and editable list.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- items_3
+    - Picker 3: list of text choices. Supports lines, blank-line chunks, comma, pipe, JSON/Python lists, or objects with items/values/motions.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- label_3
+    - Picker 3: optional label placed before this picker output.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- selection_mode_3
+    - Picker 3: choose by wrapped index, seeded random, or seeded random no-repeat.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- two_item_template_3
+    - Picker 3: sentence template used when this picker selects exactly two items.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- pick_count_3
+    - Picker 3: how many items to select from this picker at once.
+    - Comfy dtype: INT
+    - Python dtype: int
+- preset_4
+    - Picker 4: choose a preset label/list, or Custom for your own label and editable list.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- items_4
+    - Picker 4: list of text choices. Supports lines, blank-line chunks, comma, pipe, JSON/Python lists, or objects with items/values/motions.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- label_4
+    - Picker 4: optional label placed before this picker output.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- selection_mode_4
+    - Picker 4: choose by wrapped index, seeded random, or seeded random no-repeat.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- two_item_template_4
+    - Picker 4: sentence template used when this picker selects exactly two items.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- pick_count_4
+    - Picker 4: how many items to select from this picker at once.
+    - Comfy dtype: INT
+    - Python dtype: int
+- preset_5
+    - Picker 5: choose a preset label/list, or Custom for your own label and editable list.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- items_5
+    - Picker 5: list of text choices. Supports lines, blank-line chunks, comma, pipe, JSON/Python lists, or objects with items/values/motions.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- label_5
+    - Picker 5: optional label placed before this picker output.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- selection_mode_5
+    - Picker 5: choose by wrapped index, seeded random, or seeded random no-repeat.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- two_item_template_5
+    - Picker 5: sentence template used when this picker selects exactly two items.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- pick_count_5
+    - Picker 5: how many items to select from this picker at once.
+    - Comfy dtype: INT
+    - Python dtype: int
+- preset_6
+    - Picker 6: choose a preset label/list, or Custom for your own label and editable list.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- items_6
+    - Picker 6: list of text choices. Supports lines, blank-line chunks, comma, pipe, JSON/Python lists, or objects with items/values/motions.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- label_6
+    - Picker 6: optional label placed before this picker output.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- selection_mode_6
+    - Picker 6: choose by wrapped index, seeded random, or seeded random no-repeat.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- two_item_template_6
+    - Picker 6: sentence template used when this picker selects exactly two items.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- pick_count_6
+    - Picker 6: how many items to select from this picker at once.
+    - Comfy dtype: INT
+    - Python dtype: int
+- preset_7
+    - Picker 7: choose a preset label/list, or Custom for your own label and editable list.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- items_7
+    - Picker 7: list of text choices. Supports lines, blank-line chunks, comma, pipe, JSON/Python lists, or objects with items/values/motions.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- label_7
+    - Picker 7: optional label placed before this picker output.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- selection_mode_7
+    - Picker 7: choose by wrapped index, seeded random, or seeded random no-repeat.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- two_item_template_7
+    - Picker 7: sentence template used when this picker selects exactly two items.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- pick_count_7
+    - Picker 7: how many items to select from this picker at once.
+    - Comfy dtype: INT
+    - Python dtype: int
+- preset_8
+    - Picker 8: choose a preset label/list, or Custom for your own label and editable list.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- items_8
+    - Picker 8: list of text choices. Supports lines, blank-line chunks, comma, pipe, JSON/Python lists, or objects with items/values/motions.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- label_8
+    - Picker 8: optional label placed before this picker output.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- selection_mode_8
+    - Picker 8: choose by wrapped index, seeded random, or seeded random no-repeat.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- two_item_template_8
+    - Picker 8: sentence template used when this picker selects exactly two items.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- pick_count_8
+    - Picker 8: how many items to select from this picker at once.
+    - Comfy dtype: INT
+    - Python dtype: int
+- preset_9
+    - Picker 9: choose a preset label/list, or Custom for your own label and editable list.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- items_9
+    - Picker 9: list of text choices. Supports lines, blank-line chunks, comma, pipe, JSON/Python lists, or objects with items/values/motions.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- label_9
+    - Picker 9: optional label placed before this picker output.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- selection_mode_9
+    - Picker 9: choose by wrapped index, seeded random, or seeded random no-repeat.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- two_item_template_9
+    - Picker 9: sentence template used when this picker selects exactly two items.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- pick_count_9
+    - Picker 9: how many items to select from this picker at once.
+    - Comfy dtype: INT
+    - Python dtype: int
+- preset_10
+    - Picker 10: choose a preset label/list, or Custom for your own label and editable list.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- items_10
+    - Picker 10: list of text choices. Supports lines, blank-line chunks, comma, pipe, JSON/Python lists, or objects with items/values/motions.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- label_10
+    - Picker 10: optional label placed before this picker output.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- selection_mode_10
+    - Picker 10: choose by wrapped index, seeded random, or seeded random no-repeat.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- two_item_template_10
+    - Picker 10: sentence template used when this picker selects exactly two items.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- pick_count_10
+    - Picker 10: how many items to select from this picker at once.
+    - Comfy dtype: INT
+    - Python dtype: int
+- preset_11
+    - Picker 11: choose a preset label/list, or Custom for your own label and editable list.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- items_11
+    - Picker 11: list of text choices. Supports lines, blank-line chunks, comma, pipe, JSON/Python lists, or objects with items/values/motions.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- label_11
+    - Picker 11: optional label placed before this picker output.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- selection_mode_11
+    - Picker 11: choose by wrapped index, seeded random, or seeded random no-repeat.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- two_item_template_11
+    - Picker 11: sentence template used when this picker selects exactly two items.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- pick_count_11
+    - Picker 11: how many items to select from this picker at once.
+    - Comfy dtype: INT
+    - Python dtype: int
+- preset_12
+    - Picker 12: choose a preset label/list, or Custom for your own label and editable list.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- items_12
+    - Picker 12: list of text choices. Supports lines, blank-line chunks, comma, pipe, JSON/Python lists, or objects with items/values/motions.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- label_12
+    - Picker 12: optional label placed before this picker output.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- selection_mode_12
+    - Picker 12: choose by wrapped index, seeded random, or seeded random no-repeat.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- two_item_template_12
+    - Picker 12: sentence template used when this picker selects exactly two items.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- pick_count_12
+    - Picker 12: how many items to select from this picker at once.
+    - Comfy dtype: INT
+    - Python dtype: int
+- preset_13
+    - Picker 13: choose a preset label/list, or Custom for your own label and editable list.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- items_13
+    - Picker 13: list of text choices. Supports lines, blank-line chunks, comma, pipe, JSON/Python lists, or objects with items/values/motions.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- label_13
+    - Picker 13: optional label placed before this picker output.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- selection_mode_13
+    - Picker 13: choose by wrapped index, seeded random, or seeded random no-repeat.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- two_item_template_13
+    - Picker 13: sentence template used when this picker selects exactly two items.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- pick_count_13
+    - Picker 13: how many items to select from this picker at once.
+    - Comfy dtype: INT
+    - Python dtype: int
+- preset_14
+    - Picker 14: choose a preset label/list, or Custom for your own label and editable list.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- items_14
+    - Picker 14: list of text choices. Supports lines, blank-line chunks, comma, pipe, JSON/Python lists, or objects with items/values/motions.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- label_14
+    - Picker 14: optional label placed before this picker output.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- selection_mode_14
+    - Picker 14: choose by wrapped index, seeded random, or seeded random no-repeat.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- two_item_template_14
+    - Picker 14: sentence template used when this picker selects exactly two items.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- pick_count_14
+    - Picker 14: how many items to select from this picker at once.
+    - Comfy dtype: INT
+    - Python dtype: int
+- preset_15
+    - Picker 15: choose a preset label/list, or Custom for your own label and editable list.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- items_15
+    - Picker 15: list of text choices. Supports lines, blank-line chunks, comma, pipe, JSON/Python lists, or objects with items/values/motions.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- label_15
+    - Picker 15: optional label placed before this picker output.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- selection_mode_15
+    - Picker 15: choose by wrapped index, seeded random, or seeded random no-repeat.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- two_item_template_15
+    - Picker 15: sentence template used when this picker selects exactly two items.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- pick_count_15
+    - Picker 15: how many items to select from this picker at once.
+    - Comfy dtype: INT
+    - Python dtype: int
+- preset_16
+    - Picker 16: choose a preset label/list, or Custom for your own label and editable list.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- items_16
+    - Picker 16: list of text choices. Supports lines, blank-line chunks, comma, pipe, JSON/Python lists, or objects with items/values/motions.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- label_16
+    - Picker 16: optional label placed before this picker output.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- selection_mode_16
+    - Picker 16: choose by wrapped index, seeded random, or seeded random no-repeat.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- two_item_template_16
+    - Picker 16: sentence template used when this picker selects exactly two items.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- pick_count_16
+    - Picker 16: how many items to select from this picker at once.
+    - Comfy dtype: INT
+    - Python dtype: int
+- preset_17
+    - Picker 17: choose a preset label/list, or Custom for your own label and editable list.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- items_17
+    - Picker 17: list of text choices. Supports lines, blank-line chunks, comma, pipe, JSON/Python lists, or objects with items/values/motions.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- label_17
+    - Picker 17: optional label placed before this picker output.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- selection_mode_17
+    - Picker 17: choose by wrapped index, seeded random, or seeded random no-repeat.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- two_item_template_17
+    - Picker 17: sentence template used when this picker selects exactly two items.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- pick_count_17
+    - Picker 17: how many items to select from this picker at once.
+    - Comfy dtype: INT
+    - Python dtype: int
+- preset_18
+    - Picker 18: choose a preset label/list, or Custom for your own label and editable list.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- items_18
+    - Picker 18: list of text choices. Supports lines, blank-line chunks, comma, pipe, JSON/Python lists, or objects with items/values/motions.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- label_18
+    - Picker 18: optional label placed before this picker output.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- selection_mode_18
+    - Picker 18: choose by wrapped index, seeded random, or seeded random no-repeat.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- two_item_template_18
+    - Picker 18: sentence template used when this picker selects exactly two items.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- pick_count_18
+    - Picker 18: how many items to select from this picker at once.
+    - Comfy dtype: INT
+    - Python dtype: int
+- preset_19
+    - Picker 19: choose a preset label/list, or Custom for your own label and editable list.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- items_19
+    - Picker 19: list of text choices. Supports lines, blank-line chunks, comma, pipe, JSON/Python lists, or objects with items/values/motions.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- label_19
+    - Picker 19: optional label placed before this picker output.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- selection_mode_19
+    - Picker 19: choose by wrapped index, seeded random, or seeded random no-repeat.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- two_item_template_19
+    - Picker 19: sentence template used when this picker selects exactly two items.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- pick_count_19
+    - Picker 19: how many items to select from this picker at once.
+    - Comfy dtype: INT
+    - Python dtype: int
+- preset_20
+    - Picker 20: choose a preset label/list, or Custom for your own label and editable list.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- items_20
+    - Picker 20: list of text choices. Supports lines, blank-line chunks, comma, pipe, JSON/Python lists, or objects with items/values/motions.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- label_20
+    - Picker 20: optional label placed before this picker output.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- selection_mode_20
+    - Picker 20: choose by wrapped index, seeded random, or seeded random no-repeat.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- two_item_template_20
+    - Picker 20: sentence template used when this picker selects exactly two items.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- pick_count_20
+    - Picker 20: how many items to select from this picker at once.
+    - Comfy dtype: INT
+    - Python dtype: int
+## Optional
+- index_1
+    - Picker 1: step number used to choose from this picker list.
+    - Comfy dtype: INT
+    - Python dtype: int
+- seed_1
+    - Picker 1: seed used by random modes.
+    - Comfy dtype: INT
+    - Python dtype: int
+- index_2
+    - Picker 2: step number used to choose from this picker list.
+    - Comfy dtype: INT
+    - Python dtype: int
+- seed_2
+    - Picker 2: seed used by random modes.
+    - Comfy dtype: INT
+    - Python dtype: int
+- index_3
+    - Picker 3: step number used to choose from this picker list.
+    - Comfy dtype: INT
+    - Python dtype: int
+- seed_3
+    - Picker 3: seed used by random modes.
+    - Comfy dtype: INT
+    - Python dtype: int
+- index_4
+    - Picker 4: step number used to choose from this picker list.
+    - Comfy dtype: INT
+    - Python dtype: int
+- seed_4
+    - Picker 4: seed used by random modes.
+    - Comfy dtype: INT
+    - Python dtype: int
+- index_5
+    - Picker 5: step number used to choose from this picker list.
+    - Comfy dtype: INT
+    - Python dtype: int
+- seed_5
+    - Picker 5: seed used by random modes.
+    - Comfy dtype: INT
+    - Python dtype: int
+- index_6
+    - Picker 6: step number used to choose from this picker list.
+    - Comfy dtype: INT
+    - Python dtype: int
+- seed_6
+    - Picker 6: seed used by random modes.
+    - Comfy dtype: INT
+    - Python dtype: int
+- index_7
+    - Picker 7: step number used to choose from this picker list.
+    - Comfy dtype: INT
+    - Python dtype: int
+- seed_7
+    - Picker 7: seed used by random modes.
+    - Comfy dtype: INT
+    - Python dtype: int
+- index_8
+    - Picker 8: step number used to choose from this picker list.
+    - Comfy dtype: INT
+    - Python dtype: int
+- seed_8
+    - Picker 8: seed used by random modes.
+    - Comfy dtype: INT
+    - Python dtype: int
+- index_9
+    - Picker 9: step number used to choose from this picker list.
+    - Comfy dtype: INT
+    - Python dtype: int
+- seed_9
+    - Picker 9: seed used by random modes.
+    - Comfy dtype: INT
+    - Python dtype: int
+- index_10
+    - Picker 10: step number used to choose from this picker list.
+    - Comfy dtype: INT
+    - Python dtype: int
+- seed_10
+    - Picker 10: seed used by random modes.
+    - Comfy dtype: INT
+    - Python dtype: int
+- index_11
+    - Picker 11: step number used to choose from this picker list.
+    - Comfy dtype: INT
+    - Python dtype: int
+- seed_11
+    - Picker 11: seed used by random modes.
+    - Comfy dtype: INT
+    - Python dtype: int
+- index_12
+    - Picker 12: step number used to choose from this picker list.
+    - Comfy dtype: INT
+    - Python dtype: int
+- seed_12
+    - Picker 12: seed used by random modes.
+    - Comfy dtype: INT
+    - Python dtype: int
+- index_13
+    - Picker 13: step number used to choose from this picker list.
+    - Comfy dtype: INT
+    - Python dtype: int
+- seed_13
+    - Picker 13: seed used by random modes.
+    - Comfy dtype: INT
+    - Python dtype: int
+- index_14
+    - Picker 14: step number used to choose from this picker list.
+    - Comfy dtype: INT
+    - Python dtype: int
+- seed_14
+    - Picker 14: seed used by random modes.
+    - Comfy dtype: INT
+    - Python dtype: int
+- index_15
+    - Picker 15: step number used to choose from this picker list.
+    - Comfy dtype: INT
+    - Python dtype: int
+- seed_15
+    - Picker 15: seed used by random modes.
+    - Comfy dtype: INT
+    - Python dtype: int
+- index_16
+    - Picker 16: step number used to choose from this picker list.
+    - Comfy dtype: INT
+    - Python dtype: int
+- seed_16
+    - Picker 16: seed used by random modes.
+    - Comfy dtype: INT
+    - Python dtype: int
+- index_17
+    - Picker 17: step number used to choose from this picker list.
+    - Comfy dtype: INT
+    - Python dtype: int
+- seed_17
+    - Picker 17: seed used by random modes.
+    - Comfy dtype: INT
+    - Python dtype: int
+- index_18
+    - Picker 18: step number used to choose from this picker list.
+    - Comfy dtype: INT
+    - Python dtype: int
+- seed_18
+    - Picker 18: seed used by random modes.
+    - Comfy dtype: INT
+    - Python dtype: int
+- index_19
+    - Picker 19: step number used to choose from this picker list.
+    - Comfy dtype: INT
+    - Python dtype: int
+- seed_19
+    - Picker 19: seed used by random modes.
+    - Comfy dtype: INT
+    - Python dtype: int
+- index_20
+    - Picker 20: step number used to choose from this picker list.
+    - Comfy dtype: INT
+    - Python dtype: int
+- seed_20
+    - Picker 20: seed used by random modes.
+    - Comfy dtype: INT
+    - Python dtype: int
+
+# Output types
+- combined_formatted_text
+    - The combined_formatted_text output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- results_json
+    - The results_json output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- formatted_text_1
+    - The formatted_text_1 output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- formatted_text_2
+    - The formatted_text_2 output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- formatted_text_3
+    - The formatted_text_3 output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- formatted_text_4
+    - The formatted_text_4 output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- formatted_text_5
+    - The formatted_text_5 output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- formatted_text_6
+    - The formatted_text_6 output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- formatted_text_7
+    - The formatted_text_7 output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- formatted_text_8
+    - The formatted_text_8 output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- formatted_text_9
+    - The formatted_text_9 output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- formatted_text_10
+    - The formatted_text_10 output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- formatted_text_11
+    - The formatted_text_11 output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- formatted_text_12
+    - The formatted_text_12 output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- formatted_text_13
+    - The formatted_text_13 output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- formatted_text_14
+    - The formatted_text_14 output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- formatted_text_15
+    - The formatted_text_15 output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- formatted_text_16
+    - The formatted_text_16 output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- formatted_text_17
+    - The formatted_text_17 output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- formatted_text_18
+    - The formatted_text_18 output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- formatted_text_19
+    - The formatted_text_19 output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- formatted_text_20
+    - The formatted_text_20 output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+
+# Usage tips
+- Infra type: unknown
+
+# Source code
+[View source repository](https://github.com/vrgamegirl19/comfyui-vrgamedevgirl)
+
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

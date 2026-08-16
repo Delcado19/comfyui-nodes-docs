@@ -1,0 +1,161 @@
+# Documentation
+- Class name: LatentBatch_channels_16
+- Category: RES4LYF/latents
+- Output node: False
+- Repo Ref: https://github.com/ClownsharkBatwing/RES4LYF
+
+LatentBatch_channels_16 is a ComfyUI node registered by `custom_nodes.RES4LYF`. The live metadata did not provide a longer description.
+
+# Input types
+## Required
+- latent
+    - The latent input is used by this node during execution.
+    - Comfy dtype: LATENT
+    - Python dtype: dict
+- mode
+    - The mode input is used by this node during execution.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- chan_1
+    - The chan_1 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- chan_2
+    - The chan_2 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- chan_3
+    - The chan_3 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- chan_4
+    - The chan_4 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- chan_5
+    - The chan_5 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- chan_6
+    - The chan_6 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- chan_7
+    - The chan_7 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- chan_8
+    - The chan_8 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- chan_9
+    - The chan_9 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- chan_10
+    - The chan_10 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- chan_11
+    - The chan_11 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- chan_12
+    - The chan_12 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- chan_13
+    - The chan_13 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- chan_14
+    - The chan_14 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- chan_15
+    - The chan_15 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- chan_16
+    - The chan_16 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+## Optional
+- chan_1s
+    - The chan_1s input is used by this node during execution.
+    - Comfy dtype: SIGMAS
+    - Python dtype: object
+- chan_2s
+    - The chan_2s input is used by this node during execution.
+    - Comfy dtype: SIGMAS
+    - Python dtype: object
+- chan_3s
+    - The chan_3s input is used by this node during execution.
+    - Comfy dtype: SIGMAS
+    - Python dtype: object
+- chan_4s
+    - The chan_4s input is used by this node during execution.
+    - Comfy dtype: SIGMAS
+    - Python dtype: object
+- chan_5s
+    - The chan_5s input is used by this node during execution.
+    - Comfy dtype: SIGMAS
+    - Python dtype: object
+- chan_6s
+    - The chan_6s input is used by this node during execution.
+    - Comfy dtype: SIGMAS
+    - Python dtype: object
+- chan_7s
+    - The chan_7s input is used by this node during execution.
+    - Comfy dtype: SIGMAS
+    - Python dtype: object
+- chan_8s
+    - The chan_8s input is used by this node during execution.
+    - Comfy dtype: SIGMAS
+    - Python dtype: object
+- chan_9s
+    - The chan_9s input is used by this node during execution.
+    - Comfy dtype: SIGMAS
+    - Python dtype: object
+- chan_10s
+    - The chan_10s input is used by this node during execution.
+    - Comfy dtype: SIGMAS
+    - Python dtype: object
+- chan_11s
+    - The chan_11s input is used by this node during execution.
+    - Comfy dtype: SIGMAS
+    - Python dtype: object
+- chan_12s
+    - The chan_12s input is used by this node during execution.
+    - Comfy dtype: SIGMAS
+    - Python dtype: object
+- chan_13s
+    - The chan_13s input is used by this node during execution.
+    - Comfy dtype: SIGMAS
+    - Python dtype: object
+- chan_14s
+    - The chan_14s input is used by this node during execution.
+    - Comfy dtype: SIGMAS
+    - Python dtype: object
+- chan_15s
+    - The chan_15s input is used by this node during execution.
+    - Comfy dtype: SIGMAS
+    - Python dtype: object
+- chan_16s
+    - The chan_16s input is used by this node during execution.
+    - Comfy dtype: SIGMAS
+    - Python dtype: object
+
+# Output types
+- LATENT
+    - The LATENT output is produced by this node.
+    - Comfy dtype: LATENT
+    - Python dtype: dict
+
+# Usage tips
+- Infra type: unknown
+
+# Source code
+[View source repository](https://github.com/ClownsharkBatwing/RES4LYF)
+
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

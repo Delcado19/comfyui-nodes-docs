@@ -1,0 +1,445 @@
+# Documentation
+- Class name: VRGDG_LoadAudioSplitDynamic
+- Category: VRGDG
+- Output node: False
+- Repo Ref: https://github.com/vrgamegirl19/comfyui-vrgamedevgirl
+
+VRGDG_LoadAudioSplitDynamic is a ComfyUI node registered by `custom_nodes.comfyui-vrgamedevgirl`. The live metadata did not provide a longer description.
+
+# Input types
+## Required
+- path
+    - The path input is used by this node during execution.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- offset_seconds
+    - The offset_seconds input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- scene_count
+    - The scene_count input is used by this node during execution.
+    - Comfy dtype: INT
+    - Python dtype: int
+- using_infinite_talk
+    - If using HUMO, change this to false.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+## Optional
+- duration_1
+    - The duration_1 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- duration_2
+    - The duration_2 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- duration_3
+    - The duration_3 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- duration_4
+    - The duration_4 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- duration_5
+    - The duration_5 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- duration_6
+    - The duration_6 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- duration_7
+    - The duration_7 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- duration_8
+    - The duration_8 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- duration_9
+    - The duration_9 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- duration_10
+    - The duration_10 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- duration_11
+    - The duration_11 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- duration_12
+    - The duration_12 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- duration_13
+    - The duration_13 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- duration_14
+    - The duration_14 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- duration_15
+    - The duration_15 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- duration_16
+    - The duration_16 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- duration_17
+    - The duration_17 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- duration_18
+    - The duration_18 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- duration_19
+    - The duration_19 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- duration_20
+    - The duration_20 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- duration_21
+    - The duration_21 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- duration_22
+    - The duration_22 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- duration_23
+    - The duration_23 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- duration_24
+    - The duration_24 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- duration_25
+    - The duration_25 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- duration_26
+    - The duration_26 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- duration_27
+    - The duration_27 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- duration_28
+    - The duration_28 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- duration_29
+    - The duration_29 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- duration_30
+    - The duration_30 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- duration_31
+    - The duration_31 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- duration_32
+    - The duration_32 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- duration_33
+    - The duration_33 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- duration_34
+    - The duration_34 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- duration_35
+    - The duration_35 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- duration_36
+    - The duration_36 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- duration_37
+    - The duration_37 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- duration_38
+    - The duration_38 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- duration_39
+    - The duration_39 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- duration_40
+    - The duration_40 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- duration_41
+    - The duration_41 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- duration_42
+    - The duration_42 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- duration_43
+    - The duration_43 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- duration_44
+    - The duration_44 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- duration_45
+    - The duration_45 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- duration_46
+    - The duration_46 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- duration_47
+    - The duration_47 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- duration_48
+    - The duration_48 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- duration_49
+    - The duration_49 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- duration_50
+    - The duration_50 input is used by this node during execution.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+
+# Output types
+- meta
+    - The meta output is produced by this node.
+    - Comfy dtype: DICT
+    - Python dtype: object
+- total_duration
+    - The total_duration output is produced by this node.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- audio_1
+    - The audio_1 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_2
+    - The audio_2 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_3
+    - The audio_3 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_4
+    - The audio_4 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_5
+    - The audio_5 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_6
+    - The audio_6 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_7
+    - The audio_7 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_8
+    - The audio_8 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_9
+    - The audio_9 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_10
+    - The audio_10 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_11
+    - The audio_11 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_12
+    - The audio_12 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_13
+    - The audio_13 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_14
+    - The audio_14 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_15
+    - The audio_15 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_16
+    - The audio_16 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_17
+    - The audio_17 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_18
+    - The audio_18 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_19
+    - The audio_19 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_20
+    - The audio_20 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_21
+    - The audio_21 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_22
+    - The audio_22 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_23
+    - The audio_23 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_24
+    - The audio_24 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_25
+    - The audio_25 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_26
+    - The audio_26 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_27
+    - The audio_27 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_28
+    - The audio_28 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_29
+    - The audio_29 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_30
+    - The audio_30 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_31
+    - The audio_31 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_32
+    - The audio_32 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_33
+    - The audio_33 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_34
+    - The audio_34 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_35
+    - The audio_35 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_36
+    - The audio_36 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_37
+    - The audio_37 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_38
+    - The audio_38 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_39
+    - The audio_39 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_40
+    - The audio_40 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_41
+    - The audio_41 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_42
+    - The audio_42 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_43
+    - The audio_43 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_44
+    - The audio_44 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_45
+    - The audio_45 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_46
+    - The audio_46 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_47
+    - The audio_47 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_48
+    - The audio_48 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_49
+    - The audio_49 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+- audio_50
+    - The audio_50 output is produced by this node.
+    - Comfy dtype: AUDIO
+    - Python dtype: object
+
+# Usage tips
+- Infra type: unknown
+
+# Source code
+[View source repository](https://github.com/vrgamegirl19/comfyui-vrgamedevgirl)
+
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

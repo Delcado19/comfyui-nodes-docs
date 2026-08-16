@@ -1,0 +1,208 @@
+# Documentation
+- Class name: LayerMask: SegformerFashionSetting
+- Category: 😺dzNodes/LayerMask
+- Output node: False
+- Repo Ref: https://github.com/chflame163/ComfyUI_LayerStyle
+
+A set of nodes for ComfyUI it generate image like Adobe Photoshop's Layer Style. the Drop Shadow is first completed node, and follow-up work is in progress.
+
+# Input types
+## Required
+- shirt
+    - The shirt input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- top
+    - The top input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- sweater
+    - The sweater input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- cardigan
+    - The cardigan input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- jacket
+    - The jacket input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- vest
+    - The vest input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- pants
+    - The pants input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- shorts
+    - The shorts input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- skirt
+    - The skirt input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- coat
+    - The coat input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- dress
+    - The dress input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- jumpsuit
+    - The jumpsuit input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- cape
+    - The cape input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- glasses
+    - The glasses input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- hat
+    - The hat input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- hairaccessory
+    - The hairaccessory input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- tie
+    - The tie input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- glove
+    - The glove input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- watch
+    - The watch input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- belt
+    - The belt input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- legwarmer
+    - The legwarmer input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- tights
+    - The tights input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- sock
+    - The sock input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- shoe
+    - The shoe input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- bagwallet
+    - The bagwallet input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- scarf
+    - The scarf input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- umbrella
+    - The umbrella input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- hood
+    - The hood input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- collar
+    - The collar input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- lapel
+    - The lapel input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- epaulette
+    - The epaulette input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- sleeve
+    - The sleeve input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- pocket
+    - The pocket input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- neckline
+    - The neckline input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- buckle
+    - The buckle input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- zipper
+    - The zipper input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- applique
+    - The applique input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- bead
+    - The bead input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- bow
+    - The bow input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- flower
+    - The flower input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- fringe
+    - The fringe input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- ribbon
+    - The ribbon input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- rivet
+    - The rivet input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- ruffle
+    - The ruffle input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- sequin
+    - The sequin input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- tassel
+    - The tassel input is used by this node during execution.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+
+# Output types
+- segformer_fashion_setting
+    - The segformer_fashion_setting output is produced by this node.
+    - Comfy dtype: LS_SEGFORMER_SETTING
+    - Python dtype: object
+
+# Usage tips
+- Infra type: unknown
+
+# Source code
+[View source repository](https://github.com/chflame163/ComfyUI_LayerStyle)
+
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*

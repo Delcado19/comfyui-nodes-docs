@@ -1,0 +1,164 @@
+# Documentation
+- Class name: VRGDG_LTXLoraTrainChunk
+- Category: VRGDG/Training
+- Output node: False
+- Repo Ref: https://github.com/vrgamegirl19/comfyui-vrgamedevgirl
+
+Runs one LTX-2 LoRA training chunk using musubi-tuner, optionally caches if needed, and can export the latest Comfy-compatible LoRA for downstream preview generation.
+
+# Input types
+## Required
+- model
+    - Base model to return downstream with the latest trained LoRA optionally applied.
+    - Comfy dtype: MODEL
+    - Python dtype: torch.nn.Module
+- dataset_images_dir
+    - Folder containing your training images, or a parent folder that will be organized into an images subfolder.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- workspace_dir
+    - Working folder for cache, logs, config files, checkpoints, and training state.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- run_name
+    - Name prefix used for the log file.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- output_name
+    - Name prefix used for saved LoRA files and state folders.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- resolution_width
+    - Training bucket width written to the musubi dataset config. Examples: 960 for lighter tests, 1280 for medium runs, 1920 for full HD style training.
+    - Comfy dtype: INT
+    - Python dtype: int
+- resolution_height
+    - Training bucket height written to the musubi dataset config. Examples: 540 for lighter tests, 720 for medium runs, 1080 for full HD style training.
+    - Comfy dtype: INT
+    - Python dtype: int
+- steps_per_run
+    - How many steps to train per run, and also when to save the LoRA/state at the end of that run. Examples: 50 for quick tests, 250 for normal preview cadence, 500 for longer chunks.
+    - Comfy dtype: INT
+    - Python dtype: int
+- total_target_steps
+    - Training stops once the latest saved step reaches this total. Examples: 1000 for a short experiment, 3000 for a normal run, 6000+ for longer training.
+    - Comfy dtype: INT
+    - Python dtype: int
+- network_dim
+    - LoRA rank. Higher values increase capacity and VRAM usage. Examples: 16 for very small tests, 32 for lighter runs, 64 as a common default, 128 for larger higher-capacity LoRAs.
+    - Comfy dtype: INT
+    - Python dtype: int
+- network_alpha
+    - LoRA alpha scaling value. A common pairing is alpha at half the rank. Examples: rank 16 -> alpha 8, rank 32 -> alpha 16, rank 64 -> alpha 32.
+    - Comfy dtype: INT
+    - Python dtype: int
+- blocks_to_swap
+    - Higher values reduce VRAM usage but usually slow training. Use 0 to disable block swapping. Examples: 0 for max speed if VRAM is sufficient, 4 as a balanced default, 8 to 12 for lower VRAM cards.
+    - Comfy dtype: INT
+    - Python dtype: int
+- clear_memory_before_gemma
+    - Tries to unload ComfyUI models and clear VRAM/RAM before Gemma text encoder caching. Keep enabled if stage 2 tends to stall.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- learning_rate_preset
+    - Quick preset for the training learning rate. Examples: 1e-4 for aggressive training, 7e-5 as a common default, 5e-5 or 3e-5 for gentler training. Choose Custom to use the float input below.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- learning_rate
+    - Custom learning rate used only when the preset is set to Custom. Examples: 0.0001 = 1e-4, 0.00007 = 7e-5, 0.00005 = 5e-5, 0.00003 = 3e-5.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- num_repeats
+    - How many times each image-caption pair is repeated in the dataset. Examples: 1 for normal use, 2 to 4 if the dataset is very small, higher only when you intentionally want more repeats.
+    - Comfy dtype: INT
+    - Python dtype: int
+- cache_strategy
+    - Auto builds cache only when needed, Force always rebuilds it, Skip goes straight to training.
+    - Comfy dtype: COMBO[STRING]
+    - Python dtype: str
+- copy_latest_to_comfy_loras
+    - Copies the latest Comfy-compatible LoRA into the ComfyUI loras folder after training.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- keep_only_comfy_lora
+    - If enabled, deletes the standard .safetensors LoRA files after a matching .comfy.safetensors file exists. Resume state folders are kept.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- strength_model
+    - Strength used if the node applies the latest LoRA back onto the output model. Examples: 1.0 for normal preview, 0.7 for a lighter effect, 0.0 to effectively disable applying the LoRA to the returned model.
+    - Comfy dtype: FLOAT
+    - Python dtype: float
+- create_captions
+    - If enabled, missing caption txt files are created automatically using the caption text input.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- caption_text
+    - Base caption text used when create_captions is enabled and an image has no caption file. Example: woman portrait, cinematic close-up, soft natural light.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- add_trigger_word
+    - If enabled, the trigger text is prepended to each caption.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- trigger_text
+    - Trigger word or phrase to prepend to captions when add_trigger_word is enabled. Examples: miranda, my_character, retro-future heroine.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- musubi_root
+    - Root folder of your musubi-tuner-ltx2 install.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- ltx2_checkpoint
+    - Path to the base LTX-2 checkpoint used for caching and training.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- gemma_root
+    - Folder containing the Gemma model files used for text encoder caching.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- gemma_recovery_mode
+    - Experimental. If enabled, the node will keep the normal Gemma cache path first, then try alternate cache settings if that stage fails.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+- gemma_load_in_4bit
+    - Loads Gemma in 4-bit mode during text encoder caching. This lowers VRAM more than 8-bit, but can be slower or less stable.
+    - Comfy dtype: BOOLEAN
+    - Python dtype: bool
+
+# Output types
+- model
+    - The model output is produced by this node.
+    - Comfy dtype: MODEL
+    - Python dtype: torch.nn.Module
+- latest_state_path
+    - The latest_state_path output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- log_path
+    - The log_path output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- video_filename_prefix
+    - The video_filename_prefix output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- output_name
+    - The output_name output is produced by this node.
+    - Comfy dtype: STRING
+    - Python dtype: str
+- completed_steps
+    - The completed_steps output is produced by this node.
+    - Comfy dtype: INT
+    - Python dtype: int
+- total_target_steps
+    - The total_target_steps output is produced by this node.
+    - Comfy dtype: INT
+    - Python dtype: int
+
+# Usage tips
+- Infra type: unknown
+
+# Source code
+[View source repository](https://github.com/vrgamegirl19/comfyui-vrgamedevgirl)
+
+*Source code is not embedded in this doc — browse the pack's repository at the link above.*
