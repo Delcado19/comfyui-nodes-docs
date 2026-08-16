@@ -6,6 +6,8 @@ left untouched; all changes below are additive or English-only.
 
 ## [Unreleased]
 
+## [1.2.0] - 2026-08-16
+
 ### Added
 - **Expanded English documentation from a live ComfyUI install.** Parallel
   `*_en.md` files now cover 5800+ node docs. The original Chinese docs are
