@@ -6,6 +6,15 @@ left untouched; all changes below are additive or English-only.
 
 ## [Unreleased]
 
+## [1.2.1] - 2026-08-16
+
+### Fixed
+- **Doc icon overlapped ComfyUI's title-bar corner button.** The 📄 doc icon
+  sat flush in the node's top-right title-bar corner, on top of ComfyUI's own
+  "convert to subgraph" button. Moved 34px left of the edge, still inside the
+  title bar (not the node body, where the first output slot sits on most
+  nodes).
+
 ## [1.2.0] - 2026-08-16
 
 ### Added

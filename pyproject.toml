@@ -3,7 +3,7 @@
 # id is already registered upstream (CavinHuang), so this fork publishes under a
 # distinct id. Change this line before publishing if you prefer another id.
 name = "comfyui-nodes-docs-en"
-version = "1.2.0"
+version = "1.2.1"
 description = "In-app documentation for 3500+ ComfyUI nodes, in English and Chinese. The doc panel language follows ComfyUI's Comfy.Locale setting."
 license = { file = "LICENSE" }
 requires-python = ">=3.10"
